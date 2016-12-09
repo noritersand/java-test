@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" prefix="op: http://media.facebook.com/op#">
+  <head>
+    <meta charset="utf-8">
+    <link rel="canonical" href="http://instantarticles.fb.com/example3">
+    <link rel="stylesheet" title="default" href="#">
+    <title>Using Captions in Instant Articles</title>
+    <meta property="fb:article_style" content="Test Article Style">
+  </head>
+  <body>
+  <article>
+    <header>
+      <!-- The cover image shown inside your article --> 
+      <figure>
+        <img src="http://fb.me/ia-img-mont_st_michel.jpg" />
+        <figcaption>Header image description becomes visible after image has been tapped and expanded.</figcaption>
+      </figure>
+      
+      <!-- The title shown in your article -->
+      <h1> Using Captions in Instant Articles </h1>
+      
+      <!-- The subtitle shown in your article -->
+      <h2> Captions are super flexible in Instant Articles. Learn how to use the many variations expressively </h2>
+      
+      <!-- A kicker for your article -->
+      <h3 class="op-kicker">
+        Creative Captions
+      </h3>
+
+      <!-- The author of your article -->
+      <address>
+        <a>Instant Articles Team</a>
+      </address>
+
+      <!-- The published and last modified time stamps -->
+      <time class="op-published" dateTime="2016-2-04T10:00">February 4th 2016, 10:00 AM</time>
+      <time class="op-modified" dateTime="2016-2-04T10:00">February 4th 2016, 10:00 AM</time>
+    </header>
+<h1> Caption Formatting </h1>
+<p> There are three elements to each caption: <strong> title</strong>, <strong> description</strong> and <strong> credit </strong>. Both the <strong> title </strong> and <strong> description </strong> can be styled with different typefaces and colors using the <a href="https://developers.facebook.com/docs/instant-articles/guides/design#style">Style Editor</a>. Styles are applied on the article level. Within each article, individual captions may be formatted with small, medium, large or extra-large font sizes. The typeface and color of the <strong> credit </strong> can be customized, but the size remains fixed.</p>
+    
+    <p>The four following examples show variations in title and description sizes.</p>
+    
+
+    <p> &nbsp; </p>
+ 
+    <figure>
+    <img src="http://fb.me/ia-img-mont_st_michel.jpg"/>
+    <figcaption class="op-extra-large">
+   <h1 class="op-small">Caption Title Small</h1> 
+   This description uses extra-large text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ <cite>Photo Credit</cite> </figcaption>
+ </figure>
+    
+
+
+    <p> &nbsp; </p>
+   
+ 
+    
+ <figure>
+    <img src="http://fb.me/ia-img-mont_st_michel.jpg"/>
+    <figcaption class="op-large">
+   <h1 class="op-medium">Caption Title Medium</h1> 
+   This description uses large text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    <cite>Photo Credit</cite> </figcaption>
+ </figure>
+    
+   
+    <p> &nbsp; </p>
+    
+
+ <figure>
+    <img src="http://fb.me/ia-img-mont_st_michel.jpg"/>
+    <figcaption class="op-medium">
+   <h1 class="op-large">Caption Title Large</h1> 
+   This description uses medium text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    <cite>Photo Credit</cite> </figcaption>
+ </figure>
+
+
+    <p> &nbsp; </p>
+    
+
+ <figure>
+    <img src="http://fb.me/ia-img-mont_st_michel.jpg"/>
+    <figcaption class="op-small">
+   <h1 class="op-extra-large">Caption Title XL</h1> 
+   This description uses small text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    <cite>Photo Credit</cite> </figcaption>
+ </figure>
+    
+
+    
+<h1> Vertical Positioning </h1>
+    <p> You can place a caption in one of five vertical positions in relation to a media element. A caption can be <strong>above</strong>, <strong>below</strong> or superimposed on an image at its <strong>top</strong>, <strong>bottom</strong> or <strong>center</strong>. </p>
+    
+  <p>Each element of the caption (title, description, and credit) can be in any one of those five spots. So you could have a  title above the image, the description superimposed at the top and the credit below, if you wished. If no position is defined for an element, it defaults to below the image.</p>
+    
+<p>The six following examples demonstrate a variety of vertical placement combinations.</p>
+   
+
+    <p> &nbsp; </p>
+    
+ <figure>
+    <img src="http://fb.me/ia-img-mushroom.jpg">
+      <figcaption class="op-vertical-above op-medium">
+   <h1 class="op-vertical-above op-large">Caption Title Large</h1>
+   This caption is above the image. Description uses medium text.
+    <cite class="op-vertical-above">Photo Credit</cite> </figcaption>
+ </figure>
+
+
+    <p> &nbsp; </p>
+    
+ <figure>
+    <img src="http://fb.me/ia-img-mushroom.jpg"/>
+    <figcaption class="op-vertical-below op-medium">
+      <h1 class="op-vertical-below op-large">Caption Title Large</h1>
+   This caption is below the image. Description uses medium text.
+    <cite class="op-vertical-below">Photo Credit</cite> </figcaption>
+ </figure>
+
+  
+    <p> &nbsp; </p>
+
+ <figure>
+    <img src="http://fb.me/ia-img-mushroom.jpg"/>
+    <figcaption class="op-vertical-top op-medium">
+      <h1 class="op-vertical-top op-large">Caption Title Large</h1>
+   This caption is within the image at the top. Description uses medium text.
+    <cite class="op-vertical-top">Photo Credit</cite> </figcaption>
+ </figure>
+    
+
+    <p> &nbsp; </p>
+    
+ <figure>
+    <img src="http://fb.me/ia-img-mushroom.jpg"/>
+    <figcaption class="op-vertical-bottom op-medium">
+      <h1 class="op-vertical-bottom op-large">Caption Title Large</h1>
+   This caption is within the image at the bottom. Description uses medium text.
+    <cite class="op-vertical-bottom">Photo Credit</cite> </figcaption>
+ </figure>
+
+ 
+    <p> &nbsp; </p>
+    
+<figure>
+    <img src="http://fb.me/ia-img-mushroom.jpg"/>
+    <figcaption class="op-vertical-center op-medium">
+   <h1 class="op-vertical-center op-large">Caption Title Large</h1> 
+   This caption is within the image at the center. Description uses medium text.
+    <cite class="op-vertical-center">Photo Credit</cite> </figcaption>
+ </figure>
+    
+
+    <p> &nbsp; </p>
+    
+    
+<figure>
+    <img src="http://fb.me/ia-img-mushroom.jpg"/>
+    <figcaption class="op-vertical-top op-medium">
+   <h1 class="op-vertical-above op-large">Caption Title Large</h1> 
+   This caption is within the image at the top. Description uses medium text.
+    <cite class="op-vertical-below">Photo Credit</cite> </figcaption>
+ </figure>
+      
+    <p> &nbsp; </p>
+    
+    <h1> Horizontal Positioning </h1>
+    
+    <p> You can also place a caption in one of three horizontal positions in relation to a media element. A caption can be aligned to the <strong>left</strong>, <strong>right</strong> or <strong>center</strong>. </p>
+    
+  <p>If no horizontal position is defined for an element, it defaults to the left.</p>
+    
+    <p>The five following examples demonstrate a variety of horizontal placement combinations.</p>
+    
+        <p> &nbsp; </p>
+
+ <figure>
+    <img src="http://fb.me/ia-img-balloons.jpg"/>
+    <figcaption class="op-vertical-below op-medium op-right">
+      <h1 class="op-vertical-below op-large op-right">Caption Title Large</h1>
+   This caption is below the image and right aligned. Description uses medium text.
+    <cite class="op-vertical-below op-right">Photo Credit</cite> </figcaption>
+ </figure>
+    
+
+    <p> &nbsp; </p>
+    
+ <figure>
+    <img src="http://fb.me/ia-img-balloons.jpg"/>
+    <figcaption class="op-vertical-below op-medium op-center">
+      <h1 class="op-vertical-below op-large op-center">Caption Title Large</h1>
+   This caption is below the image and center aligned. Description uses medium text.
+    <cite class="op-vertical-below op-center">Photo Credit</cite> </figcaption>
+ </figure>
+
+ 
+    <p> &nbsp; </p>
+    
+<figure>
+    <img src="http://fb.me/ia-img-balloons.jpg"/>
+    <figcaption class="op-vertical-top op-medium op-right">
+   <h1 class="op-vertical-top op-large op-right">Caption Title Large</h1> 
+   This caption is within the image at the top and right aligned. Description uses medium text.
+    <cite class="op-vertical-top op-right">Photo Credit</cite> </figcaption>
+ </figure>
+    
+
+    <p> &nbsp; </p>
+    
+    
+<figure>
+    <img src="http://fb.me/ia-img-balloons.jpg"/>
+    <figcaption class="op-vertical-top op-medium op-center">
+   <h1 class="op-vertical-top op-large op-center">Caption Title Large</h1> 
+   This caption is within the image at the top and center aligned. Description uses medium text.
+    <cite class="op-vertical-top op-center">Photo Credit</cite> </figcaption>
+ </figure>
+      
+    <p> &nbsp; </p>
+    
+    <figure>
+    <img src="http://fb.me/ia-img-balloons.jpg"/>
+    <figcaption class="op-vertical-above op-medium op-center">
+   <h1 class="op-vertical-above op-large op-center">Caption Title Large</h1> 
+   This caption is above the image and center aligned. Description uses medium text.
+    <cite class="op-vertical-below op-left">Photo Credit</cite> </figcaption>
+ </figure>
+    
+    <p> &nbsp; </p>
+    
+    
+    <p>Learn more about captions and other customizable design elements in the <a href="https://developers.facebook.com/docs/instant-articles/guides/design#design">Instant Articles Design Guide</a>.
+    </p>
+    
+    <footer>
+
+        <!-- Copyright details for your article -->
+        <small>© Facebook</small>
+        
+
+    </footer>
+    
+    </article>
+  </body>
+</html>
