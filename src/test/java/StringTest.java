@@ -10,6 +10,13 @@ public class StringTest {
 	}
 
 	@Test
+	public void testLastIndexOf() {
+		String str = "/abcd";
+		Assert.assertEquals(0, str.lastIndexOf("/"));
+		Assert.assertEquals("abcd", str.substring(str.lastIndexOf("/") + 1));
+	}
+	
+	@Test
 	public void testSplit() {
 		String str = "abcdefghijklmn";
 		Assert.assertEquals(str.substring(1, 5), str.subSequence(1, 5));
