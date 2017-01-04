@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -28,5 +30,17 @@ public class PathTest {
 		Path someFile = dev.resolve("someFile");
 		Assert.assertEquals("c:\\dev\\git\\someFile", someFile.toString());
 	}
-	
+
+	@Test
+	public void testNewInstnc() {
+		Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
+		Path path2 = Paths.get("C:\\project\\workspace");
+		Path path3 = Paths.get("localhost/upload");
+		Path path4 = Paths.get("/localhost/upload");
+		
+		System.out.println(path1);
+		System.out.println(path2);
+		System.out.println(path3);
+		System.out.println(path4);
+	}
 }
