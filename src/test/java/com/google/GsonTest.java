@@ -1,3 +1,4 @@
+package com.google;
 import org.junit.Assert;
 import org.junit.Test;
 

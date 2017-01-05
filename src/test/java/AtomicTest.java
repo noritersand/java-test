@@ -1,4 +1,4 @@
-package noritersand;
+
 
 public class AtomicTest {
 	private int a = 0;

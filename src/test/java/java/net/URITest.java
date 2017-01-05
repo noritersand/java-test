@@ -1,3 +1,4 @@
+package java.net;
 import java.net.URI;
 
 import org.junit.Assert;
