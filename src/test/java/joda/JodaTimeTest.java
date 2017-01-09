@@ -1,4 +1,7 @@
-package org.joda;
+package joda;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -42,9 +45,16 @@ public class JodaTimeTest {
 	}
 	
 	@Test
-	public void testAddDate() {
+	public void testPlusDay() {
 		DateTime dt = new DateTime(2020, 2, 29, 23, 59, 59, 10);
 		DateTime newInstance = dt.plusDays(2);
 		Assert.assertEquals("2020-03-02 23:59:59:010", newInstance.toString(formatter));
+	}
+	
+	@Test
+	public void testFromJavaUtilDate() {
+		Date date = GregorianCalendar.getInstance().getTime();
+		DateTime dt = new DateTime(date);
+		System.out.println(dt);
 	}
 }

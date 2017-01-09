@@ -1,4 +1,4 @@
-package java.util;
+package util;
 import java.util.Arrays;
 
 import org.junit.Assert;

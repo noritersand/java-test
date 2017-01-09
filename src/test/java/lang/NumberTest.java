@@ -1,4 +1,6 @@
-package java.lang;
+package lang;
+import java.lang.Long;
+
 import org.junit.Assert;
 import org.junit.Test;
 

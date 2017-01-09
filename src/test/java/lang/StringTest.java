@@ -1,4 +1,4 @@
-package java.lang;
+package lang;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,6 +10,14 @@ public class StringTest {
 		Assert.assertEquals(2, "daum.net".split("\\.").length);
 	}
 
+	@Test
+	public void testSubstring() {
+		String str = "a234567890b234567890c234567890d234";
+		Assert.assertEquals(34, str.length());
+		Assert.assertEquals("a234567890b234567890c234567890", str.substring(0, 30));
+		Assert.assertEquals(30, str.substring(0, 30).length());
+	}
+	
 	@Test
 	public void testLastIndexOf() {
 		String str = "/abcd";
