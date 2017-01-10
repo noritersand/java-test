@@ -2,6 +2,7 @@ package io;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -43,5 +44,17 @@ public class PathTest {
 		System.out.println(path2);
 		System.out.println(path3);
 		System.out.println(path4);
+	}
+	
+	@Test
+	public void testVoidFile() {
+		// 없는 경로라도 단순 문자열이면 문제가 없지만
+		Paths.get("c:", "\\ppp", "\\aaa");
+		try {
+			// file 프로토콜이 붙으면 파일이 없을때 에러난다.
+			Paths.get("file://c:\\ppp");
+		} catch (Exception e) {
+			Assert.assertTrue(e instanceof InvalidPathException);
+		}
 	}
 }
