@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>URL information</comment>
+	<entry key="image.root">http://tistory.com</entry>
+	<entry key="some.korean">한글</entry>
+</properties>
