@@ -1,4 +1,4 @@
-package noritersand;
+package com.noritersand;
 
 import java.io.IOException;
 import java.util.Arrays;
