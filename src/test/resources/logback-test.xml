@@ -1,36 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <configuration scan="true" scanPeriod="5 seconds">
-
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
 		<encoder>
-			<!-- 로그 발생한 패키지 생략 -->
-			<pattern>%d{ISO8601} %-5p %m%n</pattern>
-			<!-- 로그 발생한 패키지 출력 -->
-			<!-- <pattern>%-5p: %c - %m%n</pattern> -->
+			<!-- 로그 발생 시각, 패키지 생략 -->
+			<pattern>%-5level %msg%n</pattern>
+			<!-- 로그 발생 시각, 패키지 출력 -->
+			<!-- <pattern>%date{ISO8601} %-5level: %logger - %msg%n</pattern> -->
 			<!-- official example -->
-			<!-- <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern> -->
+			<!-- <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern> -->
 		</encoder>
 	</appender>
-<!-- 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
-<!-- 		<file>${APP_HOME}/webapp.log</file> -->
-<!-- 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
-			<!-- 파일이 하루에 한개씩 생성된다 -->
-<!-- 			<fileNamePattern>webapp.%d{yyyy-MM-dd}.log</fileNamePattern> -->
-			<!-- maxHIstory 설정은 위 부분에 롤링 정책에 따라 적용되 된다고 보면된다. 위 설정데로 라면 30일이 지난 파일은 삭제가 된다. -->
-<!-- 			<maxHistory>30</maxHistory> -->
-<!-- 		</rollingPolicy> -->
-<!-- 		<encoder> -->
-<!-- 			<pattern>%-5p: %c - %m%n</pattern> -->
-<!-- 		</encoder> -->
-<!-- 	</appender> -->
 
-	<logger name="org.springframework" level="debug" />
+	<logger name="ch.qos.logback" level="TRACE" />
+	<logger name="org.springframework" level="DEBUG" />
 
-	<root level="debug">
+	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />
-<!-- 		<appender-ref ref="FILE" /> -->
 	</root>
-
 </configuration>
