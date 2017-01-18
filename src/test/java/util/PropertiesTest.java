@@ -17,8 +17,9 @@ public class PropertiesTest {
 	    Properties prop = new Properties();
 	    prop.load(fis);
 	    fis.close();
-	    Assert.assertEquals("{a.b.c=123, web.root=http://daum.net}", prop.toString());
 		System.out.println(prop);
+		
+		Assert.assertEquals("{a.b.c=123, web.root=http://daum.net}", prop.toString());
 	}
 	
 	@Test
@@ -27,18 +28,17 @@ public class PropertiesTest {
 		Properties prop = new Properties();
 		prop.load(reader);
 		reader.close();
-		Assert.assertEquals("{a.b.c=123, web.root=http://daum.net}", prop.toString());
 		System.out.println(prop);
+		
+		Assert.assertEquals("{a.b.c=123, web.root=http://daum.net}", prop.toString());
 	}
 	
 	@Test
 	public void testPropFromXml() throws IOException {
-		FileInputStream fis = new FileInputStream("src\\test\\resources\\properties\\url.xml");
+		FileInputStream fis = new FileInputStream("src\\test\\resources\\properties\\test-uri.xml");
 		Properties prop = new Properties();
 		prop.loadFromXML(fis);
 		fis.close();
-		Assert.assertEquals("{some.korean=한글, image.root=http://tistory.com}", 
-				prop.toString());
 		
 		Enumeration<Object> keys = prop.keys();
 		while (keys.hasMoreElements()) {
@@ -48,5 +48,7 @@ public class PropertiesTest {
 		
 		// key: some.korean, value: 한글
 		// key: image.root, value: http://tistory.com
+		
+		Assert.assertEquals("{some.korean=한글, image.root=http://tistory.com}", prop.toString());
 	}
 }
