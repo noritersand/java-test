@@ -4,7 +4,7 @@
 	<groupId>noritersand</groupId>
 	<artifactId>laboratory</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>laboratory Maven Webapp</name>
 	<url>https://github.com/noritersand/laboratory</url>
 
