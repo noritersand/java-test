@@ -6,8 +6,13 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
+	<!-- 이 방식은 프로퍼티에 접근연산자(.)로 접근할 수 있음. PROPERTY_ID.KEY, PROPERTY_ID['KEY'] 둘 다 가능 -->
 	<util:properties id="language">
 		<prop key="primary">korean</prop>
 		<prop key="secondary">english</prop>
 	</util:properties>
+	
+	<!-- 이 방식은 프로퍼티에 접근연산자(.)로 접근할 수 없음. PROPERTY_ID['KEY']만 가능 -->
+	<util:properties id="interfaceProp" location="classpath:/properties/interface.xml" />
+	
 </beans>

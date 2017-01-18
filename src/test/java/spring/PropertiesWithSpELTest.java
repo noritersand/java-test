@@ -20,7 +20,17 @@ public class PropertiesWithSpELTest {
 	private String secondary;
 
 	@Value("#{language}")
-	private Object test;
+	private Object language;
+
+	@Value("#{interfaceProp}")
+	private Properties interfaceProp;
+	
+	@Value("#{interfaceProp['interface.base.url']}")
+	private Properties interfaceBaseUrl;
+	
+	// 이렇게 하면 에러
+//	@Value("#{interfaceProp.interface.base.url}")
+//	private Properties interfaceBaseUrl2;
 
 	@Test
 	public void testSpEl() {
@@ -30,8 +40,14 @@ public class PropertiesWithSpELTest {
 
 	@Test
 	public void testProp() {
-		Assert.assertNotNull(test);
-		Assert.assertEquals(Properties.class, test.getClass());
-		Assert.assertEquals("korean", ((Properties) test).getProperty("primary"));
+		Assert.assertNotNull(language);
+		Assert.assertEquals(Properties.class, language.getClass());
+		Assert.assertEquals("korean", ((Properties) language).getProperty("primary"));
+	}
+	
+	@Test
+	public void testPropImport() {
+		Assert.assertNotNull(interfaceProp);
+		Assert.assertEquals("{http=//127.0.0.1:9080/execute}", interfaceBaseUrl.toString());
 	}
 }

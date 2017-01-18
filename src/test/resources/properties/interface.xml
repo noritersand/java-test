@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>interface information properties</comment>
+	<entry key="interface.base.url">http://127.0.0.1:9080/execute</entry>
+</properties>
