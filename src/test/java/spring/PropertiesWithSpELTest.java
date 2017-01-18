@@ -28,7 +28,7 @@ public class PropertiesWithSpELTest {
 	@Value("#{interfaceProp['interface.base.url']}")
 	private Properties interfaceBaseUrl;
 	
-	// 이렇게 하면 에러
+	// 아래는 에러
 //	@Value("#{interfaceProp.interface.base.url}")
 //	private Properties interfaceBaseUrl2;
 
