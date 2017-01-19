@@ -28,6 +28,18 @@ public class ServletTest extends HttpServlet {
 
 	private void process(HttpServletRequest req, HttpServletResponse resp) {
 		log.debug("im a servlet");
+		
+		try {
+			throw new RuntimeException("for test");			
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			System.out.println(e.getLocalizedMessage());
+			System.out.println(e.getCause());
+			System.out.println(e.getSuppressed());
+			System.out.println(e.getStackTrace());
+			
+			log.error(e.getMessage(), e);
+		}
 	}
 
 	@Override
