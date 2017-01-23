@@ -12,7 +12,7 @@ public class ClassTest {
 		MyClass my = new MyClass();
 		System.out.println(my.getClass()); // class My
 		
-		Class<?> cls = Class.forName("lang.MyClass");
+		Class<?> cls = Class.forName("MyClass");
 		System.out.println(cls.getClass()); // class java.lang.Class
 		System.out.println(cls.getName()); // MyClass
 		MyClass my2 = (MyClass) cls.newInstance();
