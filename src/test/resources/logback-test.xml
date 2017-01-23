@@ -9,7 +9,7 @@
 			<!-- 로그 발생 시각, 패키지 출력 -->
 			<!-- <pattern>%date{ISO8601} %-5level: %logger - %msg%n</pattern> -->
 			<!-- official example -->
-			<!-- <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern> -->
+			<!-- <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level: %logger{36} - %msg%n</pattern> -->
 		</encoder>
 	</appender>
 
