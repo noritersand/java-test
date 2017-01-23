@@ -1,4 +1,4 @@
-package lang;
+package number;
 import java.lang.Long;
 
 import org.junit.Assert;
