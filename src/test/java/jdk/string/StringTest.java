@@ -1,8 +1,13 @@
 package jdk.string;
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StringTest {
+	@SuppressWarnings("unused")
+	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
+
 	@Test
 	public void testDomainSplit() {
 		Assert.assertEquals(1, "localhost".split("\\.").length);
@@ -17,14 +22,14 @@ public class StringTest {
 		Assert.assertEquals("a234567890b234567890c234567890", str.substring(0, 30));
 		Assert.assertEquals(30, str.substring(0, 30).length());
 	}
-	
+
 	@Test
 	public void testLastIndexOf() {
 		String str = "/abcd";
 		Assert.assertEquals(0, str.lastIndexOf("/"));
 		Assert.assertEquals("abcd", str.substring(str.lastIndexOf("/") + 1));
 	}
-	
+
 	@Test
 	public void testSplit() {
 		String str = "abcdefghijklmn";
@@ -39,7 +44,7 @@ public class StringTest {
 	}
 
 	@Test
-	public void testSplit3() {
+	public void testSplitByLength1333() {
 		String str = "00x1111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000"; // 1
 		str += "01x1111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000"; // 2
 		str += "02x1111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000"; // 3
@@ -93,6 +98,14 @@ public class StringTest {
 		Assert.assertEquals(2, Math.abs(2667/1333));
 	}
 
+	@Test
+	public void testSplitByLength() {
+		Assert.assertArrayEquals(new String[] { "abc", "def" }, splitByLength("abcdef", 3));
+		Assert.assertArrayEquals(new String[] { "abc", "def", "ef" }, splitByLength("abcdefef", 3));
+		Assert.assertArrayEquals(new String[] { "abcd", "ef12", "34" }, splitByLength("abcdef1234", 4));
+		Assert.assertArrayEquals(new String[] { "abcde", "f1234", "5" }, splitByLength("abcdef12345", 5));
+	}
+
 	public static String[] splitByLength1333(String str) {
 		return splitByLength(str, 1333);
 	}
@@ -103,7 +116,7 @@ public class StringTest {
 		}
 
 		int strLen = str.length();
-		int arrayLength = Math.abs(strLen / splitLength) + 1;
+		int arrayLength = Math.abs(strLen / splitLength) + (strLen % splitLength != 0 ? 1 : 0);
 
 		String[] strArray = null;
 		if (arrayLength == 0) {
