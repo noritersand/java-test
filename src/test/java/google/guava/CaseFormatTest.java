@@ -14,5 +14,7 @@ public class CaseFormatTest {
 	@Test
 	public void testCaseFormat() {
 		Assert.assertEquals("MY_NAME", CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName"));
+		Assert.assertEquals("setBulkReservationNotPossible", 
+				CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, "set-bulk-reservation-not-possible"));
 	}
 }

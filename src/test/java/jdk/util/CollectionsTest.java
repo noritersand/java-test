@@ -27,7 +27,7 @@ public class CollectionsTest {
 	
 	@Test
 	public void testUnchecked() {
-		// XXX 어떻게 하면 경고 뜨더라?
+		// TODO 어떻게 하면 경고 뜨더라?
 		
 		List<String> list = new LinkedList<>();
 		list.add("야");
