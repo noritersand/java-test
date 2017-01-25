@@ -7,7 +7,9 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.util.Date;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,8 +21,8 @@ public class JavaTimeTest {
 
 	@Test
 	public void test() {
-		log.debug("NOW: " + String.valueOf(Instant.now()));
-		log.debug("NOW: " + String.valueOf(LocalDate.now()));
+		log.debug("test: " + String.valueOf(Instant.now()));
+		log.debug("test: " + String.valueOf(LocalDate.now()));
 	}
 	
 	@Test
@@ -41,5 +43,20 @@ public class JavaTimeTest {
 		Assert.assertEquals("22:58+18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MAX).toString());
 		Assert.assertEquals("22:58-18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MIN).toString());
 		Assert.assertEquals("22:58Z", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.UTC).toString());
+	}
+	
+	@Test
+	public void testToJavaUtilDate() {
+		// case#1
+		log.debug("testToJavaUtilDate: " + Date.from(Instant.now()).toString());;
+		
+		// case#2
+		log.debug("testToJavaUtilDate: " + Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString());
+		
+		// case#3
+		Date in = new Date();
+		LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
+		Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+		log.debug("testToJavaUtilDate: " + out.toString());
 	}
 }
