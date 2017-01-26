@@ -14,6 +14,19 @@ public class PrimitiveTest {
 	}
 
 	@Test
+	public void testCharacter() {
+		char a = 'a';
+		char b = 'a';
+		Assert.assertTrue(a == b);
+		Character c = 'a';
+		Character d = 'a';
+		Assert.assertTrue(c == d);
+		
+		Assert.assertFalse(a != b);
+		Assert.assertTrue(c.equals(d));
+	}
+	
+	@Test
 	@SuppressWarnings("unused")
 	public void testPrimitiveEscapeCharacter() {
 		Byte bt = 123;
