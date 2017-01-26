@@ -34,7 +34,7 @@
 				<version>3.0.0</version>
 				<configuration>
 					<warSourceDirectory>src/main/webapp</warSourceDirectory>
-<!-- 					<warSourceExcludes>api/**,css/**,error/**,guide/**,js/**,img/**,pub/**,pub/**,template/**</warSourceExcludes> -->
+<!-- 					<warSourceExcludes>api/**, css/**, error/**, guide/**, js/**, img/**, pub/**, pub/**, template/**</warSourceExcludes> -->
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
