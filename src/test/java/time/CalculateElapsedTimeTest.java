@@ -42,6 +42,20 @@ public class CalculateElapsedTimeTest {
 	}
 	
 	@Test
+	public void testByJodaTime2() {
+		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+		DateTime start = formatter.parseDateTime("2017-01-01");
+		DateTime end = formatter.parseDateTime("2017-01-03");
+	
+		Interval interval = new Interval(start.toDate().getTime(), end.toDate().getTime());
+		org.joda.time.Period period = interval.toPeriod();
+
+		log.debug(String.format("%d years, %d months, %d days, %d hours, %d minutes, %d seconds%n", 
+				period.getYears(), period.getMonths(), period.getDays(), 
+				period.getHours(), period.getMinutes(), period.getSeconds()));
+	}
+	
+	@Test
 	public void testByJavaTime() {
 		LocalDate targetDay = LocalDate.of(2017, Month.DECEMBER, 31);
 //		LocalDate today = LocalDate.now();

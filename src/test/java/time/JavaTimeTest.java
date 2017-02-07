@@ -9,7 +9,12 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -43,6 +48,26 @@ public class JavaTimeTest {
 		Assert.assertEquals("22:58+18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MAX).toString());
 		Assert.assertEquals("22:58-18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MIN).toString());
 		Assert.assertEquals("22:58Z", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.UTC).toString());
+	}
+	
+	@Test
+	public void testDateSplit() {
+		LocalDate start = new GregorianCalendar(2016, 2, 5).getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate end = new GregorianCalendar(2016, 2, 11).getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		long periodDays = ChronoUnit.DAYS.between(start, end);
+		List<LocalDate> list = new LinkedList<>();
+		for (int i = 0; i < periodDays; i++) {
+			list.add(start.plusDays(i));
+		}
+		Assert.assertEquals("[2016-03-05, 2016-03-06, 2016-03-07, 2016-03-08, 2016-03-09, 2016-03-10]", list.toString());
+	}
+	
+	@Test
+	public void testFromJavaTuilDate() {
+		Calendar input = new GregorianCalendar(2016, 2, 5);
+		Date date = input.getTime();
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		Assert.assertEquals("2016-03-05", localDate.toString());
 	}
 	
 	@Test
