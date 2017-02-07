@@ -8,13 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>HEL로 world드</h1>
+<h2>HEL로 world드</h2>
 
-<c:set var="aaa" value="56778" scope="request" />
+<c:set var="attr2" value="56778" scope="request" />
 
-<c:forEach var="ele" items="${list}">
-	<c:set var="childEle" value="${ele}" scope="request" />
-	<tags:example>adsf</tags:example>
-</c:forEach>
+<tags:example tagattr="one" />
+<tags:example tagattr="two" />
 </body>
 </html>
