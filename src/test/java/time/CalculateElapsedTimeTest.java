@@ -3,6 +3,7 @@ package time;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+import java.util.GregorianCalendar;
 
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
@@ -18,6 +19,14 @@ import org.slf4j.LoggerFactory;
 
 public class CalculateElapsedTimeTest {
 	private static final Logger log = LoggerFactory.getLogger(CalculateElapsedTimeTest.class);
+
+	@Test
+	public void testByJavaUtilDate() {
+		long start = new GregorianCalendar(2016, 2, 5).getTimeInMillis();
+		long end = new GregorianCalendar(2017, 2, 5).getTimeInMillis();
+		long elapsedDays = (end - start) / 1000 / 60 / 60 / 24;
+		Assert.assertEquals(365, elapsedDays);		
+	}
 	
 	@Test
 	public void testByJodaTime() {
@@ -39,6 +48,20 @@ public class CalculateElapsedTimeTest {
 			    .toFormatter();
 		
 		log.debug(period.toString(formatter));
+	}
+	
+	@Test
+	public void testByJodaTime2() {
+		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+		DateTime start = formatter.parseDateTime("2017-01-01");
+		DateTime end = formatter.parseDateTime("2017-01-03");
+	
+		Interval interval = new Interval(start.toDate().getTime(), end.toDate().getTime());
+		org.joda.time.Period period = interval.toPeriod();
+
+		log.debug(String.format("%d years, %d months, %d days, %d hours, %d minutes, %d seconds%n", 
+				period.getYears(), period.getMonths(), period.getDays(), 
+				period.getHours(), period.getMinutes(), period.getSeconds()));
 	}
 	
 	@Test
