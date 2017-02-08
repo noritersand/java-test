@@ -17,7 +17,8 @@ public class TypeTokenTest {
 	@Test
 	public void test() {
 		@SuppressWarnings("serial")
-		Type listType = new TypeToken<ArrayList<MyClass>>() {}.getType();
+		Type listType = new TypeToken<ArrayList<MyClass>>() {
+		}.getType();
 		Assert.assertEquals("java.util.ArrayList<google.guava.MyClass>", String.valueOf(listType));
 	}
 }
