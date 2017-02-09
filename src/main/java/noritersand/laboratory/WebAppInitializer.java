@@ -1,4 +1,4 @@
-package com.noritersand;
+package noritersand.laboratory;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

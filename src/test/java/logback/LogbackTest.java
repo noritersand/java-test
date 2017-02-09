@@ -1,4 +1,4 @@
-package jdk;
+package logback;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -14,5 +14,11 @@ public class LogbackTest {
 	@Test
 	public void testLoggingWhileJunit() {
 		log.debug("unit testing");
+	}
+
+	@Test
+	public void testLoggingByFormat() {
+		log.debug("{} {} {} {}", "이건가", "저건가", "나는 누구", "여긴 어디");
+		log.debug("{} {}", new Object[] { "hello there!", "if you ask, im waldo" });
 	}
 }

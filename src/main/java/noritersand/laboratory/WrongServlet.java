@@ -1,4 +1,4 @@
-package com.noritersand;
+package noritersand.laboratory;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
