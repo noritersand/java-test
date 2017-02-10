@@ -21,9 +21,9 @@ public class PrimitiveTest {
 		Character c = 'a';
 		Character d = 'a';
 		Assert.assertTrue(c == d);
-		
 		Assert.assertFalse(a != b);
 		Assert.assertTrue(c.equals(d));
+		Assert.assertEquals(a, "a".charAt(0));
 	}
 	
 	@Test

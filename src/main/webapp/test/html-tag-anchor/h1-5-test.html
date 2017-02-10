@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head>
 <meta charset="utf-8">
 <script>
 	function fn(e) {
@@ -7,6 +8,8 @@
 		e.preventDefault();
 	}
 </script>
+</head>
+<body>
 <form name="testForm" onsubmit="fn(event)">
 	<button type="button" onclick="fn(event)">버튼</button><br>
 	<button type="submit">submit</button>
