@@ -21,21 +21,36 @@ public class CalculateElapsedTimeTest {
 	private static final Logger log = LoggerFactory.getLogger(CalculateElapsedTimeTest.class);
 
 	@Test
-	public void testByJavaUtilDate() {
+	public void testCalculateByMilliseconds() {
 		long start = new GregorianCalendar(2016, 2, 5).getTimeInMillis();
 		long end = new GregorianCalendar(2017, 2, 5).getTimeInMillis();
 		long elapsedDays = (end - start) / 1000 / 60 / 60 / 24;
-		Assert.assertEquals(365, elapsedDays);		
+		Assert.assertEquals(365, elapsedDays);
+		
+		start = new GregorianCalendar(2016, 2, 5, 21, 59, 59).getTimeInMillis();
+		end = new GregorianCalendar(2016, 2, 5, 23, 59, 59).getTimeInMillis();
+		elapsedDays = (end - start) / 1000;
+		Assert.assertTrue(86400 > elapsedDays); // 2시간 전이라 86400초(하루) 보다 작다.
+		
+		start = new GregorianCalendar(2016, 2, 5).getTimeInMillis();
+		end = new GregorianCalendar(2016, 2, 5, 23, 59, 59).getTimeInMillis();
+		elapsedDays = (end - start) / 1000;
+		Assert.assertTrue(86400 > elapsedDays); // 23시간 59분 59초 전
+		
+		start = new GregorianCalendar(2016, 2, 4).getTimeInMillis();
+		end = new GregorianCalendar(2016, 2, 6).getTimeInMillis();
+		elapsedDays = (end - start) / 1000;
+		Assert.assertTrue(86400 < elapsedDays); // 이틀 전이라 86400초(하루) 보다 크다.
 	}
 	
 	@Test
-	public void testByJodaTime() {
+	public void testCalculateByJodaTime() {
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2006, 1, 1, 0, 0, 0, 0);
 
 		// period of 1 year and 7 days
 		Period period = new Period(start, end);
-
+		
 		PeriodFormatter formatter = new PeriodFormatterBuilder()
 			    .appendYears().appendSuffix(" years ago\n")
 			    .appendMonths().appendSuffix(" months ago\n")
@@ -47,11 +62,11 @@ public class CalculateElapsedTimeTest {
 			    .printZeroNever()
 			    .toFormatter();
 		
-		log.debug(period.toString(formatter));
+		log.debug("testCalculateByJodaTime: " + period.toString(formatter));
 	}
 	
 	@Test
-	public void testByJodaTime2() {
+	public void testCalculateByJodaTime2() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-01-03");
@@ -65,7 +80,7 @@ public class CalculateElapsedTimeTest {
 	}
 	
 	@Test
-	public void testByJavaTime() {
+	public void testCalculateByJavaTime() {
 		LocalDate targetDay = LocalDate.of(2017, Month.DECEMBER, 31);
 //		LocalDate today = LocalDate.now();
 		LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
@@ -77,7 +92,7 @@ public class CalculateElapsedTimeTest {
 	}
 	
 	@Test
-	public void testByJavaTime2() {
+	public void testCalculateByJavaTime2() {
 //		LocalDate today = LocalDate.now();
 		LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
 		LocalDate birthday = LocalDate.of(1984, Month.JULY, 9);

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>number-format test</title>
+<meta charset="UTF-8">
+<script>
+	/**
+	 * Number.prototype.format(n, x)
+	 * 
+	 * @param integer n: length of decimal
+	 * @param integer x: length of sections
+	 */
+	Number.prototype.format = function(n, x) {
+	    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+	    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
+	};
+
+	console.debug('1234:', (1234).format());           // "1,234"
+	console.debug('1234:', 1234..format());           // "1,234"
+	console.debug('12345:', 12345..format(2));         // "12,345.00"
+	console.debug('123456.7:', 123456.7.format(3, 2));    // "12,34,56.700"
+	console.debug('123456.789:', 123456.789.format(2, 4));  // "12,3456.79"
+</script>
+</head>
+<body>
+	<a href="http://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-money-in-javascript" target="_blank">source-code link</a>
+</body>
+</html>
