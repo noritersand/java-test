@@ -14,8 +14,6 @@ public class LogbackTest {
 	@Test
 	public void testLoggingWhileJunit() {
 		log.debug("unit testing");
-		  
-		
 	}
 
 	@Test
