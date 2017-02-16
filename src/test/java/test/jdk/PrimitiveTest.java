@@ -24,6 +24,10 @@ public class PrimitiveTest {
 		Assert.assertFalse(a != b);
 		Assert.assertTrue(c.equals(d));
 		Assert.assertEquals(a, "a".charAt(0));
+		
+		Assert.assertFalse("a".equals('a'));
+		Assert.assertFalse(new Character('a').equals("a"));
+		Assert.assertTrue("a".charAt(0) == 'a');
 	}
 	
 	@Test
