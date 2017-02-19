@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script>
+var arr = ['a', 'b', 'c'];
+
+for (var ele1 in arr) {
+	// do nothing
+}
+console.debug(arr[ele1]); // 'c'
+
+for (let ele2 in arr) {
+	// do nothing
+}
+console.debug(arr[ele2]); // ReferenceError: ele2 is not defined
+
+function test() {
+	// var life-cycle test
+	for (var i = 0; i < 10; i++) {
+		// do nothing
+	}
+	console.debug(i); // 10
+	
+	// let life-cycle test
+	for (let i = 0; i < 10; i++) {
+		// do nothing
+	}
+	console.debug(i); // undefined
+}
+
+</script>
+</body>
+</html>
