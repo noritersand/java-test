@@ -9,28 +9,6 @@ public class PrimitiveTest {
 	private static final Logger log = LoggerFactory.getLogger(PrimitiveTest.class);
 	
 	@Test
-	public void testAutoBoxing() {
-		Assert.assertEquals(1, (long) new Long(1));
-	}
-
-	@Test
-	public void testCharacter() {
-		char a = 'a';
-		char b = 'a';
-		Assert.assertTrue(a == b);
-		Character c = 'a';
-		Character d = 'a';
-		Assert.assertTrue(c == d);
-		Assert.assertFalse(a != b);
-		Assert.assertTrue(c.equals(d));
-		Assert.assertEquals(a, "a".charAt(0));
-		
-		Assert.assertFalse("a".equals('a'));
-		Assert.assertFalse(new Character('a').equals("a"));
-		Assert.assertTrue("a".charAt(0) == 'a');
-	}
-	
-	@Test
 	@SuppressWarnings("unused")
 	public void testPrimitiveEscapeCharacter() {
 		Byte bt = 123;
@@ -61,5 +39,42 @@ public class PrimitiveTest {
 		Assert.assertEquals("3.4028235E38", String.valueOf(Float.MAX_VALUE));
 		Assert.assertEquals("4.9E-324", String.valueOf(Double.MIN_VALUE));
 		Assert.assertEquals("1.7976931348623157E308", String.valueOf(Double.MAX_VALUE));
+	}
+
+	@Test
+	public void testAutoBoxing() {
+		Assert.assertEquals(1, (long) new Long(1));
+	}
+	
+//	@Test
+	@SuppressWarnings({ "null", "unused" })
+	public void testCompareWithNull() {
+		Character e = null;
+		boolean equal = e == 'b'; // NullPointerException
+		
+		Integer i = null;
+		equal = i == 1; // NullPointerException
+	}
+	
+	@Test
+	public void testCharacter() {
+		char a = 'a';
+		char b = 'a';
+		Assert.assertTrue(a == b);
+		Character c = 'a';
+		Character d = 'a';
+		Assert.assertTrue(c == d);
+		Assert.assertFalse(a != b);
+		Assert.assertTrue(c.equals(d));
+		Assert.assertEquals(a, "a".charAt(0));
+		
+		Assert.assertFalse("a".equals('a'));
+		Assert.assertFalse(new Character('a').equals("a"));
+		Assert.assertTrue("a".charAt(0) == 'a');
+	}
+	
+	@Test
+	public void testInteger() {
+		
 	}
 }
