@@ -74,7 +74,7 @@ public class PrimitiveTest {
 	}
 	
 	@Test
-	public void testInteger() {
+	public void testLong() {
 		
 	}
 }
