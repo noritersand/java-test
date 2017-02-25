@@ -1,4 +1,4 @@
-package noritersand.laboratory;
+package laboratory;
 
 import java.io.IOException;
 import java.util.Arrays;
