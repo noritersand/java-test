@@ -9,8 +9,12 @@ import java.util.Properties;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PropertiesTest {
+	private static final Logger log = LoggerFactory.getLogger(PropertiesTest.class);
+	
 	@Test
 	public void testPropByInputStream() throws IOException {
 	    FileInputStream fis = new FileInputStream("src\\test\\resources\\properties\\test.properties");
@@ -28,7 +32,7 @@ public class PropertiesTest {
 		Properties prop = new Properties();
 		prop.load(reader);
 		reader.close();
-		System.out.println(prop);
+		log.debug(String.valueOf(prop));
 		
 		Assert.assertEquals("{a.b.c=123, web.root=http://daum.net}", prop.toString());
 	}
@@ -43,7 +47,7 @@ public class PropertiesTest {
 		Enumeration<Object> keys = prop.keys();
 		while (keys.hasMoreElements()) {
 			String key = (String) keys.nextElement();
-			System.out.println("key: " + key + ", value: " + prop.getProperty(key));
+			log.debug("key: " + key + ", value: " + prop.getProperty(key));
 		}
 		
 		// key: some.korean, value: 한글
