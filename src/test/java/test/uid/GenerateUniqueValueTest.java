@@ -1,4 +1,4 @@
-package test.uniqueid;
+package test.uid;
 
 import java.util.UUID;
 
