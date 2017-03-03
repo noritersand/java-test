@@ -111,7 +111,7 @@ public class JodaTimeTest {
 	
 	@Test
 	public void testEqual() {
-		Assert.assertEquals(new DateTime(), DateTime.now());
+//		Assert.assertEquals(new DateTime(), DateTime.now()); // 호출시점에 따라 몇 밀리초 차이로 같지 않을 수 있음
 		Assert.assertEquals(new DateTime(2020, 2, 29, 23, 59, 59, 10), 
 				new DateTime().withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23)
 						.withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10));
