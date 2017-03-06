@@ -1,9 +1,16 @@
 package test.jdk;
 
+import java.util.Date;
+
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ClassTest {
+	@SuppressWarnings("unused")
+	private static final Logger log = LoggerFactory.getLogger(ClassTest.class);
+	
 	@Test
 	public void testClass() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 //		System.out.println(Class.class);
@@ -23,6 +30,18 @@ public class ClassTest {
 	@Test
 	public void testDifferent() {
 		Assert.assertNotEquals(String.class, String[].class);
+	}
+
+	@Test
+	public void testGetClass() {
+		Assert.assertEquals(new String().getClass(), String.class);
+	}
+	
+	@Test
+	public void testNewInstanceByName() throws Exception {
+		Class<?> clazz = Class.forName("java.util.Date");
+		Date date = (Date) clazz.newInstance();
+		Assert.assertEquals("java.util.Date", date.getClass().getName());
 	}
 }
 
