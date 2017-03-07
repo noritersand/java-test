@@ -35,6 +35,15 @@ public class ReflectionUtilsTest {
 				field.get(instance));
 	}
 	
+	@Test
+	public void testFigureoutWhatKindOfMethod() {
+		Object instance = new MyClass();
+		Method method = ReflectionUtils.findMethod(instance.getClass(), "myMethod");
+		Method method2 = ReflectionUtils.findMethod(instance.getClass(), "myMethod", String.class);
+		Assert.assertEquals(0, method.getParameters().length);
+		Assert.assertEquals(1, method2.getParameters().length);
+	}
+	
 //	@Test
 	public void testFindAllMethod() throws Exception {
 		Object instance = new MyClass();

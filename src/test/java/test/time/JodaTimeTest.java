@@ -28,6 +28,15 @@ public class JodaTimeTest {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime dt = formatter.parseDateTime("2016-02-05");
 		Assert.assertEquals("2016-02-05T00:00:00.000+09:00", dt.toString());
+		
+		try {
+			formatter.parseDateTime("20160205");
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		
+		DateTime dt2 = new DateTime("2015-01-01");
+		Assert.assertEquals("2015-01-01T00:00:00.000+09:00", String.valueOf(dt2));
 	}
 	
 	@Test
