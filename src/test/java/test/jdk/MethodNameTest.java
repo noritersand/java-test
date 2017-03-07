@@ -1,5 +1,6 @@
 package test.jdk;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,13 +21,27 @@ public class MethodNameTest {
         }
         CLIENT_CODE_STACK_INDEX = i;
     }
+    
+    public static String methodName() {
+    	return Thread.currentThread().getStackTrace()[CLIENT_CODE_STACK_INDEX].getMethodName();
+    }
 
     public static void main(String[] args) {
         System.out.println("methodName() = " + methodName());
         System.out.println("CLIENT_CODE_STACK_INDEX = " + CLIENT_CODE_STACK_INDEX);
     }
-
-    public static String methodName() {
-        return Thread.currentThread().getStackTrace()[CLIENT_CODE_STACK_INDEX].getMethodName();
+    
+    @Test
+    public void test1() {
+    	log.debug("methodName() = " + methodName());
+    	log.debug("CLIENT_CODE_STACK_INDEX = " + CLIENT_CODE_STACK_INDEX);
+    }
+    
+    @Test
+    public void test2() {
+    	String className = new Object(){}.getClass().getEnclosingClass().getName();
+    	log.debug("className: " + className);
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	log.debug("methodName: " + methodName);
     }
 }
