@@ -9,6 +9,13 @@ public class StringTest {
 	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
 
 	@Test
+	public void testReplaceAlls() {
+		Assert.assertEquals("경기", "경기도".replaceAll("도", ""));
+		Assert.assertEquals("전라", "전라도".replaceAll("도", ""));
+		Assert.assertEquals("경상", "경상도".replaceAll("도", ""));
+	}
+	
+	@Test
 	public void testDomainSplit() {
 		Assert.assertEquals(1, "localhost".split("\\.").length);
 		Assert.assertEquals(3, "master.benecafe.com".split("\\.").length);
