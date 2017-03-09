@@ -1,4 +1,4 @@
-package test.apache.httpcomponents;
+package test.apache;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -11,9 +11,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HttpTest {
+public class HttpComponentsTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(HttpTest.class);
+	private static final Logger log = LoggerFactory.getLogger(HttpComponentsTest.class);
 
 	@Test
 	public void testGetRequest() throws Exception {
