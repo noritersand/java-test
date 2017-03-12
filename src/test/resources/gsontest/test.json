@@ -1,0 +1,18 @@
+[
+	{
+		"serverUrl": "http://somewhere.co.kr",
+		"cronFormat": "0 0 1 * * ?",
+		"jobClassName": "CultureJob",
+		"charset": "EUC-KR",
+		"groupName": "CULTURE",
+		"fullUpdate": "Y"
+	},
+	{
+		"serverUrl": "http://somewhere.co.kr",
+		"cronFormat": "",
+		"jobClassName": "CultureJob",
+		"charset": "UTF-8",
+		"groupName": "CULTURE",
+		"fullUpdate": "Y"
+	}
+]
