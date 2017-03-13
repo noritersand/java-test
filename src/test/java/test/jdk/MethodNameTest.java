@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class MethodNameTest {
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(MethodNameTest.class);
 	
     private static final int CLIENT_CODE_STACK_INDEX;
