@@ -1,4 +1,4 @@
-package test.jdk.string;
+package test.jdk.lang;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -8,6 +8,22 @@ public class StringTest {
 	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
 
+	@Test
+	public void testIntern() {
+		// 아래처럼 초기화될 땐 intern()을 쓰든 안쓰든 String의 주소값은  같다.
+		String a = "경기";
+		String b = "경기";
+		Assert.assertTrue(a == b);
+		
+		// 요로케 해야됨
+	    String c = "AAA";
+	    String d = new String("AAA");
+	    Assert.assertFalse(c == d);
+
+	    d = d.intern();
+	    Assert.assertTrue(c == d);
+	}
+	
 	@Test
 	public void testReplaceAlls() {
 		Assert.assertEquals("경기", "경기도".replaceAll("도", ""));
@@ -88,11 +104,10 @@ public class StringTest {
 //		int len = str.length();
 
 		String[] strArray = splitByLength1333(str);
-		for (String ele : strArray) {
-			System.out.println(ele);
-		}
-
-		Assert.assertArrayEquals(splitByLength1333(str), splitByLength(str, 1333));
+//		for (String ele : strArray) {
+//			log.debug(ele);
+//		}
+		Assert.assertArrayEquals(strArray, splitByLength(str, 1333));
 	}
 
 	@Test
