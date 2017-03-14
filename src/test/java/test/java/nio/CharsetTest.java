@@ -1,4 +1,4 @@
-package test.jdk.nio;
+package test.java.nio;
 
 import java.nio.charset.Charset;
 import java.util.Locale;

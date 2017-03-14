@@ -1,4 +1,4 @@
-package test.jdk.util;
+package test.java.util;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

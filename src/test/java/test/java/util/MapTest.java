@@ -1,4 +1,4 @@
-package test.jdk.util;
+package test.java.util;
 import static org.junit.Assert.*;
 import java.util.HashMap;
 

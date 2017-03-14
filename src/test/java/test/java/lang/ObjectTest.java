@@ -1,4 +1,4 @@
-package test.jdk.lang;
+package test.java.lang;
 
 import org.junit.Assert;
 import org.junit.Test;
