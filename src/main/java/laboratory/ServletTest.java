@@ -2,7 +2,11 @@ package laboratory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,20 +22,32 @@ public class ServletTest extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		process(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		process(req, resp);
+	}
+
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		process(req, resp);
+	}
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		process(req, resp);
 	}
 
 	private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		req.setCharacterEncoding("UTF-8"); // 이거 안하면 post 한글 깨짐
+		
 		String uri = req.getRequestURI();
 		log.debug("requested path: " + uri);
-		
+
+		printParameters(req);
+
 		uri = uri.substring(0, uri.lastIndexOf("."));
 		req.setAttribute("attr", "이야아아");
 		List<String> list = new ArrayList<>();
@@ -42,9 +58,18 @@ public class ServletTest extends HttpServlet {
 		req.getRequestDispatcher("/WEB-INF/jsp/" + uri + ".jsp").forward(req, resp);
 	}
 
-	@Override
-	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.service(arg0, arg1);
+	/**
+	 * 요청 파라미터를 콘솔에 출력
+	 */
+	private void printParameters(HttpServletRequest req) {
+		Map<String, String[]> parameterMap = req.getParameterMap();
+		Set<String> keySet = parameterMap.keySet();
+		Iterator<String> iterator = keySet.iterator();
+		while (iterator.hasNext()) {
+			String key = iterator.next();
+			String[] values = parameterMap.get(key);
+			log.debug(key + ": " + Arrays.toString(values));
+		}
 	}
+
 }
