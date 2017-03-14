@@ -41,7 +41,8 @@ public class ServletTest extends HttpServlet {
 	}
 
 	private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.setCharacterEncoding("UTF-8"); // 이거 안하면 post 한글 깨짐
+		req.setCharacterEncoding("UTF-8"); // 이거 안하면 post 한글 깨짐
+		// 크롬 56, server.xml에 URIEncoding="UTF-8" 설정되어 있는 상태에서 테스트
 		
 		String uri = req.getRequestURI();
 		log.debug("requested path: " + uri);
