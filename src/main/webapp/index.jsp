@@ -9,7 +9,8 @@
 <h1>laboratory</h1>
 <h4>index</h4>
 <ul>
-	<li><a href="">some link</a></li>
+	<li><a href="/hello.do">some link</a></li>
+	<li><a href="/test/submit/sender.do">submit test</a></li>
 </ul>
 </body>
 </html>

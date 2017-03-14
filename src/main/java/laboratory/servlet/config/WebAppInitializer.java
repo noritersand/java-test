@@ -1,4 +1,4 @@
-package laboratory;
+package laboratory.servlet.config;
 
 import java.util.EnumSet;
 
@@ -9,6 +9,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration;
 import javax.servlet.annotation.WebListener;
+
+import laboratory.servlet.ServletTest;
+import laboratory.servlet.filter.FilterTest;
 
 @WebListener
 public class WebAppInitializer implements ServletContextListener {
