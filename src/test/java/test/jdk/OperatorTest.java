@@ -19,5 +19,6 @@ public class OperatorTest {
 		String result = (!fourth.isEmpty()) ? fourth : (!third.isEmpty()) ? third : (!second.isEmpty()) ? second : first;
 		Assert.assertEquals("3", result);
 		
+		
 	}
 }
