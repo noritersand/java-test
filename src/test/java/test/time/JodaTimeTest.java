@@ -17,6 +17,11 @@ public class JodaTimeTest {
 	private static final Logger log = LoggerFactory.getLogger(JodaTimeTest.class);
 	
 	@Test
+	public void testDateValidate() {
+		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+	}
+	
+	@Test
 	public void testNow() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 		String dt = DateTime.now().toString(formatter);

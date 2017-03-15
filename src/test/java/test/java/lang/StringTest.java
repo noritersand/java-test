@@ -22,6 +22,8 @@ public class StringTest {
 
 	    d = d.intern();
 	    Assert.assertTrue(c == d);
+	    
+//	    Assert.assertTrue(new String("BBB").intern() == "BBB"); // 이 줄처럼 리터럴이 나중에 올땐 실패할 수도 있다.
 	}
 	
 	@Test
