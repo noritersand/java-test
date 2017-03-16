@@ -9,6 +9,17 @@ public class StringTest {
 	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
 
 	@Test
+	public void testLength() {
+		String a = "totcnt123\nstart";
+		String b = "totcnt123start";
+		Assert.assertEquals(10, a.indexOf("start"));
+		Assert.assertEquals("start", a.substring(a.indexOf("start"), a.length()));
+		
+		Assert.assertEquals(9, b.indexOf("start"));
+		Assert.assertEquals("start", b.substring(b.indexOf("start"), b.length()));
+	}
+	
+	@Test
 	public void testIntern() {
 		// 아래처럼 초기화될 땐 intern()을 쓰든 안쓰든 String의 주소값은  같다.
 		String a = "경기";
@@ -23,7 +34,9 @@ public class StringTest {
 	    d = d.intern();
 	    Assert.assertTrue(c == d);
 	    
-//	    Assert.assertTrue(new String("BBB").intern() == "BBB"); // 이 줄처럼 리터럴이 나중에 올땐 실패할 수도 있다.
+	    Assert.assertTrue(new String("BBB").intern() == "BBB");
+	    Assert.assertTrue(new String("CCC").intern() == "CCC");
+	    Assert.assertEquals(new String("CCC").intern().hashCode(), "CCC".hashCode());
 	}
 	
 	@Test
