@@ -9,6 +9,12 @@ public class StringTest {
 	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
 
 	@Test
+	public void testBuilder() {
+		StringBuilder builder = new StringBuilder();
+		Assert.assertEquals("", builder.toString());
+	}
+	
+	@Test
 	public void testLength() {
 		String a = "totcnt123\nstart";
 		String b = "totcnt123start";

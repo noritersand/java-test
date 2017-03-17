@@ -11,6 +11,12 @@ public class Lang3Test {
 	private static final Logger log = LoggerFactory.getLogger(Lang3Test.class);
 
 	@Test
+	public void testDefault() {
+		Assert.assertEquals("", StringUtils.defaultString("", "0"));
+		Assert.assertEquals("0", StringUtils.defaultIfBlank("", "0"));
+	}
+	
+	@Test
 	public void testPadding() {
 		Assert.assertEquals("001", StringUtils.leftPad("1", 3, "0"));
 		Assert.assertEquals("10000", StringUtils.rightPad("1", 5, "0"));
