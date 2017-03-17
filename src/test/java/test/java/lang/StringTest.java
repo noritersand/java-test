@@ -77,7 +77,7 @@ public class StringTest {
 	@Test
 	public void testSplit() {
 		String str = "abcdefghijklmn";
-		Assert.assertEquals(str.substring(1, 5), str.subSequence(1, 5));
+		Assert.assertEquals(str, str.split("\\|")[0]);
 	}
 
 	@Test
