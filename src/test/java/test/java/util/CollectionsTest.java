@@ -1,7 +1,9 @@
 package test.java.util;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,6 +25,12 @@ public class CollectionsTest {
 		list.remove(1);
 		
 		Assert.assertEquals("[9, 7, 6, 5, 4, 3, 2, 1]", list.toString());
+	}
+	
+	@Test
+	public void testHashMap() {
+		Map<String, Object> map = new HashMap<>();
+		Assert.assertNull(map.get("not-exist-key"));
 	}
 	
 	@Test
