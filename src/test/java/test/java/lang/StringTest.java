@@ -11,6 +11,7 @@ public class StringTest {
 	@Test
 	public void testBuilder() {
 		StringBuilder builder = new StringBuilder();
+		Assert.assertEquals(0, builder.length());
 		Assert.assertEquals("", builder.toString());
 	}
 	
