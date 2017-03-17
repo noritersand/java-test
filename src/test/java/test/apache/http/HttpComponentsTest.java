@@ -1,4 +1,4 @@
-package test.apache;
+package test.apache.http;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;

@@ -1,4 +1,4 @@
-package test.apache;
+package test.apache.commons;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
