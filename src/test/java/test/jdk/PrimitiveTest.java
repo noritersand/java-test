@@ -59,18 +59,27 @@ public class PrimitiveTest {
 	@Test
 	public void testCharacter() {
 		char a = 'a';
-		char b = 'a';
-		Assert.assertTrue(a == b);
-		Character c = 'a';
-		Character d = 'a';
-		Assert.assertTrue(c == d);
-		Assert.assertFalse(a != b);
-		Assert.assertTrue(c.equals(d));
-		Assert.assertEquals(a, "a".charAt(0));
+		char b = 'b';
+		Character aa = 'a';
+		Character bb = 'b';
+
+		// 동등 비교
+		Assert.assertTrue(a == 'a');
+		Assert.assertFalse(a == b);
+		Assert.assertTrue(a == aa);
+		Assert.assertTrue(bb.equals(b));
 		
-		Assert.assertFalse("a".equals('a'));
-		Assert.assertFalse(new Character('a').equals("a"));
-		Assert.assertTrue("a".charAt(0) == 'a');
+		// String과 비교
+		Assert.assertFalse("a".equals('a')); // equals()로는 다른 타입끼리 비교 불가
+		Assert.assertTrue(a == "a".charAt(0));
+		
+		// 새로 만든 인스턴스와 비교
+		Character inst = new Character('a');
+		Assert.assertTrue(a == inst); // 원시-객체는 객체가 원시타입으로 변환되므로 동등비교 가능.
+		Assert.assertTrue(aa != inst); // 객체끼리는 값이 같아도 동등비교 불가.
+		Assert.assertFalse(inst.equals("a")); // equals()로는 다른 타입끼리 비교 불가
+		Assert.assertTrue(inst.equals("a".charAt(0)));
+		Assert.assertTrue(inst == "a".charAt(0));
 	}
 	
 	@Test
