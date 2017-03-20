@@ -34,7 +34,7 @@
 				<version>3.0.0</version>
 				<configuration>
 					<warSourceDirectory>src/main/webapp</warSourceDirectory>
-<!-- 					<warSourceExcludes>api/**, css/**, error/**, guide/**, js/**, img/**, pub/**, pub/**, template/**</warSourceExcludes> -->
+					<!-- <warSourceExcludes>api/**, css/**, error/**, guide/**, js/**, img/**, pub/**, pub/**, template/**</warSourceExcludes> -->
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
@@ -136,23 +136,23 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>1.7.5</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.slf4j</groupId> -->
-<!-- 			<artifactId>slf4j-api</artifactId> -->
-<!-- 			<version>1.7.5</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.slf4j</groupId> -->
-<!-- 			<artifactId>log4j-over-slf4j</artifactId> -->
-<!-- 			<version>1.7.5</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.slf4j</groupId> -->
-<!-- 			<artifactId>slf4j-jcl</artifactId> -->
-<!-- 			<version>1.7.5</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.slf4j</groupId> -->
+		<!-- <artifactId>slf4j-api</artifactId> -->
+		<!-- <version>1.7.5</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.slf4j</groupId> -->
+		<!-- <artifactId>log4j-over-slf4j</artifactId> -->
+		<!-- <version>1.7.5</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.slf4j</groupId> -->
+		<!-- <artifactId>slf4j-jcl</artifactId> -->
+		<!-- <version>1.7.5</version> -->
+		<!-- </dependency> -->
 
-		<!-- ETC. -->
+		<!-- apache -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -164,6 +164,19 @@
 			<version>RELEASE</version>
 		</dependency>
 		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.2</version>
+<!-- 			<version>RELEASE</version> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+
+		<!-- google -->
+		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>RELEASE</version>
@@ -172,25 +185,15 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>RELEASE</version>
-<!-- 			<version>21.0</version> -->
+			<!-- <version>21.0</version> -->
 		</dependency>
+
+		<!-- ETC. -->
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>RELEASE</version>
-<!-- 			<version>2.3</version> -->
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>RELEASE</version>
-<!-- 			<version>4.5.3</version> -->
-<!-- 			<exclusions> -->
-<!-- 				<exclusion> -->
-<!-- 					<groupId>commons-logging</groupId> -->
-<!-- 					<artifactId>commons-logging</artifactId> -->
-<!-- 				</exclusion> -->
-<!-- 			</exclusions> -->
+			<!-- <version>2.3</version> -->
 		</dependency>
 	</dependencies>
 </project>

@@ -17,18 +17,30 @@ public class ForStatementTest {
 	public void testRemoveList() {
 		String[] strs = { "a", "b", "c", "d", "e" };
 		
+		// 앞에서 3개 자르기
 		List<String> list = Arrays.stream(strs).collect(Collectors.toList());
-		for (int cnt = 0, i = 0; i < list.size(); i++) { // 3개 자르기
-			if (cnt < 3) {
+//		for (int cnt = 0, i = 0; i < list.size(); i++) {
+//			if (cnt < 3) {
+//				list.remove(0);
+//				i--;
+//				cnt++;
+//			}
+//		} // for 필요 없잖여
+		{
+			int cnt = 0;
+			while (true) {
+				if (cnt == 3) {
+					break;
+				}
 				list.remove(0);
-				i--;
 				cnt++;
-			}
+			}			
 		}
 		Assert.assertEquals("[d, e]", list.toString());
 		
+		// 뒤에서 3개 자르기
 		list = Arrays.stream(strs).collect(Collectors.toList());
-		for (int cnt = 0, i = list.size(); i >= 0; i--) { // 뒤에서 3개 자르기
+		for (int cnt = 0, i = list.size(); i >= 0; i--) {
 			if (cnt < 3) {
 				list.remove(list.size() - 1);
 				i++;

@@ -14,8 +14,50 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CollectionsTest {
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(CollectionsTest.class);
+
+	@Test
+	public void testForEachLambda() {
+		// LIST
+		Integer[] values = { 1, 3, 7 };
+		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
+		list.forEach(k -> {
+			log.debug(String.valueOf(k));
+		});
+
+		// MAP
+		Map<String, Integer> items = new HashMap<>();
+		items.put("A", 10);
+		items.put("B", 20);
+		items.forEach((k, v) -> {
+			log.debug("Item : " + k + " Count : " + v);
+		});
+	}
+
+	@Test
+	public void testRemoveifLambda() {
+		Integer[] values = { 1, 3, 7 };
+		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
+		list.removeIf(p -> p == 3);
+		Assert.assertEquals("[1, 7]", list.toString());
+	}
+
+	@Test
+	public void testFind() {
+		Integer[] values = { 1, 3, 7 };
+		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
+		final int targetValue = 3;
+		int targetIndex = 99;
+
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i) == targetValue) {
+				targetIndex = i;
+				break;
+			}
+		}
+		Assert.assertEquals(1, targetIndex);
+	}
 
 	@Test
 	public void testFromArray() {
