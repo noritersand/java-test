@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
@@ -14,35 +15,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CollectionsTest {
-//	@SuppressWarnings("unused")
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(CollectionsTest.class);
 
 	@Test
-	public void testForEachLambda() {
-		// LIST
-		Integer[] values = { 1, 3, 7 };
-		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
-		list.forEach(k -> {
-			log.debug(String.valueOf(k));
-		});
-
-		// MAP
-		Map<String, Integer> items = new HashMap<>();
-		items.put("A", 10);
-		items.put("B", 20);
-		items.forEach((k, v) -> {
-			log.debug("Item : " + k + " Count : " + v);
-		});
+	public void testTree() {
+		TreeMap<String, String> tree = new TreeMap<>();
+		Assert.assertNotNull(tree);
 	}
-
-	@Test
-	public void testRemoveifLambda() {
-		Integer[] values = { 1, 3, 7 };
-		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
-		list.removeIf(p -> p == 3);
-		Assert.assertEquals("[1, 7]", list.toString());
-	}
-
+	
 	@Test
 	public void testFind() {
 		Integer[] values = { 1, 3, 7 };
