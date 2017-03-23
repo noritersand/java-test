@@ -1,7 +1,7 @@
 # laboratory
 my little laboratory
 
-## environments
+### environments
 - maven
 - jdk 1.8
 - tomcat 8.5
