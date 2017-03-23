@@ -1,4 +1,4 @@
-package test.jdk;
+package test.jdk.statement;
 
 
 

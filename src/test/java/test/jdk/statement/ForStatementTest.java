@@ -1,4 +1,4 @@
-package test.jdk;
+package test.jdk.statement;
 
 import java.util.Arrays;
 import java.util.List;

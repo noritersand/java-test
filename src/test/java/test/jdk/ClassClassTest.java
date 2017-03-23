@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ClassTest {
+public class ClassClassTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ClassTest.class);
+	private static final Logger log = LoggerFactory.getLogger(ClassClassTest.class);
 	
 	@Test
 	public void testClass() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
