@@ -13,6 +13,6 @@
 	</util:properties>
 	
 	<!-- 이 방식은 프로퍼티에 접근연산자(.)로 접근할 수 없음. PROPERTY_ID['KEY']만 가능 -->
-	<util:properties id="interfaceProp" location="classpath:/properties/interface-test.xml" />
+	<util:properties id="interfaceProp" location="classpath:/prop/interface-test.xml" />
 	
 </beans>

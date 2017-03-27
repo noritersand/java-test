@@ -10,8 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/properties/context-test.xml")
-//@ContextConfiguration(locations = "classpath:propertyTest/test-property-context.xml")
+@ContextConfiguration("/prop/context-test.xml")
 public class SpELTest {
 	@Value("#{language.primary}")
 	private String primary;
