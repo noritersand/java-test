@@ -31,6 +31,16 @@ public class ListTest {
 	}
 
 	@Test
+	public void testToArray() {
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(123);
+		list.add(234);
+		list.add(345);
+		Assert.assertEquals(Arrays.toString(new int[] { 123, 234, 345 }), 
+				Arrays.toString(list.toArray(new Integer[list.size()])));
+	}
+
+	@Test
 	public void testFromArray() {
 		Integer[] values = { 1, 3, 7 };
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
