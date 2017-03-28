@@ -16,6 +16,7 @@ public class CharsetTest {
 	public void test() {
 		Assert.assertTrue(Charset.isSupported("UTF-8"));
 		
+//		Charset charset = Charset.defaultCharset(); // default는 의도하지 않은 결과가 나올 수 있음.
 		Charset charset = Charset.forName("UTF-8");
 		Assert.assertTrue(charset.canEncode());
 		Assert.assertEquals("UTF-8", charset.toString());
