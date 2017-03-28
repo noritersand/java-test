@@ -21,10 +21,10 @@ public class FileUtilsTest {
 		File file = Paths.get("src/test/resources/file/write-test.txt").toFile();
 		
 		// write
-		FileUtils.writeStringToFile(file, text, Charset.defaultCharset());
+		FileUtils.writeStringToFile(file, text, Charset.forName("UTF-8"));
 		
 		// read
-		String textFromFile = FileUtils.readFileToString(file, Charset.defaultCharset());
+		String textFromFile = FileUtils.readFileToString(file, Charset.forName("UTF-8"));
 		Assert.assertEquals("some\ntext", textFromFile);
 	}
 }	
