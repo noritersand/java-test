@@ -16,7 +16,7 @@ public class CharsetTest {
 	public void test() {
 		Assert.assertTrue(Charset.isSupported("UTF-8"));
 		
-		Charset charset = Charset.defaultCharset();
+		Charset charset = Charset.forName("UTF-8");
 		Assert.assertTrue(charset.canEncode());
 		Assert.assertEquals("UTF-8", charset.toString());
 		Assert.assertEquals("UTF-8", charset.displayName(Locale.KOREA));
