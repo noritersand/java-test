@@ -10,7 +10,7 @@
 <h4>index</h4>
 <ul>
 	<li><a href="/hello.do">some link</a></li>
-	<li><a href="/test/submit/sender.do">unicode character submission test</a></li>
+	<li><a href="/test/submit/sender.do">unicode character submission test</a></li> 
 </ul>
 </body>
 </html>
