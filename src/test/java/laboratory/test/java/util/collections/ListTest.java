@@ -36,8 +36,7 @@ public class ListTest {
 		list.add(123);
 		list.add(234);
 		list.add(345);
-		Assert.assertEquals(Arrays.toString(new int[] { 123, 234, 345 }), 
-				Arrays.toString(list.toArray(new Integer[list.size()])));
+		Assert.assertArrayEquals(new Integer[] { 123, 234, 345 }, list.toArray(new Integer[list.size()]));
 	}
 
 	@Test

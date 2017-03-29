@@ -2,6 +2,7 @@ package laboratory.test.jdk;
 
 import java.util.Arrays;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -10,6 +11,14 @@ import org.slf4j.LoggerFactory;
 public class ArrayTest {
 	private static final Logger log = LoggerFactory.getLogger(ArrayTest.class);
 
+	@Test
+	public void testReverse() {
+//		int[] arr = new int[] { 1, 2, 6, 3, 4 };
+		Integer[] arr = new Integer[] { 1, 2, 6, 3, 4 };
+		CollectionUtils.reverseArray(arr);
+		Assert.assertArrayEquals(new Integer[] { 4, 3, 6, 2, 1 }, arr);
+	}
+	
 	@Test
 	public void testForSomeoneFromHashcode() {
 		// 여기에서 디비에 저장을 하면 0,0 1,1 2,2 이런식으로 저장되는데 0,0 0,1 0,2 이식으로 저장할라면 for문을 어떡해 돌려야되나요?
