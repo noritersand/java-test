@@ -10,7 +10,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration;
 import javax.servlet.annotation.WebListener;
 
-import laboratory.servlet.ServletTest;
+import laboratory.servlet.DefaultDispatcher;
 import laboratory.servlet.filter.FilterTest;
 
 @WebListener
@@ -22,7 +22,7 @@ public class WebAppInitializer implements ServletContextListener {
 		FilterRegistration.Dynamic filter = context.addFilter("filterTest", new FilterTest());
 		filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, "/*");
 
-		ServletRegistration.Dynamic servlet = context.addServlet("servletTest", new ServletTest());
+		ServletRegistration.Dynamic servlet = context.addServlet("defaultDispatcher", new DefaultDispatcher());
 		servlet.addMapping("*.do");
 		servlet.setLoadOnStartup(1);
 	}
