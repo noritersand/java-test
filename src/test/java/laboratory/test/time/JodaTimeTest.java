@@ -149,4 +149,13 @@ public class JodaTimeTest {
 		newInstance = dt.plus(new Duration(24L*60L*60L*1000L));
 		Assert.assertEquals("2020-03-01 23:59:59:010", newInstance.toString(formatter));
 	}
+	
+	@Test
+	public void testCalculateMonth() {
+		DateTime dt = new DateTime(2017, 3, 31, 00, 00, 00);
+		DateTime a = dt.minusMonths(1);
+		Assert.assertEquals(new DateTime(2017, 2, 28, 00, 00, 00).toString(), a.toString());
+		DateTime b = dt.plusMonths(1);
+		Assert.assertEquals(new DateTime(2017, 4, 30, 00, 00, 00).toString(), b.toString());
+	}
 }
