@@ -8,8 +8,13 @@ import java.nio.file.Paths;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PathTest {
+	@SuppressWarnings("unused")
+	private static final Logger log = LoggerFactory.getLogger(PathTest.class);
+	
 	@Test
 	public void testRelative() {
 		Path dev = new File("c:\\dev\\git").toPath();
@@ -34,16 +39,21 @@ public class PathTest {
 	}
 
 	@Test
-	public void testNewInstnc() {
+	public void testNewInstnc() throws IOException {
 		Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
 		Path path2 = Paths.get("C:\\project\\workspace");
 		Path path3 = Paths.get("localhost/upload");
 		Path path4 = Paths.get("/localhost/upload");
 		
-		System.out.println(path1);
-		System.out.println(path2);
-		System.out.println(path3);
-		System.out.println(path4);
+		Assert.assertEquals("\\\\C\\project\\workspace", path1.toString());
+		Assert.assertEquals("C:\\project\\workspace", path2.toString());
+		Assert.assertEquals("localhost\\upload", path3.toString());
+		Assert.assertEquals("\\localhost\\upload", path4.toString());
+		
+//		Path path5 = Paths.get("C:/project/workspace/etbs/pmd/ruleset.xml");
+//		File file5 = path5.toFile();
+//		Assert.assertTrue(file5.exists());
+//		log.debug(FileUtils.readFileToString(file5, "UTF-8"));
 	}
 	
 	@Test
