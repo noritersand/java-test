@@ -12,6 +12,13 @@ public class BigDecimalTest {
 	private static final Logger log = LoggerFactory.getLogger(BigDecimalTest.class);
 	
 	@Test
+	public void testConstants() {
+		Assert.assertEquals(new BigDecimal(0), BigDecimal.ZERO);
+		Assert.assertEquals(new BigDecimal(1), BigDecimal.ONE);
+		Assert.assertEquals(new BigDecimal(10), BigDecimal.TEN);
+	}
+	
+	@Test
 	public void testSum() {
 		BigDecimal a = new BigDecimal("10");
 		BigDecimal b = new BigDecimal("20");
