@@ -15,6 +15,7 @@ public class BigDecimalTest {
 	public void testSum() {
 		BigDecimal a = new BigDecimal("10");
 		BigDecimal b = new BigDecimal("20");
+		
 		Assert.assertEquals(new BigDecimal("30"), a.add(b));
 		Assert.assertEquals(new BigDecimal("10"), b.subtract(a));
 		Assert.assertEquals(new BigDecimal("200"), a.multiply(b));
