@@ -2,7 +2,6 @@ package laboratory.test.google.guava;
 
 import java.io.IOException;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +15,7 @@ public class ClassPathTest {
 //	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(ClassPathTest.class);
 
-	@Test
+//	@Test // 로그가 너무 길어져서 생략
 	public void testGetAllClasses() throws IOException {
 		ClassPath classPath = ClassPath.from(this.getClass().getClassLoader());
 		ImmutableSet<ClassInfo> classInfoSet = classPath.getAllClasses();
@@ -27,7 +26,7 @@ public class ClassPathTest {
 		}
 	}
 	
-	@Test
+//	@Test // 로그가 너무 길어져서 생략
 	public void testGetAllResources() throws IOException {
 		ClassPath classPath = ClassPath.from(this.getClass().getClassLoader());
 		ImmutableSet<ResourceInfo> resourceInfoSet = classPath.getResources();
