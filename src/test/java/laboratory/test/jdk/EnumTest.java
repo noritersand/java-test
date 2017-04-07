@@ -2,8 +2,12 @@ package laboratory.test.jdk;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EnumTest {
+	private static final Logger log = LoggerFactory.getLogger(EnumTest.class);
+	
 	public static void main(String[] args) {
 		System.out.println(Color.RED); // RED
 		System.out.println(Color.RED.toString()); // RED
@@ -25,6 +29,19 @@ public class EnumTest {
 		System.out.println(var2.name()); // FRONT_OFFICE
 		System.out.println(var2.getOptionalField()); // front office system
 	}
+	
+	@Test
+	public void testUsingInSwitch() {
+		String div = "back_office";
+		switch (SystemDivision.valueOf(div.toUpperCase())) {
+		case BACK_OFFICE:
+			log.debug("백");
+			break;
+		case FRONT_OFFICE:
+			log.debug("프론트");
+			break;
+		}
+	}
 
 	@Test
 	public void testStringToEnum() {
@@ -33,40 +50,40 @@ public class EnumTest {
 		Enum<Color> color = Enum.valueOf(clazz, source.trim().toUpperCase());
 		Assert.assertEquals(Color.RED, color);
 	}
-}
+	
+	private enum SystemDivision {
+		BACK_OFFICE, FRONT_OFFICE("front office system");
 
-enum SystemDivision {
-	BACK_OFFICE, FRONT_OFFICE("front office system");
+		private SystemDivision() {
+		} // 기본 생성자
 
-	private SystemDivision() {
-	} // 기본 생성자
+		private String optionalField;
 
-	private String optionalField;
+		private SystemDivision(final String option) {
+			this.optionalField = option;
+		}
 
-	private SystemDivision(final String option) {
-		this.optionalField = option;
+		public String getOptionalField() {
+			return this.optionalField;
+		}
 	}
 
-	public String getOptionalField() {
-		return this.optionalField;
+	private enum Apple {
+		A(10), B(9), C(12), D(15), E(8);
+
+		private int price; // price of each apple
+
+		// Constructor
+		private Apple(int p) {
+			price = p;
+		}
+
+		public int getPrice() {
+			return price;
+		}
 	}
-}
 
-enum Apple {
-	A(10), B(9), C(12), D(15), E(8);
-
-	private int price; // price of each apple
-
-	// Constructor
-	private Apple(int p) {
-		price = p;
+	private enum Color {
+		RED, BLUE, GREEN, YELLOW
 	}
-
-	public int getPrice() {
-		return price;
-	}
-}
-
-enum Color {
-	RED, BLUE, GREEN, YELLOW
 }
