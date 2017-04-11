@@ -3,14 +3,7 @@ package laboratory.test.jdk.statement;
 
 
 /**
- * <PRE>
- * Filename : JavadocTest.java
- * Class    : JavadocTest
- * Function : 
- * Comment  : 
- *
- * Copyright (c) 2016 by exanadu Corp. All Rights Reserved.
- * </PRE>
+ * hi
  * 
  * @since 2016-11-19
  * @author fixalot
