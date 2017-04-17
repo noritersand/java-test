@@ -15,7 +15,7 @@ public class StringTest {
 		Assert.assertTrue(a == b);
 		b = a; // new String(a)처럼 명시적으로 새 인스턴스를 할당하지 않아도.
 		b = "b"; // 리터럴이 바뀌면 참조하고 있는 인스턴스의 값이 변경되는게 아니라 새 인스턴스가 할당된다. (String 타입의 특징)
-		Assert.assertEquals("a", a); // 그래서 a는 원래의 값을 유지할 수 있다.
+		Assert.assertEquals("a", a); // 그래서 a는 원래의 값을 유지할 수 있다. 
 	}
 	
 	@Test
