@@ -1,4 +1,5 @@
 package laboratory.test.time;
+
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -15,35 +16,35 @@ import org.slf4j.LoggerFactory;
 
 public class JodaTimeTest {
 	private static final Logger log = LoggerFactory.getLogger(JodaTimeTest.class);
-	
+
 //	@Test
 //	public void testDateValidate() {
 //		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 //	}
-	
+
 	@Test
 	public void testNow() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 		String dt = DateTime.now().toString(formatter);
 		log.debug("testNow: " + dt);
 	}
-	
+
 	@Test
 	public void testFromString() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime dt = formatter.parseDateTime("2016-02-05");
 		Assert.assertEquals("2016-02-05T00:00:00.000+09:00", dt.toString());
-		
+
 		try {
 			formatter.parseDateTime("20160205");
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		
+
 		DateTime dt2 = new DateTime("2015-01-01");
 		Assert.assertEquals("2015-01-01T00:00:00.000+09:00", String.valueOf(dt2));
 	}
-	
+
 	@Test
 	public void testGetter() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
@@ -80,14 +81,14 @@ public class JodaTimeTest {
 		Assert.assertEquals(123, dt.getMillisOfSecond());
 		Assert.assertEquals(1455511230123L, dt.getMillis());
 	}
-	
+
 	@Test
 	public void testFromJavaUtilDate() {
 		Date date = GregorianCalendar.getInstance().getTime();
 		DateTime dt = new DateTime(date);
 		log.debug("testFromJavaUtilDate: " + dt.toString());
 	}
-	
+
 	/**
 	 * 실패한 테스트
 	 * 
@@ -100,44 +101,42 @@ public class JodaTimeTest {
 		DateTime end = formatter.parseDateTime("2017-02-03");
 		log.debug(start.toString());
 		log.debug(end.toString());
-	
+
 //		Period p = new Period(start, end);
 //		(p.getYears() * 365) 
 //		p.getDays()
-		
+
 		Interval interval = new Interval(start.toDate().getTime(), end.toDate().getTime());
 		Period period = interval.toPeriod();
 
 		System.out.printf("%d years, %d months, %d days, %d hours, %d minutes, %d seconds%n", period.getYears(), period.getMonths(),
 				period.getDays(), period.getHours(), period.getMinutes(), period.getSeconds());
 	}
-	
+
 	@Test
 	public void testToFormatString() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
 		DateTime dt = new DateTime();
-		DateTime newDt = dt.withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23)
-				.withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10);
-		
+		DateTime newDt = dt.withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23).withMinuteOfHour(59)
+				.withSecondOfMinute(59).withMillisOfSecond(10);
+
 		Assert.assertEquals("2020-02-29T23:59:59.010+09:00", newDt.toString());
 		Assert.assertEquals("2020-02-29 23:59:59:010", newDt.toString(formatter));
 	}
-	
+
 	@Test
 	public void testEqual() {
 //		Assert.assertEquals(new DateTime(), DateTime.now()); // 호출시점에 따라 몇 밀리초 차이로 같지 않을 수 있음
-		Assert.assertEquals(new DateTime(2020, 2, 29, 23, 59, 59, 10), 
-				new DateTime().withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23)
-						.withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10));
+		Assert.assertEquals(new DateTime(2020, 2, 29, 23, 59, 59, 10), new DateTime().withYear(2020).withMonthOfYear(2).withDayOfMonth(29)
+				.withHourOfDay(23).withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10));
 	}
-	
+
 	@Test
 	public void testFromFormatString() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
-		Assert.assertEquals(new DateTime(2020, 2, 29, 23, 59, 59, 10), 
-				formatter.parseDateTime("2020-02-29 23:59:59:010"));
+		Assert.assertEquals(new DateTime(2020, 2, 29, 23, 59, 59, 10), formatter.parseDateTime("2020-02-29 23:59:59:010"));
 	}
-	
+
 	@Test
 	public void testPlusDay() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
@@ -146,7 +145,16 @@ public class JodaTimeTest {
 		Assert.assertEquals("2020-03-01 23:59:59:010", newInstance.toString(formatter));
 		newInstance = dt.plus(Period.days(1));
 		Assert.assertEquals("2020-03-01 23:59:59:010", newInstance.toString(formatter));
-		newInstance = dt.plus(new Duration(24L*60L*60L*1000L));
+		newInstance = dt.plus(new Duration(24L * 60L * 60L * 1000L));
 		Assert.assertEquals("2020-03-01 23:59:59:010", newInstance.toString(formatter));
+	}
+
+	@Test
+	public void testCalculateMonth() {
+		DateTime dt = new DateTime(2017, 3, 31, 00, 00, 00);
+		DateTime a = dt.minusMonths(1);
+		Assert.assertEquals(new DateTime(2017, 2, 28, 00, 00, 00).toString(), a.toString());
+		DateTime b = dt.plusMonths(1);
+		Assert.assertEquals(new DateTime(2017, 4, 30, 00, 00, 00).toString(), b.toString());
 	}
 }

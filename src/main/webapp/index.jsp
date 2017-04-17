@@ -11,6 +11,7 @@
 <ul>
 	<li><a href="/hello.do">some link</a></li>
 	<li><a href="/test/submit/sender.do">unicode character submission test</a></li>
+	<li><a href="/js-test/cookie/cookie-util.html">cookie util</a></li>
 </ul>
 </body>
 </html>

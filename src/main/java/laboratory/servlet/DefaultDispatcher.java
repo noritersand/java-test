@@ -1,10 +1,8 @@
 package laboratory.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,10 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ServletTest extends HttpServlet {
+public class DefaultDispatcher extends HttpServlet {
 	private static final long serialVersionUID = 6174311087878978970L;
-	private static final Logger log = LoggerFactory.getLogger(ServletTest.class);
-
+	
+	private static final Logger log = LoggerFactory.getLogger(DefaultDispatcher.class);
+	private DefaultViewResolver viewResolver = new DefaultViewResolver();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		process(req, resp);
@@ -44,19 +44,8 @@ public class ServletTest extends HttpServlet {
 		req.setCharacterEncoding("UTF-8"); // 이거 안하면 post 한글 깨짐
 		// 크롬 56, server.xml에 URIEncoding="UTF-8" 설정되어 있는 상태에서 테스트
 		
-		String uri = req.getRequestURI();
-		log.debug("requested path: " + uri);
-
 		printParameters(req);
-
-		uri = uri.substring(0, uri.lastIndexOf("."));
-		req.setAttribute("attr", "이야아아");
-		List<String> list = new ArrayList<>();
-		list.add("a");
-		list.add("b");
-		list.add("c");
-		req.setAttribute("list", list);
-		req.getRequestDispatcher("/WEB-INF/jsp/" + uri + ".jsp").forward(req, resp);
+		viewResolver.createView(req, resp);
 	}
 
 	/**
@@ -72,5 +61,4 @@ public class ServletTest extends HttpServlet {
 			log.debug(key + ": " + Arrays.toString(values));
 		}
 	}
-
 }

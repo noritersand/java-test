@@ -2,6 +2,7 @@ package laboratory.test.java.util.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,19 @@ public class ListTest {
 	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(ListTest.class);
 
+	@Test
+	public void testRemoveElement() {
+		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
+		Iterator<String> iter = list.iterator();
+		while (iter.hasNext()) {
+			String s = iter.next();
+		 
+			if (s.equals("a")) {
+				iter.remove();
+			}
+		}
+	}
+	
 	@Test
 	public void testFind() {
 		Integer[] values = { 1, 3, 7 };

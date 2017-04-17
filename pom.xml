@@ -9,11 +9,13 @@
 	<url>https://github.com/noritersand/laboratory</url>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<encoding>UTF-8</encoding>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.3.4.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.0</org.aspectj-version>
 		<logback-version>1.1.8</logback-version>
+		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 	</properties>
 
 	<!-- 빌드 -->
@@ -26,6 +28,7 @@
 				<configuration>
 					<source>${java-version}</source>
 					<target>${java-version}</target>
+					<encoding>${encoding}</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
