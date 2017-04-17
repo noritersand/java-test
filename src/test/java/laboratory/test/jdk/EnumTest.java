@@ -75,7 +75,7 @@ public class EnumTest {
 
 		// Constructor
 		private Apple(int p) {
-			price = p;
+			price = p; 
 		}
 
 		public int getPrice() {
