@@ -3,7 +3,7 @@
 <configuration scan="true" scanPeriod="5 seconds">
 	<property name="LOG_HOME" value="/laboratorylogs" />
 	
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
 		<encoder>
 <!-- 			<pattern>%-5level: %msg%n</pattern> -->
@@ -18,7 +18,7 @@
 		<file>${LOG_HOME}/webapp.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- 파일이 하루에 한개씩 생성된다 -->
-			<fileNamePattern>${LOG_HOME}/webapp.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<fileNamePattern>${LOG_HOME}/webapp-%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>30</maxHistory> <!-- 30일이 지난 파일은 삭제 -->
 		</rollingPolicy>
 		<encoder>
@@ -31,7 +31,7 @@
 	<logger name="com.noritersand" level="TRACE" />
 
 	<root level="DEBUG">
-		<appender-ref ref="STDOUT" />
+		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="FILE" />
 	</root>
 </configuration>
