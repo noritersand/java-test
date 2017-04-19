@@ -31,6 +31,14 @@ public class JodaTimeTest {
 
 	@Test
 	public void testFromString() {
+		DateTime dt = new DateTime("2017-04-18T16:41:34.219+09:00");
+		log.debug(dt.toString());
+		DateTime dt2 = new DateTime(2017, 4, 18, 16, 41, 34, 219);
+		Assert.assertEquals(dt, dt2);
+	}
+	
+	@Test
+	public void testFromFormatString() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime dt = formatter.parseDateTime("2016-02-05");
 		Assert.assertEquals("2016-02-05T00:00:00.000+09:00", dt.toString());
@@ -43,6 +51,24 @@ public class JodaTimeTest {
 
 		DateTime dt2 = new DateTime("2015-01-01");
 		Assert.assertEquals("2015-01-01T00:00:00.000+09:00", String.valueOf(dt2));
+	}
+	
+	@Test
+	public void testToFormatString() {
+		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
+		DateTime dt = new DateTime();
+		DateTime newDt = dt.withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23).withMinuteOfHour(59)
+				.withSecondOfMinute(59).withMillisOfSecond(10);
+
+		Assert.assertEquals("2020-02-29T23:59:59.010+09:00", newDt.toString());
+		Assert.assertEquals("2020-02-29 23:59:59:010", newDt.toString(formatter));
+	}
+	
+	@Test
+	public void testFromJavaUtilDate() {
+		Date date = GregorianCalendar.getInstance().getTime();
+		DateTime dt = new DateTime(date);
+		log.debug("testFromJavaUtilDate: " + dt.toString());
 	}
 
 	@Test
@@ -81,14 +107,7 @@ public class JodaTimeTest {
 		Assert.assertEquals(123, dt.getMillisOfSecond());
 		Assert.assertEquals(1455511230123L, dt.getMillis());
 	}
-
-	@Test
-	public void testFromJavaUtilDate() {
-		Date date = GregorianCalendar.getInstance().getTime();
-		DateTime dt = new DateTime(date);
-		log.debug("testFromJavaUtilDate: " + dt.toString());
-	}
-
+	
 	/**
 	 * 실패한 테스트
 	 * 
@@ -114,27 +133,12 @@ public class JodaTimeTest {
 	}
 
 	@Test
-	public void testToFormatString() {
-		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
-		DateTime dt = new DateTime();
-		DateTime newDt = dt.withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23).withMinuteOfHour(59)
-				.withSecondOfMinute(59).withMillisOfSecond(10);
-
-		Assert.assertEquals("2020-02-29T23:59:59.010+09:00", newDt.toString());
-		Assert.assertEquals("2020-02-29 23:59:59:010", newDt.toString(formatter));
-	}
-
-	@Test
 	public void testEqual() {
 //		Assert.assertEquals(new DateTime(), DateTime.now()); // 호출시점에 따라 몇 밀리초 차이로 같지 않을 수 있음
-		Assert.assertEquals(new DateTime(2020, 2, 29, 23, 59, 59, 10), new DateTime().withYear(2020).withMonthOfYear(2).withDayOfMonth(29)
-				.withHourOfDay(23).withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10));
-	}
-
-	@Test
-	public void testFromFormatString() {
-		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
-		Assert.assertEquals(new DateTime(2020, 2, 29, 23, 59, 59, 10), formatter.parseDateTime("2020-02-29 23:59:59:010"));
+		Assert.assertEquals(
+				new DateTime(2020, 2, 29, 23, 59, 59, 10), 
+				new DateTime().withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23)
+						.withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10));
 	}
 
 	@Test
@@ -156,5 +160,20 @@ public class JodaTimeTest {
 		Assert.assertEquals(new DateTime(2017, 2, 28, 00, 00, 00).toString(), a.toString());
 		DateTime b = dt.plusMonths(1);
 		Assert.assertEquals(new DateTime(2017, 4, 30, 00, 00, 00).toString(), b.toString());
+	}
+	
+	@Test
+	public void testCompare() {
+		DateTime sometime = new DateTime("2017-04-18T01:00:00.000+09:00");
+		DateTime oneMinuteLater = new DateTime("2017-04-18T01:01:00.000+09:00");
+		
+		Assert.assertTrue(sometime.isBefore(oneMinuteLater));
+		Assert.assertTrue(oneMinuteLater.isAfter(sometime));
+		
+		Assert.assertTrue(sometime.getMillis() < oneMinuteLater.getMillis());
+		Assert.assertEquals(1492444800000L, sometime.getMillis());
+		Assert.assertEquals(1492444860000L, oneMinuteLater.getMillis());
+		Assert.assertEquals(60000, oneMinuteLater.getMillis() - sometime.getMillis());
+		Assert.assertEquals(1, (oneMinuteLater.getMillis() - sometime.getMillis()) / 1000 / 60); // 1부운 차이
 	}
 }

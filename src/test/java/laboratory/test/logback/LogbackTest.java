@@ -14,6 +14,7 @@ public class LogbackTest {
 	@Test
 	public void testLoggingWhileJunit() {
 		log.debug("unit testing");
+		log.debug("unit", "testing"); // "testing"은 안찍힘
 	}
 
 	@Test
