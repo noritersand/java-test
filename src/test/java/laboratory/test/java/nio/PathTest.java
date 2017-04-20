@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class PathTest {
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(PathTest.class);
 	
 	@Test
@@ -66,5 +66,11 @@ public class PathTest {
 		} catch (Exception e) {
 			Assert.assertTrue(e instanceof InvalidPathException);
 		}
+	}
+	
+	@Test
+	public void testRoot() {
+		log.debug(Paths.get("/").toFile().toString()); // just "\"
+		log.debug(Paths.get("").toFile().toString()); // ""
 	}
 }
