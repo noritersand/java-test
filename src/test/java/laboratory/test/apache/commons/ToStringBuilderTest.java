@@ -1,27 +1,13 @@
 package laboratory.test.apache.commons;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Lang3Test {
+public class ToStringBuilderTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(Lang3Test.class);
-
-	@Test
-	public void testDefault() {
-		Assert.assertEquals("", StringUtils.defaultString("", "0"));
-		Assert.assertEquals("0", StringUtils.defaultIfBlank("", "0"));
-	}
-
-	@Test
-	public void testPadding() {
-		Assert.assertEquals("001", StringUtils.leftPad("1", 3, "0"));
-		Assert.assertEquals("10000", StringUtils.rightPad("1", 5, "0"));
-	}
+	private static final Logger log = LoggerFactory.getLogger(ToStringBuilderTest.class);
 
 	@Test
 	public void testToStringBuilder() {
