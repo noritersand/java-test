@@ -13,9 +13,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ClasspathTest {
+public class ClassPathTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ClasspathTest.class);
+	private static final Logger log = LoggerFactory.getLogger(ClassPathTest.class);
 	
 	@Test
 	public void testGetClasspaths() {
@@ -25,7 +25,7 @@ public class ClasspathTest {
 	
 	@Test
 	public void testAccessFileAtClasspath() throws URISyntaxException, IOException {
-		ClassLoader loader = ClasspathTest.class.getClassLoader();
+		ClassLoader loader = ClassPathTest.class.getClassLoader();
 		URL url = loader.getResource("file/exist-test.txt");
 		File file = Paths.get(url.toURI()).toFile();
 		Assert.assertTrue(file.exists());
