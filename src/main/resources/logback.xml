@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
-<configuration scan="true" scanPeriod="5 seconds">
+<configuration scan="true" scanPeriod="5 seconds"> <!-- 5초마다 설정 변경 감지 -->
 	<property name="LOG_HOME" value="/laboratorylogs" />
 	
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -14,15 +14,18 @@
 			<!-- <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level: %logger{36} - %msg%n</pattern> -->
 		</encoder>
 	</appender>
+	
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_HOME}/webapp.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<!-- 파일이 하루에 한개씩 생성된다 -->
-			<fileNamePattern>${LOG_HOME}/webapp-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<fileNamePattern>${LOG_HOME}/webapp-%d{yyyyMMdd}-%i.log</fileNamePattern>
 			<maxHistory>30</maxHistory> <!-- 30일이 지난 파일은 삭제 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>30KB</maxFileSize> <!-- 파일 크기가 30메가바이트를 넘기면 새 파일로 -->
+			</timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%-5level: %logger - %msg%n</pattern>
+			<pattern>%date{ISO8601} %-5level: %logger#%method: %msg%n</pattern>
 		</encoder>
 	</appender>
 

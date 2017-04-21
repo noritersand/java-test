@@ -82,7 +82,7 @@ public class TestServlet extends HttpServlet {
 
 		log.debug("contextPath: " + contextPath);
 		log.debug("requestURI: " + requestURI);
-
+		
 		requestURI = requestURI.substring(0, requestURI.lastIndexOf("."));
 		StringBuilder builder = new StringBuilder(JSP_PREFIX).append(requestURI).append(JSP_SUFIX);
 		forward(req, resp, builder.toString());
