@@ -30,7 +30,7 @@
 
 	<logger name="ch.qos.logback" level="TRACE" />
 	<logger name="org.springframework" level="TRACE" />
-	<logger name="com.noritersand" level="TRACE" />
+	<logger name="laboratory" level="TRACE" />
 
 	<root level="DEBUG">
 		<appender-ref ref="CONSOLE" />
