@@ -21,7 +21,7 @@
 			<fileNamePattern>${LOG_HOME}/webapp-%d{yyyyMMdd}-%i.log</fileNamePattern>
 			<maxHistory>30</maxHistory> <!-- 30일이 지난 파일은 삭제 -->
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-				<maxFileSize>30KB</maxFileSize> <!-- 파일 크기가 30메가바이트를 넘기면 새 파일로 -->
+				<maxFileSize>30MB</maxFileSize> <!-- 파일 크기가 30메가바이트를 넘기면 새 파일로 -->
 			</timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 		<encoder>
