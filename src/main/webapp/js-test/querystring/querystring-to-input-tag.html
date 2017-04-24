@@ -11,9 +11,9 @@
  * @param $appendTargetElement 명시하면 이 요소에 append, 생략하면 body에 append
  */
 function querystringToFormtag(querystring, $formElement, $appendTargetElement) {
-	var elements = querystring.split('&');
-	for (var i in elements) {
-		var ele = elements[i];
+	var parameter = querystring.split('&');
+	for (var i in parameter) {
+		var ele = parameter[i];
 		var nameAndValue = ele.split('=');
 		if (nameAndValue[0]) { // 이름이 있으면
 			var $input = $('<input>').attr('name', nameAndValue[0]).attr('type', 'text');
