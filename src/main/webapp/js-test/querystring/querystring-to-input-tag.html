@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>querystring-to-input-tag.html</title>
+<script src="/resources/js/jquery-1.12.4.js"></script>
+<script>
+/**
+ * @param querystring 쿼리스트링. 'name=value&name2=value2'의 형태여야 한다.
+ * @param $formElement form 요소의 jquery 객체
+ * @param $appendTargetElement 명시하면 이 요소에 append, 생략하면 body에 append
+ */
+function querystringToFormtag(querystring, $formElement, $appendTargetElement) {
+	var elements = querystring.split('&');
+	for (var i in elements) {
+		var ele = elements[i];
+		var nameAndValue = ele.split('=');
+		if (nameAndValue[0]) { // 이름이 있으면
+			var $input = $('<input>').attr('name', nameAndValue[0]).attr('type', 'text');
+			if (nameAndValue[1]) { // 값도 있으면
+				$input.attr('value', nameAndValue[1]);
+			}
+			$input.appendTo($formElement); // 생성한 input 태그를 form 태그에 붙인다.
+		}
+	}
+	if ($appendTargetElement) {
+		$formElement.appendTo($appendTargetElement);
+	} else {
+		$formElement.appendTo('body');
+	}
+}
+
+$(function() {
+	var querystring = 'prodNo=COM2420825&cmpyCatNo=A01A04&proditNo=IT306&ordQty=1&empty=&empty2=&params=123&params=456';
+	console.debug(querystring);
+	var $form = $('<form>').attr('method', 'post').attr('action', 'some-url');
+	querystringToFormtag(querystring, $form, $('#appendHere'));
+	console.debug($form.serialize());
+	console.debug('querystring == $form.serialize(): ' + (querystring == $form.serialize()));
+});
+</script>
+</head>
+<body>
+<h2>querystring-to-input-tag.html</h2>
+<div id="appendHere">
+</div>
+</body>
+</html>
