@@ -10,6 +10,7 @@ import org.joda.time.Interval;
 import org.joda.time.Period;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.PeriodFormat;
 import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
 import org.junit.Assert;
@@ -43,8 +44,32 @@ public class CalculateElapsedTimeTest {
 		Assert.assertTrue(86400 < elapsedDays); // 이틀 전이라 86400초(하루) 보다 크다.
 	}
 	
+	/**
+	 * Interval로 계산하는 방법
+	 * 
+	 * @author fixalot
+	 */
 	@Test
-	public void testCalculateByJodaTime() {
+	public void testCalculateByJodaTime1() {
+		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+		DateTime start = formatter.parseDateTime("2017-01-01");
+		DateTime end = formatter.parseDateTime("2017-01-03");
+	
+		Interval interval = new Interval(start.toDate().getTime(), end.toDate().getTime());
+		org.joda.time.Period period = interval.toPeriod();
+
+		log.debug(String.format("%d years, %d months, %d days, %d hours, %d minutes, %d seconds%n", 
+				period.getYears(), period.getMonths(), period.getDays(), 
+				period.getHours(), period.getMinutes(), period.getSeconds()));
+	}
+	
+	/**
+	 * Interval을 스킵하고 Period를 직접 사용하는 방법
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void testCalculateByJodaTime2() {
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2006, 1, 1, 0, 0, 0, 0);
 
@@ -65,18 +90,20 @@ public class CalculateElapsedTimeTest {
 		log.debug("testCalculateByJodaTime: " + period.toString(formatter));
 	}
 	
+	/**
+	 * 가장 간단한 방법이지만 문자열로만 사용할 수 있는 방법
+	 * 
+	 * @author fixalot
+	 */
 	@Test
-	public void testCalculateByJodaTime2() {
+	public void testCalculateByJodaTime3() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-01-03");
-	
-		Interval interval = new Interval(start.toDate().getTime(), end.toDate().getTime());
-		org.joda.time.Period period = interval.toPeriod();
-
-		log.debug(String.format("%d years, %d months, %d days, %d hours, %d minutes, %d seconds%n", 
-				period.getYears(), period.getMonths(), period.getDays(), 
-				period.getHours(), period.getMinutes(), period.getSeconds()));
+		
+		Period period = new Period(start, end);
+		
+		log.debug(PeriodFormat.getDefault().print(period));
 	}
 	
 	@Test
