@@ -9,6 +9,13 @@ public class StringTest {
 	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
 
 	@Test
+	public void testConcat() {
+		String a = "a";
+		Assert.assertEquals("ab", a.concat("b"));
+		Assert.assertEquals("a", a);
+	}
+	
+	@Test
 	public void testAutoNewInstance() {
 		String a = "a";
 		String b = "a";
