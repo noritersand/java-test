@@ -3,63 +3,129 @@
 <head>
 <title>쿠키 테스트</title>
 <meta charset="UTF-8">
+<style type="text/css">
+div {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+</style>
 <script>
 var cookieUtil = {
 	getItem : function(sKey) {
 		if (!sKey) {
 			return null;
 		}
-		return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*"
-				+ encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1"))
+		return decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*'
+				+ encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1'))
 				|| null;
 	},
 	setItem : function(sKey, sValue, vEnd, sPath, sDomain, bSecure) {
 		if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
 			return false;
 		}
-		var sExpires = "";
+		var sExpires = '';
 		if (vEnd) {
 			switch (vEnd.constructor) {
 			case Number:
-				sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+				sExpires = vEnd === Infinity ? '; expires=Fri, 31 Dec 9999 23:59:59 GMT' : '; max-age=' + vEnd;
 				break;
 			case String:
-				sExpires = "; expires=" + vEnd;
+				sExpires = '; expires=' + vEnd;
 				break;
 			case Date:
-				sExpires = "; expires=" + vEnd.toUTCString();
+				sExpires = '; expires=' + vEnd.toUTCString();
 				break;
 			}
 		}
-		document.cookie = encodeURIComponent(sKey) + "=" + sValue /* encodeURIComponent(sValue) */ + sExpires
-				+ (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+		document.cookie = encodeURIComponent(sKey) + '=' + sValue /* encodeURIComponent(sValue) */ + sExpires
+				+ (sDomain ? '; domain=' + sDomain : '') + (sPath ? '; path=' + sPath : '') + (bSecure ? '; secure' : '');
 		return true;
 	},
 	removeItem : function(sKey, sPath, sDomain) {
 		if (!this.hasItem(sKey)) {
 			return false;
 		}
-		document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT"
-				+ (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "");
+		document.cookie = encodeURIComponent(sKey) + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+				+ (sDomain ? '; domain=' + sDomain : '') + (sPath ? '; path=' + sPath : '');
 		return true;
 	},
 	hasItem : function(sKey) {
 		if (!sKey) {
 			return false;
 		}
-		return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+		return (new RegExp('(?:^|;\\s*)' + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=')).test(document.cookie);
 	},
 	keys : function() {
-		var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+		var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, '').split(/\s*(?:\=[^;]*)?;\s*/);
 		for (var nLen = aKeys.length, nIdx = 0; nIdx < nLen; nIdx++) {
 			aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]);
 		}
 		return aKeys;
 	}
 };
+
+function createCookie() {
+	var nameInput = document.querySelector('#cookieName').value;
+	var valueInput = document.querySelector('#cookieValue').value;
+	cookieUtil.setItem(nameInput, valueInput);
+	drawCookieList();
+}
+
+function removeAllCookie() {
+	var keys = cookieUtil.keys();
+	for (var i in keys) {
+		var ele = keys[i];
+		cookieUtil.removeItem(ele);
+		cookieUtil.removeItem(ele, '/');
+	}
+	drawCookieList();
+	var nameInput = document.querySelector('#cookieName');
+	nameInput.focus();
+}
+
+function drawCookieList() {
+	var keys = cookieUtil.keys();
+	var cookieListUl = document.querySelector('#cookieList');
+	cookieListUl.innerHTML = '';
+	for (var i in keys) {
+		var ele = keys[i];
+		if (!ele) {
+			continue;
+		}
+		var li = document.createElement('li')
+		li.innerText = ele + ': ' + cookieUtil.getItem(ele);
+		cookieListUl.append(li);
+	}
+}
+
+window.onload = function() {
+	drawCookieList();
+	var nameInput = document.querySelector('#cookieName');
+	var valueInput = document.querySelector('#cookieValue');
+	valueInput.onkeyup = function(event) {
+		var keyCode = event.keyCode ? event.keyCode : event.which;
+		if (keyCode == 13) {
+			createCookie();
+			nameInput.value = '';
+			valueInput.value = '';
+			nameInput.focus();
+		}
+	}
+}
 </script>
 </head>
 <body>
 <h2>쿠키 테스트</h2>
+<div>
+쿠키이름: <input type="text" id="cookieName" autofocus> 쿠키값: <input type="text" id="cookieValue"> <button type="button" onclick="createCookie()">쿠키 생성</button>
+</div>
+<div>
+<button type="button" onclick="removeAllCookie()">쿠키 모두 삭제</button>
+</div>
+<div>
+<button type="button" onclick="drawCookieList()">쿠키 목록 그리기</button>
+<h4>쿠키 목록:</h4>
+<ul id="cookieList"></ul>
+</div>
 </body>
 </html>

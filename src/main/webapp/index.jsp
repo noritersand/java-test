@@ -17,7 +17,7 @@
 		</ul>
 	</li>
 	<li>
-		<h4>HTML & JavaScript</h4>
+		<h4>HTML &amp; pure JavaScript</h4>
 		<ul>
 			<li><a href="/temp/test.html">temp</a></li>
 			<li><a href="/html-test/opener/test.html">opener test</a></li>
