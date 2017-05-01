@@ -11,7 +11,7 @@
 	<properties>
 		<encoding>UTF-8</encoding>
 		<java-version>1.8</java-version>
-		<org.springframework-version>4.3.4.RELEASE</org.springframework-version>
+		<org.springframework-version>RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.0</org.aspectj-version>
 		<logback-version>1.2.3</logback-version>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
@@ -107,11 +107,11 @@
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.retry</groupId>
-			<artifactId>spring-retry</artifactId>
-			<version>1.1.2.RELEASE</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.retry</groupId> -->
+<!-- 			<artifactId>spring-retry</artifactId> -->
+<!-- 			<version>1.1.2.RELEASE</version> -->
+<!-- 		</dependency> -->
 
 		<!-- logger -->
 		<dependency>
@@ -139,21 +139,21 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>1.7.5</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.slf4j</groupId> -->
-		<!-- <artifactId>slf4j-api</artifactId> -->
-		<!-- <version>1.7.5</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.slf4j</groupId> -->
-		<!-- <artifactId>log4j-over-slf4j</artifactId> -->
-		<!-- <version>1.7.5</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.slf4j</groupId> -->
-		<!-- <artifactId>slf4j-jcl</artifactId> -->
-		<!-- <version>1.7.5</version> -->
-		<!-- </dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-api</artifactId> -->
+<!-- 			<version>1.7.5</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>log4j-over-slf4j</artifactId> -->
+<!-- 			<version>1.7.5</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-jcl</artifactId> -->
+<!-- 			<version>1.7.5</version> -->
+<!-- 		</dependency> -->
 
 		<!-- apache -->
 		<dependency>
@@ -170,7 +170,6 @@
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 			<version>3.2.2</version>
-<!-- 			<version>RELEASE</version> -->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -188,7 +187,6 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>RELEASE</version>
-			<!-- <version>21.0</version> -->
 		</dependency>
 
 		<!-- ETC. -->
@@ -196,7 +194,6 @@
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>RELEASE</version>
-			<!-- <version>2.3</version> -->
 		</dependency>
 	</dependencies>
 </project>
