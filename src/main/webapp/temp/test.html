@@ -1,65 +1,57 @@
 <!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-      <style>
-         ul {
-             list-style:none;
-         }
-         li {
-             margin:10px;
-         }
-         li label {
-             width:120px;
-            float:left;
-            text-align:right;
-            padding-right:8px;
-         }
-         input[type="submit"] {
-             text-align:center;
-             width:100%;
-             height:30px;
-             margin-top:15px;
-         }
-         </style>
+<meta charset="UTF-8">
+<script>
+var now = new Date();
+console.log(now.getTime());
 
- <link href="StyleSheet1.css" type="text/css" rel="stylesheet" />
+if (location.path == '1') {
+	
+}
+if (location.path == '2') {
+	
+}
+if (location.path == '3') {
+	
+}
+if (location.path == '4') {
+	
+}
+if (location.path == '5') {
+	
+}
+if (location.path == '6') {
+	
+}
+if (location.path == '7') {
+	
+}
+if (location.path == '8') {
+	
+}
+if (location.path == '9') {
+	
+}
+if (location.path == '10') {
+	
+}
+if (location.path == '11') {
+	
+}
+if (location.path == '12') {
+	
+}
+if (location.path == '13') {
+	
+}
+if (location.path == '14') {
+	
+}
+
+console.log(new Date().getTime() - now);
+</script>
 </head>
 <body>
-<form name="signupform" action="singUp_ok.jsp" method="post">
-            <fieldset>
-                <legend>로그인 정보</legend>
-                <ul>
-                    <li>
-                    <label for="user-id">아이디 </label>
-                         <input type="text" name="user-id">
-                    </li>
-                    <li>
-                        <label for="pwd1">비밀번호 </label>
-                        <input type="password" name="pwd1">
-                    </li>
-                    <li>
-                        <label for="pwd2">비밀번호 확인 </label>
-                        <input type="password" name="pwd2">             
-                    </li>
-                </ul>
-                    <input type="button" value="가입하기" onclick="signUpCheck()">
-            </fieldset>
-
-            </form>
-
-
 </body>
 </html>
-<script>
-function signUpCheck() {
-    var form = document.signupform;
-    if(!form['user-id'].value) {
-        alert("아이디를 입력해주세요");
-        form['user-id'].focus();
-        return;
-    }
-    alert('success');
-}
-</script>
