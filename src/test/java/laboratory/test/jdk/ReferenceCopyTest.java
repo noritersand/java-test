@@ -4,6 +4,25 @@ import org.junit.Test;
 
 public class ReferenceCopyTest {
 	@Test
+	public void testAvoidreassigningparameters() {
+		Vo vo = new Vo();
+		Assert.assertEquals(0, vo.getNum());
+		copyParam(vo);
+		Assert.assertNotEquals(0, vo.getNum());
+	}
+	
+	/**
+	 * 객체 참조 변수를 복사해봐야 아무 의미없는데 왜 PMD에선 중요도2씩이나 줘서 이렇게 하라는지 모르겠네.
+	 * 
+	 * @param vo
+	 * @author fixalot
+	 */
+	private void copyParam(Vo vo) {
+		Vo vo2 = vo;
+		vo2.setNum(123);
+	}
+	
+	@Test
 	public void test1() {
 		String str = "a";
 		doSomething(str);
