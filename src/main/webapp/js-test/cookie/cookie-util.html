@@ -65,10 +65,13 @@ var cookieUtil = {
 };
 
 function createCookie() {
-	var nameInput = document.querySelector('#cookieName').value;
-	var valueInput = document.querySelector('#cookieValue').value;
-	cookieUtil.setItem(nameInput, valueInput);
+	var nameInput = document.querySelector('#cookieName');
+	var valueInput = document.querySelector('#cookieValue');
+	cookieUtil.setItem(nameInput.value, valueInput.value);
 	drawCookieList();
+	nameInput.value = '';
+	valueInput.value = '';
+	nameInput.focus();
 }
 
 function removeAllCookie() {
@@ -102,13 +105,16 @@ window.onload = function() {
 	drawCookieList();
 	var nameInput = document.querySelector('#cookieName');
 	var valueInput = document.querySelector('#cookieValue');
+	nameInput.onkeyup = function(event) {
+		var keyCode = event.keyCode ? event.keyCode : event.which;
+		if (keyCode == 13) {
+			valueInput.focus();
+		}
+	}
 	valueInput.onkeyup = function(event) {
 		var keyCode = event.keyCode ? event.keyCode : event.which;
 		if (keyCode == 13) {
 			createCookie();
-			nameInput.value = '';
-			valueInput.value = '';
-			nameInput.focus();
 		}
 	}
 }

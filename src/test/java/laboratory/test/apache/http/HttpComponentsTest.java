@@ -22,7 +22,7 @@ public class HttpComponentsTest {
 		log.debug(result);
 	}
 
-	public String sendSimpleRequest(String uri) throws Exception {
+	private String sendSimpleRequest(String uri) throws Exception {
 		HttpGet request = new HttpGet(uri);
 		try (CloseableHttpClient httpclient = HttpClients.createDefault();
 				CloseableHttpResponse response = httpclient.execute(request);) {

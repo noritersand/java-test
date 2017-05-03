@@ -6,7 +6,7 @@
 <script>
 	var newWindow;	
 	function openNewWindow(){
-		newWindow = window.open("test4.html", "newWindow");		
+		newWindow = window.open("opener-test4.html", "newWindow");		
 	}
 	function sendMeData(data) {
 		var txt = "<font color='red'>자식창에서 받아온 값 : </font>";
@@ -18,7 +18,5 @@
 <body>
 <input type="button" value="자식창 열기" onclick="openNewWindow()"><br>
 <span id="process"></span><span id="result"></span>
-<br>
-<a href="/html-test/opener/test.html">link to test.html</a>
 </body>
 </html>
