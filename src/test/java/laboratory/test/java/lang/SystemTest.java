@@ -15,6 +15,15 @@ public class SystemTest {
 	private static final Logger log = LoggerFactory.getLogger(SystemTest.class);
 	
 	@Test
+	public void testCurrentTime() {
+		String millisecond = String.valueOf(System.currentTimeMillis());
+		String nanosecond = String.valueOf(System.nanoTime());
+		Assert.assertEquals(13, millisecond.length());
+		Assert.assertEquals(15, nanosecond.length());
+		// 둘이 합쳐 28
+	}
+	
+	@Test
 	public void testGetSystemEnvironmentVariables() {
 		Map<String, String> env  = System.getenv();
 		Set<String> keySet = env.keySet();
