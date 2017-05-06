@@ -39,8 +39,8 @@ public class JodaTimeTest {
 	
 	@Test
 	public void testFromFormatString() {
-		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-		DateTime dt = formatter.parseDateTime("2016-02-05");
+		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
+		DateTime dt = formatter.parseDateTime("2016-02-05 00:00:00.000");
 		Assert.assertEquals("2016-02-05T00:00:00.000+09:00", dt.toString());
 
 		try {
