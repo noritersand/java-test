@@ -15,5 +15,6 @@ public class SystemUtilsTest {
 		log.debug(String.valueOf(SystemUtils.IS_OS_UNIX));
 		log.debug(String.valueOf(SystemUtils.IS_OS_LINUX));
 		log.debug(String.valueOf(SystemUtils.IS_OS_MAC));
+		log.debug(String.valueOf(SystemUtils.FILE_ENCODING));
 	}
 }
