@@ -21,5 +21,7 @@ public class LogbackTest {
 	public void testLoggingByFormat() {
 		log.debug("{} {} {} {}", "이건가", "저건가", "나는 누구", "여긴 어디");
 		log.debug("{} {}", new Object[] { "hello there!", "if you ask, im waldo" });
+//		log.debug("im {}", null); // 이렇게는 안됨
+		log.debug("im {}", "null");
 	}
 }

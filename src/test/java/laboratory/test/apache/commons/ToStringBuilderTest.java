@@ -16,6 +16,11 @@ public class ToStringBuilderTest {
 		pojo.setStringField("야");
 		pojo.setIntField(65536);
 		log.debug(ToStringBuilder.reflectionToString(pojo));
+		try {
+			log.debug(ToStringBuilder.reflectionToString(null)); // 에러남
+		} catch (Exception e) {
+			// do nothing
+		}
 	}
 
 	@SuppressWarnings("unused")
