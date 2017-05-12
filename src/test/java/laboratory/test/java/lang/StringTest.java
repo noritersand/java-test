@@ -13,6 +13,10 @@ public class StringTest {
 		String a = "a";
 		Assert.assertEquals("ab", a.concat("b"));
 		Assert.assertEquals("a", a);
+		try {
+			Assert.assertEquals("anull", a.concat(null)); // NPE
+		} catch (Exception e) {}
+		Assert.assertEquals("anull", a + null);
 	}
 	
 	@Test
