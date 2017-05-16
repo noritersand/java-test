@@ -15,6 +15,29 @@ public class ListTest {
 	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(ListTest.class);
 
+	private class TestModel implements Cloneable {}
+	
+	@Test
+	public void testClone() {
+		ArrayList<TestModel> origins = new ArrayList<>();
+		origins.add(new TestModel());
+		
+//		ArrayList<TestModel> newModels = new ArrayList<>();
+		
+		// TODO
+		
+//		Assert.assertEquals(origins.get(0), newModels.get(0));
+//		Assert.assertTrue(origins.get(0) == newModels.get(0));
+	}
+	
+	@Test
+	public void testSize() {
+		ArrayList<String> stringList = new ArrayList<>();
+		Assert.assertEquals(0, stringList.size());
+		stringList = new ArrayList<>(10); // 리스트의 capacity를 지정한다. size가 아니다. 
+		Assert.assertEquals(0, stringList.size()); // capacity 지정과 size는 관련 없음.
+	}
+	
 	@Test
 	public void testRemoveElement() {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
