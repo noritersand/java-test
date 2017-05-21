@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.GregorianCalendar;
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.Interval;
 import org.joda.time.Period;
 import org.joda.time.format.DateTimeFormat;
@@ -22,7 +23,7 @@ public class CalculateElapsedTimeTest {
 	private static final Logger log = LoggerFactory.getLogger(CalculateElapsedTimeTest.class);
 
 	@Test
-	public void testCalculateByMilliseconds() {
+	public void testByMilliseconds() {
 		long start = new GregorianCalendar(2016, 2, 5).getTimeInMillis();
 		long end = new GregorianCalendar(2017, 2, 5).getTimeInMillis();
 		long elapsedDays = (end - start) / 1000 / 60 / 60 / 24;
@@ -45,12 +46,30 @@ public class CalculateElapsedTimeTest {
 	}
 	
 	/**
+	 * 일수만 계산하기
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void testByJodaTimeJustDays() {
+		DateTime start = new DateTime("2017-01-01");
+		DateTime end = new DateTime("2017-05-03");
+		Assert.assertEquals(122, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
+		end = new DateTime("2017-01-01");
+		Assert.assertEquals(0, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
+		end = new DateTime("2017-01-02");
+		Assert.assertEquals(1, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
+		end = new DateTime("2017-01-03");
+		Assert.assertEquals(2, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
+	}
+	
+	/**
 	 * Interval로 계산하는 방법
 	 * 
 	 * @author fixalot
 	 */
 	@Test
-	public void testCalculateByJodaTime1() {
+	public void testByJodaTimeWithInterval() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-01-03");
@@ -63,13 +82,24 @@ public class CalculateElapsedTimeTest {
 				period.getHours(), period.getMinutes(), period.getSeconds()));
 	}
 	
+	@Test
+	public void testByJodaTimeWithInterval2() {
+		DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd");
+		DateTime now = new DateTime();
+		DateTime dt1 = now.withYear(2020).withMonthOfYear(2).withDayOfMonth(29);
+		DateTime dt2 = now.withYear(2020).withMonthOfYear(3).withDayOfMonth(01);
+		Assert.assertEquals("2020-02-29", dt1.toString(format));
+		Interval interval = new Interval(dt1, dt2);
+		log.debug(interval.getStart().toString(format));
+	}
+	
 	/**
 	 * Interval을 스킵하고 Period를 직접 사용하는 방법
 	 * 
 	 * @author fixalot
 	 */
 	@Test
-	public void testCalculateByJodaTime2() {
+	public void testByJodaTimeWithPeriodFormatter() {
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2006, 1, 1, 0, 0, 0, 0);
 
@@ -87,7 +117,7 @@ public class CalculateElapsedTimeTest {
 			    .printZeroNever()
 			    .toFormatter();
 		
-		log.debug("testCalculateByJodaTime: " + period.toString(formatter));
+		log.debug(period.toString(formatter));
 	}
 	
 	/**
@@ -96,7 +126,7 @@ public class CalculateElapsedTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void testCalculateByJodaTime3() {
+	public void testByJodaTimeWithPeriod() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-01-03");
@@ -107,7 +137,7 @@ public class CalculateElapsedTimeTest {
 	}
 	
 	@Test
-	public void testCalculateByJavaTime() {
+	public void testByJavaTime() {
 		LocalDate targetDay = LocalDate.of(2017, Month.DECEMBER, 31);
 //		LocalDate today = LocalDate.now();
 		LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
@@ -119,7 +149,7 @@ public class CalculateElapsedTimeTest {
 	}
 	
 	@Test
-	public void testCalculateByJavaTime2() {
+	public void testByJavaTime2() {
 //		LocalDate today = LocalDate.now();
 		LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
 		LocalDate birthday = LocalDate.of(1984, Month.JULY, 9);
@@ -128,16 +158,5 @@ public class CalculateElapsedTimeTest {
 		long p2 = ChronoUnit.DAYS.between(birthday, today);
 		Assert.assertEquals("You are 32 years, 6 months, and 15 days old. (11887 days total)", 
 				"You are " + p.getYears() + " years, " + p.getMonths() + " months, and " + p.getDays() + " days old. (" + p2 + " days total)");
-	}
-	
-//	@Test
-	public void test3() {
-		DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd");
-		DateTime now = new DateTime();
-		DateTime dt1 = now.withYear(2020).withMonthOfYear(2).withDayOfMonth(29);
-		DateTime dt2 = now.withYear(2020).withMonthOfYear(3).withDayOfMonth(01);
-		Assert.assertEquals("2020-02-29", dt1.toString(format));
-		Interval interval = new Interval(dt1, dt2);
-		log.debug(interval.getStart().toString(format));
 	}
 }
