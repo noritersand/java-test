@@ -56,13 +56,13 @@ public class CalculateElapsedTimeTest {
 		DateTime end = new DateTime("2017-05-03");
 		Assert.assertEquals(122, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
 		end = new DateTime("2017-01-01");
-		Assert.assertEquals(0, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
+		Assert.assertEquals(0, Days.daysBetween(start, end).getDays());
 		end = new DateTime("2017-01-02");
-		Assert.assertEquals(1, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
+		Assert.assertEquals(1, Days.daysBetween(start, end).getDays());
 		end = new DateTime("2017-01-03");
-		Assert.assertEquals(2, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
+		Assert.assertEquals(2, Days.daysBetween(start, end).getDays());
 		end = new DateTime("2017-01-05"); // 3박4일
-		Assert.assertEquals(4, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
+		Assert.assertEquals(4, Days.daysBetween(start, end).getDays());
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public class CalculateElapsedTimeTest {
 		DateTime dt2 = now.withYear(2020).withMonthOfYear(3).withDayOfMonth(01);
 		Assert.assertEquals("2020-02-29", dt1.toString(format));
 		Interval interval = new Interval(dt1, dt2);
-		log.debug(interval.getStart().toString(format));
+		Assert.assertEquals("2020-02-29", interval.getStart().toString(format));
 	}
 	
 	/**
@@ -132,10 +132,8 @@ public class CalculateElapsedTimeTest {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-01-03");
-		
 		Period period = new Period(start, end);
-		
-		log.debug(PeriodFormat.getDefault().print(period));
+		Assert.assertEquals("2 days", PeriodFormat.getDefault().print(period));
 	}
 	
 	@Test
