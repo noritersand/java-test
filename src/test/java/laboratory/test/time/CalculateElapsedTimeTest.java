@@ -61,6 +61,8 @@ public class CalculateElapsedTimeTest {
 		Assert.assertEquals(1, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
 		end = new DateTime("2017-01-03");
 		Assert.assertEquals(2, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
+		end = new DateTime("2017-01-05"); // 3박4일
+		Assert.assertEquals(4, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
 	}
 	
 	/**
