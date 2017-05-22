@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
@@ -86,26 +87,12 @@ public class JavaTimeTest {
 	}
 	
 	@Test
-	public void testCalculatePeriodTime() {
+	public void testCalculateDays() {
 		LocalDate targetDay = LocalDate.of(2017, Month.DECEMBER, 31);
-//		LocalDate today = LocalDate.now();
 		LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
-		
-		java.time.Period p = java.time.Period.between(today, targetDay);
-		long p2 = ChronoUnit.DAYS.between(today, targetDay);
+		Period period = Period.between(today, targetDay);
+		long period2 = ChronoUnit.DAYS.between(today, targetDay);
 		Assert.assertEquals("0 years, 11 months, 7 days later. (341 days total)", 
-				(p.getYears() + " years, " + p.getMonths() + " months, " + p.getDays() + " days later. (" + p2 + " days total)"));
-	}
-	
-	@Test
-	public void testCalculatePeriodTime2() {
-//		LocalDate today = LocalDate.now();
-		LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
-		LocalDate birthday = LocalDate.of(1984, Month.JULY, 9);
-		
-		java.time.Period p = java.time.Period.between(birthday, today);
-		long p2 = ChronoUnit.DAYS.between(birthday, today);
-		Assert.assertEquals("You are 32 years, 6 months, and 15 days old. (11887 days total)", 
-				"You are " + p.getYears() + " years, " + p.getMonths() + " months, and " + p.getDays() + " days old. (" + p2 + " days total)");
+				(period.getYears() + " years, " + period.getMonths() + " months, " + period.getDays() + " days later. (" + period2 + " days total)"));
 	}
 }
