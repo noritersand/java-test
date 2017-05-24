@@ -40,8 +40,11 @@ public class StopWatchTest {
 		Assert.assertTrue(watch.isStopped());
 	}
 
-	private void doSome() {
-		for (int i = 0; i < 100000000; i++) {
+	private long doSome() {
+		long sum = 0;
+		for (int i = 0; i < Integer.MAX_VALUE; i++) {
+			sum += i;
 		}
+		return sum;
 	}
 }
