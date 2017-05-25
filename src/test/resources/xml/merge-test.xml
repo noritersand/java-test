@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\settlement\BizStlController.java">
+    <violation begincolumn="24" beginline="46" class="BizStlController" endcolumn="69" endline="46" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.settlement" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\settlement\CmpyBillIssueController.java">
+    <violation begincolumn="24" beginline="59" class="CmpyBillIssueController" endcolumn="69" endline="59" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.settlement" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\settlement\CmpyStlController.java">
+    <violation begincolumn="24" beginline="63" class="CmpyStlController" endcolumn="69" endline="63" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.settlement" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\settlement\SlipIssueController.java">
+    <violation begincolumn="24" beginline="85" class="SlipIssueController" endcolumn="69" endline="85" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.settlement" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\welfarecard\CmpyBizpManagementController.java">
+    <violation begincolumn="24" beginline="39" class="CmpyBizpManagementController" endcolumn="69" endline="39" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.welfarecard" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\welfarecard\CmpyBntpManagementController.java">
+    <violation begincolumn="24" beginline="39" class="CmpyBntpManagementController" endcolumn="69" endline="39" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.welfarecard" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\welfarecard\CmpyMcnsManagementController.java">
+    <violation begincolumn="24" beginline="39" class="CmpyMcnsManagementController" endcolumn="69" endline="39" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.welfarecard" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\welfarecard\WelfarecardCompanyPolicyManagementController.java">
+    <violation begincolumn="24" beginline="40" class="WelfarecardCompanyPolicyManagementController" endcolumn="69" endline="40" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.welfarecard" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\welfarecard\WelfarecardCompanyPolicyRegistController.java">
+    <violation begincolumn="24" beginline="42" class="WelfarecardCompanyPolicyRegistController" endcolumn="69" endline="42" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.welfarecard" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\service\event\SurveyService.java">
+    <violation begincolumn="24" beginline="40" class="SurveyService" endcolumn="69" endline="40" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.service.event" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\service\settlement\BizStlService.java">
+    <violation begincolumn="24" beginline="41" class="BizStlService" endcolumn="69" endline="41" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.service.settlement" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\service\settlement\CmpyBillIssueService.java">
+    <violation begincolumn="24" beginline="52" class="CmpyBillIssueService" endcolumn="69" endline="52" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.service.settlement" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\service\settlement\CmpyStlService.java">
+    <violation begincolumn="24" beginline="51" class="CmpyStlService" endcolumn="69" endline="51" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.service.settlement" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\service\settlement\SlipIssueService.java">
+    <violation begincolumn="24" beginline="74" class="SlipIssueService" endcolumn="69" endline="74" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.service.settlement" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\batch\src\main\java\com\etbs\batch\service\festival\FestivalService.java">
+    <violation begincolumn="17" beginline="120" class="FestivalService" endcolumn="34" endline="120" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="insertSight" package="com.etbs.batch.service.festival" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.println is used</violation>
+    <violation begincolumn="17" beginline="121" class="FestivalService" endcolumn="34" endline="121" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="insertSight" package="com.etbs.batch.service.festival" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.println is used</violation>
+    <violation begincolumn="17" beginline="170" class="FestivalService" endcolumn="34" endline="170" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="insertFestival" package="com.etbs.batch.service.festival" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.println is used</violation>
+    <violation begincolumn="17" beginline="171" class="FestivalService" endcolumn="34" endline="171" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="insertFestival" package="com.etbs.batch.service.festival" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.println is used</violation>
+    <violation begincolumn="17" beginline="205" class="FestivalService" endcolumn="34" endline="205" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="insertFestival" package="com.etbs.batch.service.festival" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.println is used</violation>
+    <violation begincolumn="17" beginline="206" class="FestivalService" endcolumn="34" endline="206" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="insertFestival" package="com.etbs.batch.service.festival" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.println is used</violation>
+    <violation begincolumn="41" beginline="344" class="FestivalService" endcolumn="58" endline="344" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="insertFetivalTsvrFstlBas" package="com.etbs.batch.service.festival" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.println is used</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\common\src\main\java\com\etbs\common\security\seed\SeedCrypto.java">
+    <violation begincolumn="35" beginline="191" class="SeedCrypto" endcolumn="55" endline="191" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/strings.html#StringInstantiation" method="replaceStr" package="com.etbs.common.security.seed" priority="2" rule="StringInstantiation" ruleset="String and StringBuffer">Avoid instantiating String objects; this is usually unnecessary.</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\common\src\main\java\com\etbs\common\security\seed\SeedFileReader.java">
+    <violation begincolumn="33" beginline="20" class="SeedFileReader" endcolumn="49" endline="20" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="main" package="com.etbs.common.security.seed" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.printf is used</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\frontweb\src\main\java\com\etbs\frontweb\controller\point\PointController.java">
+    <violation begincolumn="17" beginline="26" class="PointController" endcolumn="34" endline="26" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="testInsertPointBas" package="com.etbs.frontweb.controller.point" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.println is used</violation>
+  </file>
+  <file name="C:\project\workspace\etbs\welfare\src\main\java\com\etbs\welfare\service\refund\RefundResponseService.java">
+    <violation begincolumn="17" beginline="62" class="RefundResponseService" endcolumn="34" endline="62" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#SystemPrintln" method="saveRefundResponseData" package="com.etbs.welfare.service.refund" priority="2" rule="SystemPrintln" ruleset="Java Logging">System.out.println is used</violation>
+  </file>
+</pmd>
