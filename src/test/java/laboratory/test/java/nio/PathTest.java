@@ -40,20 +40,17 @@ public class PathTest {
 
 	@Test
 	public void testNewInstnc() throws IOException {
+		Path path = Paths.get("src/test/resources/file/exist-test.txt");
 		Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
 		Path path2 = Paths.get("C:\\project\\workspace");
 		Path path3 = Paths.get("localhost/upload");
 		Path path4 = Paths.get("/localhost/upload");
 		
+		Assert.assertEquals("src\\test\\resources\\file\\exist-test.txt", path.toString());
 		Assert.assertEquals("\\\\C\\project\\workspace", path1.toString());
 		Assert.assertEquals("C:\\project\\workspace", path2.toString());
 		Assert.assertEquals("localhost\\upload", path3.toString());
 		Assert.assertEquals("\\localhost\\upload", path4.toString());
-		
-//		Path path5 = Paths.get("C:/project/workspace/etbs/pmd/ruleset.xml");
-//		File file5 = path5.toFile();
-//		Assert.assertTrue(file5.exists());
-//		log.debug(FileUtils.readFileToString(file5, "UTF-8"));
 	}
 	
 	@Test

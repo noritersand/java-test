@@ -1,4 +1,4 @@
-package laboratory.test.xml;
+package laboratory.test.javax.xml.parsers;
 
 import java.io.File;
 import java.io.IOException;
