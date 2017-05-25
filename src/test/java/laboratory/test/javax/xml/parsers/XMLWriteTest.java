@@ -25,8 +25,8 @@ import org.w3c.dom.Node;
  * @since 2017-05-25
  * @author fixalot
  */
-public class XMLWriterTest {
-	private static final Logger log = LoggerFactory.getLogger(XMLWriterTest.class);
+public class XMLWriteTest {
+	private static final Logger log = LoggerFactory.getLogger(XMLWriteTest.class);
 
 	@Test
 	public void testWrite() throws ParserConfigurationException, TransformerException {
