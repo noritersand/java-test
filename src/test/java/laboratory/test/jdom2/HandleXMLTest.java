@@ -17,7 +17,6 @@ import org.jdom2.input.DOMBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 import org.junit.Assert;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
@@ -26,13 +25,8 @@ public class HandleXMLTest {
 	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(HandleXMLTest.class);
 	
-	@Test
+//	@Test
 	public void testMerge() throws SAXException, IOException, ParserConfigurationException {
-		File target = Paths.get("src\\test\\resources\\xml\\merge-test.xml").toFile();
-		if (target.exists()) {
-			target.delete();
-		}
-		
 		File backweb = Paths.get("C:\\project\\workspace\\etbs\\backweb\\target\\pmd.xml").toFile();
 		File batch = Paths.get("C:\\project\\workspace\\etbs\\batch\\target\\pmd.xml").toFile();
 		File cardrelay = Paths.get("C:\\project\\workspace\\etbs\\cardrelay\\target\\pmd.xml").toFile();
@@ -84,6 +78,12 @@ public class HandleXMLTest {
     		doc.getRootElement().addContent(ele);        		
         }
         XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
+        
+        File target = Paths.get("src\\test\\resources\\xml\\merge-test.xml").toFile();
+		if (target.exists()) {
+			target.delete();
+		}
+        
         xmlOutputter.output(doc, new FileOutputStream(target));
 	}
 }
