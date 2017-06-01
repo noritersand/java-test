@@ -24,7 +24,8 @@
 			<totalSizeCap>20GB</totalSizeCap> <!-- 모든 파일의 전체 크기 제한 -->
 		</rollingPolicy>
 		<encoder>
-			<pattern>%date{ISO8601} %-5level: %logger#%method: %msg%n</pattern>
+			<pattern>%date{ISO8601}: %-5level|%X{req.remoteHost}|%X{req.requestURI}|%X{req.requestMethod}: %logger#%method: %msg%n</pattern>
+			<!-- <pattern>%date{ISO8601} %-5level: %logger#%method: %msg%n</pattern> -->
 		</encoder>
 	</appender>
 

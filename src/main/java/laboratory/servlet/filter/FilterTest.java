@@ -19,20 +19,21 @@ public class FilterTest implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
+		log.debug("initialize " + this.getClass());
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		log.debug("approching " + this.getClass());
 		if (request instanceof HttpServletRequest) {
-			HttpServletRequest req = (HttpServletRequest) request;
-			log.debug(req.getRequestURI());
+//			HttpServletRequest req = (HttpServletRequest) request;
+//			log.debug(req.getRequestURI());
 		}
-		log.debug("approching FilterTest");
 		chain.doFilter(request, response);
 	}
 
 	@Override
 	public void destroy() {
-		
+		log.debug("destroy " + this.getClass());
 	}
 }
