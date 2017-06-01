@@ -166,21 +166,6 @@ public class JodaTimeTest {
 		Assert.assertEquals(new DateTime(2017, 4, 30, 00, 00, 00).toString(), b.toString());
 	}
 	
-	@Test
-	public void testCompare() {
-		DateTime sometime = new DateTime("2017-04-18T01:00:00.000+09:00");
-		DateTime oneMinuteLater = new DateTime("2017-04-18T01:01:00.000+09:00");
-		
-		Assert.assertTrue(sometime.isBefore(oneMinuteLater));
-		Assert.assertTrue(oneMinuteLater.isAfter(sometime));
-		
-		Assert.assertTrue(sometime.getMillis() < oneMinuteLater.getMillis());
-		Assert.assertEquals(1492444800000L, sometime.getMillis());
-		Assert.assertEquals(1492444860000L, oneMinuteLater.getMillis());
-		Assert.assertEquals(60000, oneMinuteLater.getMillis() - sometime.getMillis());
-		Assert.assertEquals(1, (oneMinuteLater.getMillis() - sometime.getMillis()) / 1000 / 60); // 1부운 차이
-	}
-	
 	/**
 	 * 일수만 계산하기
 	 * 
@@ -270,5 +255,42 @@ public class JodaTimeTest {
 		DateTime end = formatter.parseDateTime("2017-01-03");
 		Period period = new Period(start, end);
 		Assert.assertEquals("2 days", PeriodFormat.getDefault().print(period));
+	}
+
+	/**
+	 * 날짜 비교
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void testCompare() {
+		DateTime sometime = new DateTime("2017-04-18T01:00:00.000+09:00");
+		DateTime oneMinuteLater = new DateTime("2017-04-18T01:01:00.000+09:00");
+		
+		Assert.assertTrue(sometime.isBefore(oneMinuteLater));
+		Assert.assertTrue(oneMinuteLater.isAfter(sometime));
+		
+		Assert.assertTrue(sometime.getMillis() < oneMinuteLater.getMillis());
+		Assert.assertEquals(1492444800000L, sometime.getMillis());
+		Assert.assertEquals(1492444860000L, oneMinuteLater.getMillis());
+		Assert.assertEquals(60000, oneMinuteLater.getMillis() - sometime.getMillis());
+		Assert.assertEquals(1, (oneMinuteLater.getMillis() - sometime.getMillis()) / 1000 / 60); // 1부운 차이
+	}
+	
+	/**
+	 * a와 b 사이에 c가 있는지 테스트
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void testIsBetween() {
+		DateTime a = new DateTime("2017-01-01");
+		DateTime b = new DateTime("2017-01-03");
+		
+		DateTime c = new DateTime("2017-01-02");
+		
+		Assert.assertEquals(-1, a.compareTo(c)); // -1: a는 c보다 이전
+		Assert.assertEquals(0, c.compareTo(c)); // 0: c는 c와 같음
+		Assert.assertEquals(1, b.compareTo(c)); // 1: b는 c보다 이후
 	}
 }
