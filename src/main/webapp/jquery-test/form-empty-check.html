@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>querystring-to-input-tag.html</title>
+<script src="/resources/js/jquery-1.12.4.js"></script>
+<script>
+function check() {
+	var empty = true;
+	$('#searchForm input, #searchForm select').each(function(idx, ele){
+	    if ($(this).val()) {
+	        empty = false;
+	    }
+	});
+	if (empty) {
+	    alert('검색 조건을 하나라도 입력하쇼');
+	}
+}
+</script>
+</head>
+<body>
+<h2>ajaxSetup test</h2>
+<form id="searchForm">
+	<input type="text" /><input type="text" /><input type="text" /><input type="text" /><input type="text" />
+	<input type="text" /><input type="text" /><input type="text" /><input type="text" /><input type="text" />
+	<select>
+		<option></option>
+		<option value="1">1</option>
+	</select>
+</form>
+<button type="button" onclick="check()">check</button>
+</body>
+</html>

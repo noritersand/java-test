@@ -31,6 +31,7 @@
 			<li><a href="/jquery-test/append-input-tag-from-querystring.html">querystring-to-input-tag</a></li>
 			<li><a href="/jquery-test/jquery-3-x-x-test.html">jquery-3-x-x-test</a></li>
 			<li><a href="/jquery-test/ajaxSetup.html">ajaxSetup</a></li>
+			<li><a href="/jquery-test/form-empty-check.html">form-empty-check</a></li>
 		</ul>
 	</li>
 </ul>

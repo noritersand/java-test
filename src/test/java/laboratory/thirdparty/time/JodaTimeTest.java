@@ -316,22 +316,22 @@ public class JodaTimeTest {
 	@Test
 	public void testEquality() {
 		// 기본적으론 비슷하지만
-		DateTime c = new DateTime("2017-01-02");
-		DateTime d = new DateTime("2017-01-02");
-		Assert.assertTrue(c.isEqual(d));
-		Assert.assertTrue(c.equals(d));
+		DateTime a = new DateTime("2017-01-02");
+		DateTime b = new DateTime("2017-01-02");
+		Assert.assertTrue(a.isEqual(b));
+		Assert.assertTrue(a.equals(b));
 		
-		c = new DateTime("2017-01-02T01:00:00", DateTimeZone.UTC); // GMT/UTC
-		d = new DateTime("2017-01-02T10:00:00", DateTimeZone.forID("Asia/Seoul")); // GMT/UTC보다 9시간 빠름
+		a = new DateTime("2017-01-02T01:00:00", DateTimeZone.UTC); // GMT/UTC
+		b = new DateTime("2017-01-02T10:00:00", DateTimeZone.forID("Asia/Seoul")); // GMT/UTC보다 9시간 빠름
 		
 		// isEqual은 밀리초(GMT/UTC 기준)가 같은지 비교한다.
-		log.debug(String.valueOf(c.getMillis()));
-		log.debug(String.valueOf(d.getMillis()));
-		Assert.assertTrue(c.isEqual(d)); // 영국의 01시는 한국의 10시와 같다는 판단
+		log.debug(String.valueOf(a.getMillis()));
+		log.debug(String.valueOf(b.getMillis()));
+		Assert.assertTrue(a.isEqual(b)); // 영국의 01시는 한국의 10시와 같다.
 		
-		// equals는 timezone과 chronology을 적용한 시각이 같은지를 비교한다.
-		Assert.assertEquals("2017-01-02T01:00:00.000Z", c.toString());
-		Assert.assertEquals("2017-01-02T10:00:00.000+09:00", d.toString());
-		Assert.assertFalse(c.equals(d)); // 01시와 10시를 단순 비교
+		// equals는 timezone(혹은 chronology)을 적용한 시각이 같은지를 비교한다.
+		Assert.assertEquals("2017-01-02T01:00:00.000Z", a.toString());
+		Assert.assertEquals("2017-01-02T10:00:00.000+09:00", b.toString());
+		Assert.assertFalse(a.equals(b)); // 01시와 10시를 비교
 	}
 }
