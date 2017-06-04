@@ -263,7 +263,7 @@ public class JodaTimeTest {
 	 * 
 	 * @author fixalot
 	 */
-	//@Test
+	@Test
 	public void testCompare() {
 		DateTime sometime = new DateTime("2017-04-18T01:00:00.000+09:00");
 		DateTime oneMinuteLater = new DateTime("2017-04-18T01:01:00.000+09:00");
@@ -276,15 +276,7 @@ public class JodaTimeTest {
 		Assert.assertEquals(1492444860000L, oneMinuteLater.getMillis());
 		Assert.assertEquals(60000, oneMinuteLater.getMillis() - sometime.getMillis());
 		Assert.assertEquals(1, (oneMinuteLater.getMillis() - sometime.getMillis()) / 1000 / 60); // 1부운 차이
-	}
-	
-	/**
-	 * a와 b 사이에 c가 있는지 테스트
-	 * 
-	 * @author fixalot
-	 */
-	//@Test
-	public void testIsBetween() {
+		
 		DateTime a = new DateTime("2017-01-01");
 		DateTime b = new DateTime("2017-01-03");
 		
@@ -294,19 +286,6 @@ public class JodaTimeTest {
 		Assert.assertEquals(0, c.compareTo(c)); // 0: c는 d와 같음
 		Assert.assertEquals(1, b.compareTo(c)); // 1: b는 c보다 이후
 	}
-	
-//	@Test
-//	public void test1() {
-//		DateTimeZone zone = DateTimeZone.forID("Europe/London");
-//		Chronology coptic = CopticChronology.getInstance(zone);
-//
-//		DateTime c = new DateTime("2017-01-02");
-//		
-//		// current time with coptic chronology
-//		DateTime dt = new DateTime(coptic);
-//		log.debug(String.valueOf(dt));
-//		log.debug(String.valueOf(c));
-//	}
 	
 	/**
 	 * 같은 시각인지 비교
