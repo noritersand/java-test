@@ -41,8 +41,11 @@ public class DefaultDispatcher extends HttpServlet {
 	}
 
 	private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8"); // 이거 안하면 post 한글 깨짐
-		// 크롬 56, server.xml에 URIEncoding="UTF-8" 설정되어 있는 상태에서 테스트
+//		req.setCharacterEncoding("UTF-8");
+		/*
+		 * setCharacterEncoding을 호출하기 전에 request에 접근하면(정확히 뭘 건드리는게 문제인지는 모르겠지만) 나중에 인코딩을 적용해도 소용이 없다.
+		 * 따라서 setCharacterEncoding 호출은 filter 레벨에서 하는게 적절함.
+		 */
 		
 		printParameters(req);
 		viewResolver.createView(req, resp);

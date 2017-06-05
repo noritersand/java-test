@@ -8,32 +8,34 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class FilterTest implements Filter {
-//	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(FilterTest.class);
+/**
+ * 기본 문자인코딩 설정 필터. 
+ * 모든 필터/인터셉터보다 가장 먼저 진입되도록 설정해야 함.
+ * 
+ * @since 2017-06-05
+ * @author fixalot
+ */
+public class CharacterEncodingFilter implements Filter {
+	@SuppressWarnings("unused")
+	private static final Logger log = LoggerFactory.getLogger(CharacterEncodingFilter.class);
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		log.debug("initialize " + this.getClass());
+		// do nothing
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		log.debug("approching " + this.getClass());
-		if (request instanceof HttpServletRequest) {
-//			HttpServletRequest req = (HttpServletRequest) request;
-//			log.debug(req.getRequestURI());
-		}
+		request.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);
 	}
 
 	@Override
 	public void destroy() {
-		log.debug("destroy " + this.getClass());
+		// do nothing
 	}
 }
