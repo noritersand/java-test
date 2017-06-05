@@ -59,6 +59,11 @@ public class SystemTest {
 	}
 	
 	@Test
+	public void testGetNull() {
+		Assert.assertNull(System.getProperty("this.is.must.be.null"));
+	}
+	
+	@Test
 	public void testGetOsName() {
 		log.debug(System.getProperty("os.name"));
 	}
