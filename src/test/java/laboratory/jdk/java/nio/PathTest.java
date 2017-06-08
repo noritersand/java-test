@@ -67,7 +67,16 @@ public class PathTest {
 	
 	@Test
 	public void testRoot() {
+		log.debug("relative paths:");
+		log.debug(Paths.get("/").toString()); // just "\"
+		log.debug(Paths.get("").toString()); // ""
 		log.debug(Paths.get("/").toFile().toString()); // just "\"
 		log.debug(Paths.get("").toFile().toString()); // ""
+		
+		log.debug("absolute paths:");
+		log.debug(Paths.get("/").toAbsolutePath().toString()); // just "\"
+		log.debug(Paths.get("").toAbsolutePath().toString()); // ""
+		log.debug(Paths.get("/").toAbsolutePath().toFile().toString()); // just "\"
+		log.debug(Paths.get("").toAbsolutePath().toFile().toString()); // ""
 	}
 }
