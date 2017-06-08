@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class StringTest {
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
 
 	@Test
@@ -100,6 +100,11 @@ public class StringTest {
 	public void testSplit() {
 		String str = "abcdefghijklmn";
 		Assert.assertEquals(str, str.split("\\|")[0]);
+		try {
+			log.debug(str.split("\\|")[1]);
+		} catch (IndexOutOfBoundsException e) {
+			log.debug("에러 났지롱");
+		}
 	}
 
 	@Test
