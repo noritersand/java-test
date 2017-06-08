@@ -22,19 +22,14 @@ import org.slf4j.LoggerFactory;
 public class JodaTimeTest {
 	private static final Logger log = LoggerFactory.getLogger(JodaTimeTest.class);
 
-//	//@Test
-//	public void testDateValidate() {
-//		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-//	}
-
-	//@Test
+	@Test
 	public void testNow() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 		String dt = DateTime.now().toString(formatter);
 		log.debug("testNow: " + dt);
 	}
 
-	//@Test
+	@Test
 	public void testFromString() {
 		DateTime dt = new DateTime("2017-04-18T16:41:34.219+09:00");
 		log.debug(dt.toString());
@@ -42,7 +37,7 @@ public class JodaTimeTest {
 		Assert.assertEquals(dt, dt2);
 	}
 	
-	//@Test
+	@Test
 	public void testFromFormatString() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
 		DateTime dt = formatter.parseDateTime("2016-02-05 00:00:00.000");
@@ -58,7 +53,7 @@ public class JodaTimeTest {
 		Assert.assertEquals("2015-01-01T00:00:00.000+09:00", String.valueOf(dt2));
 	}
 	
-	//@Test
+	@Test
 	public void testToFormatString() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
 		DateTime dt = new DateTime();
@@ -69,14 +64,14 @@ public class JodaTimeTest {
 		Assert.assertEquals("2020-02-29 23:59:59:010", newDt.toString(formatter));
 	}
 	
-	//@Test
+	@Test
 	public void testFromJavaUtilDate() {
 		Date date = GregorianCalendar.getInstance().getTime();
 		DateTime dt = new DateTime(date);
 		log.debug("testFromJavaUtilDate: " + dt.toString());
 	}
 
-	//@Test
+	@Test
 	public void testGetter() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
 		DateTime dt = formatter.parseDateTime("2016-02-15 13:40:30.123");
@@ -118,7 +113,7 @@ public class JodaTimeTest {
 	 * 
 	 * @author fixalot
 	 */
-	//@Test
+	@Test
 	public void testDateSplit() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
@@ -137,7 +132,7 @@ public class JodaTimeTest {
 				period.getDays(), period.getHours(), period.getMinutes(), period.getSeconds());
 	}
 
-	//@Test
+	@Test
 	public void testEqual() {
 //		Assert.assertEquals(new DateTime(), DateTime.now()); // 호출시점에 따라 몇 밀리초 차이로 같지 않을 수 있음
 		Assert.assertEquals(
@@ -146,7 +141,7 @@ public class JodaTimeTest {
 						.withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10));
 	}
 
-	//@Test
+	@Test
 	public void testPlusDay() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
 		DateTime dt = new DateTime(2020, 2, 29, 23, 59, 59, 10);
@@ -158,7 +153,7 @@ public class JodaTimeTest {
 		Assert.assertEquals("2020-03-01 23:59:59:010", newInstance.toString(formatter));
 	}
 
-	//@Test
+	@Test
 	public void testCalculateMonth() {
 		DateTime dt = new DateTime(2017, 3, 31, 00, 00, 00);
 		DateTime a = dt.minusMonths(1);
@@ -172,7 +167,7 @@ public class JodaTimeTest {
 	 * 
 	 * @author fixalot
 	 */
-	//@Test
+	@Test
 	public void testCalculatePeriodJustDays() {
 		DateTime start = new DateTime("2017-01-01");
 		DateTime end = new DateTime("2017-05-03");
@@ -192,7 +187,7 @@ public class JodaTimeTest {
 	 * 
 	 * @author fixalot
 	 */
-	//@Test
+	@Test
 	public void testCalculatePeriodWithInterval() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
@@ -206,7 +201,7 @@ public class JodaTimeTest {
 				period.getHours(), period.getMinutes(), period.getSeconds()));
 	}
 	
-	//@Test
+	@Test
 	public void testCalculatePeriodWithInterval2() {
 		DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime now = new DateTime();
@@ -222,7 +217,7 @@ public class JodaTimeTest {
 	 * 
 	 * @author fixalot
 	 */
-	//@Test
+	@Test
 	public void testCalculatePeriodWithPeriodFormatter() {
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2006, 1, 1, 0, 0, 0, 0);
@@ -249,7 +244,7 @@ public class JodaTimeTest {
 	 * 
 	 * @author fixalot
 	 */
-	//@Test
+	@Test
 	public void testCalculatePeriodWithPeriod() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
