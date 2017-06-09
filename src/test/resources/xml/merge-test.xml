@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
 <pmd>
   <file name="C:\project\workspace\etbs\backweb\src\main\java\com\etbs\backweb\controller\settlement\BizStlController.java">
     <violation begincolumn="24" beginline="46" class="BizStlController" endcolumn="69" endline="46" externalInfoUrl="https://pmd.github.io/pmd-5.5.1/pmd-java/rules/java/logging-java.html#LoggerIsNotStaticFinal" package="com.etbs.backweb.controller.settlement" priority="2" rule="LoggerIsNotStaticFinal" ruleset="Java Logging" variable="log">The Logger variable declaration does not contain the static and final modifiers</violation>
