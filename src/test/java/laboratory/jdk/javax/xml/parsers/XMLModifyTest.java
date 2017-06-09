@@ -13,7 +13,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -31,8 +30,10 @@ import org.xml.sax.SAXException;
 public class XMLModifyTest {
 	private static final Logger log = LoggerFactory.getLogger(XMLModifyTest.class);
 
-	@Test
+//	@Test
 	public void testModify() throws TransformerException, ParserConfigurationException, SAXException, IOException {
+		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
+		
 		String filePath = "src/test/resources/xml/read-test.xml";
 		File xmlFile = new File(filePath);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

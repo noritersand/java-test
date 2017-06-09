@@ -18,7 +18,7 @@ public class FileUtilsTest {
 	@Test
 	public void testWriteAndRead() throws IOException {
 		String text = "some\ntext";
-		File file = Paths.get("src/test/resources/file/write-test.txt").toFile();
+		File file = Paths.get("src/test/resources/file/test-xml.txt").toFile();
 		
 		// write
 		FileUtils.writeStringToFile(file, text, Charset.forName("UTF-8"));
