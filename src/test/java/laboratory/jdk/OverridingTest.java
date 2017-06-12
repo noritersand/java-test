@@ -1,10 +1,10 @@
-package laboratory.jdk.statement;
+package laboratory.jdk;
 
 import org.junit.Test;
 
 public class OverridingTest {
 	@Test
-	public void testOverride() {
+	public void override() {
 
 	}
 }

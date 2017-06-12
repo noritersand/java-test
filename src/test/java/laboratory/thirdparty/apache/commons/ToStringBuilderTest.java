@@ -10,7 +10,7 @@ public class ToStringBuilderTest {
 	private static final Logger log = LoggerFactory.getLogger(ToStringBuilderTest.class);
 
 	@Test
-	public void testToStringBuilder() {
+	public void printToStringResult() {
 		Pojo pojo = new Pojo();
 		log.debug(ToStringBuilder.reflectionToString(pojo));
 		pojo.setStringField("야");

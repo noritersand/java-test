@@ -22,7 +22,7 @@ public class PathTest {
 	 */
 	
 	@Test
-	public void testRelative() {
+	public void relativize() {
 		Path dev = new File("c:\\dev\\git").toPath();
 		Path sso = new File("c:\\sso").toPath();
 		Assert.assertEquals("..\\..\\sso", dev.relativize(sso).toString()); // dev에서 sso로 가려면 'cd ..\..\sso'
@@ -31,21 +31,21 @@ public class PathTest {
 	}
 	
 	@Test
-	public void testRelative2() {
+	public void relativize2() {
 		Path source = new File("webapp\\upload\\temp\\").toPath();
 		Path target = new File("webapp\\upload\\temp\\201612\\28201838255.png").toPath();
 		Assert.assertEquals("201612\\28201838255.png", source.relativize(target).toString()); // dev에서 sso로 가려면 'cd ..\..\sso'
 	}
 	
 	@Test
-	public void testResolve() throws IOException {
+	public void resolve() throws IOException {
 		Path dev = new File("c:\\dev\\git").toPath();
 		Path someFile = dev.resolve("someFile");
 		Assert.assertEquals("c:\\dev\\git\\someFile", someFile.toString());
 	}
 
 	@Test
-	public void testNewInstnc() throws IOException {
+	public void newInstance() throws IOException {
 		Path path = Paths.get("src/test/resources/file/exist-test.txt");
 		Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
 		Path path2 = Paths.get("C:\\project\\workspace");
@@ -60,7 +60,7 @@ public class PathTest {
 	}
 	
 	@Test
-	public void testVoidFile() {
+	public void shouldError() {
 		// 없는 경로라도 단순 문자열이면 문제가 없지만
 		Paths.get("c:", "\\ppp", "\\aaa");
 		try {
@@ -72,7 +72,7 @@ public class PathTest {
 	}
 	
 	@Test
-	public void testRoot() {
+	public void getRoot() {
 		log.debug("relative paths:");
 		log.debug(Paths.get("/").toString()); // just "\"
 		log.debug(Paths.get("").toString()); // ""

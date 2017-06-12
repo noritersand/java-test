@@ -5,11 +5,15 @@ import java.math.BigDecimal;
 import org.junit.Test;
 
 public class GenericClassTest {
-	@SuppressWarnings("unused")
 	@Test
-	public void test() {
+	@SuppressWarnings("unused")
+	public void shouldSuccess() {
 		CustomGeneric<BigDecimal> gen = new CustomGeneric<>(); // correct
 		CustomGeneric<LittleDecimal> gen2 = new CustomGeneric<>(); // correct
+	}
+	
+	@Test
+	public void shouldCompileError() {
 //		CustomGeneric<Integer> gen3 = new CustomGeneric<>(); // wrong 
 		// Bound mismatch: The type Integer is not a valid substitute for the bounded parameter <T extends BigDecimal> of the type CustomGeneric<T>
 	}

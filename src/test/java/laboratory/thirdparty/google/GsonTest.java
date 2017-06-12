@@ -20,7 +20,7 @@ public class GsonTest {
 	private static final Logger log = LoggerFactory.getLogger(GsonTest.class);
 
 	@Test
-	public void testFromFile() throws FileNotFoundException {
+	public void getDataFromFile() throws FileNotFoundException {
 		JsonReader reader = new JsonReader(new FileReader("src\\test\\resources\\json\\gson-test.json"));
 		@SuppressWarnings("serial")
 		Type listType = new TypeToken<ArrayList<HashMap<String, String>>>() {}.getType();
@@ -30,7 +30,7 @@ public class GsonTest {
 	}
 
 	@Test
-	public void testToJson() {
+	public void toJSON() {
 		JsonObject job = new JsonObject();
 		job.addProperty("key", "value");
 
@@ -38,7 +38,7 @@ public class GsonTest {
 	}
 
 	@Test
-	public void testFromJsonToPojo() {
+	public void parseToPojo() {
 		String json = "{\"key\":\"first\",\"value\":\"1234\"}";
 		MyClass myClass = new Gson().fromJson(json, MyClass.class);
 		Assert.assertEquals("first", myClass.getKey());
@@ -46,7 +46,7 @@ public class GsonTest {
 	}
 
 	@Test
-	public void testFromJsonToCollections() {
+	public void parseToCollections() {
 		String json = "[{\"key\":\"first\",\"value\":\"1234\"}, {\"key\":\"second\",\"value\":\"5678\"}]";
 		@SuppressWarnings("serial")
 		Type listType = new TypeToken<ArrayList<MyClass>>() {}.getType();

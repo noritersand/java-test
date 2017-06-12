@@ -12,7 +12,7 @@ public class BooleansTest {
 	private static final Logger log = LoggerFactory.getLogger(BooleansTest.class);
 	
 	@Test
-	public void testBooleans() {
+	public void test() {
 		Assert.assertEquals(5, Booleans.asList(false, true, false, true, true).size());
 		Assert.assertEquals("true, false", Booleans.join(", ", true, false));
 	}

@@ -12,7 +12,7 @@ public class UncheckedTest {
 	private static final Logger log = LoggerFactory.getLogger(UncheckedTest.class);
 
 	@Test
-	public void testUnchecked() {
+	public void thisCodeShouldUnchecked() {
 		// TODO 어떻게 하면 경고 뜨더라?
 
 		List<String> list = new LinkedList<>();

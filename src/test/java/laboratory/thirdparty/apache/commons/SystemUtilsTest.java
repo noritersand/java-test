@@ -10,7 +10,7 @@ public class SystemUtilsTest {
 	private static final Logger log = LoggerFactory.getLogger(SystemUtilsTest.class);
 	
 	@Test
-	public void test() {
+	public void usage() {
 		log.debug(String.valueOf(SystemUtils.IS_OS_WINDOWS));
 		log.debug(String.valueOf(SystemUtils.IS_OS_UNIX));
 		log.debug(String.valueOf(SystemUtils.IS_OS_LINUX));

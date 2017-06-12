@@ -10,12 +10,12 @@ public class ClassTest {
 	private static final Logger log = LoggerFactory.getLogger(ClassTest.class);
 	
 	@Test
-	public void testGetClassName() {
+	public void getClassName() {
 		Assert.assertEquals("laboratory.jdk.java.lang.ClassTest", ClassTest.class.getName());
 	}
 	
 	@Test
-	public void testGetPackageName() {
+	public void getPackageName() {
 		Assert.assertEquals("laboratory.jdk.java.lang", ClassTest.class.getPackage().getName());
 	}
 }

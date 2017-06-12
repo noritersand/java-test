@@ -26,7 +26,7 @@ public class HandleXMLTest {
 	private static final Logger log = LoggerFactory.getLogger(HandleXMLTest.class);
 	
 //	@Test
-	public void testMerge() throws SAXException, IOException, ParserConfigurationException {
+	public void merge() throws SAXException, IOException, ParserConfigurationException {
 		File backweb = Paths.get("C:\\project\\workspace\\etbs\\backweb\\target\\pmd.xml").toFile();
 		File batch = Paths.get("C:\\project\\workspace\\etbs\\batch\\target\\pmd.xml").toFile();
 		File cardrelay = Paths.get("C:\\project\\workspace\\etbs\\cardrelay\\target\\pmd.xml").toFile();
@@ -64,7 +64,7 @@ public class HandleXMLTest {
 			List<Element> childrenList = innerRoot.getChildren("file");
 			for (Element ele : childrenList) {
 				Assert.assertEquals("file", ele.getName());
-				Element eleCopy = (Element) ele.clone();
+				Element eleCopy = ele.clone();
 				eleCopy.detach(); // JDOM2에서 DOM요소는 다른데로 옮기기 전에 detach 해야함.
 				fileTagList.add(eleCopy);
 			}

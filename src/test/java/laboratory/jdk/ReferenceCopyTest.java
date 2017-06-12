@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class ReferenceCopyTest {
 	@Test
-	public void testAvoidreassigningparameters() {
+	public void avoidReassigningParameters() {
 		Vo vo = new Vo();
 		Assert.assertEquals(0, vo.getNum());
 		copyParam(vo);
@@ -23,7 +23,7 @@ public class ReferenceCopyTest {
 	}
 	
 	@Test
-	public void test1() {
+	public void test() {
 		String str = "a";
 		doSomething(str);
 		Assert.assertNotEquals("b", str);

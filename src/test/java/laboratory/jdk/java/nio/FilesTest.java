@@ -8,8 +8,8 @@ import org.junit.Test;
 
 public class FilesTest {
 	@Test
-	public void test1() {
+	public void test() {
 		Assert.assertTrue(Files.isReadable(Paths.get("c:")));
-		Assert.assertFalse(Files.isReadable(Paths.get("j:")));
+		Assert.assertFalse(Files.isReadable(Paths.get("m:")));
 	}
 }

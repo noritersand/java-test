@@ -6,9 +6,13 @@ import org.junit.Test;
 
 public class GenericMethodTest {
 	@Test
-	public void test() {
+	public void shouldSuccess() {
 		CustomGeneric gen = new CustomGeneric();
 		gen.getSome(new LittleDecimal(123)); // correct
+	}
+	
+	@Test
+	public void shouldCompileError() {
 //		gen.getSome("123"); // wrong
 		// The method getSome(T) in the type GenericMethodTest.CustomGeneric is not applicable for the arguments (String)
 //		gen.getSome(123); // wrong

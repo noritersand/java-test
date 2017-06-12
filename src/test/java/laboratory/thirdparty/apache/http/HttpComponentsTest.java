@@ -16,7 +16,7 @@ public class HttpComponentsTest {
 	private static final Logger log = LoggerFactory.getLogger(HttpComponentsTest.class);
 
 	@Test
-	public void testGetRequest() throws Exception {
+	public void send() throws Exception {
 		String result = sendSimpleRequest("http://google.com");
 		Assert.assertTrue(result != null && !result.isEmpty());
 		log.debug(result);

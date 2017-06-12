@@ -16,7 +16,7 @@ public class ClassPathTest {
 	private static final Logger log = LoggerFactory.getLogger(ClassPathTest.class);
 
 //	@Test // 로그가 너무 길어져서 생략
-	public void testGetAllClasses() throws IOException {
+	public void getAllClasses() throws IOException {
 		ClassPath classPath = ClassPath.from(this.getClass().getClassLoader());
 		ImmutableSet<ClassInfo> classInfoSet = classPath.getAllClasses();
 		UnmodifiableIterator<ClassInfo> iterator = classInfoSet.iterator();
@@ -27,7 +27,7 @@ public class ClassPathTest {
 	}
 	
 //	@Test // 로그가 너무 길어져서 생략
-	public void testGetAllResources() throws IOException {
+	public void getAllResources() throws IOException {
 		ClassPath classPath = ClassPath.from(this.getClass().getClassLoader());
 		ImmutableSet<ResourceInfo> resourceInfoSet = classPath.getResources();
 		UnmodifiableIterator<ResourceInfo> iterator = resourceInfoSet.iterator();

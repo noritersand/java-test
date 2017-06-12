@@ -1,4 +1,4 @@
-package laboratory.thirdparty.time;
+package laboratory.time;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -32,27 +32,27 @@ public class JavaTimeTest {
 	}
 	
 	@Test
-	public void testLocalDate() {
+	public void getLocalDate() {
 		Assert.assertEquals("2017-12-31", LocalDate.of(2017, Month.DECEMBER, 31).toString());
 		Assert.assertEquals("2017-04-10T23:49", LocalDateTime.of(2017, Month.APRIL, 10, 23, 49).toString());
 	}
 	
 	@Test
-	public void testOffsetDateTime() {
+	public void getOffsetDateTime() {
 		Assert.assertEquals("2017-12-31T23:59:59.999999999Z",
 				OffsetDateTime.of(LocalDate.of(2017, Month.DECEMBER, 31), LocalTime.MAX, ZoneOffset.UTC).toString());
 		Assert.assertEquals("2017-01-14T10:20:30Z", OffsetDateTime.of(2017, 1, 14, 10, 20, 30, 0, ZoneOffset.UTC).toString());
 	}
 	
 	@Test
-	public void testOffsetTime() {
+	public void getOffsetTime() {
 		Assert.assertEquals("22:58+18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MAX).toString());
 		Assert.assertEquals("22:58-18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MIN).toString());
 		Assert.assertEquals("22:58Z", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.UTC).toString());
 	}
 	
 	@Test
-	public void testDateSplit() {
+	public void splitDate() {
 		LocalDate start = new GregorianCalendar(2016, 2, 5).getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		LocalDate end = new GregorianCalendar(2016, 2, 11).getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		long periodDays = ChronoUnit.DAYS.between(start, end);
@@ -64,7 +64,7 @@ public class JavaTimeTest {
 	}
 	
 	@Test
-	public void testFromJavaTuilDate() {
+	public void parseFromJavaUtilDate() {
 		Calendar input = new GregorianCalendar(2016, 2, 5);
 		Date date = input.getTime();
 		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -72,7 +72,7 @@ public class JavaTimeTest {
 	}
 	
 	@Test
-	public void testToJavaUtilDate() {
+	public void parseToJavaUtilDate() {
 		// case#1
 		log.debug("testToJavaUtilDate: " + Date.from(Instant.now()).toString());;
 		
@@ -87,7 +87,7 @@ public class JavaTimeTest {
 	}
 	
 	@Test
-	public void testCalculateDays() {
+	public void calculateDays() {
 		LocalDate targetDay = LocalDate.of(2017, Month.DECEMBER, 31);
 		LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
 		Period period = Period.between(today, targetDay);

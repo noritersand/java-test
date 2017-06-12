@@ -12,7 +12,7 @@ public class CaseFormatTest {
 	private static final Logger log = LoggerFactory.getLogger(CaseFormatTest.class);
 	
 	@Test
-	public void testCaseFormat() {
+	public void format() {
 		Assert.assertEquals("MY_NAME", CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName"));
 		Assert.assertEquals("setBulkReservationNotPossible", 
 				CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, "set-bulk-reservation-not-possible"));

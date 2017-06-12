@@ -16,7 +16,7 @@ public class PropertiesTest {
 	private static final Logger log = LoggerFactory.getLogger(PropertiesTest.class);
 	
 	@Test
-	public void testPropByInputStream() throws IOException {
+	public void getPropByInputStream() throws IOException {
 	    FileInputStream fis = new FileInputStream("src\\test\\resources\\prop\\access-test.properties");
 	    Properties prop = new Properties();
 	    prop.load(fis);
@@ -27,7 +27,7 @@ public class PropertiesTest {
 	}
 	
 	@Test
-	public void testPropByReader() throws IOException {
+	public void getPropByReader() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader("src\\test\\resources\\prop\\access-test.properties"));
 		Properties prop = new Properties();
 		prop.load(reader);
@@ -38,7 +38,7 @@ public class PropertiesTest {
 	}
 	
 	@Test
-	public void testPropFromXml() throws IOException {
+	public void getPropFromXml() throws IOException {
 		FileInputStream fis = new FileInputStream("src\\test\\resources\\prop\\uri-test.xml");
 		Properties prop = new Properties();
 		prop.loadFromXML(fis);

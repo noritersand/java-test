@@ -1,4 +1,4 @@
-package laboratory.jdk.statement;
+package laboratory.jdk;
 
 
 

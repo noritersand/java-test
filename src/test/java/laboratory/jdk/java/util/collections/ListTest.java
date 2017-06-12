@@ -18,7 +18,7 @@ public class ListTest {
 	private class TestModel implements Cloneable {}
 	
 	@Test
-	public void testClone() {
+	public void doClone() {
 		ArrayList<TestModel> origins = new ArrayList<>();
 		origins.add(new TestModel());
 		
@@ -31,7 +31,7 @@ public class ListTest {
 	}
 	
 	@Test
-	public void testSize() {
+	public void getSize() {
 		ArrayList<String> stringList = new ArrayList<>();
 		Assert.assertEquals(0, stringList.size());
 		stringList = new ArrayList<>(10); // 리스트의 capacity를 지정한다. size가 아니다. 
@@ -39,7 +39,7 @@ public class ListTest {
 	}
 	
 	@Test
-	public void testRemoveElement() {
+	public void removeElement() {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
 		Iterator<String> iter = list.iterator();
 		while (iter.hasNext()) {
@@ -52,7 +52,7 @@ public class ListTest {
 	}
 	
 	@Test
-	public void testFind() {
+	public void find() {
 		Integer[] values = { 1, 3, 7 };
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
 		final int targetValue = 3;
@@ -68,7 +68,7 @@ public class ListTest {
 	}
 
 	@Test
-	public void testToArray() {
+	public void toArray() {
 		List<Integer> list = new ArrayList<Integer>();
 		list.add(123);
 		list.add(234);
@@ -77,14 +77,14 @@ public class ListTest {
 	}
 
 	@Test
-	public void testFromArray() {
+	public void fromArray() {
 		Integer[] values = { 1, 3, 7 };
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
 		Assert.assertEquals("[1, 3, 7]", list.toString());
 	}
 
 	@Test
-	public void testFromArrayUsingStream() {
+	public void fromArrayUsingStream() {
 		String[] strs = { "a", "b", "c", "d", "e" };
 		List<String> stringList = Arrays.stream(strs).collect(Collectors.toList());
 		Assert.assertEquals("[a, b, c, d, e]", stringList.toString());
@@ -95,7 +95,7 @@ public class ListTest {
 	}
 
 	@Test
-	public void testClear() {
+	public void clear() {
 		ArrayList<Integer> list = new ArrayList<>();
 		Assert.assertNotNull(list);
 		list.clear();
@@ -103,7 +103,7 @@ public class ListTest {
 	}
 
 	@Test
-	public void testArrayList() {
+	public void arrayList() {
 		ArrayList<Integer> list = new ArrayList<>();
 		list.add(9);
 		list.add(8);

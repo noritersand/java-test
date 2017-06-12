@@ -1,4 +1,4 @@
-package laboratory.jdk.statement;
+package laboratory.jdk;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +14,7 @@ public class ForStatementTest {
 	private static final Logger log = LoggerFactory.getLogger(ForStatementTest.class);
 
 	@Test
-	public void testRemoveList() {
+	public void removeList() {
 		String[] strs = { "a", "b", "c", "d", "e" };
 		
 		// 앞에서 3개 자르기

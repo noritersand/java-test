@@ -1,4 +1,4 @@
-package laboratory.jdk.statement;
+package laboratory.jdk;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,7 +9,7 @@ public class SwichTest {
 	private static final Logger log = LoggerFactory.getLogger(SwichTest.class);
 	
 	@Test
-	public void test() {
+	public void howVariableInitialize() {
 		int a = 2;
 		switch (a) {
 		case 1:

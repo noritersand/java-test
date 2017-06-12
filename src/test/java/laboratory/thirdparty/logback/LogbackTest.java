@@ -12,13 +12,13 @@ public class LogbackTest {
 	}
 
 	@Test
-	public void testLoggingWhileJunit() {
+	public void loggingWhileJunit() {
 		log.debug("unit testing");
 		log.debug("unit", "testing"); // "testing"은 안찍힘
 	}
 
 	@Test
-	public void testLoggingByFormat() {
+	public void loggingByFormat() {
 		log.debug("{} {} {} {}", "이건가", "저건가", "나는 누구", "여긴 어디");
 		log.debug("{} {}", new Object[] { "hello there!", "if you ask, im waldo" });
 //		log.debug("im {}", null); // 이렇게는 안됨

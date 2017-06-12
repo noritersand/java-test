@@ -32,20 +32,14 @@ public class SpELTest {
 //	private Properties interfaceBaseUrl2;
 
 	@Test
-	public void testSpEl() {
+	public void validateProperties() {
 		Assert.assertEquals("korean", primary);
 		Assert.assertNotEquals("korean", secondary);
-	}
-
-	@Test
-	public void testProp() {
+		
 		Assert.assertNotNull(language);
 		Assert.assertEquals(Properties.class, language.getClass());
 		Assert.assertEquals("korean", ((Properties) language).getProperty("primary"));
-	}
-	
-	@Test
-	public void testPropImport() {
+		
 		Assert.assertNotNull(interfaceProp);
 		Assert.assertEquals("{http=//127.0.0.1:9080/execute}", interfaceBaseUrl.toString());
 	}

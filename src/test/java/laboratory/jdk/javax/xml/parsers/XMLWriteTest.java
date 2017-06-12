@@ -28,7 +28,7 @@ public class XMLWriteTest {
 	private static final Logger log = LoggerFactory.getLogger(XMLWriteTest.class);
 
 //	@Test
-	public void testWrite() throws ParserConfigurationException, TransformerException {
+	public void writeXML() throws ParserConfigurationException, TransformerException {
 		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
 		
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

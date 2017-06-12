@@ -15,7 +15,7 @@ public class ContextLoadTest {
 	private static final Logger log = LoggerFactory.getLogger(ContextLoadTest.class);
 
 	@Test
-	public void testContextLoadWithClassPath() {
+	public void loadContextWithClassPath() {
 		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("/prop/context-test.xml");
 		Properties props = context.getBean("language", Properties.class);
 		Assert.assertEquals("korean", props.getProperty("primary"));
@@ -23,7 +23,7 @@ public class ContextLoadTest {
 	}
 
 	@Test
-	public void testContextLoadWithFileSystem() {
+	public void loadContextWithFileSystem() {
 //		ConfigurableApplicationContext context 
 //				= new FileSystemXmlApplicationContext("/prop/test-context.xml"); // FileNotFoundException
 		ConfigurableApplicationContext context = new FileSystemXmlApplicationContext("classpath:/prop/context-test.xml");

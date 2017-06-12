@@ -10,7 +10,7 @@ public class ObjectTest {
 	private static final Logger log = LoggerFactory.getLogger(ObjectTest.class);
 	
 	@Test
-	public void testHashCode() {
+	public void getHashCode() {
 		Object obj1 = new Object();
 		Object obj2 = new Object();
 		log.debug(String.valueOf(obj1.hashCode()));

@@ -16,7 +16,7 @@ public class FileUtilsTest {
 	private static final Logger log = LoggerFactory.getLogger(FileUtilsTest.class);
 	
 	@Test
-	public void testWriteAndRead() throws IOException {
+	public void writeAndRead() throws IOException {
 		String text = "some\ntext";
 		File file = Paths.get("src/test/resources/file/test-xml.txt").toFile();
 		

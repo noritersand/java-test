@@ -16,7 +16,7 @@ public class LambdaTest {
 	private static final Logger log = LoggerFactory.getLogger(LambdaTest.class);
 	
 	@Test
-	public void testListForEach() {
+	public void testForEach() {
 		// LIST
 		Integer[] values = { 1, 3, 7 };
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
@@ -34,7 +34,7 @@ public class LambdaTest {
 	}
 
 	@Test
-	public void testListRemoveif() {
+	public void testRemoveif() {
 		Integer[] values = { 1, 3, 7 };
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
 		list.removeIf(p -> p == 3);

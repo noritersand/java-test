@@ -15,10 +15,9 @@ public class TypeTokenTest {
 	private static final Logger log = LoggerFactory.getLogger(TypeTokenTest.class);
 	
 	@Test
-	public void test() {
+	public void usingTypeToken() {
 		@SuppressWarnings("serial")
-		Type listType = new TypeToken<ArrayList<MyClass>>() {
-		}.getType();
+		Type listType = new TypeToken<ArrayList<MyClass>>() {}.getType();
 		Assert.assertEquals("java.util.ArrayList<laboratory.thirdparty.google.guava.MyClass>", String.valueOf(listType));
 	}
 }

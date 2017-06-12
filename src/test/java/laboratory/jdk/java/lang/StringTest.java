@@ -1,4 +1,5 @@
 package laboratory.jdk.java.lang;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -9,80 +10,81 @@ public class StringTest {
 	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
 
 	@Test
-	public void testConcat() {
+	public void concat() {
 		String a = "a";
 		Assert.assertEquals("ab", a.concat("b"));
 		Assert.assertEquals("a", a);
 		try {
 			Assert.assertEquals("anull", a.concat(null)); // NPE
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 		Assert.assertEquals("anull", a + null);
 	}
-	
+
 	@Test
-	public void testAutoNewInstance() {
+	public void autoInstantiate() {
 		String a = "a";
 		String b = "a";
 		Assert.assertTrue(a == b);
 		b = a; // new String(a)처럼 명시적으로 새 인스턴스를 할당하지 않아도.
 		b = "b"; // 리터럴이 바뀌면 참조하고 있는 인스턴스의 값이 변경되는게 아니라 새 인스턴스가 할당된다. (String 타입의 특징)
-		Assert.assertEquals("a", a); // 그래서 a는 원래의 값을 유지할 수 있다. 
+		Assert.assertEquals("a", a); // 그래서 a는 원래의 값을 유지할 수 있다.
 	}
-	
+
 	@Test
-	public void testBuilder() {
+	public void usingBuilder() {
 		StringBuilder builder = new StringBuilder();
 		Assert.assertEquals(0, builder.length());
 		Assert.assertEquals("", builder.toString());
 	}
-	
+
 	@Test
-	public void testLength() {
+	public void getLength() {
 		String a = "totcnt123\nstart";
 		String b = "totcnt123start";
 		Assert.assertEquals(10, a.indexOf("start"));
 		Assert.assertEquals("start", a.substring(a.indexOf("start"), a.length()));
-		
+
 		Assert.assertEquals(9, b.indexOf("start"));
 		Assert.assertEquals("start", b.substring(b.indexOf("start"), b.length()));
 	}
-	
+
 	@Test
-	public void testIntern() {
-		// 아래처럼 초기화될 땐 intern()을 쓰든 안쓰든 String의 주소값은  같다.
+	public void usingIntern() {
+		// 아래처럼 초기화될 땐 intern()을 쓰든 안쓰든 String의 주소값은 같다.
 		String a = "경기";
 		String b = "경기";
 		Assert.assertTrue(a == b);
-		
-		// 요로케 해야됨
-	    String c = "AAA";
-	    String d = new String("AAA");
-	    Assert.assertFalse(c == d);
 
-	    d = d.intern();
-	    Assert.assertTrue(c == d);
-	    
-	    Assert.assertTrue(new String("BBB").intern() == "BBB");
-	    Assert.assertTrue(new String("CCC").intern() == "CCC");
-	    Assert.assertEquals(new String("CCC").intern().hashCode(), "CCC".hashCode());
+		// 요로케 해야됨
+		String c = "AAA";
+		String d = new String("AAA");
+		Assert.assertFalse(c == d);
+
+		d = d.intern();
+		Assert.assertTrue(c == d);
+
+		Assert.assertTrue(new String("BBB").intern() == "BBB");
+		Assert.assertTrue(new String("CCC").intern() == "CCC");
+		Assert.assertEquals(new String("CCC").intern().hashCode(), "CCC".hashCode());
 	}
-	
+
 	@Test
-	public void testReplaceAlls() {
+	public void replaceAlls() {
 		Assert.assertEquals("경기", "경기도".replaceAll("도", ""));
 		Assert.assertEquals("전라", "전라도".replaceAll("도", ""));
 		Assert.assertEquals("경상", "경상도".replaceAll("도", ""));
 	}
-	
+
 	@Test
-	public void testDomainSplit() {
+	public void splitDomain() {
 		Assert.assertEquals(1, "localhost".split("\\.").length);
 		Assert.assertEquals(3, "master.benecafe.com".split("\\.").length);
 		Assert.assertEquals(2, "daum.net".split("\\.").length);
 	}
 
 	@Test
-	public void testSubstring() {
+	public void getSubstring() {
 		String str = "a234567890b234567890c234567890d234";
 		Assert.assertEquals(34, str.length());
 		Assert.assertEquals("a234567890b234567890c234567890", str.substring(0, 30));
@@ -90,14 +92,14 @@ public class StringTest {
 	}
 
 	@Test
-	public void testLastIndexOf() {
+	public void getLastIndexOf() {
 		String str = "/abcd";
 		Assert.assertEquals(0, str.lastIndexOf("/"));
 		Assert.assertEquals("abcd", str.substring(str.lastIndexOf("/") + 1));
 	}
 
 	@Test
-	public void testSplit() {
+	public void split() {
 		String str = "abcdefghijklmn";
 		Assert.assertEquals(str, str.split("\\|")[0]);
 		try {
@@ -108,14 +110,14 @@ public class StringTest {
 	}
 
 	@Test
-	public void testSplit2() {
+	public void split2() {
 		String str = "abcdefghijklmn";
 		Assert.assertEquals(14, str.length());
 		Assert.assertEquals(str.substring(1, 5), str.subSequence(1, 5));
 	}
 
 	@Test
-	public void testSplitByLength1333() {
+	public void splitByLength1333() {
 		String str = "00x1111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000"; // 1
 		str += "01x1111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000"; // 2
 		str += "02x1111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000"; // 3
@@ -159,17 +161,17 @@ public class StringTest {
 	}
 
 	@Test
-	public void testAbs() {
-		Assert.assertEquals(0, Math.abs(1000/1333));
-		Assert.assertEquals(1, Math.abs(1333/1333));
-		Assert.assertEquals(1, Math.abs(1334/1333));
-		Assert.assertEquals(1, Math.abs(2665/1333));
-		Assert.assertEquals(2, Math.abs(2666/1333));
-		Assert.assertEquals(2, Math.abs(2667/1333));
+	public void getAbs() {
+		Assert.assertEquals(0, Math.abs(1000 / 1333));
+		Assert.assertEquals(1, Math.abs(1333 / 1333));
+		Assert.assertEquals(1, Math.abs(1334 / 1333));
+		Assert.assertEquals(1, Math.abs(2665 / 1333));
+		Assert.assertEquals(2, Math.abs(2666 / 1333));
+		Assert.assertEquals(2, Math.abs(2667 / 1333));
 	}
 
 	@Test
-	public void testSplitByLength() {
+	public void splitByLength() {
 		Assert.assertArrayEquals(new String[] { "abc", "def" }, splitByLength("abcdef", 3));
 		Assert.assertArrayEquals(new String[] { "abc", "def", "ef" }, splitByLength("abcdefef", 3));
 		Assert.assertArrayEquals(new String[] { "abcd", "ef12", "34" }, splitByLength("abcdef1234", 4));
@@ -208,4 +210,3 @@ public class StringTest {
 		return strArray;
 	}
 }
-

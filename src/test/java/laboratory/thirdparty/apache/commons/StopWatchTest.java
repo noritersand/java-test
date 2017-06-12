@@ -12,15 +12,15 @@ public class StopWatchTest {
 	private static final Logger log = LoggerFactory.getLogger(StopWatchTest.class);
 
 	@Test
-	public void test() {
+	public void usage() {
 		StopWatch watch = new StopWatch();
-		doSome();
+		doUselessThing();
 		Assert.assertEquals(0, watch.getNanoTime()); // 시작하기 전에는 0
 
 		watch.start(); // 시작
 		Assert.assertTrue(watch.isStarted());
 
-		doSome();
+		doUselessThing();
 		log.debug("경과 시간: " + String.valueOf(watch.getNanoTime()));
 
 		watch.suspend(); // 일시정지
@@ -40,7 +40,7 @@ public class StopWatchTest {
 		Assert.assertTrue(watch.isStopped());
 	}
 
-	private long doSome() {
+	private long doUselessThing() {
 		long sum = 0;
 		for (int i = 0; i < Integer.MAX_VALUE; i++) {
 			sum += i;

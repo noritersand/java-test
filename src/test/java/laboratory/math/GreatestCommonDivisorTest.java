@@ -16,7 +16,7 @@ public class GreatestCommonDivisorTest {
 	private static final Logger log = LoggerFactory.getLogger(GreatestCommonDivisorTest.class);
 	
 	@Test
-	public void test1() {
+	public void shouldEquals() {
 		/*
 		input a     input b         출력
 		169         104      ->     13

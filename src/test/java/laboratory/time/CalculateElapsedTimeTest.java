@@ -1,4 +1,4 @@
-package laboratory.thirdparty.time;
+package laboratory.time;
 
 import java.util.GregorianCalendar;
 
@@ -12,7 +12,7 @@ public class CalculateElapsedTimeTest {
 	private static final Logger log = LoggerFactory.getLogger(CalculateElapsedTimeTest.class);
 
 	@Test
-	public void testByMilliseconds() {
+	public void calculate() {
 		long start = new GregorianCalendar(2016, 2, 5).getTimeInMillis();
 		long end = new GregorianCalendar(2017, 2, 5).getTimeInMillis();
 		long elapsedDays = (end - start) / 1000 / 60 / 60 / 24;

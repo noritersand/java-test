@@ -12,14 +12,14 @@ public class BigDecimalTest {
 	private static final Logger log = LoggerFactory.getLogger(BigDecimalTest.class);
 	
 	@Test
-	public void testConstants() {
+	public void getConst() {
 		Assert.assertEquals(new BigDecimal(0), BigDecimal.ZERO);
 		Assert.assertEquals(new BigDecimal(1), BigDecimal.ONE);
 		Assert.assertEquals(new BigDecimal(10), BigDecimal.TEN);
 	}
 	
 	@Test
-	public void testOperator() {
+	public void usingOperator() {
 		BigDecimal a = new BigDecimal("10");
 		BigDecimal b = new BigDecimal("20");
 		
@@ -30,7 +30,7 @@ public class BigDecimalTest {
 	}
 	
 	@Test
-	public void testCompare() {
+	public void compare() {
 		BigDecimal a = BigDecimal.ZERO;
 		Assert.assertEquals(0, a.compareTo(BigDecimal.ZERO)); //  a.compareTo(b)에서 0이면 a와 b가 같음
 		Assert.assertEquals(-1, a.compareTo(BigDecimal.ONE)); // a.compareTo(b)에서 -1이면 a가 b보다 작음

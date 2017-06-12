@@ -12,20 +12,20 @@ public class StopWatchTest {
 	private static final Logger log = LoggerFactory.getLogger(StopWatchTest.class);
 	
 	@Test
-	public void test() {
+	public void usage() {
 		StopWatch watch = new StopWatch("IN SOVIET RUSSIA, MONITOR WATCHES YOU");
 		
 		watch.start("first");
 		Assert.assertEquals("first", watch.currentTaskName());
-		doSome();
+		doUselessThing();
 		watch.stop();
 		
 		watch.start("second");
-		doSome();
+		doUselessThing();
 		watch.stop();
 		
 		watch.start("third");
-		doSome();
+		doUselessThing();
 		watch.stop();
 
 		log.debug(watch.prettyPrint());
@@ -43,7 +43,7 @@ public class StopWatchTest {
 		log.debug(String.valueOf(info.getTimeSeconds()));
 	}
 	
-	private long doSome() {
+	private long doUselessThing() {
 		long sum = 0;
 		for (int i = 0; i < Integer.MAX_VALUE; i++) {
 			sum += i;

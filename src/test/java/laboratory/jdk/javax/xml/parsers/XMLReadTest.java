@@ -29,7 +29,7 @@ public class XMLReadTest {
 	private static final Logger log = LoggerFactory.getLogger(XMLReadTest.class);
 
 	@Test
-	public void testRead() throws ParserConfigurationException, TransformerException, SAXException, IOException {
+	public void readXML() throws ParserConfigurationException, TransformerException, SAXException, IOException {
 		String filePath = "src/test/resources/xml/read-test.xml";
 		File xmlFile = new File(filePath);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -67,7 +67,7 @@ public class XMLReadTest {
 
 	private String getTagValue(String tag, Element element) {
 		NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
-		Node node = (Node) nodeList.item(0);
+		Node node = nodeList.item(0);
 		return node.getNodeValue();
 	}
 

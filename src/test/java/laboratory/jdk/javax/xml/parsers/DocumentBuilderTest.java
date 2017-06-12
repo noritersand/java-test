@@ -21,7 +21,7 @@ public class DocumentBuilderTest {
 	private static final Logger log = LoggerFactory.getLogger(DocumentBuilderTest.class);
 
 	@Test
-	public void testRead() throws ParserConfigurationException, SAXException, IOException {
+	public void read() throws ParserConfigurationException, SAXException, IOException {
 		File file = new File("src/test/resources/xml/try-read-this.xml");
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();

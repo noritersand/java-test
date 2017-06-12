@@ -31,7 +31,7 @@ public class EnumTest {
 	}
 	
 	@Test
-	public void testUsingInSwitch() {
+	public void usingInSwitch() {
 		String div = "back_office";
 		switch (SystemDivision.valueOf(div.toUpperCase())) {
 		case BACK_OFFICE:
@@ -44,7 +44,7 @@ public class EnumTest {
 	}
 
 	@Test
-	public void testStringToEnum() {
+	public void fromString() {
 		Class<Color> clazz = Color.class;
 		String source = "red";
 		Enum<Color> color = Enum.valueOf(clazz, source.trim().toUpperCase());

@@ -31,7 +31,7 @@ public class XMLModifyTest {
 	private static final Logger log = LoggerFactory.getLogger(XMLModifyTest.class);
 
 //	@Test
-	public void testModify() throws TransformerException, ParserConfigurationException, SAXException, IOException {
+	public void modifyXML() throws TransformerException, ParserConfigurationException, SAXException, IOException {
 		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
 		
 		String filePath = "src/test/resources/xml/read-test.xml";

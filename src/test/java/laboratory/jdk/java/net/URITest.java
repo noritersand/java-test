@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class URITest {
 	@Test
-	public void testURI() {
+	public void getURI() {
 		URI uri3 = URI.create("somefolder/somefile.png");
 		System.out.println(uri3);
 		Assert.assertEquals(null, uri3.getScheme());

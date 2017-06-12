@@ -12,7 +12,7 @@ public class ProcessBuilderTest {
 	private static final Logger log = LoggerFactory.getLogger(ProcessBuilderTest.class);
 
 	@Test
-	public void testExecuteFile() throws IOException {
+	public void executeFile() throws IOException {
 		ProcessBuilder pb = new ProcessBuilder("src/test/resources/file/test.bat");
 		pb.redirectOutput(Redirect.INHERIT); // 얘네 안하면 콘솔 출력 안됨
 		pb.redirectError(Redirect.INHERIT);
@@ -20,7 +20,7 @@ public class ProcessBuilderTest {
 	}
 	
 	@Test
-	public void testWindowCommand() throws IOException {
+	public void executeWindowCommand() throws IOException {
 		ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "cd \"C:\\dev\" && dir");
 //		ProcessBuilder pb = new ProcessBuilder("csh", "-c", "ls"); // for unix-like
 		pb.redirectOutput(Redirect.INHERIT); // 얘네 안하면 콘솔 출력 안됨

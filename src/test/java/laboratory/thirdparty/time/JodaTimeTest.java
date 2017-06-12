@@ -9,6 +9,7 @@ import org.joda.time.Days;
 import org.joda.time.Duration;
 import org.joda.time.Interval;
 import org.joda.time.Period;
+import org.joda.time.YearMonth;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.PeriodFormat;
@@ -23,14 +24,29 @@ public class JodaTimeTest {
 	private static final Logger log = LoggerFactory.getLogger(JodaTimeTest.class);
 
 	@Test
-	public void testNow() {
+	public void yearMonth() {
+		YearMonth a = new YearMonth();
+		YearMonth b = YearMonth.now();
+		Assert.assertTrue(a.equals(b));
+	}
+	
+	@Test
+	public void getFirstAndLastDateOfMonth() {
+		YearMonth c = new YearMonth("2017-06");
+		DateTime dateTime = c.toDateTime(null);
+		Assert.assertEquals(1, dateTime.dayOfMonth().withMinimumValue().getDayOfMonth());
+		Assert.assertEquals(30, dateTime.dayOfMonth().withMaximumValue().getDayOfMonth());
+	}
+	
+	@Test
+	public void getNow() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 		String dt = DateTime.now().toString(formatter);
 		log.debug("testNow: " + dt);
 	}
 
 	@Test
-	public void testFromString() {
+	public void parseFromString() {
 		DateTime dt = new DateTime("2017-04-18T16:41:34.219+09:00");
 		log.debug(dt.toString());
 		DateTime dt2 = new DateTime(2017, 4, 18, 16, 41, 34, 219);
@@ -38,7 +54,7 @@ public class JodaTimeTest {
 	}
 	
 	@Test
-	public void testFromFormatString() {
+	public void parseFromStringWithFormatter() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
 		DateTime dt = formatter.parseDateTime("2016-02-05 00:00:00.000");
 		Assert.assertEquals("2016-02-05T00:00:00.000+09:00", dt.toString());
@@ -54,7 +70,7 @@ public class JodaTimeTest {
 	}
 	
 	@Test
-	public void testToFormatString() {
+	public void toStringWithFormatter() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
 		DateTime dt = new DateTime();
 		DateTime newDt = dt.withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23).withMinuteOfHour(59)
@@ -65,7 +81,7 @@ public class JodaTimeTest {
 	}
 	
 	@Test
-	public void testFromJavaUtilDate() {
+	public void parseFromJavaUtilDate() {
 		Date date = GregorianCalendar.getInstance().getTime();
 		DateTime dt = new DateTime(date);
 		log.debug("testFromJavaUtilDate: " + dt.toString());
@@ -114,7 +130,7 @@ public class JodaTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void testDateSplit() {
+	public void splitDate() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-02-03");
@@ -133,16 +149,35 @@ public class JodaTimeTest {
 	}
 
 	@Test
-	public void testEqual() {
+	public void shouldEqual() {
 //		Assert.assertEquals(new DateTime(), DateTime.now()); // 호출시점에 따라 몇 밀리초 차이로 같지 않을 수 있음
 		Assert.assertEquals(
 				new DateTime(2020, 2, 29, 23, 59, 59, 10), 
 				new DateTime().withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23)
 						.withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10));
+		
+		// 기본적으론 비슷하지만
+		DateTime a = new DateTime("2017-01-02");
+		DateTime b = new DateTime("2017-01-02");
+		Assert.assertTrue(a.isEqual(b));
+		Assert.assertTrue(a.equals(b));
+		
+		a = new DateTime("2017-01-02T01:00:00", DateTimeZone.UTC); // GMT/UTC
+		b = new DateTime("2017-01-02T10:00:00", DateTimeZone.forID("Asia/Seoul")); // GMT/UTC보다 9시간 빠름
+		
+		// isEqual은 밀리초(GMT/UTC 기준)가 같은지 비교한다.
+		log.debug(String.valueOf(a.getMillis()));
+		log.debug(String.valueOf(b.getMillis()));
+		Assert.assertTrue(a.isEqual(b)); // 영국의 01시는 한국의 10시와 같다.
+		
+		// equals는 timezone(혹은 chronology)을 적용한 시각이 같은지를 비교한다.
+		Assert.assertEquals("2017-01-02T01:00:00.000Z", a.toString());
+		Assert.assertEquals("2017-01-02T10:00:00.000+09:00", b.toString());
+		Assert.assertFalse(a.equals(b)); // 01시와 10시를 비교
 	}
 
 	@Test
-	public void testPlusDay() {
+	public void plusDay() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
 		DateTime dt = new DateTime(2020, 2, 29, 23, 59, 59, 10);
 		DateTime newInstance = dt.plusDays(1);
@@ -154,7 +189,7 @@ public class JodaTimeTest {
 	}
 
 	@Test
-	public void testCalculateMonth() {
+	public void calculateMonth() {
 		DateTime dt = new DateTime(2017, 3, 31, 00, 00, 00);
 		DateTime a = dt.minusMonths(1);
 		Assert.assertEquals(new DateTime(2017, 2, 28, 00, 00, 00).toString(), a.toString());
@@ -168,7 +203,7 @@ public class JodaTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void testCalculatePeriodJustDays() {
+	public void calculatePeriodJustDays() {
 		DateTime start = new DateTime("2017-01-01");
 		DateTime end = new DateTime("2017-05-03");
 		Assert.assertEquals(122, Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays());
@@ -188,7 +223,7 @@ public class JodaTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void testCalculatePeriodWithInterval() {
+	public void calculatePeriodWithInterval() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-01-03");
@@ -202,7 +237,7 @@ public class JodaTimeTest {
 	}
 	
 	@Test
-	public void testCalculatePeriodWithInterval2() {
+	public void calculatePeriodWithInterval2() {
 		DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime now = new DateTime();
 		DateTime dt1 = now.withYear(2020).withMonthOfYear(2).withDayOfMonth(29);
@@ -218,7 +253,7 @@ public class JodaTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void testCalculatePeriodWithPeriodFormatter() {
+	public void calculatePeriodWithPeriodFormatter() {
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2006, 1, 1, 0, 0, 0, 0);
 
@@ -245,7 +280,7 @@ public class JodaTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void testCalculatePeriodWithPeriod() {
+	public void calculatePeriodWithPeriod() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-01-03");
@@ -259,7 +294,7 @@ public class JodaTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void testCompare() {
+	public void compare() {
 		DateTime sometime = new DateTime("2017-04-18T01:00:00.000+09:00");
 		DateTime oneMinuteLater = new DateTime("2017-04-18T01:01:00.000+09:00");
 		
@@ -280,32 +315,5 @@ public class JodaTimeTest {
 		Assert.assertEquals(-1, a.compareTo(c)); // -1: a는 c보다 이전
 		Assert.assertEquals(0, c.compareTo(c)); // 0: c는 d와 같음
 		Assert.assertEquals(1, b.compareTo(c)); // 1: b는 c보다 이후
-	}
-	
-	/**
-	 * 같은 시각인지 비교
-	 * 
-	 * @author fixalot
-	 */
-	@Test
-	public void testEquality() {
-		// 기본적으론 비슷하지만
-		DateTime a = new DateTime("2017-01-02");
-		DateTime b = new DateTime("2017-01-02");
-		Assert.assertTrue(a.isEqual(b));
-		Assert.assertTrue(a.equals(b));
-		
-		a = new DateTime("2017-01-02T01:00:00", DateTimeZone.UTC); // GMT/UTC
-		b = new DateTime("2017-01-02T10:00:00", DateTimeZone.forID("Asia/Seoul")); // GMT/UTC보다 9시간 빠름
-		
-		// isEqual은 밀리초(GMT/UTC 기준)가 같은지 비교한다.
-		log.debug(String.valueOf(a.getMillis()));
-		log.debug(String.valueOf(b.getMillis()));
-		Assert.assertTrue(a.isEqual(b)); // 영국의 01시는 한국의 10시와 같다.
-		
-		// equals는 timezone(혹은 chronology)을 적용한 시각이 같은지를 비교한다.
-		Assert.assertEquals("2017-01-02T01:00:00.000Z", a.toString());
-		Assert.assertEquals("2017-01-02T10:00:00.000+09:00", b.toString());
-		Assert.assertFalse(a.equals(b)); // 01시와 10시를 비교
 	}
 }

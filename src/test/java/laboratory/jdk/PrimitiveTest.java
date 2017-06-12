@@ -10,7 +10,7 @@ public class PrimitiveTest {
 	
 	@Test
 	@SuppressWarnings("unused")
-	public void testPrimitiveEscapeCharacter() {
+	public void usingEscapeCharacter() {
 		Byte bt = 123;
 		byte bt2 = 123;
 		Short st = 0;
@@ -26,7 +26,7 @@ public class PrimitiveTest {
 	}
 	
 	@Test
-	public void testNumberRange() {
+	public void getMinMaxRange() {
 		Assert.assertEquals(-128, Byte.MIN_VALUE);
 		Assert.assertEquals(127, Byte.MAX_VALUE);
 		Assert.assertEquals(-32768, Short.MIN_VALUE);
@@ -42,22 +42,26 @@ public class PrimitiveTest {
 	}
 
 	@Test
-	public void testAutoBoxing() {
+	public void autoBoxing() {
 		Assert.assertEquals(1, (long) new Long(1));
 	}
 	
-//	@Test
+	@Test
 	@SuppressWarnings({ "null", "unused" })
-	public void testCompareWithNull() {
-		Character e = null;
-		boolean equal = e == 'b'; // NullPointerException
-		
-		Integer i = null;
-		equal = i == 1; // NullPointerException
+	public void compareWithNull() {
+		try {
+			Character e = null;
+			boolean equal = e == 'b'; // NullPointerException
+			
+			Integer i = null;
+			equal = i == 1; // NullPointerException
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 	@Test
-	public void testCharacter() {
+	public void usingCharacter() {
 		char a = 'a';
 		char b = 'b';
 		Character aa = 'a';
@@ -83,7 +87,7 @@ public class PrimitiveTest {
 	}
 	
 	@Test
-	public void testLong() {
+	public void usingLong() {
 		
 	}
 }

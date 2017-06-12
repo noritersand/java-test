@@ -12,7 +12,7 @@ public class GenerateUniqueValueTest {
 	private static final Logger log = LoggerFactory.getLogger(GenerateUniqueValueTest.class);
 	
 	@Test
-	public void testGenerateWithSystem() {
+	public void getUniqueValue() {
 		log.debug("Long max value: " + String.valueOf(Long.MAX_VALUE).length());
 		
 		long mills = System.currentTimeMillis();
@@ -27,7 +27,7 @@ public class GenerateUniqueValueTest {
 	}
 	
 	@Test
-	public void testGenereateRandomUUID() {
+	public void getUniqueUUID() {
 		log.debug(UUID.randomUUID().toString());
 		log.debug(String.valueOf(UUID.fromString("cb9bc318-3ba1-4614-81b8-daed4efe6c62")));
 //		UUID.nameUUIDFromBytes(1) // 이건 어떻게 쓰는거람

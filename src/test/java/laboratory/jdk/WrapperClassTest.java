@@ -10,7 +10,7 @@ public class WrapperClassTest {
 	private static final Logger log = LoggerFactory.getLogger(WrapperClassTest.class);
 	
 	@Test
-	public void testCopy() {
+	public void copy() {
 		final Integer a = new Integer(123);
 		Integer b = a;
 		Assert.assertEquals(123, b.intValue());

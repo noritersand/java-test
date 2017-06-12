@@ -1,4 +1,4 @@
-package laboratory.jdk.statement;
+package laboratory.jdk;
 
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ public class JavaAssertionTest {
 	}
 
 	@Test
-	public void testAssertion() {
+	public void test() {
 
 		/*
 		 * assert 비교연산식 : "좌변이 틀렸을 때 던질 AssertionError의 detailMessage";

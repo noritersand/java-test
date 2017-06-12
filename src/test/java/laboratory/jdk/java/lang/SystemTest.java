@@ -15,7 +15,7 @@ public class SystemTest {
 	private static final Logger log = LoggerFactory.getLogger(SystemTest.class);
 	
 	@Test
-	public void testCurrentTime() {
+	public void getCurrentTime() {
 		String millisecond = String.valueOf(System.currentTimeMillis());
 		Assert.assertEquals(13, millisecond.length());
 //		String nanosecond = String.valueOf(System.nanoTime());
@@ -24,7 +24,7 @@ public class SystemTest {
 	}
 	
 	@Test
-	public void testGetSystemEnvironmentVariables() {
+	public void getSystemEnvironmentVariables() {
 		Map<String, String> env  = System.getenv();
 		Set<String> keySet = env.keySet();
 		log.debug("env logging begin");
@@ -35,7 +35,7 @@ public class SystemTest {
 	}
 
 	@Test
-	public void testGetSystemProperties() {
+	public void getSystemProperties() {
 		Properties props = System.getProperties();
 		Enumeration<?> names = props.propertyNames();
 		log.debug("property logging begin");
@@ -54,22 +54,22 @@ public class SystemTest {
 	 * @author fixalot
 	 */
 //	@Test
-	public void testGetDefaultEncodingProperty() {
+	public void getDefaultEncodingProperty() {
 //		Assert.assertEquals("UTF-8", System.getProperty("file.encoding")); // maven test에선 utf-8이 아님		
 	}
 	
 	@Test
-	public void testGetNull() {
+	public void getEmptyProperty() {
 		Assert.assertNull(System.getProperty("this.is.must.be.null"));
 	}
 	
 	@Test
-	public void testGetOsName() {
+	public void getOsName() {
 		log.debug(System.getProperty("os.name"));
 	}
 	
 	@Test
-	public void testGetMavenHome() {
+	public void getMavenHome() {
 		Assert.assertNull(null, System.getenv("MAVEN_HOME"));  
 	}
 }

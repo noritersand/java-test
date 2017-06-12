@@ -9,7 +9,7 @@ public class ThreadTest {
 	private static final Logger log = LoggerFactory.getLogger(ThreadTest.class);
 	
 	@Test
-	public void testIWantCurrentMethodName() {
+	public void getCurrentMethodName() {
 		final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
 
 		// System. out.println(ste[ste.length-depth].getClassName()+"#"+ste[ste.length-depth].getMethodName());

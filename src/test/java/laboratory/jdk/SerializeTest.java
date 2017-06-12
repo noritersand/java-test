@@ -24,7 +24,7 @@ public class SerializeTest implements Serializable {
 	private static final Logger log = LoggerFactory.getLogger(SerializeTest.class);
 
 	@Test
-	public void testDesirealize() throws ClassNotFoundException, IOException {
+	public void deserialize() throws ClassNotFoundException, IOException {
 		File file = Paths.get("src/test/resources/file/test.ser").toFile();
 
 		// some instance

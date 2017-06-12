@@ -1,6 +1,5 @@
 package laboratory.jdk;
 
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -11,24 +10,19 @@ public class CastingTest {
 	private static final Logger log = LoggerFactory.getLogger(CastingTest.class);
 	
 	@Test
-	public void test() {
-		Character oc = new Character('Y');
-		Assert.assertFalse(oc.equals("Y"));
-		Assert.assertFalse("Y".equals(oc));
+	public void castFromNull() {
+		Object imnotnotnull = null;
+		String string = (String) imnotnotnull;
+		Assert.assertNull(string);
 	}
 	
 	@Test
-	public void testAutoCasting() {
+	public void upCasting() {
 		
 	}
 	
 	@Test
-	public void testUpCasting() {
-		
-	}
-	
-	@Test
-	public void testDownCasting() {
+	public void downCasting() {
 		
 	}
 }

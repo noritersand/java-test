@@ -18,13 +18,13 @@ public class ClassPathTest {
 	private static final Logger log = LoggerFactory.getLogger(ClassPathTest.class);
 	
 	@Test
-	public void testGetClasspaths() {
+	public void getClasspaths() {
 		URL[] url = ((URLClassLoader) (Thread.currentThread().getContextClassLoader())).getURLs();
 		log.debug(Arrays.toString(url));
 	}
 	
 	@Test
-	public void testAccessFileAtClasspath() throws URISyntaxException, IOException {
+	public void accessFileAtClasspath() throws URISyntaxException, IOException {
 		ClassLoader loader = ClassPathTest.class.getClassLoader();
 		URL url = loader.getResource("file/exist-test.txt");
 		File file = Paths.get(url.toURI()).toFile();
@@ -32,7 +32,7 @@ public class ClassPathTest {
 	}
 	
 	@Test
-	public void testGetResource() {
+	public void getResource() {
 		URL url = this.getClass().getResource("");
 		log.debug(String.valueOf(url.toString())); // file:/C:/dev/git/laboratory/target/test-classes/laboratory/jdk/
 	}

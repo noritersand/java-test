@@ -36,7 +36,7 @@ public class ReflectionUtilsTest {
 	}
 	
 	@Test
-	public void testFigureoutWhatKindOfMethod() {
+	public void figureoutWhatKindOfMethod() {
 		Object instance = new MyClass();
 		Method method = ReflectionUtils.findMethod(instance.getClass(), "myMethod");
 		Method method2 = ReflectionUtils.findMethod(instance.getClass(), "myMethod", String.class);
@@ -45,7 +45,7 @@ public class ReflectionUtilsTest {
 	}
 	
 //	@Test
-	public void testFindAllMethod() throws Exception {
+	public void findAllMethod() throws Exception {
 		Object instance = new MyClass();
 		Method[] a = ReflectionUtils.getAllDeclaredMethods(instance.getClass());
 		Method[] b = ReflectionUtils.getUniqueDeclaredMethods(instance.getClass());
@@ -56,7 +56,7 @@ public class ReflectionUtilsTest {
 	}
 	
 	@Test
-	public void testFindExactlyIWant() throws Exception {
+	public void findExactlyIWant() throws Exception {
 		Object instance = new MyClass();
 		Method[] methods = ReflectionUtils.getUniqueDeclaredMethods(instance.getClass());
 		for (Method method : methods) {
