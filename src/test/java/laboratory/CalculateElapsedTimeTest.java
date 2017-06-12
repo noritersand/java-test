@@ -1,4 +1,4 @@
-package laboratory.time;
+package laboratory;
 
 import java.util.GregorianCalendar;
 

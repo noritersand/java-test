@@ -1,4 +1,4 @@
-package laboratory.time;
+package laboratory.jdk.java.time;
 
 import java.time.Instant;
 import java.time.LocalDate;
