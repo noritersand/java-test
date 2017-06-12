@@ -30,4 +30,10 @@ public class ClassPathTest {
 		File file = Paths.get(url.toURI()).toFile();
 		Assert.assertTrue(file.exists());
 	}
+	
+	@Test
+	public void testGetResource() {
+		URL url = this.getClass().getResource("");
+		log.debug(String.valueOf(url.toString())); // file:/C:/dev/git/laboratory/target/test-classes/laboratory/jdk/
+	}
 }
