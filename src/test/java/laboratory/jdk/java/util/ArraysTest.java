@@ -18,7 +18,7 @@ public class ArraysTest {
 	}
 	
 	@Test
-	public void shouldEquals() {
+	public void shouldEqual() {
 		String[] a = { "a", "b", "c" };
 		String[] b = { "a", "b", "c" };
 		Assert.assertTrue(Arrays.equals(a, b));
