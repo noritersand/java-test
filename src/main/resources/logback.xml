@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <configuration scan="true" scanPeriod="5 seconds"> <!-- 5초마다 설정 변경 감지 -->
-	<property name="LOG_HOME" value="/laboratorylogs" />
+	<if condition='!property("app.log.home").equals("")'>
+		<then>
+			<property name="LOG_HOME" value="${app.log.home}" />
+		</then>
+		<else>
+			<property name="LOG_HOME" value="/laboratorylogs" />		
+		</else>
+	</if>
 
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator>
+				<expression>return message.contains("someSql.someId");</expression>
+			</evaluator>
+			<OnMatch>DENY</OnMatch>
+			<OnMismatch>NEUTRAL</OnMismatch>
+		</filter>
 		<encoder>
 			<!-- <pattern>%-5level: %msg%n</pattern> -->
 			<pattern>%-5level: %logger#%method: %msg%n</pattern>
