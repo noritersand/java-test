@@ -1,5 +1,8 @@
 package laboratory.jdk.java.lang;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -9,6 +12,20 @@ public class StringTest {
 //	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
 
+	@Test
+	public void getBytelength() throws UnsupportedEncodingException {
+		// ASCII 코드는 1byte, 한글은 2byte
+		// 일것 같지만 한글은 3byte 나옴. 우째서?
+		final String alphabet = "a";
+		final String korean = "안녕하세요";
+		log.debug(String.valueOf(alphabet.getBytes().length));
+		log.debug(String.valueOf(korean.getBytes("UTF-8").length));
+		
+		Assert.assertEquals("[-20, -107, -120, -21, -123, -107, -19, -107, -104, -20, -124, -72, -20, -102, -108]", 
+				Arrays.toString(korean.getBytes("UTF-8")));
+		Assert.assertEquals("[-2, -1, -59, 72, -79, 85, -43, 88, -63, 56, -58, -108]", Arrays.toString(korean.getBytes("UTF-16")));
+	}
+	
 	@Test
 	public void concat() {
 		String a = "a";
