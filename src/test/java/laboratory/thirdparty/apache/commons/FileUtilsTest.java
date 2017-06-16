@@ -18,7 +18,7 @@ public class FileUtilsTest {
 	@Test
 	public void writeAndRead() throws IOException {
 		String text = "some\ntext";
-		File file = Paths.get("src/test/resources/file/test-xml.txt").toFile();
+		File file = Paths.get("src/test/resources/file/write-test.txt").toFile();
 		
 		// write
 		FileUtils.writeStringToFile(file, text, Charset.forName("UTF-8"));
@@ -28,3 +28,4 @@ public class FileUtilsTest {
 		Assert.assertEquals("some\ntext", textFromFile);
 	}
 }	
+
