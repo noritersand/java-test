@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>parent</title>
+</head>
+<body>
+	<h2>parent</h2>
+	<input type="text" id="ipt" value="http://127.0.0.1:9091/html-test/iframe/child.html" style="width: 100%">
+	<button onclick="changeChildLocation()">change child location</button>
+	<div>
+		<iframe style="width: 100%"
+				id="child" src="/html-test/iframe/child.html"></iframe>
+	</div>
+	<script>
+		var child = frames[0];
+		function changeChildLocation() {
+			var value = document.querySelector('#ipt').value;
+			child.location.href = value;
+		}
+		
+	</script>
+</body>
+</html>
