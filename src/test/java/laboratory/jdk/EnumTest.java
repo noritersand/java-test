@@ -31,7 +31,7 @@ public class EnumTest {
 	}
 	
 	@Test
-	public void usingInSwitch() {
+	public void useSwitch() {
 		String div = "back_office";
 		switch (SystemDivision.valueOf(div.toUpperCase())) {
 		case BACK_OFFICE:

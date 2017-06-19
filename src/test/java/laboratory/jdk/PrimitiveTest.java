@@ -10,7 +10,7 @@ public class PrimitiveTest {
 	
 	@Test
 	@SuppressWarnings("unused")
-	public void usingEscapeCharacter() {
+	public void useEscapeCharacter() {
 		Byte bt = 123;
 		byte bt2 = 123;
 		Short st = 0;

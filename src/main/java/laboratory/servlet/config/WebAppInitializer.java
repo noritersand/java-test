@@ -14,6 +14,12 @@ import laboratory.servlet.DefaultDispatcher;
 import laboratory.servlet.filter.CharacterEncodingFilter;
 import laboratory.servlet.filter.LogbackMDCFilter;
 
+/**
+ * web.xml을 대체하는 서블릿 설정 
+ * 
+ * @since 2017-06-19
+ * @author fixalot
+ */
 @WebListener
 public class WebAppInitializer implements ServletContextListener {
 	@Override

@@ -15,6 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 기본 서블릿 테스트
+ * 
+ * @since 2017-06-19
+ * @author fixalot
+ */
+@Deprecated
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

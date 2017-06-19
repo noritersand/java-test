@@ -12,7 +12,7 @@ public class MoreObjectsTest {
 	private static final Logger log = LoggerFactory.getLogger(MoreObjectsTest.class);
 
 	@Test
-	public void usingToStringHelper() {
+	public void useToStringHelper() {
 		ToStringHelper helper = MoreObjects.toStringHelper(Pojo.class);
 		log.debug(helper.toString());
 

@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @since 2017-06-19
+ * @author fixalot
+ */
 public class DefaultDispatcher extends HttpServlet {
 	private static final long serialVersionUID = 6174311087878978970L;
 	
@@ -41,12 +45,12 @@ public class DefaultDispatcher extends HttpServlet {
 	}
 
 	private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.setCharacterEncoding("UTF-8");
 		/*
 		 * setCharacterEncoding을 호출하기 전에 request에 접근하면(정확히 뭘 건드리는게 문제인지는 모르겠지만) 나중에 인코딩을 적용해도 소용이 없다.
 		 * 따라서 setCharacterEncoding 호출은 filter 레벨에서 하는게 적절함.
+		 * 
+		 * req.setCharacterEncoding("UTF-8");
 		 */
-		
 		printParameters(req);
 		viewResolver.createView(req, resp);
 	}

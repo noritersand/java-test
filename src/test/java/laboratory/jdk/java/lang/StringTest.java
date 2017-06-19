@@ -1,6 +1,8 @@
 package laboratory.jdk.java.lang;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import org.junit.Assert;
@@ -13,17 +15,18 @@ public class StringTest {
 	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
 
 	@Test
-	public void getBytelength() throws UnsupportedEncodingException {
-		// ASCII 코드는 1byte, 한글은 2byte
-		// 일것 같지만 한글은 3byte 나옴. 우째서?
-		final String alphabet = "a";
-		final String korean = "안녕하세요";
-		log.debug(String.valueOf(alphabet.getBytes().length));
-		log.debug(String.valueOf(korean.getBytes("UTF-8").length));
-		
-		Assert.assertEquals("[-20, -107, -120, -21, -123, -107, -19, -107, -104, -20, -124, -72, -20, -102, -108]", 
-				Arrays.toString(korean.getBytes("UTF-8")));
-		Assert.assertEquals("[-2, -1, -59, 72, -79, 85, -43, 88, -63, 56, -58, -108]", Arrays.toString(korean.getBytes("UTF-16")));
+	public void getBytes() throws UnsupportedEncodingException {
+		final String korean = "한";
+		Assert.assertEquals("[-19, -107, -100]", Arrays.toString(korean.getBytes(StandardCharsets.UTF_8)));
+		Assert.assertEquals("[-2, -1, -43, 92]", Arrays.toString(korean.getBytes(StandardCharsets.UTF_16)));
+		Assert.assertEquals("[-57, -47]", Arrays.toString(korean.getBytes(Charset.forName("EUC-KR"))));
+	}
+	
+	@Test
+	public void toStringFromBytes() {
+		byte[] bytes = new byte[] { -19, -107, -100 };
+		String korean = new String(bytes, StandardCharsets.UTF_8);
+		Assert.assertEquals("한", korean);
 	}
 	
 	@Test
@@ -49,7 +52,7 @@ public class StringTest {
 	}
 
 	@Test
-	public void usingBuilder() {
+	public void useBuilder() {
 		StringBuilder builder = new StringBuilder();
 		Assert.assertEquals(0, builder.length());
 		Assert.assertEquals("", builder.toString());
@@ -67,7 +70,7 @@ public class StringTest {
 	}
 
 	@Test
-	public void usingIntern() {
+	public void useIntern() {
 		// 아래처럼 초기화될 땐 intern()을 쓰든 안쓰든 String의 주소값은 같다.
 		String a = "경기";
 		String b = "경기";

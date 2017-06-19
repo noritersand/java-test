@@ -84,7 +84,7 @@ public class ListTest {
 	}
 
 	@Test
-	public void fromArrayUsingStream() {
+	public void fromArrayWithStream() {
 		String[] strs = { "a", "b", "c", "d", "e" };
 		List<String> stringList = Arrays.stream(strs).collect(Collectors.toList());
 		Assert.assertEquals("[a, b, c, d, e]", stringList.toString());

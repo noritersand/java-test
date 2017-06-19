@@ -19,7 +19,7 @@ public class BigDecimalTest {
 	}
 	
 	@Test
-	public void usingOperator() {
+	public void useOperator() {
 		BigDecimal a = new BigDecimal("10");
 		BigDecimal b = new BigDecimal("20");
 		
