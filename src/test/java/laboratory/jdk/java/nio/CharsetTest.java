@@ -14,7 +14,7 @@ public class CharsetTest {
 	private static final Logger log = LoggerFactory.getLogger(CharsetTest.class);
 	
 	@Test
-	public void testCharset() {
+	public void usingCharset() {
 		Assert.assertTrue(Charset.isSupported("UTF-8"));
 		
 //		Charset charset = Charset.defaultCharset(); // default는 의도하지 않은 결과가 나올 수 있음.
@@ -30,7 +30,7 @@ public class CharsetTest {
 	}
 	
 	@Test
-	public void getStandardCharsetName() {
+	public void usingStandardCharset() {
 		Assert.assertEquals("US-ASCII", StandardCharsets.US_ASCII.name());
 		Assert.assertEquals("ISO-8859-1", StandardCharsets.ISO_8859_1.name());
 		Assert.assertEquals("UTF-8", StandardCharsets.UTF_8.name());
