@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class MapTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(MapTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(MapTest.class);
 
 	@Test
 	public void map() {

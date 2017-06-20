@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 public class PreparedStatementTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(PreparedStatementTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(PreparedStatementTest.class);
 	
 	@Test
 	public void test() {

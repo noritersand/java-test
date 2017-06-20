@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class FileUtilsTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(FileUtilsTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(FileUtilsTest.class);
 	
 	@Test
 	public void writeAndRead() throws IOException {

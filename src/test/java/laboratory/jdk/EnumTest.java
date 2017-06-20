@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class EnumTest {
-	private static final Logger log = LoggerFactory.getLogger(EnumTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(EnumTest.class);
 	
 	public static void main(String[] args) {
 		System.out.println(Color.RED); // RED
@@ -35,10 +35,10 @@ public class EnumTest {
 		String div = "back_office";
 		switch (SystemDivision.valueOf(div.toUpperCase())) {
 		case BACK_OFFICE:
-			log.debug("백");
+			logger.debug("백");
 			break;
 		case FRONT_OFFICE:
-			log.debug("프론트");
+			logger.debug("프론트");
 			break;
 		}
 	}

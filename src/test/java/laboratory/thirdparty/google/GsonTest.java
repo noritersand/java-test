@@ -17,7 +17,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 public class GsonTest {
-	private static final Logger log = LoggerFactory.getLogger(GsonTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(GsonTest.class);
 
 	@Test
 	public void getDataFromFile() throws FileNotFoundException {
@@ -26,7 +26,7 @@ public class GsonTest {
 		Type listType = new TypeToken<ArrayList<HashMap<String, String>>>() {}.getType();
 		Object result = new Gson().fromJson(reader, listType);
 		Assert.assertEquals(new ArrayList<HashMap<String, String>>().getClass(), result.getClass());
-		log.debug(String.valueOf(result));
+		logger.debug(String.valueOf(result));
 	}
 
 	@Test

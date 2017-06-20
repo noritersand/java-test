@@ -25,7 +25,7 @@ import org.w3c.dom.Node;
  * @author fixalot
  */
 public class XMLWriteTest {
-	private static final Logger log = LoggerFactory.getLogger(XMLWriteTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(XMLWriteTest.class);
 
 //	@Test
 	public void writeXML() throws ParserConfigurationException, TransformerException {
@@ -61,7 +61,7 @@ public class XMLWriteTest {
 		transformer.transform(source, console);
 		transformer.transform(source, file);
 		
-		log.debug("done");
+		logger.debug("done");
 	}
 
 	private Node getEmployee(Document doc, String id, String name, String age, String role, String gender) {

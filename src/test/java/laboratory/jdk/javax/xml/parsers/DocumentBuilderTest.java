@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
 
 public class DocumentBuilderTest {
 	// @SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(DocumentBuilderTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(DocumentBuilderTest.class);
 
 	@Test
 	public void read() throws ParserConfigurationException, SAXException, IOException {
@@ -29,7 +29,7 @@ public class DocumentBuilderTest {
 		Element rootElement = document.getDocumentElement();
 		NodeList nameTags = rootElement.getElementsByTagName("first-child-tag");
 		Node nameTag = nameTags.item(0);
-		log.debug("tag name: " + nameTag.getNodeName());
-		log.debug("tag text: " + nameTag.getFirstChild().getNodeValue());
+		logger.debug("tag name: " + nameTag.getNodeName());
+		logger.debug("tag text: " + nameTag.getFirstChild().getNodeValue());
 	}
 }

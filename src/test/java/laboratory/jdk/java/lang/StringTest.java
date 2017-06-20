@@ -11,8 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class StringTest {
-//	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(StringTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(StringTest.class);
 
 	@Test
 	public void getBytes() throws UnsupportedEncodingException {
@@ -90,10 +89,16 @@ public class StringTest {
 	}
 
 	@Test
-	public void replaceAlls() {
+	public void replaceAll() {
 		Assert.assertEquals("경기", "경기도".replaceAll("도", ""));
 		Assert.assertEquals("전라", "전라도".replaceAll("도", ""));
 		Assert.assertEquals("경상", "경상도".replaceAll("도", ""));
+	}
+	
+	@Test
+	public void replaceFirst() {
+		String str = "/qwe/test/submit/sender";
+		Assert.assertEquals("/test/submit/sender", str.replaceFirst("/qwe", ""));
 	}
 
 	@Test
@@ -123,9 +128,9 @@ public class StringTest {
 		String str = "abcdefghijklmn";
 		Assert.assertEquals(str, str.split("\\|")[0]);
 		try {
-			log.debug(str.split("\\|")[1]);
+			logger.debug(str.split("\\|")[1]);
 		} catch (IndexOutOfBoundsException e) {
-			log.debug("에러 났지롱");
+			logger.debug("에러 났지롱");
 		}
 	}
 
@@ -175,7 +180,7 @@ public class StringTest {
 
 		String[] strArray = splitByLength1333(str);
 //		for (String ele : strArray) {
-//			log.debug(ele);
+//			logger.debug(ele);
 //		}
 		Assert.assertArrayEquals(strArray, splitByLength(str, 1333));
 	}

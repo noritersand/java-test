@@ -12,7 +12,7 @@ import org.springframework.util.ReflectionUtils;
 
 public class ReflectionUtilsTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ReflectionUtilsTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ReflectionUtilsTest.class);
 
 	@Test
 	public void test() throws Exception {
@@ -50,9 +50,9 @@ public class ReflectionUtilsTest {
 		Method[] a = ReflectionUtils.getAllDeclaredMethods(instance.getClass());
 		Method[] b = ReflectionUtils.getUniqueDeclaredMethods(instance.getClass());
 		// superclass와 subclass에 선언된 메서드 모두 출력
-		log.debug(Arrays.toString(a));
+		logger.debug(Arrays.toString(a));
 		// 'leaf class method'만 출력한다. (subclass에서 오버라이딩한 메서드가 있을땐 superclass의 메서드를 생략)
-		log.debug(Arrays.toString(b));
+		logger.debug(Arrays.toString(b));
 	}
 	
 	@Test

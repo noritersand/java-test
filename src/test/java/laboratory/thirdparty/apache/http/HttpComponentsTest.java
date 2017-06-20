@@ -13,13 +13,13 @@ import org.slf4j.LoggerFactory;
 
 public class HttpComponentsTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(HttpComponentsTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(HttpComponentsTest.class);
 
 	@Test
 	public void send() throws Exception {
 		String result = sendSimpleRequest("http://google.com");
 		Assert.assertTrue(result != null && !result.isEmpty());
-		log.debug(result);
+		logger.debug(result);
 	}
 
 	private String sendSimpleRequest(String uri) throws Exception {
@@ -27,10 +27,10 @@ public class HttpComponentsTest {
 		try (CloseableHttpClient httpclient = HttpClients.createDefault();
 				CloseableHttpResponse response = httpclient.execute(request);) {
 			
-//			log.debug(String.valueOf(Arrays.toString(response.getAllHeaders())));
-//			log.debug(String.valueOf(response.getStatusLine().getStatusCode()));
-//			log.debug(String.valueOf(response.getStatusLine().getProtocolVersion()));
-//			log.debug(String.valueOf(response.getStatusLine().getReasonPhrase()));
+//			logger.debug(String.valueOf(Arrays.toString(response.getAllHeaders())));
+//			logger.debug(String.valueOf(response.getStatusLine().getStatusCode()));
+//			logger.debug(String.valueOf(response.getStatusLine().getProtocolVersion()));
+//			logger.debug(String.valueOf(response.getStatusLine().getReasonPhrase()));
 			
 			HttpEntity entity = response.getEntity();
 			if (entity != null) {

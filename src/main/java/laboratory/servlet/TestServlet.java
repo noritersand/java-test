@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger log = LoggerFactory.getLogger(TestServlet.class);
+	private static final Logger logger = LoggerFactory.getLogger(TestServlet.class);
 	private static final String JSP_PREFIX = "/WEB-INF/jsp/";
 	private static final String JSP_SUFIX = ".jsp";
 
@@ -69,7 +69,7 @@ public class TestServlet extends HttpServlet {
 		while (iterator.hasNext()) {
 			String key = iterator.next();
 			String[] values = parameterMap.get(key);
-			log.debug(key + ": " + Arrays.toString(values));
+			logger.debug(key + ": " + Arrays.toString(values));
 		}
 	}
 
@@ -87,8 +87,8 @@ public class TestServlet extends HttpServlet {
 				? requestURI.substring(contextPath.length(), requestURI.length())
 				: requestURI;
 
-		log.debug("contextPath: " + contextPath);
-		log.debug("requestURI: " + requestURI);
+		logger.debug("contextPath: " + contextPath);
+		logger.debug("requestURI: " + requestURI);
 		
 		requestURI = requestURI.substring(0, requestURI.lastIndexOf("."));
 		StringBuilder builder = new StringBuilder(JSP_PREFIX).append(requestURI).append(JSP_SUFIX);

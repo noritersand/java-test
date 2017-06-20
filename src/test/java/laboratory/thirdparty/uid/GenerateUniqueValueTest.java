@@ -9,11 +9,11 @@ import org.slf4j.LoggerFactory;
 
 public class GenerateUniqueValueTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(GenerateUniqueValueTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(GenerateUniqueValueTest.class);
 	
 	@Test
 	public void getUniqueValue() {
-		log.debug("Long max value: " + String.valueOf(Long.MAX_VALUE).length());
+		logger.debug("Long max value: " + String.valueOf(Long.MAX_VALUE).length());
 		
 		long mills = System.currentTimeMillis();
 		long nanos = System.nanoTime();
@@ -23,13 +23,13 @@ public class GenerateUniqueValueTest {
 			millsPlusNanos = millsPlusNanos.substring(0, 19);
 		}
 		Assert.assertEquals(19, millsPlusNanos.length());
-		log.debug(String.valueOf(new Long(millsPlusNanos)));
+		logger.debug(String.valueOf(new Long(millsPlusNanos)));
 	}
 	
 	@Test
 	public void getUniqueUUID() {
-		log.debug(UUID.randomUUID().toString());
-		log.debug(String.valueOf(UUID.fromString("cb9bc318-3ba1-4614-81b8-daed4efe6c62")));
+		logger.debug(UUID.randomUUID().toString());
+		logger.debug(String.valueOf(UUID.fromString("cb9bc318-3ba1-4614-81b8-daed4efe6c62")));
 //		UUID.nameUUIDFromBytes(1) // 이건 어떻게 쓰는거람
 	}
 }

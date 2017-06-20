@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class OperatorTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(OperatorTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(OperatorTest.class);
 	
 	@Test
 	public void testTernary() {

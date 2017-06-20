@@ -9,18 +9,18 @@ import com.google.common.base.MoreObjects.ToStringHelper;
 
 public class MoreObjectsTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(MoreObjectsTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(MoreObjectsTest.class);
 
 	@Test
 	public void useToStringHelper() {
 		ToStringHelper helper = MoreObjects.toStringHelper(Pojo.class);
-		log.debug(helper.toString());
+		logger.debug(helper.toString());
 
 		Pojo pojo = new Pojo();
 		pojo.setStringField("야");
 		pojo.setIntField(65536);
 		helper = MoreObjects.toStringHelper(pojo); // FIXME 이거 뭐하는 놈이여
-		log.debug(helper.toString());
+		logger.debug(helper.toString());
 	}
 
 	@SuppressWarnings("unused")

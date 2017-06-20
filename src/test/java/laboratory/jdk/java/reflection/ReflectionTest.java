@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class ReflectionTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ReflectionTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ReflectionTest.class);
 
 	@Test
 	public void test() throws Exception {

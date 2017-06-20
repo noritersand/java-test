@@ -9,12 +9,12 @@ import org.slf4j.LoggerFactory;
 
 public class ArraysTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ArraysTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArraysTest.class);
 	
 	@Test
 	public void getString() {
 		String[] a = { "a", "b", "c" };
-		log.debug(Arrays.toString(a));
+		logger.debug(Arrays.toString(a));
 	}
 	
 	@Test

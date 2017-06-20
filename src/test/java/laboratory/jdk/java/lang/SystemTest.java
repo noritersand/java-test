@@ -11,8 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SystemTest {
-//	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(SystemTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(SystemTest.class);
 	
 	@Test
 	public void getCurrentTime() {
@@ -27,23 +26,23 @@ public class SystemTest {
 	public void getSystemEnvironmentVariables() {
 		Map<String, String> env  = System.getenv();
 		Set<String> keySet = env.keySet();
-		log.debug("env logging begin");
+		logger.debug("env logging begin");
 		for (String key : keySet) {
-			log.debug(env.get(key));
+			logger.debug(env.get(key));
 		}
-		log.debug("env logging done");
+		logger.debug("env logging done");
 	}
 
 	@Test
 	public void getSystemProperties() {
 		Properties props = System.getProperties();
 		Enumeration<?> names = props.propertyNames();
-		log.debug("property logging begin");
+		logger.debug("property logging begin");
 		while (names.hasMoreElements()) {
 			String string = (String) names.nextElement();
-			log.debug(string);
+			logger.debug(string);
 		}
-		log.debug("property logging done");
+		logger.debug("property logging done");
 	}
 	
 	/**
@@ -65,7 +64,7 @@ public class SystemTest {
 	
 	@Test
 	public void getOsName() {
-		log.debug(System.getProperty("os.name"));
+		logger.debug(System.getProperty("os.name"));
 	}
 	
 	@Test

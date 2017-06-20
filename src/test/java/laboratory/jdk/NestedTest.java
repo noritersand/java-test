@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class NestedTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(NestedTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(NestedTest.class);
 
 	@Test
 	public void test() {

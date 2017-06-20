@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class DefaultViewResolver {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(DefaultViewResolver.class);
+	private static final Logger logger = LoggerFactory.getLogger(DefaultViewResolver.class);
 	
 	public void createView(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String requestURI = req.getRequestURI();
@@ -27,8 +27,11 @@ public class DefaultViewResolver {
 		forwardToJSP(req, resp, path);
 	}
 
-	private void forwardToJSP(HttpServletRequest req, HttpServletResponse resp, final String path) throws ServletException, IOException {
-		final String jspLocation = new StringBuilder().append("/WEB-INF/jsp/").append(path).append(".jsp").toString();
+	private void forwardToJSP(HttpServletRequest req, HttpServletResponse resp, String path) throws ServletException, IOException {
+		if (req.getContextPath().length() > 0) {
+			path = path.replaceFirst(req.getContextPath(), "");
+		}
+		final String jspLocation = "/WEB-INF/jsp/" + path + ".jsp";
 		req.getRequestDispatcher(jspLocation).forward(req, resp);
 	}
 }

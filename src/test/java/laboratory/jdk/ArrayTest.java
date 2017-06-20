@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class ArrayTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ArrayTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArrayTest.class);
 
 	@Test
 	public void reverse() {

@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
  */
 public class GreatestCommonDivisorTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(GreatestCommonDivisorTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(GreatestCommonDivisorTest.class);
 	
 	@Test
 	public void shouldEqual() {

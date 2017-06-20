@@ -9,7 +9,7 @@ import com.google.common.base.CaseFormat;
 
 public class CaseFormatTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(CaseFormatTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(CaseFormatTest.class);
 	
 	@Test
 	public void format() {

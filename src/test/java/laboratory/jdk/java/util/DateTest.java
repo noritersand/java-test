@@ -8,11 +8,11 @@ import org.slf4j.LoggerFactory;
 
 public class DateTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(DateTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(DateTest.class);
 	
 	@Test
 	public void test() {
 		Date now = new Date();
-		log.debug(String.valueOf(now));
+		logger.debug(String.valueOf(now));
 	}
 }

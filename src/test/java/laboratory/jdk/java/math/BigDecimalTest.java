@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class BigDecimalTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(BigDecimalTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(BigDecimalTest.class);
 	
 	@Test
 	public void getConst() {

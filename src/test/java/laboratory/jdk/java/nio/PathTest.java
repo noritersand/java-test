@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class PathTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(PathTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(PathTest.class);
 
 	/*
 	 * src/main 혹은 src/test는 로컬에서만 사용해야하는 경로다.
@@ -73,16 +73,16 @@ public class PathTest {
 	
 	@Test
 	public void getRoot() {
-		log.debug("relative paths:");
-		log.debug(Paths.get("/").toString()); // just "\"
-		log.debug(Paths.get("").toString()); // ""
-		log.debug(Paths.get("/").toFile().toString()); // just "\"
-		log.debug(Paths.get("").toFile().toString()); // ""
+		logger.debug("relative paths:");
+		logger.debug(Paths.get("/").toString()); // just "\"
+		logger.debug(Paths.get("").toString()); // ""
+		logger.debug(Paths.get("/").toFile().toString()); // just "\"
+		logger.debug(Paths.get("").toFile().toString()); // ""
 		
-		log.debug("absolute paths:");
-		log.debug(Paths.get("/").toAbsolutePath().toString()); // just "\"
-		log.debug(Paths.get("").toAbsolutePath().toString()); // ""
-		log.debug(Paths.get("/").toAbsolutePath().toFile().toString()); // just "\"
-		log.debug(Paths.get("").toAbsolutePath().toFile().toString()); // ""
+		logger.debug("absolute paths:");
+		logger.debug(Paths.get("/").toAbsolutePath().toString()); // just "\"
+		logger.debug(Paths.get("").toAbsolutePath().toString()); // ""
+		logger.debug(Paths.get("/").toAbsolutePath().toFile().toString()); // just "\"
+		logger.debug(Paths.get("").toAbsolutePath().toFile().toString()); // ""
 	}
 }

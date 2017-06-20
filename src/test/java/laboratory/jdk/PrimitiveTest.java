@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class PrimitiveTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(PrimitiveTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(PrimitiveTest.class);
 	
 	@Test
 	@SuppressWarnings("unused")

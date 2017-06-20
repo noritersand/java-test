@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class StopWatchTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(StopWatchTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(StopWatchTest.class);
 
 	@Test
 	public void usage() {
@@ -21,7 +21,7 @@ public class StopWatchTest {
 		Assert.assertTrue(watch.isStarted());
 
 		doUselessThing();
-		log.debug("경과 시간: " + String.valueOf(watch.getNanoTime()));
+		logger.debug("경과 시간: " + String.valueOf(watch.getNanoTime()));
 
 		watch.suspend(); // 일시정지
 		Assert.assertTrue(watch.isSuspended());
@@ -30,9 +30,9 @@ public class StopWatchTest {
 		Assert.assertTrue(watch.isStarted());
 
 		watch.split(); // 임시 기록
-		log.debug("임시 기록 시간: " + String.valueOf(watch.getSplitNanoTime()));
+		logger.debug("임시 기록 시간: " + String.valueOf(watch.getSplitNanoTime()));
 
-		log.debug("시작된 시간: " + String.valueOf(new DateTime(watch.getStartTime())));
+		logger.debug("시작된 시간: " + String.valueOf(new DateTime(watch.getStartTime())));
 
 		watch.stop(); // 중단
 		watch.reset(); // 초기화

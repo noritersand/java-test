@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class CharacterTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(CharacterTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(CharacterTest.class);
 	
 	@Test
 	public void compare() {
@@ -54,9 +54,9 @@ public class CharacterTest {
 		final String binary = "5";
 		final String alphabet = "a";
 		final String korean = "한";
-		log.debug(String.valueOf((int) binary.charAt(0)));
-		log.debug(String.valueOf((int) alphabet.charAt(0)));
-		log.debug(String.valueOf((int) korean.charAt(0)));
+		logger.debug(String.valueOf((int) binary.charAt(0)));
+		logger.debug(String.valueOf((int) alphabet.charAt(0)));
+		logger.debug(String.valueOf((int) korean.charAt(0)));
 	}
 	
 	@Test

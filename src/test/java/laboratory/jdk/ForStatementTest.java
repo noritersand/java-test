@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class ForStatementTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ForStatementTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ForStatementTest.class);
 
 	@Test
 	public void removeList() {

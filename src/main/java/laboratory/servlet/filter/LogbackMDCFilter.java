@@ -23,7 +23,7 @@ import ch.qos.logback.classic.ClassicConstants;
  * @author fixalot
  */
 public class LogbackMDCFilter implements Filter {
-	private static final Logger log = LoggerFactory.getLogger(LogbackMDCFilter.class);
+	private static final Logger logger = LoggerFactory.getLogger(LogbackMDCFilter.class);
 	public static final String REQUEST_METHOD_MDC_KEY = "req.requestMethod";
 
 	@Override
@@ -56,7 +56,7 @@ public class LogbackMDCFilter implements Filter {
 				MDC.put(REQUEST_METHOD_MDC_KEY, httpServletRequest.getMethod());
 			}
 		} catch (Exception e) {
-			log.error(e.getMessage(), e);
+			logger.error(e.getMessage(), e);
 		}
 	}
 

@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 public class DefaultDispatcher extends HttpServlet {
 	private static final long serialVersionUID = 6174311087878978970L;
 	
-	private static final Logger log = LoggerFactory.getLogger(DefaultDispatcher.class);
+	private static final Logger logger = LoggerFactory.getLogger(DefaultDispatcher.class);
 	private DefaultViewResolver viewResolver = new DefaultViewResolver();
 	
 	@Override
@@ -65,7 +65,7 @@ public class DefaultDispatcher extends HttpServlet {
 		while (iterator.hasNext()) {
 			String key = iterator.next();
 			String[] values = parameterMap.get(key);
-			log.debug(key + ": " + Arrays.toString(values));
+			logger.debug(key + ": " + Arrays.toString(values));
 		}
 	}
 }

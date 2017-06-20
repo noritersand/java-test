@@ -10,7 +10,7 @@ import org.springframework.util.StringUtils;
 
 public class StringUtilsTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(StringUtilsTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(StringUtilsTest.class);
 	
 	@Test
 	public void tokenize() {

@@ -13,7 +13,7 @@ import com.google.common.reflect.ClassPath.ResourceInfo;
 
 public class ClassPathTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ClassPathTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClassPathTest.class);
 
 //	@Test // 로그가 너무 길어져서 생략
 	public void getAllClasses() throws IOException {
@@ -22,7 +22,7 @@ public class ClassPathTest {
 		UnmodifiableIterator<ClassInfo> iterator = classInfoSet.iterator();
 		while (iterator.hasNext()) {
 			ClassInfo classInfo = iterator.next();
-			log.debug(String.valueOf(classInfo));
+			logger.debug(String.valueOf(classInfo));
 		}
 	}
 	
@@ -33,7 +33,7 @@ public class ClassPathTest {
 		UnmodifiableIterator<ResourceInfo> iterator = resourceInfoSet.iterator();
 		while (iterator.hasNext()) {
 			ResourceInfo resourceInfo = iterator.next();
-			log.debug(String.valueOf(resourceInfo));
+			logger.debug(String.valueOf(resourceInfo));
 		}
 	}
 }

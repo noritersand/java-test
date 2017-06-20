@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class ClassClassTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ClassClassTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClassClassTest.class);
 
 	@Test
 	public void test() throws ClassNotFoundException, InstantiationException, IllegalAccessException {

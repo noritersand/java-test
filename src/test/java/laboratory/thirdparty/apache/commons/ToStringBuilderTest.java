@@ -7,17 +7,17 @@ import org.slf4j.LoggerFactory;
 
 public class ToStringBuilderTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ToStringBuilderTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ToStringBuilderTest.class);
 
 	@Test
 	public void printToStringResult() {
 		Pojo pojo = new Pojo();
-		log.debug(ToStringBuilder.reflectionToString(pojo));
+		logger.debug(ToStringBuilder.reflectionToString(pojo));
 		pojo.setStringField("야");
 		pojo.setIntField(65536);
-		log.debug(ToStringBuilder.reflectionToString(pojo));
+		logger.debug(ToStringBuilder.reflectionToString(pojo));
 		try {
-			log.debug(ToStringBuilder.reflectionToString(null)); // 에러남
+			logger.debug(ToStringBuilder.reflectionToString(null)); // 에러남
 		} catch (Exception e) {
 			// do nothing
 		}

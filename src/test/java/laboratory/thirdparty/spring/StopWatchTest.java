@@ -9,7 +9,7 @@ import org.springframework.util.StopWatch.TaskInfo;
 
 public class StopWatchTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(StopWatchTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(StopWatchTest.class);
 	
 	@Test
 	public void usage() {
@@ -28,19 +28,19 @@ public class StopWatchTest {
 		doUselessThing();
 		watch.stop();
 
-		log.debug(watch.prettyPrint());
+		logger.debug(watch.prettyPrint());
 		
 		Assert.assertEquals(3, watch.getTaskCount());
 		Assert.assertEquals(3, watch.getTaskInfo().length);
 		
-		log.debug(watch.shortSummary());
+		logger.debug(watch.shortSummary());
 		
 		Assert.assertEquals("IN SOVIET RUSSIA, MONITOR WATCHES YOU", watch.getId());
 		
 		TaskInfo info = watch.getLastTaskInfo();
 		Assert.assertEquals("third", info.getTaskName());
-		log.debug(String.valueOf(info.getTimeMillis()));
-		log.debug(String.valueOf(info.getTimeSeconds()));
+		logger.debug(String.valueOf(info.getTimeMillis()));
+		logger.debug(String.valueOf(info.getTimeSeconds()));
 	}
 	
 	private long doUselessThing() {

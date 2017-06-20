@@ -23,12 +23,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class JavaTimeTest {
-	private static final Logger log = LoggerFactory.getLogger(JavaTimeTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(JavaTimeTest.class);
 
 	@Test
 	public void test() {
-		log.debug("test: " + String.valueOf(Instant.now()));
-		log.debug("test: " + String.valueOf(LocalDate.now()));
+		logger.debug("test: " + String.valueOf(Instant.now()));
+		logger.debug("test: " + String.valueOf(LocalDate.now()));
 	}
 	
 	@Test
@@ -74,16 +74,16 @@ public class JavaTimeTest {
 	@Test
 	public void parseToJavaUtilDate() {
 		// case#1
-		log.debug("testToJavaUtilDate: " + Date.from(Instant.now()).toString());;
+		logger.debug("testToJavaUtilDate: " + Date.from(Instant.now()).toString());;
 		
 		// case#2
-		log.debug("testToJavaUtilDate: " + Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString());
+		logger.debug("testToJavaUtilDate: " + Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString());
 		
 		// case#3
 		Date in = new Date();
 		LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
 		Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-		log.debug("testToJavaUtilDate: " + out.toString());
+		logger.debug("testToJavaUtilDate: " + out.toString());
 	}
 	
 	@Test

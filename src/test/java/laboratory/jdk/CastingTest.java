@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class CastingTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(CastingTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(CastingTest.class);
 	
 	@Test
 	public void castFromNull() {

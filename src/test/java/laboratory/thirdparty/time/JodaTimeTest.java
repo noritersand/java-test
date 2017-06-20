@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class JodaTimeTest {
-	private static final Logger log = LoggerFactory.getLogger(JodaTimeTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(JodaTimeTest.class);
 
 	@Test
 	public void yearMonth() {
@@ -42,13 +42,13 @@ public class JodaTimeTest {
 	public void getNow() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 		String dt = DateTime.now().toString(formatter);
-		log.debug("testNow: " + dt);
+		logger.debug("testNow: " + dt);
 	}
 
 	@Test
 	public void parseFromString() {
 		DateTime dt = new DateTime("2017-04-18T16:41:34.219+09:00");
-		log.debug(dt.toString());
+		logger.debug(dt.toString());
 		DateTime dt2 = new DateTime(2017, 4, 18, 16, 41, 34, 219);
 		Assert.assertEquals(dt, dt2);
 	}
@@ -62,7 +62,7 @@ public class JodaTimeTest {
 		try {
 			formatter.parseDateTime("20160205");
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			logger.error(e.getMessage());
 		}
 
 		DateTime dt2 = new DateTime("2015-01-01");
@@ -84,7 +84,7 @@ public class JodaTimeTest {
 	public void parseFromJavaUtilDate() {
 		Date date = GregorianCalendar.getInstance().getTime();
 		DateTime dt = new DateTime(date);
-		log.debug("testFromJavaUtilDate: " + dt.toString());
+		logger.debug("testFromJavaUtilDate: " + dt.toString());
 	}
 
 	@Test
@@ -134,8 +134,8 @@ public class JodaTimeTest {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-02-03");
-		log.debug(start.toString());
-		log.debug(end.toString());
+		logger.debug(start.toString());
+		logger.debug(end.toString());
 
 //		Period p = new Period(start, end);
 //		(p.getYears() * 365) 
@@ -203,7 +203,7 @@ public class JodaTimeTest {
 		Interval interval = new Interval(start.toDate().getTime(), end.toDate().getTime());
 		org.joda.time.Period period = interval.toPeriod();
 
-		log.debug(String.format("%d years, %d months, %d days, %d hours, %d minutes, %d seconds%n", 
+		logger.debug(String.format("%d years, %d months, %d days, %d hours, %d minutes, %d seconds%n", 
 				period.getYears(), period.getMonths(), period.getDays(), 
 				period.getHours(), period.getMinutes(), period.getSeconds()));
 	}
@@ -243,7 +243,7 @@ public class JodaTimeTest {
 			    .printZeroNever()
 			    .toFormatter();
 		
-		log.debug(period.toString(formatter));
+		logger.debug(period.toString(formatter));
 	}
 	
 	/**
@@ -307,8 +307,8 @@ public class JodaTimeTest {
 		b = new DateTime("2017-01-02T10:00:00", DateTimeZone.forID("Asia/Seoul")); // GMT/UTC보다 9시간 빠름
 		
 		// isEqual은 밀리초(GMT/UTC 기준)가 같은지 비교한다.
-		log.debug(String.valueOf(a.getMillis()));
-		log.debug(String.valueOf(b.getMillis()));
+		logger.debug(String.valueOf(a.getMillis()));
+		logger.debug(String.valueOf(b.getMillis()));
 		Assert.assertTrue(a.isEqual(b)); // 영국의 01시는 한국의 10시와 같다.
 		
 		// equals는 timezone(혹은 chronology)을 적용한 시각이 같은지를 비교한다.

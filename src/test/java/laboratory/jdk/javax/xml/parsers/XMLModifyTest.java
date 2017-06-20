@@ -28,7 +28,7 @@ import org.xml.sax.SAXException;
  * @author fixalot
  */
 public class XMLModifyTest {
-	private static final Logger log = LoggerFactory.getLogger(XMLModifyTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(XMLModifyTest.class);
 
 //	@Test
 	public void modifyXML() throws TransformerException, ParserConfigurationException, SAXException, IOException {
@@ -61,7 +61,7 @@ public class XMLModifyTest {
 		StreamResult result = new StreamResult(new File("src/test/resources/xml/modify-result.xml"));
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		transformer.transform(source, result);
-		log.debug("XML file updated successfully");
+		logger.debug("XML file updated successfully");
 	}
 
 	private static void addElement(Document doc) {

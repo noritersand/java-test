@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  */
 public class CharacterEncodingFilter implements Filter {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(CharacterEncodingFilter.class);
+	private static final Logger logger = LoggerFactory.getLogger(CharacterEncodingFilter.class);
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class MethodNameTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(MethodNameTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(MethodNameTest.class);
 	
     private static final int CLIENT_CODE_STACK_INDEX;
 
@@ -33,15 +33,15 @@ public class MethodNameTest {
     
     @Test
     public void test1() {
-    	log.debug("methodName() = " + methodName());
-    	log.debug("CLIENT_CODE_STACK_INDEX = " + CLIENT_CODE_STACK_INDEX);
+    	logger.debug("methodName() = " + methodName());
+    	logger.debug("CLIENT_CODE_STACK_INDEX = " + CLIENT_CODE_STACK_INDEX);
     }
     
     @Test
     public void test2() {
     	String className = new Object(){}.getClass().getEnclosingClass().getName();
-    	log.debug("className: " + className);
+    	logger.debug("className: " + className);
     	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
-    	log.debug("methodName: " + methodName);
+    	logger.debug("methodName: " + methodName);
     }
 }

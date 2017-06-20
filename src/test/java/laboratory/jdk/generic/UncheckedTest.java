@@ -8,8 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class UncheckedTest {
-	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(UncheckedTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(UncheckedTest.class);
 
 	@Test
 	public void thisCodeShouldUnchecked() {
@@ -18,9 +17,9 @@ public class UncheckedTest {
 		List<String> list = new LinkedList<>();
 		list.add("야");
 		List<?> uncheckedList = list;
-		System.out.println(uncheckedList.get(0));
+		logger.debug(String.valueOf(uncheckedList.get(0)));
 		String a = (String) uncheckedList.get(0);
-		System.out.println(a);
+		logger.debug(a);
 
 		// TODO 이렇게
 //		String[] strs = { "a", "b", "c", "d", "e" };

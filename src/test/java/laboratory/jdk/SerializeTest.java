@@ -21,7 +21,7 @@ public class SerializeTest implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(SerializeTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(SerializeTest.class);
 
 	@Test
 	public void deserialize() throws ClassNotFoundException, IOException {

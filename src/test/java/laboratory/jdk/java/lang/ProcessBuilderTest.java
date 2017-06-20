@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class ProcessBuilderTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ProcessBuilderTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ProcessBuilderTest.class);
 
 	@Test
 	public void executeFile() throws IOException {

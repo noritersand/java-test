@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class ListTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ListTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ListTest.class);
 
 	private class TestModel implements Cloneable {}
 	

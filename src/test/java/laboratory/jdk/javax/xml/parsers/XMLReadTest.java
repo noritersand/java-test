@@ -26,7 +26,7 @@ import org.xml.sax.SAXException;
  * @author fixalot
  */
 public class XMLReadTest {
-	private static final Logger log = LoggerFactory.getLogger(XMLReadTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(XMLReadTest.class);
 
 	@Test
 	public void readXML() throws ParserConfigurationException, TransformerException, SAXException, IOException {
@@ -37,7 +37,7 @@ public class XMLReadTest {
 		Document doc = dBuilder.parse(xmlFile);
 		doc.getDocumentElement().normalize();
 		
-		log.debug("Root element :" + doc.getDocumentElement().getNodeName());
+		logger.debug("Root element :" + doc.getDocumentElement().getNodeName());
 		
 		NodeList nodeList = doc.getElementsByTagName("Employee");
 		// now XML is loaded as Document in memory, lets convert it to Object List
@@ -47,7 +47,7 @@ public class XMLReadTest {
 		}
 		// lets print Employee list information
 		for (Employee emp : empList) {
-			log.debug(emp.toString());
+			logger.debug(emp.toString());
 		}
 	}
 

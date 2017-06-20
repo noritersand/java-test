@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class InstanceofTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(InstanceofTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(InstanceofTest.class);
 
 	@Test
 	public void testExtends() {

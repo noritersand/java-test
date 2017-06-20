@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class WrapperClassTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(WrapperClassTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(WrapperClassTest.class);
 	
 	@Test
 	public void copy() {

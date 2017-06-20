@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class LambdaTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(LambdaTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(LambdaTest.class);
 	
 	@Test
 	public void testForEach() {
@@ -21,7 +21,7 @@ public class LambdaTest {
 		Integer[] values = { 1, 3, 7 };
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
 		list.forEach(k -> {
-			log.debug(String.valueOf(k));
+			logger.debug(String.valueOf(k));
 		});
 
 		// MAP
@@ -29,7 +29,7 @@ public class LambdaTest {
 		items.put("A", 10);
 		items.put("B", 20);
 		items.forEach((k, v) -> {
-			log.debug("Item : " + k + " Count : " + v);
+			logger.debug("Item : " + k + " Count : " + v);
 		});
 	}
 

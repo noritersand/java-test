@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class URLEncoderTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(URLEncoderTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(URLEncoderTest.class);
 	
 	@Test
 	public void encodeUrl() throws UnsupportedEncodingException {

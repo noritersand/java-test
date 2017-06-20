@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class CharsetTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(CharsetTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(CharsetTest.class);
 	
 	@Test
 	public void useCharset() {

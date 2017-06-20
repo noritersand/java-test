@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class FileTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(FileTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(FileTest.class);
 
 	/*
 	 * src/main 혹은 src/test는 로컬에서만 사용해야하는 경로다.

@@ -15,12 +15,12 @@ import org.slf4j.LoggerFactory;
 
 public class ClassPathTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ClassPathTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClassPathTest.class);
 	
 	@Test
 	public void getClasspaths() {
 		URL[] url = ((URLClassLoader) (Thread.currentThread().getContextClassLoader())).getURLs();
-		log.debug(Arrays.toString(url));
+		logger.debug(Arrays.toString(url));
 	}
 	
 	@Test
@@ -34,6 +34,6 @@ public class ClassPathTest {
 	@Test
 	public void getResource() {
 		URL url = this.getClass().getResource("");
-		log.debug(String.valueOf(url.toString())); // file:/C:/dev/git/laboratory/target/test-classes/laboratory/jdk/
+		logger.debug(String.valueOf(url.toString())); // file:/C:/dev/git/laboratory/target/test-classes/laboratory/jdk/
 	}
 }

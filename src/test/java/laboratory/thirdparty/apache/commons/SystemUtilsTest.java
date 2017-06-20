@@ -7,14 +7,14 @@ import org.slf4j.LoggerFactory;
 
 public class SystemUtilsTest {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(SystemUtilsTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(SystemUtilsTest.class);
 	
 	@Test
 	public void usage() {
-		log.debug(String.valueOf(SystemUtils.IS_OS_WINDOWS));
-		log.debug(String.valueOf(SystemUtils.IS_OS_UNIX));
-		log.debug(String.valueOf(SystemUtils.IS_OS_LINUX));
-		log.debug(String.valueOf(SystemUtils.IS_OS_MAC));
-		log.debug(String.valueOf(SystemUtils.FILE_ENCODING));
+		logger.debug(String.valueOf(SystemUtils.IS_OS_WINDOWS));
+		logger.debug(String.valueOf(SystemUtils.IS_OS_UNIX));
+		logger.debug(String.valueOf(SystemUtils.IS_OS_LINUX));
+		logger.debug(String.valueOf(SystemUtils.IS_OS_MAC));
+		logger.debug(String.valueOf(SystemUtils.FILE_ENCODING));
 	}
 }

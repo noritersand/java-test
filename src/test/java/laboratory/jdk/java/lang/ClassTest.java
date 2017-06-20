@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class ClassTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ClassTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClassTest.class);
 	
 	@Test
 	public void getClassName() {

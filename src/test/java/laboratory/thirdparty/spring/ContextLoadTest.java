@@ -12,7 +12,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class ContextLoadTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ContextLoadTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ContextLoadTest.class);
 
 	@Test
 	public void loadContextWithClassPath() {

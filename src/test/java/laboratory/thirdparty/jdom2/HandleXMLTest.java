@@ -23,7 +23,7 @@ import org.xml.sax.SAXException;
 
 public class HandleXMLTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(HandleXMLTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(HandleXMLTest.class);
 	
 //	@Test
 	public void merge() throws SAXException, IOException, ParserConfigurationException {

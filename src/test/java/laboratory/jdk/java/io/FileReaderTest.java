@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FileReaderTest {
-	private static final Logger log = LoggerFactory.getLogger(FileReaderTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(FileReaderTest.class);
 	
 	@Test
 	public void compareEachLine() throws IOException {
@@ -30,11 +30,11 @@ public class FileReaderTest {
 			}
 			if (data.equals(data2)) {
 				hasAnyEqualLine = true;
-				log.debug(data);
+				logger.debug(data);
 			}
 		}
 		if (!hasAnyEqualLine) {
-			log.debug("모든 라인이 일치하지 않네요");
+			logger.debug("모든 라인이 일치하지 않네요");
 		}
 		
 		reader.close();

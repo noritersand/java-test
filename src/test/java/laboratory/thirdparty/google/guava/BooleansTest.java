@@ -9,7 +9,7 @@ import com.google.common.primitives.Booleans;
 
 public class BooleansTest {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(BooleansTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(BooleansTest.class);
 	
 	@Test
 	public void test() {
