@@ -15,42 +15,74 @@ public class ListTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ListTest.class);
 
-	private class TestModel implements Cloneable {}
-	
+	@SuppressWarnings("unused")
+	private class ListTestModel {
+		private String name;
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+		
+		public ListTestModel(String name) {
+			this.name = name;
+		}
+	}
+
 	@Test
-	public void doClone() {
-		ArrayList<TestModel> origins = new ArrayList<>();
-		origins.add(new TestModel());
-		
-//		ArrayList<TestModel> newModels = new ArrayList<>();
-		
-		// TODO
-		
-//		Assert.assertEquals(origins.get(0), newModels.get(0));
-//		Assert.assertTrue(origins.get(0) == newModels.get(0));
+	public void wrongWayClone() {
+		ArrayList<ListTestModel> origins = new ArrayList<>();
+		origins.add(new ListTestModel("123"));
+		origins.add(new ListTestModel("456"));
+		origins.add(new ListTestModel("789"));
+
+		// 이건 클론이 아니라 그냥 복사. 같은 인스턴스를 사용한다.
+		ArrayList<ListTestModel> newbies = new ArrayList<>(origins);
+
+		Assert.assertEquals(origins.get(0), newbies.get(0));
+		Assert.assertTrue(origins.get(0) == newbies.get(0));
 	}
 	
+	@Test
+	public void cloneManual() {
+		ArrayList<ListTestModel> origins = new ArrayList<>();
+		origins.add(new ListTestModel("123"));
+		origins.add(new ListTestModel("456"));
+		origins.add(new ListTestModel("789"));
+		
+		ArrayList<ListTestModel> newbies = new ArrayList<>();
+		for (ListTestModel ele : origins) {
+			newbies.add(new ListTestModel(ele.getName()));
+		}
+
+		Assert.assertNotEquals(origins.get(0), newbies.get(0));
+		Assert.assertTrue(origins.get(0) != newbies.get(0));
+	}
+
 	@Test
 	public void getSize() {
 		ArrayList<String> stringList = new ArrayList<>();
 		Assert.assertEquals(0, stringList.size());
-		stringList = new ArrayList<>(10); // 리스트의 capacity를 지정한다. size가 아니다. 
+		stringList = new ArrayList<>(10); // 리스트의 capacity를 지정한다. size가 아니다.
 		Assert.assertEquals(0, stringList.size()); // capacity 지정과 size는 관련 없음.
 	}
-	
+
 	@Test
 	public void removeElement() {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
 		Iterator<String> iter = list.iterator();
 		while (iter.hasNext()) {
 			String s = iter.next();
-		 
+
 			if (s.equals("a")) {
 				iter.remove();
 			}
 		}
 	}
-	
+
 	@Test
 	public void find() {
 		Integer[] values = { 1, 3, 7 };
