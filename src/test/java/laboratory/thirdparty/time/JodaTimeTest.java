@@ -8,6 +8,8 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.Days;
 import org.joda.time.Duration;
 import org.joda.time.Interval;
+import org.joda.time.LocalDate;
+import org.joda.time.MonthDay;
 import org.joda.time.Period;
 import org.joda.time.YearMonth;
 import org.joda.time.format.DateTimeFormat;
@@ -24,10 +26,27 @@ public class JodaTimeTest {
 	private static final Logger logger = LoggerFactory.getLogger(JodaTimeTest.class);
 
 	@Test
-	public void yearMonth() {
+	public void useLocalDate() {
+		LocalDate a = new LocalDate();
+		LocalDate b = LocalDate.now();
+		Assert.assertTrue(a.equals(b));
+		logger.debug(String.valueOf(a)); // yyyy-MM-dd
+	}
+	
+	@Test
+	public void useMonthDate() {
+		MonthDay a = new MonthDay();
+		MonthDay b = MonthDay.now();
+		Assert.assertTrue(a.equals(b));
+		logger.debug(String.valueOf(a)); // --MM-dd
+	}
+	
+	@Test
+	public void useYearMonth() {
 		YearMonth a = new YearMonth();
 		YearMonth b = YearMonth.now();
 		Assert.assertTrue(a.equals(b));
+		logger.debug(String.valueOf(a)); // yyyy-MM
 	}
 	
 	@Test
