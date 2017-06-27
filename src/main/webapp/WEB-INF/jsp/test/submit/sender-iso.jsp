@@ -7,14 +7,14 @@
 </head>
 <body>
 <h1>input test</h1>
-<form method="get" action="/test/submit/reciever.do" accept-charset="ISO-8859-1">
+<form method="get" action="/test/submit/receiver.do" accept-charset="ISO-8859-1">
 	<fieldset>
 		<legend>GET method</legend>
 		<input type="text" name="text" value="한글" />
 		<input type="submit" value="submit" />
 	</fieldset>
 </form>
-<form method="post" action="/test/submit/reciever.do" accept-charset="ISO-8859-1">
+<form method="post" action="/test/submit/receiver.do" accept-charset="ISO-8859-1">
 	<fieldset>
 		<legend>POST method</legend>
 		<input type="text" name="text" value="한글" />
