@@ -5,9 +5,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.MonthDay;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.Period;
+import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
@@ -30,11 +32,26 @@ public class JavaTimeTest {
 		logger.debug("test: " + String.valueOf(Instant.now()));
 		logger.debug("test: " + String.valueOf(LocalDate.now()));
 	}
-	
+
 	@Test
 	public void getLocalDate() {
+		LocalDate a = LocalDate.now();
+		logger.debug(String.valueOf(a)); // yyyy-MM-dd
+		
 		Assert.assertEquals("2017-12-31", LocalDate.of(2017, Month.DECEMBER, 31).toString());
 		Assert.assertEquals("2017-04-10T23:49", LocalDateTime.of(2017, Month.APRIL, 10, 23, 49).toString());
+	}
+	
+	@Test
+	public void getMonthDay() {
+		MonthDay a = MonthDay.now();
+		logger.debug(String.valueOf(a)); // --MM-dd
+	}
+	
+	@Test
+	public void getYearMonth() {
+		YearMonth a = YearMonth.now();
+		logger.debug(String.valueOf(a)); // yyyy-MM
 	}
 	
 	@Test

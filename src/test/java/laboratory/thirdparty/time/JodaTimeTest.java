@@ -26,7 +26,7 @@ public class JodaTimeTest {
 	private static final Logger logger = LoggerFactory.getLogger(JodaTimeTest.class);
 
 	@Test
-	public void useLocalDate() {
+	public void getLocalDate() {
 		LocalDate a = new LocalDate();
 		LocalDate b = LocalDate.now();
 		Assert.assertTrue(a.equals(b));
@@ -34,7 +34,7 @@ public class JodaTimeTest {
 	}
 	
 	@Test
-	public void useMonthDate() {
+	public void getMonthDay() {
 		MonthDay a = new MonthDay();
 		MonthDay b = MonthDay.now();
 		Assert.assertTrue(a.equals(b));
@@ -42,7 +42,7 @@ public class JodaTimeTest {
 	}
 	
 	@Test
-	public void useYearMonth() {
+	public void getYearMonth() {
 		YearMonth a = new YearMonth();
 		YearMonth b = YearMonth.now();
 		Assert.assertTrue(a.equals(b));
