@@ -8,17 +8,29 @@
 	<h2>parent</h2>
 	<input type="text" id="ipt" value="http://127.0.0.1:9091/html-test/iframe/child.html" style="width: 100%">
 	<button onclick="changeChildLocation()">change child location</button>
-	<div>
+	<button onclick="changeChildLocation('/html-test/iframe/child.html')">home</button>
+	<button onclick="changeChildLocation('http://daum.net')">daum</button>
+	<div style="margin-top: 5px;">
 		<iframe style="width: 100%"
 				id="child" src="/html-test/iframe/child.html"></iframe>
 	</div>
 	<script>
-		var child = frames[0];
-		function changeChildLocation() {
-			var value = document.querySelector('#ipt').value;
-			child.location.href = value;
+		var childWindow = frames[0];
+		var childDom = document.querySelector('#child');
+		childDom.onload = function() {
+			childOnloadHandler();
 		}
-		
+		function childOnloadHandler() {
+			try {
+				console.log(childWindow.location.href);
+			} catch(e) {
+				console.warn('cross origin')
+			}
+		}
+		function changeChildLocation(url) {
+			var value = url || document.querySelector('#ipt').value;
+			childWindow.location.href = value;
+		}
 	</script>
 </body>
 </html>
