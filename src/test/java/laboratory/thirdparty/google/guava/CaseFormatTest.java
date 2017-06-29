@@ -13,7 +13,14 @@ public class CaseFormatTest {
 	
 	@Test
 	public void format() {
+		// lower camel -> upper underscore
 		Assert.assertEquals("MY_NAME", CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName"));
+
+		// upper underscore -> lower camel 
+		Assert.assertEquals("setBulkReservationNotPossible",
+				CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "SET_BULK_RESERVATION_NOT_POSSIBLE"));
+		
+		// lower hyphen -> lower camel
 		Assert.assertEquals("setBulkReservationNotPossible", 
 				CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, "set-bulk-reservation-not-possible"));
 	}
