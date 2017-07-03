@@ -1,4 +1,5 @@
 package laboratory.jdk.java.nio;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -16,11 +17,10 @@ public class PathTest {
 	private static final Logger logger = LoggerFactory.getLogger(PathTest.class);
 
 	/*
-	 * src/main 혹은 src/test는 로컬에서만 사용해야하는 경로다.
-	 * 이 경로들은 메이븐 개발 환경에서만 존재하는 폴더 구조이고 war나 jar로 빌드되면 존재하지 않는 경로이기 때문.
-	 * 따라서 경로빌드 후 생성될 경로를 절대 경로로 프로퍼티에 관리하는 편이 좋다.
+	 * src/main 혹은 src/test는 로컬에서만 사용해야하는 경로다. 이 경로들은 메이븐 개발 환경에서만 존재하는 폴더 구조이고 war나 jar로 빌드되면 존재하지 않는 경로이기 때문. 따라서 경로빌드 후 생성될 경로를 절대 경로로
+	 * 프로퍼티에 관리하는 편이 좋다.
 	 */
-	
+
 	@Test
 	public void relativize() {
 		Path dev = new File("c:\\dev\\git").toPath();
@@ -29,14 +29,14 @@ public class PathTest {
 		Assert.assertEquals("..\\dev\\git", sso.relativize(dev).toString()); // sso에서 dev로 가려면 'cd ..\dev\git'
 		Assert.assertEquals("", dev.relativize(dev).toString()); // dev에서 dev로 가려면 'cd .'
 	}
-	
+
 	@Test
 	public void relativize2() {
 		Path source = new File("webapp\\upload\\temp\\").toPath();
 		Path target = new File("webapp\\upload\\temp\\201612\\28201838255.png").toPath();
 		Assert.assertEquals("201612\\28201838255.png", source.relativize(target).toString()); // dev에서 sso로 가려면 'cd ..\..\sso'
 	}
-	
+
 	@Test
 	public void resolve() throws IOException {
 		Path dev = new File("c:\\dev\\git").toPath();
@@ -51,14 +51,14 @@ public class PathTest {
 		Path path2 = Paths.get("C:\\project\\workspace");
 		Path path3 = Paths.get("localhost/upload");
 		Path path4 = Paths.get("/localhost/upload");
-		
+
 		Assert.assertEquals("src\\test\\resources\\file\\exist-test.txt", path.toString());
 		Assert.assertEquals("\\\\C\\project\\workspace", path1.toString());
 		Assert.assertEquals("C:\\project\\workspace", path2.toString());
 		Assert.assertEquals("localhost\\upload", path3.toString());
 		Assert.assertEquals("\\localhost\\upload", path4.toString());
 	}
-	
+
 	@Test
 	public void shouldError() {
 		// 없는 경로라도 단순 문자열이면 문제가 없지만
@@ -70,7 +70,7 @@ public class PathTest {
 			Assert.assertTrue(e instanceof InvalidPathException);
 		}
 	}
-	
+
 	@Test
 	public void getRoot() {
 		logger.debug("relative paths:");
@@ -78,7 +78,7 @@ public class PathTest {
 		logger.debug(Paths.get("").toString()); // ""
 		logger.debug(Paths.get("/").toFile().toString()); // just "\"
 		logger.debug(Paths.get("").toFile().toString()); // ""
-		
+
 		logger.debug("absolute paths:");
 		logger.debug(Paths.get("/").toAbsolutePath().toString()); // just "\"
 		logger.debug(Paths.get("").toAbsolutePath().toString()); // ""

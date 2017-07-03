@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 public class LambdaTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(LambdaTest.class);
-	
+
 	@Test
 	public void testForEach() {
 		// LIST

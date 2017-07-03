@@ -16,13 +16,13 @@ import org.slf4j.LoggerFactory;
 public class ClassPathTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ClassPathTest.class);
-	
+
 	@Test
 	public void getClasspaths() {
 		URL[] url = ((URLClassLoader) (Thread.currentThread().getContextClassLoader())).getURLs();
 		logger.debug(Arrays.toString(url));
 	}
-	
+
 	@Test
 	public void accessFileAtClasspath() throws URISyntaxException, IOException {
 		ClassLoader loader = ClassPathTest.class.getClassLoader();
@@ -30,7 +30,7 @@ public class ClassPathTest {
 		File file = Paths.get(url.toURI()).toFile();
 		Assert.assertTrue(file.exists());
 	}
-	
+
 	@Test
 	public void getResource() {
 		URL url = this.getClass().getResource("");

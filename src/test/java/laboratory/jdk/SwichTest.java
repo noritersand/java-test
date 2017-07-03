@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class SwichTest {
 	private static final Logger logger = LoggerFactory.getLogger(SwichTest.class);
-	
+
 	@Test
 	public void howVariableInitialize() {
 		int a = 2;

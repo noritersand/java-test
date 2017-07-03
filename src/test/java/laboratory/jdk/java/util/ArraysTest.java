@@ -10,13 +10,13 @@ import org.slf4j.LoggerFactory;
 public class ArraysTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ArraysTest.class);
-	
+
 	@Test
 	public void getString() {
 		String[] a = { "a", "b", "c" };
 		logger.debug(Arrays.toString(a));
 	}
-	
+
 	@Test
 	public void shouldEqual() {
 		String[] a = { "a", "b", "c" };

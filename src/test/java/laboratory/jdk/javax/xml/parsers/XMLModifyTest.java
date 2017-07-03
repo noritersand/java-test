@@ -22,7 +22,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * <a href="http://www.journaldev.com/901/modify-xml-file-in-java-dom-parser">http://www.journaldev.com/901/modify-xml-file-in-java-dom-parser</a>
+ * <a href=
+ * "http://www.journaldev.com/901/modify-xml-file-in-java-dom-parser">http://www.journaldev.com/901/modify-xml-file-in-java-dom-parser</a>
  * 
  * @since 2017-05-25
  * @author fixalot
@@ -33,7 +34,7 @@ public class XMLModifyTest {
 //	@Test
 	public void modifyXML() throws TransformerException, ParserConfigurationException, SAXException, IOException {
 		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
-		
+
 		String filePath = "src/test/resources/xml/read-test.xml";
 		File xmlFile = new File(filePath);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

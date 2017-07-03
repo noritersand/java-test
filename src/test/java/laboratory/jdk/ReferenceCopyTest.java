@@ -1,4 +1,5 @@
 package laboratory.jdk;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,7 +11,7 @@ public class ReferenceCopyTest {
 		copyParam(vo);
 		Assert.assertNotEquals(0, vo.getNum());
 	}
-	
+
 	/**
 	 * 객체 참조 변수를 복사해봐야 아무 의미없는데 왜 PMD에선 중요도2씩이나 줘서 이렇게 하라는지 모르겠네.
 	 * 
@@ -21,7 +22,7 @@ public class ReferenceCopyTest {
 		Vo vo2 = vo;
 		vo2.setNum(123);
 	}
-	
+
 	@Test
 	public void test() {
 		String str = "a";
@@ -31,11 +32,11 @@ public class ReferenceCopyTest {
 		int num = 1;
 		doSomething(num);
 		Assert.assertNotEquals(2, num);
-		
+
 		Integer number = 1;
 		doSomething(number);
 		Assert.assertNotEquals(new Integer(2), number);
-		
+
 		Vo vo = new Vo();
 		vo.setStr("a");
 		vo.setNum(1);

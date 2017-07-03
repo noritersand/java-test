@@ -20,21 +20,20 @@ public class ReflectionUtilsTest {
 
 		Method method2 = ReflectionUtils.findMethod(instance.getClass(), "myMethod", Object.class);
 		Assert.assertNull(method2);
-		
+
 		// invoke method
 		Method method = ReflectionUtils.findMethod(instance.getClass(), "myMethod", String.class);
 		Assert.assertNotNull(method);
 //		method.setAccessible(true); // 스프링 reflectionUtils는 public만 되는건가?
-		Assert.assertEquals(ReflectionUtils.invokeMethod(method, instance, "some-argument"), 
-				method.invoke(instance, "some-argument"));;
-		
+		Assert.assertEquals(ReflectionUtils.invokeMethod(method, instance, "some-argument"), method.invoke(instance, "some-argument"));
+		;
+
 		// get field value
 		Field field = ReflectionUtils.findField(instance.getClass(), "intValue");
 		Assert.assertNotNull(field);
-		Assert.assertEquals(ReflectionUtils.getField(field, instance), 
-				field.get(instance));
+		Assert.assertEquals(ReflectionUtils.getField(field, instance), field.get(instance));
 	}
-	
+
 	@Test
 	public void figureoutWhatKindOfMethod() {
 		Object instance = new MyClass();
@@ -43,7 +42,7 @@ public class ReflectionUtilsTest {
 		Assert.assertEquals(0, method.getParameters().length);
 		Assert.assertEquals(1, method2.getParameters().length);
 	}
-	
+
 //	@Test
 	public void findAllMethod() throws Exception {
 		Object instance = new MyClass();
@@ -54,7 +53,7 @@ public class ReflectionUtilsTest {
 		// 'leaf class method'만 출력한다. (subclass에서 오버라이딩한 메서드가 있을땐 superclass의 메서드를 생략)
 		logger.debug(Arrays.toString(b));
 	}
-	
+
 	@Test
 	public void findExactlyIWant() throws Exception {
 		Object instance = new MyClass();
@@ -64,7 +63,8 @@ public class ReflectionUtilsTest {
 				Class<?>[] parameterTypes = method.getParameterTypes();
 				if (parameterTypes.length != 0) {
 					if (parameterTypes[0] == String.class) {
-						Assert.assertEquals("hey", method.invoke(instance, "hey"));;
+						Assert.assertEquals("hey", method.invoke(instance, "hey"));
+						;
 					}
 				} else {
 					Assert.assertEquals("hello. my name is skywalker", method.invoke(instance));
@@ -72,11 +72,11 @@ public class ReflectionUtilsTest {
 			}
 		}
 	}
-	
+
 	public class MyClass extends Father {
 		public int intValue = 0;
 		public Double doubleValue = 0.1;
-		
+
 		public String myMethod() {
 			return "hello. my name is skywalker";
 		}
@@ -90,7 +90,7 @@ public class ReflectionUtilsTest {
 			return super.sayMyName();
 		}
 	}
-	
+
 	public class Father {
 		public String sayMyName() {
 			return "i'm your father";

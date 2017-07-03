@@ -20,10 +20,10 @@ import org.slf4j.LoggerFactory;
  */
 public class DefaultDispatcher extends HttpServlet {
 	private static final long serialVersionUID = 6174311087878978970L;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(DefaultDispatcher.class);
 	private DefaultViewResolver viewResolver = new DefaultViewResolver();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		process(req, resp);
@@ -46,8 +46,8 @@ public class DefaultDispatcher extends HttpServlet {
 
 	private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		/*
-		 * setCharacterEncoding을 호출하기 전에 request에 접근하면(정확히 뭘 건드리는게 문제인지는 모르겠지만) 나중에 인코딩을 적용해도 소용이 없다.
-		 * 따라서 setCharacterEncoding 호출은 filter 레벨에서 하는게 적절함.
+		 * setCharacterEncoding을 호출하기 전에 request에 접근하면(정확히 뭘 건드리는게 문제인지는 모르겠지만) 나중에 인코딩을 적용해도 소용이 없다. 따라서 setCharacterEncoding 호출은 filter
+		 * 레벨에서 하는게 적절함.
 		 * 
 		 * req.setCharacterEncoding("UTF-8");
 		 */

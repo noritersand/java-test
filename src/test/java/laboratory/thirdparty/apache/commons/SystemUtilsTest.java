@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 public class SystemUtilsTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(SystemUtilsTest.class);
-	
+
 	@Test
 	public void usage() {
 		logger.debug(String.valueOf(SystemUtils.IS_OS_WINDOWS));

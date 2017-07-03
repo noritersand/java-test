@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 public class ObjectTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ObjectTest.class);
-	
+
 	@Test
 	public void getHashCode() {
 		Object obj1 = new Object();

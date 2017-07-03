@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 public class CallableStatementTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(CallableStatementTest.class);
-	
+
 	@Test
 	public void test() {
 		// TODO

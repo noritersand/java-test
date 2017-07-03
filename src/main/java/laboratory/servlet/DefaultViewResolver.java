@@ -12,18 +12,18 @@ import org.slf4j.LoggerFactory;
 public class DefaultViewResolver {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(DefaultViewResolver.class);
-	
+
 	public void createView(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String requestURI = req.getRequestURI();
 		final String path = requestURI.substring(0, requestURI.lastIndexOf("."));
-		
+
 //		req.setAttribute("attr", "이야아아");
 //		List<String> list = new ArrayList<>();
 //		list.add("a");
 //		list.add("b");
 //		list.add("c");
 //		req.setAttribute("list", list);
-		
+
 		forwardToJSP(req, resp, path);
 	}
 

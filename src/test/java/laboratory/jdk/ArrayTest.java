@@ -19,7 +19,7 @@ public class ArrayTest {
 		CollectionUtils.reverseArray(arr);
 		Assert.assertArrayEquals(new Integer[] { 4, 3, 6, 2, 1 }, arr);
 	}
-	
+
 	@Test
 	public void getString() {
 		int[][] arr = new int[][] { { 1, 2, 6 }, { 3, 4 } };

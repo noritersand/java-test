@@ -1,7 +1,5 @@
 package laboratory.jdk;
 
-
-
 /**
  * hi
  * 
@@ -10,6 +8,6 @@ package laboratory.jdk;
  */
 public class JavadocTest {
 	public static void main(String[] args) {
-		
+
 	}
 }

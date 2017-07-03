@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 // 내부 클래스를 시리얼라이즈히랴먄 외부 클래스도 시리얼라이즈 가능해야함
 public class SerializeTest implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(SerializeTest.class);
 
@@ -30,21 +30,21 @@ public class SerializeTest implements Serializable {
 		// some instance
 		SerializeMe instance = new SerializeMe();
 		instance.setValue("hello");
-		
+
 		// serialize
 		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file, false));
 		ObjectOutputStream oos = new ObjectOutputStream(bos);
 		oos.writeObject(instance);
 		bos.close();
 		oos.close();
-		
+
 		// deserialize
 		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
 		ObjectInputStream ois = new ObjectInputStream(bis);
 		SerializeMe obj = (SerializeMe) ois.readObject();
 		ois.close();
 		bis.close();
-		
+
 		// assert
 		Assert.assertEquals("hello", obj.getValue());
 	}

@@ -24,37 +24,32 @@ import org.slf4j.LoggerFactory;
 @Deprecated
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(TestServlet.class);
 	private static final String JSP_PREFIX = "/WEB-INF/jsp/";
 	private static final String JSP_SUFIX = ".jsp";
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		process(req, resp);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		process(req, resp);
 	}
 
 	@Override
-	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		process(req, resp);
 	}
 
 	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		process(req, resp);
 	}
 
-	private void forward(HttpServletRequest req, HttpServletResponse resp, String path)
-			throws ServletException, IOException {
+	private void forward(HttpServletRequest req, HttpServletResponse resp, String path) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
@@ -73,8 +68,7 @@ public class TestServlet extends HttpServlet {
 		}
 	}
 
-	protected void process(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this.printParameters(req);
 
 		req.setCharacterEncoding("UTF-8");
@@ -83,26 +77,18 @@ public class TestServlet extends HttpServlet {
 		contextPath = contextPath.length() == 0 ? "/" : contextPath;
 
 		String requestURI = req.getRequestURI();
-		requestURI = (contextPath.length() > 1)
-				? requestURI.substring(contextPath.length(), requestURI.length())
-				: requestURI;
+		requestURI = (contextPath.length() > 1) ? requestURI.substring(contextPath.length(), requestURI.length()) : requestURI;
 
 		logger.debug("contextPath: " + contextPath);
 		logger.debug("requestURI: " + requestURI);
-		
+
 		requestURI = requestURI.substring(0, requestURI.lastIndexOf("."));
 		StringBuilder builder = new StringBuilder(JSP_PREFIX).append(requestURI).append(JSP_SUFIX);
 		forward(req, resp, builder.toString());
 
 		/*
-		switch (requestURI) {
-		case "/a.do":
-			this.forward(req, resp, "/WEB-INF/jsp/sample.jsp");
-			break;
-		default:
-			resp.sendRedirect(contextPath);
-			break;
-		}
-		*/
+		 * switch (requestURI) { case "/a.do": this.forward(req, resp, "/WEB-INF/jsp/sample.jsp"); break; default:
+		 * resp.sendRedirect(contextPath); break; }
+		 */
 	}
 }

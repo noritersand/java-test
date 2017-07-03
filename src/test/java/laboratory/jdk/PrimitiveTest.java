@@ -1,4 +1,5 @@
 package laboratory.jdk;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -7,7 +8,7 @@ import org.slf4j.LoggerFactory;
 public class PrimitiveTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(PrimitiveTest.class);
-	
+
 	@Test
 	@SuppressWarnings("unused")
 	public void useEscapeCharacter() {
@@ -24,7 +25,7 @@ public class PrimitiveTest {
 		Double db = 1234D;
 		double db2 = 1234d;
 	}
-	
+
 	@Test
 	public void getMinMaxRange() {
 		Assert.assertEquals(-128, Byte.MIN_VALUE);

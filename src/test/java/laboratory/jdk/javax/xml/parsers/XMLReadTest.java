@@ -20,7 +20,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * <a href="http://www.journaldev.com/898/how-to-read-an-xml-file-in-java-dom-parser">http://www.journaldev.com/898/how-to-read-an-xml-file-in-java-dom-parser</a>
+ * <a href=
+ * "http://www.journaldev.com/898/how-to-read-an-xml-file-in-java-dom-parser">http://www.journaldev.com/898/how-to-read-an-xml-file-in-java-dom-parser</a>
  * 
  * @since 2017-05-25
  * @author fixalot
@@ -36,9 +37,9 @@ public class XMLReadTest {
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(xmlFile);
 		doc.getDocumentElement().normalize();
-		
+
 		logger.debug("Root element :" + doc.getDocumentElement().getNodeName());
-		
+
 		NodeList nodeList = doc.getElementsByTagName("Employee");
 		// now XML is loaded as Document in memory, lets convert it to Object List
 		List<Employee> empList = new ArrayList<Employee>();

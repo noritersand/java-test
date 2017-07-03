@@ -19,7 +19,7 @@ class Parent {
 	}
 }
 
-class Child extends Parent{
+class Child extends Parent {
 	@Override
 	public void m01() {
 

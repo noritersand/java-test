@@ -13,8 +13,7 @@ public class BeanUtilsTest {
 	private static final Logger logger = LoggerFactory.getLogger(BeanUtilsTest.class);
 
 	/**
-	 * 인스턴스의 프로퍼티 복사.
-	 * private 내부 클래스에서 잘 작동함
+	 * 인스턴스의 프로퍼티 복사. private 내부 클래스에서 잘 작동함
 	 * 
 	 * @author fixalot
 	 */

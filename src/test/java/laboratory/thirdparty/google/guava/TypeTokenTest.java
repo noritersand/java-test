@@ -13,7 +13,7 @@ import com.google.common.reflect.TypeToken;
 public class TypeTokenTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(TypeTokenTest.class);
-	
+
 	@Test
 	public void useTypeToken() {
 		@SuppressWarnings("serial")
@@ -23,5 +23,5 @@ public class TypeTokenTest {
 }
 
 class MyClass {
-	
+
 }

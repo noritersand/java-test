@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class ErrorTest {
 	private static final Logger logger = LoggerFactory.getLogger(ErrorTest.class);
-	
+
 	@Test
 	public void test() {
 		try {

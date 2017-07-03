@@ -19,7 +19,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 /**
- * <a href="http://www.journaldev.com/1112/how-to-write-xml-file-in-java-dom-parser">http://www.journaldev.com/1112/how-to-write-xml-file-in-java-dom-parser</a>
+ * <a href=
+ * "http://www.journaldev.com/1112/how-to-write-xml-file-in-java-dom-parser">http://www.journaldev.com/1112/how-to-write-xml-file-in-java-dom-parser</a>
  * 
  * @since 2017-05-25
  * @author fixalot
@@ -30,7 +31,7 @@ public class XMLWriteTest {
 //	@Test
 	public void writeXML() throws ParserConfigurationException, TransformerException {
 		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
-		
+
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder;
 
@@ -60,7 +61,7 @@ public class XMLWriteTest {
 		// write data
 		transformer.transform(source, console);
 		transformer.transform(source, file);
-		
+
 		logger.debug("done");
 	}
 

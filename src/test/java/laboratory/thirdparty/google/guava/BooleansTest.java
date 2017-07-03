@@ -10,7 +10,7 @@ import com.google.common.primitives.Booleans;
 public class BooleansTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(BooleansTest.class);
-	
+
 	@Test
 	public void test() {
 		Assert.assertEquals(5, Booleans.asList(false, true, false, true, true).size());

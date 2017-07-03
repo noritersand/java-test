@@ -1,4 +1,5 @@
 package laboratory.jdk;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,6 +14,7 @@ public class DefaultKeywordTest {
 
 interface I {
 	public String a();
+
 	default public String b() {
 		return "hi";
 	}

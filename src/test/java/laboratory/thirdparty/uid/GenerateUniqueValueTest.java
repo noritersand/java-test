@@ -10,11 +10,11 @@ import org.slf4j.LoggerFactory;
 public class GenerateUniqueValueTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(GenerateUniqueValueTest.class);
-	
+
 	@Test
 	public void getUniqueValue() {
 		logger.debug("Long max value: " + String.valueOf(Long.MAX_VALUE).length());
-		
+
 		long mills = System.currentTimeMillis();
 		long nanos = System.nanoTime();
 
@@ -25,7 +25,7 @@ public class GenerateUniqueValueTest {
 		Assert.assertEquals(19, millsPlusNanos.length());
 		logger.debug(String.valueOf(new Long(millsPlusNanos)));
 	}
-	
+
 	@Test
 	public void getUniqueUUID() {
 		logger.debug(UUID.randomUUID().toString());

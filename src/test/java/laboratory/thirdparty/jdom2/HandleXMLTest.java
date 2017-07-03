@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
 public class HandleXMLTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(HandleXMLTest.class);
-	
+
 //	@Test
 	public void merge() throws SAXException, IOException, ParserConfigurationException {
 		File backweb = Paths.get("C:\\project\\workspace\\etbs\\backweb\\target\\pmd.xml").toFile();
@@ -47,19 +47,19 @@ public class HandleXMLTest {
 		files.add(common);
 		files.add(frontweb);
 		files.add(welfare);
-		
+
 		ArrayList<Element> fileTagList = new ArrayList<>();
 		for (int i = 0; i < files.size(); i++) {
 			File file = files.get(i);
 			// we can create JDOM Document from DOM, SAX and STAX Parser Builder classes
-			
-	        //creating DOM Document
-	        DocumentBuilderFactory innerDbFactory = DocumentBuilderFactory.newInstance();
-	        DocumentBuilder innerDBuilder = innerDbFactory.newDocumentBuilder();
-	        org.w3c.dom.Document innerDoc = innerDBuilder.parse(file);
-	        DOMBuilder innerDomBuilder = new DOMBuilder();
-	        Document innerJdomDoc = innerDomBuilder.build(innerDoc);
-			
+
+			// creating DOM Document
+			DocumentBuilderFactory innerDbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder innerDBuilder = innerDbFactory.newDocumentBuilder();
+			org.w3c.dom.Document innerDoc = innerDBuilder.parse(file);
+			DOMBuilder innerDomBuilder = new DOMBuilder();
+			Document innerJdomDoc = innerDomBuilder.build(innerDoc);
+
 			Element innerRoot = innerJdomDoc.getRootElement();
 			List<Element> childrenList = innerRoot.getChildren("file");
 			for (Element ele : childrenList) {
@@ -68,22 +68,22 @@ public class HandleXMLTest {
 				eleCopy.detach(); // JDOM2에서 DOM요소는 다른데로 옮기기 전에 detach 해야함.
 				fileTagList.add(eleCopy);
 			}
-		}			
-        
-        Document doc = new Document();
-        doc.setRootElement(new Element("pmd"));
-        
-        for (Element ele : fileTagList) {
-        	Assert.assertEquals("file", ele.getName());
-    		doc.getRootElement().addContent(ele);        		
-        }
-        XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
-        
-        File target = Paths.get("src\\test\\resources\\xml\\merge-test.xml").toFile();
+		}
+
+		Document doc = new Document();
+		doc.setRootElement(new Element("pmd"));
+
+		for (Element ele : fileTagList) {
+			Assert.assertEquals("file", ele.getName());
+			doc.getRootElement().addContent(ele);
+		}
+		XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
+
+		File target = Paths.get("src\\test\\resources\\xml\\merge-test.xml").toFile();
 		if (target.exists()) {
 			target.delete();
 		}
-        
-        xmlOutputter.output(doc, new FileOutputStream(target));
+
+		xmlOutputter.output(doc, new FileOutputStream(target));
 	}
 }

@@ -14,8 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 기본 문자인코딩 설정 필터. 
- * 모든 필터/인터셉터보다 가장 먼저 진입되도록 설정해야 함.
+ * 기본 문자인코딩 설정 필터. 모든 필터/인터셉터보다 가장 먼저 진입되도록 설정해야 함.
  * 
  * @since 2017-06-05
  * @author fixalot

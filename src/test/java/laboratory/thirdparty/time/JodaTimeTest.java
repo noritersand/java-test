@@ -32,7 +32,7 @@ public class JodaTimeTest {
 		Assert.assertTrue(a.equals(b));
 		logger.debug(String.valueOf(a)); // yyyy-MM-dd
 	}
-	
+
 	@Test
 	public void getMonthDay() {
 		MonthDay a = new MonthDay();
@@ -40,7 +40,7 @@ public class JodaTimeTest {
 		Assert.assertTrue(a.equals(b));
 		logger.debug(String.valueOf(a)); // --MM-dd
 	}
-	
+
 	@Test
 	public void getYearMonth() {
 		YearMonth a = new YearMonth();
@@ -48,7 +48,7 @@ public class JodaTimeTest {
 		Assert.assertTrue(a.equals(b));
 		logger.debug(String.valueOf(a)); // yyyy-MM
 	}
-	
+
 	@Test
 	public void getFirstAndLastDateOfMonth() {
 		YearMonth c = new YearMonth("2017-06");
@@ -56,7 +56,7 @@ public class JodaTimeTest {
 		Assert.assertEquals(1, dateTime.dayOfMonth().withMinimumValue().getDayOfMonth());
 		Assert.assertEquals(30, dateTime.dayOfMonth().withMaximumValue().getDayOfMonth());
 	}
-	
+
 	@Test
 	public void getNow() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
@@ -71,7 +71,7 @@ public class JodaTimeTest {
 		DateTime dt2 = new DateTime(2017, 4, 18, 16, 41, 34, 219);
 		Assert.assertEquals(dt, dt2);
 	}
-	
+
 	@Test
 	public void parseFromStringWithFormatter() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
@@ -87,7 +87,7 @@ public class JodaTimeTest {
 		DateTime dt2 = new DateTime("2015-01-01");
 		Assert.assertEquals("2015-01-01T00:00:00.000+09:00", String.valueOf(dt2));
 	}
-	
+
 	@Test
 	public void toStringWithFormatter() {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
@@ -98,7 +98,7 @@ public class JodaTimeTest {
 		Assert.assertEquals("2020-02-29T23:59:59.010+09:00", newDt.toString());
 		Assert.assertEquals("2020-02-29 23:59:59:010", newDt.toString(formatter));
 	}
-	
+
 	@Test
 	public void parseFromJavaUtilDate() {
 		Date date = GregorianCalendar.getInstance().getTime();
@@ -142,7 +142,7 @@ public class JodaTimeTest {
 		Assert.assertEquals(123, dt.getMillisOfSecond());
 		Assert.assertEquals(1455511230123L, dt.getMillis());
 	}
-	
+
 	/**
 	 * 실패한 테스트
 	 * 
@@ -187,7 +187,7 @@ public class JodaTimeTest {
 		DateTime b = dt.plusMonths(1);
 		Assert.assertEquals(new DateTime(2017, 4, 30, 00, 00, 00).toString(), b.toString());
 	}
-	
+
 	/**
 	 * 일수만 계산하기
 	 * 
@@ -207,7 +207,7 @@ public class JodaTimeTest {
 		end = new DateTime("2017-01-05"); // 3박4일
 		Assert.assertEquals(4, Days.daysBetween(start, end).getDays());
 	}
-	
+
 	/**
 	 * Interval로 계산하는 방법
 	 * 
@@ -218,15 +218,14 @@ public class JodaTimeTest {
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 		DateTime start = formatter.parseDateTime("2017-01-01");
 		DateTime end = formatter.parseDateTime("2017-01-03");
-	
+
 		Interval interval = new Interval(start.toDate().getTime(), end.toDate().getTime());
 		org.joda.time.Period period = interval.toPeriod();
 
-		logger.debug(String.format("%d years, %d months, %d days, %d hours, %d minutes, %d seconds%n", 
-				period.getYears(), period.getMonths(), period.getDays(), 
-				period.getHours(), period.getMinutes(), period.getSeconds()));
+		logger.debug(String.format("%d years, %d months, %d days, %d hours, %d minutes, %d seconds%n", period.getYears(),
+				period.getMonths(), period.getDays(), period.getHours(), period.getMinutes(), period.getSeconds()));
 	}
-	
+
 	@Test
 	public void calculatePeriodWithInterval2() {
 		DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd");
@@ -237,7 +236,7 @@ public class JodaTimeTest {
 		Interval interval = new Interval(dt1, dt2);
 		Assert.assertEquals("2020-02-29", interval.getStart().toString(format));
 	}
-	
+
 	/**
 	 * Interval을 스킵하고 Period를 직접 사용하는 방법
 	 * 
@@ -250,21 +249,15 @@ public class JodaTimeTest {
 
 		// period of 1 year and 7 days
 		Period period = new Period(start, end);
-		
-		PeriodFormatter formatter = new PeriodFormatterBuilder()
-			    .appendYears().appendSuffix(" years ago\n")
-			    .appendMonths().appendSuffix(" months ago\n")
-			    .appendWeeks().appendSuffix(" weeks ago\n")
-			    .appendDays().appendSuffix(" days ago\n")
-			    .appendHours().appendSuffix(" hours ago\n")
-			    .appendMinutes().appendSuffix(" minutes ago\n")
-			    .appendSeconds().appendSuffix(" seconds ago\n")
-			    .printZeroNever()
-			    .toFormatter();
-		
+
+		PeriodFormatter formatter = new PeriodFormatterBuilder().appendYears().appendSuffix(" years ago\n").appendMonths()
+				.appendSuffix(" months ago\n").appendWeeks().appendSuffix(" weeks ago\n").appendDays().appendSuffix(" days ago\n")
+				.appendHours().appendSuffix(" hours ago\n").appendMinutes().appendSuffix(" minutes ago\n").appendSeconds()
+				.appendSuffix(" seconds ago\n").printZeroNever().toFormatter();
+
 		logger.debug(period.toString(formatter));
 	}
-	
+
 	/**
 	 * 가장 간단한 방법이지만 문자열로만 사용할 수 있는 방법
 	 * 
@@ -288,48 +281,46 @@ public class JodaTimeTest {
 	public void compare() {
 		DateTime sometime = new DateTime("2017-04-18T01:00:00.000+09:00");
 		DateTime oneMinuteLater = new DateTime("2017-04-18T01:01:00.000+09:00");
-		
+
 		Assert.assertTrue(sometime.isBefore(oneMinuteLater));
 		Assert.assertTrue(oneMinuteLater.isAfter(sometime));
-		
+
 		Assert.assertTrue(sometime.getMillis() < oneMinuteLater.getMillis());
 		Assert.assertEquals(1492444800000L, sometime.getMillis());
 		Assert.assertEquals(1492444860000L, oneMinuteLater.getMillis());
 		Assert.assertEquals(60000, oneMinuteLater.getMillis() - sometime.getMillis());
 		Assert.assertEquals(1, (oneMinuteLater.getMillis() - sometime.getMillis()) / 1000 / 60); // 1부운 차이
-		
+
 		DateTime a = new DateTime("2017-01-01");
 		DateTime b = new DateTime("2017-01-03");
-		
+
 		DateTime c = new DateTime("2017-01-02");
-		
+
 		Assert.assertEquals(-1, a.compareTo(c)); // -1: a는 c보다 이전
 		Assert.assertEquals(0, c.compareTo(c)); // 0: c는 d와 같음
 		Assert.assertEquals(1, b.compareTo(c)); // 1: b는 c보다 이후
 	}
-	
+
 	@Test
 	public void shouldEqual() {
 //		Assert.assertEquals(new DateTime(), DateTime.now()); // 호출시점에 따라 몇 밀리초 차이로 같지 않을 수 있음
-		Assert.assertEquals(
-				new DateTime(2020, 2, 29, 23, 59, 59, 10), 
-				new DateTime().withYear(2020).withMonthOfYear(2).withDayOfMonth(29).withHourOfDay(23)
-						.withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10));
-		
+		Assert.assertEquals(new DateTime(2020, 2, 29, 23, 59, 59, 10), new DateTime().withYear(2020).withMonthOfYear(2).withDayOfMonth(29)
+				.withHourOfDay(23).withMinuteOfHour(59).withSecondOfMinute(59).withMillisOfSecond(10));
+
 		// 기본적으론 비슷하지만
 		DateTime a = new DateTime("2017-01-02");
 		DateTime b = new DateTime("2017-01-02");
 		Assert.assertTrue(a.isEqual(b));
 		Assert.assertTrue(a.equals(b));
-		
+
 		a = new DateTime("2017-01-02T01:00:00", DateTimeZone.UTC); // GMT/UTC
 		b = new DateTime("2017-01-02T10:00:00", DateTimeZone.forID("Asia/Seoul")); // GMT/UTC보다 9시간 빠름
-		
+
 		// isEqual은 밀리초(GMT/UTC 기준)가 같은지 비교한다.
 		logger.debug(String.valueOf(a.getMillis()));
 		logger.debug(String.valueOf(b.getMillis()));
 		Assert.assertTrue(a.isEqual(b)); // 영국의 01시는 한국의 10시와 같다.
-		
+
 		// equals는 timezone(혹은 chronology)을 적용한 시각이 같은지를 비교한다.
 		Assert.assertEquals("2017-01-02T01:00:00.000Z", a.toString());
 		Assert.assertEquals("2017-01-02T10:00:00.000+09:00", b.toString());

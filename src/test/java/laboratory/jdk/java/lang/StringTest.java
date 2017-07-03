@@ -20,14 +20,14 @@ public class StringTest {
 		Assert.assertEquals("[-2, -1, -43, 92]", Arrays.toString(korean.getBytes(StandardCharsets.UTF_16)));
 		Assert.assertEquals("[-57, -47]", Arrays.toString(korean.getBytes(Charset.forName("EUC-KR"))));
 	}
-	
+
 	@Test
 	public void toStringFromBytes() {
 		byte[] bytes = new byte[] { -19, -107, -100 };
 		String korean = new String(bytes, StandardCharsets.UTF_8);
 		Assert.assertEquals("한", korean);
 	}
-	
+
 	@Test
 	public void concat() {
 		String a = "a";
@@ -94,7 +94,7 @@ public class StringTest {
 		Assert.assertEquals("전라", "전라도".replaceAll("도", ""));
 		Assert.assertEquals("경상", "경상도".replaceAll("도", ""));
 	}
-	
+
 	@Test
 	public void replaceFirst() {
 		String str = "/qwe/test/submit/sender";

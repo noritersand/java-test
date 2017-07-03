@@ -25,7 +25,7 @@ public class ClassPathTest {
 			logger.debug(String.valueOf(classInfo));
 		}
 	}
-	
+
 //	@Test // 로그가 너무 길어져서 생략
 	public void getAllResources() throws IOException {
 		ClassPath classPath = ClassPath.from(this.getClass().getClassLoader());

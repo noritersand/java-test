@@ -1,4 +1,5 @@
 package laboratory.jdk;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +18,18 @@ public class InstanceofTest {
 	public void testExtends() {
 		Object object = new Object();
 		String string = new String();
-		
+
 		Assert.assertTrue(string instanceof String);
 		Assert.assertTrue(string instanceof Object);
 		Assert.assertFalse(object instanceof String);
 		Assert.assertTrue(object instanceof Object);
 	}
-	
+
 	@Test
 	public void testExtends2() {
 		ArrayList<Object> arrayList = new ArrayList<>();
 		RoleList roleList = new RoleList();
-		
+
 		Assert.assertTrue(arrayList instanceof List);
 		Assert.assertTrue(roleList instanceof List);
 		Assert.assertFalse(arrayList instanceof RoleList);

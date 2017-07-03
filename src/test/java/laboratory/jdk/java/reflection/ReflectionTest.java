@@ -16,22 +16,22 @@ public class ReflectionTest {
 	public void test() throws Exception {
 		Object instance = new MyClass();
 		Class<?> clazz = instance.getClass();
-		
+
 		// invoke method
 		Method method = clazz.getDeclaredMethod("myMethod");
 		Assert.assertNotNull(method);
 		Assert.assertEquals("finally you found me!", method.invoke(instance));
-		
+
 		// access field
 		Field field = clazz.getDeclaredField("myField");
 		Assert.assertNotNull(field);
 		Assert.assertEquals(0, field.get(instance));
 	}
-	
+
 	@SuppressWarnings("unused")
 	private class MyClass {
 		public int myField = 0;
-		
+
 		public String myMethod() {
 			return "finally you found me!";
 		}

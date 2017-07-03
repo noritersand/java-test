@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class EnumTest {
 	private static final Logger logger = LoggerFactory.getLogger(EnumTest.class);
-	
+
 	public static void main(String[] args) {
 		System.out.println(Color.RED); // RED
 		System.out.println(Color.RED.toString()); // RED
@@ -29,7 +29,7 @@ public class EnumTest {
 		System.out.println(var2.name()); // FRONT_OFFICE
 		System.out.println(var2.getOptionalField()); // front office system
 	}
-	
+
 	@Test
 	public void useSwitch() {
 		String div = "back_office";
@@ -50,12 +50,11 @@ public class EnumTest {
 		Enum<Color> color = Enum.valueOf(clazz, source.trim().toUpperCase());
 		Assert.assertEquals(Color.RED, color);
 	}
-	
+
 	private enum SystemDivision {
 		BACK_OFFICE, FRONT_OFFICE("front office system");
 
-		private SystemDivision() {
-		} // 기본 생성자
+		private SystemDivision() {} // 기본 생성자
 
 		private String optionalField;
 
@@ -75,7 +74,7 @@ public class EnumTest {
 
 		// Constructor
 		private Apple(int p) {
-			price = p; 
+			price = p;
 		}
 
 		public int getPrice() {

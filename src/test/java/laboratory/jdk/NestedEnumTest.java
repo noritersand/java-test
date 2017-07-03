@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 public class NestedEnumTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(NestedEnumTest.class);
-	
+
 	@Test
 	public void test() {
 		NestedEnumTestBean.InsertType insertType = NestedEnumTestBean.InsertType.APPEND;

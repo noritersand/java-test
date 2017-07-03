@@ -14,18 +14,17 @@ import org.slf4j.LoggerFactory;
 public class FileUtilsTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(FileUtilsTest.class);
-	
+
 	@Test
 	public void writeAndRead() throws IOException {
 		String text = "some\ntext";
 		File file = Paths.get("src/test/resources/file/write-test.txt").toFile();
-		
+
 		// write
 		FileUtils.writeStringToFile(file, text, Charset.forName("UTF-8"));
-		
+
 		// read
 		String textFromFile = FileUtils.readFileToString(file, Charset.forName("UTF-8"));
 		Assert.assertEquals("some\ntext", textFromFile);
 	}
-}	
-
+}

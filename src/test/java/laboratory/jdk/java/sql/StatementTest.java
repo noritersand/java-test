@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class StatementTest {
 	private static final Logger logger = LoggerFactory.getLogger(StatementTest.class);
-	
+
 	@Test
 	public void testWhile() {
 		int n = 0;

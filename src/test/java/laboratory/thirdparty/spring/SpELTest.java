@@ -23,10 +23,10 @@ public class SpELTest {
 
 	@Value("#{interfaceProp}")
 	private Properties interfaceProp;
-	
+
 	@Value("#{interfaceProp['interface.base.url']}")
 	private Properties interfaceBaseUrl;
-	
+
 	// 아래는 에러
 //	@Value("#{interfaceProp.interface.base.url}")
 //	private Properties interfaceBaseUrl2;
@@ -35,11 +35,11 @@ public class SpELTest {
 	public void validateProperties() {
 		Assert.assertEquals("korean", primary);
 		Assert.assertNotEquals("korean", secondary);
-		
+
 		Assert.assertNotNull(language);
 		Assert.assertEquals(Properties.class, language.getClass());
 		Assert.assertEquals("korean", ((Properties) language).getProperty("primary"));
-		
+
 		Assert.assertNotNull(interfaceProp);
 		Assert.assertEquals("{http=//127.0.0.1:9080/execute}", interfaceBaseUrl.toString());
 	}

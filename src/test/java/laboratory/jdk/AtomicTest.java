@@ -1,6 +1,5 @@
 package laboratory.jdk;
 
-
 public class AtomicTest {
 	private int a = 0;
 

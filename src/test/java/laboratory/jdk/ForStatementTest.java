@@ -16,7 +16,7 @@ public class ForStatementTest {
 	@Test
 	public void removeList() {
 		String[] strs = { "a", "b", "c", "d", "e" };
-		
+
 		// 앞에서 3개 자르기
 		List<String> list = Arrays.stream(strs).collect(Collectors.toList());
 //		for (int cnt = 0, i = 0; i < list.size(); i++) {
@@ -34,10 +34,10 @@ public class ForStatementTest {
 				}
 				list.remove(0);
 				cnt++;
-			}			
+			}
 		}
 		Assert.assertEquals("[d, e]", list.toString());
-		
+
 		// 뒤에서 3개 자르기
 		list = Arrays.stream(strs).collect(Collectors.toList());
 		for (int cnt = 0, i = list.size(); i >= 0; i--) {

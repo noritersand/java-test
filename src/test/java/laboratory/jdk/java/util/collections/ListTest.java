@@ -26,7 +26,7 @@ public class ListTest {
 		public void setName(String name) {
 			this.name = name;
 		}
-		
+
 		public ListTestModel(String name) {
 			this.name = name;
 		}
@@ -45,14 +45,14 @@ public class ListTest {
 		Assert.assertEquals(origins.get(0), newbies.get(0));
 		Assert.assertTrue(origins.get(0) == newbies.get(0));
 	}
-	
+
 	@Test
 	public void cloneManual() {
 		ArrayList<ListTestModel> origins = new ArrayList<>();
 		origins.add(new ListTestModel("123"));
 		origins.add(new ListTestModel("456"));
 		origins.add(new ListTestModel("789"));
-		
+
 		ArrayList<ListTestModel> newbies = new ArrayList<>();
 		for (ListTestModel ele : origins) {
 			newbies.add(new ListTestModel(ele.getName()));

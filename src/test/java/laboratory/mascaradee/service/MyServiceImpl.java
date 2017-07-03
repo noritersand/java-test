@@ -1,7 +1,7 @@
 package laboratory.mascaradee.service;
 
 public class MyServiceImpl implements MyService {
-	
+
 	@Override
 	public void executeMe() {
 		try {

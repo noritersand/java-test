@@ -12,23 +12,23 @@ import org.slf4j.LoggerFactory;
 public class CharsetTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(CharsetTest.class);
-	
+
 	@Test
 	public void useCharset() {
 		Assert.assertTrue(Charset.isSupported("UTF-8"));
-		
+
 //		Charset charset = Charset.defaultCharset(); // default는 의도하지 않은 결과가 나올 수 있음.
 		Charset charset = Charset.forName("UTF-8");
 		Assert.assertTrue(charset.canEncode());
 		Assert.assertEquals("UTF-8", charset.toString());
 		Assert.assertEquals("UTF-8", charset.displayName(Locale.KOREA));
-		
+
 		charset = Charset.forName("EUC-KR");
 		Assert.assertTrue(charset.canEncode());
 		Assert.assertEquals("EUC-KR", charset.toString());
 		Assert.assertEquals("EUC-KR", charset.displayName(Locale.KOREA));
 	}
-	
+
 	@Test
 	public void useStandardCharset() {
 		Assert.assertEquals("US-ASCII", StandardCharsets.US_ASCII.name());

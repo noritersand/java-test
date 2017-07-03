@@ -18,7 +18,7 @@ public class ProcessBuilderTest {
 		pb.redirectError(Redirect.INHERIT);
 		pb.start();
 	}
-	
+
 	@Test
 	public void executeWindowCommand() throws IOException {
 		ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "cd \"C:\\dev\" && dir");

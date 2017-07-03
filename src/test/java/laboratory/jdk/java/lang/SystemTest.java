@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class SystemTest {
 	private static final Logger logger = LoggerFactory.getLogger(SystemTest.class);
-	
+
 	@Test
 	public void getCurrentTime() {
 		String millisecond = String.valueOf(System.currentTimeMillis());
@@ -21,10 +21,10 @@ public class SystemTest {
 //		Assert.assertEquals(15, nanosecond.length());
 		// 둘이 합쳐 28가 아니고 나노초는 14자일때도 있음.
 	}
-	
+
 	@Test
 	public void getSystemEnvironmentVariables() {
-		Map<String, String> env  = System.getenv();
+		Map<String, String> env = System.getenv();
 		Set<String> keySet = env.keySet();
 		logger.debug("env logging begin");
 		for (String key : keySet) {
@@ -44,11 +44,10 @@ public class SystemTest {
 		}
 		logger.debug("property logging done");
 	}
-	
+
 	/**
-	 * 이 케이스는 JUNIT에선 성공하지만 MAVEN에선 실패한다. 
-	 * 메이븐 테스트는 OS의 케릭터 인코딩을 사용한다고 한다. (윈도우라면 MS949) 아래 링크 참고:
-	 * <a href="http://stackoverflow.com/questions/3017695/how-to-configure-encoding-in-maven">http://stackoverflow.com/questions/3017695/how-to-configure-encoding-in-maven</a>
+	 * 이 케이스는 JUNIT에선 성공하지만 MAVEN에선 실패한다. 메이븐 테스트는 OS의 케릭터 인코딩을 사용한다고 한다. (윈도우라면 MS949) 아래 링크 참고: <a href=
+	 * "http://stackoverflow.com/questions/3017695/how-to-configure-encoding-in-maven">http://stackoverflow.com/questions/3017695/how-to-configure-encoding-in-maven</a>
 	 * 
 	 * @author fixalot
 	 */
@@ -56,19 +55,19 @@ public class SystemTest {
 	public void getDefaultEncodingProperty() {
 //		Assert.assertEquals("UTF-8", System.getProperty("file.encoding")); // maven test에선 utf-8이 아님		
 	}
-	
+
 	@Test
 	public void getEmptyProperty() {
 		Assert.assertNull(System.getProperty("this.is.must.be.null"));
 	}
-	
+
 	@Test
 	public void getOsName() {
 		logger.debug(System.getProperty("os.name"));
 	}
-	
+
 	@Test
 	public void getMavenHome() {
-		Assert.assertNull(null, System.getenv("MAVEN_HOME"));  
+		Assert.assertNull(null, System.getenv("MAVEN_HOME"));
 	}
 }

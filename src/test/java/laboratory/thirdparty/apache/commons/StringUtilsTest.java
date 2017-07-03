@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 public class StringUtilsTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(StringUtilsTest.class);
-	
+
 	@Test
 	public void testDefault() {
 		Assert.assertEquals("", StringUtils.defaultString("", "0"));

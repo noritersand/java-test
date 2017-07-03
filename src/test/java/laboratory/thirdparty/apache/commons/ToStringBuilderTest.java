@@ -27,15 +27,19 @@ public class ToStringBuilderTest {
 	private class Pojo {
 		private String stringField;
 		private Integer intField;
+
 		public String getStringField() {
 			return stringField;
 		}
+
 		public void setStringField(String stringField) {
 			this.stringField = stringField;
 		}
+
 		public Integer getIntField() {
 			return intField;
 		}
+
 		public void setIntField(Integer intField) {
 			this.intField = intField;
 		}
