@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <configuration scan="true" scanPeriod="5 seconds"> <!-- 5초마다 설정 변경 감지 -->
-	<if condition='!property("app.log.home").equals("")'>
+	<if condition='property("app.log.home") != null &amp;&amp; !property("app.log.home").equals("")'>
 		<then>
 			<property name="LOG_HOME" value="${app.log.home}" />
 		</then>
