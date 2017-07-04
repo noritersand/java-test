@@ -29,14 +29,16 @@ public class WebAppInitializer implements ServletContextListener {
 		// 케릭터인코딩 필터
 		FilterRegistration.Dynamic encodingFilter = context.addFilter("encodingFilter", new CharacterEncodingFilter());
 		encodingFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD,
-				DispatcherType.ERROR, DispatcherType.INCLUDE), false, "*.do");
+				DispatcherType.ERROR, DispatcherType.INCLUDE), false, "*.view", "*.data");
 
 		// 로그백 MDC 필터 등록. static resource 요청은 로그가 필요 없으므로 서블릿 URL 패턴과 동일하게 설정한다.
 		FilterRegistration.Dynamic logFilter = context.addFilter("MDCFilter", new LogbackMDCFilter());
-		logFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD), false, "*.do");
+		logFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD), false,
+				"*.view", "*.data");
 
 		ServletRegistration.Dynamic servlet = context.addServlet("defaultDispatcher", new DefaultDispatcher());
-		servlet.addMapping("*.do");
+		servlet.addMapping("*.view");
+		servlet.addMapping("*.data");
 		servlet.setLoadOnStartup(1);
 	}
 

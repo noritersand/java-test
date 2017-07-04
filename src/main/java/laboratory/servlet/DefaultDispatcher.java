@@ -52,6 +52,9 @@ public class DefaultDispatcher extends HttpServlet {
 		 * req.setCharacterEncoding("UTF-8");
 		 */
 		printParameters(req);
+		
+		// TODO .view와 .data 분기 
+		
 		viewResolver.createView(req, resp);
 	}
 

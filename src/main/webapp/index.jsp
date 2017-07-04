@@ -10,10 +10,16 @@
 <h2>Index</h2>
 <ul>
 	<li>
+		<h4>JSP</h4>
+		<ul>
+			<li><a href="/test/customtag/parent.view">custom tag</a></li>
+		</ul>
+	</li>
+	<li>
 		<h4>JAVA</h4>
 		<ul>
-			<li><a href="/hello.do">some link</a></li>
-			<li><a href="/test/submit/sender.do">unicode character submission test</a></li>
+			<li><a href="/test/hello.view">some link</a></li>
+			<li><a href="/test/submit/sender.view">unicode character submission test</a></li>
 		</ul>
 	</li>
 	<li>

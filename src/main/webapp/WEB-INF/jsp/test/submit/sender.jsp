@@ -7,21 +7,21 @@
 </head>
 <body>
 <h1>input test</h1>
-<form method="get" action="/test/submit/receiver.do" accept-charset="UTF-8">
+<form method="get" action="/test/submit/receiver.view" accept-charset="UTF-8">
 	<fieldset>
 		<legend>GET method</legend>
 		<input type="text" name="text" value="한글" />
 		<input type="submit" value="submit" />
 	</fieldset>
 </form>
-<form method="post" action="/test/submit/receiver.do" accept-charset="UTF-8">
+<form method="post" action="/test/submit/receiver.view" accept-charset="UTF-8">
 	<fieldset>
 		<legend>POST method</legend>
 		<input type="text" name="text" value="한글" />
 		<input type="submit" value="submit" />
 	</fieldset>
 </form>
-<br><a href="/test/submit/sender-iso.do">ISO-8859-1로 보내기</a>
-<br><a href="/test/submit/sender-euckr.do">EUC-KR로 보내기</a>
+<br><a href="/test/submit/sender-iso.view">ISO-8859-1로 보내기</a>
+<br><a href="/test/submit/sender-euckr.view">EUC-KR로 보내기</a>
 </body>
 </html>

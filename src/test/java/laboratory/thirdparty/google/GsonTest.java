@@ -30,7 +30,7 @@ public class GsonTest {
 	}
 
 	@Test
-	public void toJSON() {
+	public void toJSONString() {
 		JsonObject job = new JsonObject();
 		job.addProperty("key", "value");
 
