@@ -12,7 +12,7 @@ public class StopWatchTest {
 	private static final Logger logger = LoggerFactory.getLogger(StopWatchTest.class);
 
 	@Test
-	public void usage() {
+	public void test() {
 		StopWatch watch = new StopWatch();
 		doUselessThing();
 		Assert.assertEquals(0, watch.getNanoTime()); // 시작하기 전에는 0

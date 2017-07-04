@@ -12,7 +12,7 @@ public class StopWatchTest {
 	private static final Logger logger = LoggerFactory.getLogger(StopWatchTest.class);
 
 	@Test
-	public void usage() {
+	public void test() {
 		StopWatch watch = new StopWatch("IN SOVIET RUSSIA, MONITOR WATCHES YOU");
 
 		watch.start("first");
