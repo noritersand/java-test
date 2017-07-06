@@ -125,20 +125,20 @@ public class StringTest {
 
 	@Test
 	public void split() {
-		String str = "abcdefghijklmn";
-		Assert.assertEquals(str, str.split("\\|")[0]);
+		String splitMe = "abcdefghijklmn";
+		Assert.assertEquals(splitMe, splitMe.split("\\|")[0]);
 		try {
-			logger.debug(str.split("\\|")[1]);
+			logger.debug(splitMe.split("\\|")[1]);
 		} catch (IndexOutOfBoundsException e) {
 			logger.debug("에러 났지롱");
 		}
-	}
-
-	@Test
-	public void split2() {
-		String str = "abcdefghijklmn";
-		Assert.assertEquals(14, str.length());
-		Assert.assertEquals(str.substring(1, 5), str.subSequence(1, 5));
+		
+		String splitMe2 = "abcdefghijklmn";
+		Assert.assertEquals(14, splitMe2.length());
+		Assert.assertEquals(splitMe2.substring(1, 5), splitMe2.subSequence(1, 5));
+		
+		String splitMe3 = "a\nb\nc\nd";
+		Assert.assertEquals(4, splitMe3.split("\\n").length);
 	}
 
 	@Test
