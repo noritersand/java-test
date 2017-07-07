@@ -9,6 +9,7 @@ public class CharacterTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(CharacterTest.class);
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void compare() {
 		char a = 'a';
