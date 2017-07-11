@@ -13,6 +13,7 @@
 		<h4>JSP</h4>
 		<ul>
 			<li><a href="/test/customtag/parent.view">custom tag</a></li>
+			<li><a href="/test/jstl/parseNumberFromString.view">parse number from string</a></li>
 		</ul>
 	</li>
 	<li>
