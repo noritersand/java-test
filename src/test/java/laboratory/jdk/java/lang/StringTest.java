@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 public class StringTest {
 	private static final Logger logger = LoggerFactory.getLogger(StringTest.class);
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void compareWithCharacter() {
 		String a = "A";
