@@ -14,6 +14,15 @@ public class StringTest {
 	private static final Logger logger = LoggerFactory.getLogger(StringTest.class);
 
 	@Test
+	public void compareWithCharacter() {
+		String a = "A";
+		char b = 'A';
+		Assert.assertFalse(a.equals(b));
+		Assert.assertTrue(a.charAt(0) == b);
+		Assert.assertTrue(a.equals(String.valueOf(b)));
+	}
+	
+	@Test
 	public void getBytes() throws UnsupportedEncodingException {
 		final String korean = "한";
 		Assert.assertEquals("[-19, -107, -100]", Arrays.toString(korean.getBytes(StandardCharsets.UTF_8)));
