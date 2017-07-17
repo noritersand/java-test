@@ -33,4 +33,10 @@ public class MapTest {
 		Assert.assertNotNull(tree);
 	}
 
+	@Test
+	public void checkNPE() {
+		Map<String, Object> map = new HashMap<>();
+		final String empty = (String) map.get("empty");
+		Assert.assertNull(empty);
+	}
 }
