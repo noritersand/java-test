@@ -3,7 +3,6 @@ package laboratory.jdk.java.lang;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,9 +25,9 @@ public class StringTest {
 	@Test
 	public void getBytes() throws UnsupportedEncodingException {
 		final String korean = "한";
-		Assert.assertEquals("[-19, -107, -100]", Arrays.toString(korean.getBytes(StandardCharsets.UTF_8)));
-		Assert.assertEquals("[-2, -1, -43, 92]", Arrays.toString(korean.getBytes(StandardCharsets.UTF_16)));
-		Assert.assertEquals("[-57, -47]", Arrays.toString(korean.getBytes(Charset.forName("EUC-KR"))));
+		Assert.assertArrayEquals(new byte[] { -19, -107, -100 }, korean.getBytes(StandardCharsets.UTF_8));
+		Assert.assertArrayEquals(new byte[] { -2, -1, -43, 92 }, korean.getBytes(StandardCharsets.UTF_16));
+		Assert.assertArrayEquals(new byte[] { -57, -47 }, korean.getBytes(Charset.forName("EUC-KR")));
 	}
 
 	@Test

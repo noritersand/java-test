@@ -16,7 +16,7 @@ public class StringUtilsTest {
 	public void tokenize() {
 		final String string = "first, second;third fourth\tfifth\nsixth";
 		String[] tokens = StringUtils.tokenizeToStringArray(string, ",; \t\n"); // 쉼표, 세미콜론, 빈칸, 탭, 줄바꿈 중 아무거나 있으면 별도 토큰으로 인식해서 쪼갬
-		Assert.assertEquals("[first, second, third, fourth, fifth, sixth]", Arrays.toString(tokens));
+		Assert.assertTrue(Arrays.equals(new String[] { "first", "second", "third", "fourth", "fifth", "sixth" }, tokens));
 
 		// delimeter가 연속으로 사용되도 하나로 빈문자열은 쪼개지 않음
 		final String anotherString = "first,;second";

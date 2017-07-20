@@ -43,7 +43,7 @@ public class ReflectionUtilsTest {
 		Assert.assertEquals(1, method2.getParameters().length);
 	}
 
-//	@Test
+	@Test
 	public void findAllMethod() throws Exception {
 		Object instance = new MyClass();
 		Method[] a = ReflectionUtils.getAllDeclaredMethods(instance.getClass());

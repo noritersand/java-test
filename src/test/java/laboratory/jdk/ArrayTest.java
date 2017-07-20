@@ -23,7 +23,6 @@ public class ArrayTest {
 	@Test
 	public void getString() {
 		int[][] arr = new int[][] { { 1, 2, 6 }, { 3, 4 } };
-
 		String[] str = new String[arr.length];
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
@@ -36,8 +35,7 @@ public class ArrayTest {
 				str[i] += String.valueOf(arr[i][j]);
 			}
 		}
-
-		System.out.println(Arrays.toString(str));
+		Assert.assertTrue(Arrays.equals(new String[] { "1x2x6", "3x4" }, str));
 	}
 
 	@Test

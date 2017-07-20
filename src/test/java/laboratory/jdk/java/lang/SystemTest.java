@@ -19,7 +19,7 @@ public class SystemTest {
 		Assert.assertEquals(13, millisecond.length());
 //		String nanosecond = String.valueOf(System.nanoTime());
 //		Assert.assertEquals(15, nanosecond.length());
-		// 둘이 합쳐 28가 아니고 나노초는 14자일때도 있음.
+		// 둘이 합쳐 28이 아니고 나노초는 14자일때도 있음.
 	}
 
 	@Test
