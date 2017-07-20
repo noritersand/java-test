@@ -34,6 +34,11 @@ public class SystemTest {
 	}
 
 	@Test
+	public void shouldBeNull() {
+		Assert.assertNull(System.getProperty("i'm not here"));
+	}
+	
+	@Test
 	public void getSystemProperties() {
 		Properties props = System.getProperties();
 		Enumeration<?> names = props.propertyNames();
