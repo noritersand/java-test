@@ -46,4 +46,9 @@ public class ArrayTest {
 		Assert.assertEquals(2, arr[1].length);
 	}
 
+	@Test
+	public void join() {
+		final String[] arr = { "a", "b", "c" };
+		Assert.assertEquals("a,b,c", String.join(",", arr));
+	}
 }
