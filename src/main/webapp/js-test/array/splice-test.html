@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<script>
+	function printElements(obj) {
+		console.log('print elements: ');
+		for (var ele in obj) {
+			console.log('\t' + ele + ": " + JSON.stringify(obj[ele]));
+		}
+	}
+	function getObj() {
+		var obj = [
+			{key: 'a'}, {key: 'b'}, {key: 'c'}, {key: 'd'}, {key: 'e'}, {key: 'f'}, {key: 'g'}, {key: 'h'}, {key: 'i'}, {key: 'j'}
+		]; // 모두 10개
+		return obj;
+	}
+	
+	var obj = getObj();
+	for (var i = 0; i < obj.length; i++) {
+		var key = obj[i].key;
+		if (key == 'd') {
+			var newObj = obj.splice(i, 3); // splice는 삭제된 요소만 갖는 배열을 반환한다.
+		}
+	}
+	
+	console.assert(obj.length == 7); // 3개 splice 했으니 남은건 7개
+	console.assert(newObj.length == 3);
+	
+	printElements(obj);
+	printElements(newObj);
+</script>
+</head>
+<body>
+<h2>splice test</h2>
+<p>watch the console</p>
+</body>
+</html>

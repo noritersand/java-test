@@ -31,6 +31,7 @@
 			<li><a href="/html-test/opener/opener-test3.html">opener test #2</a></li>
 			<li><a href="/js-test/cookie/cookie-util.html">cookie util</a></li>
 			<li><a href="/html-test/iframe/parent.html">iframe test</a>
+			<li><a href="/js-test/array/splice-test.html">delete element(splice)</a>
 		</ul>	
 	</li>
 	<li>
