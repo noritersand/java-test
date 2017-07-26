@@ -54,6 +54,7 @@ public class DefaultDispatcher extends HttpServlet {
 		 * 
 		 * req.setCharacterEncoding("UTF-8");
 		 */
+		printParameters(req);
 		
 		// view와 data 분기 
 		final String url = req.getRequestURI();
@@ -63,7 +64,6 @@ public class DefaultDispatcher extends HttpServlet {
 			viewResolver.createView(req, resp);
 		} else if (url.lastIndexOf(dataSufix) == (url.length() - dataSufix.length())) {
 			logger.debug("HTTP method: {}", req.getMethod());
-			printParameters(req);
 			
 			JSONResponseObject responseObject = new JSONResponseObject();
 			responseObject.setSuccess(true);

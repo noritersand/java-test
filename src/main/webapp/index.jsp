@@ -26,7 +26,6 @@
 	<li>
 		<h4>HTML &amp; pure JavaScript</h4>
 		<ul>
-			<li><a href="/temp/test.html">temp</a></li>
 			<li><a href="/html-test/opener/opener-test.html">opener test</a></li>
 			<li><a href="/html-test/opener/opener-test3.html">opener test #2</a></li>
 			<li><a href="/js-test/cookie/cookie-util.html">cookie util</a></li>

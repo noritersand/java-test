@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<meta charset="UTF-8">
-	<script>
-		// test#1
-		var start = new Date('2016-01-01');
-		var end = new Date('2016-01-03');
-		var elapsedtime = end - start;
-		console.debug(elapsedtime == end.getTime() - start.getTime());
-		console.debug(172800000 == elapsedtime);
-		console.debug(0 == new Date(elapsedtime).getMonth());
-		console.debug(3 == new Date(elapsedtime).getDate());
-		// test#2
-		start = new Date('2016-01-01');
-		end = new Date('2016-02-04');
-		elapsedtime = end - start;
-		console.debug(1 == new Date(elapsedtime).getMonth());
-		console.debug(4 == new Date(elapsedtime).getDate());
-		// test#3
-		start = new Date('2016-02-01');
-		end = new Date('2016-02-04');
-		elapsedtime = end - start;
-		// remove minutes from the date
-		console.debug('elapsed day#1: ', Math.floor(elapsedtime / 1000 / 60 / 60 / 24));
-		console.debug('elapsed day#2: ', elapsedtime / 1000 / 60 / 60 / 24);
-	</script>
+<title>calculate elapsed time</title>
+<meta charset="UTF-8">
+<script>
+	// test#1
+	var start = new Date('2016-01-01');
+	var end = new Date('2016-01-03');
+	var elapsedtime = end - start;
+	console.debug(elapsedtime == end.getTime() - start.getTime());
+	console.debug(172800000 == elapsedtime);
+	console.debug(0 == new Date(elapsedtime).getMonth());
+	console.debug(3 == new Date(elapsedtime).getDate());
+	// test#2
+	start = new Date('2016-01-01');
+	end = new Date('2016-02-04');
+	elapsedtime = end - start;
+	console.debug(1 == new Date(elapsedtime).getMonth());
+	console.debug(4 == new Date(elapsedtime).getDate());
+	// test#3
+	start = new Date('2016-02-01');
+	end = new Date('2016-02-04');
+	elapsedtime = end - start;
+	// remove minutes from the date
+	console.debug('elapsed day#1: ', Math.floor(elapsedtime / 1000 / 60 / 60 / 24));
+	console.debug('elapsed day#2: ', elapsedtime / 1000 / 60 / 60 / 24);
+</script>
 </head>
 <body>
 </body>
