@@ -12,6 +12,30 @@ import org.slf4j.LoggerFactory;
 public class StringTest {
 	private static final Logger logger = LoggerFactory.getLogger(StringTest.class);
 
+	@Test
+	public void testFormat() {
+        class Formatter {
+            public String floatFormat(double number) {
+				return String.format("%.2f", number); // dot(.)과 바로 뒤에오는 숫자는 정밀도를 의미한다.
+            }
+            public String binaryFormat(double number) {
+            	return String.format("%.0f", number);
+            }
+        }
+        Formatter formatter = new Formatter();
+		
+        // 소수점 2자리까지  표현
+        Assert.assertEquals("1.00", formatter.floatFormat(1D));
+		Assert.assertEquals("100.00", formatter.floatFormat(100D));
+		Assert.assertEquals("0.50", formatter.floatFormat(0.5D));
+		
+		// 정수 표현(소수점은 반올림 처리)
+		Assert.assertEquals("0", formatter.binaryFormat(0.4D));
+		Assert.assertEquals("1", formatter.binaryFormat(0.5D));
+		Assert.assertEquals("1", formatter.binaryFormat(1.3D));
+		Assert.assertEquals("3", formatter.binaryFormat(2.6D));
+	}
+
 	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void compareWithCharacter() {
@@ -21,7 +45,7 @@ public class StringTest {
 		Assert.assertTrue(a.charAt(0) == b);
 		Assert.assertTrue(a.equals(String.valueOf(b)));
 	}
-	
+
 	@Test
 	public void getBytes() throws UnsupportedEncodingException {
 		final String korean = "한";
@@ -141,11 +165,11 @@ public class StringTest {
 		} catch (IndexOutOfBoundsException e) {
 			logger.debug("에러 났지롱");
 		}
-		
+
 		String splitMe2 = "abcdefghijklmn";
 		Assert.assertEquals(14, splitMe2.length());
 		Assert.assertEquals(splitMe2.substring(1, 5), splitMe2.subSequence(1, 5));
-		
+
 		String splitMe3 = "a\nb\nc\nd";
 		Assert.assertEquals(4, splitMe3.split("\\n").length);
 	}
