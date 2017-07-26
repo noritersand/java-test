@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>querystring-to-input-tag.html</title>
+<script src="/resources/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<h2>ajax test</h2>
+<p>response: <span style="color: red" id="result"></span></p>
+<script>
+$.ajax({
+	url: '/hello.data?a=1',
+	data: 'b=2&c=3',
+	dataType: 'json',
+	success: function(data) {
+		console.debug('success');
+		$('#result').text(data.message);
+	}
+})
+</script>
+</body>
+</html>

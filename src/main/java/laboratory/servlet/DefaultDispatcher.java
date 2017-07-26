@@ -1,6 +1,7 @@
 package laboratory.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.Gson;
 
 /**
  * @since 2017-06-19
@@ -51,11 +54,25 @@ public class DefaultDispatcher extends HttpServlet {
 		 * 
 		 * req.setCharacterEncoding("UTF-8");
 		 */
-		printParameters(req);
 		
-		// TODO .view와 .data 분기 
-		
-		viewResolver.createView(req, resp);
+		// view와 data 분기 
+		final String url = req.getRequestURI();
+		final String viewSufix = ".view";
+		final String dataSufix = ".data";
+		if (url.lastIndexOf(viewSufix) == (url.length() - dataSufix.length())) {
+			viewResolver.createView(req, resp);
+		} else if (url.lastIndexOf(dataSufix) == (url.length() - dataSufix.length())) {
+			logger.debug("HTTP method: {}", req.getMethod());
+			printParameters(req);
+			
+			JSONResponseObject responseObject = new JSONResponseObject();
+			responseObject.setSuccess(true);
+			responseObject.setMessage("hello there.");
+			
+//			resp.setStatus(200); // 생략해도 됨
+			PrintWriter out = resp.getWriter();
+		    out.print(new Gson().toJson(responseObject));
+		}
 	}
 
 	/**
