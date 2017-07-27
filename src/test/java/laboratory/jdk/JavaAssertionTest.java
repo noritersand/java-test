@@ -2,6 +2,12 @@ package laboratory.jdk;
 
 import org.junit.Test;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class JavaAssertionTest {
 	public static void main(String[] args) {
 		int i = -1;

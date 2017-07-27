@@ -21,6 +21,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class HandleXMLTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(HandleXMLTest.class);

@@ -5,6 +5,12 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class SwichTest {
 	private static final Logger logger = LoggerFactory.getLogger(SwichTest.class);
 

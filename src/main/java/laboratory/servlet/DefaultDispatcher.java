@@ -18,6 +18,8 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 
 /**
+ * 
+ * 
  * @since 2017-06-19
  * @author fixalot
  */

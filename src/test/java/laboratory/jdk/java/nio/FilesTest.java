@@ -6,6 +6,12 @@ import java.nio.file.Paths;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class FilesTest {
 	@Test
 	public void test() {

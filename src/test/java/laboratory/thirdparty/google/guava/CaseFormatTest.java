@@ -7,6 +7,12 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.CaseFormat;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class CaseFormatTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(CaseFormatTest.class);

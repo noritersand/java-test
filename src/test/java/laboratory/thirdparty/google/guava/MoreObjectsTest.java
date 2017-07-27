@@ -7,6 +7,12 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.MoreObjects.ToStringHelper;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class MoreObjectsTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MoreObjectsTest.class);

@@ -3,6 +3,12 @@ package laboratory.jdk;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class ReferenceCopyTest {
 	@Test
 	public void avoidReassigningParameters() {

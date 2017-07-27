@@ -10,6 +10,12 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.reflect.TypeToken;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class TypeTokenTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(TypeTokenTest.class);

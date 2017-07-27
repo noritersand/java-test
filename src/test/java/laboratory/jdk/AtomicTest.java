@@ -1,5 +1,11 @@
 package laboratory.jdk;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class AtomicTest {
 	private int a = 0;
 

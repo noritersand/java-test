@@ -22,6 +22,12 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class JodaTimeTest {
 	private static final Logger logger = LoggerFactory.getLogger(JodaTimeTest.class);
 

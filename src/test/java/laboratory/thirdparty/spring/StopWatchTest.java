@@ -7,6 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.StopWatch;
 import org.springframework.util.StopWatch.TaskInfo;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class StopWatchTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(StopWatchTest.class);

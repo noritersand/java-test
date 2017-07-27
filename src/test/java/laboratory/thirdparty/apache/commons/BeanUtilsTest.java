@@ -13,6 +13,12 @@ import org.slf4j.LoggerFactory;
 
 import laboratory.model.TestModel;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class BeanUtilsTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(BeanUtilsTest.class);

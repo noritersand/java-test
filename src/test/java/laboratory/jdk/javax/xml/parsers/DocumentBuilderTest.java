@@ -16,6 +16,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class DocumentBuilderTest {
 	// @SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(DocumentBuilderTest.class);

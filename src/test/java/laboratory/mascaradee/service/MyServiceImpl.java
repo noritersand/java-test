@@ -1,5 +1,11 @@
 package laboratory.mascaradee.service;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class MyServiceImpl implements MyService {
 
 	@Override

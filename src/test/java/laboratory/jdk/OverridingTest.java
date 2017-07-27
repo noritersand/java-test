@@ -2,6 +2,12 @@ package laboratory.jdk;
 
 import org.junit.Test;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class OverridingTest {
 	@Test
 	public void override() {

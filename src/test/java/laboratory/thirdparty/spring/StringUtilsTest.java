@@ -8,6 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class StringUtilsTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(StringUtilsTest.class);

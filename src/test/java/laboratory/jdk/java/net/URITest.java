@@ -5,6 +5,12 @@ import java.net.URI;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class URITest {
 	@Test
 	public void getURI() {

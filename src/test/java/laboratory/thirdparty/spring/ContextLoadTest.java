@@ -10,6 +10,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class ContextLoadTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ContextLoadTest.class);

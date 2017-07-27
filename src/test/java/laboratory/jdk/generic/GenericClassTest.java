@@ -4,6 +4,12 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class GenericClassTest {
 	@Test
 	@SuppressWarnings("unused")

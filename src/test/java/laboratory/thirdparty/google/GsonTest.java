@@ -16,6 +16,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 public class GsonTest {
 	private static final Logger logger = LoggerFactory.getLogger(GsonTest.class);
 

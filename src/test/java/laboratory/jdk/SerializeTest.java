@@ -16,6 +16,12 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 
+ * 
+ * @since 2017-07-27
+ * @author fixalot
+ */
 // 내부 클래스를 시리얼라이즈히랴먄 외부 클래스도 시리얼라이즈 가능해야함
 public class SerializeTest implements Serializable {
 	private static final long serialVersionUID = 1L;
