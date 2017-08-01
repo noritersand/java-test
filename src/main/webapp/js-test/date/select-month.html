@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>select month</title>
+<meta charset="UTF-8">
+<script src="/resources/js/jquery-1.12.4.js"></script>
+<script>
+	// lib
+	// 소스 출처: https://stackoverflow.com/questions/5645058/how-to-add-months-to-a-date-in-javascript
+	Date.isLeapYear = function(year) { 
+	    return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)); 
+	};
+	Date.getDaysInMonth = function(year, month) {
+	    return [31, (Date.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+	};
+	Date.prototype.isLeapYear = function() { 
+	    return Date.isLeapYear(this.getFullYear()); 
+	};
+	Date.prototype.getDaysInMonth = function() { 
+	    return Date.getDaysInMonth(this.getFullYear(), this.getMonth());
+	};
+	Date.prototype.addMonths = function(value) {
+	    var n = this.getDate();
+	    this.setDate(1);
+	    this.setMonth(this.getMonth() + value);
+	    this.setDate(Math.min(n, this.getDaysInMonth()));
+	    return this;
+	};
+	
+	// test start
+	var dayofday = new Date();
+	
+	$(function() {
+		$('#when').val(dayofday.toISOString());
+		
+		$('#month').change(function() {
+			var selected = $('#month').val();
+			console.log('selected: ' + selected);
+			console.log('month of DOD: ' + (dayofday.getMonth() + 1));
+			dayofday.addMonths(selected - (dayofday.getMonth() + 1));
+			$('#when').val(dayofday.toISOString());
+		});
+	});
+</script>
+</head>
+<body>
+<h2>select month</h2>
+<input type="text" id="when" value="" readonly />
+<select id="month">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+</select>
+</body>
+</html>

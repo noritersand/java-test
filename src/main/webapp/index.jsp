@@ -39,10 +39,12 @@
 			<li><a href="/js-test/array/array-splice.html">array: splice</a></li>
 			<li><a href="/js-test/array/array-splice2.html">array: splice #2</a></li>
 			<li><a href="/js-test/cookie/cookie-util.html">cookie: cookie util</a></li>
-			<li><a href="/js-test/date/add-date.html">date: add date</a></li>
+			<li><a href="/js-test/date/date.html">date</a></li>
 			<li><a href="/js-test/date/calculate-elapsed-time.html">date: calculate elapsed time</a></li>
+			<li><a href="/js-test/date/add-months.html">date: add months 윤년 계산해서 달 넘기기</a></li>
+			<li><a href="/js-test/date/select-month.html">date: select month 셀렉트 박스에서 달 선택</a></li>
 			<li><a href="/js-test/date/new-date.html">date: new date</a></li>
-			<li><a href="/js-test/history/mother.html">history: history</a></li>
+			<li><a href="/js-test/history/mother.html">history of iframe</a></li>
 			<li><a href="/js-test/number-format/extended.html">number-format: prototype extend</a></li>
 			<li><a href="/js-test/number-format/indecipherable.html">number-format: indecipherable</a></li>
 			<li><a href="/js-test/number-format/short.html">number-format: short</a></li>
