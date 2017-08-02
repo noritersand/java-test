@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>sender ISO-8859-1</title>
 </head>
 <body>
 <h1>input test</h1>

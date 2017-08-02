@@ -31,34 +31,40 @@
 	var dayofday = new Date();
 	
 	$(function() {
-		$('#when').val(dayofday.toISOString());
+		$('#when').val(dayofday.toISOString().substring(0, 10));
 		
+		// 셀렉트 박스의 값이 변경되었을 때
 		$('#month').change(function() {
 			var selected = $('#month').val();
+			if (!selected) {
+				return;
+			}
 			console.log('selected: ' + selected);
 			console.log('month of DOD: ' + (dayofday.getMonth() + 1));
-			dayofday.addMonths(selected - (dayofday.getMonth() + 1));
-			$('#when').val(dayofday.toISOString());
+			dayofday.addMonths(selected - (dayofday.getMonth() + 1)); // 
+			$('#when').val(dayofday.toISOString().substring(0, 10));
 		});
 	});
 </script>
 </head>
 <body>
 <h2>select month</h2>
-<input type="text" id="when" value="" readonly />
+<input type="date" id="when" />
+<div style="margin: 3px 3px 3px 3px"></div>
 <select id="month">
-	<option value="1">1</option>
-	<option value="2">2</option>
-	<option value="3">3</option>
-	<option value="4">4</option>
-	<option value="5">5</option>
-	<option value="6">6</option>
-	<option value="7">7</option>
-	<option value="8">8</option>
-	<option value="9">9</option>
-	<option value="10">10</option>
-	<option value="11">11</option>
-	<option value="12">12</option>
+	<option value="" selected>월 선택</option>
+	<option value="1">1월</option>
+	<option value="2">2월</option>
+	<option value="3">3월</option>
+	<option value="4">4월</option>
+	<option value="5">5월</option>
+	<option value="6">6월</option>
+	<option value="7">7월</option>
+	<option value="8">8월</option>
+	<option value="9">9월</option>
+	<option value="10">10월</option>
+	<option value="11">11월</option>
+	<option value="12">12월</option>
 </select>
 </body>
 </html>

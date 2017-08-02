@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>sender EUC-KR</title>
 </head>
 <body>
 <h1>input test</h1>
