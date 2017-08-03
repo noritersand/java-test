@@ -1,4 +1,4 @@
-package laboratory.servlet;
+package laboratory.servlet.dispatcher;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import laboratory.servlet.controller.TestController;
+import laboratory.servlet.view.DefaultViewResolver;
 
 /**
  * 

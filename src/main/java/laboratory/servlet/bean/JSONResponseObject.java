@@ -1,4 +1,4 @@
-package laboratory.servlet;
+package laboratory.servlet.bean;
 
 import java.util.HashMap;
 import java.util.Map;

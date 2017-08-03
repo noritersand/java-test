@@ -1,4 +1,4 @@
-package laboratory.servlet;
+package laboratory.servlet.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,11 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import laboratory.servlet.bean.JSONResponseObject;
+import laboratory.servlet.view.View;
 import laboratory.util.request.RequestParameter;
 import laboratory.util.request.RequestUtil;
 
 public class TestController {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 	
 	/**

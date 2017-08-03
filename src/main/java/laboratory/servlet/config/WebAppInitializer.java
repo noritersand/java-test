@@ -10,7 +10,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration;
 import javax.servlet.annotation.WebListener;
 
-import laboratory.servlet.DefaultDispatcher;
+import laboratory.servlet.dispatcher.DefaultDispatcher;
 import laboratory.servlet.filter.CharacterEncodingFilter;
 import laboratory.servlet.filter.LogbackMDCFilter;
 
