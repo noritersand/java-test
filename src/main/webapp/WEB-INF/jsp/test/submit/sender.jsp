@@ -21,7 +21,7 @@
 		<input type="submit" value="submit" />
 	</fieldset>
 </form>
-<br><a href="/test/submit/sender-iso.view">ISO-8859-1로 보내기</a>
-<br><a href="/test/submit/sender-euckr.view">EUC-KR로 보내기</a>
+<br><a href="/test/submit/sender-iso-8859-1.view">ISO-8859-1로 보내기</a>
+<br><a href="/test/submit/sender-euc-kr.view">EUC-KR로 보내기</a>
 </body>
 </html>

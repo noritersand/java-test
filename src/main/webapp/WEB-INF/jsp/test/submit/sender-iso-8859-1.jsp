@@ -22,6 +22,6 @@
 	</fieldset>
 </form>
 <br><a href="/test/submit/sender.view">UTF-8로 보내기</a>
-<br><a href="/test/submit/sender-euckr.view">EUC-KR로 보내기</a>
+<br><a href="/test/submit/sender-euc-kr.view">EUC-KR로 보내기</a>
 </body>
 </html>

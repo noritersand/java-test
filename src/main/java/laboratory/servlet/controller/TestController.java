@@ -18,7 +18,8 @@ public class TestController {
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 	
 	/**
-	 * 유니코드 문자 전송 테스트 화면
+	 * 유니코드 문자 전송 테스트 화면.
+	 * UTF-8 인코딩 사용.
 	 * 
 	 * @param request
 	 * @param reponse
@@ -27,6 +28,16 @@ public class TestController {
 	 */
 	public View sender(HttpServletRequest request, HttpServletResponse reponse) {
 		return new View(request);
+	}
+	
+	public View senderEucKr(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
+		logger.debug(RequestUtil.getRequestParameter(httpRequest).toString());
+		return new View("/test/submit/sender-euc-kr");
+	}
+	
+	public View senderIso88591(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
+		logger.debug(RequestUtil.getRequestParameter(httpRequest).toString());
+		return new View(httpRequest);
 	}
 	
 	/**
@@ -41,7 +52,7 @@ public class TestController {
 		logger.debug(RequestUtil.getRequestParameter(httpRequest).toString());
 		return new View(httpRequest);
 	}
-
+	
 	/**
 	 * 개발자는 hello hello하고 웁니다.
 	 * 

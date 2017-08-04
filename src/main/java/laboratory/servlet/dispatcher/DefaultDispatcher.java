@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.CaseFormat;
+
 import laboratory.servlet.controller.TestController;
 import laboratory.servlet.view.DefaultViewResolver;
 
@@ -65,7 +67,10 @@ public class DefaultDispatcher extends HttpServlet {
 		
 		final String url = request.getRequestURI();
 		final String path = url.substring(0, url.lastIndexOf("."));
-		final String methodName = path.substring(path.lastIndexOf("/") + 1, path.length());
+		String methodName = path.substring(path.lastIndexOf("/") + 1, path.length());
+		if (methodName.contains("-")) { // 하이픈이 있으면 카멜케이스로 변환
+			methodName = CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, methodName);
+		}
 		
 		// TODO 컨트롤러 인젝션 구현 필요: 지금은 단순히 메서드의 이름으로 매핑하며 컨트롤러도 명시되어 있으므로 스프링처럼 PATH를 의미하는 문자열을 어노테이션 등으로 설정할 수 있게 해야함
 		Class<?> clazz = testController.getClass();

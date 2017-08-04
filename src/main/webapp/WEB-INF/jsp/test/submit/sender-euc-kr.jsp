@@ -22,6 +22,6 @@
 	</fieldset>
 </form>
 <br><a href="/test/submit/sender.view">UTF-8로 보내기</a>
-<br><a href="/test/submit/sender-iso.view">ISO-8859-1로 보내기</a>
+<br><a href="/test/submit/sender-iso-8859-1.view">ISO-8859-1로 보내기</a>
 </body>
 </html>
