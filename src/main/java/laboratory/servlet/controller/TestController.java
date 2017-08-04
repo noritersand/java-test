@@ -30,64 +30,64 @@ public class TestController {
 		return new View(request);
 	}
 	
-	public View senderEucKr(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
-		logger.debug(RequestUtil.getRequestParameter(httpRequest).toString());
+	public View senderEucKr(HttpServletRequest request, HttpServletResponse response) {
+		logger.debug(RequestUtil.getRequestParameter(request).toString());
 		return new View("/test/submit/sender-euc-kr");
 	}
 	
-	public View senderIso88591(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
-		logger.debug(RequestUtil.getRequestParameter(httpRequest).toString());
-		return new View(httpRequest);
+	public View senderIso88591(HttpServletRequest request, HttpServletResponse response) {
+		logger.debug(RequestUtil.getRequestParameter(request).toString());
+		return new View(request);
 	}
 	
 	/**
 	 * 유니코드 문자 전송 결과 화면
 	 * 
-	 * @param httpRequest
-	 * @param httpResponse
+	 * @param request
+	 * @param response
 	 * @return
 	 * @author fixalot
 	 */
-	public View receiver(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
-		logger.debug(RequestUtil.getRequestParameter(httpRequest).toString());
-		return new View(httpRequest);
+	public View receiver(HttpServletRequest request, HttpServletResponse response) {
+		logger.debug(RequestUtil.getRequestParameter(request).toString());
+		return new View(request);
 	}
 	
 	/**
 	 * 개발자는 hello hello하고 웁니다.
 	 * 
-	 * @param httpRequest
-	 * @param httpResponse
+	 * @param request
+	 * @param response
 	 * @return
 	 * @author fixalot
 	 */
-	public JSONResponseObject readRequestHeader(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
-		final RequestParameter params = RequestUtil.getRequestParameter(httpRequest);
+	public JSONResponseObject readRequestHeader(HttpServletRequest request, HttpServletResponse response) {
+		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		logger.debug(params.toString());
-		JSONResponseObject json = new JSONResponseObject();
-		json.setSuccess(true);
-		json.setMessage(params.toString());
-		return json;
+		JSONResponseObject responseJSON = new JSONResponseObject();
+		responseJSON.setSuccess(true);
+		responseJSON.setMessage(params.toString());
+		return responseJSON;
 	}
 	
 	/**
 	 * 헤더와 바디 둘 중 하나에 파라미터가 있겠쥬?
 	 * 
-	 * @param httpRequest
-	 * @param httpResponse
+	 * @param request
+	 * @param response
 	 * @return
 	 * @author fixalot
 	 */
-	public Map<String, Object> readPayloadBody(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
-		final RequestParameter params = RequestUtil.getRequestParameter(httpRequest);
-		final String body = RequestUtil.readBody(httpRequest);
+	public Map<String, Object> readPayloadBody(HttpServletRequest request, HttpServletResponse response) {
+		final RequestParameter params = RequestUtil.getRequestParameter(request);
+		final String body = RequestUtil.readBody(request);
 		logger.debug("header: " + params.toString());
 		logger.debug("body: " + body);
-		Map<String, Object> response = new HashMap<>();
-		response.put("success", true);
-		response.put("header", params.toString());
-		response.put("body", body.toString());
-		return response;
+		Map<String, Object> responseMap = new HashMap<>();
+		responseMap.put("success", true);
+		responseMap.put("header", params.toString());
+		responseMap.put("body", body.toString());
+		return responseMap;
 	}
 	
 	/**
