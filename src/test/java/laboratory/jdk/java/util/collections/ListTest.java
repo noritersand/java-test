@@ -39,6 +39,12 @@ public class ListTest {
 	}
 
 	@Test
+	public void add() {
+		List<Object> list = new ArrayList<>();
+		list.add(null);
+	}
+	
+	@Test
 	public void wrongWayClone() {
 		ArrayList<ListTestModel> origins = new ArrayList<>();
 		origins.add(new ListTestModel("123"));
@@ -79,14 +85,29 @@ public class ListTest {
 	@Test
 	public void removeElement() {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
+		for (int i = 0; i < list.size(); i++) {
+			final String str = list.get(i);
+			if (str.equals("a")) {
+				list.remove(i);
+				i--;
+			}
+		}
+		Assert.assertEquals(Arrays.asList("b", "c", "d"), list);
+		Assert.assertEquals(3, list.size());
+	}
+	
+	@Test
+	public void removeElementWithIterator() {
+		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
 		Iterator<String> iter = list.iterator();
 		while (iter.hasNext()) {
 			String s = iter.next();
-
 			if (s.equals("a")) {
 				iter.remove();
 			}
 		}
+		Assert.assertEquals(Arrays.asList("b", "c", "d"), list);
+		Assert.assertEquals(3, list.size());
 	}
 
 	@Test
