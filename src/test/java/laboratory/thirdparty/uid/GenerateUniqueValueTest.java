@@ -33,7 +33,7 @@ public class GenerateUniqueValueTest {
 	}
 
 	@Test
-	public void getUniqueUUID() {
+	public void getUniqueUuid() {
 		logger.debug(UUID.randomUUID().toString());
 		logger.debug(String.valueOf(UUID.fromString("cb9bc318-3ba1-4614-81b8-daed4efe6c62")));
 //		UUID.nameUUIDFromBytes(1) // 이건 어떻게 쓰는거람

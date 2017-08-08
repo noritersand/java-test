@@ -9,7 +9,7 @@ import java.util.Map;
  * @since 2017-07-26
  * @author fixalot
  */
-public class JSONResponseObject {
+public class JsonResponseObject {
 	/** 정상 처리 여부 */
 	private Boolean success;
 	/** 메시지 */
@@ -19,7 +19,7 @@ public class JSONResponseObject {
 	/** 개발자 정의 맵 */
 	private Map<String, Object> resultMap;
 
-	public JSONResponseObject addResultMapItem(String key, Object value) {
+	public JsonResponseObject addResultMapItem(String key, Object value) {
 		if (resultMap == null) {
 			this.resultMap = new HashMap<>();
 			this.resultMap.put(key, value);

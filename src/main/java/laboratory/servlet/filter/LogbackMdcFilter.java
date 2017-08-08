@@ -22,8 +22,8 @@ import ch.qos.logback.classic.ClassicConstants;
  * @since 2017-06-01
  * @author fixalot
  */
-public class LogbackMDCFilter implements Filter {
-	private static final Logger logger = LoggerFactory.getLogger(LogbackMDCFilter.class);
+public class LogbackMdcFilter implements Filter {
+	private static final Logger logger = LoggerFactory.getLogger(LogbackMdcFilter.class);
 	public static final String REQUEST_METHOD_MDC_KEY = "req.requestMethod";
 
 	@Override

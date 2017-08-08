@@ -16,9 +16,9 @@ import org.slf4j.LoggerFactory;
  * @since 2017-07-27
  * @author fixalot
  */
-public class URLEncoderTest {
+public class UrlEncoderTest {
 	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(URLEncoderTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(UrlEncoderTest.class);
 
 	@Test
 	public void encode() throws UnsupportedEncodingException {

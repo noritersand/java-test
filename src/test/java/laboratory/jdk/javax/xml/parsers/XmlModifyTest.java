@@ -28,11 +28,11 @@ import org.xml.sax.SAXException;
  * @since 2017-05-25
  * @author fixalot
  */
-public class XMLModifyTest {
-	private static final Logger logger = LoggerFactory.getLogger(XMLModifyTest.class);
+public class XmlModifyTest {
+	private static final Logger logger = LoggerFactory.getLogger(XmlModifyTest.class);
 
 //	@Test
-	public void modifyXML() throws TransformerException, ParserConfigurationException, SAXException, IOException {
+	public void modifyXml() throws TransformerException, ParserConfigurationException, SAXException, IOException {
 		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
 
 		String filePath = "src/test/resources/xml/read-test.xml";

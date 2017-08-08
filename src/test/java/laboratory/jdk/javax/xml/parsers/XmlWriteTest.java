@@ -25,11 +25,11 @@ import org.w3c.dom.Node;
  * @since 2017-05-25
  * @author fixalot
  */
-public class XMLWriteTest {
-	private static final Logger logger = LoggerFactory.getLogger(XMLWriteTest.class);
+public class XmlWriteTest {
+	private static final Logger logger = LoggerFactory.getLogger(XmlWriteTest.class);
 
 //	@Test
-	public void writeXML() throws ParserConfigurationException, TransformerException {
+	public void writeXml() throws ParserConfigurationException, TransformerException {
 		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
 
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

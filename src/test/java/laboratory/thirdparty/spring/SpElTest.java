@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/prop/context-test.xml")
-public class SpELTest {
+public class SpElTest {
 	@Value("#{language.primary}")
 	private String primary;
 

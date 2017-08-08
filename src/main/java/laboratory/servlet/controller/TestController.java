@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import laboratory.servlet.bean.JSONResponseObject;
+import laboratory.servlet.bean.JsonResponseObject;
 import laboratory.servlet.view.View;
 import laboratory.util.request.RequestParameter;
 import laboratory.util.request.RequestUtil;
@@ -61,10 +61,10 @@ public class TestController {
 	 * @return
 	 * @author fixalot
 	 */
-	public JSONResponseObject readRequestHeader(HttpServletRequest request, HttpServletResponse response) {
+	public JsonResponseObject readRequestHeader(HttpServletRequest request, HttpServletResponse response) {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		logger.debug(params.toString());
-		JSONResponseObject responseJSON = new JSONResponseObject();
+		JsonResponseObject responseJSON = new JsonResponseObject();
 		responseJSON.setSuccess(true);
 		responseJSON.setMessage(params.toString());
 		return responseJSON;

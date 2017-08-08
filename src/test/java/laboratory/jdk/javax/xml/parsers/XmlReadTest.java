@@ -26,11 +26,11 @@ import org.xml.sax.SAXException;
  * @since 2017-05-25
  * @author fixalot
  */
-public class XMLReadTest {
-	private static final Logger logger = LoggerFactory.getLogger(XMLReadTest.class);
+public class XmlReadTest {
+	private static final Logger logger = LoggerFactory.getLogger(XmlReadTest.class);
 
 	@Test
-	public void readXML() throws ParserConfigurationException, TransformerException, SAXException, IOException {
+	public void readXml() throws ParserConfigurationException, TransformerException, SAXException, IOException {
 		String filePath = "src/test/resources/xml/read-test.xml";
 		File xmlFile = new File(filePath);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

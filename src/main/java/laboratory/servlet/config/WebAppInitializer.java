@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebListener;
 
 import laboratory.servlet.dispatcher.DefaultDispatcher;
 import laboratory.servlet.filter.CharacterEncodingFilter;
-import laboratory.servlet.filter.LogbackMDCFilter;
+import laboratory.servlet.filter.LogbackMdcFilter;
 
 /**
  * web.xml을 대체하는 서블릿 설정
@@ -32,7 +32,7 @@ public class WebAppInitializer implements ServletContextListener {
 				DispatcherType.ERROR, DispatcherType.INCLUDE), false, "*.view", "*.data");
 
 		// 로그백 MDC 필터 등록. static resource 요청은 로그가 필요 없으므로 서블릿 URL 패턴과 동일하게 설정한다.
-		FilterRegistration.Dynamic logFilter = context.addFilter("MDCFilter", new LogbackMDCFilter());
+		FilterRegistration.Dynamic logFilter = context.addFilter("mdcFilter", new LogbackMdcFilter());
 		logFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD), false,
 				"*.view", "*.data");
 

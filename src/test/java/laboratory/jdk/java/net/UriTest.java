@@ -11,9 +11,9 @@ import org.junit.Test;
  * @since 2017-07-27
  * @author fixalot
  */
-public class URITest {
+public class UriTest {
 	@Test
-	public void getURI() {
+	public void getUri() {
 		URI uri3 = URI.create("somefolder/somefile.png");
 		System.out.println(uri3);
 		Assert.assertEquals(null, uri3.getScheme());
