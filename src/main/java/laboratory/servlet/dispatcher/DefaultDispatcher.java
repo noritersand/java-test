@@ -73,12 +73,14 @@ public class DefaultDispatcher extends HttpServlet {
 		}
 		
 		// TODO 컨트롤러 인젝션 구현 필요: 지금은 단순히 메서드의 이름으로 매핑하며 컨트롤러도 명시되어 있으므로 스프링처럼 PATH를 의미하는 문자열을 어노테이션 등으로 설정할 수 있게 해야함
+		// TODO 모든 클래스패스 내의 클래스 중 @Controller가 있는 클래스를 찾아서 @RequestMapping의 path값이 일치하는 메서드를 찾아야 함.
 		Class<?> clazz = testController.getClass();
 		// find method and invoking
 		Method method = null;
 		Object responseObject = null;
 		try {
 			method = clazz.getDeclaredMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+//			RequestMapping a = method.getAnnotation(RequestMapping.class); // TODO
 			responseObject = method.invoke(testController, request, response);
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();

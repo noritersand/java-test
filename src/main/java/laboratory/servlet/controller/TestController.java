@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import laboratory.servlet.bean.JsonResponseObject;
 import laboratory.servlet.view.View;
@@ -111,6 +112,16 @@ public class TestController {
 	 * @author fixalot
 	 */
 	public View parseNumberFromString(HttpServletRequest request, HttpServletResponse reponse) {
+		return new View(request);
+	}
+	
+	@RequestMapping("/test/include-test/with-jsp")
+	public View withJsp(HttpServletRequest request, HttpServletResponse reponse) {
+		return new View(request);
+	}
+	
+	@RequestMapping("/test/include-test/with-html")
+	public View withHtml(HttpServletRequest request, HttpServletResponse reponse) {
 		return new View(request);
 	}
 }

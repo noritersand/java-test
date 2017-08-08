@@ -13,6 +13,12 @@
 		<h4>JAVA</h4>
 		<ul>
 			<li><a href="/test/submit/sender.view">unicode character submission test</a></li>
+			<li>include
+				<ul>
+					<li><a href="/test/include-test/with-jsp.view">include test with jsp</a></li>
+					<li><a href="/test/include-test/with-html.view">include test with html</a></li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 	<li>
