@@ -68,6 +68,7 @@ public class DefaultDispatcher extends HttpServlet {
 		 * 
 		 * req.setCharacterEncoding("UTF-8");
 		 */
+		// TODO finder가 class도 같이 반환해야 함. (그래야 호출을 하지...)
 		Method method = methodFinder.findMethod(request, response);
 		// TODO testController의 인스턴스가 여기 있으면 안되고 별도로 관리하는 장치가 필요함.
 		Object responseObject = methodInvoker.invoke(testController, method, request, response);
