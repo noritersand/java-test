@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import laboratory.servlet.controller.TestController;
 
 public class UrlMethodFinder implements MethodFinder {
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodFinder.class);
 
 	@Override
@@ -25,7 +25,7 @@ public class UrlMethodFinder implements MethodFinder {
 //			methodName = CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, methodName);
 //		}
 		
-		logger.debug("i'll find you. and i'll kill you!");
+		logger.trace("i'll find you. and i'll kill you!");
 		
 		// find method and invoking
 		List<Class<?>> classList = new LinkedList<>();
