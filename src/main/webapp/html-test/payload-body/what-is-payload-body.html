@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>what <del>the fuck</del> is payload body?</h2>
-<form action="/readRequestHeader.data" method="post">
+<form action="/test/readRequestHeader.data" method="post">
 	<fieldset>
 		<legend><del>im legend</del> sync request: form data</legend>
 		<input type="text" name="myname" value="waldo" />
@@ -15,7 +15,7 @@
 		<button type="submit">SUBMIT</button>
 	</fieldset>
 </form>
-<form action="/readRequestHeader.data" method="post" enctype="application/x-www-form-urlencoded">
+<form action="/test/readRequestHeader.data" method="post" enctype="application/x-www-form-urlencoded">
 	<fieldset>
 		<legend>sync request: form data #2</legend>
 		<input type="text" name="myname" value="waldo" />
@@ -23,13 +23,13 @@
 		<button type="submit">SUBMIT</button>
 	</fieldset>
 </form>
-<form action="/readRequestHeader.data?1234" method="post" enctype="application/x-www-form-urlencoded">
+<form action="/test/readRequestHeader.data?1234" method="post" enctype="application/x-www-form-urlencoded">
 	<fieldset>
 		<legend>sync request: form data #3</legend>
 		<button type="submit">SUBMIT</button>
 	</fieldset>
 </form>
-<form action="/readPayloadBody.data" method="post" enctype="multipart/form-data">
+<form action="/test/readPayloadBody.data" method="post" enctype="multipart/form-data">
 	<fieldset>
 		<legend>sync request: payload body</legend>
 		<input type="text" name="myname" value="waldo" />
@@ -63,7 +63,7 @@
 <script>
 	function send() {
 		$.ajax({
-			url: '/readRequestHeader.data',
+			url: '/test/readRequestHeader.data',
 			method: 'post',
 			data: 'a=1&b=2',
 			contentType: 'application/x-www-form-urlencoded',
@@ -75,7 +75,7 @@
 	}
 	function send2() {
 		$.ajax({
-			url: '/readRequestHeader.data',
+			url: '/test/readRequestHeader.data',
 			method: 'post',
 			data: '{"a": 1, "b": 2}',
 			contentType: 'application/x-www-form-urlencoded',
@@ -87,7 +87,7 @@
 	}
 	function send3() {
 		$.ajax({
-			url: '/readPayloadBody.data',
+			url: '/test/readPayloadBody.data',
 			method: 'post',
 			data: 'a=1&b=2',
 			contentType: 'application/json',
@@ -99,7 +99,7 @@
 	}
 	function send4() {
 		$.ajax({
-			url: '/readPayloadBody.data',
+			url: '/test/readPayloadBody.data',
 			method: 'post',
 			data: '{"a": 1, "b": 2}',
 			contentType: 'application/json',

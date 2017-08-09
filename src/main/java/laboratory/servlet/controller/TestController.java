@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import laboratory.servlet.bean.JsonResponseObject;
+import laboratory.servlet.mvc.finder.UrlMapping;
 import laboratory.servlet.view.View;
 import laboratory.util.request.RequestParameter;
 import laboratory.util.request.RequestUtil;
@@ -21,22 +21,20 @@ public class TestController {
 	/**
 	 * 유니코드 문자 전송 테스트 화면.
 	 * UTF-8 인코딩 사용.
-	 * 
-	 * @param request
-	 * @param reponse
-	 * @return
-	 * @author fixalot
 	 */
-	public View sender(HttpServletRequest request, HttpServletResponse reponse) {
+	@UrlMapping("/test/submit/sender.view")
+	public View drawSender(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	public View senderEucKr(HttpServletRequest request, HttpServletResponse response) {
+	@UrlMapping("/test/submit/sender-euc-kr.view")
+	public View drawSenderEucKr(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug(RequestUtil.getRequestParameter(request).toString());
 		return new View("/test/submit/sender-euc-kr");
 	}
 	
-	public View senderIso88591(HttpServletRequest request, HttpServletResponse response) {
+	@UrlMapping("/test/submit/sender-iso-8859-1.view")
+	public View drawSenderIso88591(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug(RequestUtil.getRequestParameter(request).toString());
 		return new View(request);
 	}
@@ -49,7 +47,8 @@ public class TestController {
 	 * @return
 	 * @author fixalot
 	 */
-	public View receiver(HttpServletRequest request, HttpServletResponse response) {
+	@UrlMapping("/test/submit/receiver.view")
+	public View drawReceiver(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug(RequestUtil.getRequestParameter(request).toString());
 		return new View(request);
 	}
@@ -62,6 +61,7 @@ public class TestController {
 	 * @return
 	 * @author fixalot
 	 */
+	@UrlMapping("/test/readRequestHeader.data")
 	public JsonResponseObject readRequestHeader(HttpServletRequest request, HttpServletResponse response) {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		logger.debug(params.toString());
@@ -79,6 +79,7 @@ public class TestController {
 	 * @return
 	 * @author fixalot
 	 */
+	@UrlMapping("/test/readPayloadBody.data")
 	public Map<String, Object> readPayloadBody(HttpServletRequest request, HttpServletResponse response) {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		final String body = RequestUtil.readBody(request);
@@ -95,11 +96,12 @@ public class TestController {
 	 * parent
 	 * 
 	 * @param request
-	 * @param reponse
+	 * @param response
 	 * @return
 	 * @author fixalot
 	 */
-	public View parent(HttpServletRequest request, HttpServletResponse reponse) {
+	@UrlMapping("/test/customtag/parent.view")
+	public View parent(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
@@ -107,21 +109,22 @@ public class TestController {
 	 * parseNumberFromString
 	 * 
 	 * @param request
-	 * @param reponse
+	 * @param response
 	 * @return
 	 * @author fixalot
 	 */
-	public View parseNumberFromString(HttpServletRequest request, HttpServletResponse reponse) {
+	@UrlMapping("/test/jstl/parseNumberFromString.view")
+	public View drawParseNumberFromString(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@RequestMapping("/test/include-test/with-jsp")
-	public View withJsp(HttpServletRequest request, HttpServletResponse reponse) {
+	@UrlMapping("/test/include-test/with-jsp.view")
+	public View drawWithJsp(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@RequestMapping("/test/include-test/with-html")
-	public View withHtml(HttpServletRequest request, HttpServletResponse reponse) {
+	@UrlMapping("/test/include-test/with-html.view")
+	public View drawWithHtml(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 }

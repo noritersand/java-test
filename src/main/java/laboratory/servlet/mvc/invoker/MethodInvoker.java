@@ -1,0 +1,16 @@
+package laboratory.servlet.mvc.invoker;
+
+import java.lang.reflect.Method;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * method finder에서 찾은 메서드를 호출하는 인터페이스
+ * 
+ * @since 2017-08-09
+ * @author fixalot
+ */
+public interface MethodInvoker {
+	public Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response);
+}
