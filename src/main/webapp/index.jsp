@@ -19,6 +19,12 @@
 					<li><a href="/test/include-test/with-html.view">include test with html</a></li>
 				</ul>
 			</li>
+			<li>파일 업로드
+				<ul>
+					<li><a href="/test/fileupload/with-spring.view">spring multipart</a></li>
+					<li><a href="/test/fileupload/with-oreilly.view">oreilly multipart</a></li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 	<li>

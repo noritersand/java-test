@@ -6,7 +6,7 @@
 			<property name="LOG_HOME" value="${app.log.home}" />
 		</then>
 		<else>
-			<property name="LOG_HOME" value="/laboratorylogs" />		
+			<property name="LOG_HOME" value="/laboratory/logs" />		
 		</else>
 	</if>
 

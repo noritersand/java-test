@@ -25,13 +25,14 @@ public class DefaultViewResolver {
 	private static final String VIEW_LOCATION_PREFIX = "/WEB-INF/jsp/";
 	private static final String VIEW_LOCATION_SUFIX = ".jsp";
 
-	public void sendResponse(Object responseObject, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void sendResponse(Object responseObject, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (responseObject instanceof View) {
 			View view = (View) responseObject;
-			forwardToJSP(view, req, resp);
+			forwardToJSP(view, request, response);
 		} else {
-			resp.setStatus(200);
-			PrintWriter out = resp.getWriter();
+			response.setStatus(200);
+			response.setContentType("application/json;charset=UTF-8");
+			PrintWriter out = response.getWriter();
 		    out.print(new Gson().toJson(responseObject));
 		}
 	}

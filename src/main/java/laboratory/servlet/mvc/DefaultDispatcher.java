@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import laboratory.servlet.controller.TestController;
+import laboratory.servlet.controller.fileupload.FileUploadWithOreilly;
+import laboratory.servlet.controller.fileupload.FileUploadWithSpring;
 import laboratory.servlet.mvc.finder.MethodFinder;
 import laboratory.servlet.mvc.finder.UrlMethodFinder;
 import laboratory.servlet.mvc.invoker.MethodInvoker;
@@ -26,10 +28,10 @@ import laboratory.servlet.view.DefaultViewResolver;
  */
 public class DefaultDispatcher extends HttpServlet {
 	private static final long serialVersionUID = 6174311087878978970L;
-	
+
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(DefaultDispatcher.class);
-	
+
 	@SuppressWarnings("unused")
 	private static final String VIEW_SUFIX = ".view";
 	@SuppressWarnings("unused")
@@ -40,7 +42,9 @@ public class DefaultDispatcher extends HttpServlet {
 	private DefaultViewResolver viewResolver = new DefaultViewResolver();
 
 	private TestController testController = new TestController();
-	
+	private FileUploadWithSpring fileUploadWithSpring = new FileUploadWithSpring();
+	private FileUploadWithOreilly fileUploadWithOreilly = new FileUploadWithOreilly();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		process(req, resp);
@@ -69,9 +73,24 @@ public class DefaultDispatcher extends HttpServlet {
 		 * req.setCharacterEncoding("UTF-8");
 		 */
 		// TODO finder가 class도 같이 반환해야 함. (그래야 호출을 하지...)
-		Method method = methodFinder.findMethod(request, response);
+		Object[] object = methodFinder.findMethod(request, response);
+
 		// TODO testController의 인스턴스가 여기 있으면 안되고 별도로 관리하는 장치가 필요함.
-		Object responseObject = methodInvoker.invoke(testController, method, request, response);
+		Object instance = null;
+		switch (object[0].toString()) {
+		case "class laboratory.servlet.controller.TestController":
+			instance = testController;
+			break;
+		case "class laboratory.servlet.controller.fileupload.FileUploadWithSpring":
+			instance = fileUploadWithSpring;
+			break;
+		case "class laboratory.servlet.controller.fileupload.FileUploadWithOreilly":
+			instance = fileUploadWithOreilly;
+			break;
+		}
+		Method method = (Method) object[1];
+
+		Object responseObject = methodInvoker.invoke(instance, method, request, response);
 		viewResolver.sendResponse(responseObject, request, response);
 	}
 }

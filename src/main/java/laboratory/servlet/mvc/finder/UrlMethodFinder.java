@@ -11,13 +11,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import laboratory.servlet.controller.TestController;
+import laboratory.servlet.controller.fileupload.FileUploadWithOreilly;
+import laboratory.servlet.controller.fileupload.FileUploadWithSpring;
 
 public class UrlMethodFinder implements MethodFinder {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodFinder.class);
 
 	@Override
-	public Method findMethod(HttpServletRequest request, HttpServletResponse response) {
+	public Object[] findMethod(HttpServletRequest request, HttpServletResponse response) {
 		final String url = request.getRequestURI();
 //		final String path = url.substring(0, url.lastIndexOf("."));
 //		String methodName = path.substring(path.lastIndexOf("/") + 1, path.length());
@@ -30,12 +32,17 @@ public class UrlMethodFinder implements MethodFinder {
 		// find method and invoking
 		List<Class<?>> classList = new LinkedList<>();
 		classList.add(TestController.class);
+		classList.add(FileUploadWithSpring.class);
+		classList.add(FileUploadWithOreilly.class);
+		Object[] returnObject = new Object[2];
 		for (Class<?> clazz : classList) {
 			Method[] methods = clazz.getDeclaredMethods();
 			for (Method method : methods) {
 				UrlMapping mapping = method.getAnnotation(UrlMapping.class);
 				if (url.equals(mapping.value())) {
-					return method;
+					returnObject[0] = clazz;
+					returnObject[1] = method;
+					return returnObject;
 				}
 			}
 		}
