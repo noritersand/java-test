@@ -1,5 +1,7 @@
 package laboratory.servlet.mvc.finder;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,5 +11,5 @@ import javax.servlet.http.HttpServletResponse;
  * @author fixalot
  */
 public interface MethodFinder {
-	public Object[] findMethod(HttpServletRequest request, HttpServletResponse response);
+	public Object[] findMethod(List<Object> instanceList, HttpServletRequest request, HttpServletResponse response);
 }

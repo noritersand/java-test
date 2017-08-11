@@ -2,6 +2,8 @@ package laboratory.servlet.mvc;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -72,25 +74,17 @@ public class DefaultDispatcher extends HttpServlet {
 		 * 
 		 * req.setCharacterEncoding("UTF-8");
 		 */
-		// TODO finder가 class도 같이 반환해야 함. (그래야 호출을 하지...)
-		Object[] object = methodFinder.findMethod(request, response);
-
-		// TODO testController의 인스턴스가 여기 있으면 안되고 별도로 관리하는 장치가 필요함.
-		Object instance = null;
-		switch (object[0].toString()) {
-		case "class laboratory.servlet.controller.TestController":
-			instance = testController;
-			break;
-		case "class laboratory.servlet.controller.fileupload.FileUploadWithSpring":
-			instance = fileUploadWithSpring;
-			break;
-		case "class laboratory.servlet.controller.fileupload.FileUploadWithOreilly":
-			instance = fileUploadWithOreilly;
-			break;
-		}
+		List<Object> instanceList = new LinkedList<>();
+		instanceList.add(testController);
+		instanceList.add(fileUploadWithSpring);
+		instanceList.add(fileUploadWithOreilly);
+		
+		Object[] object = methodFinder.findMethod(instanceList, request, response);
+		Object instance = object[0];
 		Method method = (Method) object[1];
 
 		Object responseObject = methodInvoker.invoke(instance, method, request, response);
+		
 		viewResolver.sendResponse(responseObject, request, response);
 	}
 }

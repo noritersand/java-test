@@ -42,6 +42,7 @@ public class FileUploadWithSpring {
 		if (!(request instanceof MultipartHttpServletRequest)) {
 			// multipart resolver 설정이 없으면 여기로 옴
 			json.setSuccess(false);
+			return json;
 		}
 		MultipartHttpServletRequest multipart = (MultipartHttpServletRequest) request;
 		
