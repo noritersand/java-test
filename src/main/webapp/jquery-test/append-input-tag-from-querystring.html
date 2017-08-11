@@ -31,7 +31,7 @@ function querystringToInputTags(querystring) {
 
 $(function() {
 	var querystring = 'prodNo=COM2420825&cmpyCatNo=A01A04&proditNo=IT306&ordQty=1&empty=&empty2=&params=123&params=456';
-	console.debug(querystring);
+	console.log(querystring);
 	
 	// form 객체 생성
 	var $form = $('<form>').attr('method', 'post').attr('action', 'some-url');
@@ -42,8 +42,8 @@ $(function() {
 	// form 객체를 body에 붙여넣기
 	$form.appendTo('body');
 	
-	console.debug($form.serialize());
-	console.debug('querystring == $form.serialize(): ' + (querystring == $form.serialize()));
+	console.log($form.serialize());
+	console.log('querystring == $form.serialize(): ' + (querystring == $form.serialize()));
 });
 </script>
 </head>

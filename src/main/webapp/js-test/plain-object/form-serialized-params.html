@@ -7,7 +7,7 @@
 	// var serializeString = $('#someForm').serialize();
 	var serializeString = 'proditNo=IT369&proditNo=IT371&proditNo=IT370';
 	var params = serializeString.split('&');
-	console.debug(params);
+	console.log(params);
 	var objArry = [];
 	for (var i in params) {
 		var ele = params[i];
@@ -16,7 +16,7 @@
 		obj[splitEle[0]] = splitEle[1];
 		objArry.push(obj);
 	}
-	console.debug(JSON.stringify(objArry)); // [{"proditNo":"IT369"},{"proditNo":"IT371"},{"proditNo":"IT370"}]
+	console.log(JSON.stringify(objArry)); // [{"proditNo":"IT369"},{"proditNo":"IT371"},{"proditNo":"IT370"}]
 </script>
 </head>
 <body>

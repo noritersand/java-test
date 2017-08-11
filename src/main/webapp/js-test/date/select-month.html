@@ -28,10 +28,9 @@
 	};
 	
 	// test start
-	var dayofday = new Date();
-	
 	$(function() {
-		$('#when').val(dayofday.toISOString().substring(0, 10));
+		var value = $('#when').val();
+		$('#when').val(value || new Date().toISOString().substring(0, 10));
 		
 		// 셀렉트 박스의 값이 변경되었을 때
 		$('#month').change(function() {
@@ -40,9 +39,11 @@
 				return;
 			}
 			console.log('selected: ' + selected);
-			console.log('month of DOD: ' + (dayofday.getMonth() + 1));
-			dayofday.addMonths(selected - (dayofday.getMonth() + 1)); // 
-			$('#when').val(dayofday.toISOString().substring(0, 10));
+			var value = $('#when').val();
+			var when = new Date(value);
+			console.log('month of DOD: ' + (when.getMonth() + 1));
+			when.addMonths(selected - (when.getMonth() + 1)); // 
+			$('#when').val(when.toISOString().substring(0, 10));
 		});
 	});
 </script>

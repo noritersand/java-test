@@ -15,11 +15,11 @@
 	    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
 	};
 
-	console.debug('1234:', (1234).format());           // "1,234"
-	console.debug('1234:', 1234..format());           // "1,234"
-	console.debug('12345:', 12345..format(2));         // "12,345.00"
-	console.debug('123456.7:', 123456.7.format(3, 2));    // "12,34,56.700"
-	console.debug('123456.789:', 123456.789.format(2, 4));  // "12,3456.79"
+	console.log('1234:', (1234).format());           // "1,234"
+	console.log('1234:', 1234..format());           // "1,234"
+	console.log('12345:', 12345..format(2));         // "12,345.00"
+	console.log('123456.7:', 123456.7.format(3, 2));    // "12,34,56.700"
+	console.log('123456.789:', 123456.789.format(2, 4));  // "12,3456.79"
 </script>
 </head>
 <body>

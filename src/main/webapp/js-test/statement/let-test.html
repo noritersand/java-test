@@ -11,33 +11,25 @@ var arr = ['a', 'b', 'c'];
 for (var ele1 in arr) {
 	// do nothing
 }
-console.debug(arr[ele1]); // 'c'
+console.log(arr[ele1]); // 'c'
 
 for (let ele2 in arr) {
 	// do nothing
 }
-try {
-	console.debug(arr[ele2]); // ReferenceError: ele2 is not defined	
-} catch (e) {
-	console.error(e);
-}
+console.assert(typeof ele2 == 'undefined');
 
 function test() {
 	// var life-cycle test
 	for (var i = 0; i < 10; i++) {
 		// do nothing
 	}
-	console.debug(i); // 10
+	console.log(i); // 10
 	
 	// let life-cycle test
 	for (let j = 0; j < 10; j++) {
 		// do nothing
 	}
-	try {
-		console.debug(j); // ReferenceError: j is not defined	
-	} catch (e) {
-		console.error(e);
-	}
+	console.assert(typeof j == 'undefined');
 }
 test();
 </script>
