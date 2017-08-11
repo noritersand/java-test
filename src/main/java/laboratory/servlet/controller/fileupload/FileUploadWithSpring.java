@@ -28,7 +28,6 @@ import laboratory.servlet.view.View;
  * @author fixalot
  */
 public class FileUploadWithSpring {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(FileUploadWithSpring.class);
 	
 	@UrlMapping("/test/fileupload/with-spring.view")

@@ -30,7 +30,6 @@ import laboratory.servlet.view.View;
  * @author fixalot
  */
 public class FileUploadWithOreilly {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(FileUploadWithOreilly.class);
 
 	@UrlMapping("/test/fileupload/with-oreilly.view")
