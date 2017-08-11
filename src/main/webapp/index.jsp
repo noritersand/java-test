@@ -22,10 +22,11 @@
 		</ul>
 	</li>
 	<li>
-		<h4>JSP</h4>
+		<h4>JSP &amp; Servlet</h4>
 		<ul>
 			<li><a href="/test/customtag/parent.view">custom tag</a></li>
 			<li><a href="/test/jstl/parseNumberFromString.view">parse number from string</a></li>
+			<li><a href="/test/scope/scope-test.view">scope test</a></li>
 		</ul>
 	</li>
 	<li>

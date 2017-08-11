@@ -127,4 +127,22 @@ public class TestController {
 	public View drawWithHtml(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
+	
+	@UrlMapping("/test/scope/scope-test.view")
+	public View drawScopeTest(HttpServletRequest request, HttpServletResponse response) {
+		return new View(request);
+	}
+	
+	@UrlMapping("/test/scope/setAttributes.data")
+	public JsonResponseObject setAttributes(HttpServletRequest request, HttpServletResponse response) {
+		JsonResponseObject json = new JsonResponseObject();
+		
+//		request.setAttribute("a", 1);
+		request.setAttribute("b", 2);
+		request.getSession().setAttribute("c", 3);
+		request.getSession().getServletContext().setAttribute("d", 4);
+		
+		json.setSuccess(true);
+		return json;
+	}
 }
