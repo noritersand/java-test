@@ -6,14 +6,14 @@ package laboratory.servlet.mvc.finder;
  * @since 2017-08-09
  * @author fixalot
  */
-public class CannotFindMappingException extends RuntimeException {
+public class NotFoundMappingException extends RuntimeException {
 	private static final long serialVersionUID = 4918349620626683926L;
 	
-	public CannotFindMappingException() {
+	public NotFoundMappingException() {
 		super();
 	}
 	
-	public CannotFindMappingException(String message) {
+	public NotFoundMappingException(String message) {
 		super(message);
 	}
 }

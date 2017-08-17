@@ -37,6 +37,6 @@ public class UrlMethodFinder implements MethodFinder {
 				}
 			}
 		}
-		throw new CannotFindMappingException();
+		throw new NotFoundMappingException();
 	}
 }
