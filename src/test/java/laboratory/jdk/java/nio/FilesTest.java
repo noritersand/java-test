@@ -21,6 +21,14 @@ public class FilesTest {
 	private static final Logger logger = LoggerFactory.getLogger(FilesTest.class);
 	
 	@Test
+	public void probeContentType() throws IOException {
+		Path path = Paths.get("src/test/resources/mediatype/plaintext.txt");
+		Assert.assertEquals("text/plain", Files.probeContentType(path));
+		path = Paths.get("src/test/resources/mediatype/excel.xlsx");
+		Assert.assertEquals("application/haansoftxlsx", Files.probeContentType(path));
+	}
+	
+	@Test
 	public void isReadable() {
 		Assert.assertTrue(Files.isReadable(Paths.get("c:")));
 		Assert.assertFalse(Files.isReadable(Paths.get("m:")));
