@@ -41,30 +41,16 @@
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.tomcat.maven</groupId> -->
-<!-- 				<artifactId>tomcat8-maven-plugin</artifactId> -->
-<!-- 				<version>3.0-r1655215</version> -->
-<!-- 				<configuration> -->
-<!-- 					<path>/</path> -->
-<!-- 					<url>http://localhost:65510/manager</url> -->
-<!-- 					<username>admin</username> -->
-<!-- 					<password>1234</password> -->
-<!-- 					<project>laboratory</project> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
 		</plugins>
 	</build>
-	
-<!-- 	<distributionManagement> -->
-<!-- 		<repository> -->
-<!-- 			<id>laboratory</id> -->
-<!-- 			<layout>default</layout> -->
-<!-- 			<name>laboratory</name> -->
-<!-- 			<uniqueVersion>false</uniqueVersion> -->
-<!-- 			<url>file://C:/dev/maven/repo-test</url> -->
-<!-- 		</repository> -->
-<!-- 	</distributionManagement> -->
+
+	<!-- 원격 저장소 설정 -->
+	<repositories>
+		<repository>
+			<id>Datanucleus</id>
+			<url>http://www.datanucleus.org/downloads/maven2/</url>
+		</repository>
+	</repositories>
 
 	<!-- 라이브러리 -->
 	<dependencies>
@@ -239,5 +225,27 @@
 			<version>05Nov2002</version>
 		</dependency>
 		
+		<!-- JDBC -->
+		<!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
+		<dependency>
+		    <groupId>oracle</groupId>
+		    <artifactId>ojdbc6</artifactId>
+		    <version>11.2.0.3</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>8.5.8</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.microsoft.sqlserver</groupId>
+		    <artifactId>mssql-jdbc</artifactId>
+		    <version>6.1.6.jre8-preview</version>
+		</dependency> -->
 	</dependencies>
 </project>
