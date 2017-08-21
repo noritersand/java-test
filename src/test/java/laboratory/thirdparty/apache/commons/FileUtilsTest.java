@@ -43,7 +43,8 @@ public class FileUtilsTest {
 	
 	/**
 	 * URL에서 응답한 결과를 파일로 쓰기.
-	 * 요청의 헤더 정보는 별다른건 없고 GET, HTTP/1.1 정도
+	 * 요청의 헤더 정보는 별다른건 없고 GET, HTTP/1.1 정도.
+	 * 설명을 못찾아서 추측하건데, 인코딩은 아마 응답 헤더에 따라 결정되는것 같다.
 	 * 
 	 * @throws IOException
 	 * @author fixalot

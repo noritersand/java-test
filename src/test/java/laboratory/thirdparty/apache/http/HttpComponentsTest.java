@@ -28,6 +28,15 @@ public class HttpComponentsTest {
 		logger.debug(result);
 	}
 
+	/**
+	 * 간단한 요청 전송.
+	 * 응답의 문자열을 String으로 만들때 UTF-8 케릭터셋을 적용하도록 되어 있음.
+	 * 
+	 * @param uri
+	 * @return
+	 * @throws Exception
+	 * @author fixalot
+	 */
 	private String sendSimpleRequest(String uri) throws Exception {
 		HttpGet request = new HttpGet(uri);
 		try (CloseableHttpClient httpclient = HttpClients.createDefault(); CloseableHttpResponse response = httpclient.execute(request);) {
