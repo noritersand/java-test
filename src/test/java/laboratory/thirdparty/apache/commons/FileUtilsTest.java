@@ -2,6 +2,7 @@ package laboratory.thirdparty.apache.commons;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
 
@@ -21,6 +22,12 @@ public class FileUtilsTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(FileUtilsTest.class);
 
+	/**
+	 * 파일 읽고 쓰기
+	 * 
+	 * @throws IOException
+	 * @author fixalot
+	 */
 	@Test
 	public void writeAndRead() throws IOException {
 		String text = "some\ntext";
@@ -32,5 +39,20 @@ public class FileUtilsTest {
 		// read
 		String textFromFile = FileUtils.readFileToString(file, Charset.forName("UTF-8"));
 		Assert.assertEquals("some\ntext", textFromFile);
+	}
+	
+	/**
+	 * URL에서 응답한 결과를 파일로 쓰기.
+	 * 요청의 헤더 정보는 별다른건 없고 GET, HTTP/1.1 정도
+	 * 
+	 * @throws IOException
+	 * @author fixalot
+	 */
+	@Test
+	public void copyURLToFile() throws IOException {
+		final URL source = new URL("http://google.com");
+		final File destination = Paths.get("src/test/resources/file/file-from-url.txt").toFile();
+		FileUtils.copyURLToFile(source, destination);
+		Assert.assertTrue(destination.exists());
 	}
 }
