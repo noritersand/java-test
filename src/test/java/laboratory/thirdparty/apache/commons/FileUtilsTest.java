@@ -54,5 +54,6 @@ public class FileUtilsTest {
 		final File destination = Paths.get("src/test/resources/file/file-from-url.txt").toFile();
 		FileUtils.copyURLToFile(source, destination);
 		Assert.assertTrue(destination.exists());
+		destination.delete();
 	}
 }
