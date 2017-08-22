@@ -25,7 +25,7 @@ public class FilesTest {
 		Path path = Paths.get("src/test/resources/mediatype/plaintext.txt");
 		Assert.assertEquals("text/plain", Files.probeContentType(path));
 		path = Paths.get("src/test/resources/mediatype/excel.xlsx");
-		Assert.assertEquals("application/haansoftxlsx", Files.probeContentType(path));
+		Assert.assertEquals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", Files.probeContentType(path));
 	}
 	
 	@Test
