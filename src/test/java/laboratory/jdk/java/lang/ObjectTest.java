@@ -23,4 +23,15 @@ public class ObjectTest {
 		logger.debug(String.valueOf(obj2.hashCode()));
 		Assert.assertNotEquals(obj1.hashCode(), obj2.hashCode());
 	}
+	
+	@Test
+	public void getString() {
+		Object obj1 = new Object();
+		Object[] obj2 = new Object[] { null };
+		logger.debug(obj1.toString());
+		logger.debug(obj2.toString());
+		
+		Assert.assertTrue(obj1.toString().startsWith("java.lang")); // 일반 객체는 패키지부터 시작
+		Assert.assertTrue(obj2.toString().startsWith("[Ljava.lang")); // 배열은 [L 다음에 패키지 시작
+	}
 }

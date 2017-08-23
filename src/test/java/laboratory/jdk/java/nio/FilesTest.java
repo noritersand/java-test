@@ -22,10 +22,7 @@ public class FilesTest {
 	
 	@Test
 	public void probeContentType() throws IOException {
-		Path path = Paths.get("src/test/resources/mediatype/plaintext.txt");
-		Assert.assertEquals("text/plain", Files.probeContentType(path));
-		path = Paths.get("src/test/resources/mediatype/excel.xlsx");
-		Assert.assertEquals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", Files.probeContentType(path));
+		Assert.assertEquals("text/plain", Files.probeContentType(Paths.get("src/test/resources/mediatype/plaintext.txt")));
 	}
 	
 	@Test
