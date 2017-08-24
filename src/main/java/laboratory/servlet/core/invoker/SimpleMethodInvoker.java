@@ -1,4 +1,4 @@
-package laboratory.servlet.mvc.invoker;
+package laboratory.servlet.core.invoker;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

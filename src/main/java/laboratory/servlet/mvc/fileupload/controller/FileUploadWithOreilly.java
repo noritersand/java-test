@@ -1,4 +1,4 @@
-package laboratory.servlet.controller.fileupload;
+package laboratory.servlet.mvc.fileupload.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,9 +19,9 @@ import org.slf4j.LoggerFactory;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import laboratory.servlet.bean.JsonResponseObject;
-import laboratory.servlet.mvc.finder.UrlMapping;
-import laboratory.servlet.view.View;
+import laboratory.servlet.core.bean.JsonResponseObject;
+import laboratory.servlet.core.finder.UrlMapping;
+import laboratory.servlet.core.view.View;
 
 /**
  * com.oreilly 패키지를 이용한 파일 업로드

@@ -1,4 +1,4 @@
-package laboratory.servlet.controller.fileupload;
+package laboratory.servlet.mvc.fileupload.controller;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -17,9 +17,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import laboratory.servlet.bean.JsonResponseObject;
-import laboratory.servlet.mvc.finder.UrlMapping;
-import laboratory.servlet.view.View;
+import laboratory.servlet.core.bean.JsonResponseObject;
+import laboratory.servlet.core.finder.UrlMapping;
+import laboratory.servlet.core.view.View;
 
 /**
  * 스프링과 함께하는 파일 업로드 시간!

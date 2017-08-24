@@ -1,4 +1,4 @@
-package laboratory.servlet.mvc.finder;
+package laboratory.servlet.core.finder;
 
 /**
  * methodFinder에서 적당한 메서드를 찾지 못하면 발생하는 익셉션

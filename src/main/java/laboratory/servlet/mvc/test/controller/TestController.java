@@ -1,4 +1,4 @@
-package laboratory.servlet.controller;
+package laboratory.servlet.mvc.test.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import laboratory.servlet.bean.JsonResponseObject;
-import laboratory.servlet.mvc.finder.UrlMapping;
-import laboratory.servlet.view.View;
+import laboratory.servlet.core.bean.JsonResponseObject;
+import laboratory.servlet.core.finder.UrlMapping;
+import laboratory.servlet.core.view.View;
 import laboratory.util.request.RequestParameter;
 import laboratory.util.request.RequestUtil;
 

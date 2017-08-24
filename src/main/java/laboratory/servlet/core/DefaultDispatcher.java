@@ -1,4 +1,4 @@
-package laboratory.servlet.mvc;
+package laboratory.servlet.core;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import laboratory.servlet.controller.TestController;
-import laboratory.servlet.controller.fileupload.FileUploadWithOreilly;
-import laboratory.servlet.controller.fileupload.FileUploadWithSpring;
-import laboratory.servlet.mvc.finder.MethodFinder;
-import laboratory.servlet.mvc.finder.UrlMethodFinder;
-import laboratory.servlet.mvc.invoker.MethodInvoker;
-import laboratory.servlet.mvc.invoker.SimpleMethodInvoker;
-import laboratory.servlet.view.DefaultViewResolver;
+import laboratory.servlet.core.finder.MethodFinder;
+import laboratory.servlet.core.finder.UrlMethodFinder;
+import laboratory.servlet.core.invoker.MethodInvoker;
+import laboratory.servlet.core.invoker.SimpleMethodInvoker;
+import laboratory.servlet.core.view.DefaultViewResolver;
+import laboratory.servlet.mvc.fileupload.controller.FileUploadWithOreilly;
+import laboratory.servlet.mvc.fileupload.controller.FileUploadWithSpring;
+import laboratory.servlet.mvc.test.controller.TestController;
 
 /**
  * 

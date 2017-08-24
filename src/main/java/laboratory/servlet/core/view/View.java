@@ -1,4 +1,4 @@
-package laboratory.servlet.view;
+package laboratory.servlet.core.view;
 
 import javax.servlet.http.HttpServletRequest;
 

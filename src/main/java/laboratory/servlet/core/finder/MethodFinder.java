@@ -1,4 +1,4 @@
-package laboratory.servlet.mvc.finder;
+package laboratory.servlet.core.finder;
 
 import java.util.List;
 

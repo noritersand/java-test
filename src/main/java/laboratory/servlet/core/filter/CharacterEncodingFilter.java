@@ -1,4 +1,4 @@
-package laboratory.servlet.filter;
+package laboratory.servlet.core.filter;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

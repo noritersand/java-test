@@ -1,4 +1,4 @@
-package laboratory.servlet.config;
+package laboratory.servlet.core.config;
 
 import java.util.EnumSet;
 
@@ -10,9 +10,9 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration;
 import javax.servlet.annotation.WebListener;
 
-import laboratory.servlet.filter.CharacterEncodingFilter;
-import laboratory.servlet.filter.LogbackMdcFilter;
-import laboratory.servlet.mvc.DefaultDispatcher;
+import laboratory.servlet.core.DefaultDispatcher;
+import laboratory.servlet.core.filter.CharacterEncodingFilter;
+import laboratory.servlet.core.filter.LogbackMdcFilter;
 
 /**
  * web.xml을 대체하는 서블릿 설정
