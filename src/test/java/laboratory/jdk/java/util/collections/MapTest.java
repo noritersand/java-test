@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import org.junit.Assert;
@@ -44,5 +45,24 @@ public class MapTest {
 		Map<String, Object> map = new HashMap<>();
 		final String empty = (String) map.get("empty");
 		Assert.assertNull(empty);
+	}
+	
+	/**
+	 * 맵도 반복문을 돌려서 꺼낼 수 있다.
+	 * 왜냐믄 맵의 키셋에 iterator가 있기 때문
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void possibleLoopStatement() {
+		Map<String, Object> map = new HashMap<>();
+		map.put("a", 1234);
+		map.put("b", 5678);
+		map.put("c", 90);
+		
+		Set<String> keySet = map.keySet();
+		for (String key : keySet) {
+			Assert.assertNotNull(map.get(key));
+		}
 	}
 }
