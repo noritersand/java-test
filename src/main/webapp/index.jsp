@@ -25,6 +25,7 @@
 					<li><a href="/test/fileupload/with-oreilly.view">oreilly multipart</a></li>
 				</ul>
 			</li>
+			<li><a href="/test/payload-body/what-is-payload-body.view">payload body란 무엇인가?</a></li>
 		</ul>
 	</li>
 	<li>
@@ -38,11 +39,12 @@
 	<li>
 		<h4>HTML&amp;CSS</h4>
 		<ul>
+			<li><a href="/html-test/tag/a.html">&lt;a&gt;</a></li>
+			<li><a href="/html-test/tag/label.html">&lt;label&gt;</a></li>
 			<li><a href="/html-test/css/div-align.html">div align</a></li>
 			<li><a href="/html-test/opener/opener-test.html">opener test</a></li>
 			<li><a href="/html-test/opener/opener-test3.html">opener test #2</a></li>
 			<li><a href="/html-test/iframe/parent.html">iframe test</a></li>
-			<li><a href="/html-test/payload-body/what-is-payload-body.html">payload body란 무엇인가?</a></li>
 		</ul>
 	</li>
 	<li>

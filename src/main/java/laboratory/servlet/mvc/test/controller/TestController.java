@@ -146,5 +146,8 @@ public class TestController {
 		return json;
 	}
 	
-	
+	@UrlMapping("/test/payload-body/what-is-payload-body.view")
+	public View drawWhatIsPayloadBody(HttpServletRequest request, HttpServletResponse response) {
+		return new View(request);
+	}	
 }
