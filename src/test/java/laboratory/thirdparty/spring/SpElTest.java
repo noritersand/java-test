@@ -32,7 +32,7 @@ public class SpElTest {
 
 	@Value("#{interfaceProp['interface.base.url']}")
 	private Properties interfaceBaseUrl;
-
+	
 	// 아래는 에러
 //	@Value("#{interfaceProp.interface.base.url}")
 //	private Properties interfaceBaseUrl2;
@@ -49,4 +49,26 @@ public class SpElTest {
 		Assert.assertNotNull(interfaceProp);
 		Assert.assertEquals("{http=//127.0.0.1:9080/execute}", interfaceBaseUrl.toString());
 	}
+	
+	/**
+	 * 환경 변수가 없으면 @Value의 value값으로 초기화된다.
+	 */
+	@Value("${not-exist-argument}")
+	private String arg;
+	
+	@Test
+	public void notExist() {
+		Assert.assertEquals("${not-exist-argument}", arg);
+	}
+
+	/**
+	 * 맨 끝에 :를 붙여주면 환경변수가 없을때 nullstring으로 초기화 됨. 
+	 */
+	@Value("${not-exist-argument2:}")
+	private String arg2;
+	
+	@Test
+	public void notExist2() {
+		Assert.assertEquals("", arg2);
+	}	
 }
