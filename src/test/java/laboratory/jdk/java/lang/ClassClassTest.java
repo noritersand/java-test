@@ -1,4 +1,4 @@
-package laboratory.jdk;
+package laboratory.jdk.java.lang;
 
 import java.util.Date;
 
@@ -26,7 +26,7 @@ public class ClassClassTest {
 		MyClass my = new MyClass();
 		System.out.println(my.getClass()); // class My
 
-		Class<?> cls = Class.forName("laboratory.jdk.MyClass");
+		Class<?> cls = Class.forName("laboratory.jdk.java.lang.MyClass");
 		System.out.println(cls.getClass()); // class java.lang.Class
 		System.out.println(cls.getName()); // MyClass
 		MyClass my2 = (MyClass) cls.newInstance();
@@ -41,6 +41,16 @@ public class ClassClassTest {
 	@Test
 	public void testGetClass() {
 		Assert.assertEquals(new String().getClass(), String.class);
+	}
+	
+	@Test
+	public void getClassName() {
+		Assert.assertEquals("laboratory.jdk.java.lang.ClassClassTest", ClassClassTest.class.getName());
+	}
+
+	@Test
+	public void getPackageName() {
+		Assert.assertEquals("laboratory.jdk.java.lang", ClassClassTest.class.getPackage().getName());
 	}
 
 	@Test
