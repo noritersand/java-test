@@ -43,7 +43,7 @@ public class ListTest {
 		List<Object> list = new ArrayList<>();
 		list.add(null);
 	}
-	
+
 	@Test
 	public void wrongWayClone() {
 		ArrayList<ListTestModel> origins = new ArrayList<>();
@@ -95,7 +95,7 @@ public class ListTest {
 		Assert.assertEquals(Arrays.asList("b", "c", "d"), list);
 		Assert.assertEquals(3, list.size());
 	}
-	
+
 	@Test
 	public void removeElementWithIterator() {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
@@ -177,5 +177,24 @@ public class ListTest {
 		list.remove(1);
 
 		Assert.assertEquals("[9, 7, 6, 5, 4, 3, 2, 1]", list.toString());
+	}
+
+	/**
+	 * sublist 테스트. 
+	 * substring처럼 인덱스 범위에 해당하는 요소를 추출한다.
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void sublist() {
+		List<Integer> numbers = new ArrayList<Integer>(Arrays.asList(5, 3, 1, 2, 9, 5, 0, 7));
+		
+		List<Integer> head = numbers.subList(0, 4); // 5, 3, 1, 2
+		Assert.assertEquals(4, head.size());
+		Assert.assertEquals(Arrays.asList(5, 3, 1, 2), head);
+		
+		List<Integer> tail = numbers.subList(4, 8); // 9, 5, 0, 7
+		Assert.assertEquals(4, tail.size());
+		Assert.assertEquals(Arrays.asList(9, 5, 0, 7), tail);
 	}
 }

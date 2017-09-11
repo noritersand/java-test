@@ -1,6 +1,7 @@
 package laboratory.jdk.java.util;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -28,5 +29,12 @@ public class ArraysTest {
 		String[] a = { "a", "b", "c" };
 		String[] b = { "a", "b", "c" };
 		Assert.assertTrue(Arrays.equals(a, b));
+	}
+	
+	@Test
+	public void asList() {
+		List<Integer> list = Arrays.asList(new Integer[] { 6, 3, 1, 56, 99, 2, 41, 27, 54, 3 });
+		List<Integer> list2 = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
+		Assert.assertEquals(list, list2);
 	}
 }
