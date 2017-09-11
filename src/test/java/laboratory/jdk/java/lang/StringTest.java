@@ -3,6 +3,8 @@ package laboratory.jdk.java.lang;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -272,5 +274,11 @@ public class StringTest {
 			str = temp;
 		}
 		return strArray;
+	}
+	
+	@Test
+	public void testJoin() {
+		List<String> texts = Arrays.asList("a", "b", "c");
+		Assert.assertEquals("a, b, c", String.join(", ", texts));
 	}
 }

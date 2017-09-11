@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.Joiner;
+
 /**
  * 
  * 
@@ -178,7 +180,7 @@ public class ListTest {
 
 		Assert.assertEquals("[9, 7, 6, 5, 4, 3, 2, 1]", list.toString());
 	}
-
+	
 	/**
 	 * sublist 테스트. 
 	 * substring처럼 인덱스 범위에 해당하는 요소를 추출한다.
@@ -187,7 +189,7 @@ public class ListTest {
 	 */
 	@Test
 	public void testSublist() {
-		List<Integer> numbers = new ArrayList<Integer>(Arrays.asList(5, 3, 1, 2, 9, 5, 0, 7));
+		List<Integer> numbers = Arrays.asList(5, 3, 1, 2, 9, 5, 0, 7);
 		
 		List<Integer> head = numbers.subList(0, 4); // 5, 3, 1, 2
 		Assert.assertEquals(4, head.size());
@@ -196,5 +198,15 @@ public class ListTest {
 		List<Integer> tail = numbers.subList(4, 8); // 9, 5, 0, 7
 		Assert.assertEquals(4, tail.size());
 		Assert.assertEquals(Arrays.asList(9, 5, 0, 7), tail);
+	}
+	
+	@Test
+	public void getString() {
+		List<String> texts = Arrays.asList("a", "b", "c");
+		Assert.assertEquals("a, b, c", String.join(", ", texts));
+		
+		List<Integer> numbers = Arrays.asList(1, 2, 3);
+		Joiner joiner = Joiner.on(", ");
+		Assert.assertEquals("1, 2, 3", joiner.join(numbers));
 	}
 }
