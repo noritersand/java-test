@@ -19,7 +19,7 @@ public class ArrayTest {
 	private static final Logger logger = LoggerFactory.getLogger(ArrayTest.class);
 
 	@Test
-	public void reverse() {
+	public void testReverseArray() {
 //		int[] arr = new int[] { 1, 2, 6, 3, 4 };
 		Integer[] arr = new Integer[] { 1, 2, 6, 3, 4 };
 		CollectionUtils.reverseArray(arr);

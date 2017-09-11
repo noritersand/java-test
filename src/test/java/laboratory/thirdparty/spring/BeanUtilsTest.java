@@ -24,7 +24,7 @@ public class BeanUtilsTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void copyProperties() {
+	public void testCopyProperties() {
 		TestModel oldbie = new TestModel();
 		oldbie.setName("야");
 		oldbie.setNumber(101);

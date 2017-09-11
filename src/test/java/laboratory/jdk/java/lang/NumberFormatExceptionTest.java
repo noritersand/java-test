@@ -14,7 +14,7 @@ public class NumberFormatExceptionTest {
 	private static final Logger logger = LoggerFactory.getLogger(NumberFormatExceptionTest.class);
 
 	@Test
-	public void case1() {
+	public void test() {
 		try {
 			String s = "FOOBAR";
 			int i = Integer.parseInt(s);

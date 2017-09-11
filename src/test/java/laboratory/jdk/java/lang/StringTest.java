@@ -53,7 +53,7 @@ public class StringTest {
 	}
 
 	@Test
-	public void getBytes() throws UnsupportedEncodingException {
+	public void testGetBytes() throws UnsupportedEncodingException {
 		final String korean = "한";
 		Assert.assertArrayEquals(new byte[] { -19, -107, -100 }, korean.getBytes(StandardCharsets.UTF_8));
 		Assert.assertArrayEquals(new byte[] { -2, -1, -43, 92 }, korean.getBytes(StandardCharsets.UTF_16));
@@ -61,14 +61,14 @@ public class StringTest {
 	}
 
 	@Test
-	public void toStringFromBytes() {
+	public void testToStringFromBytes() {
 		byte[] bytes = new byte[] { -19, -107, -100 };
 		String korean = new String(bytes, StandardCharsets.UTF_8);
 		Assert.assertEquals("한", korean);
 	}
 
 	@Test
-	public void concat() {
+	public void testConcat() {
 		String a = "a";
 		Assert.assertEquals("ab", a.concat("b"));
 		Assert.assertEquals("a", a);
@@ -128,14 +128,14 @@ public class StringTest {
 	}
 
 	@Test
-	public void replaceAll() {
+	public void testReplaceAll() {
 		Assert.assertEquals("경기", "경기도".replaceAll("도", ""));
 		Assert.assertEquals("전라", "전라도".replaceAll("도", ""));
 		Assert.assertEquals("경상", "경상도".replaceAll("도", ""));
 	}
 
 	@Test
-	public void replaceFirst() {
+	public void testReplaceFirst() {
 		String str = "/qwe/test/submit/sender";
 		Assert.assertEquals("/test/submit/sender", str.replaceFirst("/qwe", ""));
 	}
@@ -163,7 +163,7 @@ public class StringTest {
 	}
 
 	@Test
-	public void split() {
+	public void testSplit() {
 		String splitMe = "abcdefghijklmn";
 		Assert.assertEquals(splitMe, splitMe.split("\\|")[0]);
 		try {

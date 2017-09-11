@@ -32,7 +32,7 @@ public class BeanUtilsTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void copyProperties() throws IllegalAccessException, InvocationTargetException {
+	public void testCopyProperties() throws IllegalAccessException, InvocationTargetException {
 		TestModel oldbie = new TestModel();
 		oldbie.setName("야");
 		oldbie.setNumber(101);
@@ -55,7 +55,7 @@ public class BeanUtilsTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void populate() throws IllegalAccessException, InvocationTargetException {
+	public void testPopulate() throws IllegalAccessException, InvocationTargetException {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("name", "야");
 		map.put("number", 101);

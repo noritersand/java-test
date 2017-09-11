@@ -31,7 +31,7 @@ public class PropertyUtilsTest {
 	 * @throws NoSuchMethodException
 	 */
 	@Test
-	public void copyProperties() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+	public void testCopyProperties() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		TestModel oldbie = new TestModel();
 		oldbie.setName("야");
 		oldbie.setNumber(101);

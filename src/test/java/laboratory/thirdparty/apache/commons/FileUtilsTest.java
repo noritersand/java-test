@@ -50,7 +50,7 @@ public class FileUtilsTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void copyURLToFile() throws IOException {
+	public void testCopyURLToFile() throws IOException {
 		final URL source = new URL("http://google.com");
 		final File destination = Paths.get("src/test/resources/file/file-from-url.txt").toFile();
 		FileUtils.copyURLToFile(source, destination);

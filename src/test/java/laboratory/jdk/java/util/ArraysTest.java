@@ -19,7 +19,7 @@ public class ArraysTest {
 	private static final Logger logger = LoggerFactory.getLogger(ArraysTest.class);
 
 	@Test
-	public void getString() {
+	public void testToString() {
 		String[] a = { "a", "b", "c" };
 		logger.debug(Arrays.toString(a));
 	}
@@ -32,7 +32,7 @@ public class ArraysTest {
 	}
 	
 	@Test
-	public void asList() {
+	public void testAsList() {
 		List<Integer> list = Arrays.asList(new Integer[] { 6, 3, 1, 56, 99, 2, 41, 27, 54, 3 });
 		List<Integer> list2 = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
 		Assert.assertEquals(list, list2);

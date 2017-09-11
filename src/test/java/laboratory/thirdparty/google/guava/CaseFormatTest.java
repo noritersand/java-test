@@ -18,7 +18,7 @@ public class CaseFormatTest {
 	private static final Logger logger = LoggerFactory.getLogger(CaseFormatTest.class);
 
 	@Test
-	public void format() {
+	public void testFormat() {
 		// lower camel -> upper underscore
 		Assert.assertEquals("MY_NAME", CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName"));
 

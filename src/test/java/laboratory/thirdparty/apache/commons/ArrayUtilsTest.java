@@ -17,7 +17,7 @@ public class ArrayUtilsTest {
 	private static final Logger logger = LoggerFactory.getLogger(ArrayUtilsTest.class);
 
 	@Test
-	public void subarray() {
+	public void testSubarray() {
 		final int[] arr = { 1, 2, 3, 4, 5 };
 		Assert.assertArrayEquals(new int[] { 1, 2 }, ArrayUtils.subarray(arr, 0, 2));
 		Assert.assertArrayEquals(new int[] { 2 }, ArrayUtils.subarray(arr, 1, 2));

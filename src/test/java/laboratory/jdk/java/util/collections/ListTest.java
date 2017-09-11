@@ -39,7 +39,7 @@ public class ListTest {
 	}
 
 	@Test
-	public void add() {
+	public void testAdd() {
 		List<Object> list = new ArrayList<>();
 		list.add(null);
 	}
@@ -111,7 +111,7 @@ public class ListTest {
 	}
 
 	@Test
-	public void find() {
+	public void search() {
 		Integer[] values = { 1, 3, 7 };
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
 		final int targetValue = 3;
@@ -127,7 +127,7 @@ public class ListTest {
 	}
 
 	@Test
-	public void toArray() {
+	public void testToArray() {
 		List<Integer> list = new ArrayList<Integer>();
 		list.add(123);
 		list.add(234);
@@ -143,7 +143,7 @@ public class ListTest {
 	}
 
 	@Test
-	public void fromArrayWithStream() {
+	public void fromArrayByStream() {
 		String[] strs = { "a", "b", "c", "d", "e" };
 		List<String> stringList = Arrays.stream(strs).collect(Collectors.toList());
 		Assert.assertEquals("[a, b, c, d, e]", stringList.toString());
@@ -154,7 +154,7 @@ public class ListTest {
 	}
 
 	@Test
-	public void clear() {
+	public void testClear() {
 		ArrayList<Integer> list = new ArrayList<>();
 		Assert.assertNotNull(list);
 		list.clear();
@@ -186,7 +186,7 @@ public class ListTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void sublist() {
+	public void testSublist() {
 		List<Integer> numbers = new ArrayList<Integer>(Arrays.asList(5, 3, 1, 2, 9, 5, 0, 7));
 		
 		List<Integer> head = numbers.subList(0, 4); // 5, 3, 1, 2

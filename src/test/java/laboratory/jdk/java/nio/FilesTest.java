@@ -21,18 +21,18 @@ public class FilesTest {
 	private static final Logger logger = LoggerFactory.getLogger(FilesTest.class);
 	
 	@Test
-	public void probeContentType() throws IOException {
+	public void testProbeContentType() throws IOException {
 		Assert.assertEquals("text/plain", Files.probeContentType(Paths.get("src/test/resources/mediatype/plaintext.txt")));
 	}
 	
 	@Test
-	public void isReadable() {
+	public void testIsReadable() {
 		Assert.assertTrue(Files.isReadable(Paths.get("c:")));
 		Assert.assertFalse(Files.isReadable(Paths.get("m:")));
 	}
 	
 	@Test
-	public void delete() throws IOException {
+	public void testDelete() throws IOException {
 		Path dir = Paths.get("src/test/resources/file/delete-me");
 		Files.createDirectories(dir);
 		logger.debug(dir.toFile().getAbsolutePath());
@@ -48,7 +48,7 @@ public class FilesTest {
 	}
 	
 	@Test
-	public void deleteIfExists() throws IOException {
+	public void testDeleteIfExists() throws IOException {
 		Path dir = Paths.get("src/test/resources/file/delete-me");
 		Files.createDirectories(dir);
 		Assert.assertTrue(Files.deleteIfExists(dir)); // 파일이 있으면 true

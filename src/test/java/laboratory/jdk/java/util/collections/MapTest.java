@@ -23,7 +23,7 @@ public class MapTest {
 	private static final Logger logger = LoggerFactory.getLogger(MapTest.class);
 
 	@Test
-	public void map() {
+	public void shouldBeNull() {
 		HashMap<String, String> map = new HashMap<>();
 		assertNull(map.get("야"));
 	}

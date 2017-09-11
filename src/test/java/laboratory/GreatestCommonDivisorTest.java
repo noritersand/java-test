@@ -28,6 +28,14 @@ public class GreatestCommonDivisorTest {
 		Assert.assertEquals(32768, getGCD(98304, 65536));
 	}
 
+	/**
+	 * 최대공약수 구하기
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 * @author fixalot
+	 */
 	private int getGCD(int a, int b) {
 		int bigger = a;
 		a = b > a ? b : a;

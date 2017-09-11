@@ -36,7 +36,7 @@ public class BigDecimalTest {
 	}
 
 	@Test
-	public void compare() {
+	public void testCompareTo() {
 		BigDecimal a = BigDecimal.ZERO;
 		Assert.assertEquals(0, a.compareTo(BigDecimal.ZERO)); // a.compareTo(b)에서 0이면 a와 b가 같음
 		Assert.assertEquals(-1, a.compareTo(BigDecimal.ONE)); // a.compareTo(b)에서 -1이면 a가 b보다 작음

@@ -19,7 +19,7 @@ public class StringUtilsTest {
 	private static final Logger logger = LoggerFactory.getLogger(StringUtilsTest.class);
 
 	@Test
-	public void tokenize() {
+	public void testTokenize() {
 		final String string = "first, second;third fourth\tfifth\nsixth";
 		String[] tokens = StringUtils.tokenizeToStringArray(string, ",; \t\n"); // 쉼표, 세미콜론, 빈칸, 탭, 줄바꿈 중 아무거나 있으면 별도 토큰으로 인식해서 쪼갬
 		Assert.assertTrue(Arrays.equals(new String[] { "first", "second", "third", "fourth", "fifth", "sixth" }, tokens));
