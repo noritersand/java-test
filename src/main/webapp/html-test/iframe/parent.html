@@ -6,17 +6,17 @@
 </head>
 <body>
 	<h2>parent</h2>
-	<input type="text" id="ipt" value="http://127.0.0.1:9091/html-test/iframe/child.html" style="width: 100%">
-	<button onclick="changeChildLocation()">change child location</button>
-	<button onclick="changeChildLocation('/html-test/iframe/child.html')">home</button>
-	<button onclick="changeChildLocation('http://daum.net')">daum</button>
+	<input type="text" id="locationInput" value="http://127.0.0.1:9091/html-test/iframe/child.html" style="width: 100%">
+	<button type="button" onclick="changeChildLocation()">change child location</button>
+	<button type="button" onclick="changeChildLocation('/html-test/iframe/child.html')">home</button>
+	<button type="button" onclick="changeChildLocation('http://daum.net')">daum</button>
+	<button type="button" onclick="addIframeAndAlert()">안보이는 프레임 만들기</button>
 	<div style="margin-top: 5px;">
-		<iframe style="width: 100%"
-				id="child" src="/html-test/iframe/child.html"></iframe>
+		<iframe style="width: 100%" id="locationTest" src="/html-test/iframe/child.html"></iframe>
 	</div>
 	<script>
 		var childWindow = frames[0];
-		var childDom = document.querySelector('#child');
+		var childDom = document.querySelector('#locationTest');
 		childDom.onload = function() {
 			childOnloadHandler();
 		}
@@ -28,8 +28,21 @@
 			}
 		}
 		function changeChildLocation(url) {
-			var value = url || document.querySelector('#ipt').value;
+			var value = url || document.querySelector('#locationInput').value;
 			childWindow.location.href = value;
+		}
+		function addIframeAndAlert() {
+			var iframe = document.getElementById('alertTest');
+			if (iframe) {
+				iframe.parentNode.removeChild(alertTest);
+			}
+			iframe = document.createElement('iframe');
+	        iframe.id = 'alertTest';
+	        iframe.style.visibility = 'hidden';
+	        iframe.style.display = 'none';
+	        iframe.src = '/html-test/iframe/child.html';
+	        document.body.appendChild(iframe);
+	        iframe.contentWindow.alert('안보이는 프레임에서 얼럿을 사용해도 대화창은 화면 중앙에 나타난다.');
 		}
 	</script>
 </body>
