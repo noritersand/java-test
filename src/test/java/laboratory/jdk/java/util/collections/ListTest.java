@@ -2,10 +2,13 @@ package laboratory.jdk.java.util.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -97,6 +100,43 @@ public class ListTest {
 		Assert.assertEquals(Arrays.asList("b", "c", "d"), list);
 		Assert.assertEquals(3, list.size());
 	}
+	
+	@Test
+	public void removeElement2() {
+		String[] strs = { "a", "b", "c", "d", "e" };
+
+		// 앞에서 3개 자르기
+		List<String> list = Arrays.stream(strs).collect(Collectors.toList());
+//		for (int cnt = 0, i = 0; i < list.size(); i++) {
+//			if (cnt < 3) {
+//				list.remove(0);
+//				i--;
+//				cnt++;
+//			}
+//		} // for 필요 없잖여
+		{
+			int cnt = 0;
+			while (true) {
+				if (cnt == 3) {
+					break;
+				}
+				list.remove(0);
+				cnt++;
+			}
+		}
+		Assert.assertEquals("[d, e]", list.toString());
+
+		// 뒤에서 3개 자르기
+		list = Arrays.stream(strs).collect(Collectors.toList());
+		for (int cnt = 0, i = list.size(); i >= 0; i--) {
+			if (cnt < 3) {
+				list.remove(list.size() - 1);
+				i++;
+				cnt++;
+			}
+		}
+		Assert.assertEquals("[a, b]", list.toString());
+	}
 
 	@Test
 	public void removeElementWithIterator() {
@@ -111,7 +151,10 @@ public class ListTest {
 		Assert.assertEquals(Arrays.asList("b", "c", "d"), list);
 		Assert.assertEquals(3, list.size());
 	}
-
+	
+	/**
+	 * 리스트 검색 테스트 1: for문으로 전체 검색
+	 */
 	@Test
 	public void search() {
 		Integer[] values = { 1, 3, 7 };
@@ -126,6 +169,65 @@ public class ListTest {
 			}
 		}
 		Assert.assertEquals(1, targetIndex);
+	}
+
+	private ArrayList<HashMap<String, Object>> getSomeList() {
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("key", "a");
+		map.put("value", "123");
+		list.add(map);
+		map = new HashMap<>();
+		map.put("key", "b");
+		map.put("value", "456");
+		list.add(map);
+		map = new HashMap<>();
+		map.put("key", "c");
+		map.put("value", "789");
+		list.add(map);
+		map = new HashMap<>();
+		map.put("key", "d");
+		map.put("value", "012");
+		list.add(map);
+		return list;
+	}
+
+	/**
+	 * 리스트 검색 테스트 2: apache commons의 {@link CollectionUtils} 사용
+	 */
+	@Test
+	public void searchWithApacheCommons() {
+		ArrayList<HashMap<String, Object>> list = getSomeList();
+
+		Predicate condition = new Predicate() {
+			@Override
+			public boolean evaluate(Object arg) {
+				@SuppressWarnings("unchecked")
+				HashMap<String, Object> map = (HashMap<String, Object>) arg;
+				String key = (String) map.get("key");
+				return "a".equals(key) || "c".equals(key);
+			}
+		};
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<HashMap<String, Object>> searchResult = (ArrayList<HashMap<String, Object>>) CollectionUtils.select(list, condition);
+		Assert.assertEquals(2, searchResult.size());
+		Assert.assertEquals("123", searchResult.get(0).get("value"));
+		Assert.assertEquals("789", searchResult.get(1).get("value"));
+	}
+
+	/**
+	 * 리스트 검색 테스트 3: java8의 StreamAPI 사용
+	 */
+	@Test
+	public void searchWithStream() {
+		List<HashMap<String, Object>> list = getSomeList();
+		List<HashMap<String, Object>> searchResult = /*(ArrayList<HashMap<String, Object>>)*/ list.stream()
+			     .filter(ele -> "b".equals(ele.get("key")) || "d".equals(ele.get("key")))
+			     .collect(Collectors.toList());
+		Assert.assertEquals(2, searchResult.size());
+		Assert.assertEquals("456", searchResult.get(0).get("value"));
+		Assert.assertEquals("012", searchResult.get(1).get("value"));
 	}
 
 	@Test
@@ -180,31 +282,30 @@ public class ListTest {
 
 		Assert.assertEquals("[9, 7, 6, 5, 4, 3, 2, 1]", list.toString());
 	}
-	
+
 	/**
-	 * sublist 테스트. 
-	 * substring처럼 인덱스 범위에 해당하는 요소를 추출한다.
+	 * sublist 테스트. substring처럼 인덱스 범위에 해당하는 요소를 추출한다.
 	 * 
 	 * @author fixalot
 	 */
 	@Test
 	public void testSublist() {
 		List<Integer> numbers = Arrays.asList(5, 3, 1, 2, 9, 5, 0, 7);
-		
+
 		List<Integer> head = numbers.subList(0, 4); // 5, 3, 1, 2
 		Assert.assertEquals(4, head.size());
 		Assert.assertEquals(Arrays.asList(5, 3, 1, 2), head);
-		
+
 		List<Integer> tail = numbers.subList(4, 8); // 9, 5, 0, 7
 		Assert.assertEquals(4, tail.size());
 		Assert.assertEquals(Arrays.asList(9, 5, 0, 7), tail);
 	}
-	
+
 	@Test
 	public void getString() {
 		List<String> texts = Arrays.asList("a", "b", "c");
 		Assert.assertEquals("a, b, c", String.join(", ", texts));
-		
+
 		List<Integer> numbers = Arrays.asList(1, 2, 3);
 		Joiner joiner = Joiner.on(", ");
 		Assert.assertEquals("1, 2, 3", joiner.join(numbers));

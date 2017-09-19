@@ -1,17 +1,18 @@
-package laboratory.jdk.java.sql;
+package laboratory.jdk;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ * while문 테스트 
  * 
  * @since 2017-07-27
  * @author fixalot
  */
-public class StatementTest {
-	private static final Logger logger = LoggerFactory.getLogger(StatementTest.class);
+public class WhileStatementTest {
+	private static final Logger logger = LoggerFactory.getLogger(WhileStatementTest.class);
 
 	@Test
 	public void testWhile() {
@@ -20,5 +21,6 @@ public class StatementTest {
 			++n;
 			logger.debug(String.valueOf(n));
 		}
+		Assert.assertEquals(2, n);
 	}
 }
