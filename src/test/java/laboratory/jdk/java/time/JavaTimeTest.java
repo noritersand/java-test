@@ -34,16 +34,20 @@ public class JavaTimeTest {
 	private static final Logger logger = LoggerFactory.getLogger(JavaTimeTest.class);
 
 	@Test
-	public void test() {
-		logger.debug("test: " + String.valueOf(Instant.now()));
-		logger.debug("test: " + String.valueOf(LocalDate.now()));
+	public void create() {
+		logger.debug(String.valueOf(Instant.now()));
+		logger.debug(String.valueOf(LocalDate.now())); // yyyy-MM-dd
+		logger.debug(String.valueOf(LocalTime.now())); // HH:mm:ss.SSS
+		Assert.assertEquals("1970-01-01T00:00:00Z", Instant.ofEpochMilli(0).toString());
+		Assert.assertEquals("2017-09-19T06:10:46.820Z", Instant.ofEpochMilli(1505801446820L).toString());
+		Assert.assertEquals("2009-02-13T23:20:23Z", Instant.ofEpochSecond(1234567223L).toString());
+		Assert.assertTrue(Instant.ofEpochMilli(915152400123L).equals(Instant.parse("1999-01-01T01:00:00.123Z"))); // 표준 포맷으로 생성하기
 	}
 
 	@Test
 	public void getLocalDate() {
 		LocalDate a = LocalDate.now();
 		logger.debug(String.valueOf(a)); // yyyy-MM-dd
-
 		Assert.assertEquals("2017-12-31", LocalDate.of(2017, Month.DECEMBER, 31).toString());
 		Assert.assertEquals("2017-04-10T23:49", LocalDateTime.of(2017, Month.APRIL, 10, 23, 49).toString());
 	}
@@ -98,7 +102,6 @@ public class JavaTimeTest {
 	public void parseToJavaUtilDate() {
 		// case#1
 		logger.debug("testToJavaUtilDate: " + Date.from(Instant.now()).toString());
-		;
 
 		// case#2
 		logger.debug("testToJavaUtilDate: " + Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString());
