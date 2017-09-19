@@ -100,7 +100,7 @@ public class ListTest {
 		Assert.assertEquals(Arrays.asList("b", "c", "d"), list);
 		Assert.assertEquals(3, list.size());
 	}
-	
+
 	@Test
 	public void removeElement2() {
 		String[] strs = { "a", "b", "c", "d", "e" };
@@ -151,7 +151,13 @@ public class ListTest {
 		Assert.assertEquals(Arrays.asList("b", "c", "d"), list);
 		Assert.assertEquals(3, list.size());
 	}
-	
+
+//	@Test
+//	public void removeElementWithStream() {
+//		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
+//		list.stream().set
+//	}
+
 	/**
 	 * 리스트 검색 테스트 1: for문으로 전체 검색
 	 */
@@ -198,7 +204,7 @@ public class ListTest {
 	@Test
 	public void searchWithApacheCommons() {
 		ArrayList<HashMap<String, Object>> list = getSomeList();
-
+		// filter에 사용할 predicate 설정
 		Predicate condition = new Predicate() {
 			@Override
 			public boolean evaluate(Object arg) {
@@ -208,10 +214,10 @@ public class ListTest {
 				return "a".equals(key) || "c".equals(key);
 			}
 		};
-		
 		@SuppressWarnings("unchecked")
 		ArrayList<HashMap<String, Object>> searchResult = (ArrayList<HashMap<String, Object>>) CollectionUtils.select(list, condition);
-		Assert.assertEquals(2, searchResult.size());
+		Assert.assertEquals(4, list.size()); // 원래 리스트는 변하지 않음
+		Assert.assertEquals(2, searchResult.size()); // filter의 조건에 맞는 새로운 리스트의 길이
 		Assert.assertEquals("123", searchResult.get(0).get("value"));
 		Assert.assertEquals("789", searchResult.get(1).get("value"));
 	}
@@ -222,10 +228,10 @@ public class ListTest {
 	@Test
 	public void searchWithStream() {
 		List<HashMap<String, Object>> list = getSomeList();
-		List<HashMap<String, Object>> searchResult = /*(ArrayList<HashMap<String, Object>>)*/ list.stream()
-			     .filter(ele -> "b".equals(ele.get("key")) || "d".equals(ele.get("key")))
-			     .collect(Collectors.toList());
-		Assert.assertEquals(2, searchResult.size());
+		List<HashMap<String, Object>> searchResult
+				= list.stream().filter(ele -> "b".equals(ele.get("key")) || "d".equals(ele.get("key"))).collect(Collectors.toList());
+		Assert.assertEquals(4, list.size()); // 원래 리스트는 변하지 않음
+		Assert.assertEquals(2, searchResult.size()); // filter의 조건에 맞는 새로운 리스트의 길이
 		Assert.assertEquals("456", searchResult.get(0).get("value"));
 		Assert.assertEquals("012", searchResult.get(1).get("value"));
 	}
