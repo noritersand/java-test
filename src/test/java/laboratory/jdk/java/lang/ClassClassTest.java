@@ -96,8 +96,13 @@ public class ClassClassTest {
 		final String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
 		Assert.assertEquals("testCurrentMethodName", methodName);
 
-		// #2: 현재 쓰레드의 스택을 거꾸로 거꾸로 올라가서 메서드명을 가져오는 방법.
-		// 소스 출처: https://stackoverflow.com/questions/442747/getting-the-name-of-the-currently-executing-method
+		/* #2: 현재 쓰레드의 스택을 거꾸로 올라가서 메서드명을 가져오는 방법.
+		 * 소스 출처: https://stackoverflow.com/questions/442747/getting-the-name-of-the-currently-executing-method
+		 * 버추얼 머신에 따라 다른 결과가 나올 수 있다고 함. 
+		 * 원문: Some virtual machines may, under some circumstances, omit one or more stack frames from the stack trace. 
+		 * 	In the extreme case, a virtual machine that has no stack trace information concerning 
+		 * 	this thread is permitted to return a zero-length array from this method. 
+		 */
 		final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
 		logger.debug(Arrays.toString(ste));
 		Assert.assertEquals("getStackTrace", ste[0].getMethodName());
