@@ -91,24 +91,6 @@ public class ClassClassTest {
 		Assert.assertEquals("", new Serializable() {}.getClass().getSimpleName());
 	}
 
-	/**
-	 * Get the method name for a depth in call stack. <br />
-	 * Utility function
-	 * 
-	 * 소스 출처: <a href="https://stackoverflow.com/questions/442747/getting-the-name-of-the-currently-executing-method">링크</a>
-	 * 
-	 * @param depth depth in the call stack (0 means current method, 1 means call method, ...)
-	 * @return method name
-	 */
-	public static String getMethodName(final int depth) {
-		final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
-		logger.debug(Arrays.toString(ste));
-
-		// System. out.println(ste[ste.length-depth].getClassName()+"#"+ste[ste.length-depth].getMethodName());
-		// return ste[ste.length - depth].getMethodName(); //Wrong, fails for depth = 0
-		return ste[ste.length - 1 - depth].getMethodName(); // Thank you Tom Tresansky
-	}
-
 	@Test
 	public void testCurrentMethodName() {
 		// #1: 익명 클래스를 생성하고, 해당 클래스가 생성된 환경의 정보 중 메서드 이름을 가져오는 일종의 꼼수. 컴파일 시 불필요한 클래스가 생성되는것에 주의할 것
@@ -116,6 +98,7 @@ public class ClassClassTest {
 		Assert.assertEquals("testCurrentMethodName", methodName);
 
 		// #2: 현재 쓰레드의 스택을 거꾸로 거꾸로 올라가서 메서드명을 가져오는 방법.
+		// 소스 출처: https://stackoverflow.com/questions/442747/getting-the-name-of-the-currently-executing-method
 		final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
 		logger.debug(Arrays.toString(ste));
 		Assert.assertEquals("getStackTrace", ste[0].getMethodName());
