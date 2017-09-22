@@ -82,6 +82,7 @@ public class ClassClassTest {
 	@Test
 	@SuppressWarnings("serial")
 	public void testGetSimpleName() {
+		//hi
 		// standard
 		Assert.assertEquals("AbstractMap", AbstractMap.class.getSimpleName());
 		// inner class
