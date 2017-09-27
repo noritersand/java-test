@@ -109,6 +109,13 @@ public class ClassClassTest {
 		Assert.assertEquals("getStackTrace", ste[0].getMethodName());
 		Assert.assertEquals("testCurrentMethodName", ste[1].getMethodName());
 	}
+	
+	@Test
+	public void testCurrentClassName() {
+		final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
+		logger.debug(Arrays.toString(ste));
+		Assert.assertEquals("laboratory.jdk.java.lang.ClassClassTest", ste[1].getClassName());
+	}
 }
 
 class My<T> {
