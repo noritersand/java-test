@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>get byte length</title>
+<meta charset="UTF-8">
+<script>
+	function calculateByteLength() {
+		var targetElement = document.querySelector('#target');
+		var resultElement = document.querySelector('#result');
+		var value = targetElement.value;
+		var byteLength = 0;
+		for(var i = 0; i < value.length; i++){
+			var tmp = escape(value.charAt(i));
+			if(tmp.length == 1){
+				byteLength++;
+			}else if(tmp.indexOf('%u') != -1){
+				byteLength += 3;
+			}else if(tmp.indexOf('%') != -1){
+				byteLength += tmp.length/3;
+			}
+		}
+		resultElement.innerText = byteLength + ' bytes';
+	}
+</script>
+</head>
+<body>
+<p>유니코드는 3byte, ASCII는 1byte로 계산</p>
+<textarea id="target" onkeyup="calculateByteLength()" style="margin: 0px; height: 215px; width: 513px;"></textarea> 
+<p id="result">0 bytes</p>
+</body>
+</html>

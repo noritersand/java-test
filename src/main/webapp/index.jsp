@@ -99,6 +99,7 @@
 				<ul>
 					<li><a href="/js-test/string/index-of-test.html">string: indexOf test</a></li>
 					<li><a href="/js-test/string/split-join-test.html">string: split and join</a></li>
+					<li><a href="/js-test/string/get-byte-length.html">string: get byte length</a></li>
 				</ul>
 			</li>
 			<li><a href="/js-test/phone-number/lib-phone-number-test.html">phone-number: library test</a></li>
