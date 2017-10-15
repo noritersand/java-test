@@ -19,7 +19,6 @@ import laboratory.servlet.core.invoker.MethodInvoker;
 import laboratory.servlet.core.invoker.SimpleMethodInvoker;
 import laboratory.servlet.core.view.DefaultViewResolver;
 import laboratory.servlet.mvc.fileupload.controller.FileUploadWithOreilly;
-import laboratory.servlet.mvc.fileupload.controller.FileUploadWithSpring;
 import laboratory.servlet.mvc.test.controller.TestController;
 
 /**
@@ -44,7 +43,6 @@ public class DefaultDispatcher extends HttpServlet {
 	private DefaultViewResolver viewResolver = new DefaultViewResolver();
 
 	private TestController testController = new TestController();
-	private FileUploadWithSpring fileUploadWithSpring = new FileUploadWithSpring();
 	private FileUploadWithOreilly fileUploadWithOreilly = new FileUploadWithOreilly();
 
 	@Override
@@ -76,7 +74,6 @@ public class DefaultDispatcher extends HttpServlet {
 		 */
 		List<Object> instanceList = new LinkedList<>();
 		instanceList.add(testController);
-		instanceList.add(fileUploadWithSpring);
 		instanceList.add(fileUploadWithOreilly);
 		
 		Object[] object = methodFinder.findMethod(instanceList, request, response);

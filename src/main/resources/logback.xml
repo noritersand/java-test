@@ -44,7 +44,6 @@
 	</appender>
 
 	<logger name="ch.qos.logback" level="TRACE" />
-	<logger name="org.springframework" level="TRACE" />
 	<logger name="laboratory" level="TRACE" />
 
 	<root level="DEBUG">

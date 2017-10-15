@@ -15,7 +15,6 @@
 	</appender>
 
 	<logger name="ch.qos.logback" level="TRACE" />
-	<logger name="org.springframework" level="WARN" />
 
 	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />

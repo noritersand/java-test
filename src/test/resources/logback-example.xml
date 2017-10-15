@@ -28,7 +28,6 @@
 		</encoder>
 	</appender>
 
-	<logger name="org.springframework" level="info" />
 	<logger name="org.hibernate" level="debug" />
 	<logger name="com.noritersand.webapp" level="debug" />
 	<if condition='property("RUN_MODE").equals("SERVICE")'>
