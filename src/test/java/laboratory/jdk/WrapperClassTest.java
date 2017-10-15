@@ -24,4 +24,12 @@ public class WrapperClassTest {
 		Assert.assertEquals(123, a.intValue());
 		Assert.assertEquals(456, b.intValue());
 	}
+	
+	@Test
+	public void testEquals() {
+		Long a = new Long(12345);
+		Long b = new Long(12345);
+		Assert.assertFalse(a == b); // wrapper 타입은 동등 연산자에서 객체 아이디를 비교하지 값을 비교하지 않음.
+		Assert.assertTrue(a.equals(b)); // correct
+	}
 }
