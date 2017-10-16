@@ -25,7 +25,8 @@
 					<li><a href="/test/fileupload/with-oreilly.view">oreilly multipart</a></li>
 				</ul>
 			</li>
-			<li><a href="/test/payload-body/what-is-payload-body.view">payload body란 무엇인가?</a></li>
+			<li><a href="/test/what-is-payload-body.view">payload body란 무엇인가?</a></li>
+			<li><a href="/test/session-invalidate-test.view">session invalidate test</a></li>
 		</ul>
 	</li>
 	<li>

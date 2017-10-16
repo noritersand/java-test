@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -146,8 +147,26 @@ public class TestController {
 		return json;
 	}
 	
-	@UrlMapping("/test/payload-body/what-is-payload-body.view")
+	@UrlMapping("/test/what-is-payload-body.view")
 	public View drawWhatIsPayloadBody(HttpServletRequest request, HttpServletResponse response) {
+		return new View(request);
+	}
+	
+	@UrlMapping("/test/session-invalidate-test.view")
+	public View drawSessionInvalidateTest(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession ss = request.getSession();
+		
+		logger.debug("session id: {}", ss.getId());
+		
+		ss.setAttribute("a", 123);
+		int a = (int) ss.getAttribute("a");
+		logger.debug(String.valueOf(a == 123));
+		
+		ss.invalidate(); // 세션 무효화
+		// invalidate() 호출 후에는 set이나 get을 할 수 없음.
+//		ss.setAttribute("b", 456); // IllegalStateException: setAttribute: Session has already been invalidated
+//		ss.getAttribute("b"); // IllegalStateException: getAttribute: Session already invalidated
+
 		return new View(request);
 	}	
 }
