@@ -163,6 +163,10 @@ public class TestController {
 		logger.debug(String.valueOf(a == 123));
 		
 		ss.invalidate(); // 세션 무효화
+		
+		// 아이디는 아직 그대로
+		logger.debug("session id after invalidate: {}", ss.getId());
+		
 		// invalidate() 호출 후에는 set이나 get을 할 수 없음.
 //		ss.setAttribute("b", 456); // IllegalStateException: setAttribute: Session has already been invalidated
 //		ss.getAttribute("b"); // IllegalStateException: getAttribute: Session already invalidated
