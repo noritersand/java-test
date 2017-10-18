@@ -24,8 +24,9 @@ public class BeanUtilsTest {
 	private static final Logger logger = LoggerFactory.getLogger(BeanUtilsTest.class);
 
 	/**
-	 * 인스턴스의 프로퍼티 복사. 복사하려는 타입이 private이면 작동하지 않음 TODO {@link PropertyUtils#copyProperties(Object, Object)}랑 뭔 차이인지... Spring의
-	 * {@link org.springframework.beans.BeanUtils#copyProperties(Object, Object)}가 더 좋다.
+	 * 인스턴스의 프로퍼티 복사. 복사하려는 타입이 private이면 작동하지 않음 
+	 * TODO {@link PropertyUtils#copyProperties(Object, Object)}랑 뭔 차이인지... 
+	 * Spring의 {@link org.springframework.beans.BeanUtils#copyProperties(Object, Object)}가 더 좋다.
 	 * 
 	 * @throws IllegalAccessException
 	 * @throws InvocationTargetException

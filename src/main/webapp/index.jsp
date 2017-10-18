@@ -21,7 +21,6 @@
 			</li>
 			<li>파일 업로드
 				<ul>
-<!-- 					<li><a href="/test/fileupload/with-spring.view">spring multipart</a></li> -->
 					<li><a href="/test/fileupload/with-oreilly.view">oreilly multipart</a></li>
 				</ul>
 			</li>
