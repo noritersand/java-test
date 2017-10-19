@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 public class XmlWriteTest {
 	private static final Logger logger = LoggerFactory.getLogger(XmlWriteTest.class);
 
-//	@Test
+//	@Test // 독타입 때문에 xml 파일에 경고떠서 테스트 케이스에서 제외
 	public void writeXml() throws ParserConfigurationException, TransformerException {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder;

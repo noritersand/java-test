@@ -31,7 +31,7 @@ import org.xml.sax.SAXException;
 public class XmlModifyTest {
 	private static final Logger logger = LoggerFactory.getLogger(XmlModifyTest.class);
 
-//	@Test
+//	@Test // 독타입 때문에 xml 파일에 경고떠서 테스트 케이스에서 제외
 	public void modifyXml() throws TransformerException, ParserConfigurationException, SAXException, IOException {
 		String filePath = "src/test/resources/xml-modify-test/original.xml";
 		File xmlFile = new File(filePath);
