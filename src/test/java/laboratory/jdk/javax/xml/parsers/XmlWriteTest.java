@@ -31,13 +31,15 @@ public class XmlWriteTest {
 
 	@Test
 	public void writeXml() throws ParserConfigurationException, TransformerException {
-		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
-
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder;
 
 		dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.newDocument();
+		
+		// FIXME <!DOCTYPE xml> 추가해야 경고 안떠서 추가한 코드가 아래부분인데... 쓰여지는 값이 이상함
+//		DocumentType doctype = doc.getImplementation().createDocumentType("doctype", "FIXME", "FIXME");
+		
 		// add elements to Document
 		Element rootElement = doc.createElementNS("http://www.journaldev.com/employee", "Employees");
 		// append root element to document
@@ -53,6 +55,8 @@ public class XmlWriteTest {
 		Transformer transformer = transformerFactory.newTransformer();
 		// for pretty print
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+//		transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, doctype.getPublicId());
+//		transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, doctype.getSystemId());
 		DOMSource source = new DOMSource(doc);
 
 		// write to console or file

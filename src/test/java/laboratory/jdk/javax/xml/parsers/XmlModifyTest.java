@@ -34,15 +34,17 @@ public class XmlModifyTest {
 
 	@Test
 	public void modifyXml() throws TransformerException, ParserConfigurationException, SAXException, IOException {
-		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
-
 		String filePath = "src/test/resources/xml-modify-test/original.xml";
 		File xmlFile = new File(filePath);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(xmlFile);
+		
+		// FIXME <!DOCTYPE xml> 추가해야 경고 안떠서 추가한 코드가 아래부분인데... 쓰여지는 값이 이상함
+//		DocumentType doctype = doc.getImplementation().createDocumentType("doctype", "FIXME", "FIXME");
+		
 		doc.getDocumentElement().normalize();
-
+		
 		// update attribute value
 		updateAttributeValue(doc);
 
@@ -62,6 +64,8 @@ public class XmlModifyTest {
 		DOMSource source = new DOMSource(doc);
 		StreamResult result = new StreamResult(new File("src/test/resources/xml-modify-test/result.xml"));
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+//		transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, doctype.getPublicId());
+//		transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, doctype.getSystemId());
 		transformer.transform(source, result);
 		logger.debug("XML file updated successfully");
 	}
