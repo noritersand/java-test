@@ -13,7 +13,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -32,7 +31,7 @@ import org.xml.sax.SAXException;
 public class XmlModifyTest {
 	private static final Logger logger = LoggerFactory.getLogger(XmlModifyTest.class);
 
-	@Test
+//	@Test
 	public void modifyXml() throws TransformerException, ParserConfigurationException, SAXException, IOException {
 		String filePath = "src/test/resources/xml-modify-test/original.xml";
 		File xmlFile = new File(filePath);
