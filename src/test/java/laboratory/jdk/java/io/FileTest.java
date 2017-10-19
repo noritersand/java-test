@@ -31,7 +31,7 @@ public class FileTest {
 
 	@Test
 	public void getNewInstanceFromPath() {
-		Path path = Paths.get("src/test/resources/file/exist-test.txt");
+		Path path = Paths.get("src/test/resources/file-test/amiexist.txt");
 		logger.debug(path.toString());
 		File file = path.toFile();
 		Assert.assertEquals(path.toString(), file.toString());

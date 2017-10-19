@@ -32,7 +32,7 @@ public class ClassPathTest {
 	@Test
 	public void accessFileAtClasspath() throws URISyntaxException, IOException {
 		ClassLoader loader = ClassPathTest.class.getClassLoader();
-		URL url = loader.getResource("file/exist-test.txt");
+		URL url = loader.getResource("class-path-test/amiexist.txt");
 		File file = Paths.get(url.toURI()).toFile();
 		Assert.assertTrue(file.exists());
 	}

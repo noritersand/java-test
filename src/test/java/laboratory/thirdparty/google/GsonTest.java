@@ -27,7 +27,7 @@ public class GsonTest {
 
 	@Test
 	public void getDataFromFile() throws FileNotFoundException {
-		JsonReader reader = new JsonReader(new FileReader("src\\test\\resources\\json\\gson-test.json"));
+		JsonReader reader = new JsonReader(new FileReader("src\\test\\resources\\gson-test\\servers.json"));
 		@SuppressWarnings("serial")
 		Type listType = new TypeToken<ArrayList<HashMap<String, String>>>() {}.getType();
 		Object result = new Gson().fromJson(reader, listType);

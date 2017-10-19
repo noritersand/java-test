@@ -31,7 +31,7 @@ public class XmlReadTest {
 
 	@Test
 	public void readXml() throws ParserConfigurationException, TransformerException, SAXException, IOException {
-		String filePath = "src/test/resources/xml/read-test.xml";
+		String filePath = "src/test/resources/xml-read-test/readme.xml";
 		File xmlFile = new File(filePath);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

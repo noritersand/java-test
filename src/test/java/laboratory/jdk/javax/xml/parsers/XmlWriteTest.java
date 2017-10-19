@@ -12,6 +12,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -28,7 +29,7 @@ import org.w3c.dom.Node;
 public class XmlWriteTest {
 	private static final Logger logger = LoggerFactory.getLogger(XmlWriteTest.class);
 
-//	@Test
+	@Test
 	public void writeXml() throws ParserConfigurationException, TransformerException {
 		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
 
@@ -56,7 +57,7 @@ public class XmlWriteTest {
 
 		// write to console or file
 		StreamResult console = new StreamResult(System.out);
-		StreamResult file = new StreamResult(new File("src/test/resources/xml/write-test.xml"));
+		StreamResult file = new StreamResult(new File("src/test/resources/xml-write-test/writeonme.xml"));
 
 		// write data
 		transformer.transform(source, console);

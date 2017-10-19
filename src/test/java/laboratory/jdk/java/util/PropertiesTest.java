@@ -23,7 +23,7 @@ public class PropertiesTest {
 
 	@Test
 	public void getPropByInputStream() throws IOException {
-		FileInputStream fis = new FileInputStream("src\\test\\resources\\prop\\access-test.properties");
+		FileInputStream fis = new FileInputStream("src\\test\\resources\\properties-test\\access-test.properties");
 		Properties prop = new Properties();
 		prop.load(fis);
 		fis.close();
@@ -34,7 +34,7 @@ public class PropertiesTest {
 
 	@Test
 	public void getPropByReader() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader("src\\test\\resources\\prop\\access-test.properties"));
+		BufferedReader reader = new BufferedReader(new FileReader("src\\test\\resources\\properties-test\\access-test.properties"));
 		Properties prop = new Properties();
 		prop.load(reader);
 		reader.close();
@@ -45,7 +45,7 @@ public class PropertiesTest {
 
 	@Test
 	public void getPropFromXml() throws IOException {
-		FileInputStream fis = new FileInputStream("src\\test\\resources\\prop\\uri-test.xml");
+		FileInputStream fis = new FileInputStream("src\\test\\resources\\properties-test\\uri-test.xml");
 		Properties prop = new Properties();
 		prop.loadFromXML(fis);
 		fis.close();

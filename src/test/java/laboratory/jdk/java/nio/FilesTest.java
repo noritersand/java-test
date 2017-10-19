@@ -22,7 +22,7 @@ public class FilesTest {
 	
 	@Test
 	public void testProbeContentType() throws IOException {
-		Assert.assertEquals("text/plain", Files.probeContentType(Paths.get("src/test/resources/mediatype/plaintext.txt")));
+		Assert.assertEquals("text/plain", Files.probeContentType(Paths.get("src/test/resources/files-test/plaintext.txt")));
 	}
 	
 	@Test

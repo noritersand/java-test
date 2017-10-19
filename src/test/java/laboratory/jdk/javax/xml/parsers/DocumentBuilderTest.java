@@ -28,7 +28,7 @@ public class DocumentBuilderTest {
 
 	@Test
 	public void readXml() throws ParserConfigurationException, SAXException, IOException {
-		File file = new File("src/test/resources/xml/try-read-this.xml");
+		File file = new File("src/test/resources/document-builder-test/try-read-this.xml");
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document document = builder.parse(file);

@@ -13,6 +13,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -31,11 +32,11 @@ import org.xml.sax.SAXException;
 public class XmlModifyTest {
 	private static final Logger logger = LoggerFactory.getLogger(XmlModifyTest.class);
 
-//	@Test
+	@Test
 	public void modifyXml() throws TransformerException, ParserConfigurationException, SAXException, IOException {
 		// TODO <!DOCTYPE xml> 추가해야 경고 안뜸
 
-		String filePath = "src/test/resources/xml/read-test.xml";
+		String filePath = "src/test/resources/xml-modify-test/original.xml";
 		File xmlFile = new File(filePath);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -59,7 +60,7 @@ public class XmlModifyTest {
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(doc);
-		StreamResult result = new StreamResult(new File("src/test/resources/xml/modify-result.xml"));
+		StreamResult result = new StreamResult(new File("src/test/resources/xml-modify-test/result.xml"));
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		transformer.transform(source, result);
 		logger.debug("XML file updated successfully");

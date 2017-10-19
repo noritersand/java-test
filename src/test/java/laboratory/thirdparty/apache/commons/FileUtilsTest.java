@@ -31,7 +31,7 @@ public class FileUtilsTest {
 	@Test
 	public void writeAndRead() throws IOException {
 		String text = "some\ntext";
-		File file = Paths.get("src/test/resources/file/write-test.txt").toFile();
+		File file = Paths.get("src/test/resources/file-utils-test/writeonme.txt").toFile();
 
 		// write
 		FileUtils.writeStringToFile(file, text, Charset.forName("UTF-8"));

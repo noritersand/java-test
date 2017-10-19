@@ -85,7 +85,7 @@ public class HandleXMLTest {
 		}
 		XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
 
-		File target = Paths.get("src\\test\\resources\\xml\\merge-test.xml").toFile();
+		File target = Paths.get("src\\test\\resources\\handle-xml-test\\mergeresult.xml").toFile();
 		if (target.exists()) {
 			target.delete();
 		}

@@ -20,8 +20,8 @@ public class FileReaderTest {
 
 	@Test
 	public void compareEachLine() throws IOException {
-		File file = new File("src/test/resources/file/exist-test.txt");
-		File file2 = new File("src/test/resources/file/write-test.txt");
+		File file = new File("src/test/resources/file-reader-test/amiexist.txt");
+		File file2 = new File("src/test/resources/file-reader-test/writeonme.txt");
 
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		BufferedReader reader2 = new BufferedReader(new FileReader(file2));

@@ -52,13 +52,13 @@ public class PathTest {
 
 	@Test
 	public void newInstance() throws IOException {
-		Path path = Paths.get("src/test/resources/file/exist-test.txt");
+		Path path = Paths.get("src/test/resources/path-test/amiexist.txt");
 		Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
 		Path path2 = Paths.get("C:\\project\\workspace");
 		Path path3 = Paths.get("localhost/upload");
 		Path path4 = Paths.get("/localhost/upload");
 
-		Assert.assertEquals("src\\test\\resources\\file\\exist-test.txt", path.toString());
+		Assert.assertEquals("src\\test\\resources\\path-test\\amiexist.txt", path.toString());
 		Assert.assertEquals("\\\\C\\project\\workspace", path1.toString());
 		Assert.assertEquals("C:\\project\\workspace", path2.toString());
 		Assert.assertEquals("localhost\\upload", path3.toString());

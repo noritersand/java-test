@@ -31,7 +31,7 @@ public class SerializeTest implements Serializable {
 
 	@Test
 	public void deserialize() throws ClassNotFoundException, IOException {
-		File file = Paths.get("src/test/resources/file/test.ser").toFile();
+		File file = Paths.get("src/test/resources/serialize-test/test.ser").toFile();
 
 		// some instance
 		SerializeMe instance = new SerializeMe();

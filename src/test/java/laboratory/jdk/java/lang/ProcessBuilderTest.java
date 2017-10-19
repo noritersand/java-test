@@ -19,7 +19,7 @@ public class ProcessBuilderTest {
 
 	@Test
 	public void executeFile() throws IOException {
-		ProcessBuilder pb = new ProcessBuilder("src/test/resources/file/test.bat");
+		ProcessBuilder pb = new ProcessBuilder("src/test/resources/process-builder-test/test.bat");
 		pb.redirectOutput(Redirect.INHERIT); // 얘네 안하면 콘솔 출력 안됨
 		pb.redirectError(Redirect.INHERIT);
 		pb.start();
