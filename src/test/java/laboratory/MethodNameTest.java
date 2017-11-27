@@ -1,4 +1,4 @@
-package laboratory.jdk18;
+package laboratory;
 
 import org.junit.Test;
 import org.slf4j.Logger;

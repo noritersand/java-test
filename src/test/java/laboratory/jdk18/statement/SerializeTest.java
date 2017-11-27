@@ -1,4 +1,4 @@
-package laboratory.jdk18;
+package laboratory.jdk18.statement;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

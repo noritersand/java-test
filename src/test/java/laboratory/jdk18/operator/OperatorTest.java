@@ -1,4 +1,4 @@
-package laboratory.jdk18;
+package laboratory.jdk18.operator;
 
 import org.junit.Assert;
 import org.junit.Test;

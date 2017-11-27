@@ -1,4 +1,4 @@
-package laboratory.jdk18;
+package laboratory.jdk18.statement;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
  * @since 2017-07-27
  * @author fixalot
  */
-public class SwichTest {
-	private static final Logger logger = LoggerFactory.getLogger(SwichTest.class);
+public class SwitchTest {
+	private static final Logger logger = LoggerFactory.getLogger(SwitchTest.class);
 
 	@Test
 	public void howVariableInitialize() {

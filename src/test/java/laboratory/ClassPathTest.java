@@ -1,4 +1,4 @@
-package laboratory.jdk18;
+package laboratory;
 
 import java.io.File;
 import java.io.IOException;
