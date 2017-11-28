@@ -73,7 +73,7 @@ public class TestController {
 	}
 	
 	/**
-	 * 헤더와 바디 둘 중 하나에 파라미터가 있겠쥬?
+	 * 둘 중 하나에 있겠쥬?
 	 * 
 	 * @param request
 	 * @param response
@@ -84,8 +84,8 @@ public class TestController {
 	public Map<String, Object> readPayloadBody(HttpServletRequest request, HttpServletResponse response) {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		final String body = RequestUtil.readBody(request);
-		logger.debug("header: " + params.toString());
-		logger.debug("body: " + body);
+		logger.debug("formal parameter: " + params.toString());
+		logger.debug("payload body: " + body);
 		Map<String, Object> responseMap = new HashMap<>();
 		responseMap.put("success", true);
 		responseMap.put("header", params.toString());
