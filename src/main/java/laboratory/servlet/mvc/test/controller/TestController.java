@@ -62,8 +62,8 @@ public class TestController {
 	 * @return
 	 * @author fixalot
 	 */
-	@UrlMapping("/test/readRequestHeader.data")
-	public JsonResponseObject readRequestHeader(HttpServletRequest request, HttpServletResponse response) {
+	@UrlMapping("/test/readFormalParameter.data")
+	public JsonResponseObject readFormalParameter(HttpServletRequest request, HttpServletResponse response) {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		logger.debug(params.toString());
 		JsonResponseObject responseJSON = new JsonResponseObject();

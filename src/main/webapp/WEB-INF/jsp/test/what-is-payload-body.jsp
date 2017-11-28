@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>what <del>the fuck</del> is payload body?</h2>
-<form action="/test/readRequestHeader.data" method="post">
+<form action="/test/readFormalParameter.data" method="post">
 	<fieldset>
 		<legend><del>im legend</del> sync request: form data</legend>
 		<input type="text" name="myname" value="waldo" />
@@ -16,7 +16,7 @@
 		<button type="submit">SUBMIT</button>
 	</fieldset>
 </form>
-<form action="/test/readRequestHeader.data" method="post" enctype="application/x-www-form-urlencoded">
+<form action="/test/readFormalParameter.data" method="post" enctype="application/x-www-form-urlencoded">
 	<fieldset>
 		<legend>sync request: form data #2</legend>
 		<input type="text" name="myname" value="waldo" />
@@ -24,7 +24,7 @@
 		<button type="submit">SUBMIT</button>
 	</fieldset>
 </form>
-<form action="/test/readRequestHeader.data?1234" method="post" enctype="application/x-www-form-urlencoded">
+<form action="/test/readFormalParameter.data?1234" method="post" enctype="application/x-www-form-urlencoded">
 	<fieldset>
 		<legend>sync request: form data #3</legend>
 		<button type="submit">SUBMIT</button>
@@ -64,7 +64,7 @@
 <script>
 	function send() {
 		$.ajax({
-			url: '/test/readRequestHeader.data',
+			url: '/test/readFormalParameter.data',
 			method: 'post',
 			data: 'a=1&b=2',
 			contentType: 'application/x-www-form-urlencoded',
@@ -76,7 +76,7 @@
 	}
 	function send2() {
 		$.ajax({
-			url: '/test/readRequestHeader.data',
+			url: '/test/readFormalParameter.data',
 			method: 'post',
 			data: '{"a": 1, "b": 2}',
 			contentType: 'application/x-www-form-urlencoded',
