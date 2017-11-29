@@ -39,6 +39,19 @@ public class RequestUtil {
 		return rp;
 	}
 
+	public static String readBody(HttpServletRequest request) throws IOException {
+		BufferedReader input = new BufferedReader(new InputStreamReader(request.getInputStream()));
+		StringBuilder builder = new StringBuilder();
+		String buffer;
+		while ((buffer = input.readLine()) != null) {
+			if (builder.length() > 0) {
+				builder.append("\n");
+			}
+			builder.append(buffer);
+		}
+		return builder.toString();
+	}
+	
 	/**
 	 * request body를 읽어서 문자열 반환
 	 * 
@@ -47,7 +60,8 @@ public class RequestUtil {
 	 * @throws IOException
 	 * @author fixalot
 	 */
-	public static String readBody(HttpServletRequest request) {
+	@Deprecated
+	public static String readBodyLegacyway(HttpServletRequest request) {
 		String body = null;
 		StringBuilder stringBuilder = new StringBuilder();
 		BufferedReader bufferedReader = null;

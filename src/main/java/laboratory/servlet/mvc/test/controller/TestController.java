@@ -1,5 +1,6 @@
 package laboratory.servlet.mvc.test.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,9 +80,10 @@ public class TestController {
 	 * @param response
 	 * @return
 	 * @author fixalot
+	 * @throws IOException 
 	 */
 	@UrlMapping("/test/readPayloadBody.data")
-	public Map<String, Object> readPayloadBody(HttpServletRequest request, HttpServletResponse response) {
+	public Map<String, Object> readPayloadBody(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		final String body = RequestUtil.readBody(request);
 		logger.debug("formal parameter: " + params.toString());
