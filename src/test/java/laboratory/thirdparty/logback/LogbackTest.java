@@ -30,4 +30,13 @@ public class LogbackTest {
 //		logger.debug("im {}", null); // 이렇게는 안됨
 		logger.debug("im {}", "null");
 	}
+	
+//	@Test
+	public void loggingError() {
+		try {
+			throw new IllegalAccessError("1234");
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+	}
 }
