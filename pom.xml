@@ -207,5 +207,12 @@
 		    <artifactId>mssql-jdbc</artifactId>
 		    <version>6.1.6.jre8-preview</version>
 		</dependency> -->
+		
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20171018</version>
+		</dependency>
 	</dependencies>
 </project>
