@@ -34,9 +34,9 @@ public class CharacterTest {
 		Assert.assertTrue(a == "a".charAt(0));
 
 		// 새로 만든 인스턴스와 비교
-		Character inst = new Character('a');
-		Assert.assertTrue(a == inst); // 원시-객체는 객체가 원시타입으로 변환되므로 동등비교 가능.
-		Assert.assertTrue(aa != inst); // 객체끼리는 값이 같아도 동등비교 불가.
+		Character inst = Character.valueOf('a');
+		Assert.assertTrue(a == inst); // Character.equals()에서 래퍼타입이 갖고 있는 value로 비교함.
+		Assert.assertTrue(aa == inst); // 이것도 마찬가지. 래퍼타입이 갖고 있는 value로 비교됨. JDK9부터 되는걸로 추정
 		Assert.assertFalse(inst.equals("a")); // equals()로는 다른 타입끼리 비교 불가
 		Assert.assertTrue(inst.equals("a".charAt(0)));
 		Assert.assertTrue(inst == "a".charAt(0));

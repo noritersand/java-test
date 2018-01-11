@@ -17,7 +17,7 @@ public class WrapperClassTest {
 
 	@Test
 	public void copy() {
-		final Integer a = new Integer(123);
+		final Integer a = Integer.valueOf(123);
 		Integer b = a;
 		Assert.assertEquals(123, b.intValue());
 		b = 456; // b = new Integer(456); String과 마찬가지로 새 객체가 할당된다.
@@ -27,8 +27,8 @@ public class WrapperClassTest {
 	
 	@Test
 	public void testEquals() {
-		Long a = new Long(12345);
-		Long b = new Long(12345);
+		Long a = Long.valueOf(12345);
+		Long b = Long.valueOf(12345);
 		Assert.assertFalse(a == b); // wrapper 타입은 동등 연산자에서 객체 아이디를 비교하지 값을 비교하지 않음.
 		Assert.assertTrue(a.equals(b)); // correct
 	}

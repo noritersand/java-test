@@ -42,6 +42,7 @@ public class ClassClassTest {
 		Class<?> cls = Class.forName("jdk.java.lang.MyClass");
 		Assert.assertEquals(java.lang.Class.class, cls.getClass());
 		Assert.assertEquals("jdk.java.lang.MyClass", cls.getName());
+		@SuppressWarnings("deprecation")
 		MyClass my2 = (MyClass) cls.newInstance();
 		Assert.assertEquals(MyClass.class, my2.getClass());
 	}

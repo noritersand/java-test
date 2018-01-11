@@ -50,6 +50,6 @@ public class PrimitiveTest {
 
 	@Test
 	public void autoBoxing() {
-		Assert.assertEquals(1, (long) new Long(1));
+		Assert.assertEquals(1, (long) Long.valueOf(1));
 	}
 }

@@ -86,7 +86,7 @@ public class GsonBuilder {
 					return null;
 				}
 				try {
-					return new Short(str);
+					return Short.valueOf(str);
 				} catch (Exception e) {
 					throw new JsonSyntaxException(e);
 				}
@@ -112,7 +112,7 @@ public class GsonBuilder {
 					return null;
 				}
 				try {
-					return new Integer(str);
+					return Integer.valueOf(str);
 				} catch (Exception e) {
 					throw new JsonSyntaxException(e);
 				}
@@ -138,7 +138,7 @@ public class GsonBuilder {
 					return null;
 				}
 				try {
-					return new Long(str);
+					return Long.valueOf(str);
 				} catch (Exception e) {
 					throw new JsonSyntaxException(e);
 				}
@@ -164,7 +164,7 @@ public class GsonBuilder {
 					return null;
 				}
 				try {
-					return new Double(str);
+					return Double.valueOf(str);
 				} catch (Exception e) {
 					throw new JsonSyntaxException(e);
 				}

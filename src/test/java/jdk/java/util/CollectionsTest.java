@@ -16,12 +16,12 @@ public class CollectionsTest {
 	@Test
 	public void testMin() {
 		List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
-		Assert.assertEquals(new Integer(1), Collections.min(list));
+		Assert.assertEquals(Integer.valueOf(1), Collections.min(list));
 	}
 	
 	@Test
 	public void testMax() {
 		List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
-		Assert.assertEquals(new Integer(99), Collections.max(list));
+		Assert.assertEquals(Integer.valueOf(99), Collections.max(list));
 	}
 }

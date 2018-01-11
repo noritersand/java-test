@@ -41,7 +41,7 @@ public class ReferenceCopyTest {
 
 		Integer number = 1;
 		doSomething(number);
-		Assert.assertNotEquals(new Integer(2), number);
+		Assert.assertNotEquals(Integer.valueOf(2), number);
 
 		Vo vo = new Vo();
 		vo.setStr("a");

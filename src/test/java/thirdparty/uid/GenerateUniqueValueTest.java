@@ -29,7 +29,7 @@ public class GenerateUniqueValueTest {
 			millsPlusNanos = millsPlusNanos.substring(0, 19);
 		}
 		Assert.assertEquals(19, millsPlusNanos.length());
-		logger.debug(String.valueOf(new Long(millsPlusNanos)));
+		logger.debug(String.valueOf(Long.valueOf(millsPlusNanos)));
 	}
 
 	@Test
