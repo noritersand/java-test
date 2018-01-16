@@ -170,11 +170,6 @@
 
 		<!-- ETC. -->
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>RELEASE</version>
-		</dependency>
-		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom2</artifactId>
 			<version>RELEASE</version>

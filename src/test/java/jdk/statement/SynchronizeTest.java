@@ -1,7 +1,9 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import java.time.LocalDateTime;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -10,9 +12,35 @@ import org.junit.Test;
  * @author fixalot
  */
 public class SynchronizeTest {
-	@Test
-	public void test() {
-		// TODO synchronized 사용 방법 테스트 코드 작성
-		Assert.assertEquals("", "");
+	private static final Logger logger = LoggerFactory.getLogger(SynchronizeTest.class);
+
+	public static void main(String[] args) {
+		SynchronizeTest instance = new SynchronizeTest();
+		Thread first = new Thread() {
+			@Override
+			public void run() {
+				instance.printsomething();
+			}
+		};
+		first.start();
+		Thread second = new Thread() {
+			@Override
+			public void run() {
+				instance.printsomething();
+			}
+		};
+		second.start();		
+	}
+	
+//	public synchronized void printsomething() {
+	public void printsomething() {
+		synchronized (this) {
+			logger.debug("=========== 시작 ================");
+			logger.debug("this: {}", String.valueOf(this));
+			logger.debug("time: {}", LocalDateTime.now());
+			logger.debug("current method: {}()", new Throwable().getStackTrace()[0].getClassName() + "." + new Throwable().getStackTrace()[0].getMethodName());
+			logger.debug("line: {}", new Throwable().getStackTrace()[0].getLineNumber());
+			logger.debug("=========== 끗 ================");
+		}
 	}
 }

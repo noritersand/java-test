@@ -2,9 +2,8 @@ package laboratory.util.json;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Date;
-
-import org.joda.time.DateTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -236,9 +235,10 @@ public class GsonBuilder {
 	@SuppressWarnings("unused")
 	@Deprecated
 	private void registDateTypeAdapter() {
-		this.gsonBuilder.registerTypeAdapter(Date.class, new TypeAdapter<Date>() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		this.gsonBuilder.registerTypeAdapter(LocalDateTime.class, new TypeAdapter<LocalDateTime>() {
 			@Override
-			public Date read(JsonReader in) throws IOException {
+			public LocalDateTime read(JsonReader in) throws IOException {
 				if (in.peek() == JsonToken.NULL) {
 					in.nextNull();
 					return null;
@@ -248,15 +248,16 @@ public class GsonBuilder {
 					return null;
 				}
 				try {
-					return DateTime.parse(str, org.joda.time.format.DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+//					return DateTime.parse(str, DateTimeFormatter.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+					return LocalDateTime.parse(str, formatter);
 				} catch (Exception e) {
 					throw new JsonSyntaxException(e);
 				}
 			}
 
 			@Override
-			public void write(JsonWriter out, Date value) throws IOException {
-				out.value(new DateTime(value).toString(org.joda.time.format.DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")));
+			public void write(JsonWriter out, LocalDateTime value) throws IOException {
+				out.value(value.format(formatter));
 			}
 		});
 	}
