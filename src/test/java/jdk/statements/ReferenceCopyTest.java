@@ -1,4 +1,4 @@
-package jdk.statement;
+package jdk.statements;
 
 import org.junit.Assert;
 import org.junit.Test;
