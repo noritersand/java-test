@@ -13,12 +13,12 @@ import org.slf4j.LoggerFactory;
  * @since 2017-07-27
  * @author fixalot
  */
-public class SynchronizeTest {
-	private static final Logger logger = LoggerFactory.getLogger(SynchronizeTest.class);
+public class SynchronizedTest {
+	private static final Logger logger = LoggerFactory.getLogger(SynchronizedTest.class);
 
 	@Test
 	public void testSynchronizedMethod() {
-		SynchronizeTest instance = new SynchronizeTest();
+		SynchronizedTest instance = new SynchronizedTest();
 
 		// test #1: synchronized 메서드
 		Thread first = new Thread() {
@@ -43,7 +43,7 @@ public class SynchronizeTest {
 	
 	@Test
 	public void testSynchronizedStatement() {
-		SynchronizeTest instance = new SynchronizeTest();
+		SynchronizedTest instance = new SynchronizedTest();
 		
 		// test #2: synchronized 블럭
 		Thread third = new Thread() {
