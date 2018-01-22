@@ -95,7 +95,7 @@ public class SynchronizeTest {
 	}
 
 	public void synchronizedStatement() {
-		synchronized (Object.class) {
+		synchronized (this) {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
