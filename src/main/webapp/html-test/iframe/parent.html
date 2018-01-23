@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>parent</title>
+	<meta charset="UTF-8">
+	<title>frame test</title>
 </head>
 <body>
 	<h2>parent</h2>
-	<input type="text" id="locationInput" value="http://127.0.0.1:9091/html-test/iframe/child.html" style="width: 100%">
+	<input type="text" id="locationInput" value="https://127.0.0.1:8443/html-test/iframe/child.html" style="width: 100%">
 	<button type="button" onclick="changeChildLocation()">change child location</button>
 	<button type="button" onclick="changeChildLocation('/html-test/iframe/child.html')">home</button>
 	<button type="button" onclick="changeChildLocation('http://daum.net')">daum</button>
 	<button type="button" onclick="addIframeAndAlert()">안보이는 프레임 만들기</button>
 	<div style="margin-top: 5px;">
-		<iframe style="width: 100%" id="locationTest" src="/html-test/iframe/child.html"></iframe>
+		<iframe style="width: 85%; height: 450px; border: 2px solid black;"  
+				id="locationTest" src="/html-test/iframe/child.html"></iframe>
 	</div>
 	<script>
 		var childWindow = frames[0];
