@@ -131,8 +131,13 @@ public class TestController {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/scope/scope-test.view")
+	@UrlMapping("/test/el/scope-test.view")
 	public View drawScopeTest(HttpServletRequest request, HttpServletResponse response) {
+		return new View(request);
+	}
+	
+	@UrlMapping("/test/el/el-test.view")
+	public View drawElTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
