@@ -19,6 +19,8 @@ th, tr, td {
 </head>
 <body>
 <h2>expression language test</h2>
+
+<h3>1. get java variable</h3>
 <%!
 	final String globalVar = "i'm text";
 %>
@@ -26,8 +28,6 @@ th, tr, td {
 	final String localVar = "i'm text2";
 	HashMap<String, String> obj = new HashMap<>();
 %>
-
-<h3>1. get java variable</h3>
 <table>
 	<tr>
 		<th>scriptlet: </th>
@@ -62,7 +62,7 @@ th, tr, td {
 	</tr>
 </table>
 
-<h3>3. JSTL: core-set #1</h3>
+<h3>3. JSTL-core: set tag #1</h3>
 <c:set target="<%=obj%>" property="mynameis" value="waldo" />
 <table>
 	<tr>
@@ -71,7 +71,7 @@ th, tr, td {
 	</tr>
 	<tr>
 		<th>JSTL</th>
-		<td><c:out value="<%=obj%>" /></td>
+		<td><c:out value="<%=obj.get(\"mynameis\")%>" /></td>
 	</tr>
 	<tr>
 		<th>EL</th>
@@ -79,8 +79,8 @@ th, tr, td {
 	</tr>
 </table>
 
-<h3>4. JSTL: core-set #2</h3>
-<c:set var="attr" value="hi" /> <%-- request.setAttribute("attr", "hi") --%>
+<h3>4. JSTL-core: set tag #2</h3>
+<c:set var="attr" value="hello there!" /> <%-- request.setAttribute("attr", "hi") --%>
 <table>
 	<tr>
 		<th>scriptlet: </th>
