@@ -52,4 +52,20 @@ public class PrimitiveTest {
 	public void autoBoxing() {
 		Assert.assertEquals(1, (long) Long.valueOf(1));
 	}
+	
+	@Test
+	public void testValueOf() {
+		int number = Integer.valueOf("1");
+		Assert.assertEquals(number, 1);
+		try {
+			Integer.valueOf(""); // 빈 문자열은 valueOf 불가
+		} catch (NumberFormatException e) {
+			logger.debug("NumberFormatException 발생: {}", e.getMessage());
+		}
+		try {
+			Integer.valueOf(null); // null은 valueOf 불가
+		} catch (NumberFormatException e) {
+			logger.debug("NumberFormatException 발생: {}", e.getMessage());
+		}
+	}
 }
