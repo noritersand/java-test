@@ -1,6 +1,7 @@
-<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="laboratory.constants.Const" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,14 +52,23 @@ th, tr, td {
 	<tr>
 		<th>scriptlet: </th>
 		<td><%=java.lang.Math.PI%></td>
+		<td><%=Math.PI%></td>
+		<td><%=Integer.MAX_VALUE %></td>
+		<td><%=Const.NAME %></td>
 	</tr>
 	<tr>
 		<th>JSTL</th>
-		<td><c:out value="${java.lang.Math.PI}" default="안나옴" /></td>
+		<td><c:out value="${java.lang.Math.PI}" default="패키지를 명시하면 안나옴" /></td>
+		<td><c:out value="${Math.PI}" default="java.lang 패키지는 임포트 생략" /></td>
+		<td><c:out value="${Integer.MAX_VALUE}" /></td>
+		<td><c:out value="${Const.NAME}" /></td>
 	</tr>
 	<tr>
 		<th>EL</th>
-		<td>${empty java.lang.Math.PI ? '안나옴' : java.lang.Math.PI}</td>
+		<td>${empty java.lang.Math.PI ? '패키지를 명시하면 안나옴' : java.lang.Math.PI}</td>
+		<td>${empty Math.PI ? 'java.lang 패키지는 임포트 생략' : Math.PI}</td>
+		<td>${Integer.MAX_VALUE}</td>
+		<td>${Const.NAME}</td>
 	</tr>
 </table>
 
