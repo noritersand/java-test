@@ -21,12 +21,11 @@ public class TryCatchFinallyTest {
 		try {
 			str += "try";
 		} finally {
-			str += " ";
-			str += "finally";
+			str += " finally";
 		}
 		Assert.assertEquals("try finally", str);
 	}
-	
+
 	@Test
 	public void finallyTest2() {
 		String str = "";
@@ -34,12 +33,39 @@ public class TryCatchFinallyTest {
 			str += "try";
 			throw new IllegalAccessError();
 		} catch (IllegalAccessError e) {
-			str += " ";
-			str += "catch";
+			str += " catch";
 		} finally {
-			str += " ";
-			str += "finally";
+			str += " finally";
 		}
 		Assert.assertEquals("try catch finally", str);
+	}
+
+	/**
+	 * catch 에서 return 해봐야 finally 때문에 무시됨.
+	 * 이런 이유때문에 finally에서 return을 하면 경고가 나타난다. 
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void finallyTest3() {
+		String str = weirdStatement();
+		Assert.assertEquals("try catch finally", str);
+	}
+
+	@SuppressWarnings("finally")
+	private String weirdStatement() {
+		String str = "";
+		try {
+			str += "try";
+			throw new IllegalAccessError();
+		} catch (IllegalAccessError e) {
+			str += " catch";
+			logger.debug(str);
+			return str;
+		} finally {
+			str += " finally";
+			logger.debug(str);
+			return str; // finally block does not complete normally
+		}
 	}
 }
