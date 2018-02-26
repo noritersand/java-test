@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  */
 public class PrimitiveTest {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(PrimitiveTest.class);
 
 	@Test
