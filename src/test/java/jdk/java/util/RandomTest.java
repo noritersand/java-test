@@ -1,5 +1,7 @@
 package jdk.java.util;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -36,5 +38,35 @@ public class RandomTest {
 		logger.debug(String.valueOf(a.count()));
 		a = random.ints(100);
 		logger.debug(String.valueOf(a.count()));
+	}
+	
+	/**
+	 * List의 요소를 난수로 꺼내기
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void getRandomElement() {
+		List<String> list = new LinkedList<>();
+		list.add("하나");
+		list.add("둘");
+		list.add("셋");
+		list.add("넷");
+		list.add("다섯");
+		list.add("여섯");
+		list.add("일곱");
+		list.add("여덟");
+		list.add("아홉");
+		list.add("열");
+		for (int i = 0; i < 100; ++i) {
+			int randomNumber = new Random().nextInt(list.size());
+			String element = list.get(randomNumber);
+			Assert.assertNotNull(element);
+			Assert.assertFalse(element.isEmpty());
+			Assert.assertTrue(element instanceof String);
+			if (i == 99) {
+				logger.debug(element);
+			}
+		}
 	}
 }
