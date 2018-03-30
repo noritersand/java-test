@@ -91,18 +91,22 @@ th, tr, td {
 
 <h3>4. JSTL-core: set tag #2</h3>
 <c:set var="attr" value="hello there!" /> <%-- request.setAttribute("attr", "hi") --%>
+<c:set var="attr2" value="${attr}" />
 <table>
 	<tr>
 		<th>scriptlet: </th>
 		<td><%=pageContext.getAttribute("attr") %></td>
+		<td><%=pageContext.getAttribute("attr2") %></td>
 	</tr>
 	<tr>
 		<th>JSTL</th>
 		<td><c:out value="${attr}" /></td>
+		<td><c:out value="${attr2}" /></td>
 	</tr>
 	<tr>
 		<th>EL</th>
 		<td>${attr}</td>
+		<td>${attr2}</td>
 	</tr>
 </table>
 </body>

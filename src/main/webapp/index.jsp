@@ -33,8 +33,8 @@
 		<ul>
 			<li><a href="/test/customtag/parent.view">custom tag</a></li>
 			<li><a href="/test/jstl/parseNumberFromString.view">parse number from string</a></li>
-			<li><a href="/test/el/el-test.view">EL test</a></li>
-			<li><a href="/test/el/scope-test.view">EL: scope test</a></li>
+			<li><a href="/test/jstl/jstl-test.view">JSTL test</a></li>
+			<li><a href="/test/jstl/el-scope-test.view">EL: scope test</a></li>
 		</ul>
 	</li>
 	<li>
