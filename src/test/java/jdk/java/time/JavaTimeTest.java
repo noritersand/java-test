@@ -39,10 +39,14 @@ public class JavaTimeTest {
 		logger.debug(String.valueOf(Instant.now()));
 		logger.debug(String.valueOf(LocalDate.now())); // yyyy-MM-dd
 		logger.debug(String.valueOf(LocalTime.now())); // HH:mm:ss.SSS
+		
 		Assert.assertEquals("1970-01-01T00:00:00Z", Instant.ofEpochMilli(0).toString());
 		Assert.assertEquals("2017-09-19T06:10:46.820Z", Instant.ofEpochMilli(1505801446820L).toString());
 		Assert.assertEquals("2009-02-13T23:20:23Z", Instant.ofEpochSecond(1234567223L).toString());
 		Assert.assertTrue(Instant.ofEpochMilli(915152400123L).equals(Instant.parse("1999-01-01T01:00:00.123Z"))); // 표준 포맷으로 생성하기
+		
+		// create instance from ISO date time string
+		Assert.assertEquals("2017-04-18T01:24:48.842Z", Instant.parse("2017-04-18T01:24:48.842Z").toString());
 	}
 
 	@Test
