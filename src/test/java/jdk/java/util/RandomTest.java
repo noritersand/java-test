@@ -24,10 +24,14 @@ public class RandomTest {
 	public void testNextInt() {
 		for (int i = 0; i < 1000; ++i) {
 			Random random = new Random();
-			int num = random.nextInt(); // int의 최솟값 ~ 최댓값 사이에서 랜덤값 추출
-			Assert.assertTrue(Integer.MIN_VALUE <= num && num <= Integer.MAX_VALUE);
-			num = random.nextInt(1000); // 0부터 1000 사이에서 랜덤값 추출
-			Assert.assertTrue(0 <= num && num <= 1000);
+			
+			int num = random.nextInt(); // int의 최솟값 이상 최댓값 미만 사이의 랜덤값 추출
+			logger.debug(String.valueOf(num));
+			Assert.assertTrue(Integer.MIN_VALUE <= num && num < Integer.MAX_VALUE);
+			
+			num = random.nextInt(5); // 0 이상 5 미만 사이의 랜덤값 추출
+			logger.debug(String.valueOf(num));
+			Assert.assertTrue(0 <= num && num < 5);
 		}
 	}
 	
