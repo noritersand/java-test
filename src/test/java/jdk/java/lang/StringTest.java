@@ -180,6 +180,10 @@ public class StringTest {
 
 		String splitMe3 = "a\nb\nc\nd";
 		Assert.assertEquals(4, splitMe3.split("\\n").length);
+		
+		String splitMe4 = "";
+		String[] splited = splitMe4.split("\\|");
+		Assert.assertEquals("", splited[0]);
 	}
 
 	@Test
