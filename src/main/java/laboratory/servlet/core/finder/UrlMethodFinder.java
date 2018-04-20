@@ -22,7 +22,7 @@ public class UrlMethodFinder implements MethodFinder {
 //			methodName = CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, methodName);
 //		}
 		
-		logger.trace("i'll find you. and i'll kill you!");
+		logger.trace("i'll find you.");
 		
 		// find method and invoking
 		Object[] returnObject = new Object[2];
