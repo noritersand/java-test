@@ -21,7 +21,7 @@ public class ScannerTest {
 	private static final String FULL_TEXT = "abcdefg hijklmn	opqrstu|vwxyz\n12345,67890\n가나다라마바사^아자차카타파하";
 
 	@Test
-	public void testNewInstance() {
+	public void initialize() {
 		Scanner scanner = new Scanner(FULL_TEXT);
 		Assert.assertNotNull(scanner);
 		scanner.close();

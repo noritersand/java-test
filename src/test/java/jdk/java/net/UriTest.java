@@ -19,7 +19,7 @@ public class UriTest {
 	private static final Logger logger = LoggerFactory.getLogger(UriTest.class);
 	
 	@Test
-	public void create() {
+	public void initialize() {
 		URI uri = URI.create("somefolder/somefile.png");
 		Assert.assertEquals("somefolder/somefile.png", uri.toString());
 		Assert.assertEquals(null, uri.getScheme());

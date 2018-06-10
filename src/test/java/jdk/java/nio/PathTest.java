@@ -13,7 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * {@link Path} 클래스 테스트 유닛
  * 
+ * src/main 혹은 src/test는 로컬에서만 사용해야하는 경로다. 이 경로들은 메이븐 개발 환경에서만 존재하는 폴더 구조이고 war나 jar로 빌드되면 존재하지 않는 경로이기 때문. 
+ * 따라서 경로빌드 후 생성될 경로를 절대 경로로 프로퍼티에서 관리하는 편이 좋다.
  * 
  * @since 2017-07-27
  * @author fixalot
@@ -22,10 +25,20 @@ public class PathTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(PathTest.class);
 
-	/*
-	 * src/main 혹은 src/test는 로컬에서만 사용해야하는 경로다. 이 경로들은 메이븐 개발 환경에서만 존재하는 폴더 구조이고 war나 jar로 빌드되면 존재하지 않는 경로이기 때문. 따라서 경로빌드 후 생성될 경로를 절대 경로로
-	 * 프로퍼티에 관리하는 편이 좋다.
-	 */
+	@Test
+	public void initialize() throws IOException {
+		Path path = Paths.get("src/test/resources/path-test/amiexist.txt");
+		Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
+		Path path2 = Paths.get("C:\\project\\workspace");
+		Path path3 = Paths.get("localhost/upload");
+		Path path4 = Paths.get("/localhost/upload");
+
+		Assert.assertEquals("src\\test\\resources\\path-test\\amiexist.txt", path.toString());
+		Assert.assertEquals("\\\\C\\project\\workspace", path1.toString());
+		Assert.assertEquals("C:\\project\\workspace", path2.toString());
+		Assert.assertEquals("localhost\\upload", path3.toString());
+		Assert.assertEquals("\\localhost\\upload", path4.toString());
+	}
 
 	@Test
 	public void testRelativize() {
@@ -48,21 +61,6 @@ public class PathTest {
 		Path dev = new File("c:\\dev\\git").toPath();
 		Path someFile = dev.resolve("someFile");
 		Assert.assertEquals("c:\\dev\\git\\someFile", someFile.toString());
-	}
-
-	@Test
-	public void newInstance() throws IOException {
-		Path path = Paths.get("src/test/resources/path-test/amiexist.txt");
-		Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
-		Path path2 = Paths.get("C:\\project\\workspace");
-		Path path3 = Paths.get("localhost/upload");
-		Path path4 = Paths.get("/localhost/upload");
-
-		Assert.assertEquals("src\\test\\resources\\path-test\\amiexist.txt", path.toString());
-		Assert.assertEquals("\\\\C\\project\\workspace", path1.toString());
-		Assert.assertEquals("C:\\project\\workspace", path2.toString());
-		Assert.assertEquals("localhost\\upload", path3.toString());
-		Assert.assertEquals("\\localhost\\upload", path4.toString());
 	}
 
 	@Test

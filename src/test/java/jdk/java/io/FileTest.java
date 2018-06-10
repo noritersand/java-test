@@ -24,13 +24,13 @@ public class FileTest {
 	 */
 
 	@Test
-	public void getNewInstance() {
+	public void initialize() {
 		File file = new File("/qweasdqweasd"); // 이클립스를 실행한 드라이브의 루트의 qweasdqweasd 폴더
 		Assert.assertFalse(file.exists());
 	}
 
 	@Test
-	public void getNewInstanceFromPath() {
+	public void initializeWithPath() {
 		Path path = Paths.get("src/test/resources/file-test/amiexist.txt");
 		logger.debug(path.toString());
 		File file = path.toFile();
