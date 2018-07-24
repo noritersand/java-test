@@ -1,6 +1,7 @@
 package jdk.java.io;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -38,5 +39,11 @@ public class FileTest {
 		logger.debug(file.getAbsolutePath());
 		Assert.assertEquals(file.getAbsolutePath(), file.getAbsoluteFile().toString());
 		Assert.assertTrue(file.exists());
+	}
+	
+	@Test
+	public void testCreateTempFile() throws IOException {
+		File file = File.createTempFile("head-", ".tmp");
+		logger.debug(file.getPath());		
 	}
 }

@@ -37,6 +37,7 @@ public class PathTest {
 		Assert.assertEquals("\\\\C\\project\\workspace", path1.toString());
 		Assert.assertEquals("C:\\project\\workspace", path2.toString());
 		Assert.assertEquals("localhost\\upload", path3.toString());
+		Assert.assertEquals("localhost\\upload", path3.toString());
 		Assert.assertEquals("\\localhost\\upload", path4.toString());
 	}
 
