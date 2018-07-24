@@ -19,8 +19,8 @@ public class FileTest {
 	private static final Logger logger = LoggerFactory.getLogger(FileTest.class);
 
 	/*
-	 * src/main 혹은 src/test는 로컬에서만 사용해야하는 경로다. 이 경로들은 메이븐 개발 환경에서만 존재하는 폴더 구조이고 war나 jar로 빌드되면 존재하지 않는 경로이기 때문. 따라서 경로빌드 후 생성될 경로를 절대 경로로
-	 * 프로퍼티에 관리하는 편이 좋다.
+	 * src/main 혹은 src/test는 이클립스에서 직접 VM을 실행할 때에만 사용해야하는 경로다. 이 경로들은 메이븐 개발 환경에서만 존재하는 폴더 구조이고 war나 jar로 빌드되면 존재하지 않는 경로이기 때문.
+	 * 따라서 테스트 케이스가 아니라면, 파일 경로는 src/main가 아닌 절대 경로이면서 프로퍼티(properties 혹은 xml)로 관리해야 한다.
 	 */
 
 	@Test
