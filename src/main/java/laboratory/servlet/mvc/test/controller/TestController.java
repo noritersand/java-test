@@ -161,18 +161,18 @@ public class TestController {
 	
 	@UrlMapping("/test/session-invalidate-test.view")
 	public View drawSessionInvalidateTest(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession ss = request.getSession();
+		HttpSession session = request.getSession();
 		
-		logger.debug("session id: {}", ss.getId());
+		logger.debug("session id: {}", session.getId());
 		
-		ss.setAttribute("a", 123);
-		int a = (int) ss.getAttribute("a");
+		session.setAttribute("a", 123);
+		int a = (int) session.getAttribute("a");
 		logger.debug(String.valueOf(a == 123));
 		
-		ss.invalidate(); // 세션 무효화
+		session.invalidate(); // 세션 무효화
 		
 		// 아이디는 아직 그대로
-		logger.debug("session id after invalidate: {}", ss.getId());
+		logger.debug("session id after invalidate: {}", session.getId());
 		
 		// invalidate() 호출 후에는 set이나 get을 할 수 없음.
 //		ss.setAttribute("b", 456); // IllegalStateException: setAttribute: Session has already been invalidated
