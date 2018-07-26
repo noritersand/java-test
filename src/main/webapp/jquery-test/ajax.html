@@ -9,15 +9,15 @@
 <h2>ajax test</h2>
 <p>response: <span style="color: red" id="result"></span></p>
 <script>
-$.ajax({
-	url: '/test/readFormalParameter.data?a=1',
-	data: 'b=2&c=3',
-	dataType: 'json',
-	success: function(data) {
-		console.log('success');
-		$('#result').text(data.message);
-	}
-})
+	$.ajax({
+		url: '/test/readFormalParameter.data?a=1',
+		data: 'b=2&c=3',
+		dataType: 'json',
+		success: function(data) {
+			console.log('success');
+			$('#result').text(data.message);
+		}
+	})
 </script>
 </body>
 </html>

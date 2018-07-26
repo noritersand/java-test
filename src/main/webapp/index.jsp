@@ -106,6 +106,11 @@
 				</ul>
 			</li>
 			<li><a href="/js-test/phone-number/lib-phone-number-test.html">phone-number: library test</a></li>
+			<li>AJAX
+				<ul>
+					<li><a href="/js-test/ajax/cors-test.html">JavaScript CORS test</a></li>
+				</ul>
+			</li>
 		</ul>	
 	</li>
 	<li>
@@ -117,6 +122,7 @@
 			<li><a href="/jquery-test/jquery-3-x-x-test.html">jquery 3.x test</a></li>
 			<li><a href="/jquery-test/form-empty-check.html">form empty check</a></li>
 			<li><a href="/jquery-test/replace-attribute.html">replace attribute</a></li>
+			<li><a href="/jquery-test/cors-test.html">jQuery CORS test</a></li>
 		</ul>
 	</li>
 </ul>

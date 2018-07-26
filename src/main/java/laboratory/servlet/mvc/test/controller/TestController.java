@@ -179,5 +179,16 @@ public class TestController {
 //		ss.getAttribute("b"); // IllegalStateException: getAttribute: Session already invalidated
 
 		return new View(request);
-	}	
+	}
+	
+	@UrlMapping("/test/take-my-cross-origin-attack.data")
+	public JsonResponseObject takeMyCrossOriginAttack(HttpServletRequest request, HttpServletResponse response) {
+//		response.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		JsonResponseObject json = new JsonResponseObject();
+		
+		json.setSuccess(true);
+		
+		return json;
+	}
 }
