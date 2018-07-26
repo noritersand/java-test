@@ -64,7 +64,8 @@
 				<ul>
 					<li><a href="/js-test/date/date.html">date test</a></li>
 					<li><a href="/js-test/date/calculate-elapsed-time.html">date: calculate elapsed time</a></li>
-					<li><a href="/js-test/date/add-months.html">date: add months 윤년 계산해서 달 넘기기</a></li>
+					<li><a href="/js-test/date/add-months.html">date: add months 자바스크립트 달 넘기기</a></li>
+					<li><a href="/js-test/date/add-months2.html">date: add months 자바스크립트 달 넘기기2</a></li>
 					<li><a href="/js-test/date/select-month.html">date: select month 셀렉트 박스에서 달 선택</a></li>
 					<li><a href="/js-test/date/new-date.html">date: new date</a></li>
 				</ul>
