@@ -18,8 +18,10 @@
 	    return this;
 	};
 	
-	var now = new Date('2018-07-31');
-	console.log("2018년 7월 31일로 설정: " + now.toISOString());
+	var now = new Date('2018-07-31T09:00:00.000+09:00');
+	console.log("한국 시간 2018년 7월 31일 09시로 설정: ");
+	console.log("toISOString(): ", now.toISOString());
+	console.log("toLocaleString(): ", now.toLocaleString());
 	now.addMonths(1);
 	console.log("+1: " + now.toISOString());
 	now.addMonths(1);
@@ -35,8 +37,10 @@
 	now.addMonths(1);
 	console.log("+7: " + now.toISOString());
 	
-	var now = new Date('2018-07-31');
-	console.log("다시 2018년 7월 31일로 설정: " + now.toISOString());
+	var now = new Date('2018-07-31T09:00:00.000+09:00');
+	console.log("다시 한국 시간 2018년 7월 31일 09시로 설정: ");
+	console.log("toISOString(): ", now.toISOString());
+	console.log("toLocaleString(): ", now.toLocaleString());
 	now.addMonths(-1);
 	console.log("-1: " + now.toISOString());
 	now.addMonths(-1);
