@@ -4,7 +4,7 @@
 <head>
 <title>what is payload body</title>
 <meta charset="UTF-8">
-<script src="/resources/js/jquery-1.12.4.js"></script>
+<script src="/static/js/jquery-1.12.4.js"></script>
 </head>
 <body>
 <h2>what <del>the fuck</del> is payload body?</h2>

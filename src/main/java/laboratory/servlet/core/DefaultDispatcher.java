@@ -1,6 +1,7 @@
 package laboratory.servlet.core;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
@@ -80,8 +81,14 @@ public class DefaultDispatcher extends HttpServlet {
 		Object instance = object[0];
 		Method method = (Method) object[1];
 
-		Object responseObject = methodInvoker.invoke(instance, method, request, response);
+		try {
+			Object responseObject = methodInvoker.invoke(instance, method, request, response);
+			viewResolver.sendResponse(responseObject, request, response);
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			// send error
+//			response.sendError(sc, msg);
+			response.sendError(500);
+		}
 		
-		viewResolver.sendResponse(responseObject, request, response);
 	}
 }

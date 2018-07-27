@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="/resources/js/jquery-1.12.4.js"></script>
+<script src="/static/js/jquery-1.12.4.js"></script>
 <title>scope test</title>
 </head>
 <body>

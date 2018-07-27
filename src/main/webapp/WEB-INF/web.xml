@@ -9,4 +9,12 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/error404.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/error500.html</location>
+	</error-page>
 </web-app> 

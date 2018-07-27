@@ -33,7 +33,7 @@ public class ClassPathTest {
 	}
 
 //	@Test // 로그가 너무 길어져서 생략
-	public void getAllResources() throws IOException {
+	public void getResources() throws IOException {
 		ClassPath classPath = ClassPath.from(this.getClass().getClassLoader());
 		ImmutableSet<ResourceInfo> resourceInfoSet = classPath.getResources();
 		UnmodifiableIterator<ResourceInfo> iterator = resourceInfoSet.iterator();

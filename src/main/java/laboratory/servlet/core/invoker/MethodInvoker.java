@@ -1,5 +1,6 @@
 package laboratory.servlet.core.invoker;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,5 +13,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author fixalot
  */
 public interface MethodInvoker {
-	public Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response);
+	public Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException;
 }
