@@ -13,12 +13,20 @@ function timeoutTest() {
 	$.ajax({
 		url: '/test/readFormalParameter.data',
 		method: 'get',
-		success: function(data) {
-			console.log('success');
-		}, error: function(data) {
-			console.log('error');
-		}, complete: function(data) {
-			console.log('complete');
+		success: function(data, textStatus, jqXhr) {
+			console.log('[success method]');
+			console.log('data:', data);
+			console.log('textStatus:', textStatus);
+			console.log('jqXhr:', jqXhr);
+		}, error: function(jqXhr, textStatus, errorThrown) {
+			console.log('[error method]');
+			console.log('jqXhr:', jqXhr);
+			console.log('textStatus:', textStatus);
+			console.log('errorThrown:', errorThrown);
+		}, complete: function(jqXhr, textStatus) {
+			console.log('[complete method]');
+			console.log('jqXhr:', jqXhr);
+			console.log('textStatus:', textStatus);
 		}
 	})
 }

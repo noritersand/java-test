@@ -6,8 +6,10 @@
 <script>
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-			console.log(xhr.responseText);
+		if (xhr.readyState == 4) {
+			console.log('status:', xhr.status);
+			console.log('statusText:', xhr.statusText);
+			console.log('responseText:', xhr.responseText);
 		}
     };
     xhr.open('GET', 'https://127.0.0.1:8443/test/take-my-cross-origin-attack.data');

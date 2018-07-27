@@ -13,9 +13,11 @@
 		url: '/test/readFormalParameter.data?a=1',
 		data: 'b=2&c=3',
 		dataType: 'json',
-		success: function(data) {
-			console.log('success');
+		success: function(data, textStatus, jqXhr) {
 			$('#result').text(data.message);
+			console.log('data:', data);
+			console.log('textStatus:', textStatus);
+			console.log('jqXhr:', jqXhr);
 		}
 	})
 </script>

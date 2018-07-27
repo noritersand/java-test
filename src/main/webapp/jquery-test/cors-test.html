@@ -10,10 +10,12 @@
 		url: 'https://127.0.0.1:8443/test/take-my-cross-origin-attack.data',
 		data: 'b=2&c=3',
 		dataType: 'json',
-		success: function(data) {
-			console.log('success');
-		}, error: function(request, status, error) {
-			console.error(error);
+		success: function(data, textStatus, jqXhr) {
+			console.log(data);
+			console.log(textStatus);
+		}, error: function(jqXhr, textStatus, errorThrown) {
+			console.log(textStatus);
+			console.log(errorThrown);
 		}
 	});
 </script>
