@@ -26,7 +26,6 @@
 			</li>
 			<li><a href="/test/what-is-payload-body.view">payload body란 무엇인가?</a></li>
 			<li><a href="/test/session-invalidate-test.view">session invalidate test</a></li>
-			<li><a href="/test/make-some-error.view">500 error page</a></li>
 		</ul>
 	</li>
 	<li>
@@ -36,6 +35,12 @@
 			<li><a href="/test/jstl/parseNumberFromString.view">parse number from string</a></li>
 			<li><a href="/test/jstl/jstl-test.view">JSTL test</a></li>
 			<li><a href="/test/jstl/el-scope-test.view">EL: scope test</a></li>
+			<li>error page
+				<ul>
+					<li><a href="/request-some-not-exits-page">404 error page</a></li>
+					<li><a href="/test/make-some-error.view">500 error page</a></li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 	<li>
