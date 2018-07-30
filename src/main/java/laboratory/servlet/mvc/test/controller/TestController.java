@@ -191,4 +191,11 @@ public class TestController {
 		
 		return json;
 	}
+	
+	@UrlMapping("/test/make-some-error.view")
+	public View makeSomeError(HttpServletRequest request, HttpServletResponse response) {
+		@SuppressWarnings("unused")
+		int nan = 1 / 0;
+		return null;
+	}
 }

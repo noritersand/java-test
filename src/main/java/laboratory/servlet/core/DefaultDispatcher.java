@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import laboratory.servlet.core.finder.MethodFinder;
+import laboratory.servlet.core.finder.NotFoundMappingException;
 import laboratory.servlet.core.finder.UrlMethodFinder;
 import laboratory.servlet.core.invoker.MethodInvoker;
 import laboratory.servlet.core.invoker.SimpleMethodInvoker;
@@ -77,7 +78,15 @@ public class DefaultDispatcher extends HttpServlet {
 		instanceList.add(testController);
 		instanceList.add(fileUploadWithOreilly);
 		
-		Object[] object = methodFinder.findMethod(instanceList, request, response);
+		Object[] object = null;
+		try {
+			object = methodFinder.findMethod(instanceList, request, response);
+		} catch (NotFoundMappingException e) {
+			logger.error(e.getMessage(), e);
+			response.sendError(404);
+			return;
+		}
+		
 		Object instance = object[0];
 		Method method = (Method) object[1];
 
@@ -87,7 +96,9 @@ public class DefaultDispatcher extends HttpServlet {
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			// send error
 //			response.sendError(sc, msg);
+			logger.error(e.getMessage(), e);
 			response.sendError(500);
+			return;
 		}
 		
 	}

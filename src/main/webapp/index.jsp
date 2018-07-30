@@ -26,7 +26,7 @@
 			</li>
 			<li><a href="/test/what-is-payload-body.view">payload body란 무엇인가?</a></li>
 			<li><a href="/test/session-invalidate-test.view">session invalidate test</a></li>
-			<li><a href="/test/makeSomeError.view">500 error page</a></li>
+			<li><a href="/test/make-some-error.view">500 error page</a></li>
 		</ul>
 	</li>
 	<li>
