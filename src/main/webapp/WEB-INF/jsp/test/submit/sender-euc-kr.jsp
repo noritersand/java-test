@@ -1,27 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta charset="euc-kr">
 <title>sender EUC-KR</title>
 </head>
 <body>
 <h1>input test</h1>
-<form method="get" action="/test/submit/receiver.view" accept-charset="EUC-KR">
+<form method="get" action="/test/submit/receiver.view" accept-charset="euc-kr">
 	<fieldset>
 		<legend>GET method</legend>
-		<input type="text" name="text" value="í•œê¸€" />
+		<input type="text" name="text" value="ÇÑ±Û" />
 		<input type="submit" value="submit" />
 	</fieldset>
 </form>
-<form method="post" action="/test/submit/receiver.view" accept-charset="EUC-KR">
+<form method="post" action="/test/submit/receiver.view" accept-charset="euc-kr">
 	<fieldset>
 		<legend>POST method</legend>
-		<input type="text" name="text" value="í•œê¸€" />
+		<input type="text" name="text" value="ÇÑ±Û" />
 		<input type="submit" value="submit" />
 	</fieldset>
 </form>
-<br><a href="/test/submit/sender.view">UTF-8ë¡œ ë³´ë‚´ê¸°</a>
-<br><a href="/test/submit/sender-iso-8859-1.view">ISO-8859-1ë¡œ ë³´ë‚´ê¸°</a>
+<br><a href="/test/submit/sender.view">UTF-8·Î º¸³»±â</a>
+<br><a href="/test/submit/sender-iso-8859-1.view">ISO-8859-1·Î º¸³»±â</a>
 </body>
 </html>
