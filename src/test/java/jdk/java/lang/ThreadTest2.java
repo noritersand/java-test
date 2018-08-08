@@ -20,7 +20,7 @@ public class ThreadTest2 {
 			throw new IllegalAccessError("여기 오면 안되는데");
 		}
 		
-		// while 필요없음. isAlive()는 스레드 생성 즉시 true를 반환하기 때문에 필요 없음 (데몬 스레드도 아니고...)
+		// isAlive()는 스레드 생성 즉시 true를 반환하기 때문에 while문은 무의미함. (데몬 스레드도 아니고...)
 //		while (true) {
 //			if (thread.isAlive()) { // thread가 alive를 true로 반환할 때까지 무한루프
 //				thread.interrupt();
