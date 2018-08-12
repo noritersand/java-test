@@ -196,6 +196,6 @@ public class TestController {
 	public View makeSomeError(HttpServletRequest request, HttpServletResponse response) {
 		@SuppressWarnings("unused")
 		int nan = 1 / 0;
-		return null;
+		return null; 
 	}
 }
