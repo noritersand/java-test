@@ -1,6 +1,7 @@
 package laboratory.servlet.mvc.test.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -197,5 +198,25 @@ public class TestController {
 		@SuppressWarnings("unused")
 		int nan = 1 / 0;
 		return null; 
+	}
+	
+	@UrlMapping("/test/reponse-character-set-test.data")
+	public void getReponseCharacterSetTest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		logger.debug(System.getProperty("file.encoding"));
+	
+		/**
+		 * response의 케릭터셋을 지정하지 않는 경우 응답의 케릭터셋은 요청과 같으며,
+		 * 브라우저의 기본 요청 케릭터셋은 ISO-8859-1이다.
+		 */
+		
+		// response.setCharacterEncoding()을 호출하지 않으면 요청과 같은 케릭터셋으로 응답 문자가 인코딩된다.
+		response.setCharacterEncoding("utf-8");
+		
+		// Content-type을 지정하지 않으면 브라우저 지 맘대로 케릭터셋을 지정함.
+		response.setContentType("text/html; charset=utf-8");
+		
+		PrintWriter writer = response.getWriter();
+		writer.write("a한글a");
+		writer.close();
 	}
 }

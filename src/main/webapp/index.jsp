@@ -10,8 +10,9 @@
 <h2>Index</h2>
 <ul>
 	<li>
-		<h4>JAVA</h4>
+		<h4>JAVA &amp; JSP &amp; Servlet</h4>
 		<ul>
+			<li><a href="/test/reponse-character-set-test.data">response character set test</a></li>
 			<li><a href="/test/submit/sender.view">unicode character submission test</a></li>
 			<li>include
 				<ul>
@@ -26,11 +27,6 @@
 			</li>
 			<li><a href="/test/what-is-payload-body.view">payload body란 무엇인가?</a></li>
 			<li><a href="/test/session-invalidate-test.view">session invalidate test</a></li>
-		</ul>
-	</li>
-	<li>
-		<h4>JSP &amp; Servlet</h4>
-		<ul>
 			<li><a href="/test/customtag/parent.view">custom tag</a></li>
 			<li><a href="/test/jstl/parseNumberFromString.view">parse number from string</a></li>
 			<li><a href="/test/jstl/jstl-test.view">JSTL test</a></li>
