@@ -206,7 +206,7 @@ public class TestController {
 	
 		/**
 		 * response의 케릭터셋을 지정하지 않는 경우 응답의 케릭터셋은 요청과 같으며,
-		 * 브라우저의 기본 요청 케릭터셋은 ISO-8859-1이다.
+		 * 브라우저의 기본 요청 케릭터셋은 ISO-8859-1 일껄? (...)
 		 */
 		
 		// response.setCharacterEncoding()을 호출하지 않으면 요청과 같은 케릭터셋으로 응답 문자가 인코딩된다.
