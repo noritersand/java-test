@@ -32,7 +32,7 @@ import laboratory.servlet.mvc.test.controller.TestController;
 public class DefaultDispatcher extends HttpServlet {
 	private static final long serialVersionUID = 6174311087878978970L;
 
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(DefaultDispatcher.class);
 
 	@SuppressWarnings("unused")
