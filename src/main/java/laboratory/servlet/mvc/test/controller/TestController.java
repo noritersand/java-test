@@ -25,18 +25,18 @@ public class TestController {
 	 * 유니코드 문자 전송 테스트 화면.
 	 * UTF-8 인코딩 사용.
 	 */
-	@UrlMapping("/test/submit/sender.view")
+	@UrlMapping("/test/submission-charset-test/sender.view")
 	public View drawSender(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/submit/sender-euc-kr.view")
+	@UrlMapping("/test/submission-charset-test/sender-euc-kr.view")
 	public View drawSenderEucKr(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug(RequestUtil.getRequestParameter(request).toString());
-		return new View("/test/submit/sender-euc-kr");
+		return new View("/test/submission-charset-test/sender-euc-kr");
 	}
 	
-	@UrlMapping("/test/submit/sender-iso-8859-1.view")
+	@UrlMapping("/test/submission-charset-test/sender-iso-8859-1.view")
 	public View drawSenderIso88591(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug(RequestUtil.getRequestParameter(request).toString());
 		return new View(request);
@@ -50,7 +50,7 @@ public class TestController {
 	 * @return
 	 * @author fixalot
 	 */
-	@UrlMapping("/test/submit/receiver.view")
+	@UrlMapping("/test/submission-charset-test/receiver.view")
 	public View drawReceiver(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug(RequestUtil.getRequestParameter(request).toString());
 		return new View(request);

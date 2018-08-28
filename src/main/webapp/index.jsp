@@ -12,8 +12,8 @@
 	<li>
 		<h4>JAVA &amp; JSP &amp; Servlet</h4>
 		<ul>
-			<li><a href="/test/reponse-character-set-test.data">response character set test</a></li>
-			<li><a href="/test/submit/sender.view">unicode character submission test</a></li>
+			<li><a href="/test/reponse-character-set-test.data">응답 문자셋 테스트</a></li>
+			<li><a href="/test/submission-charset-test/sender.view">유니코드 문자 서브미션 테스트</a></li>
 			<li>include
 				<ul>
 					<li><a href="/test/include-test/with-jsp.view">include test with jsp</a></li>
@@ -40,7 +40,7 @@
 		</ul>
 	</li>
 	<li>
-		<h4>HTML&amp;CSS</h4>
+		<h4>HTML &amp; CSS</h4>
 		<ul>
 			<li><a href="/html-test/tag/a.html">&lt;a&gt;</a></li>
 			<li><a href="/html-test/tag/label.html">&lt;label&gt;</a></li>
@@ -49,6 +49,7 @@
 			<li><a href="/html-test/opener/opener-test3.html">opener test #2</a></li>
 			<li><a href="/html-test/iframe/parent.html">iframe test</a></li>
 			<li><a href="/html-test/relative-path/parent.html">relative path test</a></li>
+			<li><a href="/html-test/submission-charset-test/without-content-type-header.html">Content-Type 없을때의 글자 인코딩 테스트</a></li>
 		</ul>
 	</li>
 	<li>
