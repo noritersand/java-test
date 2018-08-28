@@ -215,6 +215,13 @@ public class TestController {
 		// Content-type을 지정하지 않으면 브라우저 지 맘대로 케릭터셋을 지정함.
 		response.setContentType("text/html; charset=utf-8");
 		
+		/*
+		 * Content-type 지정은 매우 중요한데, 요청 시 전달하는 form data나 payload의 인코딩 케릭터셋은 페이지의 케릭터셋을 따른다. 
+		 * 가령 응답헤더에 'Content-Type: text/html;charset=euc-kr'가 있는 페이지에선 
+		 * '다다다'라는 한글을 form data로 전달할 때 euc-kr 케릭터셋인 '%B4%D9%B4%D9%B4%D9'으로 바뀐다.
+		 * 정황상 브라우저가 케릭터셋을 결정하는 방법에서 HTML의 meta 태그보다 응답 헤더를 우선시 한다고 추정할 수 있다.
+		 */
+		
 		PrintWriter writer = response.getWriter();
 		writer.write("a한글a");
 		writer.close();
