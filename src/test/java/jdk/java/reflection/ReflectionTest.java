@@ -27,11 +27,13 @@ public class ReflectionTest {
 		Method method = clazz.getDeclaredMethod("myMethod");
 		Assert.assertNotNull(method);
 		Assert.assertEquals("finally you found me!", method.invoke(instance));
+		Assert.assertEquals("myMethod", method.getName());
 
 		// access field
 		Field field = clazz.getDeclaredField("myField");
 		Assert.assertNotNull(field);
 		Assert.assertEquals(0, field.get(instance));
+		Assert.assertEquals("myField", field.getName());
 	}
 
 	@SuppressWarnings("unused")
