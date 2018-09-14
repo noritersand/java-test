@@ -7,14 +7,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class HttpURLConnectionTest {
 	private static final Logger logger = LoggerFactory.getLogger(HttpURLConnectionTest.class);
 	
-	@Test
+//	@Test
 	public void connectionTest() throws IOException {
 		URL url = new URL("http://localhost:8080");
 		HttpURLConnection con = (HttpURLConnection)url.openConnection();

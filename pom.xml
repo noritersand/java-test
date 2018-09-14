@@ -10,7 +10,7 @@
 
 	<properties>
 		<encoding>UTF-8</encoding>
-		<java-version>9</java-version>
+		<java-version>10</java-version>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 		<org.aspectj-version>1.8.0</org.aspectj-version>
