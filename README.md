@@ -3,7 +3,7 @@ my little laboratory
 
 #### environments
 - maven
-- jdk9
+- jdk10
 - tomcat9
 
 ## SSL 설정하기
