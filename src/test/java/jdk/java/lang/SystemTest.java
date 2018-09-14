@@ -1,5 +1,6 @@
 package jdk.java.lang;
 
+import java.nio.charset.Charset;
 import java.util.Enumeration;
 import java.util.Map;
 import java.util.Properties;
@@ -28,48 +29,45 @@ public class SystemTest {
 		// 둘이 합쳐 28이 아니고 나노초는 14자일때도 있음.
 	}
 
+	/**
+	 * 모든 환경 변수 조회. 로그가 길어져서 주석 처리 함.
+	 */
 	@Test
 	public void getSystemEnvironmentVariables() {
 		Map<String, String> env = System.getenv();
 		Set<String> keySet = env.keySet();
-		logger.debug("env logging begin");
-		for (String key : keySet) {
-			logger.debug(env.get(key));
+//		logger.debug("env logging begin");
+		for (String envname : keySet) {
+			logger.debug("envname: {}, value: {}", envname, env.get(envname));
 		}
-		logger.debug("env logging done");
+//		logger.debug("env logging done");
+	}
+
+	/**
+	 * 모든 시스템 프로퍼티 조회. 로그가 길어져서 주석 처리 함.
+	 */
+	@Test
+	public void getSystemProperties() {
+		Properties props = System.getProperties();
+		Enumeration<?> names = props.propertyNames();
+//		logger.debug("property logging begin");
+		while (names.hasMoreElements()) {
+			final String propname = (String) names.nextElement();
+			logger.debug("propname: {}, value: {}", propname, props.getProperty(propname));
+		}
+//		logger.debug("property logging done");
+	}
+
+	@Test
+	public void getDefaultEncodingProperty() {
+		logger.debug("file.encoding: {}", System.getProperty("file.encoding"));
+		logger.debug("default character set: {}", Charset.defaultCharset());
+		Assert.assertEquals(Charset.defaultCharset().toString(), System.getProperty("file.encoding").toUpperCase());
 	}
 
 	@Test
 	public void shouldBeNull() {
 		Assert.assertNull(System.getProperty("i'm not here"));
-	}
-	
-	@Test
-	public void getSystemProperties() {
-		Properties props = System.getProperties();
-		Enumeration<?> names = props.propertyNames();
-		logger.debug("property logging begin");
-		while (names.hasMoreElements()) {
-			String string = (String) names.nextElement();
-			logger.debug(string);
-		}
-		logger.debug("property logging done");
-	}
-
-	/**
-	 * 이 케이스는 JUNIT에선 성공하지만 MAVEN에선 실패한다. 메이븐 테스트는 OS의 케릭터 인코딩을 사용한다고 한다. (윈도우라면 MS949) 아래 링크 참고: <a href=
-	 * "http://stackoverflow.com/questions/3017695/how-to-configure-encoding-in-maven">http://stackoverflow.com/questions/3017695/how-to-configure-encoding-in-maven</a>
-	 * 
-	 * @author fixalot
-	 */
-//	@Test
-	public void getDefaultEncodingProperty() {
-//		Assert.assertEquals("UTF-8", System.getProperty("file.encoding")); // maven test에선 utf-8이 아님		
-	}
-
-	@Test
-	public void getEmptyProperty() {
-		Assert.assertNull(System.getProperty("this.is.must.be.null"));
 	}
 
 	@Test
