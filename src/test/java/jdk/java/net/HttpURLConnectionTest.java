@@ -13,6 +13,12 @@ import org.slf4j.LoggerFactory;
 public class HttpURLConnectionTest {
 	private static final Logger logger = LoggerFactory.getLogger(HttpURLConnectionTest.class);
 	
+	/**
+	 * 로컬 서버 안띄워놓으면 접속 안되서 막음.
+	 * 
+	 * @throws IOException
+	 * @author fixal
+	 */
 //	@Test
 	public void connectionTest() throws IOException {
 		URL url = new URL("http://localhost:8080");
