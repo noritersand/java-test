@@ -138,7 +138,19 @@ public class TestController {
 	}
 	
 	@UrlMapping("/test/jstl/jstl-test.view")
-	public View drawElTest(HttpServletRequest request, HttpServletResponse response) {
+	public View drawJstlTest(HttpServletRequest request, HttpServletResponse response) {
+		return new View(request);
+	}
+	
+	@UrlMapping("/test/jstl/el-operator-test.view")
+	public View drawElOperatorTest(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("longZero", 0L);
+		request.setAttribute("longOne", 1L);
+		request.setAttribute("longHundred", 100L);
+		request.setAttribute("mustBeNull", null);
+		HashMap<String, Long> map = new HashMap<String, Long>();
+		map.put("longThousand", 1000L);
+		request.setAttribute("map", map);
 		return new View(request);
 	}
 	

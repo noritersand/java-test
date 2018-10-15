@@ -31,6 +31,7 @@
 			<li><a href="/test/jstl/parseNumberFromString.view">parse number from string</a></li>
 			<li><a href="/test/jstl/jstl-test.view">JSTL test</a></li>
 			<li><a href="/test/jstl/el-scope-test.view">EL: scope test</a></li>
+			<li><a href="/test/jstl/el-operator-test.view">EL: operator test</a></li>
 			<li>error page
 				<ul>
 					<li><a href="/request-some-not-exits-page">404 error page</a></li>
