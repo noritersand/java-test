@@ -5,9 +5,6 @@
 <jsp:include page="/WEB-INF/jsp/include/head.jsp"/>
 <title>XSS test</title>
 <script>
-function send() {
-	
-}	
 </script>
 </head>
 <body>
