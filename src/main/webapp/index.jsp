@@ -10,6 +10,10 @@
 <h2>Index</h2>
 <ul>
 	<li>
+		<h4>Security</h4>
+		<ul>
+			<li><a href="/security-test/xss-test.view?param1=">XSS 테스트</a></li>
+		</ul>
 		<h4>JAVA &amp; JSP &amp; Servlet</h4>
 		<ul>
 			<li><a href="/test/reponse-character-set-test.data">응답 문자셋 테스트</a></li>
