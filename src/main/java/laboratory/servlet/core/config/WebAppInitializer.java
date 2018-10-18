@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebListener;
 
 import laboratory.servlet.core.DefaultDispatcher;
 import laboratory.servlet.core.filter.CharacterEncodingFilter;
+import laboratory.servlet.core.filter.HTMLTagFilter;
 import laboratory.servlet.core.filter.LogbackMdcFilter;
 
 /**
@@ -32,9 +33,13 @@ public class WebAppInitializer implements ServletContextListener {
 				DispatcherType.ERROR, DispatcherType.INCLUDE), false, "*.view", "*.data");
 
 		// 로그백 MDC 필터 등록. static resource 요청은 로그가 필요 없으므로 서블릿 URL 패턴과 동일하게 설정한다.
-		FilterRegistration.Dynamic logFilter = context.addFilter("mdcFilter", new LogbackMdcFilter());
-		logFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD), false,
+		FilterRegistration.Dynamic logbackMdcFilter = context.addFilter("logbackMdcFilter", new LogbackMdcFilter());
+		logbackMdcFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD), false,
 				"*.view", "*.data");
+		
+		FilterRegistration.Dynamic htmlTagFilter = context.addFilter("htmlTagFilter", new HTMLTagFilter());
+		htmlTagFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD), false,
+				"/filter-test/replace-httpservletrequest.view", "/filter-test/replace-httpservletrequest.data");
 
 		ServletRegistration.Dynamic servlet = context.addServlet("defaultDispatcher", new DefaultDispatcher());
 		servlet.addMapping("*.view");

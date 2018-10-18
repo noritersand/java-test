@@ -21,6 +21,7 @@ import laboratory.servlet.core.invoker.MethodInvoker;
 import laboratory.servlet.core.invoker.SimpleMethodInvoker;
 import laboratory.servlet.core.view.DefaultViewResolver;
 import laboratory.servlet.mvc.fileupload.controller.FileUploadWithOreilly;
+import laboratory.servlet.mvc.test.controller.FilterTestController;
 import laboratory.servlet.mvc.test.controller.SecurityTestController;
 import laboratory.servlet.mvc.test.controller.TestController;
 
@@ -47,6 +48,7 @@ public class DefaultDispatcher extends HttpServlet {
 
 	private TestController testController = new TestController();
 	private SecurityTestController securityTestController = new SecurityTestController();
+	private FilterTestController filterTestController = new FilterTestController();
 	private FileUploadWithOreilly fileUploadWithOreilly = new FileUploadWithOreilly();
 
 	@Override
@@ -79,6 +81,7 @@ public class DefaultDispatcher extends HttpServlet {
 		List<Object> instanceList = new LinkedList<>();
 		instanceList.add(testController);
 		instanceList.add(securityTestController);
+		instanceList.add(filterTestController);
 		instanceList.add(fileUploadWithOreilly);
 		
 		Object[] object = null;

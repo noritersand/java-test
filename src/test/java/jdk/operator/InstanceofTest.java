@@ -40,4 +40,9 @@ public class InstanceofTest {
 		Assert.assertTrue(roleList instanceof List);
 		Assert.assertFalse(arrayList instanceof RoleList);
 	}
+	
+	@Test
+	public void testThis() {
+		Assert.assertTrue(this instanceof InstanceofTest);
+	}
 }

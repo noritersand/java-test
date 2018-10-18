@@ -7,3 +7,6 @@ div {
 input {
 	width: 100%;
 }
+input.size-m {
+	width: 100px;
+}
