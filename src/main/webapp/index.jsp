@@ -62,6 +62,7 @@
 			<li><a href="/html-test/iframe/parent.html">iframe test</a></li>
 			<li><a href="/html-test/relative-path/parent.html">relative path test</a></li>
 			<li><a href="/html-test/submission-charset-test/without-content-type-header.html">Content-Type 없을때의 글자 인코딩 테스트</a></li>
+			<li><a href="/html-test/event/input-date.html">input-date event test</a></li>
 		</ul>
 	</li>
 	<li>

@@ -1,5 +1,9 @@
 package laboratory.servlet.mvc.test.controller;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletRequestWrapper;
 import javax.servlet.http.HttpServletRequest;
@@ -43,11 +47,17 @@ public class FilterTestController {
 		logger.debug("instanceof ServletRequestWrapper: {}", String.valueOf(request instanceof ServletRequestWrapper));
 		logger.debug("instanceof ServletRequest: {}", String.valueOf(request instanceof ServletRequest));
 		
-		final RequestParameter params = RequestUtil.getRequestParameter(request);
+		Map<String, String> map = new HashMap<>();
+		map.put("first", Arrays.toString(request.getParameterValues("first"))); // getParameterValues()와
+		map.put("second", request.getParameter("second")); // getParamter()는 메서드가 교체되었음.
+		logger.debug(map.toString());
+		
+		final RequestParameter params = RequestUtil.getRequestParameter(request); // getParameterMap()은 그대로
 		logger.debug(params.toString());
+		
 		JsonResponseObject responseJSON = new JsonResponseObject();
 		responseJSON.setSuccess(true);
-		responseJSON.setMessage(params.toString());
+		responseJSON.setMessage(map.toString());
 		return responseJSON;
 	}
 }

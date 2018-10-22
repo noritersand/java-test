@@ -1,12 +1,15 @@
 @charset "UTF-8";
 
-div {
+section {
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
 input {
 	width: 100%;
 }
+input.size-s {
+	width: 80px;
+}
 input.size-m {
-	width: 100px;
+	width: 160px;
 }
