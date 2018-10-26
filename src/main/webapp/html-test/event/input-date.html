@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>div align</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script src="/static/js/jquery-1.12.4.js"></script>
+<script>
+$(function() {
+	$('#dt').on('input', function() {
+		$('#input-result').text($('#dt').val());
+	});
+	$('#dt').on('change', function() {
+		$('#change-result').text($('#dt').val());
+	});
+});
+</script>
+</head>
+<body>
+<h2>input-date event test</h2>
+<p>change 이벤트 말고 input 이벤트가 따로 있음.</p>
+<input type="date" class="size-m" id="dt">
+<section>
+	<h4>input-result: </h4><p id="input-result"></p>
+	<h4>change-result: </h4><p id="change-result"></p>
+</section>
+</body>
+</html>
