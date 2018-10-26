@@ -3,12 +3,19 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <title>index</title>
 </head>
 <body>
 <h1>LABORATORY</h1>
 <h2>Index</h2>
 <ul>
+	<li>
+		<h4>HTTP</h4>
+		<ul>
+			<li><a href="/http-test/response-status-code.view">HTTP 응답 코드 테스트</a></li>
+		</ul>
+	</li>
 	<li>
 		<h4>JAVA &amp; JSP &amp; Servlet</h4>
 		<ul>

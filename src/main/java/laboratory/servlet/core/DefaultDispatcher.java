@@ -22,6 +22,7 @@ import laboratory.servlet.core.invoker.SimpleMethodInvoker;
 import laboratory.servlet.core.view.DefaultViewResolver;
 import laboratory.servlet.mvc.fileupload.controller.FileUploadWithOreilly;
 import laboratory.servlet.mvc.test.controller.FilterTestController;
+import laboratory.servlet.mvc.test.controller.HttpTestController;
 import laboratory.servlet.mvc.test.controller.SecurityTestController;
 import laboratory.servlet.mvc.test.controller.TestController;
 
@@ -46,10 +47,13 @@ public class DefaultDispatcher extends HttpServlet {
 	private MethodInvoker methodInvoker = new SimpleMethodInvoker();
 	private DefaultViewResolver viewResolver = new DefaultViewResolver();
 
+	private FileUploadWithOreilly fileUploadWithOreilly = new FileUploadWithOreilly();
+	
 	private TestController testController = new TestController();
 	private SecurityTestController securityTestController = new SecurityTestController();
 	private FilterTestController filterTestController = new FilterTestController();
-	private FileUploadWithOreilly fileUploadWithOreilly = new FileUploadWithOreilly();
+	private HttpTestController httpTestController = new HttpTestController();
+	
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -79,10 +83,11 @@ public class DefaultDispatcher extends HttpServlet {
 		 * req.setCharacterEncoding("UTF-8");
 		 */
 		List<Object> instanceList = new LinkedList<>();
+		instanceList.add(fileUploadWithOreilly);
 		instanceList.add(testController);
 		instanceList.add(securityTestController);
 		instanceList.add(filterTestController);
-		instanceList.add(fileUploadWithOreilly);
+		instanceList.add(httpTestController);
 		
 		Object[] object = null;
 		try {

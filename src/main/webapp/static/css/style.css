@@ -10,3 +10,6 @@ input {
 input.size-m {
 	width: 100px;
 }
+input.size-s {
+	width: 60px;
+}
