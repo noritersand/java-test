@@ -3,7 +3,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/static/image/favicon/favicon.png">
+<link rel="shortcut icon" href="/static/image/favicon/favicon.ico">
 <title>index</title>
 </head>
 <body>
