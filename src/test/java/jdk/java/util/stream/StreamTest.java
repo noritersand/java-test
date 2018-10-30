@@ -1,4 +1,4 @@
-package jdk.java.util.steam;
+package jdk.java.util.stream;
 
 import java.io.File;
 import java.io.IOException;
