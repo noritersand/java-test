@@ -10,9 +10,9 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class FilenameReplacer {
+public class FileNameReplacer {
 	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(FilenameReplacer.class);
+	private static final Logger logger = LoggerFactory.getLogger(FileNameReplacer.class);
 	
     private static final String targetLocation = "c:/temp";
     private static final String prefix = "02-alarm-";
