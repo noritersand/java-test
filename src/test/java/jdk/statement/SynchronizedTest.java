@@ -1,4 +1,4 @@
-package jdk.statements;
+package jdk.statement;
 
 import java.time.LocalDateTime;
 

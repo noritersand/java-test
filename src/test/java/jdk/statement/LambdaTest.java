@@ -1,4 +1,4 @@
-package jdk.statements;
+package jdk.statement;
 
 import java.util.ArrayList;
 import java.util.Arrays;

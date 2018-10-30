@@ -1,4 +1,4 @@
-package jdk.statements;
+package jdk.statement;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

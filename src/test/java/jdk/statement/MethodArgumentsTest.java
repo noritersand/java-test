@@ -1,4 +1,4 @@
-package jdk.statements;
+package jdk.statement;
 
 import org.junit.Test;
 import org.slf4j.Logger;
