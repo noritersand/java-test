@@ -19,8 +19,13 @@ public class ForStatementTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ForStatementTest.class);
 
+	/**
+	 * usage
+	 * 
+	 * @author fixalot
+	 */
 	@Test
-	public void usage() {
+	public void test() {
 		// 기본 사용 방법
 		int i;
 		for (i = 0; i < 1; i++) {

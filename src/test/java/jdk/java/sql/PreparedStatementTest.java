@@ -22,16 +22,24 @@ public class PreparedStatementTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(PreparedStatementTest.class);
 
+	/**
+	 * usage
+	 * 
+	 * @author fixalot
+	 */
 	@Test
 	public void test() {
 		// TODO
 
 		/*
-		 * 
-		 * try (Connection con = dataSource.getConnection()) { java.sql.PreparedStatement stmt = con.prepareStatement( "some query");
-		 * stmt.setFetchSize(2000); ResultSet rs = stmt.executeQuery(); getResultMapRows(rs); } catch (SQLException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 * 
+			try (Connection con = dataSource.getConnection()) { 
+				java.sql.PreparedStatement stmt = con.prepareStatement( "some query");
+				stmt.setFetchSize(2000);
+				ResultSet rs = stmt.executeQuery();
+				getResultMapRows(rs);
+			} catch (SQLException e) {
+				e.printStackTrace(); 
+			}
 		 */
 	}
 

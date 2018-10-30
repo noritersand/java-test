@@ -1,18 +1,12 @@
-package jdk.java.sql;
+package jdk.java.util;
 
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 
- * 
- * @since 2017-07-27
- * @author fixalot
- */
-public class CallableStatementTest {
+public class FormatterTest {
 	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(CallableStatementTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(FormatterTest.class);
 
 	/**
 	 * usage
@@ -22,5 +16,6 @@ public class CallableStatementTest {
 	@Test
 	public void test() {
 		// TODO
+		
 	}
 }

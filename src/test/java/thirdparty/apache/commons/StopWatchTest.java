@@ -16,6 +16,11 @@ public class StopWatchTest {
 //	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(StopWatchTest.class);
 
+	/**
+	 * usage
+	 * 
+	 * @author fixalot
+	 */
 	@Test
 	public void test() {
 		StopWatch watch = new StopWatch();
