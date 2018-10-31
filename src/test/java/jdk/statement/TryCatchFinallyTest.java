@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * try-catch-finally 테스트 유닛
+ * try-catch-finally 테스트 케이스
  * 
  * @since 2018-02-01
  * @author fixalot

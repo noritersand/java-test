@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 테스트 유닛: 스트림과 람다
+ * 테스트 케이스: 스트림과 람다
  * 
  * required jdk8 or higher
  * 
