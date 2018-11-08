@@ -11,13 +11,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FileNameReplacer {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(FileNameReplacer.class);
 	
-    private static final String targetLocation = "c:/temp";
+    private static final String targetLocation = "c:/dev/temp/target";
     private static final String prefix = "02-alarm-";
     private static final String suffix = "";
-    private static final String destLocation = "c:/temp";
+    private static final String destLocation = "c:/dev/temp/result";
 
     public static void main(String[] args) throws Exception {
         Path path = new File(targetLocation).toPath();
@@ -25,12 +24,21 @@ public class FileNameReplacer {
 
         // list.forEach(System.out::println);
 
+        File newPathParent = new File(destLocation);
+        if (!newPathParent.exists()) {
+        	newPathParent.mkdirs();
+        }
+        
         list.forEach((k) -> {
             final String fileName = k.toString();
             final String newFileName = prefix
                     + fileName.substring(fileName.lastIndexOf(File.separator) + 1)
                     + suffix;
             Path newPath = new File(destLocation, newFileName).toPath();
+            
+            // logging
+            logger.debug("{} -> {}", k.toString(), newPath.toString());
+            
             try {
                 Files.move(k, newPath, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
