@@ -53,9 +53,14 @@ public class HttpURLConnectionTest {
 		con.disconnect();
 	}
 	
+	/**
+	 * 원래 JSP에 있는 소스 퍼옴.
+	 * 
+	 * @author fixalot
+	 */
 	public void example1() {
 		/*
-		String[] serverUrls = { "https://google.com" };
+		String[] serverUrls = { "https://some-media-server.com" };
 		
 		String reqUrl = request.getQueryString();
 		if(reqUrl.indexOf("&_=") > -1){
@@ -79,7 +84,7 @@ public class HttpURLConnectionTest {
 		if(token != null) {
 		    reqUrl = reqUrl + (reqUrl.indexOf("?") > -1 ? "&" : "?") + "token=" + token;
 		}
-
+	
 		URL url = new URL(reqUrl);
 		HttpURLConnection con = (HttpURLConnection)url.openConnection();
 		con.setDoOutput(true);
@@ -102,19 +107,16 @@ public class HttpURLConnectionTest {
 		}
 		out.clear();
 		out = pageContext.pushBody();
-
+	
 		OutputStream ostream = response.getOutputStream();
 		response.setContentType(con.getContentType());
 		InputStream in = con.getInputStream();
-		final int length = 5000; // 5000 바이트씩 읽음. 이 설정 때문에 유니코드 문자는  깨질 수 있음(총 길이가 5000 바이트를 넘으면...)
+		final int length = 5000;
 		byte[] bytes = new byte[length];
 		int bytesRead = 0;
-		StringBuffer sb = new StringBuffer();
 		while ((bytesRead = in.read(bytes, 0, length)) > 0) {
-			sb.append(new String(bytes, 0, bytesRead, "UTF-8")); // 원본을 UTF-8로 읽어서 String으로
+			ostream.write(bytes, 0, bytesRead);
 		}
-		String outputString = sb.toString();
-		ostream.write(outputString.getBytes("EUC-KR")); // String을 EUC-KR로 내보냄.
 		
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		*/
