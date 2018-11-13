@@ -132,8 +132,8 @@ public class StringTest {
 	@Test
 	public void testReplaceAll() {
 		Assert.assertEquals("경기", "경기도".replaceAll("도", ""));
-		Assert.assertEquals("전라", "전라도".replaceAll("도", ""));
-		Assert.assertEquals("경상", "경상도".replaceAll("도", ""));
+		Assert.assertEquals("a-b", "a:b".replaceAll(":", "-"));
+		Assert.assertEquals("a-b", "a:b".replaceAll("\\:", "\\-"));
 	}
 
 	@Test
