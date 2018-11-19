@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class NoneLowercaseFilenameFinder {
-	private static final Logger logger = LoggerFactory.getLogger(NoneLowercaseFilenameFinder.class);
+public class NotLowercaseFilenameFinder {
+	private static final Logger logger = LoggerFactory.getLogger(NotLowercaseFilenameFinder.class);
 
 	private static final String targetLocation = "C:\\dev\\git\\noritersand.github.io\\_drafts";
 	private static final String targetLocation2 = "C:\\dev\\git\\noritersand.github.io\\_posts";
