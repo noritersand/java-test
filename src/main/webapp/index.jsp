@@ -60,6 +60,13 @@
 		</ul>
 	</li>
 	<li>
+		<h4>Browser</h4>
+		<ul>
+			<li><a href="/browser-test/new-window.html">new window 테스트</a></li>
+			<li><a href="/browser-test/new-window-popup.html">new window(팝업) 테스트</a></li>
+		</ul>
+	</li>
+	<li>
 		<h4>HTML &amp; CSS</h4>
 		<ul>
 			<li><a href="/html-test/tag/a.html">&lt;a&gt;</a></li>
