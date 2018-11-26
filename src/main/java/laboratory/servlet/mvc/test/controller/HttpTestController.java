@@ -24,10 +24,7 @@ public class HttpTestController {
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 	
 	/**
-	 * HTTP 응답코드 테스트
-	 * 
-	 * - https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/307
-	 * - https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/308
+	 * HTTP 응답코드 테스트.
 	 * 
 	 * @param request
 	 * @param response
@@ -41,23 +38,24 @@ public class HttpTestController {
 	}
 	
 	/**
-	 * 307 temporary redirect 응답
+	 * 301 moved permanently 응답.
+	 * https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301
 	 * 
 	 * @param request
 	 * @param response
-	 * @return
 	 * @author fixal
 	 * @throws IOException 
 	 */
-	@UrlMapping("/http-test/let-me-307-redirect.data")
-	public void letMe307Redirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT); // 307
+	@UrlMapping("/http-test/let-me-301-moved-permanently.data")
+	public void letMe301MovedPermanently(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY); // 301
 		response.setHeader("Location", "/http-test/you-should-be-here.data");
 		response.flushBuffer();
 	}
 	
 	/**
-	 * 302 found 응답
+	 * 302 found 응답.
+	 * https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302
 	 * 
 	 * @param request
 	 * @param response
@@ -70,6 +68,41 @@ public class HttpTestController {
 		response.setHeader("Location", "/http-test/you-should-be-here.data");
 		response.flushBuffer();
 //		response.sendRedirect("/http-test/you-should-be-here.data"); // 위 3줄과 같음
+	}
+	
+	/**
+	 * 307 temporary redirect 응답.
+	 * https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/307
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @author fixal
+	 * @throws IOException 
+	 */
+	@UrlMapping("/http-test/let-me-307-temporary-redirect.data")
+	public void letMe307TemporaryRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT); // 307
+		response.setHeader("Location", "/http-test/you-should-be-here.data");
+		response.flushBuffer();
+	}
+	
+	/**
+	 * 308 permanent redirect 응답.
+	 * https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/308
+	 * 이 응답코드는 윈도우7과 8.1에서 작동하지 않는다 함.
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @author fixal
+	 * @throws IOException 
+	 */
+	@UrlMapping("/http-test/let-me-308-permanent-redirect.data")
+	public void letMe308PermanentRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setStatus(308);
+		response.setHeader("Location", "/http-test/you-should-be-here.data");
+		response.flushBuffer();
 	}
 	
 	/**
@@ -89,6 +122,14 @@ public class HttpTestController {
 		return responseJSON;
 	}
 	
+	/**
+	 * 받아라 교차출처 어택
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @author fixalot
+	 */
 	@UrlMapping("/http-test/take-my-cross-origin-attack.data")
 	public JsonResponseObject takeMyCrossOriginAttack(HttpServletRequest request, HttpServletResponse response) {
 //		response.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");

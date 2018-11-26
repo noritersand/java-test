@@ -18,52 +18,16 @@
 		</ul>
 	</li>
 	<li>
-		<h4>JAVA &amp; JSP &amp; Servlet</h4>
+		<h4>Browser</h4>
 		<ul>
-			<li><a href="/test/reponse-character-set-test.data">응답 문자셋 테스트</a></li>
-			<li><a href="/test/submission-charset-test/sender.view">유니코드 문자 서브미션 테스트</a></li>
-			<li>include
-				<ul>
-					<li><a href="/test/include-test/with-jsp.view">include test with jsp</a></li>
-					<li><a href="/test/include-test/with-html.view">include test with html</a></li>
-				</ul>
-			</li>
-			<li>파일 업로드
-				<ul>
-					<li><a href="/test/fileupload/with-oreilly.view">oreilly multipart</a></li>
-				</ul>
-			</li>
-			<li><a href="/test/what-is-payload-body.view">payload body란 무엇인가?</a></li>
-			<li><a href="/test/session-invalidate-test.view">session invalidate test</a></li>
-			<li><a href="/test/customtag/parent.view">custom tag</a></li>
-			<li><a href="/test/jstl/parseNumberFromString.view">parse number from string</a></li>
-			<li><a href="/test/jstl/jstl-test.view">JSTL test</a></li>
-			<li><a href="/test/jstl/el-scope-test.view">EL: scope test</a></li>
-			<li><a href="/test/jstl/el-operator-test.view">EL: operator test</a></li>
-			<li>error page
-				<ul>
-					<li><a href="/request-some-not-exits-page">404 error page</a></li>
-					<li><a href="/test/make-some-error.view">500 error page</a></li>
-				</ul>
-			</li>
-			<li>servlet filter test
-				<ul>
-					<li><a href="/filter-test/replace-httpservletrequest.view">HttpServletRequest 구현부 교체 테스트</a></li>
-				</ul>
-			</li>
+			<li><a href="/browser-test/new-window.html">new window 테스트</a></li>
+			<li><a href="/browser-test/new-window-popup.html">new window(팝업) 테스트</a></li>
 		</ul>
 	</li>
 	<li>
 		<h4>Security</h4>
 		<ul>
 			<li><a href="/security-test/xss-test.view?param1=">XSS 테스트</a></li>
-		</ul>
-	</li>
-	<li>
-		<h4>Browser</h4>
-		<ul>
-			<li><a href="/browser-test/new-window.html">new window 테스트</a></li>
-			<li><a href="/browser-test/new-window-popup.html">new window(팝업) 테스트</a></li>
 		</ul>
 	</li>
 	<li>
@@ -154,6 +118,42 @@
 			<li><a href="/jquery-test/form-empty-check.html">form empty check</a></li>
 			<li><a href="/jquery-test/replace-attribute.html">replace attribute</a></li>
 			<li><a href="/jquery-test/cors-test.html">jQuery CORS test</a></li>
+		</ul>
+	</li>
+	<li>
+		<h4>JAVA &amp; JSP &amp; Servlet</h4>
+		<ul>
+			<li><a href="/test/reponse-character-set-test.data">응답 문자셋 테스트</a></li>
+			<li><a href="/test/submission-charset-test/sender.view">유니코드 문자 서브미션 테스트</a></li>
+			<li>include
+				<ul>
+					<li><a href="/test/include-test/with-jsp.view">include test with jsp</a></li>
+					<li><a href="/test/include-test/with-html.view">include test with html</a></li>
+				</ul>
+			</li>
+			<li>파일 업로드
+				<ul>
+					<li><a href="/test/fileupload/with-oreilly.view">oreilly multipart</a></li>
+				</ul>
+			</li>
+			<li><a href="/test/what-is-payload-body.view">payload body란 무엇인가?</a></li>
+			<li><a href="/test/session-invalidate-test.view">session invalidate test</a></li>
+			<li><a href="/test/customtag/parent.view">custom tag</a></li>
+			<li><a href="/test/jstl/parseNumberFromString.view">parse number from string</a></li>
+			<li><a href="/test/jstl/jstl-test.view">JSTL test</a></li>
+			<li><a href="/test/jstl/el-scope-test.view">EL: scope test</a></li>
+			<li><a href="/test/jstl/el-operator-test.view">EL: operator test</a></li>
+			<li>error page
+				<ul>
+					<li><a href="/request-some-not-exits-page">404 error page</a></li>
+					<li><a href="/test/make-some-error.view">500 error page</a></li>
+				</ul>
+			</li>
+			<li>servlet filter test
+				<ul>
+					<li><a href="/filter-test/replace-httpservletrequest.view">HttpServletRequest 구현부 교체 테스트</a></li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 </ul>

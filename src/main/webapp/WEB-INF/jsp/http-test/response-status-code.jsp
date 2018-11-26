@@ -10,15 +10,25 @@
 <body>
 <h1>HTTP 응답 코드 테스트</h1>
 <section>
-	<h4>307</h4>
-	<form method="post" action="/http-test/let-me-307-redirect.data">
+	<h4>301</h4>
+	<form method="post" action="/http-test/let-me-301-moved-permanently.data">
+		<input type="text" class="size-s" name="Homer-simpson-saying" value="D'oh!" >
+		<button type="submit">SUBMIT</button>
+	</form>
+	<h4>302</h4>
+	<form method="post" action="/http-test/let-me-302-found.data">
 		<input type="text" class="size-s" name="Homer-simpson-saying" value="D'oh!" >
 		<button type="submit">SUBMIT</button>
 	</form>
 </section>
 <section>
-	<h4>302</h4>
-	<form method="post" action="/http-test/let-me-302-found.data">
+	<h4>307</h4>
+	<form method="post" action="/http-test/let-me-307-temporary-redirect.data">
+		<input type="text" class="size-s" name="Homer-simpson-saying" value="D'oh!" >
+		<button type="submit">SUBMIT</button>
+	</form>
+	<h4>308</h4>
+	<form method="post" action="/http-test/let-me-308-permanent-redirect.data">
 		<input type="text" class="size-s" name="Homer-simpson-saying" value="D'oh!" >
 		<button type="submit">SUBMIT</button>
 	</form>
