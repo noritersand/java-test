@@ -194,6 +194,13 @@ public class TestController {
 		return new View(request);
 	}
 	
+	@UrlMapping("/test/response-not-found-error.view")
+	public View responseNotFoundError(HttpServletRequest request, HttpServletResponse response) {
+		@SuppressWarnings("unused")
+		int nan = 1 / 0;
+		return null; 
+	}
+	
 	@UrlMapping("/test/make-some-error.view")
 	public View makeSomeError(HttpServletRequest request, HttpServletResponse response) {
 		@SuppressWarnings("unused")

@@ -145,7 +145,8 @@
 			<li><a href="/test/jstl/el-operator-test.view">EL: operator test</a></li>
 			<li>error page
 				<ul>
-					<li><a href="/request-some-not-exits-page">404 error page</a></li>
+					<li><a href="/some-not-exits-url">404 error page</a></li>
+					<li><a href="/test/response-not-found-error.view">404 error page 2</a></li>
 					<li><a href="/test/make-some-error.view">500 error page</a></li>
 				</ul>
 			</li>
