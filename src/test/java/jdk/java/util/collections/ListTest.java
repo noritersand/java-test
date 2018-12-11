@@ -87,8 +87,30 @@ public class ListTest {
 		Assert.assertEquals(0, stringList.size()); // capacity 지정과 size는 관련 없음.
 	}
 
+	/**
+	 * 리스트 안의 특정 요소 삭제하기 #1
+	 * 
+	 * @author fixalot
+	 */
 	@Test
-	public void removeElement() {
+	public void removeElement1() {
+		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
+		Iterator<String> iter = list.iterator();
+		while (iter.hasNext()) {
+			String s = iter.next(); // 반드시 remove() 전에 호출되어야 함.
+			if (s.equals("a")) {
+				iter.remove();
+			}
+		}
+	}
+
+	/**
+	 * 리스트 안의 특정 요소 삭제하기 #2
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void removeElement2() {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
 		for (int i = 0; i < list.size(); i++) {
 			final String str = list.get(i);
@@ -101,8 +123,13 @@ public class ListTest {
 		Assert.assertEquals(3, list.size());
 	}
 
+	/**
+	 * 리스트 안의 특정 요소 삭제하기 #3
+	 * 
+	 * @author fixalot
+	 */
 	@Test
-	public void removeElement2() {
+	public void removeElement3() {
 		String[] strs = { "a", "b", "c", "d", "e" };
 
 		// 앞에서 3개 자르기

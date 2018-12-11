@@ -18,7 +18,7 @@ public class CollectionsTest {
 		List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
 		Assert.assertEquals(Integer.valueOf(1), Collections.min(list));
 	}
-	
+
 	@Test
 	public void testMax() {
 		List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);

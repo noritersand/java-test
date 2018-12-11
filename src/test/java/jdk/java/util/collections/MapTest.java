@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -19,9 +20,23 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  */
 public class MapTest {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MapTest.class);
 
+	@Test
+	public void testEntry() {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("first", "1st");
+		map.put("second", "2nd");
+		map.put("third", "3rd");
+
+		Set<Entry<String, String>> entry = map.entrySet();
+		for (Entry<String, String> ele : entry) {
+			String key = ele.getKey();
+			String value = ele.getValue();
+			logger.debug("key: {}, value: {}", key, value);
+		}
+	}
+	
 	@Test
 	public void shouldBeNull() {
 		HashMap<String, String> map = new HashMap<>();

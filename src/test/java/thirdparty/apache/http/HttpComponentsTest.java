@@ -1,5 +1,12 @@
 package thirdparty.apache.http;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -29,8 +36,7 @@ public class HttpComponentsTest {
 	}
 
 	/**
-	 * 간단한 요청 전송.
-	 * 응답의 문자열을 String으로 만들때 UTF-8 케릭터셋을 적용하도록 되어 있음.
+	 * 간단한 요청 전송. 응답의 문자열을 String으로 만들때 UTF-8 케릭터셋을 적용하도록 되어 있음.
 	 * 
 	 * @param uri
 	 * @return
@@ -55,5 +61,51 @@ public class HttpComponentsTest {
 			throw e;
 		}
 		return null;
+	}
+
+	/**
+	 * TODO 메서드 테스트해봐야함.
+	 * 
+	 * @param url
+	 * @param param
+	 * @return
+	 * @throws IOException
+	 * @author fixalot
+	 */
+	public String sendPostRequest(String url, String param) throws IOException {
+		URL object = new URL(url);
+
+		HttpURLConnection con = (HttpURLConnection) object.openConnection();
+		con.setDoOutput(true);
+		con.setDoInput(true);
+		con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+		con.setRequestProperty("Accept", "application/x-www-form-urlencoded");
+		con.setRequestMethod("POST");
+
+		OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
+
+		wr.write(param);
+		wr.flush();
+
+		// display what returns the POST request
+
+		StringBuilder sb = new StringBuilder();
+		int HttpResult = con.getResponseCode();
+		if (HttpResult == HttpURLConnection.HTTP_OK) {
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+			String line = null;
+
+			while ((line = br.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			br.close();
+
+			System.out.println("" + sb.toString());
+
+		} else {
+			System.out.println(con.getResponseMessage());
+		}
+
+		return sb.toString();
 	}
 }
