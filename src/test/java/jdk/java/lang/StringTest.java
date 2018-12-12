@@ -241,7 +241,7 @@ public class StringTest {
 	}
 
 	@Test
-	public void splitByLength() {
+	public void testSplitByLength() {
 		Assert.assertArrayEquals(new String[] { "abc", "def" }, splitByLength("abcdef", 3));
 		Assert.assertArrayEquals(new String[] { "abc", "def", "ef" }, splitByLength("abcdefef", 3));
 		Assert.assertArrayEquals(new String[] { "abcd", "ef12", "34" }, splitByLength("abcdef1234", 4));
