@@ -20,9 +20,9 @@ public class NotLowercaseFilenameFinder {
 
 	public static void main(String[] args) throws Exception {
 		String[] targetLocations = { 
-				"C:/dev/git/noritersand.github.io/_drafts", 
-				"C:/dev/git/noritersand.github.io/_posts" 
-				};
+			"C:/dev/git/noritersand.github.io/_drafts", 
+			"C:/dev/git/noritersand.github.io/_posts" 
+		};
 
 		for (String ele : targetLocations) {
 			find(ele);
@@ -35,6 +35,8 @@ public class NotLowercaseFilenameFinder {
 
 		targetList.forEach((ele) -> {
 			final String fileName = ele.getFileName().toString();
+			
+//			logger.debug("{}, {}, {}", fileName, fileName.toLowerCase(), fileName.equals(fileName.toLowerCase()));
 
 			if (!fileName.equals(fileName.toLowerCase())) {
 				logger.debug(fileName);
