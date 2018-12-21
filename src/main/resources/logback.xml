@@ -20,10 +20,10 @@
 			<OnMismatch>NEUTRAL</OnMismatch>
 		</filter>
 		<encoder>
-			<!-- <pattern>[%-5level] %msg%n</pattern> -->
-			<pattern>%date{HH:mm:ss.SSS} [%-5level] %method: %msg%n</pattern>
-			<!-- <pattern>[%-5level] %thread: %logger#%method: %msg%n</pattern> -->
-			<!-- <pattern>[%-5level] %date{ISO8601} %logger - %msg%n</pattern> -->
+			<!-- <pattern>|-%-5level %msg%n</pattern> -->
+			<pattern>%date{HH:mm:ss.SSS} |-%-5level %method: %msg%n</pattern>
+			<!-- <pattern>|-%-5level %thread: %logger#%method: %msg%n</pattern> -->
+			<!-- <pattern>|-%-5level %date{ISO8601} %logger - %msg%n</pattern> -->
 			<!-- official example -->
 			<!-- <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level: %logger{36} - %msg%n</pattern> -->
 		</encoder>
@@ -38,8 +38,8 @@
 			<totalSizeCap>20GB</totalSizeCap> <!-- 모든 파일의 전체 크기 제한 -->
 		</rollingPolicy>
 		<encoder>
-			<pattern>[%-5level] %date{ISO8601}: %X{req.remoteHost}|%X{req.requestURI}|%X{req.requestMethod}: %logger#%method: %msg%n</pattern>
-			<!-- <pattern>[%-5level] %date{ISO8601} %logger#%method: %msg%n</pattern> -->
+			<pattern>|-%-5level %date{ISO8601}: %X{req.remoteHost}|%X{req.requestURI}|%X{req.requestMethod}: %logger#%method: %msg%n</pattern>
+			<!-- <pattern>|-%-5level %date{ISO8601} %logger#%method: %msg%n</pattern> -->
 		</encoder>
 	</appender>
 
