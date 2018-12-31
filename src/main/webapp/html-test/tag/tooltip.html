@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>툴팁 테스트</title>
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script src="/static/js/jquery-1.12.4.js"></script>
+<style type="text/css">
+.tooltip {
+  position: relative;
+  display: inline-block;
+/*   border-bottom: 1px dotted black; */
+  border: 1px solid black;
+  padding: 8px 8px 8px 8px;
+  background-color: #c2e6ef;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+</head>
+<body>
+<h1>툴팁 테스트</h1>
+<section>
+	<h4>by tag-attribute</h4>
+	<div class="tooltip" title="반갑네! 나는 타이틀이라고 하네.">마우스를 올리고 기다리면 타이틀이 나타남
+	</div>
+</section>
+<section>
+	<h4>by css</h4>
+	<div class="tooltip">마우스를 올려보아요.
+		<span class="tooltiptext">뿅 하고 나타나는 글자</span>
+	</div>
+</section>
+</body>
+</html>
