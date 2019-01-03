@@ -9,13 +9,17 @@
 </head>
 <body>
 <h2>expression language operator test</h2>
-<h3>empty:</h3>
+<h3>empty operator</h3>
 <ul>
 	<li>${longZero}, empty?: ${empty longZero}</li>
 	<li>${longOne}, empty?: ${empty longOne}</li>
 	<li>${longHundred}, empty?: ${empty longHundred}</li>
 	<li>${mustBeNull ? 'is not null' : 'is null'}, empty?: ${empty mustBeNull}</li>
 	<li>${map}, empty?: ${empty map.longThousand}, empty2?: ${empty map.a.b.c.d.f.e.d}</li>
+</ul>
+<h3>not operator</h3>
+<ul>
+	<li>${someNotDefiendVariable ? true : false}, ${not someNotDefiendVariable ? true : false}</li>
 </ul>
 </body>
 </html>
