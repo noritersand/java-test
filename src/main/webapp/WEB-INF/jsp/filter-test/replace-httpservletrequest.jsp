@@ -11,9 +11,9 @@
 <h1>HttpServletRequest 구현부 교체 테스트</h1>
 <div>
 	<form method="post" action="/filter-test/replace-httpservletrequest.data">
-		<input type="text" class="size-m" name="first" value="유후후?" >
-		<input type="text" class="size-m" name="first" value="유후후?" >
-		<input type="text" class="size-m" name="second" value="유후?" >
+		<input type="text" class="medium" name="first" value="유후후?" >
+		<input type="text" class="medium" name="first" value="유후후?" >
+		<input type="text" class="medium" name="second" value="유후?" >
 		<button type="submit">날 눌러요 베이비</button>
 	</form>
 </div>

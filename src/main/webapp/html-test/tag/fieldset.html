@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>필드셋 테스트</title>
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script src="/static/js/jquery-1.12.4.js"></script>
+<style type="text/css">
+table {
+	border: 3px solid red;
+	padding: 5px 5px 5px 5px;
+}
+tbody {
+	border: 3px solid yellow;
+	padding: 5px 5px 5px 5px;
+}
+tr {
+	border: 3px solid purple;
+	padding: 5px 5px 5px 5px;
+}
+td {
+	border: 3px solid blue;
+	padding: 5px 5px 5px 5px;
+}
+fieldset {
+	border: 3px solid green;
+}
+</style>
+</head>
+<body>
+<h1>필드셋 테스트</h1>
+<section>
+	<h4>원래는 이렇게 쓰임</h4>
+	<form id="testForm">
+		<fieldset id="firstFieldSet">
+			<legend>레전설</legend>
+			<input type="text" class="small"> <input type="number" class="small"><br>
+			<input type="radio" id="rdo"><label for="rdo">헬로?</label><br>
+			<select>
+				<option selected>yo!</option>
+				<option>wassup?</option>
+			</select>
+		</fieldset>
+		<button type="button" onclick="$('#firstFieldSet').prop('disabled', false)">활성화</button>
+		<button type="button" onclick="$('#firstFieldSet').prop('disabled', true)">비활성화</button>
+	</form>
+</section>
+<section>
+	<h4>하지만 테이블이 출동하면 어떨까</h4>
+	<form id="tableForm1">
+		<table>
+			<tbody>
+				<tr>
+					<td>
+					<fieldset id="secondFieldSet">
+						<legend>td안의 레전설</legend>
+						<input type="text" value="td 안의 input 태그">
+					</fieldset>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="button" onclick="$('#secondFieldSet').prop('disabled', false)">활성화</button>
+		<button type="button" onclick="$('#secondFieldSet').prop('disabled', true)">비활성화</button>
+	</form>
+</section>
+<section>
+	<h4>하지만 테이블이 출동하면 어떨까 #2</h4>
+	<form id="tableForm2">
+		<table>
+			<tbody>
+				<tr>
+					<fieldset id="thirdFieldSet">
+						<legend>td밖의 레전설</legend>
+					<td>
+						<input type="text" value="나는 비활성화 안되지롱">
+					</td>
+					</fieldset>
+				</tr>
+			</tbody>
+		</table>
+		<button type="button" onclick="$('#thirdFieldSet').prop('disabled', false)">활성화</button>
+		<button type="button" onclick="$('#thirdFieldSet').prop('disabled', true)">비활성화</button>
+	</form>
+</section>
+<section>
+	<h4>하지만 테이블이 출동하면 어떨까 #3</h4>
+	<form id="tableForm3">
+		<table>
+			<fieldset id="fourthFieldSet">
+				<legend>tbody밖의 레전설</legend>
+				<tbody>
+					<fieldset id="fifthFieldSet">
+						<legend>tr밖의 레전설</legend>
+						<tr>
+							<td>
+								<input type="text" value="나도 안되지롱">
+							</td>
+						</tr>
+					</fieldset>
+				</tbody>
+			</fieldset>
+		</table>
+		<button type="button" onclick="$('#fourthFieldSet, #fifthFieldSet').prop('disabled', false)">활성화</button>
+		<button type="button" onclick="$('#fourthFieldSet, #fifthFieldSet').prop('disabled', true)">비활성화</button>
+	</form>
+</section>
+<section>
+	<h4>하지만 테이블이 출동하면 어떨까 #4</h4>
+	<form id="tableForm4">
+		<fieldset id="sixthFieldSet">
+			<legend>table밖의 레전설</legend>
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<input type="text" value="결국 날 잡았군 셜록">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+		<button type="button" onclick="$('#sixthFieldSet').prop('disabled', false)">활성화</button>
+		<button type="button" onclick="$('#sixthFieldSet').prop('disabled', true)">비활성화</button>
+	</form>
+</section>
+</body>
+</html>
