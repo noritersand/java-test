@@ -72,7 +72,8 @@ public class HttpComponentsTest {
 	 * @throws IOException
 	 * @author fixalot
 	 */
-	public String sendPostRequest(String url, String param) throws IOException {
+	@SuppressWarnings("unused")
+	private String sendPostRequest(String url, String param) throws IOException {
 		URL object = new URL(url);
 
 		HttpURLConnection con = (HttpURLConnection) object.openConnection();
