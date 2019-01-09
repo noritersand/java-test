@@ -66,47 +66,6 @@ fieldset {
 </section>
 <section>
 	<h4>하지만 테이블이 출동하면 어떨까 #2</h4>
-	<form id="tableForm2">
-		<table>
-			<tbody>
-				<tr>
-					<fieldset id="thirdFieldSet">
-						<legend>td밖의 레전설</legend>
-					<td>
-						<input type="text" value="나는 비활성화 안되지롱">
-					</td>
-					</fieldset>
-				</tr>
-			</tbody>
-		</table>
-		<button type="button" onclick="$('#thirdFieldSet').prop('disabled', false)">활성화</button>
-		<button type="button" onclick="$('#thirdFieldSet').prop('disabled', true)">비활성화</button>
-	</form>
-</section>
-<section>
-	<h4>하지만 테이블이 출동하면 어떨까 #3</h4>
-	<form id="tableForm3">
-		<table>
-			<fieldset id="fourthFieldSet">
-				<legend>tbody밖의 레전설</legend>
-				<tbody>
-					<fieldset id="fifthFieldSet">
-						<legend>tr밖의 레전설</legend>
-						<tr>
-							<td>
-								<input type="text" value="나도 안되지롱">
-							</td>
-						</tr>
-					</fieldset>
-				</tbody>
-			</fieldset>
-		</table>
-		<button type="button" onclick="$('#fourthFieldSet, #fifthFieldSet').prop('disabled', false)">활성화</button>
-		<button type="button" onclick="$('#fourthFieldSet, #fifthFieldSet').prop('disabled', true)">비활성화</button>
-	</form>
-</section>
-<section>
-	<h4>하지만 테이블이 출동하면 어떨까 #4</h4>
 	<form id="tableForm4">
 		<fieldset id="sixthFieldSet">
 			<legend>table밖의 레전설</legend>
@@ -124,5 +83,48 @@ fieldset {
 		<button type="button" onclick="$('#sixthFieldSet').prop('disabled', true)">비활성화</button>
 	</form>
 </section>
+<!-- 이렇게 쓰면 안됨 #1 -->
+<!-- <section> -->
+<!-- 	<h4>하지만 테이블이 출동하면 어떨까 #3</h4> -->
+<!-- 	<form id="tableForm2"> -->
+<!-- 		<table> -->
+<!-- 			<tbody> -->
+<!-- 				<tr> -->
+<!-- 					<fieldset id="thirdFieldSet"> -->
+<!-- 						<legend>td밖의 레전설</legend> -->
+<!-- 					<td> -->
+<!-- 						<input type="text" value="나는 비활성화 안되지롱"> -->
+<!-- 					</td> -->
+<!-- 					</fieldset> -->
+<!-- 				</tr> -->
+<!-- 			</tbody> -->
+<!-- 		</table> -->
+<!-- 		<button type="button" onclick="$('#thirdFieldSet').prop('disabled', false)">활성화</button> -->
+<!-- 		<button type="button" onclick="$('#thirdFieldSet').prop('disabled', true)">비활성화</button> -->
+<!-- 	</form> -->
+<!-- </section> -->
+<!-- 이렇게 쓰면 안됨 #2 -->
+<!-- <section> -->
+<!-- 	<h4>하지만 테이블이 출동하면 어떨까 #4</h4> -->
+<!-- 	<form id="tableForm3"> -->
+<!-- 		<table> -->
+<!-- 			<fieldset id="fourthFieldSet"> -->
+<!-- 				<legend>tbody밖의 레전설</legend> -->
+<!-- 				<tbody> -->
+<!-- 					<fieldset id="fifthFieldSet"> -->
+<!-- 						<legend>tr밖의 레전설</legend> -->
+<!-- 						<tr> -->
+<!-- 							<td> -->
+<!-- 								<input type="text" value="나도 안되지롱"> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<!-- 					</fieldset> -->
+<!-- 				</tbody> -->
+<!-- 			</fieldset> -->
+<!-- 		</table> -->
+<!-- 		<button type="button" onclick="$('#fourthFieldSet, #fifthFieldSet').prop('disabled', false)">활성화</button> -->
+<!-- 		<button type="button" onclick="$('#fourthFieldSet, #fifthFieldSet').prop('disabled', true)">비활성화</button> -->
+<!-- 	</form> -->
+<!-- </section> -->
 </body>
 </html>
