@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  */
 public class StaticTest {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(StaticTest.class);
 
 	/**
