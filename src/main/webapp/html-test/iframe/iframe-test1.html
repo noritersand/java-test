@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>frame test</title>
+</head>
+<body>
+	<h2>parent</h2>
+	<input type="text" id="locationInput" value="https://127.0.0.1:8443/html-test/iframe/iframe-test2.html" style="width: 100%">
+	<button type="button" onclick="changeChildLocation()">change child location</button>
+	<button type="button" onclick="changeChildLocation('/html-test/iframe/iframe-test2.html')">home</button>
+	<button type="button" onclick="changeChildLocation('http://daum.net')">daum</button>
+	<button type="button" onclick="addIframeAndAlert()">안보이는 프레임 만들기</button>
+	<div style="margin-top: 5px;">
+		<iframe style="width: 85%; height: 450px; border: 2px solid black;"  
+				id="locationTest" src="/html-test/iframe/iframe-test2.html"></iframe>
+	</div>
+	<script>
+		var childWindow = frames[0];
+		var childDom = document.querySelector('#locationTest');
+		childDom.onload = function() {
+			childOnloadHandler();
+		}
+		function childOnloadHandler() {
+			try {
+				console.log(childWindow.location.href);
+			} catch(e) {
+				console.warn('cross origin')
+			}
+		}
+		function changeChildLocation(url) {
+			var value = url || document.querySelector('#locationInput').value;
+			childWindow.location.href = value;
+		}
+		function addIframeAndAlert() {
+			var iframe = document.getElementById('alertTest');
+			if (iframe) {
+				iframe.parentNode.removeChild(alertTest);
+			}
+			iframe = document.createElement('iframe');
+	        iframe.id = 'alertTest';
+	        iframe.style.visibility = 'hidden';
+	        iframe.style.display = 'none';
+	        iframe.src = '/html-test/iframe/iframe-test2.html';
+	        document.body.appendChild(iframe);
+	        iframe.contentWindow.alert('안보이는 프레임에서 얼럿을 사용해도 대화창은 화면 중앙에 나타난다.');
+		}
+	</script>
+</body>
+</html>
