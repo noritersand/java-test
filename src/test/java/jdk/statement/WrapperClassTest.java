@@ -32,4 +32,39 @@ public class WrapperClassTest {
 		Assert.assertFalse(a == b); // wrapper 타입은 동등 연산자에서 객체 아이디를 비교하지 값을 비교하지 않음.
 		Assert.assertTrue(a.equals(b)); // correct
 	}
+	
+	/**
+	 * null을 명시적으로 형변환하는 것은 null-safe함
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void testNullSafe() {
+		Object a = null;
+		String txt = (String) a;
+		Assert.assertNull(txt);
+	}
+	
+	/**
+	 * null을 (오토언박싱이든 아니든) 원시타입으로 형 변환 하려고 하면 null-safe하지 않음.
+	 * 
+	 * @author fixalot
+	 */
+	@SuppressWarnings("null")
+	@Test
+	public void testNullSafe2() {
+		try {
+			Object chuckNorris = null;
+			int imgonnabenull = (Integer) chuckNorris;
+		} catch (Exception e) {
+			logger.debug("예외 발생#1: {}", e.getLocalizedMessage());
+		}
+		
+		try {
+			Integer chucknorris = null;
+			int imgonnabenull = chucknorris;
+		} catch (Exception e) {
+			logger.debug("예외 발생#2: {}", e.getLocalizedMessage());
+		}
+	}
 }
