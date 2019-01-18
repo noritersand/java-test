@@ -28,8 +28,9 @@ public class ClassClassTest {
 	public void testGetClass() {
 		MyClass my = new MyClass();
 		Assert.assertEquals(MyClass.class, my.getClass());
+		Assert.assertNotEquals(MyClass.class, my.getClass().getClass());
 		Assert.assertEquals(Class.class, my.getClass().getClass());
-		Assert.assertEquals(Class.class, my.getClass().getClass().getClass().getClass().getClass());
+		Assert.assertEquals(Class.class, my.getClass().getClass().getClass().getClass().getClass().getClass().getClass().getClass()); // 고만해
 	}
 
 	@Test
