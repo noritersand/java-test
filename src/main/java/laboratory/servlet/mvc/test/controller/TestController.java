@@ -195,10 +195,9 @@ public class TestController {
 	}
 	
 	@UrlMapping("/test/response-not-found-error.view")
-	public View responseNotFoundError(HttpServletRequest request, HttpServletResponse response) {
-		@SuppressWarnings("unused")
-		int nan = 1 / 0;
-		return null; 
+	public void responseNotFoundError(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setCharacterEncoding("utf-8"); // 얘는 왜 안해주면 ISO-8859-1로 인식하는지 모르겠구만. 메타 태그 있는디...
+		response.sendError(404);
 	}
 	
 	@UrlMapping("/test/make-some-error.view")

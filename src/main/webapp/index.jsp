@@ -67,7 +67,7 @@
 					<li><a href="/js-test/date/new-date.html">date: new date</a></li>
 				</ul>
 			</li>
-			<li><a href="/js-test/history/mother.html">history of iframe</a></li>
+			<li><a href="/js-test/history/history-mother.html">history of iframe</a></li>
 			<li>number-format
 				<ul>
 					<li><a href="/js-test/number-format/extended.html">number-format: prototype extend</a></li>
@@ -99,7 +99,7 @@
 				<ul>
 					<li><a href="/js-test/string/index-of-test.html">string: indexOf test</a></li>
 					<li><a href="/js-test/string/split-join-test.html">string: split and join</a></li>
-					<li><a href="/js-test/string/get-byte-length.html">string: get byte length</a></li>
+					<li><a href="/js-test/string/calculate-byte-length.html">string: calculate byte length</a></li>
 				</ul>
 			</li>
 			<li><a href="/js-test/phone-number/lib-phone-number-test.html">phone-number: library test</a></li>
