@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  */
 public class WrapperClassTest {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(WrapperClassTest.class);
 
 	@Test
@@ -50,11 +49,11 @@ public class WrapperClassTest {
 	 * 
 	 * @author fixalot
 	 */
-	@SuppressWarnings("null")
 	@Test
 	public void testNullSafe2() {
 		try {
 			Object chuckNorris = null;
+			@SuppressWarnings({ "unused", "null" })
 			int imgonnabenull = (Integer) chuckNorris;
 		} catch (Exception e) {
 			logger.debug("예외 발생#1: {}", e.getLocalizedMessage());
@@ -62,6 +61,7 @@ public class WrapperClassTest {
 		
 		try {
 			Integer chucknorris = null;
+			@SuppressWarnings({ "unused", "null" })
 			int imgonnabenull = chucknorris;
 		} catch (Exception e) {
 			logger.debug("예외 발생#2: {}", e.getLocalizedMessage());
