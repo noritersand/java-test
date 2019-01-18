@@ -80,9 +80,9 @@
 				<ul>
 					<li><a href="/js-test/plain-object/array-search-match-object.html">plain-object: array search match object</a></li>
 					<li><a href="/js-test/plain-object/delete-duplicate-properties.html">plain-object: delete duplicate properties</a></li>
-					<li><a href="/js-test/plain-object/delete-unmatch-properties.html">plain-object: delete unmatch properties</a></li>
-					<li><a href="/js-test/plain-object/form-serialized-params.html">plain-object: form serialized params</a></li>
-					<li><a href="/js-test/plain-object/object-to-array.html">plain-object: object to array</a></li>
+					<li><a href="/js-test/plain-object/delete-not-specified-property.html">plain-object: delete not specified property</a></li>
+					<li><a href="/js-test/plain-object/convert-querystring-to-json.html">plain-object: convert querystring to JSON</a></li>
+					<li><a href="/js-test/plain-object/object-array-to-array-object.html">plain-object: object-array to array-object</a></li>
 				</ul>
 			</li>
 			<li>statement

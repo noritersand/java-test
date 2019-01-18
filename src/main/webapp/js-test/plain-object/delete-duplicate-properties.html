@@ -4,6 +4,71 @@
 <title>delete duplicate properties</title>
 <meta charset="utf-8">
 <script>
+	var obj = [
+		{
+			"proditNo":"IT300",
+			"opt1No":1,
+			"opt1Nm":"색상",
+			"opt1Val":"빨강",
+			"opt2No":2,
+			"opt2Nm":"사이즈",
+			"opt2Val":"스몰",
+			"opt3No":0,
+			"opt4No":0,
+			"opt5No":0,
+		},
+		{
+			"proditNo":"IT303",
+			"opt1No":1,
+			"opt1Nm":"색상",
+			"opt1Val":"파랑",
+			"opt2No":2,
+			"opt2Nm":"사이즈",
+			"opt2Val":"미디움",
+			"opt3No":0,
+			"opt4No":0,
+			"opt5No":0,
+		}
+	];
+	var obj2 = 	[
+		{
+			"proditNo":"IT303",
+			"opt1No":1,
+			"opt1Nm":"색상",
+			"opt1Val":"파랑",
+			"opt2No":2,
+			"opt2Nm":"사이즈",
+			"opt2Val":"미디움",
+			"opt3No":0,
+			"opt4No":0,
+			"opt5No":0,
+		},
+		{
+			"proditNo":"IT302",
+			"opt1No":1,
+			"opt1Nm":"색상",
+			"opt1Val":"파랑",
+			"opt2No":2,
+			"opt2Nm":"사이즈",
+			"opt2Val":"스몰",
+			"opt3No":0,
+			"opt4No":0,
+			"opt5No":0,
+		},
+		{
+			"proditNo":"IT301",
+			"opt1No":1,
+			"opt1Nm":"색상",
+			"opt1Val":"빨강",
+			"opt2No":2,
+			"opt2Nm":"사이즈",
+			"opt2Val":"미디움",
+			"opt3No":0,
+			"opt4No":0,
+			"opt5No":0,
+		}
+	];
+
 	/**
 	 * target에서 origin과 일치하는 프로퍼티를 찾아 제거하고 남은 배열을 돌려준다.
 	 * targetKeys와 originKeys를 기준으로 일치하는지를 판단한다.
@@ -41,8 +106,12 @@
 		}
 		return target;
 	}
+	var result = removeDupProp(obj, obj2, 'opt1Val|opt2Val');
+	console.log(result);
 </script>
 </head>
 <body>
+<h2>delete duplicate properties</h2>
+<p>Watch the console.</p>
 </body>
 </html>

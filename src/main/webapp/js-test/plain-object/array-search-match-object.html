@@ -53,7 +53,7 @@
 			"opt4No":0,
 			"opt5No":0,
 		}
-	]
+	];
 	
 	/**
 	 * arry에서 keys, values를 기준으로 일치하는 object를 찾아서 리턴
@@ -93,9 +93,13 @@
 		}
 		return result;
 	}
-	getMatchElement(obj, 'opt1Val|opt2Val', '파랑|스몰');
+	console.log('before:', obj);
+	var result = getMatchElement(obj, 'opt1Val|opt2Val', '파랑|스몰');
+	console.log('after:', result);
 </script>
 </head>
 <body>
+<h2>array search match object</h2>
+<p>Watch the console.</p>
 </body>
 </html>
