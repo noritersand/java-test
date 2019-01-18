@@ -118,7 +118,7 @@
 			<li><a href="/jquery-test/append-input-tag-from-querystring.html">querystring to input tag</a></li>
 			<li><a href="/jquery-test/jquery-3-x-x-test.html">jquery 3.x test</a></li>
 			<li><a href="/jquery-test/form-empty-check.html">form empty check</a></li>
-			<li><a href="/jquery-test/replace-attribute.html">replace attribute</a></li>
+			<li><a href="/jquery-test/set-value-in-attribute.html">set value in attribute</a></li>
 			<li><a href="/jquery-test/cors-test.html">jQuery CORS test</a></li>
 		</ul>
 	</li>

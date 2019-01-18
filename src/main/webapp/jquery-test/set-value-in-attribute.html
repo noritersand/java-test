@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>replace attribute</title>
+<title>set value in attribute</title>
 <meta charset="utf-8">
 <script src="/static/js/jquery-1.12.4.js"></script>
 <script>
-	function replaceAttribute(element, attrName, target, replacement, seperator) {
+	function setValueInAttribute(element, attrName, target, replacement, seperator) {
 		seperator = seperator || ';';
 		var attr = $(element).attr(attrName);
 		var attrs = attr.split(seperator);
@@ -18,12 +18,13 @@
 	}
 	$(function() {
 		console.log($('#inpt').attr('data-custom'));
-		replaceAttribute('#inpt', 'data-custom', 'bb', 'bb:98765');
+		setValueInAttribute('#inpt', 'data-custom', 'bb', 'bb:98765');
 		console.log($('#inpt').attr('data-custom'));
 	});
 </script>
 </head>
 <body>
-<input type="text" id="inpt" data-custom="aa:123;bb:'qwe';cc:'z1x2'" />
+<h2>set value in attribute</h2>
+<input type="text" id="inpt" data-custom="aa:123;bb:'qwe';cc:'z1x2'" value="Hello!"/>
 </body>
 </html>
