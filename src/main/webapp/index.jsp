@@ -49,6 +49,11 @@
 	<li>
 		<h4>JavaScript</h4>
 		<ul>
+			<li>AJAX
+				<ul>
+					<li><a href="/js-test/ajax/cors-test.html">JavaScript CORS test</a></li>
+				</ul>
+			</li>
 			<li>array
 				<ul>
 					<li><a href="/js-test/array/splice-test.html">array: splice test: 배열의 특정 요소 삭제</a></li>
@@ -67,7 +72,11 @@
 					<li><a href="/js-test/date/new-date.html">date: new date</a></li>
 				</ul>
 			</li>
-			<li><a href="/js-test/history/history-mother.html">history of iframe</a></li>
+			<li>form
+				<ul>
+					<li><a href="/js-test/form/form-to-json.html">form: Form element to JSON</a></li>
+				</ul>
+			</li>
 			<li>number-format
 				<ul>
 					<li><a href="/js-test/number-format/extended.html">number-format: prototype extend</a></li>
@@ -76,6 +85,7 @@
 					<li><a href="/js-test/number-format/super-extended.html">number-format: super extended</a></li>
 				</ul>
 			</li>
+			<li><a href="/js-test/history/history-mother.html">history of iframe</a></li>
 			<li>plain-object
 				<ul>
 					<li><a href="/js-test/plain-object/array-search-match-object.html">plain-object: array search match object</a></li>
@@ -103,11 +113,6 @@
 				</ul>
 			</li>
 			<li><a href="/js-test/phone-number/lib-phone-number-test.html">phone-number: library test</a></li>
-			<li>AJAX
-				<ul>
-					<li><a href="/js-test/ajax/cors-test.html">JavaScript CORS test</a></li>
-				</ul>
-			</li>
 		</ul>	
 	</li>
 	<li>

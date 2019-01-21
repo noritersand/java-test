@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form element to JSON</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script src="/static/js/jquery-1.12.4.js"></script>	
+<script>
+	function inputToJson(selector) {
+		var param = new Object();
+		$(selector).find('input,textarea,select').each(function(idx, ele){
+			var name = $(ele).attr('name'),
+				type = $(ele).attr('type'),
+				prop = $(ele).prop('checked'),
+				disabled = $(ele).prop('disabled'),
+				val = $(ele).val();
+			if(typeof name === 'undefined'){
+				return true; // jquery each continue
+			}
+			if(type == 'checkbox' || type == 'radio'){
+				if(prop && !disabled){
+					param[name] = val;
+				}
+			}else{
+				if(!disabled){
+					param[name] = val;
+				}
+			}
+		});
+		return param;
+	}
+	$(function() {
+		var formData = [];
+		$('table').each(function(idx, ele) { 
+			console.log('idx:', idx);
+			formData.push(inputToJson(ele));
+		});
+		console.log(JSON.stringify(formData));
+		$('#result').html(JSON.stringify(formData));
+	});
+</script>
+</head>
+<body>
+<h2>Form element to JSON</h2>
+<section>
+	<table>
+		<tr>
+			<td>
+				<input type="text" name="input-text" value="im first inputtext value">
+				<textarea name="input-textarea">im first textarea value</textarea>
+			</td>
+		</tr>
+	</table>
+</section>
+<section>
+	<table>
+		<tr>
+			<td>
+				<input type="text" name="input-text" value="im second inputtext value">
+				<textarea name="input-textarea">im second textarea value</textarea>
+			</td>
+		</tr>
+	</table>
+</section>
+<section>
+	<table>
+		<tr>
+			<td>
+				<input type="text" name="input-text" value="im third inputtext value">
+				<textarea name="input-textarea">im third textarea value</textarea>
+			</td>
+		</tr>
+	</table>
+</section>
+<section>
+	<div id="result"></div>
+</section>
+</body>
+</html>
