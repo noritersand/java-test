@@ -132,7 +132,7 @@ public class ListTest {
 	public void removeElement3() {
 		String[] strs = { "a", "b", "c", "d", "e" };
 
-		// 앞에서 3개 자르기
+		// 앞 3개 지우기
 		List<String> list = Arrays.stream(strs).collect(Collectors.toList());
 //		for (int cnt = 0, i = 0; i < list.size(); i++) {
 //			if (cnt < 3) {
@@ -153,7 +153,7 @@ public class ListTest {
 		}
 		Assert.assertEquals("[d, e]", list.toString());
 
-		// 뒤에서 3개 자르기
+		// 뒤 3개 지우기
 		list = Arrays.stream(strs).collect(Collectors.toList());
 		for (int cnt = 0, i = list.size(); i >= 0; i--) {
 			if (cnt < 3) {
@@ -329,7 +329,7 @@ public class ListTest {
 		Assert.assertEquals(4, head.size());
 		Assert.assertEquals(Arrays.asList(5, 3, 1, 2), head);
 
-		List<Integer> tail = numbers.subList(4, 8); // 9, 5, 0, 7
+		List<Integer> tail = numbers.subList(4, numbers.size()); // 9, 5, 0, 7
 		Assert.assertEquals(4, tail.size());
 		Assert.assertEquals(Arrays.asList(9, 5, 0, 7), tail);
 	}
