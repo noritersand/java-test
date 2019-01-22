@@ -8,21 +8,21 @@
 <script>
 	function inputToJson(selector) {
 		var param = new Object();
-		$(selector).find('input,textarea,select').each(function(idx, ele){
+		$(selector).find('input,textarea,select').each(function(idx, ele) {
 			var name = $(ele).attr('name'),
 				type = $(ele).attr('type'),
-				prop = $(ele).prop('checked'),
+				checked = $(ele).prop('checked'),
 				disabled = $(ele).prop('disabled'),
 				val = $(ele).val();
-			if(typeof name === 'undefined'){
+			if (typeof name === 'undefined') {
 				return true; // jquery each continue
 			}
-			if(type == 'checkbox' || type == 'radio'){
-				if(prop && !disabled){
+			if (type == 'checkbox' || type == 'radio') {
+				if (checked && !disabled) {
 					param[name] = val;
 				}
-			}else{
-				if(!disabled){
+			} else {
+				if (!disabled) {
 					param[name] = val;
 				}
 			}
@@ -46,8 +46,10 @@
 	<table>
 		<tr>
 			<td>
-				<input type="text" name="input-text" value="im first inputtext value">
-				<textarea name="input-textarea">im first textarea value</textarea>
+				<input type="text" name="txtIpt" value="introduce my self">
+				<textarea name="txtarea" cols="30" rows="1">Textarea the firstborn</textarea>
+				<label><input type="checkbox" name="chkbox" value="Y" checked> Y</label>
+				<label><input type="checkbox" name="chkbox" value="N"> N</label>
 			</td>
 		</tr>
 	</table>
@@ -56,8 +58,10 @@
 	<table>
 		<tr>
 			<td>
-				<input type="text" name="input-text" value="im second inputtext value">
-				<textarea name="input-textarea">im second textarea value</textarea>
+				<input type="text" name="txtIpt" value="some meme">
+				<textarea name="txtarea" cols="30" rows="1">Knowledge is power   - france is bacon</textarea>
+				<label><input type="checkbox" name="chkbox" value="Y"> Y</label>
+				<label><input type="checkbox" name="chkbox" value="N" checked> N</label>
 			</td>
 		</tr>
 	</table>
@@ -66,8 +70,10 @@
 	<table>
 		<tr>
 			<td>
-				<input type="text" name="input-text" value="im third inputtext value">
-				<textarea name="input-textarea">im third textarea value</textarea>
+				<input type="text" name="txtIpt" value="waldo">
+				<textarea name="txtarea" cols="40" rows="1">Hello there! String and fine morning! If you ask me, I'm Waldo.</textarea>
+				<label><input type="checkbox" name="chkbox" value="Y" checked> Y</label>
+				<label><input type="checkbox" name="chkbox" value="N"> N</label>
 			</td>
 		</tr>
 	</table>
