@@ -42,7 +42,6 @@ public class NotLowercaseFilenameFinder {
 				logger.debug(fileName);
 			}
 		});
-
 		targetList.close();
 	}
 }
