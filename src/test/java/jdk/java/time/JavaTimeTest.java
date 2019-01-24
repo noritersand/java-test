@@ -48,6 +48,14 @@ public class JavaTimeTest {
 		// create instance from ISO date time string
 		Assert.assertEquals("2017-04-18T01:24:48.842Z", Instant.parse("2017-04-18T01:24:48.842Z").toString());
 	}
+	
+	@Test
+	public void setCustomTime() {
+		LocalDateTime now = LocalDateTime.now();
+		now = now.withYear(2019).withMonth(1).withDayOfMonth(31);
+		now = now.withHour(0).withMinute(0).withSecond(0).withNano(0);
+		Assert.assertEquals(LocalDateTime.parse("2019-01-31T00:00:00.000"), now);
+	}
 
 	@Test
 	public void getLocalDate() {
