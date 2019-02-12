@@ -37,9 +37,9 @@ public class EnumTest {
 	}
 
 	@Test
-	public void testValueOfWithoutIAE() {
+	public void testValueOfIAESafe() {
 		String txt = "NOT_BACK_OFFICE";
-		SystemType systemType = SystemType.valueOfWithoutIAE(txt);
+		SystemType systemType = SystemType.valueOfIAESafe(txt);
 		Assert.assertEquals("BACK_OFFICE", String.valueOf(systemType));
 	}
 	
@@ -79,7 +79,7 @@ public class EnumTest {
 			return this.optionalField;
 		}
 		
-		public static SystemType valueOfWithoutIAE(String arg) {
+		public static SystemType valueOfIAESafe(String arg) {
 			try {
 				return SystemType.valueOf(arg);
 			} catch (IllegalArgumentException e) {
