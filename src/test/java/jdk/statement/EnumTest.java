@@ -27,8 +27,8 @@ public class EnumTest {
 			System.out.println(ele + " costs " + ele.getPrice() + " cents.");
 		}
 
-		SystemDivision var1 = SystemDivision.BACK_OFFICE;
-		SystemDivision var2 = SystemDivision.FRONT_OFFICE;
+		SystemType var1 = SystemType.BACK_OFFICE;
+		SystemType var2 = SystemType.FRONT_OFFICE;
 
 		System.out.println(var1); // BACK_OFFICE
 		System.out.println(var2); // FRONT_OFFICE
@@ -37,9 +37,16 @@ public class EnumTest {
 	}
 
 	@Test
+	public void testValueOfWithoutIAE() {
+		String txt = "NOT_BACK_OFFICE";
+		SystemType systemType = SystemType.valueOfWithoutIAE(txt);
+		Assert.assertEquals("BACK_OFFICE", String.valueOf(systemType));
+	}
+	
+	@Test
 	public void useSwitch() {
 		String div = "back_office";
-		switch (SystemDivision.valueOf(div.toUpperCase())) {
+		switch (SystemType.valueOf(div.toUpperCase())) {
 		case BACK_OFFICE:
 			logger.debug("백");
 			break;
@@ -57,19 +64,28 @@ public class EnumTest {
 		Assert.assertEquals(Color.RED, color);
 	}
 
-	private enum SystemDivision {
+	private enum SystemType {
 		BACK_OFFICE, FRONT_OFFICE("front office system");
 
-		private SystemDivision() {} // 기본 생성자
+		private SystemType() {} // 기본 생성자
 
 		private String optionalField;
 
-		private SystemDivision(final String option) {
+		private SystemType(final String option) {
 			this.optionalField = option;
 		}
 
 		public String getOptionalField() {
 			return this.optionalField;
+		}
+		
+		public static SystemType valueOfWithoutIAE(String arg) {
+			try {
+				return SystemType.valueOf(arg);
+			} catch (IllegalArgumentException e) {
+				logger.debug(e.getMessage());
+				return BACK_OFFICE;
+			}
 		}
 	}
 
