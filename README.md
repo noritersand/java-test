@@ -1,7 +1,9 @@
 # laboratory
-my little laboratory
+
+my little laboratory.
 
 #### environments
+
 - maven
 - jdk10
 - tomcat9
