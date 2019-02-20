@@ -1,4 +1,4 @@
-package jdk.java.util.collections;
+package jdk.java.util;
 
 import static org.junit.Assert.assertNull;
 
@@ -79,5 +79,15 @@ public class MapTest {
 		for (String key : keySet) {
 			Assert.assertNotNull(map.get(key));
 		}
+	}
+	
+	@Test
+	public void testForEach() {
+		Map<String, Integer> items = new HashMap<>();
+		items.put("A", 10);
+		items.put("B", 20);
+		items.forEach((k, v) -> {
+			logger.debug("Item : " + k + " Count : " + v);
+		});
 	}
 }

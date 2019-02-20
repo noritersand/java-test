@@ -1,4 +1,4 @@
-package jdk.java.util.collections;
+package jdk.java.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,8 +14,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Joiner;
-
 /**
  * 
  * 
@@ -23,7 +21,6 @@ import com.google.common.base.Joiner;
  * @author fixalot
  */
 public class ListTest {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ListTest.class);
 
 	@SuppressWarnings("unused")
@@ -335,12 +332,25 @@ public class ListTest {
 	}
 
 	@Test
-	public void getString() {
+	public void testJoin() {
 		List<String> texts = Arrays.asList("a", "b", "c");
 		Assert.assertEquals("a, b, c", String.join(", ", texts));
+	}
 
-		List<Integer> numbers = Arrays.asList(1, 2, 3);
-		Joiner joiner = Joiner.on(", ");
-		Assert.assertEquals("1, 2, 3", joiner.join(numbers));
+	@Test
+	public void testForEach() {
+		Integer[] values = { 1, 3, 7 };
+		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
+		list.forEach(k -> {
+			logger.debug("ele: {}", k);
+		});
+	}
+
+	@Test
+	public void testRemoveif() {
+		Integer[] values = { 1, 3, 7 };
+		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
+		list.removeIf(p -> p == 3);
+		Assert.assertEquals("[1, 7]", list.toString());
 	}
 }

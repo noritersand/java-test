@@ -1,11 +1,12 @@
 package jdk.java.util.stream;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,18 +22,28 @@ import org.slf4j.LoggerFactory;
 public class StreamTest {
 	private static final Logger logger = LoggerFactory.getLogger(StreamTest.class);
 
+	/**
+	 * Stream.forEach() 테스트<br>
+	 * forEach로 한 바퀴 돌면 스트림이 닫혔거나 작업이 끝난걸로 간주되어 다시 스트림을 사용할 수 없나보다.
+	 * 
+	 * @throws IOException
+	 * @author fixalot
+	 */
 	@Test
-	public void test() throws IOException {
-		Path path = new File("/").toPath();
-		Stream<Path> list = Files.list(path);
-		list.forEach(System.out::println);
-		list.close();
+	public void testForEach() throws IOException {
+		Integer[] values = { 1, 3, 7 };
+		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
+		Stream<Integer> stream = list.stream();
+		stream.forEach(System.out::println);
+		stream.close(); // 생략 가능
 
-		Path path2 = new File("").toPath();
-		Stream<Path> list2 = Files.list(path2);
-		list2.forEach((k) -> {
-			logger.debug(k.toString());
+		Stream<Integer> stream2 = list.stream();
+		List<Integer> basket = new ArrayList<Integer>();
+		stream2.forEach((k) -> {
+			logger.debug("ele: {}", k.toString());
+			basket.add(k);
 		});
-		list2.close();
+		stream2.close();
+		Assert.assertArrayEquals(new Integer[] { 1, 3, 7 }, basket.toArray(new Integer[list.size()]));
 	}
 }

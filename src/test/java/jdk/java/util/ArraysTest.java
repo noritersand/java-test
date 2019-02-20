@@ -37,7 +37,7 @@ public class ArraysTest {
 		List<Integer> list2 = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
 		Assert.assertEquals(list, list2);
 	}
-
+	
 	@Test
 	public void testSort() {
 		int[] ns = { 10, 3, 5, 1, 6, 8, 2 };
