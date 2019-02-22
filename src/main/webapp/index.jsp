@@ -37,6 +37,7 @@
 			<li><a href="/html-test/tag/fieldset.html">&lt;fieldset&gt;</a></li>
 			<li><a href="/html-test/tag/a.html">&lt;a&gt;</a></li>
 			<li><a href="/html-test/tag/label.html">&lt;label&gt;</a></li>
+			<li><a href="/html-test/tag/video.html">&lt;video&gt;</a></li>
 			<li><a href="/html-test/opener/opener-test.html">opener test</a></li>
 			<li><a href="/html-test/opener/opener-test3.html">opener test #2</a></li>
 			<li><a href="/html-test/iframe/iframe-test1.html">iframe test</a></li>

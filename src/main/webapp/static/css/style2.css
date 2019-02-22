@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/*TODO style.css랑 합쳐야 함.*/
+
+section {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+input.small {
+	width: 80px;
+}
+input.medium {
+	width: 160px;
+}
+input.max {
+	width: 100%;
+}
