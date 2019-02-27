@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ajax</title>
+<script src="/static/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<h2>ajax test</h2>
+<p>response: <span style="color: red" id="result"></span></p>
+<script>
+	$.ajax({
+		url: '/test/uncategorized/test-read-formal-parameter.data?a=1',
+		data: 'b=2&c=3',
+		dataType: 'json',
+		success: function(data, textStatus, jqXhr) {
+			$('#result').text(data.message);
+			console.log('data:', data);
+			console.log('textStatus:', textStatus);
+			console.log('jqXhr:', jqXhr);
+		}
+	})
+</script>
+</body>
+</html>

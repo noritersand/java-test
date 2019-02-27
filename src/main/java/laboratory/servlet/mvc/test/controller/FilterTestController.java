@@ -21,13 +21,13 @@ import laboratory.util.request.RequestParameter;
 import laboratory.util.request.RequestUtil;
 
 public class FilterTestController {
-	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FilterTestController.class);
 	
 	/**
 	 * HTMLTagFilter 테스트
 	 */
-	@UrlMapping("/filter-test/replace-httpservletrequest.view")
-	public View drawReplaceHttpservletrequest(HttpServletRequest request, HttpServletResponse response) {
+	@UrlMapping("/test/filter/replace-httpservletrequest-test.view")
+	public View drawReplaceHttpservletrequestTest(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug("instanceof HTMLTagFilterRequestWrapper: {}", String.valueOf(request instanceof HTMLTagFilterRequestWrapper));
 		logger.debug("instanceof HttpServletRequestWrapper: {}", String.valueOf(request instanceof HttpServletRequestWrapper));
 		logger.debug("instanceof ServletRequestWrapper: {}", String.valueOf(request instanceof ServletRequestWrapper));
@@ -40,7 +40,7 @@ public class FilterTestController {
 	/**
 	 * HTMLTagFilter 테스트2
 	 */
-	@UrlMapping("/filter-test/replace-httpservletrequest.data")
+	@UrlMapping("/test/filter/replace-httpservletrequest.data")
 	public JsonResponseObject replaceHttpservletrequest(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug("instanceof HTMLTagFilterRequestWrapper: {}", String.valueOf(request instanceof HTMLTagFilterRequestWrapper));
 		logger.debug("instanceof HttpServletRequestWrapper: {}", String.valueOf(request instanceof HttpServletRequestWrapper));

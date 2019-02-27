@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ajaxSetup</title>
+<script src="/static/js/jquery-1.12.4.js"></script>
+<script>
+function timeoutTest() {
+	$.ajaxSetup({
+		timeout: 5000
+	});
+	
+	$.ajax({
+		url: '/test/uncategorized/test-read-formal-parameter.data',
+		method: 'get',
+		success: function(data, textStatus, jqXhr) {
+			console.log('[success method]');
+			console.log('data:', data);
+			console.log('textStatus:', textStatus);
+			console.log('jqXhr:', jqXhr);
+		}, error: function(jqXhr, textStatus, errorThrown) {
+			console.log('[error method]');
+			console.log('jqXhr:', jqXhr);
+			console.log('textStatus:', textStatus);
+			console.log('errorThrown:', errorThrown);
+		}, complete: function(jqXhr, textStatus) {
+			console.log('[complete method]');
+			console.log('jqXhr:', jqXhr);
+			console.log('textStatus:', textStatus);
+		}
+	})
+}
+</script>
+</head>
+<body>
+<h2>ajaxSetup test</h2>
+<button type="button" onclick="timeoutTest()">timeoutTest</button> <span>DefaultDispatcher에 브레이크걸고 버튼 눌러봐라</span><br>
+</body>
+</html>

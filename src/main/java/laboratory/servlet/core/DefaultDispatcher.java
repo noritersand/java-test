@@ -20,11 +20,11 @@ import laboratory.servlet.core.finder.UrlMethodFinder;
 import laboratory.servlet.core.invoker.MethodInvoker;
 import laboratory.servlet.core.invoker.SimpleMethodInvoker;
 import laboratory.servlet.core.view.DefaultViewResolver;
-import laboratory.servlet.mvc.fileupload.controller.FileUploadWithOreilly;
+import laboratory.servlet.mvc.fileupload.controller.OreillyFileUploadController;
 import laboratory.servlet.mvc.test.controller.FilterTestController;
 import laboratory.servlet.mvc.test.controller.HttpTestController;
 import laboratory.servlet.mvc.test.controller.SecurityTestController;
-import laboratory.servlet.mvc.test.controller.TestController;
+import laboratory.servlet.mvc.test.controller.UncategorizedTestController;
 
 /**
  * 
@@ -47,9 +47,9 @@ public class DefaultDispatcher extends HttpServlet {
 	private MethodInvoker methodInvoker = new SimpleMethodInvoker();
 	private DefaultViewResolver viewResolver = new DefaultViewResolver();
 
-	private FileUploadWithOreilly fileUploadWithOreilly = new FileUploadWithOreilly();
+	private OreillyFileUploadController fileUploadWithOreilly = new OreillyFileUploadController();
 	
-	private TestController testController = new TestController();
+	private UncategorizedTestController testController = new UncategorizedTestController();
 	private SecurityTestController securityTestController = new SecurityTestController();
 	private FilterTestController filterTestController = new FilterTestController();
 	private HttpTestController httpTestController = new HttpTestController();

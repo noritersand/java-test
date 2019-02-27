@@ -39,7 +39,7 @@ public class WebAppInitializer implements ServletContextListener {
 		
 		FilterRegistration.Dynamic htmlTagFilter = context.addFilter("htmlTagFilter", new HTMLTagFilter());
 		htmlTagFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD), false,
-				"/filter-test/replace-httpservletrequest.view", "/filter-test/replace-httpservletrequest.data");
+				"/test/filter/replace-httpservletrequest-test.view", "/test/filter/replace-httpservletrequest.data");
 
 		ServletRegistration.Dynamic servlet = context.addServlet("defaultDispatcher", new DefaultDispatcher());
 		servlet.addMapping("*.view");
