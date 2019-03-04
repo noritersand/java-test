@@ -6,9 +6,9 @@
 <link rel="stylesheet" href="/static/css/style2.css"/>
 <script src="/static/js/jquery-1.12.4.js"></script>	
 <script>
-	function inputToJson(selector) {
+	function formToJson(targetElement) {
 		var param = new Object();
-		$(selector).find('input,textarea,select').each(function(idx, ele) {
+		$(targetElement).find('input, textarea, select').each(function(idx, ele) {
 			var name = $(ele).attr('name'),
 				type = $(ele).attr('type'),
 				checked = $(ele).prop('checked'),
@@ -33,7 +33,7 @@
 		var formData = [];
 		$('table').each(function(idx, ele) { 
 			console.log('idx:', idx);
-			formData.push(inputToJson(ele));
+			formData.push(formToJson(ele));
 		});
 		console.log(JSON.stringify(formData));
 		$('#result').html(JSON.stringify(formData));
