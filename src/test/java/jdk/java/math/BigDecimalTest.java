@@ -35,6 +35,32 @@ public class BigDecimalTest {
 		Assert.assertEquals(new BigDecimal("200"), a.multiply(b));
 		Assert.assertEquals(new BigDecimal("2"), b.divide(a));
 	}
+	
+	@Test
+	public void calculatePercentage() {
+		BigDecimal smallOne = new BigDecimal("2000");
+		BigDecimal bigOne = new BigDecimal("8000");
+		BigDecimal percentage = new BigDecimal("25");
+		
+		Assert.assertEquals(25, smallOne.divide(bigOne).multiply(new BigDecimal(100)).intValue());;
+		Assert.assertEquals(2000, bigOne.multiply(percentage).divide(new BigDecimal(100)).intValue());;
+	}
+	
+	@Test
+	public void testScaleByPowerOfTen() {
+		Assert.assertEquals(1.20345D, new BigDecimal(120.345).scaleByPowerOfTen(-2).doubleValue(), 0);
+		Assert.assertEquals(12034.5D, new BigDecimal(120.345).scaleByPowerOfTen(2).doubleValue(), 0);
+	}
+	
+	@Test
+	public void testMovePointLeft() {
+		Assert.assertEquals(10.0D, new BigDecimal(100).movePointLeft(1).doubleValue(), 0);
+	}
+	
+	@Test
+	public void testMovePointRight() {
+		Assert.assertEquals(1000D, new BigDecimal(100).movePointRight(1).doubleValue(), 0);
+	}
 
 	@Test
 	public void testCompareTo() {
