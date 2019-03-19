@@ -5,16 +5,16 @@
 <meta charset="utf-8">
 <script src="/static/js/jquery-1.12.4.js"></script>
 <script>
-	function setValueInAttribute(element, attrName, target, replacement, seperator) {
-		seperator = seperator || ';';
+	function setValueInAttribute(element, attrName, target, replacement, separator) {
+		separator = separator || ';';
 		var attr = $(element).attr(attrName);
-		var attrs = attr.split(seperator);
+		var attrs = attr.split(separator);
 		for (let i in attrs) {
 			if (attrs[i].indexOf(target) == 0) {
 				attrs[i] = replacement;					
 			}
 		}
-		$(element).attr(attrName, attrs.join(seperator));
+		$(element).attr(attrName, attrs.join(separator));
 	}
 	$(function() {
 		console.log($('#inpt').attr('data-custom'));
