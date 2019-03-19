@@ -70,4 +70,31 @@ public class BeanUtilsTest {
 		Assert.assertEquals("야", model.getName());
 		Assert.assertEquals(101, model.getNumber());
 	}
+	
+	/**
+	 * POJO -> 맵 변환.
+	 * 
+	 * 
+	 * @throws IllegalAccessException
+	 * @throws InvocationTargetException
+	 * @throws NoSuchMethodException
+	 * @author fixalot
+	 */
+	@Test
+	public void testDescribe() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+		TestModel model = new TestModel();
+		model.setName("야");
+		model.setNumber(101);
+		model.setWhen(null);
+		
+		BeanUtils.copyProperties(model, model);
+		
+		Assert.assertEquals("{number=101, name=야, class=class model.TestModel, when=null}", 
+				String.valueOf(BeanUtils.describe(model)));
+		
+		// TODO: null 무시 하려면 이렇게 하라는데 안됨
+//		BeanUtilsBean instance = BeanUtilsBean.getInstance();
+//		instance.getConvertUtils().register(false, false, 0);
+//		logger.debug(String.valueOf(instance.describe(model))); 
+	}
 }
