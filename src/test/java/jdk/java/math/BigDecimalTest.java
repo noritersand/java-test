@@ -138,4 +138,20 @@ public class BigDecimalTest {
 		roundedNumber = floatNumber.setScale(4, RoundingMode.FLOOR);
 		Assert.assertEquals(new BigDecimal("12.5365"), roundedNumber);
 	}
+
+	/**
+	 * double은 소수점 계산에서 오차 발생함.
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void calculateError() {
+		double val1 = 1.5;
+		double val2 = 0.3;
+		BigDecimal bigVal1 = new BigDecimal("1.5");
+		BigDecimal bigVal2 = new BigDecimal("0.3");
+
+		Assert.assertEquals(0.44999999999999996D, val1 * val2, 0);
+		Assert.assertEquals(new BigDecimal("0.45"), bigVal1.multiply(bigVal2));
+	}
 }

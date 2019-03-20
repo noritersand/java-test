@@ -67,4 +67,16 @@ public class PrimitiveTest {
 			logger.debug("NumberFormatException 발생: {}", e.getMessage());
 		}
 	}
+	
+	@Test
+	public void floatCalculateErrorRange() {
+		double val1 = 1.5;
+		double val2 = 0.3;
+		
+		// 오차 허용 안함
+		Assert.assertEquals(0.44999999999999996, val1 * val2, 0);
+		
+		// 0.0000000000000001까지 오차 허용
+		Assert.assertEquals(0.45, val1 * val2, 0.0000000000000001);
+	}
 }
