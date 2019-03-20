@@ -40,6 +40,27 @@ public class BigDecimalTest {
 		Assert.assertEquals(new BigDecimal("200"), a.multiply(b));
 		Assert.assertEquals(new BigDecimal("2"), b.divide(a));
 	}
+	
+	/**
+	 * 나누기 할 땐 반드시 범위를 지정해야 함. 중요.
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void testDivide() {
+		BigDecimal smallOne = new BigDecimal("64000.00");
+		BigDecimal bigOne = new BigDecimal("69000.00");
+		
+		try {
+			// 그냥 나눠버리면 BigDecimal도 감당 못하는 결과가 나옴
+			smallOne.divide(bigOne);
+		} catch (ArithmeticException e) {
+			logger.debug("에러 난다요.");
+		}
+		// 소수점 셋 째 자리에서 반올림
+		BigDecimal result = smallOne.divide(bigOne, 2, RoundingMode.HALF_DOWN);
+		Assert.assertEquals(new BigDecimal("0.93"), result);
+	}
 
 	/**
 	 * 퍼센테이지 계산
