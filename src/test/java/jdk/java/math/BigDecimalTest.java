@@ -58,7 +58,7 @@ public class BigDecimalTest {
 			logger.debug("에러 난다요.");
 		}
 		// 소수점 셋 째 자리에서 반올림
-		BigDecimal result = smallOne.divide(bigOne, 2, RoundingMode.HALF_DOWN);
+		BigDecimal result = smallOne.divide(bigOne, 2, RoundingMode.HALF_UP);
 		Assert.assertEquals(new BigDecimal("0.93"), result);
 	}
 
