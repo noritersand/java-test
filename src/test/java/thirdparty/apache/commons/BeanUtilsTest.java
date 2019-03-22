@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 import model.TestModel;
 
 /**
- * 
- * 
+ *
+ *
  * @since 2017-07-27
  * @author fixalot
  */
@@ -24,10 +24,10 @@ public class BeanUtilsTest {
 	private static final Logger logger = LoggerFactory.getLogger(BeanUtilsTest.class);
 
 	/**
-	 * 인스턴스의 프로퍼티 복사. 복사하려는 타입이 private이면 작동하지 않음 
-	 * TODO {@link PropertyUtils#copyProperties(Object, Object)}랑 뭔 차이인지... 
+	 * 인스턴스의 프로퍼티 복사. 복사하려는 타입이 private이면 작동하지 않음
+	 * TODO {@link PropertyUtils#copyProperties(Object, Object)}랑 뭔 차이인지...
 	 * Spring의 {@link org.springframework.beans.BeanUtils#copyProperties(Object, Object)}가 더 좋다.
-	 * 
+	 *
 	 * @throws IllegalAccessException
 	 * @throws InvocationTargetException
 	 * @author fixalot
@@ -49,8 +49,8 @@ public class BeanUtilsTest {
 	}
 
 	/**
-	 * 맵 -> POJO 변환. 복사하려는 타입이 private이면 작동하지 않으며, 값이 null일 땐 ConversionException 발생함.
-	 * 
+	 * 맵 -> plain object 변환. 복사하려는 타입이 private이면 작동하지 않으며, 값이 null일 땐 ConversionException 발생함.
+	 *
 	 * @throws IllegalAccessException
 	 * @throws InvocationTargetException
 	 * @author fixalot
@@ -70,11 +70,11 @@ public class BeanUtilsTest {
 		Assert.assertEquals("야", model.getName());
 		Assert.assertEquals(101, model.getNumber());
 	}
-	
+
 	/**
-	 * POJO -> 맵 변환.
-	 * 
-	 * 
+	 * plain object -> 맵 변환.
+	 *
+	 *
 	 * @throws IllegalAccessException
 	 * @throws InvocationTargetException
 	 * @throws NoSuchMethodException
@@ -86,15 +86,15 @@ public class BeanUtilsTest {
 		model.setName("야");
 		model.setNumber(101);
 		model.setWhen(null);
-		
+
 		BeanUtils.copyProperties(model, model);
-		
-		Assert.assertEquals("{number=101, name=야, class=class model.TestModel, when=null}", 
+
+		Assert.assertEquals("{number=101, name=야, class=class model.TestModel, when=null}",
 				String.valueOf(BeanUtils.describe(model)));
-		
+
 		// TODO: null 무시 하려면 이렇게 하라는데 안됨
 //		BeanUtilsBean instance = BeanUtilsBean.getInstance();
 //		instance.getConvertUtils().register(false, false, 0);
-//		logger.debug(String.valueOf(instance.describe(model))); 
+//		logger.debug(String.valueOf(instance.describe(model)));
 	}
 }

@@ -17,8 +17,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 /**
- * 
- * 
+ *
+ *
  * @since 2017-07-27
  * @author fixalot
  */
@@ -44,7 +44,7 @@ public class GsonTest {
 	}
 
 	@Test
-	public void parseToPojo() {
+	public void parseToPlainObject() {
 		String json = "{\"key\":\"first\",\"value\":\"1234\"}";
 		MyClass myClass = new Gson().fromJson(json, MyClass.class);
 		Assert.assertEquals("first", myClass.getKey());
