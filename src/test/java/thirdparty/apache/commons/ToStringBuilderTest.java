@@ -17,11 +17,11 @@ public class ToStringBuilderTest {
 
 	@Test
 	public void printToStringResult() {
-		Pojo pojo = new Pojo();
-		logger.debug(ToStringBuilder.reflectionToString(pojo));
-		pojo.setStringField("야");
-		pojo.setIntField(65536);
-		logger.debug(ToStringBuilder.reflectionToString(pojo));
+		PlainObject po = new PlainObject();
+		logger.debug(ToStringBuilder.reflectionToString(po));
+		po.setStringField("야");
+		po.setIntField(65536);
+		logger.debug(ToStringBuilder.reflectionToString(po));
 		try {
 			logger.debug(ToStringBuilder.reflectionToString(null)); // 에러남
 		} catch (Exception e) {
@@ -30,7 +30,7 @@ public class ToStringBuilderTest {
 	}
 
 	@SuppressWarnings("unused")
-	private class Pojo {
+	private class PlainObject {
 		private String stringField;
 		private Integer intField;
 

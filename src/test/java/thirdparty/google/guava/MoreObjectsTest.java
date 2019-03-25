@@ -19,18 +19,18 @@ public class MoreObjectsTest {
 
 	@Test
 	public void useToStringHelper() {
-		ToStringHelper helper = MoreObjects.toStringHelper(Pojo.class);
+		ToStringHelper helper = MoreObjects.toStringHelper(PlainObject.class);
 		logger.debug(helper.toString());
 
-		Pojo pojo = new Pojo();
-		pojo.setStringField("야");
-		pojo.setIntField(65536);
-		helper = MoreObjects.toStringHelper(pojo); // FIXME 이거 뭐하는 놈이여
+		PlainObject po = new PlainObject();
+		po.setStringField("야");
+		po.setIntField(65536);
+		helper = MoreObjects.toStringHelper(po); // FIXME 이거 뭐하는 놈이여
 		logger.debug(helper.toString());
 	}
 
 	@SuppressWarnings("unused")
-	private class Pojo {
+	private class PlainObject {
 		private String stringField;
 		private Integer intField;
 
