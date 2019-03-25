@@ -32,6 +32,18 @@ public class WrapperClassTest {
 		Assert.assertTrue(a.equals(b)); // correct
 	}
 	
+	@Test
+	public void testPassedByValue() {
+		Integer num = 456;
+		changeValue(num); // 내부에서 123으로 변경
+		// 그래도 num은 456으로 유지된다. wrapper 타입이 일반적인 reference 타입과 다른 특징임.
+		Assert.assertEquals(Integer.valueOf(456), num);
+	}
+	
+	private void changeValue(Integer num) {
+		num = 123; // 이 코드는 num = new Integer(123) 과 같다.
+	}
+	
 	/**
 	 * null을 명시적으로 형변환하는 것은 null-safe함
 	 * 
