@@ -43,21 +43,21 @@ class ChildThread extends Thread {
 	
 	@Override
 	public void run() {
-		doUselessThing();
+		workForNothing();
 	}
 
 	@Override
 	public void interrupt() {
-		logger.debug("i'm dying. :<");
+		logger.debug("im dying. :<");
 		super.interrupt();
 	}
 
-	private void doUselessThing() {
-		logger.debug("do useless thing: start");
+	private void workForNothing() {
+		logger.debug("work-for-nothing: start");
 		long sum = 0;
 		for (int i = 0; i < Integer.MAX_VALUE; i++) {
 			sum += i;
 		}
-		logger.debug("do useless thing: end, sum is {}", sum);
+		logger.debug("work-for-nothing: end, sum is {}", sum);
 	}
 }

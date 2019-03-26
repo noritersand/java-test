@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 public class ThreadTest {
 	private static final Logger logger = LoggerFactory.getLogger(ThreadTest.class);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		Thread thread = new Thread() {
 			@Override
 			public void run() {
