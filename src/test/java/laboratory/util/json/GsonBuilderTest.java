@@ -2,14 +2,17 @@ package laboratory.util.json;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
 /**
@@ -22,7 +25,7 @@ public class GsonBuilderTest {
 	private static final Logger logger = LoggerFactory.getLogger(GsonBuilderTest.class);
 	
 	@Test
-	public void testBuilderforJsonObject() {
+	public void testFromJsonForPlainObject() {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		Gson gson = gsonBuilder.getGson();
 		GsonTestModel convertedModel = gson.fromJson(makeJsonObjectText(), GsonTestModel.class);
@@ -37,7 +40,7 @@ public class GsonBuilderTest {
 	}
 
 	@Test
-	public void testBuilderForJsonArray() {
+	public void testFromJsonForArray() {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		Gson gson = gsonBuilder.getGson();
 		GsonTestModel[] convertedModel = gson.fromJson(makeJsonArrayText(), GsonTestModel[].class);
@@ -45,11 +48,28 @@ public class GsonBuilderTest {
 	}
 	
 	@Test
-	public void testBuilderForJsonArrayInArray() {
+	public void testFromJsonForArrayInArray() {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		Gson gson = gsonBuilder.getGson();
 		GsonTestModel[] convertedModel = gson.fromJson(makeJsonArrayInArrayText(), GsonTestModel[].class);
 		logger.debug(Arrays.toString(convertedModel));
+	}
+	
+	@Test
+	public void testFromJsonForArrayInArrayToList() {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		Gson gson = gsonBuilder.getGson();
+		
+		@SuppressWarnings("serial")
+		List<GsonTestModel> convertedModelList = gson.fromJson(makeJsonArrayInArrayText(), new TypeToken<ArrayList<GsonTestModel>>() {}.getType());
+		
+		GsonTestChild[] convertedModel = convertedModelList.get(0).getGsonTestChild();
+		Assert.assertTrue(convertedModel.length == 1);
+		Assert.assertEquals(GsonTestChild[].class, convertedModel.getClass());
+		
+		GsonTestChild gsonTestChild = convertedModel[0];
+		Assert.assertEquals("1", gsonTestChild.getA());
+		Assert.assertEquals("2", gsonTestChild.getB());
 	}
 
 	public String makeJsonObjectText() {

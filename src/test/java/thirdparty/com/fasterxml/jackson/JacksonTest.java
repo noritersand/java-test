@@ -28,7 +28,7 @@ public class JacksonTest {
 	private static final Logger logger = LoggerFactory.getLogger(JacksonTest.class);
 
 	private ObjectMapper mapper = new ObjectMapper();
-	
+
 	/**
 	 * JSON 문자열 -> 인스턴스
 	 * 
@@ -40,12 +40,13 @@ public class JacksonTest {
 	@Test
 	public void testReadValue() throws JsonParseException, JsonMappingException, IOException {
 		String jsonText = "[{\"html1\":\"<p>홀홀</p>\",\"html2\":\"<p>ㅗㅎ롷ㄹ</p>\"}]";
-		final List<Map<String, Object>> topContents = mapper.readValue(jsonText, new TypeReference<ArrayList<HashMap<String, Object>>>() {});
+		final List<Map<String, Object>> topContents
+				= mapper.readValue(jsonText, new TypeReference<ArrayList<HashMap<String, Object>>>() {});
 		Assert.assertEquals(1, topContents.size());
 		Assert.assertEquals("<p>홀홀</p>", topContents.get(0).get("html1"));
 		Assert.assertEquals("<p>ㅗㅎ롷ㄹ</p>", topContents.get(0).get("html2"));
 	}
-	
+
 	/**
 	 * 인스턴스 -> JSON 문자열
 	 * 
@@ -54,11 +55,41 @@ public class JacksonTest {
 	 */
 	@Test
 	public void testWriteValue() throws JsonProcessingException {
-		HashMap<String, String> map = new HashMap<String, String>();
-        map.put("name", "steave");
-        map.put("age", "32");
-        map.put("job", "baker");
-        final String jsonText = mapper.writeValueAsString(map);
-        Assert.assertEquals("{\"name\":\"steave\",\"job\":\"baker\",\"age\":\"32\"}", jsonText);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("name", "steave");
+		map.put("age", "32");
+		map.put("job", "baker");
+		final String jsonText = mapper.writeValueAsString(map);
+		Assert.assertEquals("{\"name\":\"steave\",\"job\":\"baker\",\"age\":\"32\"}", jsonText);
+	}
+
+	/**
+	 * 컬렉션 -> Plain Object로 변환
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void testConvertValue() {
+		// #1: map -> po
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("name", "steave");
+		map.put("age", "32");
+		
+		PlainObject po = mapper.convertValue(map, PlainObject.class);
+		Assert.assertEquals("steave", po.getName());
+		Assert.assertEquals(Integer.valueOf(32), po.getAge());
+		
+		// #2: list<map> -> po
+		HashMap<String, Object> map2 = new HashMap<>();
+		map2.put("name", "soap");
+		map2.put("age", "43");
+		
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		list.add(map);
+		list.add(map2);
+		
+		ArrayList<PlainObject> poList = mapper.convertValue(list, new TypeReference<List<PlainObject>>() {});
+		Assert.assertEquals("soap", poList.get(1).getName());
+		Assert.assertEquals(Integer.valueOf(43), poList.get(1).getAge());
 	}
 }
