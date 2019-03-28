@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/static/css/style2.css"/>
 <script src="/static/js/jquery-1.12.4.js"></script>	
 <script>
-	function formToJson(targetElement) {
+	function formToJsObject(targetElement) {
 		var param = new Object();
 		$(targetElement).find('input, textarea, select').each(function(idx, ele) {
 			var name = $(ele).attr('name'),
@@ -33,7 +33,7 @@
 		var formData = [];
 		$('table').each(function(idx, ele) { 
 			console.log('idx:', idx);
-			formData.push(formToJson(ele));
+			formData.push(formToJsObject(ele));
 		});
 		console.log(JSON.stringify(formData));
 		$('#result').html(JSON.stringify(formData));
