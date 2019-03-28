@@ -79,6 +79,7 @@
 					<li><a href="/test/js/date/add-months2-test.html">date: add months 자바스크립트 달 넘기기2</a></li>
 					<li><a href="/test/js/date/select-month-test.html">date: select month 셀렉트 박스에서 달 선택</a></li>
 					<li><a href="/test/js/date/new-date-test.html">date: new date</a></li>
+					<li><a href="/test/js/date/date-format-prototype-extend-test.html">date format: prototype extend</a></li>
 				</ul>
 			</li>
 			<li>form
@@ -86,12 +87,12 @@
 					<li><a href="/test/js/form/form-to-json-test.html">form: Form element to JSON</a></li>
 				</ul>
 			</li>
-			<li>number-format
+			<li>number
 				<ul>
-					<li><a href="/test/js/number-format/number-format-prototype-extend-test.html">number-format: prototype extend</a></li>
-					<li><a href="/test/js/number-format/number-format-prototype-extend2-test.html">number-format: prototype extend #2: indecipherable</a></li>
-					<li><a href="/test/js/number-format/number-format-prototype-extend3-test.html">number-format: protytype extend #3</a></li>
-					<li><a href="/test/js/number-format/short-test.html">number-format: short</a></li>
+					<li><a href="/test/js/number/number-format-prototype-extend-test.html">number format: prototype extend</a></li>
+					<li><a href="/test/js/number/number-format-prototype-extend2-test.html">number format: prototype extend #2: indecipherable</a></li>
+					<li><a href="/test/js/number/number-format-prototype-extend3-test.html">number format: protytype extend #3</a></li>
+					<li><a href="/test/js/number/short-test.html">number-format: short</a></li>
 				</ul>
 			</li>
 			<li>plain-object
