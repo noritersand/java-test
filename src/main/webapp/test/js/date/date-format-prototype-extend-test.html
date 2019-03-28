@@ -10,10 +10,10 @@
 	 * @param f format 문자
 	 * 
 	 * usage:
-     * - now.format('yyyy-MM-dd HH:mm:ss')); // 2019-03-28 12:12:12
-     * - now.format('yyMMdd')); // 190328
-     * - now.format('a/p hh시 mm분')); // 오후 03시 28분
-     * - now.format('MM월 dd일 E')); // 03월 28일 목요일
+     * - now.format('yyyy-MM-dd HH:mm:ss') // 2019-03-28 12:12:12
+     * - now.format('yyMMdd') // 190328
+     * - now.format('a/p hh시 mm분') // 오후 03시 28분
+     * - now.format('MM월 dd일 E') // 03월 28일 목요일
 	 */
 	Date.prototype.format = function(f) {
 		if (!this.valueOf()) {
@@ -63,10 +63,10 @@
 	};
 
 	var now = new Date();
-	console.log(now.format('yyyy-MM-dd HH:mm:ss')) // 2019-03-28 12:12:12
-	console.log(now.format('yyMMdd')) // 190328
-	console.log(now.format('a/p hh시 mm분')) // 오후 03시 28분
-	console.log(now.format('MM월 dd일 E')) // 03월 28일 목요일 
+	console.log('now.format(\'yyyy-MM-dd HH:mm:ss\'):', now.format('yyyy-MM-dd HH:mm:ss')); // 2019-03-28 12:12:12
+	console.log('now.format(\'yyMMdd\'):', now.format('yyMMdd')); // 190328
+	console.log('now.format(\'a/p hh시 mm분\'):', now.format('a/p hh시 mm분')); // 오후 03시 28분
+	console.log('now.format(\'MM월 dd일 E\'):', now.format('MM월 dd일 E')); // 03월 28일 목요일 
 </script>
 </head>
 <body>
