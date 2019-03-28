@@ -23,7 +23,7 @@
 	 *
 	 * @param {object} obj 탐색할 객체
 	 * @param {string} name 탐색할 프로퍼티명
-	 * @return name과 이름이 일치하는 obj의 모든 프로퍼티를 배열로 반환
+	 * @return name과 이름이 일치하는 프로퍼티의 값을 배열로 반환.
 	 */
 	function findValues(obj, name) {
 		'use strict';
@@ -43,19 +43,21 @@
 	console.log('findValues:', findValues(product, 'productId')); // findValues: Array [ "0123456789", "0123456789" ]
 
 	/**
+	 * obj를 재귀탐색해서 이름과 값이 파라미터와 모두 일치하는 프로퍼티를 탐색한다.  
+	 *
 	 * @param {object} obj 탐색할 객체
 	 * @param {string} name 탐색할 프로퍼티명
 	 * @param value 탐색할 프로퍼티의 값
-	 * @return name과 값이 모두 일치하는 프로퍼티의 소유자(소유한 객체)를 반환한다.
+	 * @return name과 value가 일치하는 프로퍼티를 소유한 객체.
 	 */
-	function findHasContainsObject(obj, name, value) {
+	function findContainsObject(obj, name, value) {
 		'use strict';
 		var valueType = typeof value;
 		for (var prop in obj) {
 			// console.log(prop, typeof obj[prop]);
 			var targetType = typeof obj[prop];
 			if (targetType === 'object') {
-				var foundOne = findHasContainsObject(obj[prop], name, value);
+				var foundOne = findContainsObject(obj[prop], name, value);
 				if (foundOne) {
 					return foundOne;
 				}
@@ -66,8 +68,8 @@
 			}
 		}
 	}
-	console.log('findHasContainsObject:', findHasContainsObject(product, 'unitName', 'THE ANCIENT RED ONE'));
-	// findHasContainsObject: Object { productId: "0123456789", unitName: "THE ANCIENT RED ONE", maxOrderPossibleQuantity: 999, unitSequence: 1 }
+	console.log('findContainsObject:', findContainsObject(product, 'unitName', 'THE ANCIENT RED ONE'));
+	// findContainsObject: Object { productId: "0123456789", unitName: "THE ANCIENT RED ONE", maxOrderPossibleQuantity: 999, unitSequence: 1 }
 </script>
 </head>
 <body>
