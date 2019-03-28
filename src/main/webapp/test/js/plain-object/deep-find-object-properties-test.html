@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>deep find object properties</title>
+<meta charset="utf-8">
+<script>
+	var product = {
+		"productId":"0123456789",
+		"allowNotification":false,
+		"unitList":[
+			{
+				"productId":"0123456789",
+				"unitName":"THE ANCIENT RED ONE",
+				"maxOrderPossibleQuantity":999,
+				"unitSequence":1
+			}],
+		"sellable":true,
+		"foodlike":false
+	};
+
+	/**
+	 * obj를 재귀탐색해서 이름이 일치하는 모든 프로퍼티를 탐색한다.
+	 *
+	 * @param {object} obj 탐색할 객체
+	 * @param {string} name 탐색할 프로퍼티명
+	 * @return name과 이름이 일치하는 obj의 모든 프로퍼티를 배열로 반환
+	 */
+	function findValues(obj, name) {
+		'use strict';
+		var returnMe = [];
+		function findRecursivly(obj, name) {
+			for (var prop in obj) {
+				if (typeof obj[prop] === 'object') {
+					findRecursivly(obj[prop], name);
+				} else if (prop === name) {
+					returnMe.push(obj[prop]);
+				}
+			}
+		}
+		findRecursivly(obj, name);
+		return returnMe;
+	}
+	console.log('findValues:', findValues(product, 'productId')); // findValues: Array [ "0123456789", "0123456789" ]
+
+	/**
+	 * @param {object} obj 탐색할 객체
+	 * @param {string} name 탐색할 프로퍼티명
+	 * @param value 탐색할 프로퍼티의 값
+	 * @return name과 값이 모두 일치하는 프로퍼티의 소유자(소유한 객체)를 반환한다.
+	 */
+	function findHasContainsObject(obj, name, value) {
+		'use strict';
+		var valueType = typeof value;
+		for (var prop in obj) {
+			// console.log(prop, typeof obj[prop]);
+			var targetType = typeof obj[prop];
+			if (targetType === 'object') {
+				var foundOne = findHasContainsObject(obj[prop], name, value);
+				if (foundOne) {
+					return foundOne;
+				}
+			} else if (targetType !== valueType) {
+				continue;
+			} else if (prop === name && obj[prop] == value) {
+				return obj;
+			}
+		}
+	}
+	console.log('findHasContainsObject:', findHasContainsObject(product, 'unitName', 'THE ANCIENT RED ONE'));
+	// findHasContainsObject: Object { productId: "0123456789", unitName: "THE ANCIENT RED ONE", maxOrderPossibleQuantity: 999, unitSequence: 1 }
+</script>
+</head>
+<body>
+<h2>deep find object properties</h2>
+<p>Watch the console.</p>
+</body>
+</html>
