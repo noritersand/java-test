@@ -88,10 +88,10 @@
 			</li>
 			<li>number-format
 				<ul>
-					<li><a href="/test/js/number-format/extended-test.html">number-format: prototype extend</a></li>
-					<li><a href="/test/js/number-format/indecipherable-test.html">number-format: indecipherable</a></li>
+					<li><a href="/test/js/number-format/number-format-prototype-extend-test.html">number-format: prototype extend</a></li>
+					<li><a href="/test/js/number-format/number-format-prototype-extend2-test.html">number-format: prototype extend #2: indecipherable</a></li>
+					<li><a href="/test/js/number-format/number-format-prototype-extend3-test.html">number-format: protytype extend #3</a></li>
 					<li><a href="/test/js/number-format/short-test.html">number-format: short</a></li>
-					<li><a href="/test/js/number-format/super-extended-test.html">number-format: super extended</a></li>
 				</ul>
 			</li>
 			<li>plain-object
