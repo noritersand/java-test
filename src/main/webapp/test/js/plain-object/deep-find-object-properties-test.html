@@ -4,72 +4,134 @@
 <title>deep find object properties</title>
 <meta charset="utf-8">
 <script>
-	var product = {
-		"productId":"0123456789",
-		"allowNotification":false,
-		"unitList":[
+var product = {
+		"productId": "A1010",
+		"nodeId": "655",
+		"unitList": [
 			{
-				"productId":"0123456789",
-				"unitName":"THE ANCIENT RED ONE",
-				"maxOrderPossibleQuantity":999,
-				"unitSequence":1
-			}],
-		"sellable":true,
-		"foodlike":false
+				"nodeId": "65504",
+				"unitName": "red",
+				"childList": [
+					{
+						"nodeId": "6550401",
+						"unitName": "magenta"
+					},
+					{
+						"nodeId": "6550402",
+						"unitName": "cyan"
+					}
+				]
+			},
+			{
+				"nodeId": "65505",
+				"unitName": "black",
+				"child": {
+					"nodeId": "6550601",
+					"unitName": "gray",
+					"child": {
+						"nodeId": "655060198",
+						"unitName": "white"
+					}
+				}
+			}
+		]
 	};
 
 	/**
-	 * obj를 재귀탐색해서 이름이 일치하는 모든 프로퍼티를 탐색한다.
+	 * sourceObject를 재귀탐색해서 이름이 일치하는 모든 프로퍼티를 탐색한다.
 	 *
-	 * @param {object} obj 탐색할 객체
-	 * @param {string} name 탐색할 프로퍼티명
+	 * @param {object} sourceObject 탐색할 객체
+	 * @param {string} searchName 탐색할 프로퍼티명
 	 * @return name과 이름이 일치하는 프로퍼티의 값을 배열로 반환.
 	 */
-	function findValues(obj, name) {
+	function findValues(sourceObject, searchName) {
 		'use strict';
 		var returnMe = [];
-		function findRecursivly(obj, name) {
-			for (var prop in obj) {
-				if (typeof obj[prop] === 'object') {
-					findRecursivly(obj[prop], name);
-				} else if (prop === name) {
-					returnMe.push(obj[prop]);
+		function findRecursivly(sourceObject, searchName) {
+			for (var name in sourceObject) {
+				var element = sourceObject[name];
+				if (typeof element === 'object') {
+					findRecursivly(element, searchName);
+				} else if (name === searchName) {
+					returnMe.push(element);
 				}
 			}
 		}
-		findRecursivly(obj, name);
+		findRecursivly(sourceObject, searchName);
 		return returnMe;
 	}
-	console.log('findValues:', findValues(product, 'productId')); // findValues: Array [ "0123456789", "0123456789" ]
+	console.log('findValues:', findValues(product, 'nodeId')); // [ "655", "65504", "6550401", "6550402", "65505", "6550601", "655060198" ]
 
 	/**
-	 * obj를 재귀탐색해서 이름과 값이 파라미터와 모두 일치하는 프로퍼티를 탐색한다.  
+	 * sourceObject를 재귀탐색해서 이름과 값이 파라미터와 모두 일치하는 프로퍼티를 탐색한다.  
 	 *
-	 * @param {object} obj 탐색할 객체
-	 * @param {string} name 탐색할 프로퍼티명
-	 * @param value 탐색할 프로퍼티의 값
+	 * @param {object} sourceObject 탐색할 객체
+	 * @param {string} searchName 탐색할 프로퍼티명
+	 * @param searchValue 탐색할 프로퍼티의 값
 	 * @return name과 value가 일치하는 프로퍼티를 소유한 객체.
 	 */
-	function findContainsObject(obj, name, value) {
+	function findObject(sourceObject, searchName, searchValue) {
 		'use strict';
-		var valueType = typeof value;
-		for (var prop in obj) {
-			// console.log(prop, typeof obj[prop]);
-			var targetType = typeof obj[prop];
-			if (targetType === 'object') {
-				var foundOne = findContainsObject(obj[prop], name, value);
+		var valueType = typeof searchValue;
+		for (var name in sourceObject) {
+			var element = sourceObject[name];
+			var elementType = typeof element;
+			if (elementType === 'object') {
+				var foundOne = findObject(element, searchName, searchValue);
 				if (foundOne) {
 					return foundOne;
 				}
-			} else if (targetType !== valueType) {
+			} else if (elementType !== valueType) {
 				continue;
-			} else if (prop === name && obj[prop] == value) {
-				return obj;
+			} else if (name === searchName && element == searchValue) {
+				return sourceObject;
 			}
 		}
 	}
-	console.log('findContainsObject:', findContainsObject(product, 'unitName', 'THE ANCIENT RED ONE'));
-	// findContainsObject: Object { productId: "0123456789", unitName: "THE ANCIENT RED ONE", maxOrderPossibleQuantity: 999, unitSequence: 1 }
+	// 마젠타 찾기
+	var foundOne = findObject(product, 'unitName', 'magenta');
+	console.log('findObject:', foundOne); // { nodeId: "6550401", unitName: "magenta" }
+	var foundOne2 = findObject(product, 'unitName', 'white');
+	console.log('findObject:', foundOne2); // { nodeId: "655060198", unitName: "white" }
+
+	/**
+	 * sourceObject를 재귀탐색해서 searchObject를 소유한 객체(=부모)를 찾는다.
+	 * 
+	 * @param {object} sourceObject
+	 * @param {object} searchObject
+	 * @return searchObject의 부모
+	 */
+	function findContainsObject(sourceObject, searchObject) {
+		'use strict';
+		if (sourceObject === searchObject) {
+			return true;
+		}
+		for (var name in sourceObject) {
+			var element = sourceObject[name];
+			var propType = typeof element;
+			if (propType !== 'object') {
+				continue;
+			}
+			if (Array.isArray(element)) {
+				for (var index in element) {
+					var found = findContainsObject(element[index], searchObject);
+					if (found) {
+						return found === true ? sourceObject : found;
+					}
+				}
+			} else {
+				var found = findContainsObject(element, searchObject);
+				if (found) {
+					return found === true ? sourceObject : found;
+				}
+			}
+		}
+	}
+	var parent = findContainsObject(product, findObject(product, 'unitName', 'cyan'));
+	console.log('findContainsObject:', parent); // { nodeId: "65504", unitName: "red", childList: (2) […] }
+	var parent2 = findContainsObject(product, findObject(product, 'unitName', 'white'));
+	console.log('findContainsObject:', parent2); // { nodeId: "6550601", unitName: "gray", child: {…} }
+	// 
 </script>
 </head>
 <body>
