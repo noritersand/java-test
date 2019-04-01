@@ -37,13 +37,6 @@ public class EnumTest {
 	}
 
 	@Test
-	public void testValueOfIAESafe() {
-		String txt = "NOT_BACK_OFFICE";
-		SystemType systemType = SystemType.valueOfIAESafe(txt);
-		Assert.assertEquals("BACK_OFFICE", String.valueOf(systemType));
-	}
-	
-	@Test
 	public void useSwitch() {
 		String div = "back_office";
 		switch (SystemType.valueOf(div.toUpperCase())) {
@@ -62,6 +55,20 @@ public class EnumTest {
 		String source = "red";
 		Enum<Color> color = Enum.valueOf(clazz, source.trim().toUpperCase());
 		Assert.assertEquals(Color.RED, color);
+	}
+	
+	@Test
+	public void testValueOfIAESafe() {
+		String txt = "NOT_BACK_OFFICE";
+		SystemType systemType = SystemType.valueOfIAESafe(txt);
+		Assert.assertEquals("BACK_OFFICE", String.valueOf(systemType));
+	}
+	
+	@Test
+	public void testGetDeclaringClass() {
+		Assert.assertEquals(SystemType.BACK_OFFICE.getClass(), SystemType.BACK_OFFICE.getDeclaringClass());
+		Assert.assertEquals(SystemType.FRONT_OFFICE.getDeclaringClass(), SystemType.BACK_OFFICE.getDeclaringClass());
+		Assert.assertNotEquals(Color.RED.getDeclaringClass(), SystemType.FRONT_OFFICE.getDeclaringClass());
 	}
 
 	private enum SystemType {

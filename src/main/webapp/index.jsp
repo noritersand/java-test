@@ -58,6 +58,8 @@
 	<li>
 		<h4>JavaScript</h4>
 		<ul>
+			<li><a href="/test/js/cookie/cookie-util-test.html">cookie: cookie util</a></li>
+			<li><a href="/test/js/parameter/parameter-util-test.html">parameter: parameter util</a></li>
 			<li>AJAX
 				<ul>
 					<li><a href="/test/js/ajax/cors-test.html">JavaScript CORS</a></li>
@@ -70,7 +72,6 @@
 					<li><a href="/test/js/array/splice-test.html">splice #3 배열의 특정 요소 삭제</a></li>
 				</ul>
 			</li>
-			<li><a href="/test/js/cookie/cookie-util-test.html">cookie: cookie util</a></li>
 			<li>date
 				<ul>
 					<li><a href="/test/js/date/date-test.html">date</a></li>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>parameter util test</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script>
+	var parameterUtil = {
+		getByName: function(name, url) {
+			if (!url) {
+				url = window.location.href;
+			}
+			name = name.replace(/[\[\]]/g, '\\$&');
+			var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+				results = regex.exec(url);
+			if (!results) {
+				return null;
+			}
+			if (!results[2]) {
+				return '';
+			}
+			return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		}
+	}
+	console.log('parameterUtil.getByName:', '"' + parameterUtil.getByName('q', 
+			'https://www.google.com/search?newwindow=1&client=firefox-b-d&ei=gNWhXPP-KISl8QWCtJDYDA&q=javascript+replace&oq=javascript+replace') + '"');
+</script>
+</head>
+<body>
+<h2>parameter util test</h2>
+<div class="align-center">
+	<p>Open the console,and try type:</p>
+	<p><code>parameterUtil.getByName('client', 'https://localhost/?client=firefox');</code></p>
+</div>
+</body>
+</html>

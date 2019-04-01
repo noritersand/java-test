@@ -3,12 +3,7 @@
 <head>
 <title>cookie util</title>
 <meta charset="utf-8">
-<style type="text/css">
-div {
-	margin-top: 8px;
-	margin-bottom: 8px;
-}
-</style>
+<link rel="stylesheet" href="/static/css/style.css"/>
 <script>
 var cookieUtil = {
 	getItem : function(sKey) {
@@ -122,14 +117,11 @@ window.onload = function() {
 </head>
 <body>
 <h2>쿠키 테스트</h2>
-<div>
+<div class="align-center">
 쿠키이름: <input type="text" id="cookieName" autofocus> 쿠키값: <input type="text" id="cookieValue"> <button type="button" onclick="createCookie()">쿠키 생성</button>
 </div>
-<div>
-<button type="button" onclick="removeAllCookie()">쿠키 모두 삭제</button>
-</div>
-<div>
-<button type="button" onclick="drawCookieList()">쿠키 목록 그리기</button>
+<div class="align-center">
+<button type="button" onclick="removeAllCookie()">쿠키 모두 삭제</button> <button type="button" onclick="drawCookieList()">쿠키 목록 그리기</button>
 <h4>쿠키 목록:</h4>
 <ul id="cookieList"></ul>
 </div>
