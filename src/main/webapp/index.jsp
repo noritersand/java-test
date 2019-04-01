@@ -102,7 +102,7 @@
 					<li><a href="/test/js/plain-object/delete-not-specified-property-test.html">plain-object: delete not specified property</a></li>
 					<li><a href="/test/js/plain-object/convert-querystring-to-json-test.html">plain-object: convert querystring to JSON</a></li>
 					<li><a href="/test/js/plain-object/object-array-to-array-object-test.html">plain-object: object-array to array-object</a></li>
-					<li><a href="/test/js/plain-object/deep-find-object-properties-test.html">plain-object: deep find object properties</a></li>
+					<li><a href="/test/js/plain-object/deep-search-inside-object-test.html">plain-object: deep search inside object test</a></li>
 				</ul>
 			</li>
 			<li>statement
