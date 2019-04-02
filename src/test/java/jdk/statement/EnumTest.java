@@ -64,13 +64,41 @@ public class EnumTest {
 		Assert.assertEquals("BACK_OFFICE", String.valueOf(systemType));
 	}
 	
+	/**
+	 * Enum.getClass()와 Enum.getDeclaringClass()의 차이
+	 * 
+	 * @author fixalot
+	 */
 	@Test
 	public void testGetDeclaringClass() {
+		// 평범한 enum은 getClass()나 getDeclaringClass()나 별 차이 없지만
 		Assert.assertEquals(SystemType.BACK_OFFICE.getClass(), SystemType.BACK_OFFICE.getDeclaringClass());
 		Assert.assertEquals(SystemType.FRONT_OFFICE.getDeclaringClass(), SystemType.BACK_OFFICE.getDeclaringClass());
-		Assert.assertNotEquals(Color.RED.getDeclaringClass(), SystemType.FRONT_OFFICE.getDeclaringClass());
+		
+		// 클래스 본문이 있는 enum은 getClass()가 ImVerySpecial 내부의 서브클래스를 반환함.
+		Assert.assertNotEquals(ImVerySpecial.class, ImVerySpecial.A.getClass());
+		Assert.assertNotEquals(ImVerySpecial.class, ImVerySpecial.B.getClass());
+		Assert.assertEquals(ImVerySpecial.class, ImVerySpecial.A.getDeclaringClass());
+		Assert.assertEquals(ImVerySpecial.class, ImVerySpecial.B.getDeclaringClass());
 	}
 
+	private enum ImVerySpecial {
+		// enum은 값(=상수)별 클래스 본문을 가질 수 있음. (value-specific class bodies)
+		A {
+			@SuppressWarnings("unused")
+			void destroy() {
+				System.out.println("I'm dying :<");
+			}
+		},
+		
+		B {
+			@SuppressWarnings("unused")
+			void destroy() {
+				System.out.println("Noooooooooo...");
+			}
+		}
+	}
+	
 	private enum SystemType {
 		BACK_OFFICE, FRONT_OFFICE("front office system");
 
