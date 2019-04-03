@@ -12,9 +12,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 테스트 케이스: 스트림과 람다
+ * Stream 클래스 테스트 유닛
  * 
  * required jdk8 or higher
+ * 
+ * - https://futurecreator.github.io/2018/08/26/java-8-streams/
+ * - https://futurecreator.github.io/2018/08/26/java-8-streams-advanced/
  * 
  * @since 2018-07-16
  * @author fixalot

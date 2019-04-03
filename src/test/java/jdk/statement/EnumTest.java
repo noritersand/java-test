@@ -56,14 +56,14 @@ public class EnumTest {
 		Enum<Color> color = Enum.valueOf(clazz, source.trim().toUpperCase());
 		Assert.assertEquals(Color.RED, color);
 	}
-	
+
 	@Test
 	public void testValueOfIAESafe() {
 		String txt = "NOT_BACK_OFFICE";
 		SystemType systemType = SystemType.valueOfIAESafe(txt);
 		Assert.assertEquals("BACK_OFFICE", String.valueOf(systemType));
 	}
-	
+
 	/**
 	 * Enum.getClass()와 Enum.getDeclaringClass()의 차이
 	 * 
@@ -74,31 +74,49 @@ public class EnumTest {
 		// 평범한 enum은 getClass()나 getDeclaringClass()나 별 차이 없지만
 		Assert.assertEquals(SystemType.BACK_OFFICE.getClass(), SystemType.BACK_OFFICE.getDeclaringClass());
 		Assert.assertEquals(SystemType.FRONT_OFFICE.getDeclaringClass(), SystemType.BACK_OFFICE.getDeclaringClass());
-		
-		// 클래스 본문이 있는 enum은 getClass()가 ImVerySpecial 내부의 서브클래스를 반환함.
-		Assert.assertNotEquals(ImVerySpecial.class, ImVerySpecial.A.getClass());
-		Assert.assertNotEquals(ImVerySpecial.class, ImVerySpecial.B.getClass());
-		Assert.assertEquals(ImVerySpecial.class, ImVerySpecial.A.getDeclaringClass());
-		Assert.assertEquals(ImVerySpecial.class, ImVerySpecial.B.getDeclaringClass());
+
+		// 클래스 본문이 있는 enum은 getClass()가 ImSpecial 내부의 서브클래스를 반환함.
+		Assert.assertNotEquals(ImSpecial.class, ImSpecial.A.getClass());
+		Assert.assertNotEquals(ImSpecial.class, ImSpecial.B.getClass());
+		Assert.assertEquals(ImSpecial.class, ImSpecial.A.getDeclaringClass());
+		Assert.assertEquals(ImSpecial.class, ImSpecial.B.getDeclaringClass());
 	}
 
-	private enum ImVerySpecial {
-		// enum은 값(=상수)별 클래스 본문을 가질 수 있음. (value-specific class bodies)
-		A {
-			@SuppressWarnings("unused")
-			void destroy() {
-				System.out.println("I'm dying :<");
-			}
-		},
+	/**
+	 * enum 확장 하기.
+	 * 구글 구아바의 {@link com.google.common.base.CaseFormat}을 참고할 것.
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	public void howExtendEnum() {
 		
-		B {
-			@SuppressWarnings("unused")
-			void destroy() {
-				System.out.println("Noooooooooo...");
-			}
-		}
+		
+		ImSpecial.A.destroySelf();
+		ImSpecial.B.destroySelf();
 	}
 	
+	private enum ImSpecial {
+		// enum은 값(=상수)별 클래스 본문을 가질 수 있음. (value-specific class bodies)
+		A {
+			@Override
+			public void destroySelf() {
+				logger.debug("I'm dying :<");
+			}
+		},
+
+		B {
+			@Override
+			public void destroySelf() {
+				logger.debug("Noooooooooo...");
+			}
+		};
+
+		public void destroySelf() {
+			this.destroySelf();
+		}
+	}
+
 	private enum SystemType {
 		BACK_OFFICE, FRONT_OFFICE("front office system");
 
@@ -113,7 +131,7 @@ public class EnumTest {
 		public String getOptionalField() {
 			return this.optionalField;
 		}
-		
+
 		public static SystemType valueOfIAESafe(String arg) {
 			try {
 				return SystemType.valueOf(arg);
