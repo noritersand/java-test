@@ -33,6 +33,19 @@ public class OperatorTest {
 		Assert.assertEquals(1, a);
 		Assert.assertEquals(1, a++); // 변수 반환 이후에 연산. 따라서 +1 하기 전의 결과인 1
 		Assert.assertEquals(2, a);
+
+		// 반복문에서 증감연산자는 피연산자의 어느쪽에 있어도 상관 없다.
+		for (int i = 0; i < 2; ++i) {
+			logger.debug(String.valueOf(i));
+		}
+		for (int i = 0; i < 2; i++) {
+			logger.debug(String.valueOf(i));
+		}
+	}
+	
+	@Test
+	public void binaryOperator() {
+		Assert.assertEquals(2, 1 + 1);
 	}
 	
 	@Test
@@ -45,4 +58,5 @@ public class OperatorTest {
 		Assert.assertEquals(2, 5 % 3);
 		Assert.assertEquals(0, 6 % 3);
 	}
+	
 }

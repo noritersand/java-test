@@ -3,83 +3,123 @@
 <head>
 <title>Form element to JSON</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="/static/css/style2.css"/>
-<script src="/static/js/jquery-1.12.4.js"></script>	
-<script>
-	function formToJsObject(targetElement) {
-		var param = new Object();
-		$(targetElement).find('input, textarea, select').each(function(idx, ele) {
-			var name = $(ele).attr('name'),
-				type = $(ele).attr('type'),
-				checked = $(ele).prop('checked'),
-				disabled = $(ele).prop('disabled'),
-				val = $(ele).val();
-			if (typeof name === 'undefined') {
-				return true; // jquery each continue
-			}
-			if (type == 'checkbox' || type == 'radio') {
-				if (checked && !disabled) {
-					param[name] = val;
-				}
-			} else {
-				if (!disabled) {
-					param[name] = val;
-				}
-			}
-		});
-		return param;
-	}
-	$(function() {
-		var formData = [];
-		$('table').each(function(idx, ele) { 
-			console.log('idx:', idx);
-			formData.push(formToJsObject(ele));
-		});
-		console.log(JSON.stringify(formData));
-		$('#result').html(JSON.stringify(formData));
-	});
-</script>
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script src="/static/js/jquery-1.12.4.js"></script>
 </head>
 <body>
-<h2>Form element to JSON</h2>
-<section>
-	<table>
-		<tr>
-			<td>
-				<input type="text" name="txtIpt" value="introduce my self">
-				<textarea name="txtarea" cols="30" rows="1">Textarea the firstborn</textarea>
-				<label><input type="checkbox" name="chkbox" value="Y" checked> Y</label>
-				<label><input type="checkbox" name="chkbox" value="N"> N</label>
-			</td>
-		</tr>
-	</table>
-</section>
-<section>
-	<table>
-		<tr>
-			<td>
-				<input type="text" name="txtIpt" value="some meme">
-				<textarea name="txtarea" cols="30" rows="1">Knowledge is power   - france is bacon</textarea>
-				<label><input type="checkbox" name="chkbox" value="Y"> Y</label>
-				<label><input type="checkbox" name="chkbox" value="N" checked> N</label>
-			</td>
-		</tr>
-	</table>
-</section>
-<section>
-	<table>
-		<tr>
-			<td>
-				<input type="text" name="txtIpt" value="waldo">
-				<textarea name="txtarea" cols="40" rows="1">Hello there! String and fine morning! If you ask me, I'm Waldo.</textarea>
-				<label><input type="checkbox" name="chkbox" value="Y" checked> Y</label>
-				<label><input type="checkbox" name="chkbox" value="N"> N</label>
-			</td>
-		</tr>
-	</table>
-</section>
-<section>
-	<div id="result"></div>
-</section>
+<div class="align-center">
+	<h2>Form element to JSON</h2>
+	<form>
+		<section>
+			<table>
+				<tr>
+					<td>
+						<input type="text" name="txtIpt" value="introduce my self">
+						<textarea name="txtarea" cols="30" rows="1">Textarea the firstborn</textarea>
+						<label><input type="checkbox" name="chkbox" value="Y" checked> Y</label>
+						<label><input type="checkbox" name="chkbox" value="N"> N</label>
+					</td>
+				</tr>
+			</table>
+		</section>
+		<section>
+			<table>
+				<tr>
+					<td>
+						<input type="text" name="txtIpt" value="some meme">
+						<textarea name="txtarea" cols="30" rows="1">Knowledge is power. - france is bacon</textarea>
+						<label><input type="checkbox" name="chkbox" value="Y"> Y</label>
+						<label><input type="checkbox" name="chkbox" value="N" checked> N</label>
+					</td>
+				</tr>
+			</table>
+		</section>
+		<section>
+			<table>
+				<tr>
+					<td>
+						<input type="text" name="txtIpt" value="waldo said">
+						<textarea name="txtarea" cols="40" rows="1">Hello there! String and fine morning! If you ask me, I'm Waldo.</textarea>
+						<label><input type="checkbox" name="chkbox" value="Y" checked> Y</label>
+						<label><input type="checkbox" name="chkbox" value="N"> N</label>
+					</td>
+				</tr>
+			</table>
+		</section>
+	</form>
+</div>
+<div class="align-center" id="result">
+</div>
+<script>
+/**
+ * jQuery를 사용한 방식
+ */
+function formToJsObjectOld(targetElement) {
+	var param = new Object();
+	$(targetElement).find('input, textarea, select').each(function(idx, ele) {
+		var name = $(ele).attr('name'),
+			type = $(ele).attr('type'),
+			checked = $(ele).prop('checked'),
+			disabled = $(ele).prop('disabled'),
+			val = $(ele).val();
+		if (typeof name === 'undefined') {
+			return true; // jquery each continue
+		}
+		if (type == 'checkbox' || type == 'radio') {
+			if (checked && !disabled) {
+				param[name] = val;
+			}
+		} else {
+			if (!disabled) {
+				param[name] = val;
+			}
+		}
+	});
+	return param;
+}
+/**
+ * targetElement의 child dom 중 input(textarea, select 포함)을 모두 찾아 자바스크립트 객체로 변환
+ * 
+ * @param {object|string} parentElement input의 직계 조상 중 하나
+ * @return 반환값 예시: {"txtIpt":"waldo","txtarea":"hi!","chkbox":"Y"}
+ */
+function formToJsObject(parentElement) {
+	if (typeof parentElement == 'string') {
+		parentElement = document.querySelector(parentElement);
+	}
+	var returnMe = new Object();
+	var inputElements = parentElement.querySelectorAll('input, textarea, select');
+	inputElements.forEach(function(ele, idx, obj) {
+		var name = ele.getAttribute('name'),
+			type = ele.getAttribute('type'),
+			checked = ele.checked,
+			disabled = ele.disabled,
+			val = ele.value;
+		if (typeof name === 'undefined') {
+			return; // Array.forEach(): continue
+		}
+		if (type == 'checkbox' || type == 'radio') {
+			if (checked && !disabled) {
+				returnMe[name] = val;
+			}
+		} else {
+			if (!disabled) {
+				returnMe[name] = val;
+			}
+		}
+	});
+	return returnMe;
+}
+var formData = [];
+var tables = document.querySelectorAll('table');
+tables.forEach(function(ele, idx, obj) {
+// 	console.log('idx:', idx); // index
+// 	console.log('ele:', ele); // each element
+// 	console.log('obj:', obj); // this
+	formData.push(formToJsObject(ele));
+});
+console.log('formData: ', JSON.stringify(formData));
+document.querySelector('#result').textContent = JSON.stringify(formData);
+</script>
 </body>
 </html>
