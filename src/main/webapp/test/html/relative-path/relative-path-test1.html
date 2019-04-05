@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>relative path test</title>
+<meta charset="utf-8">
+<title>relative path test</title>
+<link rel="stylesheet" href="/static/css/style.css"/>
 </head>
 <body>
-	<h2>parent</h2>
+<h2>parent</h2>
+<div class="align-center">
 	<p>my location is <span id="loc" style="color: blue; font-weight: bold;"></span></p>
+	<h4>Page-relative</h4>
+	<img src="static/image/1.png" />
+	<h4>Context-relative</h4>
 	<img src="/static/image/1.png" />
+	<h4>Protocol-relative</h4>
 	<img src="//localhost:8080/static/image/2.jpg" />
 	<div style="margin-top: 5px;">
-			<iframe style="width: 85%; height: 450px; border: 2px solid black;" 
-					src="https://127.0.0.1:8443/html-test/relative-path/relative-path-test2.html"></iframe>
+		<iframe style="width: 85%; height: 450px; border: 2px solid black;" 
+				src="https://127.0.0.1:8443/html-test/relative-path/relative-path-test2.html"></iframe>
 	</div>
-	<script>
-		document.querySelector('#loc').innerText = location.href;
-	</script>
+</div>
+<script>
+document.querySelector('#loc').innerText = location.href;
+</script>
 </body>
 </html>
