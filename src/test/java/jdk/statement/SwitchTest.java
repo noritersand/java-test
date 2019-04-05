@@ -33,4 +33,27 @@ public class SwitchTest {
 			Assert.assertEquals(3, b);
 		}
 	}
+	
+	/**
+	 * switch의 인수가 null이면 어떻게 될까요?
+	 * 
+	 * @author fixalot
+	 */
+	@Test
+	@SuppressWarnings("null")
+	public void howAboutActualArgumentIsNull() {
+		String imNull = null;
+		try {
+			switch (imNull) {
+			case "a":
+				logger.debug("it is 'a'");
+				break;
+			default:
+				logger.debug("it is null");
+				break;
+			}	
+		} catch (NullPointerException e) {
+			logger.debug("에러 났습니당.");
+		}
+	}
 }
