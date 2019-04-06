@@ -59,7 +59,7 @@ public class StreamTest {
 			final String element = list.get(i);
 			executor.submit(() -> {
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 				}
 				logger.debug("testParallelLoopOldWay Starting:" + Thread.currentThread().getName() + ", element=" + element + ", ended at "
@@ -76,7 +76,7 @@ public class StreamTest {
 			logger.debug(
 					"testParallelStream Starting:" + Thread.currentThread().getName() + ", element=" + element + ", " + LocalDateTime.now());
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 			}
 		});
