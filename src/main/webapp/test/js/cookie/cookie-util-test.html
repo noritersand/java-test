@@ -62,7 +62,7 @@ var cookieUtil = {
 function createCookie() {
 	var nameInput = document.querySelector('#cookieName');
 	var valueInput = document.querySelector('#cookieValue');
-	cookieUtil.setItem(nameInput.value, valueInput.value);
+	cookieUtil.setItem(nameInput.value, valueInput.value, null, '/');
 	drawCookieList();
 	nameInput.value = '';
 	valueInput.value = '';
