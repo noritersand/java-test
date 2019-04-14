@@ -40,12 +40,12 @@ public class EnumTest {
 	public void useSwitch() {
 		String div = "back_office";
 		switch (SystemType.valueOf(div.toUpperCase())) {
-		case BACK_OFFICE:
-			logger.debug("백");
-			break;
-		case FRONT_OFFICE:
-			logger.debug("프론트");
-			break;
+			case BACK_OFFICE:
+				logger.debug("백");
+				break;
+			case FRONT_OFFICE:
+				logger.debug("프론트");
+				break;
 		}
 	}
 
@@ -83,19 +83,17 @@ public class EnumTest {
 	}
 
 	/**
-	 * enum 확장 하기.
-	 * 구글 구아바의 {@link com.google.common.base.CaseFormat}을 참고할 것.
+	 * enum 확장 하기. 구글 구아바의 {@link com.google.common.base.CaseFormat}을 참고할 것.
 	 * 
 	 * @author fixalot
 	 */
 	@Test
 	public void howExtendEnum() {
-		
-		
+
 		ImSpecial.A.destroySelf();
 		ImSpecial.B.destroySelf();
 	}
-	
+
 	private enum ImSpecial {
 		// enum은 값(=상수)별 클래스 본문을 가질 수 있음. (value-specific class bodies)
 		A {

@@ -57,24 +57,24 @@ public class PrimitiveCalendar {
 	public static int mLastDay(int year, int month) {
 		int result = 0;
 		switch (month) {
-		case 2:
-			if (isLeapYear(year)) {
-				// 윤년 29일
-				result += 29;
+			case 2:
+				if (isLeapYear(year)) {
+					// 윤년 29일
+					result += 29;
+					break;
+				} else {
+					// 평년 28일
+					result += 28;
+					break;
+				}
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				result += 30;
 				break;
-			} else {
-				// 평년 28일
-				result += 28;
-				break;
-			}
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			result += 30;
-			break;
-		default: // 1월, 3월, 5월, 7월, 8월, 10월, 12월
-			result += 31;
+			default: // 1월, 3월, 5월, 7월, 8월, 10월, 12월
+				result += 31;
 		}
 		return result;
 	}
@@ -92,25 +92,24 @@ public class PrimitiveCalendar {
 		// 입력월까지 루프
 		for (int i = 1; i < month; ++i) {
 			switch (i) {
-			case 2:
-				if (isLeapYear(year)) {
-					// 윤년이면 29일
-					sum += 29;
+				case 2:
+					if (isLeapYear(year)) {
+						// 윤년이면 29일
+						sum += 29;
+						break;
+					} else {
+						// 평년은 28일
+						sum += 28;
+						break;
+					}
+				case 4:
+				case 6:
+				case 9:
+				case 11:
+					sum += 30;
 					break;
-				}
-				else {
-					// 평년은 28일
-					sum += 28;
-					break;
-				} 
-			case 4:
-			case 6:
-			case 9:
-			case 11:
-				sum += 30;
-				break;
-			default: // 1월, 3월, 5월, 7월, 8월, 10월, 12월
-				sum += 31;
+				default: // 1월, 3월, 5월, 7월, 8월, 10월, 12월
+					sum += 31;
 			}
 		}
 		return sum + 1;
