@@ -5,30 +5,37 @@
 <meta charset="utf-8">
 <script>
 var product = {
+		"type": "product",
 		"productId": "A1010",
 		"nodeId": "655",
 		"unitList": [
 			{
+				"type": "unit",
 				"nodeId": "65504",
 				"unitName": "red",
-				"childList": [
+				"children": [
 					{
+						"type": "unit",
 						"nodeId": "6550401",
 						"unitName": "magenta"
 					},
 					{
+						"type": "unit",
 						"nodeId": "6550402",
 						"unitName": "cyan"
 					}
 				]
 			},
 			{
+				"type": "unit",
 				"nodeId": "65505",
 				"unitName": "black",
 				"child": {
+					"type": "unit",
 					"nodeId": "6550601",
 					"unitName": "gray",
 					"child": {
+						"type": "unit",
 						"nodeId": "655060198",
 						"unitName": "white"
 					}
@@ -38,7 +45,7 @@ var product = {
 	};
 
 	/**
-	 * sourceObject를 재귀탐색해서 이름이 일치하는 모든 프로퍼티를 탐색한다.
+	 * sourceObject를 재귀탐색해서 이름이 일치하는 프로퍼티를 모두 찾는다.
 	 *
 	 * @param {object} sourceObject 탐색할 객체
 	 * @param {string} searchName 탐색할 프로퍼티명
@@ -46,54 +53,62 @@ var product = {
 	 */
 	function findValues(sourceObject, searchName) {
 		'use strict';
-		var returnMe = [];
-		function findRecursivly(sourceObject, searchName) {
+		var stack = [];
+		function findRecursively(sourceObject, searchName) {
 			for (var name in sourceObject) {
 				var element = sourceObject[name];
 				if (typeof element === 'object') {
-					findRecursivly(element, searchName);
+					findRecursively(element, searchName);
 				} else if (name === searchName) {
-					returnMe.push(element);
+					stack.push(element);
 				}
 			}
 		}
-		findRecursivly(sourceObject, searchName);
-		return returnMe;
+		findRecursively(sourceObject, searchName);
+		return stack;
 	}
 	console.log('findValues:', findValues(product, 'nodeId')); // [ "655", "65504", "6550401", "6550402", "65505", "6550601", "655060198" ]
 
 	/**
-	 * sourceObject를 재귀탐색해서 이름과 값이 파라미터와 모두 일치하는 프로퍼티를 탐색한다.  
+	 * sourceObject를 재귀탐색해서 이름과 값이 파라미터와 일치하는 객체를 모두 찾는다.  
 	 *
 	 * @param {object} sourceObject 탐색할 객체
 	 * @param {string} searchName 탐색할 프로퍼티명
 	 * @param searchValue 탐색할 프로퍼티의 값
-	 * @return name과 value가 일치하는 프로퍼티를 소유한 객체.
+	 * @return {array} name과 value가 일치하는 프로퍼티를 소유한 객체를 배열로 반환.
 	 */
-	function findObject(sourceObject, searchName, searchValue) {
+	function findObjects(sourceObject, searchName, searchValue) {
 		'use strict';
 		var valueType = typeof searchValue;
-		for (var name in sourceObject) {
-			var element = sourceObject[name];
-			var elementType = typeof element;
-			if (elementType === 'object') {
-				var foundOne = findObject(element, searchName, searchValue);
-				if (foundOne) {
-					return foundOne;
+		var stack = [];
+		function findRecursively(sourceObject, searchName, searchValue) {
+			for (var name in sourceObject) {
+				var element = sourceObject[name];
+				var elementType = typeof element;
+				if (elementType === 'object') {
+					var foundOne = findRecursively(element, searchName, searchValue);
+					if (foundOne) {
+						return foundOne;
+					}
+				} else if (elementType !== valueType) {
+					continue;
+				} else if (name === searchName && element == searchValue) {
+					stack.push(sourceObject);
 				}
-			} else if (elementType !== valueType) {
-				continue;
-			} else if (name === searchName && element == searchValue) {
-				return sourceObject;
 			}
 		}
+		findRecursively(sourceObject, searchName, searchValue);
+		return stack;
 	}
 	// 마젠타 찾기
-	var foundOne = findObject(product, 'unitName', 'magenta');
-	console.log('findObject:', foundOne); // { nodeId: "6550401", unitName: "magenta" }
-	var foundOne2 = findObject(product, 'unitName', 'white');
-	console.log('findObject:', foundOne2); // { nodeId: "655060198", unitName: "white" }
-
+	var foundOne = findObjects(product, 'unitName', 'magenta');
+	console.log('findObjects #1:', foundOne); // { type: "unit", nodeId: "6550401", unitName: "magenta" }
+	var foundOne2 = findObjects(product, 'unitName', 'white');
+	console.log('findObjects #2:', foundOne2); // { type: "unit", nodeId: "655060198", unitName: "white" }
+	var temp = findObjects(product, 'type', 'unit');
+	var foundOne3 = findObjects(temp, 'unitName', 'black');
+	console.log('findObjects #3:', foundOne3); // { type: "unit", nodeId: "65505", unitName: "black", … }
+	
 	/**
 	 * sourceObject를 재귀탐색해서 searchObject를 소유한 객체(=부모)를 찾는다.
 	 * 
@@ -127,10 +142,10 @@ var product = {
 			}
 		}
 	}
-	var parent = findContainsObject(product, findObject(product, 'unitName', 'cyan'));
-	console.log('findContainsObject:', parent); // { nodeId: "65504", unitName: "red", childList: (2) […] }
-	var parent2 = findContainsObject(product, findObject(product, 'unitName', 'white'));
-	console.log('findContainsObject:', parent2); // { nodeId: "6550601", unitName: "gray", child: {…} }
+	var parent = findContainsObject(product, product.unitList[0].children[1]);
+	console.log('findContainsObject:', parent); // { type: "unit", nodeId: "65504", unitName: "red", children: (2) […] }
+	var parent2 = findContainsObject(product, product.unitList[1].child.child);
+	console.log('findContainsObject:', parent2); // { type: "unit", nodeId: "6550601", unitName: "gray", child: {…} }
 	// 
 </script>
 </head>
