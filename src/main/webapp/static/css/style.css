@@ -23,3 +23,12 @@ hr {
     width: 100%;
     box-sizing: content-box;
 }
+
+.description {
+    background-color: rgba(9,45,66,.08);
+    border-radius: 3px;
+    display: block;
+    min-height: 40px;
+    padding: 8px 12px;
+    text-decoration: none;
+}

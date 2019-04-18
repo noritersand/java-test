@@ -10,6 +10,10 @@ function handleKeyup(event) {
 	if (keyCode == '13') {
 		location.href = '/test/browser/history/browser-history-test-child.html';
 	}
+	
+}
+function moveToChild() {
+	location.href = '/test/browser/history/browser-history-test-child.html';
 }
 </script>
 </head>
@@ -25,9 +29,7 @@ function handleKeyup(event) {
 				<input type="submit" value="submit">
 			</fieldset>
 		</form>
-		
 		<hr>
-		
 		<h2>POST 메서드 form</h2>
 		<form method="post" action="/test/browser/history/browser-history-test-child.html">
 			<fieldset>
@@ -37,13 +39,11 @@ function handleKeyup(event) {
 				<input type="submit" value="submit">
 			</fieldset>
 		</form>
-		
 		<hr>
-		
 		<h2>폼 없는 입력란</h2>
 		name 있는 입력란: <input type="text" name="aaa" onkeyup="handleKeyup(event)">
 		name 없는 입력란: <input type="text" onkeyup="handleKeyup(event)">
-		<a href="/test/browser/history/browser-history-test-child.html">이동</a>
+		<button type="button" onclick="moveToChild()">이동</button>
 	</div>
 </body>
 </html>
