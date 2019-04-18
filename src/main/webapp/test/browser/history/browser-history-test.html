@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>browser history test</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script>
+function handleKeyup(event) {
+	var keyCode = event.keyCode || event.which;
+	if (keyCode == '13') {
+		location.href = '/test/browser/history/browser-history-test-child.html';
+	}
+}
+</script>
+</head>
+<body>
+	<div class="align-center">
+		<h1>browser history test</h1>
+		<h2>GET 메서드 form</h2>
+		<form method="get" action="/test/browser/history/browser-history-test-child.html">
+			<fieldset>
+				<legend>폼 안의 입력란</legend>
+				name 있는 입력란: <input type="text" name="aaa" autofocus="autofocus">
+				name 없는 입력란: <input type="text">
+				<input type="submit" value="submit">
+			</fieldset>
+		</form>
+		
+		<hr>
+		
+		<h2>POST 메서드 form</h2>
+		<form method="post" action="/test/browser/history/browser-history-test-child.html">
+			<fieldset>
+				<legend>폼 안의 입력란</legend>
+				name 있는 입력란: <input type="text" name="aaa">
+				name 없는 입력란: <input type="text">
+				<input type="submit" value="submit">
+			</fieldset>
+		</form>
+		
+		<hr>
+		
+		<h2>폼 없는 입력란</h2>
+		name 있는 입력란: <input type="text" name="aaa" onkeyup="handleKeyup(event)">
+		name 없는 입력란: <input type="text" onkeyup="handleKeyup(event)">
+		<a href="/test/browser/history/browser-history-test-child.html">이동</a>
+	</div>
+</body>
+</html>

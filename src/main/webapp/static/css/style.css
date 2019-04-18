@@ -13,3 +13,13 @@ body {
 	background: #ffffff;
 	color: #000000;
 }
+
+hr {
+    background-color: rgba(9,45,66,.13);
+    border: 0;
+    height: 1px;
+    margin: 16px 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: content-box;
+}

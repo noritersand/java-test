@@ -22,7 +22,8 @@
 		<ul>
 			<li><a href="/test/browser/new-window-test.html">new window</a></li>
 			<li><a href="/test/browser/popup/new-window-popup-test.html">new window(팝업)</a></li>
-			<li><a href="/test/browser/history/history-mother-test.html">history of iframe</a></li>
+			<li><a href="/test/browser/history/browser-history-test.html">browser history</a></li>
+			<li><a href="/test/browser/history/iframe/iframe-history-test-mother.html">history of iframe</a></li>
 		</ul>
 	</li>
 	<li>
