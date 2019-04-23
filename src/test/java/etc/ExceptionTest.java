@@ -1,5 +1,7 @@
 package etc;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -21,6 +23,42 @@ public class ExceptionTest {
 		} catch (Exception e) {
 			logger.debug("I'll catch you so much!");
 		}
+	}
+	
+	/**
+	 * throws는 언제 선언해야 하는가?
+	 * 
+	 * @author fixalot
+	 * @throws Exception 
+	 */
+//	@Test
+	public void needThrowsKeyword() throws Exception {
+		throw new Exception("hello");
+	}
+	
+	/**
+	 * RuntimeException은 throws 생략 가능.
+	 * 
+	 * <blockquote>RuntimeException and its subclasses are uncheckedexceptions. Unchecked exceptions do not need to bedeclared in a method
+	 * or constructor's throws clause if theycan be thrown by the execution of the method or constructor andpropagate outside the method or
+	 * constructor boundary.</blockquote>
+	 * 
+	 * @author fixalot
+	 */
+//	@Test
+	public void doNotNeedThrows() {
+		throw new RuntimeException("hello");
+	}
+	
+	/**
+	 * RuntimeException 계열이 아니면 throws 명시해야 함.
+	 * 
+	 * @throws IOException
+	 * @author fixalot
+	 */
+//	@Test
+	public void needThrowsKeyword2() throws IOException {
+		throw new IOException("hello");
 	}
 
 	@Test
