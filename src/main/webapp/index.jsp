@@ -63,7 +63,8 @@
 			<li><a href="/test/js/parameter/parameter-util-test.html">parameter: parameter util</a></li>
 			<li>AJAX
 				<ul>
-					<li><a href="/test/js/ajax/cors-test.html">JavaScript CORS</a></li>
+					<li><a href="/test/js/ajax/ajax-test.html">JavaScript AJAX</a></li>
+					<li><a href="/test/js/ajax/cors-test.html">CORS test</a></li>
 				</ul>
 			</li>
 			<li>array

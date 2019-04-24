@@ -9,6 +9,7 @@
 <h2>ajax test</h2>
 <p>response: <span style="color: red" id="result"></span></p>
 <script>
+setTimeout(() => {
 	$.ajax({
 		url: '/test/uncategorized/test-read-formal-parameter.data?a=1',
 		data: 'b=2&c=3',
@@ -19,7 +20,8 @@
 			console.log('textStatus:', textStatus);
 			console.log('jqXhr:', jqXhr);
 		}
-	})
+	});
+}, 2000);
 </script>
 </body>
 </html>
