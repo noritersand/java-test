@@ -63,9 +63,10 @@ public class UncategorizedTestController {
 	 * @param response
 	 * @return
 	 * @author fixalot
+	 * @throws IOException 
 	 */
 	@UrlMapping("/test/uncategorized/test-read-formal-parameter.data")
-	public JsonResponseObject testReadFormalParameter(HttpServletRequest request, HttpServletResponse response) {
+	public JsonResponseObject testReadFormalParameter(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		logger.debug(params.toString());
 		JsonResponseObject responseJSON = new JsonResponseObject();

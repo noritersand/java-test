@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JavaScript CORS test</title>
+<title>JavaScript AJAX test</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<div class="align-center">
+	<h1>JavaScript AJAX test</h1>
+	<p>response: <span style="color: red" id="result"></span></p>
+</div>
 <script>
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
@@ -11,16 +17,32 @@ xhr.onreadystatechange = function() {
 		console.log('status:', xhr.status);
 		console.log('statusText:', xhr.statusText);
 		console.log('responseText:', xhr.responseText);
+		console.log('xhr:', xhr);
+		
+		let div = document.querySelector('#result');
+		try {
+			div.innerHTML = JSON.parse(xhr.responseText).message;
+		} catch (e) {
+			throw new Error('JSON parse error');
+		}
 	}
 };
-xhr.open('GET', 'https://127.0.0.1:8443/test/http/take-my-cross-origin-attack.data');
+
+// get method
+xhr.open('get', '/test/uncategorized/test-read-formal-parameter.data?a=1&b=2&c=3');
 xhr.send();
+
+// post method#1
+// xhr.open('post', '/test/uncategorized/test-read-formal-parameter.data?a=1');
+// xhr.open('post', '/test/uncategorized/test-read-payload-body.data'); // TODO 얘는 왠지 몰라도 안됨. xhr.status가 0
+// xhr.send('b=2&c=3'); // 바디로 읽어야 함
+
+// post method#2
+// let data = new FormData();
+// data.append('b', 2);
+// data.append('c', 3);
+// xhr.open('post', '/test/uncategorized/test-read-formal-parameter.data?a=1');
+// xhr.send(data); // 바디로 읽어야 함
 </script>
-</head>
-<body>
-<div class="align-center">
-	<h1>JavaScript AJAX test</h1>
-	TODO
-</div>
 </body>
 </html>

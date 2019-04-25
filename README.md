@@ -10,6 +10,7 @@ my little laboratory.
 
 ## TODO
 
+- 파폭에서 'http://localhost:8080/test/uncategorized/test-read-payload-body.data' 요청 안날라가는거 확인할 것
 - uncategorized 밑에 있는 얘들 분류할 것.
 - 파일명 변경. (바로 아래 도움말을 봐라)
 
