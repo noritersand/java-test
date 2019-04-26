@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ * enum 테스트 유닛
  * 
  * @since 2017-07-27
  * @author fixalot
@@ -75,7 +75,7 @@ public class EnumTest {
 		Assert.assertEquals(SystemType.BACK_OFFICE.getClass(), SystemType.BACK_OFFICE.getDeclaringClass());
 		Assert.assertEquals(SystemType.FRONT_OFFICE.getDeclaringClass(), SystemType.BACK_OFFICE.getDeclaringClass());
 
-		// 클래스 본문이 있는 enum은 getClass()가 ImSpecial 내부의 서브클래스를 반환함.
+		// 클래스 본문이 있는 enum은 getClass()가 내부의 서브클래스를 반환함.
 		Assert.assertNotEquals(ImSpecial.class, ImSpecial.A.getClass());
 		Assert.assertNotEquals(ImSpecial.class, ImSpecial.B.getClass());
 		Assert.assertEquals(ImSpecial.class, ImSpecial.A.getDeclaringClass());
