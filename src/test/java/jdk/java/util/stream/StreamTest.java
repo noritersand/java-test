@@ -1,18 +1,19 @@
 package jdk.java.util.stream;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Predicate;
 
 /**
  * Stream 클래스 테스트 유닛
@@ -36,7 +37,7 @@ public class StreamTest {
 	 */
 	@Test
 	public void testForEach() throws IOException {
-		List<Integer> list = new ArrayList<Integer>(Arrays.asList(new Integer[] { 1, 3, 7 }));
+		List<Integer> list = Arrays.asList(new Integer[] { 1, 3, 7 });
 		Stream<Integer> stream = list.stream();
 		stream.forEach(System.out::println);
 		stream.close(); // 생략 가능
@@ -52,33 +53,46 @@ public class StreamTest {
 	}
 
 	@Test
-	public void testParallelLoopOldWay() {
-		List<String> list = new ArrayList<String>(Arrays.asList(new String[] { "01", "02", "03", "04", "05", "06", "07", "08" }));
-		ExecutorService executor = Executors.newFixedThreadPool(5);
-		for (int i = 0; i < list.size(); i++) {
-			final String element = list.get(i);
-			executor.submit(() -> {
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
+	public void testFilter() {
+		List<Integer> list = Arrays.asList(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+
+		// 짝수 찾기
+		Predicate<Integer> predicate = new Predicate<Integer>() {
+			@Override
+			public boolean apply(@Nullable Integer input) {
+				if (input % 2 == 0) {
+					return true;
 				}
-				logger.debug("testParallelLoopOldWay Starting:" + Thread.currentThread().getName() + ", element=" + element + ", ended at "
-						+ LocalDateTime.now());
-			});
-		}
-		executor.shutdown();
+				return false;
+			}
+		};
+
+		// 필터링 결과 모두 출력
+		Stream<Integer> stream = list.stream();
+		List<Integer> result1 = stream.filter(predicate).collect(Collectors.toList());
+		Assert.assertEquals(Arrays.asList(new Integer[] { 2, 4, 6, 8 }), result1);
+
+		// 필터링 결과 중 첫 번째
+		stream = list.stream();
+		Integer result2 = stream.filter(predicate).findFirst().get();
+		Assert.assertEquals(2, result2.intValue());
+
+		// 필터링 결과 중 아무거나?? 그냥 첫 번째꺼 나오는거 같은데...
+		stream = list.stream();
+		Integer result3 = stream.filter(predicate).findAny().get();
+		logger.debug(String.valueOf(result3));
 	}
 
 	@Test
-	public void testParallelStream() {
-		List<String> list = new ArrayList<String>(Arrays.asList(new String[] { "하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟" }));
-		list.parallelStream().forEach(element -> {
-			logger.debug(
-					"testParallelStream Starting:" + Thread.currentThread().getName() + ", element=" + element + ", " + LocalDateTime.now());
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
+	public void testAnyMatch() {
+		List<Integer> list = Arrays.asList(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+		Stream<Integer> stream = list.stream();
+		boolean result = stream.anyMatch(e -> {
+			if (e > 10) {
+				return true;
 			}
+			return false;
 		});
+		Assert.assertFalse(result); // list에는 10보다 큰게 없음.
 	}
 }
