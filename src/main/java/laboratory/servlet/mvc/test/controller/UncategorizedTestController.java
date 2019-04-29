@@ -2,6 +2,7 @@ package laboratory.servlet.mvc.test.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,6 +91,15 @@ public class UncategorizedTestController {
 		final String body = RequestUtil.readBody(request);
 		logger.debug("formal parameter: " + params.toString());
 		logger.debug("payload body: " + body);
+		
+		logger.debug("헤더 목록:");
+		Enumeration<String> headerNames = request.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+			String headerName = headerNames.nextElement();
+			logger.debug("- {}: {}", headerName, request.getHeader(headerName));
+		}
+		logger.debug("-------------------------- 헤더 끗.");
+		
 		Map<String, Object> responseMap = new HashMap<>();
 		responseMap.put("success", true);
 		responseMap.put("header", params.toString());
