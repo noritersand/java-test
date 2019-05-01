@@ -15,9 +15,9 @@
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
 	if (xhr.readyState == 4) {
-		console.log('status:', xhr.status);
-		console.log('statusText:', xhr.statusText);
-		console.log('responseText:', xhr.responseText);
+// 		console.log('status:', xhr.status);
+// 		console.log('statusText:', xhr.statusText);
+// 		console.log('responseText:', xhr.responseText);
 		console.log('xhr:', xhr);
 		
 		let div = document.querySelector('#result1');
@@ -29,15 +29,15 @@ xhr.onreadystatechange = function() {
 	}
 };
 // get method
-xhr.open('get', '/test/uncategorized/test-read-formal-parameter.data?a=1&b=2&c=3');
+xhr.open('get', '/test/uncategorized/read-querystring.data?a=1&b=2&c=3');
 xhr.send();
 
 var xhr2 = new XMLHttpRequest();
 xhr2.onreadystatechange = function() {
 	if (xhr2.readyState == 4) {
-		console.log('status:', xhr2.status);
-		console.log('statusText:', xhr2.statusText);
-		console.log('responseText:', xhr2.responseText);
+// 		console.log('status:', xhr2.status);
+// 		console.log('statusText:', xhr2.statusText);
+// 		console.log('responseText:', xhr2.responseText);
 		console.log('xhr2:', xhr2);
 		
 		let div = document.querySelector('#result2');
@@ -48,16 +48,20 @@ xhr2.onreadystatechange = function() {
 		}
 	}
 };
+
 //post method#1
-//xhr.open('post', '/test/uncategorized/test-read-payload-body.data'); // TODO 파폭에서 안됨.
-//xhr.send('b=2&c=3'); // 바디로 읽어야 함
-// post method#2
-let data = new FormData();
-data.append('b', 2);
-data.append('c', 3);
-xhr2.open('post', '/test/uncategorized/test-read-payload-body.data?a=1'); // TODO 파폭에서 안됨.
+xhr2.open('post', '/test/uncategorized/read-body.data?a=1'); // 파폭은 url에 read-payload를 붙이면 ajax 요청이 안날라가는 이슈가 있음.
 xhr2.setRequestHeader('Content-type', 'application/json');
-xhr2.send(data); // 바디로 읽어야 함
+xhr2.send('b=2&c=3'); // 바디로 읽어야 함
+
+// post method#2
+// let data = new FormData();
+// data.append('b', 2);
+// data.append('c', 3);
+// xhr2.open('post', '/test/uncategorized/read-body.data?a=1');
+// xhr2.setRequestHeader('Content-type', 'application/json');
+// xhr2.setRequestHeader('Accept', 'application/json, text/javascript, */*; q=0.01');
+// xhr2.send(data); // 바디로 읽어야 함
 </script>
 </body>
 </html>

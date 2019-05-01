@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -88,5 +90,37 @@ public class RequestUtil {
 		}
 		body = stringBuilder.toString();
 		return body;
+	}
+	
+	/**
+	 * 헤더 모두 출력 
+	 * 
+	 * @param request
+	 * @return 
+	 */
+	public static HashMap<String, String> getHeadersMap(HttpServletRequest request) {
+		Enumeration<String> headerNames = request.getHeaderNames();
+		HashMap<String, String> headerMap = new HashMap<String, String>();
+		while (headerNames.hasMoreElements()) {
+			String headerName = headerNames.nextElement();
+			headerMap.put(headerName, request.getHeader(headerName));
+		}
+		if (headerMap.isEmpty()) {
+			return null;
+		}
+		return headerMap;
+	}
+	
+	/**
+	 * 헤더 모두 출력 
+	 * 
+	 * @param request
+	 */
+	public static void printHeaders(HttpServletRequest request) {
+		Enumeration<String> headerNames = request.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+			String headerName = headerNames.nextElement();
+			logger.debug("- {}: {}", headerName, request.getHeader(headerName));
+		}
 	}
 }

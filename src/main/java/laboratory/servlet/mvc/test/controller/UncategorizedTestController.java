@@ -2,7 +2,6 @@ package laboratory.servlet.mvc.test.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,7 +57,7 @@ public class UncategorizedTestController {
 	}
 	
 	/**
-	 * 개발자는 hello hello하고 웁니다.
+	 * 쿼리스트링 읽기
 	 * 
 	 * @param request
 	 * @param response
@@ -66,8 +65,8 @@ public class UncategorizedTestController {
 	 * @author fixalot
 	 * @throws IOException 
 	 */
-	@UrlMapping("/test/uncategorized/test-read-formal-parameter.data")
-	public JsonResponseObject testReadFormalParameter(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	@UrlMapping("/test/uncategorized/read-querystring.data")
+	public JsonResponseObject readQuerystring(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		logger.debug(params.toString());
 		JsonResponseObject responseJSON = new JsonResponseObject();
@@ -77,7 +76,7 @@ public class UncategorizedTestController {
 	}
 	
 	/**
-	 * 둘 중 하나에 있겠쥬?
+	 * 쿼리스트링 + 바디 읽기
 	 * 
 	 * @param request
 	 * @param response
@@ -85,20 +84,19 @@ public class UncategorizedTestController {
 	 * @author fixalot
 	 * @throws IOException 
 	 */
-	@UrlMapping("/test/uncategorized/test-read-payload-body.data")
-	public Map<String, Object> testReadPayloadBody(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	@UrlMapping("/test/uncategorized/read-body.data")
+	public Map<String, Object> readBody(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		final String body = RequestUtil.readBody(request);
 		logger.debug("formal parameter: " + params.toString());
 		logger.debug("payload body: " + body);
 		
-		logger.debug("헤더 목록:");
-		Enumeration<String> headerNames = request.getHeaderNames();
-		while (headerNames.hasMoreElements()) {
-			String headerName = headerNames.nextElement();
-			logger.debug("- {}: {}", headerName, request.getHeader(headerName));
-		}
-		logger.debug("-------------------------- 헤더 끗.");
+//		logger.debug("헤더 목록:");
+//		RequestUtil.printHeaders(request);
+//		logger.debug("-------------------------- 헤더 끗.");
+		
+//		HashMap<String, String> headersMap = RequestUtil.getHeadersMap(request);
+//		logger.debug(headersMap.toString());
 		
 		Map<String, Object> responseMap = new HashMap<>();
 		responseMap.put("success", true);
