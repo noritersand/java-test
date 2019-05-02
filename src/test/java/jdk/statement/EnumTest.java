@@ -37,6 +37,12 @@ public class EnumTest {
 	}
 
 	@Test
+	public void useEqualityOperator() {
+		Color red = Color.RED;
+		Assert.assertTrue(red == Color.RED);
+	}
+	
+	@Test
 	public void useSwitch() {
 		String div = "back_office";
 		switch (SystemType.valueOf(div.toUpperCase())) {
