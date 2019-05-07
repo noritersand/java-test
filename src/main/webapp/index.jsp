@@ -37,6 +37,7 @@
 		<li>
 			<h4>HTML</h4>
 			<ul>
+				<li><a href="/test/html/tag/html5-input-types-test.html">HTML5 Input Types</a></li>
 				<li><a href="/test/html/tag/tooltip-test.html">툴팁</a></li>
 				<li><a href="/test/html/tag/fieldset-test.html">&lt;fieldset&gt;</a></li>
 				<li><a href="/test/html/tag/a-test.html">&lt;a&gt;</a></li>

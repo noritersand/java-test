@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML5 Input Types</title>
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<div class="align-center">
+	<h1>HTML5 Input Types</h1>
+	<section>
+		<h2>required attribute</h2>
+		<form action="" method="get">
+			<input type="text" name="a" required>
+			<input type="checkbox" name="b" value="1" required> <!-- checkbox input의 required는 쓸모가 없음. -->
+			<input type="checkbox" name="b" value="2" required>
+			<input type="radio" name="c" value="1" required>
+			<input type="radio" name="c" value="2" required>
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>email</h2>
+		<form action="" method="get">
+			<input type="email" name="d">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>number</h2>
+		<form action="" method="get">
+			<input type="number" name="e">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>url</h2>
+		<form action="" method="get">
+			<input type="url" name="h">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<p>HTML5 validation이 작동하는 건 여기까지</p>
+	<hr>
+	<section>
+		<h2>range</h2>
+		<form action="" method="get">
+			<input type="range" name="f">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>search</h2>
+		<form action="" method="get">
+			<input type="search" name="g">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>tel</h2>
+		<form action="" method="get">
+			<input type="tel" name="i">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>date</h2>
+		<form action="" method="get">
+			<input type="date" name="k">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>datetime</h2>
+		<form action="" method="get">
+			<input type="datetime" name="l">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>datetime-local</h2>
+		<form action="" method="get">
+			<input type="datetime-local" name="m">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>month</h2>
+		<form action="" method="get">
+			<input type="month" name="n">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>time</h2>
+		<form action="" method="get">
+			<input type="time" name="o">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>week</h2>
+		<form action="" method="get">
+			<input type="week" name="p">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>color</h2>
+		<form action="" method="get">
+			<input type="color" name="q">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+	<section>
+		<h2>image</h2>
+		<form action="" method="get">
+			<input type="image" name="r">
+		</form>
+	</section>
+	<section>
+		<h2>reset</h2>
+		<form action="" method="get">
+			<input type="text" name="s"><br>
+			<textarea></textarea><br>
+			<input type="reset" name="t">
+		</form>
+	</section>
+	<section>
+		<h2>password</h2>
+		<form action="" method="get">
+			<p>password input은 바로 앞의 text input을 아이디로 간주하는 경향이 있음.</p>
+			id: <input type="text" name="u"><br>
+			pswd: <input type="password" name="v">
+			<button type="submit">submit</button>
+		</form>
+	</section>
+</div>
+</body>
+</html>
