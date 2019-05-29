@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class PhoneNumberSplitterTest {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(PhoneNumberSplitterTest.class);
 
 	@Test
@@ -26,5 +25,19 @@ public class PhoneNumberSplitterTest {
 		Assert.assertEquals("041-123-1234", PhoneNumberSplitter.split("0411231234").getJoined());
 		Assert.assertEquals("041-1234-1234", PhoneNumberSplitter.split("04112341234").getJoined());
 		Assert.assertEquals("070-1234-1234", PhoneNumberSplitter.split("07012341234").getJoined());
+	}
+	
+	@Test
+	public void shouldBeException() {
+		try {
+			PhoneNumberSplitter.split("01234567");
+		} catch (RuntimeException e) {
+			logger.error(e.getMessage(), e);
+		}
+	}
+	
+	@Test
+	public void testToString() {
+		logger.debug(PhoneNumberSplitter.split("07012341234").toString());
 	}
 }

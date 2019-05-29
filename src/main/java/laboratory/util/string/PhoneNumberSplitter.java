@@ -22,8 +22,8 @@ public class PhoneNumberSplitter {
 	private static final Logger logger = LoggerFactory.getLogger(PhoneNumberSplitter.class);
 
 	public static Result split(String str) {
-		if (StringUtils.isBlank(str)) {
-			throw new IllegalArgumentException("PhoneNumber must not empty.");
+		if (StringUtils.isBlank(str) || str.length() < 9) {
+			throw new IllegalArgumentException("전화번호는 필수값이며 9자리 이상이어야 해요.");
 		}
 
 		Result result = new Result();
@@ -81,6 +81,11 @@ public class PhoneNumberSplitter {
 
 		public void setJoined(String joined) {
 			this.joined = joined;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("Result [original=%s, separated=%s, joined=%s]", original, Arrays.toString(separated), joined);
 		}
 	}
 }
