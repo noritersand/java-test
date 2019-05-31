@@ -19,6 +19,17 @@ import org.slf4j.LoggerFactory;
  */
 public class StringTest {
 	private static final Logger logger = LoggerFactory.getLogger(StringTest.class);
+	
+	@Test
+	public void testIndexOf() {
+		String a = "INFO  log4jdbc.log4j2 - 5. ResultSet.close() returned void";
+		Assert.assertEquals(27, a.indexOf("ResultSet.")); // 첫 번째 "ResultSet."
+		Assert.assertEquals(14, a.indexOf(".")); // 첫 번째 "."
+		Assert.assertEquals(25, a.indexOf(".", 15)); // 인덱스 15 이후부터 찾음
+		
+		Assert.assertEquals(36, a.lastIndexOf(".")); // 마지막 "."
+		Assert.assertEquals(25, a.lastIndexOf(".", 35)); // 인덱스 25 이전부터 찾음
+	}
 
 	@Test
 	public void testFormat() {
@@ -99,7 +110,7 @@ public class StringTest {
 	}
 
 	@Test
-	public void getLength() {
+	public void getLengthWithLineDelimiter() {
 		String a = "totcnt123\nstart";
 		String b = "totcnt123start";
 		Assert.assertEquals(10, a.indexOf("start"));
