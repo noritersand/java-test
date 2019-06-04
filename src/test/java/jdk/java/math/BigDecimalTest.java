@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
  * @author noritersand
  */
 public class BigDecimalTest {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(BigDecimalTest.class);
 
 	@Test
