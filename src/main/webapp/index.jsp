@@ -13,6 +13,7 @@
 	<h1>LABORATORY</h1>
 	<h2>Index</h2>
 	<ul>
+		<li><a href="/test/html/test-file-template.html">테스트 파일 템플릿</a></li>
 		<li>
 			<h4>HTTP</h4>
 			<ul>
@@ -43,6 +44,7 @@
 				<li><a href="/test/html/tag/a-test.html">&lt;a&gt;</a></li>
 				<li><a href="/test/html/tag/label-test.html">&lt;label&gt;</a></li>
 				<li><a href="/test/html/tag/video-test.html">&lt;video&gt;</a></li>
+				<li><a href="/test/html/tag/select-test.html">&lt;select&gt;</a></li>
 				<li><a href="/test/html/opener/opener-test.html">opener</a></li>
 				<li><a href="/test/html/opener/opener-test3.html">opener #2</a></li>
 				<li><a href="/test/html/iframe/iframe-test1.html">iframe</a></li>
