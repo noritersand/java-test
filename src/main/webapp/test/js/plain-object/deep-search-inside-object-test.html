@@ -54,17 +54,17 @@ var product = {
 	function findValues(sourceObject, searchName) {
 		'use strict';
 		var stack = [];
-		function findRecursively(sourceObject, searchName) {
+		function recursion(sourceObject, searchName) {
 			for (var name in sourceObject) {
 				var element = sourceObject[name];
 				if (typeof element === 'object') {
-					findRecursively(element, searchName);
+					recursion(element, searchName);
 				} else if (name === searchName) {
 					stack.push(element);
 				}
 			}
 		}
-		findRecursively(sourceObject, searchName);
+		recursion(sourceObject, searchName);
 		return stack;
 	}
 	console.log('findValues:', findValues(product, 'nodeId')); // [ "655", "65504", "6550401", "6550402", "65505", "6550601", "655060198" ]
@@ -81,12 +81,12 @@ var product = {
 		'use strict';
 		var valueType = typeof searchValue;
 		var stack = [];
-		function findRecursively(sourceObject, searchName, searchValue) {
+		function recursion(sourceObject, searchName, searchValue) {
 			for (var name in sourceObject) {
 				var element = sourceObject[name];
 				var elementType = typeof element;
 				if (elementType === 'object') {
-					var foundOne = findRecursively(element, searchName, searchValue);
+					var foundOne = recursion(element, searchName, searchValue);
 					if (foundOne) {
 						return foundOne;
 					}
@@ -97,7 +97,7 @@ var product = {
 				}
 			}
 		}
-		findRecursively(sourceObject, searchName, searchValue);
+		recursion(sourceObject, searchName, searchValue);
 		return stack;
 	}
 	// 마젠타 찾기
