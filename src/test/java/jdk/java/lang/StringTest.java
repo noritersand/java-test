@@ -28,7 +28,7 @@ public class StringTest {
 		Assert.assertEquals(25, a.indexOf(".", 15)); // 인덱스 15 이후부터 찾음
 		
 		Assert.assertEquals(36, a.lastIndexOf(".")); // 마지막 "."
-		Assert.assertEquals(25, a.lastIndexOf(".", 35)); // 인덱스 25 이전부터 찾음
+		Assert.assertEquals(25, a.lastIndexOf(".", 35)); // 인덱스 35 이전부터 찾음
 	}
 
 	@Test
