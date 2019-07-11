@@ -321,6 +321,11 @@ public class ListTest {
 	@Test
 	public void testSublist() {
 		List<Integer> numbers = Arrays.asList(5, 3, 1, 2, 9, 5, 0, 7);
+		
+		List<Integer> firstBorn = numbers.subList(0, 1); // 5
+		Assert.assertEquals(1, firstBorn.size());
+		Assert.assertEquals(Arrays.asList(5), firstBorn);
+		
 
 		List<Integer> head = numbers.subList(0, 4); // 5, 3, 1, 2
 		Assert.assertEquals(4, head.size());
