@@ -228,6 +228,15 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>RELEASE</version>
 		</dependency>
-				
+		<dependency>
+			<groupId>com.typesafe</groupId>
+			<artifactId>config</artifactId>
+			<version>1.3.4</version>
+		</dependency>
+		<dependency>
+			<groupId>pl.jalokim.propertiestojson</groupId>
+			<artifactId>java-properties-to-json</artifactId>
+			<version>4.0</version>
+		</dependency>				
 	</dependencies>
 </project>
