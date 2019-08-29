@@ -56,8 +56,8 @@
 		<li>
 			<h4>CSS</h4>
 			<ul>
-				<li><a href="/test/html/css/align-center-test-1.html">가운데 정렬 #1</a></li>
-				<li><a href="/test/html/css/align-center-test-2.html">가운데 정렬 #2</a></li>
+				<li><a href="/test/html/css/align-center-test1.html">가운데 정렬 #1</a></li>
+				<li><a href="/test/html/css/align-center-test2.html">가운데 정렬 #2</a></li>
 				<li><a href="/test/html/css/how-draw-pretty-test.html">가운데 정렬 + 그라데이션 + 비디오</a></li>
 			</ul>
 		</li>
@@ -72,22 +72,9 @@
 						<li><a href="/test/js/ajax/cors-test.html">CORS test</a></li>
 					</ul>
 				</li>
-				<li>array
-					<ul>
-						<li><a href="/test/js/array/array-splice-test.html">splice #1</a></li>
-						<li><a href="/test/js/array/array-splice2-test.html">splice #2</a></li>
-						<li><a href="/test/js/array/splice-test.html">splice #3 배열의 특정 요소 삭제</a></li>
-					</ul>
-				</li>
 				<li>date
 					<ul>
-						<li><a href="/test/js/date/date-test.html">date</a></li>
-						<li><a href="/test/js/date/calculate-elapsed-time-test.html">date: calculate elapsed time</a></li>
-						<li><a href="/test/js/date/add-months-test.html">date: add months 자바스크립트 달 넘기기</a></li>
-						<li><a href="/test/js/date/add-months2-test.html">date: add months 자바스크립트 달 넘기기2</a></li>
 						<li><a href="/test/js/date/select-month-test.html">date: select month 셀렉트 박스에서 달 선택</a></li>
-						<li><a href="/test/js/date/new-date-test.html">date: new date</a></li>
-						<li><a href="/test/js/date/date-format-prototype-extend-test.html">date format: prototype extend</a></li>
 					</ul>
 				</li>
 				<li>form
@@ -95,42 +82,11 @@
 						<li><a href="/test/js/form/form-to-json-test.html">form: Form element to JSON</a></li>
 					</ul>
 				</li>
-				<li>number
-					<ul>
-						<li><a href="/test/js/number/number-format-prototype-extend-test.html">number format: prototype extend</a></li>
-						<li><a href="/test/js/number/number-format-prototype-extend2-test.html">number format: prototype extend #2: indecipherable</a></li>
-						<li><a href="/test/js/number/number-format-prototype-extend3-test.html">number format: protytype extend #3</a></li>
-						<li><a href="/test/js/number/short-test.html">number-format: short</a></li>
-					</ul>
-				</li>
-				<li>plain-object
-					<ul>
-						<li><a href="/test/js/plain-object/array-search-match-object-test.html">plain-object: array search match object</a></li>
-						<li><a href="/test/js/plain-object/delete-duplicate-properties-test.html">plain-object: delete duplicate properties</a></li>
-						<li><a href="/test/js/plain-object/delete-not-specified-property-test.html">plain-object: delete not specified property</a></li>
-						<li><a href="/test/js/plain-object/convert-querystring-to-json-test.html">plain-object: convert querystring to JSON</a></li>
-						<li><a href="/test/js/plain-object/object-array-to-array-object-test.html">plain-object: object-array to array-object</a></li>
-						<li><a href="/test/js/plain-object/deep-search-inside-object-test.html">plain-object: deep search inside object test</a></li>
-					</ul>
-				</li>
-				<li>statement
-					<ul>
-						<li><a href="/test/js/statement/console-time-test.js">statement: console time</a></li>
-						<li><a href="/test/js/statement/for-each-test.html">statement: for each</a></li>
-						<li><a href="/test/js/statement/for-in-test.html">statement: for in</a></li>
-						<li><a href="/test/js/statement/for-of-test.html">statement: for of</a></li>
-						<li><a href="/test/js/statement/let-test.html">statement: let</a></li>
-						<li><a href="/test/js/statement/reference-test.html">statement: reference</a></li>
-					</ul>
-				</li>
 				<li>string
 					<ul>
-						<li><a href="/test/js/string/index-of-test.html">string: indexOf</a></li>
-						<li><a href="/test/js/string/split-join-test.html">string: split and join</a></li>
 						<li><a href="/test/js/string/calculate-byte-length-test.html">string: calculate byte length</a></li>
 					</ul>
 				</li>
-				<li><a href="/test/js/phone-number/lib-phone-number-test.html">phone-number: library</a></li>
 			</ul>	
 		</li>
 		<li>
