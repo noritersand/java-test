@@ -40,7 +40,7 @@ public class JacksonTest {
 	@Test
 	public void testReadValue() throws JsonParseException, JsonMappingException, IOException {
 		String jsonText = "[{\"html1\":\"<p>홀홀</p>\",\"html2\":\"<p>ㅗㅎ롷ㄹ</p>\"}]";
-		final List<Map<String, Object>> collection
+		final List<HashMap<String, Object>> collection
 				= mapper.readValue(jsonText, new TypeReference<ArrayList<HashMap<String, Object>>>() {});
 		Assert.assertEquals(1, collection.size());
 		Assert.assertEquals("<p>홀홀</p>", collection.get(0).get("html1"));
@@ -90,7 +90,7 @@ public class JacksonTest {
 		list.add(map);
 		list.add(map2);
 		
-		ArrayList<PlainObject> poList = mapper.convertValue(list, new TypeReference<List<PlainObject>>() {});
+		ArrayList<PlainObject> poList = mapper.convertValue(list, new TypeReference<ArrayList<PlainObject>>() {});
 		Assert.assertEquals("soap", poList.get(1).getName());
 		Assert.assertEquals(Integer.valueOf(32), poList.get(0).getAge());
 		Assert.assertEquals(Integer.valueOf(43), poList.get(1).getAge());
