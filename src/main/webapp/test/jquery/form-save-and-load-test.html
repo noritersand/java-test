@@ -121,14 +121,14 @@ var formValueLoader = {
 		$target.find('input,textarea,select').each(function(idx, ele) {
 			var name = $(ele).attr('name'),
 				type = $(ele).attr('type'),
-				prop = $(ele).prop('checked'),
+				checked = $(ele).prop('checked'),
 				disabled = $(ele).prop('disabled'),
 				val = $(ele).val();
 			if (typeof name === 'undefined') {
 				return true; // jquery each continue
 			}
 			if (type == 'checkbox' || type == 'radio') {
-				if (prop && !disabled) {
+				if (checked && !disabled) {
 					rtn[name] = val;
 				}
 			} else {
