@@ -100,6 +100,7 @@
 				<li><a href="/test/jquery/set-value-in-attribute-test.html">set value in attribute</a></li>
 				<li><a href="/test/jquery/cors-test.html">CORS</a></li>
 				<li><a href="/test/jquery/selector-test.html">selector</a></li>
+				<li><a href="/test/jquery/form-save-and-load-test.html">form save and load</a></li>
 			</ul>
 		</li>
 		<li>

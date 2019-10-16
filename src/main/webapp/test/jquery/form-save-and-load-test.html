@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form value save and load test</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script src="/static/js/jquery-1.12.4.js"></script>
+<script>
+/**
+ * 검색 파라미터 저장 함수
+ */
+var formValueLoader = {
+	/**
+	 * element가 문자열이면 태그 속성 중 name의 값과 일치하는 요소를 찾아 jQuery 객체로 반환한다. 
+	 * 문자열이 아니고 jQuery 객체면 그대로 반환
+	 * 
+	 * @param {any} element 검색 파라미터의 form 요소를 의미하는 문자열이나 jQuery 객체. 
+	 */
+	normalizeParameter: function(form) {
+		var $target;
+		if (typeof form == 'string') {
+			$target = (form.indexOf('#') == 0) ? $(form) : $('[name="' + form +'"]');
+		} else if (typeof form == 'object' && form instanceof $) {
+			$target = form;
+		} else {
+			throw new Error('form은 문자열 혹은 jQuery 객체만 가능.');
+		}
+		if (!$target) {
+			throw new Error('대상 form을 찾을 수 없음.');
+		}
+		return $target;
+	},
+	/**
+	 * sessionStorage에 있는 검색 파라미터를 form 태그 하위의 인풋태그에 할당
+	 * 
+	 * @param {any} form 
+	 */
+	load: function(form) {
+		var $target = this.normalizeParameter(form);
+		var items = sessionStorage.getItem(location.pathname);
+		if(items){
+			items = $.parseJSON(items);
+			this.formWrite({
+				element: $target,
+				data: items.formStatus,
+				decode: false
+			});
+		}
+	},
+	/**
+	 * form 태그 하위의 모든 인풋태그를 sessionStorage에 저장
+	 * 
+	 * @param {any} form 
+	 */
+	save: function(form) {
+		var $target = this.normalizeParameter(form);
+		sessionStorage.setItem(location.pathname, JSON.stringify({
+			formStatus: this.serializeObject($target)
+		}));
+	},
+	/**
+	 * 실제로 form 태그에 값을 할당하는 함수
+	 * 
+	 * @param {object} settings 이 함수의 커스텀 설정
+	 */
+	formWrite: function(settings) {
+		var base = {
+			element: null, //(필수)form element
+			data: null, //(필수)
+			decode: true // (선택) 명시하지 않으면 true
+		}
+		settings = $.extend(base, settings);
+		if (settings.element.length > 0) {
+			settings.element[0].reset(); // 데이터 입력전 리셋
+		}
+		for (var i in settings.data) {
+			var input = settings.element.find('input[name="' + i + '"]'),
+				textarea = settings.element.find('textarea[name="' + i + '"]'),
+				select = settings.element.find('select[name="' + i + '"]'),
+				type = input.attr('type');
+			if (input.length > 0) {
+				if (type == 'text' || type == 'hidden') {
+					// if (input.hasClass('datetime')) {
+					// 	var date = new Date(settings.data[i]),
+					// 		dateFormat = input.attr('data-format');
+					// 	input.eq(0).val(date.format(dateFormat));
+					// } else {
+					// }
+					input.eq(0).val(settings.decode ? decodeURIComponent(settings.data[i]) : settings.data[i]);
+				}
+				if (type == 'radio' || type == 'checkbox') {
+					input.each(function(idx, ele) {
+						if ($(ele).val() == settings.data[i]) {
+							$(ele).prop('checked',true);
+						}
+					});
+				}
+			}
+			if (select.length > 0) {				
+				select.find('option').each(function(idx, ele) {
+					if ($(ele).val() == settings.data[i]) {
+						$(ele).prop('selected',true);
+					}
+				});
+			}
+			if (textarea.length > 0) {				
+				textarea.eq(0).val(settings.decode ? decodeURIComponent(settings.data[i]) : settings.data[i]);
+			}
+		}
+	},
+	serializeObject: function(formName) {
+		var rtn = new Object();
+		var $target;
+		if (typeof formName == 'string') {
+			$target = $('[name="' + formName +'"]');
+		} else if (typeof formName == 'object' && formName instanceof $) {
+			$target = formName;
+		} else {
+			throw new Error('첫 번째 파라미터는 문자열 혹은 jQuery 객체만 가능.');
+		}
+		$target.find('input,textarea,select').each(function(idx, ele) {
+			var name = $(ele).attr('name'),
+				type = $(ele).attr('type'),
+				prop = $(ele).prop('checked'),
+				disabled = $(ele).prop('disabled'),
+				val = $(ele).val();
+			if (typeof name === 'undefined') {
+				return true; // jquery each continue
+			}
+			if (type == 'checkbox' || type == 'radio') {
+				if (prop && !disabled) {
+					rtn[name] = val;
+				}
+			} else {
+				if (!disabled) {
+					rtn[name] = val;
+				}
+			}
+		});
+		return rtn;
+	}
+}
+</script>
+</head>
+<body>
+<div class="align-center">
+	<h1>Form value save and load test</h1>
+	<p>sessionStorage에 form 입력을 저장하거나 불러오는 함수</p>
+	<form name="searchForm">
+		<fieldset>
+			<legend>테스트용 form</legend>
+			<input type="text" name="ipt1" id="ipt1" value="룰루"><br>
+			<select name="ipt2" id="ipt2">
+				<option value="first">첫 번째 옵션</option>
+				<option value="second">두 번째 옵션</option>
+				<option value="">빈 값</option>
+			</select><br>
+			<textarea name="ipt3" id="ipt3" style="width: 500px; height: 200px;">고양이(학명: Felis silvestris catus)는 식육목 고양이과에 속하는 포유류 동물이다. 일반적으로 "고양이"라 함은 인간에게 길들여진 집고양이(house cat 또는 domestic cat)를 말한다. 들고양이(wild cat)는 약 10만 년에서 7만 년 전부터 존재했다. 2007년 기준으로 최근의 연구에 따르면 길들여진 고양이의 기원은 약 1만 년 전 근동지방에서 스스로 숲 속을 나와 사람들이 모여사는 마을에 대담하게 정착하여 길들여진 5마리 정도의 아프리카들고양이(학명: Felis lybica)로 추측된다.</textarea><br>
+			<label><input type="checkbox" name="ipt4" id="ipt4" value="on">checkme</label><br>
+		</fieldset>
+		<button type="button" onclick="fill()">아무값이나 채우기</button>
+		<button type="button" onclick="empty()">입력란 비우기</button>
+		<button type="button" onclick="formValueLoader.save('searchForm')">save</button>
+		<button type="button" onclick="formValueLoader.load('searchForm')">load</button>
+	</form>
+<script>
+function fill() {
+	$('#ipt1').val('배꼽 빠질 준비하세요.');
+	$('#ipt2').val('second');
+	$('#ipt3').val('개성공단의 반대말은 고양이실패단. XD');
+	$('#ipt4').prop('checked', true);
+}
+function empty() {
+	$('#ipt1').val('');
+	$('#ipt2').val('');
+	$('#ipt3').val('');
+	$('#ipt4').prop('checked', false);
+}
+</script>
+</div>
+</body>
+</html>

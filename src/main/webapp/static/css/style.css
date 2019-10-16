@@ -5,7 +5,6 @@ div.align-center {
 	text-align: left;
 	margin: 30px auto;
 }
-
 body {
 	margin-top: 20px;
 	text-align: center;
@@ -13,7 +12,12 @@ body {
 	background: #ffffff;
 	color: #000000;
 }
-
+input, select, textarea {
+	margin: 1px 1px 1px 1px;
+}
+button {
+	margin: 1px 1px 1px 1px;
+}
 hr {
     background-color: rgba(9,45,66,.13);
     border: 0;
@@ -23,7 +27,6 @@ hr {
     width: 100%;
     box-sizing: content-box;
 }
-
 .description {
     background-color: rgba(9,45,66,.08);
     border-radius: 3px;
