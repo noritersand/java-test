@@ -9,7 +9,7 @@
 /**
  * 검색 파라미터 저장 함수
  */
-var formValueLoader = {
+ var formValueLoader = {
 	/**
 	 * element가 문자열이면 태그 속성 중 name의 값과 일치하는 요소를 찾아 jQuery 객체로 반환한다. 
 	 * 문자열이 아니고 jQuery 객체면 그대로 반환
@@ -41,7 +41,7 @@ var formValueLoader = {
 		if(items){
 			items = $.parseJSON(items);
 			this.formWrite({
-				element: $target,
+				$element: $target,
 				data: items.formStatus,
 				decode: false
 			});
@@ -65,20 +65,20 @@ var formValueLoader = {
 	 */
 	formWrite: function(settings) {
 		var base = {
-			element: null, //(필수)form element
+			$element: null, //(필수)form element
 			data: null, //(필수)
 			decode: true // (선택) 명시하지 않으면 true
 		}
 		settings = $.extend(base, settings);
-		if (settings.element.length > 0) {
-			settings.element[0].reset(); // 데이터 입력전 리셋
+		if (settings.$element.length > 0) {
+			settings.$element[0].reset(); // 데이터 입력전 리셋
 		}
 		for (var i in settings.data) {
-			var input = settings.element.find('input[name="' + i + '"]'),
-				textarea = settings.element.find('textarea[name="' + i + '"]'),
-				select = settings.element.find('select[name="' + i + '"]'),
-				type = input.attr('type');
-			if (input.length > 0) {
+			var $input = settings.$element.find('input[name="' + i + '"]'),
+				$textarea = settings.$element.find('textarea[name="' + i + '"]'),
+				$select = settings.$element.find('select[name="' + i + '"]'),
+				type = $input.attr('type');
+			if ($input.length > 0) {
 				if (type == 'text' || type == 'hidden') {
 					// if (input.hasClass('datetime')) {
 					// 	var date = new Date(settings.data[i]),
@@ -86,25 +86,27 @@ var formValueLoader = {
 					// 	input.eq(0).val(date.format(dateFormat));
 					// } else {
 					// }
-					input.eq(0).val(settings.decode ? decodeURIComponent(settings.data[i]) : settings.data[i]);
+					$input.eq(0).val(settings.decode ? decodeURIComponent(settings.data[i]) : settings.data[i]);
 				}
 				if (type == 'radio' || type == 'checkbox') {
-					input.each(function(idx, ele) {
-						if ($(ele).val() == settings.data[i]) {
-							$(ele).prop('checked',true);
+					$input.each(function(idx, ele) {
+                        var $ele = $(ele);
+						if ($ele.val() == settings.data[i]) {
+							$ele.prop('checked',true);
 						}
 					});
 				}
 			}
-			if (select.length > 0) {				
-				select.find('option').each(function(idx, ele) {
-					if ($(ele).val() == settings.data[i]) {
-						$(ele).prop('selected',true);
+			if ($select.length > 0) {				
+				$select.find('option').each(function(idx, ele) {
+                    var $ele = $(ele);
+					if ($ele.val() == settings.data[i]) {
+						$ele.prop('selected',true);
 					}
 				});
 			}
-			if (textarea.length > 0) {				
-				textarea.eq(0).val(settings.decode ? decodeURIComponent(settings.data[i]) : settings.data[i]);
+			if ($textarea.length > 0) {				
+				$textarea.eq(0).val(settings.decode ? decodeURIComponent(settings.data[i]) : settings.data[i]);
 			}
 		}
 	},
@@ -119,11 +121,12 @@ var formValueLoader = {
 			throw new Error('첫 번째 파라미터는 문자열 혹은 jQuery 객체만 가능.');
 		}
 		$target.find('input,textarea,select').each(function(idx, ele) {
-			var name = $(ele).attr('name'),
-				type = $(ele).attr('type'),
-				checked = $(ele).prop('checked'),
-				disabled = $(ele).prop('disabled'),
-				val = $(ele).val();
+            var $ele = $(ele);
+			var name = $ele.attr('name'),
+				type = $ele.attr('type'),
+				checked = $ele.prop('checked'),
+				disabled = $ele.prop('disabled'),
+				val = $ele.val();
 			if (typeof name === 'undefined') {
 				return true; // jquery each continue
 			}
