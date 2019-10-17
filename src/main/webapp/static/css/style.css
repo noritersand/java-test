@@ -35,3 +35,7 @@ hr {
     padding: 8px 12px;
     text-decoration: none;
 }
+[id^=result] {
+	color: red;
+	font-weight: bold;
+}

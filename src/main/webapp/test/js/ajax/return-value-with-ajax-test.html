@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>비동기 통신의 반환값은 어떻게 처리될까</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script src="/static/js/jquery-1.12.4.js"></script>
+<script>
+var one;
+function testOne() {
+	function send() {
+		$.ajax({
+			url: '/test/uncategorized/read-querystring.data',
+			success: function() {
+				return 2;
+			}
+		});
+		return 1;
+	}
+	one = send();
+	$('#resultOne').text(one);
+}
+function testTwo() {
+	$('#resultTwo').text(one);
+}
+var three = {
+	result: 0
+};
+function testThree() {
+	function send() {
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				three.result = 2; 
+			}
+		};
+		// get method
+		xhr.open('get', '/test/uncategorized/read-querystring.data');
+		xhr.send();
+		return 1;
+	}
+	three.result = send();
+	$('#resultThree').text(JSON.stringify(three));
+}
+function testFour() {
+	$('#resultFour').text(JSON.stringify(three));
+}
+</script>
+</head>
+<body>
+<div class="align-center">
+	<h1>비동기 통신의 반환값은 어떻게 처리될까</h1>
+	<p>비동기 통신을 수행하는 함수에서 비동기 통신이 끝나기 전에 뭔가를 반환하면 그 값의 상태는 어떻게 되는지 실험.</p>
+	
+	<h2>jQuery 버전 - 반환값이 원시형일 때</h2>
+	<button type="button" onclick="testOne()">눌러요</button>
+	함수 호출 결과: <span id="resultOne"></span><br>
+	<button type="button" onclick="testTwo()">또 눌러요</button>
+	변수 one의 상태는?: <span id="resultTwo"></span>
+	
+	<h2>pure js 버전 - 반환값이 객체형일 때</h2>
+	<button type="button" onclick="testThree()">눌러요</button>
+	함수 호출 결과: <span id="resultThree"></span><br>
+	<button type="button" onclick="testFour()">또 눌러요</button>
+	변수 one의 상태는?: <span id="resultFour"></span>
+</div>
+</body>
+</html>

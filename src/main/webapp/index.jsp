@@ -70,6 +70,7 @@
 					<ul>
 						<li><a href="/test/js/ajax/ajax-test.html">JavaScript AJAX</a></li>
 						<li><a href="/test/js/ajax/cors-test.html">CORS test</a></li>
+						<li><a href="/test/js/ajax/return-value-with-ajax-test.html">비동기 통신의 반환값은 어떻게 처리될까</a></li>
 					</ul>
 				</li>
 				<li>date
