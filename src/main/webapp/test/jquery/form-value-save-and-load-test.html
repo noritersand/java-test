@@ -7,7 +7,8 @@
 <script src="/static/js/jquery-1.12.4.js"></script>
 <script>
 /**
- * 검색 파라미터 저장 함수
+ * 검색 파라미터 저장 함수. 현재 저장 시 location.pathName을 키로 저장하도록 작성되어 있음.
+ * @required jQuery 1.x 이상
  */
  var formValueLoader = {
 	/**
@@ -37,14 +38,10 @@
 	 */
 	load: function(form) {
 		var $target = this.normalizeParameter(form);
-		var items = sessionStorage.getItem(location.pathname);
-		if(items){
-			items = $.parseJSON(items);
-			this.formWrite({
-				$element: $target,
-				data: items.formStatus,
-				decode: false
-			});
+		var item = sessionStorage.getItem(location.pathname);
+		if(item){
+			item = $.parseJSON(item);
+			this.formWrite($target, item.formStatus, { decode: false });
 		}
 	},
 	/**
@@ -61,37 +58,37 @@
 	/**
 	 * 실제로 form 태그에 값을 할당하는 함수
 	 * 
+	 * @param {object} form(혹은 입력 태그를 감싸는 부모 태그)의 jQuery 객체
+	 * @param {object} formStatus 입력 태그의 name과 value로 이뤄진 js 객체. form의 저장 상태를 의미함.
 	 * @param {object} settings 이 함수의 커스텀 설정
 	 */
-	formWrite: function(settings) {
+	formWrite: function($element, formStatus, settings) {
 		var base = {
-			$element: null, //(필수)form element
-			data: null, //(필수)
-			decode: true // (선택) 명시하지 않으면 true
+			decode: true // 명시하지 않으면 true
 		}
-		settings = $.extend(base, settings);
-		if (settings.$element.length > 0) {
-			settings.$element[0].reset(); // 데이터 입력전 리셋
+		settings = $.extend(base, settings); // settings가 지정되었으면 base를 덮어씀.
+		if ($element.length > 0) {
+			$element[0].reset(); // 데이터 입력전 리셋
 		}
-		for (var i in settings.data) {
-			var $input = settings.$element.find('input[name="' + i + '"]'),
-				$textarea = settings.$element.find('textarea[name="' + i + '"]'),
-				$select = settings.$element.find('select[name="' + i + '"]'),
+		for (var i in formStatus) {
+			var $input = $element.find('input[name="' + i + '"]'),
+				$textarea = $element.find('textarea[name="' + i + '"]'),
+				$select = $element.find('select[name="' + i + '"]'),
 				type = $input.attr('type');
 			if ($input.length > 0) {
 				if (type == 'text' || type == 'hidden') {
 					// if (input.hasClass('datetime')) {
-					// 	var date = new Date(settings.data[i]),
+					// 	var date = new Date(formStatus[i]),
 					// 		dateFormat = input.attr('data-format');
 					// 	input.eq(0).val(date.format(dateFormat));
 					// } else {
 					// }
-					$input.eq(0).val(settings.decode ? decodeURIComponent(settings.data[i]) : settings.data[i]);
+					$input.eq(0).val(settings.decode ? decodeURIComponent(formStatus[i]) : formStatus[i]);
 				}
 				if (type == 'radio' || type == 'checkbox') {
 					$input.each(function(idx, ele) {
                         var $ele = $(ele);
-						if ($ele.val() == settings.data[i]) {
+						if ($ele.val() == formStatus[i]) {
 							$ele.prop('checked',true);
 						}
 					});
@@ -100,13 +97,13 @@
 			if ($select.length > 0) {				
 				$select.find('option').each(function(idx, ele) {
                     var $ele = $(ele);
-					if ($ele.val() == settings.data[i]) {
+					if ($ele.val() == formStatus[i]) {
 						$ele.prop('selected',true);
 					}
 				});
 			}
 			if ($textarea.length > 0) {				
-				$textarea.eq(0).val(settings.decode ? decodeURIComponent(settings.data[i]) : settings.data[i]);
+				$textarea.eq(0).val(settings.decode ? decodeURIComponent(formStatus[i]) : formStatus[i]);
 			}
 		}
 	},
