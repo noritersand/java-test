@@ -12,12 +12,12 @@
  */
  var formValueLoader = {
 	/**
-	 * element가 문자열이면 태그 속성 중 name의 값과 일치하는 요소를 찾아 jQuery 객체로 반환한다. 
+	 * form가 문자열이면 태그 속성 중 name의 값과 일치하는 요소를 찾아 jQuery 객체로 반환한다. 
 	 * 문자열이 아니고 jQuery 객체면 그대로 반환
 	 * 
-	 * @param {any} element 검색 파라미터의 form 요소를 의미하는 문자열이나 jQuery 객체. 
+	 * @param {any} form form 태그(입력 태그를 감싸는 부모 태그)의 name이나 ID 혹은 jQuery 객체
 	 */
-	normalizeParameter: function(form) {
+	_generalizeParameter: function(form) {
 		var $target;
 		if (typeof form == 'string') {
 			$target = (form.indexOf('#') == 0) ? $(form) : $('[name="' + form +'"]');
@@ -34,46 +34,46 @@
 	/**
 	 * sessionStorage에 있는 검색 파라미터를 form 태그 하위의 인풋태그에 할당
 	 * 
-	 * @param {any} form 
+	 * @param {any} form form 태그(입력 태그를 감싸는 부모 태그)의 name이나 ID 혹은 jQuery 객체
 	 */
 	load: function(form) {
-		var $target = this.normalizeParameter(form);
+		var $form = this._generalizeParameter(form);
 		var item = sessionStorage.getItem(location.pathname);
 		if(item){
 			item = $.parseJSON(item);
-			this.formWrite($target, item.formStatus, { decode: false });
+			this._formWrite($form, item.formStatus, { decode: false });
 		}
 	},
 	/**
 	 * form 태그 하위의 모든 인풋태그를 sessionStorage에 저장
 	 * 
-	 * @param {any} form 
+	 * @param {any} form form 태그(입력 태그를 감싸는 부모 태그)의 name이나 ID 혹은 jQuery 객체
 	 */
 	save: function(form) {
-		var $target = this.normalizeParameter(form);
+		var $form = this._generalizeParameter(form);
 		sessionStorage.setItem(location.pathname, JSON.stringify({
-			formStatus: this.serializeObject($target)
+			formStatus: this._serializeObject($form)
 		}));
 	},
 	/**
 	 * 실제로 form 태그에 값을 할당하는 함수
 	 * 
-	 * @param {object} form(혹은 입력 태그를 감싸는 부모 태그)의 jQuery 객체
+	 * @param {object} $form form 태그(입력 태그를 감싸는 부모 태그)의 jQuery 객체
 	 * @param {object} formStatus 입력 태그의 name과 value로 이뤄진 js 객체. form의 저장 상태를 의미함.
 	 * @param {object} settings 이 함수의 커스텀 설정
 	 */
-	formWrite: function($element, formStatus, settings) {
+	_formWrite: function($form, formStatus, settings) {
 		var base = {
 			decode: true // 명시하지 않으면 true
 		}
 		settings = $.extend(base, settings); // settings가 지정되었으면 base를 덮어씀.
-		if ($element.length > 0) {
-			$element[0].reset(); // 데이터 입력전 리셋
+		if ($form.length > 0) {
+			$form[0].reset(); // 데이터 입력전 리셋
 		}
 		for (var i in formStatus) {
-			var $input = $element.find('input[name="' + i + '"]'),
-				$textarea = $element.find('textarea[name="' + i + '"]'),
-				$select = $element.find('select[name="' + i + '"]'),
+			var $input = $form.find('input[name="' + i + '"]'),
+				$textarea = $form.find('textarea[name="' + i + '"]'),
+				$select = $form.find('select[name="' + i + '"]'),
 				type = $input.attr('type');
 			if ($input.length > 0) {
 				if (type == 'text' || type == 'hidden') {
@@ -106,18 +106,15 @@
 				$textarea.eq(0).val(settings.decode ? decodeURIComponent(formStatus[i]) : formStatus[i]);
 			}
 		}
-	},
-	serializeObject: function(formName) {
+    },
+    /**
+     * $element 하위의 입력 태그를 찾아 js object로 반환.
+     * 
+     * @param {object} $form form 태그(입력 태그를 감싸는 부모 태그)의 jQuery 객체
+     */
+	_serializeObject: function($form) {
 		var rtn = {};
-		var $target;
-		if (typeof formName == 'string') {
-			$target = $('[name="' + formName +'"]');
-		} else if (typeof formName == 'object' && formName instanceof $) {
-			$target = formName;
-		} else {
-			throw new Error('첫 번째 파라미터는 문자열 혹은 jQuery 객체만 가능.');
-		}
-		$target.find('input,textarea,select').each(function(idx, ele) {
+		$form.find('input, textarea, select').each(function(idx, ele) {
             var $ele = $(ele);
 			var name = $ele.attr('name'),
 				type = $ele.attr('type'),
