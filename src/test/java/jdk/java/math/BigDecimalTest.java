@@ -39,7 +39,7 @@ public class BigDecimalTest {
 		Assert.assertEquals(new BigDecimal("200"), a.multiply(b));
 		Assert.assertEquals(new BigDecimal("2"), b.divide(a));
 	}
-	
+
 	/**
 	 * 나누기 할 땐 반드시 범위를 지정해야 함. 중요.
 	 * 
@@ -49,7 +49,7 @@ public class BigDecimalTest {
 	public void testDivide() {
 		BigDecimal smallOne = new BigDecimal("64000.00");
 		BigDecimal bigOne = new BigDecimal("69000.00");
-		
+
 		try {
 			// 그냥 나눠버리면 BigDecimal도 감당 못하는 결과가 나옴
 			smallOne.divide(bigOne);
@@ -107,11 +107,28 @@ public class BigDecimalTest {
 		Assert.assertEquals(1000D, new BigDecimal(100).movePointRight(1).doubleValue(), 0);
 	}
 
+	/**
+	 * 어느쪽이 크거나 작은지 비교는 compareTo
+	 * 
+	 * @author noritersand
+	 */
 	@Test
 	public void testCompareTo() {
 		Assert.assertEquals(0, BigDecimal.ZERO.compareTo(BigDecimal.ZERO)); // a.compareTo(b)에서 0이면 a와 b가 같음
 		Assert.assertEquals(-1, BigDecimal.ZERO.compareTo(BigDecimal.ONE)); // a.compareTo(b)에서 -1이면 a가 b보다 작음
 		Assert.assertEquals(1, BigDecimal.ZERO.compareTo(new BigDecimal(-1))); // a.compareTo(b)에서 1이면 a가 b보다 큼
+	}
+	
+	/**
+	 * 값이 같은지 비교하는건 compareTo 안써도 됨.
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testEquals() {
+		Assert.assertTrue(new BigDecimal("0").equals(BigDecimal.ZERO));
+		Assert.assertTrue(new BigDecimal("1").equals(BigDecimal.ONE));
+		Assert.assertTrue(new BigDecimal("123.1").equals(new BigDecimal("123.1")));
 	}
 
 	/**
