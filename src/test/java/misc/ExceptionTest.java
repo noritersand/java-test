@@ -1,4 +1,4 @@
-package etc;
+package misc;
 
 import java.io.IOException;
 

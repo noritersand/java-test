@@ -1,4 +1,4 @@
-package jdk.etc;
+package jdk.misc;
 
 import java.util.LinkedList;
 import java.util.List;

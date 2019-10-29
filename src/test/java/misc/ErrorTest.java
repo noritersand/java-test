@@ -1,4 +1,4 @@
-package etc;
+package misc;
 
 import org.junit.Test;
 import org.slf4j.Logger;
