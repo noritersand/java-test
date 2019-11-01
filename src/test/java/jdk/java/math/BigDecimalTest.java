@@ -1,6 +1,7 @@
 package jdk.java.math;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 
 import org.junit.Assert;
@@ -17,6 +18,69 @@ import org.slf4j.LoggerFactory;
 public class BigDecimalTest {
 	private static final Logger logger = LoggerFactory.getLogger(BigDecimalTest.class);
 
+
+	/**
+	 * 어느쪽이 크거나 작은지 비교는 compareTo
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testCompareTo() {
+		Assert.assertEquals(0, BigDecimal.ZERO.compareTo(BigDecimal.ZERO)); // a.compareTo(b)에서 0이면 a와 b가 같음
+		Assert.assertEquals(-1, BigDecimal.ZERO.compareTo(BigDecimal.ONE)); // a.compareTo(b)에서 -1이면 a가 b보다 작음
+		Assert.assertEquals(1, BigDecimal.ZERO.compareTo(new BigDecimal(-1))); // a.compareTo(b)에서 1이면 a가 b보다 큼
+	}
+	
+	/**
+	 * 값이 같은지 비교하는건 compareTo 안써도 됨.
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testEquals() {
+		Assert.assertTrue(new BigDecimal("0").equals(BigDecimal.ZERO));
+		Assert.assertTrue(new BigDecimal("1").equals(BigDecimal.ONE));
+		Assert.assertTrue(new BigDecimal("123.1").equals(new BigDecimal("123.1")));
+	}
+
+	/**
+	 * scale 설정: 특정 소수점 이하 반올림, 버림, 내림
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testSetScale() {
+		// 반올림
+		BigDecimal roundMe = new BigDecimal("12.536512304");
+		Assert.assertEquals(new BigDecimal("12.54"), roundMe.setScale(2, RoundingMode.HALF_UP));
+		Assert.assertEquals(new BigDecimal("12.537"), roundMe.setScale(3, RoundingMode.HALF_UP));
+		Assert.assertEquals(new BigDecimal("12.5365"), roundMe.setScale(4, RoundingMode.HALF_UP));
+		
+		// 올림
+		BigDecimal ceilMe = new BigDecimal("12.536512304");
+		Assert.assertEquals(new BigDecimal("12.54"), ceilMe.setScale(2, RoundingMode.CEILING));
+		Assert.assertEquals(new BigDecimal("12.537"), ceilMe.setScale(3, RoundingMode.CEILING));
+		Assert.assertEquals(new BigDecimal("12.5366"), ceilMe.setScale(4, RoundingMode.CEILING));
+		
+		// 내림(=버림, 절삭)
+		BigDecimal floorMe = new BigDecimal("12.536512304");
+		Assert.assertEquals(new BigDecimal("12.53"), floorMe.setScale(2, RoundingMode.FLOOR));
+		Assert.assertEquals(new BigDecimal("12.536"), floorMe.setScale(3, RoundingMode.FLOOR));
+		Assert.assertEquals(new BigDecimal("12.5365"), floorMe.setScale(4, RoundingMode.FLOOR));
+	}
+	
+	/**
+	 * 절대값: 양수나 음수를 모두 양수로
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testAbs() {
+		Assert.assertEquals(new BigDecimal("0.1"), new BigDecimal("-0.1").abs());
+		Assert.assertEquals(new BigDecimal("1.6"), new BigDecimal("1.6").abs());
+		Assert.assertEquals(new BigDecimal("10.592834"), new BigDecimal("-10.592834").abs());
+	}
+	
 	@Test
 	public void getConst() {
 		Assert.assertEquals(new BigDecimal(0), BigDecimal.ZERO);
@@ -39,7 +103,7 @@ public class BigDecimalTest {
 		Assert.assertEquals(new BigDecimal("200"), a.multiply(b));
 		Assert.assertEquals(new BigDecimal("2"), b.divide(a));
 	}
-
+	
 	/**
 	 * 나누기 할 땐 반드시 범위를 지정해야 함. 중요.
 	 * 
@@ -108,75 +172,6 @@ public class BigDecimalTest {
 	}
 
 	/**
-	 * 어느쪽이 크거나 작은지 비교는 compareTo
-	 * 
-	 * @author noritersand
-	 */
-	@Test
-	public void testCompareTo() {
-		Assert.assertEquals(0, BigDecimal.ZERO.compareTo(BigDecimal.ZERO)); // a.compareTo(b)에서 0이면 a와 b가 같음
-		Assert.assertEquals(-1, BigDecimal.ZERO.compareTo(BigDecimal.ONE)); // a.compareTo(b)에서 -1이면 a가 b보다 작음
-		Assert.assertEquals(1, BigDecimal.ZERO.compareTo(new BigDecimal(-1))); // a.compareTo(b)에서 1이면 a가 b보다 큼
-	}
-	
-	/**
-	 * 값이 같은지 비교하는건 compareTo 안써도 됨.
-	 * 
-	 * @author noritersand
-	 */
-	@Test
-	public void testEquals() {
-		Assert.assertTrue(new BigDecimal("0").equals(BigDecimal.ZERO));
-		Assert.assertTrue(new BigDecimal("1").equals(BigDecimal.ONE));
-		Assert.assertTrue(new BigDecimal("123.1").equals(new BigDecimal("123.1")));
-	}
-
-	/**
-	 * BigDecimal 반올림
-	 * 
-	 * @author noritersand
-	 */
-	@Test
-	public void roundDecimalPoint() {
-		BigDecimal floatNumber = new BigDecimal("12.536512304");
-		Assert.assertEquals(new BigDecimal("12.54"), floatNumber.setScale(2, RoundingMode.HALF_UP));
-		Assert.assertEquals(new BigDecimal("12.537"), floatNumber.setScale(3, RoundingMode.HALF_UP));
-		Assert.assertEquals(new BigDecimal("12.5365"), floatNumber.setScale(4, RoundingMode.HALF_UP));
-	}
-
-	/**
-	 * BigDecimal 올림
-	 * 
-	 * @author noritersand
-	 */
-	@Test
-	public void ceilDecimalPoint() {
-		BigDecimal floatNumber = new BigDecimal("12.536512304");
-		BigDecimal roundedNumber = floatNumber.setScale(2, RoundingMode.CEILING);
-		Assert.assertEquals(new BigDecimal("12.54"), roundedNumber);
-		roundedNumber = floatNumber.setScale(3, RoundingMode.CEILING);
-		Assert.assertEquals(new BigDecimal("12.537"), roundedNumber);
-		roundedNumber = floatNumber.setScale(4, RoundingMode.CEILING);
-		Assert.assertEquals(new BigDecimal("12.5366"), roundedNumber);
-	}
-
-	/**
-	 * BigDecimal 내림(버림)
-	 * 
-	 * @author noritersand
-	 */
-	@Test
-	public void floorDecimalPoint() {
-		BigDecimal floatNumber = new BigDecimal("12.536512304");
-		BigDecimal roundedNumber = floatNumber.setScale(2, RoundingMode.FLOOR);
-		Assert.assertEquals(new BigDecimal("12.53"), roundedNumber);
-		roundedNumber = floatNumber.setScale(3, RoundingMode.FLOOR);
-		Assert.assertEquals(new BigDecimal("12.536"), roundedNumber);
-		roundedNumber = floatNumber.setScale(4, RoundingMode.FLOOR);
-		Assert.assertEquals(new BigDecimal("12.5365"), roundedNumber);
-	}
-
-	/**
 	 * double은 소수점 계산에서 오차 발생함.
 	 * 
 	 * @author fixalot
@@ -190,5 +185,18 @@ public class BigDecimalTest {
 
 		Assert.assertEquals(0.44999999999999996D, val1 * val2, 0);
 		Assert.assertEquals(new BigDecimal("0.45"), bigVal1.multiply(bigVal2));
+	}
+
+
+	/**
+	 * 소수점을 없애고 BigInteger로 변환
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testUnscaledValue() {
+		Assert.assertEquals(BigInteger.ONE, new BigDecimal("0.1").unscaledValue());
+		Assert.assertEquals(new BigInteger("16"), new BigDecimal("1.6").unscaledValue());
+		Assert.assertEquals(new BigInteger("10592834"), new BigDecimal("10.592834").unscaledValue());
 	}
 }
