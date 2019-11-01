@@ -39,7 +39,9 @@ public class BigDecimalTest {
 	@Test
 	public void testEquals() {
 		Assert.assertTrue(new BigDecimal("0").equals(BigDecimal.ZERO));
+		Assert.assertFalse(new BigDecimal("0.0").equals(BigDecimal.ZERO)); // 0.0과 0은 같지 않음.
 		Assert.assertTrue(new BigDecimal("1").equals(BigDecimal.ONE));
+		Assert.assertFalse(new BigDecimal("1.0").equals(BigDecimal.ONE)); // 1.1과 1은 같지 않음.
 		Assert.assertTrue(new BigDecimal("123.1").equals(new BigDecimal("123.1")));
 	}
 
@@ -198,5 +200,17 @@ public class BigDecimalTest {
 		Assert.assertEquals(BigInteger.ONE, new BigDecimal("0.1").unscaledValue());
 		Assert.assertEquals(new BigInteger("16"), new BigDecimal("1.6").unscaledValue());
 		Assert.assertEquals(new BigInteger("10592834"), new BigDecimal("10.592834").unscaledValue());
+	}
+	
+	@Test
+	public void testToBigInteger() {
+		// BigInteger로 변환시 소수점 이하는 버린다.
+		Assert.assertEquals(BigInteger.TWO, new BigDecimal("2.123").toBigInteger());
+		Assert.assertEquals(BigInteger.TWO, new BigDecimal("2.723").toBigInteger());
+		
+		// BigInteger와 BigDecimal은 비교/연산할 수 없다.
+//		BigInteger.ONE.equals(BigDecimal.ONE); 
+//		BigInteger.ONE.compareTo(BigDecimal.ONE);
+//		BigInteger.ONE.add(BigDecimal.ONE);
 	}
 }
