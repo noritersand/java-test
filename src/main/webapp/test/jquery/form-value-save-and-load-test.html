@@ -67,7 +67,7 @@
 			decode: true // 명시하지 않으면 true
 		}
 		settings = $.extend(base, settings); // settings가 지정되었으면 base를 덮어씀.
-		if ($form.length > 0) {
+		if ($form.length) {
 			$form[0].reset(); // 데이터 입력전 리셋
 		}
 		for (var i in formStatus) {
@@ -75,7 +75,7 @@
 				$textarea = $form.find('textarea[name="' + i + '"]'),
 				$select = $form.find('select[name="' + i + '"]'),
 				type = $input.attr('type');
-			if ($input.length > 0) {
+			if ($input.length) {
 				if (type == 'text' || type == 'hidden') {
 					// if (input.hasClass('datetime')) {
 					// 	var date = new Date(formStatus[i]),
@@ -94,7 +94,7 @@
 					});
 				}
 			}
-			if ($select.length > 0) {				
+			if ($select.length) {				
 				$select.find('option').each(function(idx, ele) {
                     var $ele = $(ele);
 					if ($ele.val() == formStatus[i]) {
@@ -102,7 +102,7 @@
 					}
 				});
 			}
-			if ($textarea.length > 0) {				
+			if ($textarea.length) {				
 				$textarea.eq(0).val(settings.decode ? decodeURIComponent(formStatus[i]) : formStatus[i]);
 			}
 		}
@@ -164,7 +164,7 @@
 function fill() {
 	$('#ipt1').val('배꼽 빠질 준비하세요.');
 	$('#ipt2').val('second');
-	$('#ipt3').val('개성공단의 반대말은 고양이실패단. XD');
+	$('#ipt3').val('개성공단의 반대말은 고양이실패단. 🤣');
 	$('#ipt4').prop('checked', true);
 }
 function empty() {
