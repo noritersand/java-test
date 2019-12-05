@@ -108,7 +108,7 @@
 			<h4>JAVA &amp; JSP &amp; Servlet</h4>
 			<ul>
 				<li><a href="/test/uncategorized/test-reponse-character-set.data">응답 문자셋</a></li>
-				<li><a href="/test/uncategorized/submission-charset/sender-test.view">유니코드 문자 서브미션</a></li>
+				<li><a href="/test/uncategorized/submission-charset/sender-test.view">유니코드 문자 submit</a></li>
 				<li>include
 					<ul>
 						<li><a href="/test/uncategorized/include/include-with-jsp-test.view">include test with jsp</a></li>
