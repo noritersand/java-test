@@ -18,6 +18,10 @@ import org.slf4j.LoggerFactory;
 public class BigDecimalTest {
 	private static final Logger logger = LoggerFactory.getLogger(BigDecimalTest.class);
 
+	@Test
+	public void instantiate() {
+		Assert.assertEquals(BigDecimal.valueOf(123), new BigDecimal("123"));
+	}
 
 	/**
 	 * 어느쪽이 크거나 작은지 비교는 compareTo
