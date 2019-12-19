@@ -26,7 +26,7 @@ public class ThreadPoolTest {
 	private int instanceLength = 10;
 
 	/**
-	 * 쓰레드를 여러개 생성해서 메서드를 동시 실행하는 테스트 케이스.
+	 * 쓰레드를 여러개 생성해서 메서드를 동시 실행하는 테스트 케이스.<br>
 	 * 출력 결과를 보면 쓰레드 생성 순서와 실행 순서는 상관 없다는 것을 알 수 있다.
 	 * 
 	 * @author noritersand
@@ -71,20 +71,20 @@ public class ThreadPoolTest {
 		Assert.assertTrue(instanceLength == successCount);
 		Assert.assertTrue(0 == failCount);
 	}
-	
+
 	private class Myclass {
 		private int idx;
 
 		public Myclass(int idx) {
 			this.idx = idx;
 		}
-		
+
 		@Override
 		public String toString() {
 			return String.valueOf(idx) + "번 째 인스턴스";
 		}
 	}
-	
+
 	private class Mythread implements Callable<Integer> {
 		private Myclass var;
 
@@ -99,21 +99,21 @@ public class ThreadPoolTest {
 		public Integer call() throws Exception {
 			return runThread();
 		}
-		
+
 		public Integer runThread() {
 			boolean success = true;
-			
+
 			// 두 썸띵
-			logger.debug(String.valueOf(this.var));;
-			
+			logger.debug(String.valueOf(this.var));
+
 			if (success) {
 				return 1; // 성공
-			} 
+			}
 			throw new RuntimeException(); // 패실
 		}
-		
+
 	}
-	
+
 	public List<Myclass> getList() {
 		List<Myclass> list = new LinkedList<Myclass>();
 		for (int i = 0; i < instanceLength; ++i) {
