@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ThreadPool 테스트 유닛
+ * ThreadPool 테스트 유닛 
  * 
  * @since 2019-12-19
  * @author noritersand
