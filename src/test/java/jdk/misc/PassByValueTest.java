@@ -14,9 +14,9 @@ import org.slf4j.LoggerFactory;
  * @since 2019-06-18
  * @author fixalot
  */
-public class PassByValue {
+public class PassByValueTest {
 	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(PassByValue.class);
+	private static final Logger logger = LoggerFactory.getLogger(PassByValueTest.class);
 
 	@Test
 	public void test() {
