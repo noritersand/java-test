@@ -29,8 +29,6 @@ public class ThreadPoolTest {
 	/**
 	 * 쓰레드를 여러개 생성해서 메서드를 동시 호출하는 테스트 케이스.<br>
 	 * 출력 결과를 보면 쓰레드 생성 순서와 호출 순서는 상관 없다는 것을 알 수 있다.
-	 * 
-	 * @author noritersand
 	 */
 	@Test
 	public void test() {
@@ -51,7 +49,7 @@ public class ThreadPoolTest {
 				// resultList: 쓰레드 실행 결과. 이 예시에서는 Mythread.call()의 반환값이 할당되어 있음.
 				List<Future<Integer>> resultList = threadPool.invokeAll(threadList);
 				for (Future<Integer> future : resultList) {
-					successCount += future.get(); // future.get() 자바독에 따르면 이 메서드를 호출하는 시점에 아직 쓰레드가 실행중일 수도 있음.
+					successCount += future.get(); // future.get() 자바독에 따르면 이 메서드를 호출하는 시점에 아직 쓰레드가 실행중일 수도 있다.
 				}
 			}
 		} catch (Exception e) {
@@ -70,9 +68,7 @@ public class ThreadPoolTest {
 	}
 
 	/**
-	 * 그냥 instanceLength개 짜리 리스트 반환하는 메서드
-	 * 
-	 * @return
+	 * instanceLength개 짜리 리스트 반환하는 메서드
 	 */
 	public List<Myclass> getList() {
 		List<Myclass> list = new LinkedList<Myclass>();
@@ -81,7 +77,7 @@ public class ThreadPoolTest {
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 쓰레드가 실행할 {@link Callable}의 구현체. 중요.<br>
 	 * {@link ThreadPoolTest}에서만 참조하고 있어서 private으로 설정함.
@@ -94,20 +90,10 @@ public class ThreadPoolTest {
 		}
 
 		/**
-		 * 이 메서드는 {@link java.util.concurrent.FutureTask#run()}에서 호출한다.
+		 * 쓰레드로 실행할 내용이 위치하는 메서드. 이 메서드는 {@link java.util.concurrent.FutureTask#run()}에서 호출한다.
 		 */
 		@Override
 		public Integer call() throws Exception {
-			return runThread();
-		}
-
-		/**
-		 * 쓰레드로 실행할 내용이 위치하는 메서드.
-		 * 
-		 * @return
-		 * @author noritersand
-		 */
-		public Integer runThread() {
 			// 두 썸띵
 			final int idx = this.var.getIdx();
 			logger.debug(String.valueOf(idx) + "번 째 인스턴스");
@@ -121,7 +107,7 @@ public class ThreadPoolTest {
 //			throw new RuntimeException(); // 굳이 예외를 발생시킬 필요가 있나?
 		}
 	}
-	
+
 	/**
 	 * 그냥 POJO
 	 */
@@ -136,7 +122,7 @@ public class ThreadPoolTest {
 			return idx;
 		}
 	}
-	
+
 	/**
 	 * 짝수 몇 개?
 	 */
@@ -147,7 +133,7 @@ public class ThreadPoolTest {
 		}
 		return length;
 	}
-	
+
 	/**
 	 * 홀수 몇 개?
 	 */
