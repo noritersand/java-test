@@ -7,9 +7,12 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jdk.statement.TryCatchFinallyTest;
+
 /**
+ * 예외 테스트 유닛
  * 
- * 
+ * @see TryCatchFinallyTest
  * @since 2017-07-27
  * @author fixalot
  */
