@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class UrlMethodFinder implements MethodFinder {
 //	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(MethodFinder.class);
+	private static final Logger logger = LoggerFactory.getLogger(UrlMethodFinder.class);
 
 	@Override
 	public Object[] findMethod(List<Object> instanceList, HttpServletRequest request, HttpServletResponse response) {

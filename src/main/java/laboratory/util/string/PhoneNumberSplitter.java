@@ -20,6 +20,8 @@ import org.slf4j.LoggerFactory;
 public class PhoneNumberSplitter {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(PhoneNumberSplitter.class);
+	
+	private PhoneNumberSplitter() {}
 
 	public static Result split(String str) {
 		if (StringUtils.isBlank(str) || str.length() < 9) {
@@ -43,14 +45,12 @@ public class PhoneNumberSplitter {
 
 	private static String[] getSeparated(String str, Matcher matcher) {
 		if (matcher.matches()) {
-			String[] separated = new String[] { matcher.group(1), matcher.group(2), matcher.group(3) };
-			return separated;
+			return new String[] { matcher.group(1), matcher.group(2), matcher.group(3) };
 		} else {
 			String str1 = str.substring(0, 3);
 			String str2 = str.substring(3, 7);
 			String str3 = str.substring(7, 11);
-			String[] separated = new String[] { str1, str2, str3 };
-			return separated;
+			return new String[] { str1, str2, str3 };
 		}
 	}
 

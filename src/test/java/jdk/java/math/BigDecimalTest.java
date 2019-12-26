@@ -89,9 +89,9 @@ public class BigDecimalTest {
 	
 	@Test
 	public void getConst() {
-		Assert.assertEquals(new BigDecimal(0), BigDecimal.ZERO);
-		Assert.assertEquals(new BigDecimal(1), BigDecimal.ONE);
-		Assert.assertEquals(new BigDecimal(10), BigDecimal.TEN);
+		Assert.assertEquals(BigDecimal.ZERO, new BigDecimal(0));
+		Assert.assertEquals(BigDecimal.ONE, new BigDecimal(1));
+		Assert.assertEquals(BigDecimal.TEN, new BigDecimal(10));
 	}
 
 	/**

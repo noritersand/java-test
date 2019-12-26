@@ -15,7 +15,7 @@ public class SimpleMethodInvoker implements MethodInvoker {
 
 	@Override
 	public Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+			throws IllegalAccessException, InvocationTargetException {
 		return method.invoke(instance, request, response);
 	}
 }

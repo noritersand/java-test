@@ -27,10 +27,14 @@ public class LogbackMdcFilter implements Filter {
 	public static final String REQUEST_METHOD_MDC_KEY = "req.requestMethod";
 
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {}
+	public void init(FilterConfig filterConfig) throws ServletException {
+		// do nothing
+	}
 
 	@Override
-	public void destroy() {}
+	public void destroy() {
+		// do nothing
+	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

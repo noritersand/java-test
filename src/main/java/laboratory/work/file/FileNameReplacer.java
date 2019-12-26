@@ -15,26 +15,26 @@ import org.slf4j.LoggerFactory;
 public class FileNameReplacer {
 	private static final Logger logger = LoggerFactory.getLogger(FileNameReplacer.class);
 
-	private static final String targetLocation = "C:\\Users\\norit\\Downloads\\wallpaper";
-	private static final String destLocation = "C:\\Users\\norit\\Downloads\\wallpaper\\temp";
-	private static final String removeMe = "wallpaper-warhammer40k-";
-	private static final String prefix;
+	private static final String TARGET_LOCATION = "C:\\Users\\norit\\Downloads\\wallpaper";
+	private static final String DEST_LOCATION = "C:\\Users\\norit\\Downloads\\wallpaper\\temp";
+	private static final String REMOVE_ME = "wallpaper-warhammer40k-";
+	private static final String PREFIX;
 	static {
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 		final String yyyyMmdd = today.format(formatter);
 		
-		prefix = "wallpaper" + "-" + yyyyMmdd + "-";
+		PREFIX = "wallpaper" + "-" + yyyyMmdd + "-";
 	}
 //	private static final String suffix = "";
 
 	public static void main(String[] args) throws Exception {
-		Path path = new File(targetLocation).toPath();
+		Path path = new File(TARGET_LOCATION).toPath();
 		Stream<Path> list = Files.list(path);
 
 		// list.forEach(System.out::println);
 
-		File newPathParent = new File(destLocation);
+		File newPathParent = new File(DEST_LOCATION);
 		if (!newPathParent.exists()) {
 			newPathParent.mkdirs();
 		}
@@ -47,14 +47,14 @@ public class FileNameReplacer {
 
 	@SuppressWarnings("unused")
 	private static void removePrefix(Stream<Path> list) {		
-		list.forEach((k) -> {
+		list.forEach(k -> {
 			if (!Files.isDirectory(k)) {
 				final String fileName = k.toString();
-				final String newFileName = (fileName.substring(fileName.lastIndexOf(File.separator) + 1)).replaceFirst(removeMe, "");
-				Path newPath = new File(destLocation, newFileName).toPath();
+				final String newFileName = (fileName.substring(fileName.lastIndexOf(File.separator) + 1)).replaceFirst(REMOVE_ME, "");
+				Path newPath = new File(DEST_LOCATION, newFileName).toPath();
 
 				// logging
-				logger.debug("{} -> {}", k.toString(), newPath.toString());
+				logger.debug("{} -> {}", k, newPath);
 
 				try {
 					Files.copy(k, newPath, StandardCopyOption.REPLACE_EXISTING);
@@ -68,14 +68,14 @@ public class FileNameReplacer {
 	}
 
 	private static void addPrefix(Stream<Path> list) {
-		list.forEach((k) -> {
+		list.forEach(k -> {
 			if (!Files.isDirectory(k)) {
 				final String fileName = k.toString();
-				final String newFileName = prefix + fileName.substring(fileName.lastIndexOf(File.separator) + 1);
-				Path newPath = new File(destLocation, newFileName).toPath();
+				final String newFileName = PREFIX + fileName.substring(fileName.lastIndexOf(File.separator) + 1);
+				Path newPath = new File(DEST_LOCATION, newFileName).toPath();
 
 				// logging
-				logger.debug("{} -> {}", k.toString(), newPath.toString());
+				logger.debug("{} -> {}", k, newPath);
 
 				try {
 					Files.copy(k, newPath, StandardCopyOption.REPLACE_EXISTING);

@@ -29,7 +29,7 @@ public class View {
 	
 	public void setViewName(HttpServletRequest request) {
 		final String requestURI = request.getRequestURI();
-		final String path = requestURI.substring(0, requestURI.lastIndexOf("."));
+		final String path = requestURI.substring(0, requestURI.lastIndexOf('.'));
 		this.viewName = path;
 	}
 }

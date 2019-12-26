@@ -55,7 +55,7 @@ public class PrimitiveTest {
 	@Test
 	public void testValueOf() {
 		int number = Integer.valueOf("1");
-		Assert.assertEquals(number, 1);
+		Assert.assertEquals(1, number);
 		try {
 			Integer.valueOf(""); // 빈 문자열은 valueOf 불가
 		} catch (NumberFormatException e) {

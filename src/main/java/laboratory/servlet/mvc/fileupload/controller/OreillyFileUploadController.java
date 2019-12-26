@@ -66,7 +66,7 @@ public class OreillyFileUploadController {
 			if (uploadFile == null) {
 				continue;
 			}
-			Map<String, Object> map = new HashMap<String, Object>();
+			Map<String, Object> map = new HashMap<>();
 			map.put("index", index);
 			map.put("content-type", multipart.getContentType(inputName));
 			map.put("original-file-name", multipart.getOriginalFileName(inputName));

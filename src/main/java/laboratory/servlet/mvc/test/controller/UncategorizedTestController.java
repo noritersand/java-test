@@ -66,7 +66,7 @@ public class UncategorizedTestController {
 	 * @throws IOException 
 	 */
 	@UrlMapping("/test/uncategorized/read-querystring.data")
-	public JsonResponseObject readQuerystring(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public JsonResponseObject readQuerystring(HttpServletRequest request, HttpServletResponse response) {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		logger.debug(params.toString());
 		JsonResponseObject responseJSON = new JsonResponseObject();
@@ -88,8 +88,8 @@ public class UncategorizedTestController {
 	public Map<String, Object> readBody(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		final String body = RequestUtil.readBody(request);
-		logger.debug("formal parameter: " + params.toString());
-		logger.debug("payload body: " + body);
+		logger.debug("formal parameter: {}", params);
+		logger.debug("payload body: {}", body);
 		
 //		logger.debug("헤더 목록:");
 //		RequestUtil.printHeaders(request);
@@ -101,7 +101,7 @@ public class UncategorizedTestController {
 		Map<String, Object> responseMap = new HashMap<>();
 		responseMap.put("success", true);
 		responseMap.put("header", params.toString());
-		responseMap.put("body", body.toString());
+		responseMap.put("body", body);
 		return responseMap;
 	}
 	
@@ -157,7 +157,7 @@ public class UncategorizedTestController {
 		request.setAttribute("longOne", 1L);
 		request.setAttribute("longHundred", 100L);
 		request.setAttribute("mustBeNull", null);
-		HashMap<String, Long> map = new HashMap<String, Long>();
+		HashMap<String, Long> map = new HashMap<>();
 		map.put("longThousand", 1000L);
 		request.setAttribute("map", map);
 		return new View(request);

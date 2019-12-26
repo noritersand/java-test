@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <jsp:include page="/WEB-INF/jsp/include/head.jsp"/>
 <title>HttpServletRequest 구현부 교체 테스트</title>

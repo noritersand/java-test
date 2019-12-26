@@ -22,13 +22,13 @@ public class RequestParameter {
 	
 	@Override
 	public String toString() {
-		final Map<String, String> parameterMap = this.parameterMap;
-		Set<String> keySet = parameterMap.keySet();
+		final Map<String, String> params = this.parameterMap;
+		Set<String> keySet = params.keySet();
 		StringBuilder builder = new StringBuilder();
 		Iterator<String> iterator = keySet.iterator();
 		while (iterator.hasNext()) {
 			String key = iterator.next();
-			String value = parameterMap.get(key);
+			String value = params.get(key);
 			builder.append(key + "=" + value);
 			if (iterator.hasNext()) {
 				builder.append(", ");

@@ -21,6 +21,8 @@ import laboratory.util.request.RequestUtil;
  * @author fixalot
  */
 public class HttpTestController {
+	private static final String TEST_HTTP_YOU_SHOULD_BE_HERE_DATA = "/test/http/you-should-be-here.data";
+	private static final String LOCATION = "Location";
 	private static final Logger logger = LoggerFactory.getLogger(HttpTestController.class);
 	
 	/**
@@ -49,7 +51,7 @@ public class HttpTestController {
 	@UrlMapping("/test/http/let-me-301-moved-permanently.data")
 	public void letMe301MovedPermanently(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY); // 301
-		response.setHeader("Location", "/test/http/you-should-be-here.data");
+		response.setHeader(LOCATION, TEST_HTTP_YOU_SHOULD_BE_HERE_DATA);
 		response.flushBuffer();
 	}
 	
@@ -65,7 +67,7 @@ public class HttpTestController {
 	@UrlMapping("/test/http/let-me-302-found.data")
 	public void letMe302Found(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setStatus(HttpServletResponse.SC_FOUND); // 302
-		response.setHeader("Location", "/test/http/you-should-be-here.data");
+		response.setHeader(LOCATION, TEST_HTTP_YOU_SHOULD_BE_HERE_DATA);
 		response.flushBuffer();
 //		response.sendRedirect("/test/http/you-should-be-here.data"); // 위 3줄과 같음
 	}
@@ -83,7 +85,7 @@ public class HttpTestController {
 	@UrlMapping("/test/http/let-me-307-temporary-redirect.data")
 	public void letMe307TemporaryRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT); // 307
-		response.setHeader("Location", "/test/http/you-should-be-here.data");
+		response.setHeader(LOCATION, TEST_HTTP_YOU_SHOULD_BE_HERE_DATA);
 		response.flushBuffer();
 	}
 	
@@ -101,7 +103,7 @@ public class HttpTestController {
 	@UrlMapping("/test/http/let-me-308-permanent-redirect.data")
 	public void letMe308PermanentRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setStatus(308);
-		response.setHeader("Location", "/test/http/you-should-be-here.data");
+		response.setHeader(LOCATION, TEST_HTTP_YOU_SHOULD_BE_HERE_DATA);
 		response.flushBuffer();
 	}
 	
@@ -112,10 +114,10 @@ public class HttpTestController {
 	 * @param response
 	 * @author fixal
 	 */
-	@UrlMapping("/test/http/you-should-be-here.data")
+	@UrlMapping(TEST_HTTP_YOU_SHOULD_BE_HERE_DATA)
 	public JsonResponseObject youShoudBeHere(HttpServletRequest request, HttpServletResponse response) {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
-		logger.debug(params.toString());
+		logger.debug(String.valueOf(params));
 		JsonResponseObject responseJSON = new JsonResponseObject();
 		responseJSON.setSuccess(true);
 		responseJSON.setMessage(params.toString());

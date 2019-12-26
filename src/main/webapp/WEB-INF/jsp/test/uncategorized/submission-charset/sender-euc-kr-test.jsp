@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=euc-kr" pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="euc-kr">
 <title>sender EUC-KR</title>

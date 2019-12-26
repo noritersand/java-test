@@ -1,7 +1,5 @@
 package laboratory.work;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,7 +7,7 @@ public class CreateSQL {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(CreateSQL.class);
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		whereClauseForPaging();
 	}
 	

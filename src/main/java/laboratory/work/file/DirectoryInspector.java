@@ -1,7 +1,6 @@
 package laboratory.work.file;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +8,7 @@ import org.slf4j.LoggerFactory;
 public class DirectoryInspector {
 	private static final Logger logger = LoggerFactory.getLogger(DirectoryInspector.class);
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		File dir = new File("C:/dev/temp");
 		inspect(dir);
 
@@ -18,7 +17,8 @@ public class DirectoryInspector {
 		logger.debug("폴더: {} 개", directoryCnt);
 	}
 
-	static int fileCnt = 0, directoryCnt = 0;
+	static int fileCnt = 0;
+	static int directoryCnt = 0;
 	static long sizeSum = 0;
 
 	/**

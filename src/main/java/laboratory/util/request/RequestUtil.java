@@ -19,6 +19,8 @@ import org.slf4j.LoggerFactory;
 public class RequestUtil {
 	private static final Logger logger = LoggerFactory.getLogger(RequestUtil.class);
 
+	private RequestUtil() {}
+
 	/**
 	 * 모든 파라미터의 문자열 반환
 	 * 
@@ -28,7 +30,7 @@ public class RequestUtil {
 	 */
 	public static RequestParameter getRequestParameter(HttpServletRequest request) {
 		RequestParameter rp = new RequestParameter();
-		
+
 		Map<String, String[]> parameterMap = request.getParameterMap();
 		Set<String> keySet = parameterMap.keySet();
 		Iterator<String> iterator = keySet.iterator();
@@ -53,7 +55,7 @@ public class RequestUtil {
 		}
 		return builder.toString();
 	}
-	
+
 	/**
 	 * request body를 읽어서 문자열 반환
 	 * 
@@ -61,16 +63,16 @@ public class RequestUtil {
 	 * @return
 	 * @throws IOException
 	 * @author fixalot
+	 * @deprecated 옛날 방식이니 사용 금지
 	 */
-	@Deprecated
+	@Deprecated(since = "??", forRemoval = true)
 	public static String readBodyLegacyway(HttpServletRequest request) {
 		String body = null;
 		StringBuilder stringBuilder = new StringBuilder();
-		BufferedReader bufferedReader = null;
-		try {
-			InputStream inputStream = request.getInputStream();
+		try (InputStream inputStream = request.getInputStream();
+				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));) {
 			if (inputStream != null) {
-				bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
 				char[] charBuffer = new char[128];
 				int bytesRead = -1;
 				while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
@@ -79,28 +81,20 @@ public class RequestUtil {
 			}
 		} catch (IOException ex) {
 			logger.error(ex.getMessage(), ex);
-		} finally {
-			if (bufferedReader != null) {
-				try {
-					bufferedReader.close();
-				} catch (IOException ex) {
-					logger.error(ex.getMessage(), ex);
-				}
-			}
 		}
 		body = stringBuilder.toString();
 		return body;
 	}
-	
+
 	/**
-	 * 헤더 모두 출력 
+	 * 헤더 모두 출력
 	 * 
 	 * @param request
-	 * @return 
+	 * @return
 	 */
-	public static HashMap<String, String> getHeadersMap(HttpServletRequest request) {
+	public static Map<String, String> getHeadersMap(HttpServletRequest request) {
 		Enumeration<String> headerNames = request.getHeaderNames();
-		HashMap<String, String> headerMap = new HashMap<String, String>();
+		HashMap<String, String> headerMap = new HashMap<>();
 		while (headerNames.hasMoreElements()) {
 			String headerName = headerNames.nextElement();
 			headerMap.put(headerName, request.getHeader(headerName));
@@ -110,9 +104,9 @@ public class RequestUtil {
 		}
 		return headerMap;
 	}
-	
+
 	/**
-	 * 헤더 모두 출력 
+	 * 헤더 모두 출력
 	 * 
 	 * @param request
 	 */

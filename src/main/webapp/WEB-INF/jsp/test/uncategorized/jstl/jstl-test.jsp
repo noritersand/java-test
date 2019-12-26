@@ -3,7 +3,7 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="laboratory.constants.Const" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <script src="/static/js/jquery-1.12.4.js"></script>
@@ -31,17 +31,17 @@ th, tr, td {
 %>
 <table>
 	<tr>
-		<th>scriptlet: </th>
+		<th scope="col">scriptlet: </th>
 		<td><%=globalVar%></td>
 		<td><%=localVar%></td>
 	</tr>
 	<tr>
-		<th>JSTL</th>
+		<th scope="col">JSTL</th>
 		<td><c:out value="${globalVar}" default="안나옴" /></td>
 		<td><c:out value="localVar" default="안나옴" /></td>
 	</tr>
 	<tr>
-		<th>EL</th>
+		<th scope="col">EL</th>
 		<td>${empty globalVar ? '안나옴' : globalVar}</td>
 		<td>${empty localVar ? '안나옴' : localVar}</td>
 	</tr>
@@ -50,21 +50,21 @@ th, tr, td {
 <h3>2. get java static variable</h3>
 <table>
 	<tr>
-		<th>scriptlet: </th>
+		<th scope="col">scriptlet: </th>
 		<td><%=java.lang.Math.PI%></td>
 		<td><%=Math.PI%></td>
 		<td><%=Integer.MAX_VALUE %></td>
 		<td><%=Const.NAME %></td>
 	</tr>
 	<tr>
-		<th>JSTL</th>
+		<th scope="col">JSTL</th>
 		<td><c:out value="${java.lang.Math.PI}" default="패키지를 명시하면 안나옴" /></td>
 		<td><c:out value="${Math.PI}" default="java.lang 패키지는 임포트 생략" /></td>
 		<td><c:out value="${Integer.MAX_VALUE}" /></td>
 		<td><c:out value="${Const.NAME}" /></td>
 	</tr>
 	<tr>
-		<th>EL</th>
+		<th scope="col">EL</th>
 		<td>${empty java.lang.Math.PI ? '패키지를 명시하면 안나옴' : java.lang.Math.PI}</td>
 		<td>${empty Math.PI ? 'java.lang 패키지는 임포트 생략' : Math.PI}</td>
 		<td>${Integer.MAX_VALUE}</td>
@@ -76,15 +76,15 @@ th, tr, td {
 <c:set target="<%=obj%>" property="mynameis" value="waldo" />
 <table>
 	<tr>
-		<th>scriptlet: </th>
+		<th scope="col">scriptlet: </th>
 		<td><%=obj.get("mynameis") %></td>
 	</tr>
 	<tr>
-		<th>JSTL</th>
+		<th scope="col">JSTL</th>
 		<td><c:out value="<%=obj.get(\"mynameis\")%>" /></td>
 	</tr>
 	<tr>
-		<th>EL</th>
+		<th scope="col">EL</th>
 		<td>${empty obj.mynameis ? '안나옴' : obj.mynameis}</td>
 	</tr>
 </table>
@@ -94,17 +94,17 @@ th, tr, td {
 <c:set var="attr2" value="${attr}" />
 <table>
 	<tr>
-		<th>scriptlet: </th>
+		<th scope="col">scriptlet: </th>
 		<td><%=pageContext.getAttribute("attr") %></td>
 		<td><%=pageContext.getAttribute("attr2") %></td>
 	</tr>
 	<tr>
-		<th>JSTL</th>
+		<th scope="col">JSTL</th>
 		<td><c:out value="${attr}" /></td>
 		<td><c:out value="${attr2}" /></td>
 	</tr>
 	<tr>
-		<th>EL</th>
+		<th scope="col">EL</th>
 		<td>${attr}</td>
 		<td>${attr2}</td>
 	</tr>

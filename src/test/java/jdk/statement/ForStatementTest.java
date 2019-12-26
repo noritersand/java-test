@@ -31,7 +31,7 @@ public class ForStatementTest {
 		for (i = 0; i < 1; i++) {
 			logger.debug("{} 바퀴", i);
 		}
-		Assert.assertEquals(i, 1);
+		Assert.assertEquals(1, i);
 		
 		// 무한 루프
 		for (;;) {

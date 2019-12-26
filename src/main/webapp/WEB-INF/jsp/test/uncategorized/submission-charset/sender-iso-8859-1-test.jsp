@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=iso-8859-1" pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="iso-8859-1">
 <title>sender ISO-8859-1</title>

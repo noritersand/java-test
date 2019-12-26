@@ -43,16 +43,16 @@ public class DefaultDispatcher extends HttpServlet {
 	@SuppressWarnings("unused")
 	private static final String DATA_SUFIX = ".data";
 
-	private MethodFinder methodFinder = new UrlMethodFinder();
-	private MethodInvoker methodInvoker = new SimpleMethodInvoker();
-	private DefaultViewResolver viewResolver = new DefaultViewResolver();
+	private final MethodFinder methodFinder = new UrlMethodFinder();
+	private final MethodInvoker methodInvoker = new SimpleMethodInvoker();
+	private final DefaultViewResolver viewResolver = new DefaultViewResolver();
 
-	private OreillyFileUploadController fileUploadWithOreilly = new OreillyFileUploadController();
+	private final OreillyFileUploadController fileUploadWithOreilly = new OreillyFileUploadController();
 	
-	private UncategorizedTestController testController = new UncategorizedTestController();
-	private SecurityTestController securityTestController = new SecurityTestController();
-	private FilterTestController filterTestController = new FilterTestController();
-	private HttpTestController httpTestController = new HttpTestController();
+	private final UncategorizedTestController testController = new UncategorizedTestController();
+	private final SecurityTestController securityTestController = new SecurityTestController();
+	private final FilterTestController filterTestController = new FilterTestController();
+	private final HttpTestController httpTestController = new HttpTestController();
 	
 
 	@Override
@@ -109,8 +109,6 @@ public class DefaultDispatcher extends HttpServlet {
 //			response.sendError(sc, msg);
 			logger.error(e.getMessage(), e);
 			response.sendError(500);
-			return;
 		}
-		
 	}
 }

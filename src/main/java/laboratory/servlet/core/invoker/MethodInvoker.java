@@ -14,5 +14,5 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface MethodInvoker {
 	public Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException;
+			throws IllegalAccessException, InvocationTargetException;
 }

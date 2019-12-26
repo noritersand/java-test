@@ -33,12 +33,11 @@ public class NotLowercaseFilenameFinder {
 		Path targetPath = new File(path).toPath();
 		Stream<Path> targetList = Files.list(targetPath);
 
-		targetList.forEach((ele) -> {
+		targetList.forEach(ele -> {
 			final String fileName = ele.getFileName().toString();
-			
-//			logger.debug("{}, {}, {}", fileName, fileName.toLowerCase(), fileName.equals(fileName.toLowerCase()));
+			final String lowerCaseFileName = fileName.toLowerCase();
 
-			if (!fileName.equals(fileName.toLowerCase())) {
+			if (!fileName.equals(lowerCaseFileName)) {
 				logger.debug(fileName);
 			}
 		});

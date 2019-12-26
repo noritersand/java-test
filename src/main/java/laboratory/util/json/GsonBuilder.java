@@ -26,7 +26,7 @@ import com.google.gson.stream.JsonWriter;
  * @author fixalot
  */
 public class GsonBuilder {
-	private com.google.gson.GsonBuilder gsonBuilder;
+	private com.google.gson.GsonBuilder builder;
 	private Gson gson;
 
 	public Gson getGson() {
@@ -34,7 +34,7 @@ public class GsonBuilder {
 	}
 
 	public GsonBuilder() {
-		this.gsonBuilder = new com.google.gson.GsonBuilder();
+		this.builder = new com.google.gson.GsonBuilder();
 		registCharTypeAdapter();
 		registShortTypeAdapter();
 		registIntegerTypeAdapter();
@@ -43,11 +43,11 @@ public class GsonBuilder {
 		registBigDecimalTypeAdapter();
 		registBooleanTypeAdapter();
 //		registDateTypeAdapter();
-		this.gson = this.gsonBuilder.create();
+		this.gson = this.builder.create();
 	}
 
 	private void registCharTypeAdapter() {
-		this.gsonBuilder.registerTypeAdapter(Character.class, new TypeAdapter<Character>() {
+		this.builder.registerTypeAdapter(Character.class, new TypeAdapter<Character>() {
 			@Override
 			public Character read(JsonReader in) throws IOException {
 				if (in.peek() == JsonToken.NULL) {
@@ -73,7 +73,7 @@ public class GsonBuilder {
 	}
 
 	private void registShortTypeAdapter() {
-		this.gsonBuilder.registerTypeAdapter(Short.class, new TypeAdapter<Short>() {
+		this.builder.registerTypeAdapter(Short.class, new TypeAdapter<Short>() {
 			@Override
 			public Short read(JsonReader in) throws IOException {
 				if (in.peek() == JsonToken.NULL) {
@@ -99,7 +99,7 @@ public class GsonBuilder {
 	}
 
 	private void registIntegerTypeAdapter() {
-		this.gsonBuilder.registerTypeAdapter(Integer.class, new TypeAdapter<Integer>() {
+		this.builder.registerTypeAdapter(Integer.class, new TypeAdapter<Integer>() {
 			@Override
 			public Integer read(JsonReader in) throws IOException {
 				if (in.peek() == JsonToken.NULL) {
@@ -125,7 +125,7 @@ public class GsonBuilder {
 	}
 
 	private void registLongTypeAdapter() {
-		this.gsonBuilder.registerTypeAdapter(Long.class, new TypeAdapter<Long>() {
+		this.builder.registerTypeAdapter(Long.class, new TypeAdapter<Long>() {
 			@Override
 			public Long read(JsonReader in) throws IOException {
 				if (in.peek() == JsonToken.NULL) {
@@ -151,7 +151,7 @@ public class GsonBuilder {
 	}
 
 	private void registDoubleTypeAdapter() {
-		this.gsonBuilder.registerTypeAdapter(Double.class, new TypeAdapter<Double>() {
+		this.builder.registerTypeAdapter(Double.class, new TypeAdapter<Double>() {
 			@Override
 			public Double read(JsonReader in) throws IOException {
 				if (in.peek() == JsonToken.NULL) {
@@ -177,7 +177,7 @@ public class GsonBuilder {
 	}
 
 	private void registBigDecimalTypeAdapter() {
-		this.gsonBuilder.registerTypeAdapter(BigDecimal.class, new TypeAdapter<BigDecimal>() {
+		this.builder.registerTypeAdapter(BigDecimal.class, new TypeAdapter<BigDecimal>() {
 			@Override
 			public BigDecimal read(JsonReader in) throws IOException {
 				if (in.peek() == JsonToken.NULL) {
@@ -203,7 +203,7 @@ public class GsonBuilder {
 	}
 
 	private void registBooleanTypeAdapter() {
-		this.gsonBuilder.registerTypeAdapter(Boolean.class, new TypeAdapter<Boolean>() {
+		this.builder.registerTypeAdapter(Boolean.class, new TypeAdapter<Boolean>() {
 			@Override
 			public Boolean read(JsonReader in) throws IOException {
 				if (in.peek() == JsonToken.NULL) {
@@ -233,10 +233,10 @@ public class GsonBuilder {
 	 * @deprecated 2016-12-14, fixalot, 받는 문자열이 어떤 포맷인지 일일이 지정해야 하는 문제 있음.
 	 */
 	@SuppressWarnings("unused")
-	@Deprecated
+	@Deprecated(since = "2016-12-14", forRemoval = false)
 	private void registDateTypeAdapter() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		this.gsonBuilder.registerTypeAdapter(LocalDateTime.class, new TypeAdapter<LocalDateTime>() {
+		this.builder.registerTypeAdapter(LocalDateTime.class, new TypeAdapter<LocalDateTime>() {
 			@Override
 			public LocalDateTime read(JsonReader in) throws IOException {
 				if (in.peek() == JsonToken.NULL) {
