@@ -18,14 +18,19 @@ import org.slf4j.LoggerFactory;
 public class NotLowercaseFilenameFinder {
 	private static final Logger logger = LoggerFactory.getLogger(NotLowercaseFilenameFinder.class);
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		String[] targetLocations = { 
 			"C:/dev/git/noritersand.github.io/_drafts", 
 			"C:/dev/git/noritersand.github.io/_posts" 
 		};
 
-		for (String ele : targetLocations) {
-			find(ele);
+		try {
+			for (String ele : targetLocations) {
+				find(ele);
+			}			
+		} catch (IOException e) {
+			logger.error(e.getMessage(), e);
+			System.exit(1);
 		}
 	}
 
@@ -33,7 +38,7 @@ public class NotLowercaseFilenameFinder {
 		Path targetPath = new File(path).toPath();
 		Stream<Path> targetList = Files.list(targetPath);
 
-		targetList.forEach(ele -> {
+		targetList.forEach((Path ele) -> {
 			final String fileName = ele.getFileName().toString();
 			final String lowerCaseFileName = fileName.toLowerCase();
 
