@@ -28,21 +28,22 @@ public class FileNameReplacer {
 	}
 //	private static final String suffix = "";
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		Path path = new File(TARGET_LOCATION).toPath();
-		Stream<Path> list = Files.list(path);
-
-		// list.forEach(System.out::println);
-
-		File newPathParent = new File(DEST_LOCATION);
-		if (!newPathParent.exists()) {
-			newPathParent.mkdirs();
+		try (Stream<Path> list = Files.list(path)) {
+			// list.forEach(System.out::println);
+			
+			File newPathParent = new File(DEST_LOCATION);
+			if (!newPathParent.exists()) {
+				newPathParent.mkdirs();
+			}
+			
+			addPrefix(list);
+//			removePrefix(list);
+		} catch (IOException e) {
+			logger.error(e.getMessage(), e);
+			System.exit(1);
 		}
-
-		addPrefix(list);
-//		removePrefix(list);
-
-		list.close();
 	}
 
 	@SuppressWarnings("unused")
