@@ -15,6 +15,16 @@ public class OperatorTest {
 	private static final Logger logger = LoggerFactory.getLogger(OperatorTest.class);
 
 	@Test
+	public void negativeSign() {
+		Assert.assertTrue(-3 < 0);
+		final int three = 3;
+		Assert.assertEquals(-3, -(three));
+		Assert.assertEquals(-3, -three);
+		Assert.assertEquals(3, -(-three));
+		Assert.assertEquals(-3, -(-(-three)));
+	}
+	
+	@Test
 	public void ternaryOperator() {
 		String first = "1";
 		String second = "2";
