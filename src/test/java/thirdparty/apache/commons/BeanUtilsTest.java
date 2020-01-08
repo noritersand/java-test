@@ -90,7 +90,7 @@ public class BeanUtilsTest {
 		BeanUtils.copyProperties(model, model);
 
 		// 집에서 돌리면 이게 맞음.
-		Assert.assertEquals("{number=101, name=야, class=class model.TestModel, when=null}",
+		Assert.assertEquals("{number=101, name=야, when=null}",
 				String.valueOf(BeanUtils.describe(model)));
 
 		// TODO: null 무시 하려면 이렇게 하라는데 안됨

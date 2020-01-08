@@ -5,7 +5,7 @@ my little laboratory.
 #### environments
 
 - maven
-- jdk10
+- ojdkbuild12
 - tomcat9
 
 ## TODO
