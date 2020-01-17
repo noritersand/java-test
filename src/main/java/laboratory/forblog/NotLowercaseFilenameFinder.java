@@ -35,17 +35,28 @@ public class NotLowercaseFilenameFinder {
 	}
 
 	private static void find(String path) throws IOException {
+		logger.debug("찾을 위치: {} ", path);
+		
 		Path targetPath = new File(path).toPath();
 		Stream<Path> targetList = Files.list(targetPath);
-
+		
+		class Counter {
+			public int count;
+		}
+		Counter counter = new Counter();
 		targetList.forEach((Path ele) -> {
 			final String fileName = ele.getFileName().toString();
 			final String lowerCaseFileName = fileName.toLowerCase();
 
 			if (!fileName.equals(lowerCaseFileName)) {
 				logger.debug(fileName);
+				++counter.count;
 			}
 		});
 		targetList.close();
+
+		if (counter.count <= 0) {
+			logger.debug("결과: 발견된 대문자 파일 음슴");
+		}
 	}
 }

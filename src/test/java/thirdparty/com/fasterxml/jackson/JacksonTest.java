@@ -3,6 +3,7 @@ package thirdparty.com.fasterxml.jackson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.junit.Assert;
@@ -44,6 +45,18 @@ public class JacksonTest {
 		Assert.assertEquals(1, collection.size());
 		Assert.assertEquals("<p>홀홀</p>", collection.get(0).get("html1"));
 		Assert.assertEquals("<p>ㅗㅎ롷ㄹ</p>", collection.get(0).get("html2"));
+		Assert.assertEquals(ArrayList.class, collection.getClass());
+		Assert.assertEquals(HashMap.class, collection.get(0).getClass());
+	}
+	
+	@Test
+	public void testReadValueWithAmbiguousTypeDeclare() throws JsonMappingException, JsonProcessingException {
+		String jsonText = "[{\"html1\":\"<p>홀홀</p>\",\"html2\":\"<p>ㅗㅎ롷ㄹ</p>\"}]";
+		final List<Object> collection
+				= mapper.readValue(jsonText, new TypeReference<List<Object>>() {});
+		Assert.assertEquals(1, collection.size());
+		Assert.assertEquals(ArrayList.class, collection.getClass());
+		Assert.assertEquals(LinkedHashMap.class, collection.get(0).getClass());
 	}
 
 	/**
@@ -93,7 +106,7 @@ public class JacksonTest {
 		Assert.assertEquals("soap", poList.get(1).getName());
 		Assert.assertEquals(Integer.valueOf(32), poList.get(0).getAge());
 		Assert.assertEquals(Integer.valueOf(43), poList.get(1).getAge());
-		Assert.assertEquals(true, poList.get(0).isDead());
-		Assert.assertEquals(true, poList.get(1).isDead());
+		Assert.assertTrue(poList.get(0).isDead());
+		Assert.assertTrue(poList.get(1).isDead());
 	}
 }

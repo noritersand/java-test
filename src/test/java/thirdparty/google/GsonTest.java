@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.stream.JsonReader;
 
 /**
@@ -61,6 +63,16 @@ public class GsonTest {
 		Assert.assertEquals("1234", myClassList.get(0).getValue());
 		Assert.assertEquals("second", myClassList.get(1).getKey());
 		Assert.assertEquals("5678", myClassList.get(1).getValue());
+	}
+	
+	@Test
+	public void parseToCollectionsWithAmbiguousTypeDeclare() {
+		String json = "[{\"key\":\"first\",\"value\":\"1234\"}, {\"key\":\"second\",\"value\":\"5678\"}]";
+		@SuppressWarnings("serial")
+		Type listType = new TypeToken<List<Object>>() {}.getType();
+		List<Object> list = new Gson().fromJson(json, listType);
+		Assert.assertEquals(ArrayList.class, list.getClass());
+		Assert.assertEquals(LinkedTreeMap.class, list.get(0).getClass());
 	}
 }
 
