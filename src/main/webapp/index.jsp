@@ -93,10 +93,12 @@
 		<li>
 			<h4>jQuery</h4>
 			<ul>
+				<li><a href="/test/jquery/exercise-book-jquery-1-x-x.html">[연습장] jQuery 1.x</a></li>
 				<li><a href="/test/jquery/ajax-test.html">ajax</a></li>
 				<li><a href="/test/jquery/ajax-setup-test.html">ajaxSetup</a></li>
 				<li><a href="/test/jquery/append-input-tag-from-querystring-test.html">querystring to input tag</a></li>
-				<li><a href="/test/jquery/jquery-3-x-x-test.html">jquery 3.x</a></li>
+				<li><a href="/test/jquery/exercise-book-jquery-3-x-x.html">[연습장] jQuery 3.x</a></li>
+				<li><a href="/test/jquery/jquery-3-x-x-test.html">jQuery 3.x</a></li>
 				<li><a href="/test/jquery/form-empty-check-test.html">form empty check</a></li>
 				<li><a href="/test/jquery/set-value-in-attribute-test.html">set value in attribute</a></li>
 				<li><a href="/test/jquery/cors-test.html">CORS</a></li>
