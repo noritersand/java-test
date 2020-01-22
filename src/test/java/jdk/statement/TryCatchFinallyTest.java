@@ -39,7 +39,6 @@ public class TryCatchFinallyTest {
 //		} catch (IllegalArgumentException e) { // 이 코멘트를 풀면 컴파일 에러 발생함: 
 			// Unreachable catch block for IllegalArgumentException. It is already handled by the catch block for Exception
 		}
-		Assert.assertTrue(true);
 	}
 
 	@Test
@@ -53,7 +52,7 @@ public class TryCatchFinallyTest {
 				logger.debug("You know nothing John snow!");
 			}
 		} catch (ArithmeticException e) {
-			logger.error(e.getMessage(), e);
+			Assert.assertEquals("/ by zero", e.getMessage());
 		}
 	}
 
@@ -82,29 +81,60 @@ public class TryCatchFinallyTest {
 		Assert.assertEquals("try catch finally", str);
 	}
 
-	/**
-	 * catch 에서 return 해봐야 finally 때문에 무시됨. 이런 이유때문에 finally에서 return을 하면 경고가 나타난다.
-	 * 
-	 * @author fixalot
-	 */
 	@Test
 	public void finallyTest3() {
 		String str = weirdStatement();
-		Assert.assertEquals("try catch finally", str);
+		Assert.assertEquals("weirdStatement", str);
+		
+		try {
+			str = weirdStatement2();			
+		} catch (Exception e) {
+			str = "Hello world!"; // catch의 throw는 finally 때문에 무시되었기 때문에 이 라인은 dead code가 됨.
+		}
+		Assert.assertEquals("weirdStatement2", str);
 	}
 
+	/**
+	 * catch에서 return 해봐야 finally 때문에 무시됨. 이런 이유때문에 finally에서 return을 하면 경고가 나타난다.
+	 * 
+	 * @return
+	 * @author noritersand
+	 */
 	@SuppressWarnings("finally")
 	private String weirdStatement() {
 		String str = "";
 		try {
-			str += "try";
+			str += "weird";
 			throw new IllegalAccessError();
 		} catch (IllegalAccessError e) {
-			str += " catch";
+			str += "State";
 			logger.debug(str);
 			return str;
 		} finally {
-			str += " finally";
+			str += "ment";
+			logger.debug(str);
+			return str; // finally block does not complete normally
+		}
+	}
+	
+	/**
+	 * 얘도 마찬가지로 catch에서 throw 해봐야 finally 때문에 무시되됨
+	 * 
+	 * @return
+	 * @author noritersand
+	 */
+	@SuppressWarnings("finally")
+	private String weirdStatement2() {
+		String str = "";
+		try {
+			str += "weird";
+			throw new IllegalAccessError();
+		} catch (IllegalAccessError e) {
+			str += "State";
+			logger.debug(str);
+			throw e;
+		} finally {
+			str += "ment2";
 			logger.debug(str);
 			return str; // finally block does not complete normally
 		}
