@@ -118,7 +118,7 @@ public class TryCatchFinallyTest {
 	}
 	
 	/**
-	 * 얘도 마찬가지로 catch에서 throw 해봐야 finally 때문에 무시되됨
+	 * 얘도 마찬가지로 catch에서 throw 해봐야 finally의 return 때문에 무시되됨
 	 * 
 	 * @return
 	 * @author noritersand
