@@ -12,9 +12,9 @@ import jdk.statement.TryCatchFinallyTest;
 /**
  * 예외 테스트 유닛
  * 
- * @see TryCatchFinallyTest
  * @since 2017-07-27
  * @author fixalot
+ * @see TryCatchFinallyTest
  */
 public class ExceptionTest {
 	private static final Logger logger = LoggerFactory.getLogger(ExceptionTest.class);
