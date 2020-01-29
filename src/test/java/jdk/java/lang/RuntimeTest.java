@@ -40,7 +40,7 @@ public class RuntimeTest {
 			String input = bufferedReader.readLine();
 			if ("shutdown".equals(input)) {
 				logger.debug("### system shut down");
-				System.exit(0);
+				System.exit(1);
 			} else {
 				logger.debug(input);
 			}

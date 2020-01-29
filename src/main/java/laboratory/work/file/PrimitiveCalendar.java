@@ -2,12 +2,13 @@ package laboratory.work.file;
 
 import java.util.Scanner;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+/**
+ * 이거 학원 다닐 때 만든거였던가...
+ * 
+ * @since 2020-01-29
+ * @author noritersand
+ */
 public class PrimitiveCalendar {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(PrimitiveCalendar.class);
 
 	public static void main(String[] args) {
 		printWithoutAPI();

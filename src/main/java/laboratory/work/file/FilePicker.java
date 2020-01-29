@@ -13,6 +13,12 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * FILE_NAMES에 해당하는 파일 찾아서... 뭐하는거지?
+ * 
+ * @since 2020-01-29
+ * @author noritersand
+ */
 public class FilePicker {
 	private static final Logger logger = LoggerFactory.getLogger(FilePicker.class);
 

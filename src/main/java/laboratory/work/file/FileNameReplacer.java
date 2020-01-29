@@ -12,6 +12,12 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 특정 폴더의 모든 파일 이름 변경
+ * 
+ * @since 2020-01-29
+ * @author noritersand
+ */
 public class FileNameReplacer {
 	private static final Logger logger = LoggerFactory.getLogger(FileNameReplacer.class);
 
@@ -62,7 +68,7 @@ public class FileNameReplacer {
 //					Files.move(k, newPath, StandardCopyOption.REPLACE_EXISTING);
 				} catch (IOException e) {
 					System.err.println(e);
-					System.exit(0);
+					System.exit(1);
 				}
 			}
 		});
@@ -83,7 +89,7 @@ public class FileNameReplacer {
 //					Files.move(k, newPath, StandardCopyOption.REPLACE_EXISTING);
 				} catch (IOException e) {
 					System.err.println(e);
-					System.exit(0);
+					System.exit(1);
 				}	
 			}
 		});

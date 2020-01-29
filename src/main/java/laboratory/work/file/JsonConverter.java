@@ -21,7 +21,7 @@ public class JsonConverter {
 		
 		if (!jsonFileLocation.exists()) {
 			logger.error("파일이 없어요.");
-			System.exit(0);
+			System.exit(1);
 		}
 		
 		if (!destinationParent.exists()) {

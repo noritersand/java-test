@@ -1,5 +1,8 @@
 package jdk.statement;
 
+import java.io.IOException;
+import java.io.Writer;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -17,6 +20,22 @@ import misc.ExceptionTest;
 public class TryCatchFinallyTest {
 	private static final Logger logger = LoggerFactory.getLogger(TryCatchFinallyTest.class);
 
+	
+	/**
+	 * 새로 나온 try-with-resources statement<br>
+	 * catch나 finally 없어도 컴파일 에러 발생하지 않음<br>
+	 * 괄호 안에 선언되는 타입은 반드시 java.lang.AutoCloseable의 구현체여야 함(The resource type File does not implement java.lang.AutoCloseable).
+	 * 
+	 * @throws IOException
+	 * @author noritersand
+	 */
+	@Test
+	public void tryWithResources() throws IOException {
+		try (Writer output = null) {
+			Assert.assertTrue(1 != 2);
+		}
+	}
+	
 	/**
 	 * catch 작성 순서는 매우 중요하며, 아무렇게나 작성하면 컴파일 에러가 발생할 수 있다.<br>
 	 * 아래의 경우 catch 우선순위는 RuntimeException, Exception, IllegalArgumentException순이다. 즉, catch 우선순위는 작성 순서를 따른다.<br>
