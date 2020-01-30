@@ -62,7 +62,7 @@ public class FileTailAppender {
 	}
 
 	private static boolean isCommentLine(String singleLine) {
-		return singleLine.indexOf('#') == 0;
+		return singleLine.trim().indexOf('#') == 0;
 	}
 
 	private static void appendBlank(String targetLocation) throws IOException {
