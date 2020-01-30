@@ -54,8 +54,35 @@ public class SwitchTest {
 					logger.debug("it is null");
 					break;
 			}
+			Assert.assertTrue(1 == 2);
 		} catch (NullPointerException e) {
 			logger.debug("에러 났습니당.");
+			Assert.assertFalse(1 == 2);
 		}
+	}
+	
+	/**
+	 * static final 제어자가 붙은 변수여도 실제 값이 런타임에 결정되면 case 표현식에 사용할 수 없다
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void shouldBeCompileError() {
+		switch (myS) {
+			case (1):
+//			case (myS + 0): // case expressions must be constant expressions
+//			case (myS + 1): // case expressions must be constant expressions
+				logger.debug("정상값 입력");
+				break;
+			default:
+				logger.debug("허용 수치를 벗어남");
+				break;
+		}
+	}
+
+	public static final int myS = getData();
+
+	public static final int getData() {
+		return 1;
 	}
 }
