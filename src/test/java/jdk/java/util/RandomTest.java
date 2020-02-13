@@ -26,22 +26,25 @@ public class RandomTest {
 			Random random = new Random();
 			
 			int num = random.nextInt(); // int의 최솟값 이상 최댓값 미만 사이의 랜덤값 추출
-			logger.debug(String.valueOf(num));
 			Assert.assertTrue(Integer.MIN_VALUE <= num && num < Integer.MAX_VALUE);
 			
 			num = random.nextInt(5); // 0 이상 5 미만 사이의 랜덤값 추출
-			logger.debug(String.valueOf(num));
 			Assert.assertTrue(0 <= num && num < 5);
 		}
 	}
 	
+	/**
+	 * 얘는 뭥미?
+	 * 
+	 * @author noritersand
+	 */
 	@Test
 	public void testInts() {
 		Random random = new Random();
 		IntStream a = random.ints();
-		logger.debug(String.valueOf(a.count()));
+		Assert.assertEquals(9223372036854775807L, a.count());
 		a = random.ints(100);
-		logger.debug(String.valueOf(a.count()));
+		Assert.assertEquals(100L, a.count());
 	}
 	
 	/**
@@ -63,8 +66,7 @@ public class RandomTest {
 		list.add("아홉");
 		list.add("열");
 		for (int i = 0; i < 100; ++i) {
-			int randomNumber = new Random().nextInt(list.size());
-			String element = list.get(randomNumber);
+			String element = list.get(new Random().nextInt(list.size()));
 			Assert.assertNotNull(element);
 			Assert.assertFalse(element.isEmpty());
 			Assert.assertTrue(element instanceof String);
