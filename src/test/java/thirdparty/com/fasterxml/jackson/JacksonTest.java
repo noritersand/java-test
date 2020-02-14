@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -29,6 +30,38 @@ public class JacksonTest {
 
 	private ObjectMapper mapper = new ObjectMapper();
 
+	/**
+	 * 파싱할 문자열이 array[]인지 object{}인지 알 수 없을때 처리 방법 
+	 * 
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @author noritersand
+	 */
+	@Test
+	public void testSingleValueAsArray() throws JsonParseException, JsonMappingException, IOException {
+		mapper = new ObjectMapper();
+
+		// 원래는 이런 문자만 파싱할 수 있지만...
+//		String text = "{\"aaa\": \"Hello world!\", \"bbb\": [{\"ccc\": \"welcome to dead man club\"}]}";
+		
+		/*
+		 * SINGLE_VALUE_AS_ARRAY 옵션을 설정하면 배열이 아니어도 파싱 가능
+		 * 만약 이 설정이 없으면: MismatchedInputException: Cannot deserialize instance of
+		 * `java.util.ArrayList<thirdparty.com.fasterxml.jackson.ElementObject>` out of START_OBJECT token 
+		 */
+		mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+		String text = "{\"aaa\": \"Hello world!\", \"bbb\": {\"ccc\": \"welcome to dead man club\"}}";
+
+		UpperObject upper = mapper.readValue(text, UpperObject.class);
+		Assert.assertNotNull(upper);
+		List<ElementObject> elementList = upper.getBbb();
+		Assert.assertEquals(1, elementList.size());
+		ElementObject element = elementList.get(0);
+		Assert.assertEquals(ElementObject.class, element.getClass());
+		Assert.assertEquals("welcome to dead man club", element.getCcc());
+	}
+	
 	/**
 	 * JSON 문자열 -> 인스턴스
 	 * 
