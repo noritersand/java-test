@@ -40,7 +40,7 @@ public class JacksonTest {
 	 */
 	@Test
 	public void testSingleValueAsArray() throws JsonParseException, JsonMappingException, IOException {
-		mapper = new ObjectMapper();
+		ObjectMapper mapper = new ObjectMapper();
 
 		// 원래는 이런 문자만 파싱할 수 있지만...
 //		String text = "{\"aaa\": \"Hello world!\", \"bbb\": [{\"ccc\": \"welcome to dead man club\"}]}";
