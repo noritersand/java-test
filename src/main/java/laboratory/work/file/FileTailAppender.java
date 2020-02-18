@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 하나 이상의 파일들 내용 끝에 빈 칸 하나 집어넣는 클래스.<br>
- * svn이나 git에서 여러 파일을 하나의 커밋 아이디로 묶을 때 사용한다.<br>
+ * 버전 관리 시 여러 파일을 하나의 커밋으로 묶을 때 사용한다.<br>
  * 사실 정상적인 시스템이면 이런 게 필요할 리가 없다.
  * 
  * @since 2020-01-29
@@ -50,6 +50,7 @@ public class FileTailAppender {
 			}
 			logger.debug("TARGET_LOCATION_FILE 내용:{}{}", System.lineSeparator(), txt);
 			if (targetList.isEmpty()) {
+				logger.info("대상 없음. 메서드 종료.");
 				System.exit(1);
 			}
 			for (String targetLocation : targetList) {
@@ -61,10 +62,24 @@ public class FileTailAppender {
 		}
 	}
 
+	/**
+	 * trim 후 맨 좌측 첫 번째 문자가 #이면 코멘트로 판단.
+	 * 
+	 * @param singleLine 코멘트인지 판단할 한 줄
+	 * @return 코멘트 라인이면 true, 아니면 false
+	 * @author noritersand
+	 */
 	private static boolean isCommentLine(String singleLine) {
 		return singleLine.trim().indexOf('#') == 0;
 	}
 
+	/**
+	 * 파일에 공백문자 하나 추가.
+	 * 
+	 * @param targetLocation 대상 파일의 경로
+	 * @throws IOException
+	 * @author noritersand
+	 */
 	private static void appendBlank(String targetLocation) throws IOException {
 		File target = new File(targetLocation);
 		if (!target.exists() || !target.isFile()) {
