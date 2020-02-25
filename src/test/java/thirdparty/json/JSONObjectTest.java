@@ -35,4 +35,20 @@ public class JSONObjectTest {
 		
 		Assert.assertEquals("[{\"이름2\":\"값2\",\"이름1\":\"값1\"},{\"이름2\":\"값2\",\"이름1\":\"값1\"}]", list.toString());
 	}
+	
+	@Test
+	public void parseFromString() {
+		final String jsonString = "{\"status\":\"0000\",\"data\":[[1582464360000,\"321000\",\"320900\",\"321000\",\"320900\",\"11.7071\"],[],[]]}";
+		JSONObject object = new JSONObject(jsonString);
+
+		JSONArray data = (JSONArray) object.get("data");
+		Assert.assertEquals(JSONArray.class, data.get(0).getClass());
+
+		JSONArray firstElement = (JSONArray) data.get(0);
+		Assert.assertEquals(Long.class, firstElement.get(0).getClass());
+		Assert.assertEquals(String.class, firstElement.get(1).getClass());
+
+		JSONArray secondEmptyElement = (JSONArray) data.get(1);
+		Assert.assertEquals(0, secondEmptyElement.length());
+	}
 }
