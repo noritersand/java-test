@@ -22,29 +22,29 @@ public class PropertiesTest {
 	private static final Logger logger = LoggerFactory.getLogger(PropertiesTest.class);
 
 	@Test
-	public void getPropByInputStream() throws IOException {
+	public void getPropertyByInputStream() throws IOException {
 		FileInputStream fis = new FileInputStream("src\\test\\resources\\properties-test\\access-test.properties");
 		Properties prop = new Properties();
 		prop.load(fis);
 		fis.close();
 		System.out.println(prop);
 
-		Assert.assertEquals("{web.root=http://daum.net, a.b.c=123}", prop.toString());
+		Assert.assertEquals("{web.root=http://daum.net, a.b.c=123, korean=한글}", prop.toString());
 	}
 
 	@Test
-	public void getPropByReader() throws IOException {
+	public void getPropertyByReader() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader("src\\test\\resources\\properties-test\\access-test.properties"));
 		Properties prop = new Properties();
 		prop.load(reader);
 		reader.close();
 		logger.debug(String.valueOf(prop));
 
-		Assert.assertEquals("{web.root=http://daum.net, a.b.c=123}", prop.toString());
+		Assert.assertEquals("{web.root=http://daum.net, a.b.c=123, korean=한글}", prop.toString());
 	}
 
 	@Test
-	public void getPropFromXml() throws IOException {
+	public void getPropertyFromXml() throws IOException {
 		FileInputStream fis = new FileInputStream("src\\test\\resources\\properties-test\\uri-test.xml");
 		Properties prop = new Properties();
 		prop.loadFromXML(fis);
