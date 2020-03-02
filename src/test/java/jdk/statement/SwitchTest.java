@@ -25,12 +25,12 @@ public class SwitchTest {
 		switch (a) {
 			case 1:
 				int b = 0; // 여기는 오지 않는걸로 보이지만
-				logger.debug(String.valueOf(b));
+				logger.debug("{}", b);
 				break;
 			case 2:
 //				b; // 이렇게 하면 컴파일 에러: Syntax error, insert "VariableDeclarators" to complete LocalVariableDeclaration
 				b = 3;
-				logger.debug(String.valueOf(b));
+				logger.debug("{}", b);
 				Assert.assertEquals(3, b);
 				break;
 		}

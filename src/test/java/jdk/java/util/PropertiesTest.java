@@ -38,7 +38,7 @@ public class PropertiesTest {
 		Properties prop = new Properties();
 		prop.load(reader);
 		reader.close();
-		logger.debug(String.valueOf(prop));
+		logger.debug("{}", prop);
 
 		Assert.assertEquals("{web.root=http://daum.net, a.b.c=123, korean=한글}", prop.toString());
 	}

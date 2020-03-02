@@ -29,13 +29,13 @@ public class GenerateUniqueValueTest {
 			millsPlusNanos = millsPlusNanos.substring(0, 19);
 		}
 		Assert.assertEquals(19, millsPlusNanos.length());
-		logger.debug(String.valueOf(Long.valueOf(millsPlusNanos)));
+		logger.debug("{}", Long.valueOf(millsPlusNanos));
 	}
 
 	@Test
 	public void getUniqueUuid() {
 		logger.debug(UUID.randomUUID().toString());
-		logger.debug(String.valueOf(UUID.fromString("cb9bc318-3ba1-4614-81b8-daed4efe6c62")));
+		logger.debug("{}", UUID.fromString("cb9bc318-3ba1-4614-81b8-daed4efe6c62"));
 //		UUID.nameUUIDFromBytes(1) // 이건 어떻게 쓰는거람
 	}
 }

@@ -189,7 +189,7 @@ public class UncategorizedTestController {
 		
 		session.setAttribute("a", 123);
 		int a = (int) session.getAttribute("a");
-		logger.debug(String.valueOf(a == 123));
+		logger.debug("{}", a == 123);
 		
 		session.invalidate(); // 세션 무효화
 		

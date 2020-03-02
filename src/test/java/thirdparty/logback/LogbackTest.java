@@ -19,6 +19,9 @@ public class LogbackTest {
 
 	@Test
 	public void loggingWithJunit() {
+		Integer a = Integer.valueOf("123");
+		logger.debug("{}", a);
+		
 		logger.debug("unit testing");
 		logger.debug("unit", "testing"); // "testing"은 안찍힘
 	}

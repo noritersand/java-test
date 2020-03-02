@@ -61,9 +61,9 @@ public class CharacterTest {
 		final String binary = "5";
 		final String alphabet = "a";
 		final String korean = "한";
-		logger.debug(String.valueOf((int) binary.charAt(0)));
-		logger.debug(String.valueOf((int) alphabet.charAt(0)));
-		logger.debug(String.valueOf((int) korean.charAt(0)));
+		logger.debug("{}", (int) binary.charAt(0));
+		logger.debug("{}", (int) alphabet.charAt(0));
+		logger.debug("{}", (int) korean.charAt(0));
 	}
 
 	@Test

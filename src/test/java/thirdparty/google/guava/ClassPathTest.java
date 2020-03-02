@@ -28,7 +28,7 @@ public class ClassPathTest {
 		UnmodifiableIterator<ClassInfo> iterator = classInfoSet.iterator();
 		while (iterator.hasNext()) {
 			ClassInfo classInfo = iterator.next();
-			logger.debug(String.valueOf(classInfo));
+			logger.debug("{}", classInfo);
 		}
 	}
 
@@ -39,7 +39,7 @@ public class ClassPathTest {
 		UnmodifiableIterator<ResourceInfo> iterator = resourceInfoSet.iterator();
 		while (iterator.hasNext()) {
 			ResourceInfo resourceInfo = iterator.next();
-			logger.debug(String.valueOf(resourceInfo));
+			logger.debug("{}", resourceInfo);
 		}
 	}
 }

@@ -16,6 +16,6 @@ public class MathTest {
 
 	@Test
 	public void test() {
-		logger.debug(String.valueOf(Math.random()));
+		logger.debug("{}", Math.random());
 	}
 }

@@ -37,9 +37,9 @@ public class JavaTimeTest {
 
 	@Test
 	public void create() {
-		logger.debug(String.valueOf(Instant.now()));
-		logger.debug(String.valueOf(LocalDate.now())); // yyyy-MM-dd
-		logger.debug(String.valueOf(LocalTime.now())); // HH:mm:ss.SSS
+		logger.debug("{}", Instant.now());
+		logger.debug("{}", LocalDate.now()); // yyyy-MM-dd
+		logger.debug("{}", LocalTime.now()); // HH:mm:ss.SSS
 
 		Assert.assertEquals("1970-01-01T00:00:00Z", Instant.ofEpochMilli(0).toString());
 		Assert.assertEquals("2017-09-19T06:10:46.820Z", Instant.ofEpochMilli(1505801446820L).toString());
@@ -61,7 +61,7 @@ public class JavaTimeTest {
 	@Test
 	public void getLocalDate() {
 		LocalDate a = LocalDate.now();
-		logger.debug(String.valueOf(a)); // yyyy-MM-dd
+		logger.debug("{}", a); // yyyy-MM-dd
 		Assert.assertEquals("2017-12-31", LocalDate.of(2017, Month.DECEMBER, 31).toString());
 		Assert.assertEquals("2017-04-10T23:49", LocalDateTime.of(2017, Month.APRIL, 10, 23, 49).toString());
 	}
@@ -69,13 +69,13 @@ public class JavaTimeTest {
 	@Test
 	public void getMonthDay() {
 		MonthDay a = MonthDay.now();
-		logger.debug(String.valueOf(a)); // --MM-dd
+		logger.debug("{}", a); // --MM-dd
 	}
 
 	@Test
 	public void getYearMonth() {
 		YearMonth a = YearMonth.now();
-		logger.debug(String.valueOf(a)); // yyyy-MM
+		logger.debug("{}", a); // yyyy-MM
 	}
 
 	@Test

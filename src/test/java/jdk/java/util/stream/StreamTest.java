@@ -80,7 +80,7 @@ public class StreamTest {
 		// 필터링 결과 중 아무거나?? 그냥 첫 번째꺼 나오는거 같은데...
 		stream = list.stream();
 		Integer result3 = stream.filter(predicate).findAny().get();
-		logger.debug(String.valueOf(result3));
+		logger.debug("{}", result3);
 	}
 
 	@Test

@@ -15,7 +15,7 @@ public class MethodArgumentsTest {
 
 	public static void testMe(int... args) {
 		for (int ele : args) {
-			logger.debug(String.valueOf(ele));
+			logger.debug("{}", ele);
 		}
 	}
 	

@@ -96,6 +96,6 @@ public class BeanUtilsTest {
 		// TODO: null 무시 하려면 이렇게 하라는데 안됨
 //		BeanUtilsBean instance = BeanUtilsBean.getInstance();
 //		instance.getConvertUtils().register(false, false, 0);
-//		logger.debug(String.valueOf(instance.describe(model)));
+//		logger.debug("{}", instance.describe(model));
 	}
 }

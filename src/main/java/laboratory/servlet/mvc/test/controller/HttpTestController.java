@@ -117,7 +117,7 @@ public class HttpTestController {
 	@UrlMapping(TEST_HTTP_YOU_SHOULD_BE_HERE_DATA)
 	public JsonResponseObject youShoudBeHere(HttpServletRequest request, HttpServletResponse response) {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
-		logger.debug(String.valueOf(params));
+		logger.debug("{}", params);
 		JsonResponseObject responseJSON = new JsonResponseObject();
 		responseJSON.setSuccess(true);
 		responseJSON.setMessage(params.toString());

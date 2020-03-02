@@ -19,7 +19,7 @@ public class WhileStatementTest {
 		int n = 0;
 		while (n != 2) { // condition이 true면 반복함
 			++n;
-			logger.debug(String.valueOf(n));
+			logger.debug("{}", n);
 		}
 		Assert.assertEquals(2, n);
 	}

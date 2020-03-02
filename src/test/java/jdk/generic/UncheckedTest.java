@@ -23,7 +23,7 @@ public class UncheckedTest {
 		List<String> list = new LinkedList<>();
 		list.add("야");
 		List<?> uncheckedList = list;
-		logger.debug(String.valueOf(uncheckedList.get(0)));
+		logger.debug("{}", uncheckedList.get(0));
 		String a = (String) uncheckedList.get(0);
 		logger.debug(a);
 

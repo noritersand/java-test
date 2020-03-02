@@ -19,8 +19,8 @@ public class ObjectTest {
 	public void getHashCode() {
 		Object obj1 = new Object();
 		Object obj2 = new Object();
-		logger.debug(String.valueOf(obj1.hashCode()));
-		logger.debug(String.valueOf(obj2.hashCode()));
+		logger.debug("{}", obj1.hashCode());
+		logger.debug("{}", obj2.hashCode());
 		Assert.assertNotEquals(obj1.hashCode(), obj2.hashCode());
 	}
 	

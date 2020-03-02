@@ -34,7 +34,7 @@ public class GsonTest {
 		Type listType = new TypeToken<ArrayList<HashMap<String, String>>>() {}.getType();
 		Object result = new Gson().fromJson(reader, listType);
 		Assert.assertEquals(new ArrayList<HashMap<String, String>>().getClass(), result.getClass());
-		logger.debug(String.valueOf(result));
+		logger.debug("{}", result);
 	}
 
 	@Test

@@ -96,7 +96,7 @@ public class ThreadPoolTest {
 		public Integer call() throws Exception {
 			// 두 썸띵
 			final int idx = this.var.getIdx();
-			logger.debug(String.valueOf(idx) + "번 째 인스턴스");
+			logger.debug("{}번 째 인스턴스", idx);
 
 			// 짝수는 성공, 홀수는 실패하게 함
 			if (idx % 2 == 0) {

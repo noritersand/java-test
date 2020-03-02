@@ -47,10 +47,10 @@ public class HttpComponentsTest {
 		HttpGet request = new HttpGet(uri);
 		try (CloseableHttpClient httpclient = HttpClients.createDefault(); CloseableHttpResponse response = httpclient.execute(request);) {
 
-//			logger.debug(String.valueOf(Arrays.toString(response.getAllHeaders())));
-//			logger.debug(String.valueOf(response.getStatusLine().getStatusCode()));
-//			logger.debug(String.valueOf(response.getStatusLine().getProtocolVersion()));
-//			logger.debug(String.valueOf(response.getStatusLine().getReasonPhrase()));
+//			logger.debug("{}", Arrays.toString(response.getAllHeaders()));
+//			logger.debug("{}", response.getStatusLine().getStatusCode());
+//			logger.debug("{}", response.getStatusLine().getProtocolVersion());
+//			logger.debug("{}", response.getStatusLine().getReasonPhrase());
 
 			HttpEntity entity = response.getEntity();
 			if (entity != null) {

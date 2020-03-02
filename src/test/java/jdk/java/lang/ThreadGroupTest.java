@@ -33,6 +33,6 @@ public class ThreadGroupTest {
 		}
 		Thread[] threads = new Thread[256];
 		threadGroup.enumerate(threads);
-		logger.debug(String.valueOf(threadGroup.activeCount()));
+		logger.debug("{}", threadGroup.activeCount());
 	}
 }

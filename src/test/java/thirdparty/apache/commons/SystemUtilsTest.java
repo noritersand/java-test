@@ -17,10 +17,10 @@ public class SystemUtilsTest {
 
 	@Test
 	public void test() {
-		logger.debug(String.valueOf(SystemUtils.IS_OS_WINDOWS));
-		logger.debug(String.valueOf(SystemUtils.IS_OS_UNIX));
-		logger.debug(String.valueOf(SystemUtils.IS_OS_LINUX));
-		logger.debug(String.valueOf(SystemUtils.IS_OS_MAC));
-		logger.debug(String.valueOf(SystemUtils.FILE_ENCODING));
+		logger.debug("{}", SystemUtils.IS_OS_WINDOWS);
+		logger.debug("{}", SystemUtils.IS_OS_UNIX);
+		logger.debug("{}", SystemUtils.IS_OS_LINUX);
+		logger.debug("{}", SystemUtils.IS_OS_MAC);
+		logger.debug("{}", SystemUtils.FILE_ENCODING);
 	}
 }

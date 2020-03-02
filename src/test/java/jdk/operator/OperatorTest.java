@@ -77,10 +77,10 @@ public class OperatorTest {
 
 		// 반복문에서 증감연산자는 피연산자의 어느쪽에 있어도 상관 없다.
 		for (int i = 0; i < 2; ++i) {
-			logger.debug(String.valueOf(i));
+			logger.debug("{}", i);
 		}
 		for (int i = 0; i < 2; i++) {
-			logger.debug(String.valueOf(i));
+			logger.debug("{}", i);
 		}
 	}
 	
