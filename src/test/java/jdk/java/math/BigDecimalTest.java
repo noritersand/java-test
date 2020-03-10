@@ -50,32 +50,6 @@ public class BigDecimalTest {
 	}
 
 	/**
-	 * scale 설정: 특정 소수점 이하 반올림, 버림, 내림
-	 * 
-	 * @author noritersand
-	 */
-	@Test
-	public void testSetScale() {
-		// 반올림
-		BigDecimal roundMe = new BigDecimal("12.536512304");
-		Assert.assertEquals(new BigDecimal("12.54"), roundMe.setScale(2, RoundingMode.HALF_UP));
-		Assert.assertEquals(new BigDecimal("12.537"), roundMe.setScale(3, RoundingMode.HALF_UP));
-		Assert.assertEquals(new BigDecimal("12.5365"), roundMe.setScale(4, RoundingMode.HALF_UP));
-		
-		// 올림
-		BigDecimal ceilMe = new BigDecimal("12.536512304");
-		Assert.assertEquals(new BigDecimal("12.54"), ceilMe.setScale(2, RoundingMode.CEILING));
-		Assert.assertEquals(new BigDecimal("12.537"), ceilMe.setScale(3, RoundingMode.CEILING));
-		Assert.assertEquals(new BigDecimal("12.5366"), ceilMe.setScale(4, RoundingMode.CEILING));
-		
-		// 내림(=버림, 절삭)
-		BigDecimal floorMe = new BigDecimal("12.536512304");
-		Assert.assertEquals(new BigDecimal("12.53"), floorMe.setScale(2, RoundingMode.FLOOR));
-		Assert.assertEquals(new BigDecimal("12.536"), floorMe.setScale(3, RoundingMode.FLOOR));
-		Assert.assertEquals(new BigDecimal("12.5365"), floorMe.setScale(4, RoundingMode.FLOOR));
-	}
-	
-	/**
 	 * 절대값: 양수나 음수를 모두 양수로
 	 * 
 	 * @author noritersand
@@ -146,6 +120,54 @@ public class BigDecimalTest {
 		Assert.assertEquals(2000, bigOne.multiply(percentage).divide(new BigDecimal(100)).intValue());
 	}
 
+	/**
+	 * 정밀도는 표현가능한 자릿수를 의미함.
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testPrecision() {
+		BigDecimal n = new BigDecimal("1.003");
+		Assert.assertEquals(4, n.precision());
+	}
+
+	/**
+	 * 스케일은 소숫점 이하 자릿수를 의미함.
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testScale() {
+		BigDecimal n = new BigDecimal("1.003");
+		Assert.assertEquals(3, n.scale());
+	}
+	
+	/**
+	 * scale 설정: 특정 소수점 이하 반올림, 버림, 내림
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testSetScale() {
+		// 반올림
+		BigDecimal roundMe = new BigDecimal("12.536512304");
+		Assert.assertEquals(new BigDecimal("12.54"), roundMe.setScale(2, RoundingMode.HALF_UP));
+		Assert.assertEquals(new BigDecimal("12.537"), roundMe.setScale(3, RoundingMode.HALF_UP));
+		Assert.assertEquals(new BigDecimal("12.5365"), roundMe.setScale(4, RoundingMode.HALF_UP));
+		
+		// 올림
+		BigDecimal ceilMe = new BigDecimal("12.536512304");
+		Assert.assertEquals(new BigDecimal("12.54"), ceilMe.setScale(2, RoundingMode.CEILING));
+		Assert.assertEquals(new BigDecimal("12.537"), ceilMe.setScale(3, RoundingMode.CEILING));
+		Assert.assertEquals(new BigDecimal("12.5366"), ceilMe.setScale(4, RoundingMode.CEILING));
+		
+		// 내림(=버림, 절삭)
+		BigDecimal floorMe = new BigDecimal("12.536512304");
+		Assert.assertEquals(new BigDecimal("12.53"), floorMe.setScale(2, RoundingMode.FLOOR));
+		Assert.assertEquals(new BigDecimal("12.536"), floorMe.setScale(3, RoundingMode.FLOOR));
+		Assert.assertEquals(new BigDecimal("12.5365"), floorMe.setScale(4, RoundingMode.FLOOR));
+	}
+	
 	/**
 	 * 10의 단위로 스케일링(소수점 조절)
 	 * 
