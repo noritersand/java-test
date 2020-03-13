@@ -135,8 +135,8 @@
 			<version>RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
 			<version>RELEASE</version>
 		</dependency>
 		<dependency>

@@ -7,8 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -22,23 +20,6 @@ import org.slf4j.LoggerFactory;
  */
 public class ListTest {
 	private static final Logger logger = LoggerFactory.getLogger(ListTest.class);
-
-	@SuppressWarnings("unused")
-	private class ListTestModel {
-		private String name;
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public ListTestModel(String name) {
-			this.name = name;
-		}
-	}
 
 	@Test
 	public void testAdd() {
@@ -201,51 +182,6 @@ public class ListTest {
 		Assert.assertEquals(1, targetIndex);
 	}
 
-	private ArrayList<HashMap<String, Object>> getSomeList() {
-		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("key", "a");
-		map.put("value", "123");
-		list.add(map);
-		map = new HashMap<>();
-		map.put("key", "b");
-		map.put("value", "456");
-		list.add(map);
-		map = new HashMap<>();
-		map.put("key", "c");
-		map.put("value", "789");
-		list.add(map);
-		map = new HashMap<>();
-		map.put("key", "d");
-		map.put("value", "012");
-		list.add(map);
-		return list;
-	}
-
-	/**
-	 * 리스트 검색 테스트 2: apache commons의 {@link CollectionUtils} 사용
-	 */
-	@Test
-	public void searchWithApacheCommons() {
-		ArrayList<HashMap<String, Object>> list = getSomeList();
-		// filter에 사용할 predicate 설정
-		Predicate condition = new Predicate() {
-			@Override
-			public boolean evaluate(Object arg) {
-				@SuppressWarnings("unchecked")
-				HashMap<String, Object> map = (HashMap<String, Object>) arg;
-				String key = (String) map.get("key");
-				return "a".equals(key) || "c".equals(key);
-			}
-		};
-		@SuppressWarnings("unchecked")
-		ArrayList<HashMap<String, Object>> searchResult = (ArrayList<HashMap<String, Object>>) CollectionUtils.select(list, condition);
-		Assert.assertEquals(4, list.size()); // 원래 리스트는 변하지 않음
-		Assert.assertEquals(2, searchResult.size()); // filter의 조건에 맞는 새로운 리스트의 길이
-		Assert.assertEquals("123", searchResult.get(0).get("value"));
-		Assert.assertEquals("789", searchResult.get(1).get("value"));
-	}
-
 	/**
 	 * 리스트 검색 테스트 3: java8의 StreamAPI 사용
 	 */
@@ -357,5 +293,43 @@ public class ListTest {
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
 		list.removeIf(p -> p == 3);
 		Assert.assertEquals("[1, 7]", list.toString());
+	}
+	
+	private ArrayList<HashMap<String, Object>> getSomeList() {
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("key", "a");
+		map.put("value", "123");
+		list.add(map);
+		map = new HashMap<>();
+		map.put("key", "b");
+		map.put("value", "456");
+		list.add(map);
+		map = new HashMap<>();
+		map.put("key", "c");
+		map.put("value", "789");
+		list.add(map);
+		map = new HashMap<>();
+		map.put("key", "d");
+		map.put("value", "012");
+		list.add(map);
+		return list;
+	}
+	
+	@SuppressWarnings("unused")
+	private class ListTestModel {
+		private String name;
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public ListTestModel(String name) {
+			this.name = name;
+		}
 	}
 }

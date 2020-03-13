@@ -2,7 +2,6 @@ package jdk.statement;
 
 import java.util.Arrays;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -17,14 +16,6 @@ import org.slf4j.LoggerFactory;
 public class ArrayTest {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ArrayTest.class);
-
-	@Test
-	public void testReverseArray() {
-//		int[] arr = new int[] { 1, 2, 6, 3, 4 };
-		Integer[] arr = new Integer[] { 1, 2, 6, 3, 4 };
-		CollectionUtils.reverseArray(arr);
-		Assert.assertArrayEquals(new Integer[] { 4, 3, 6, 2, 1 }, arr);
-	}
 
 	@Test
 	public void getString() {
