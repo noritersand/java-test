@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jdk.java.util.HashMapTest;
+
 /**
  * {@link CollectionUtils} 테스트 유닛<br> 
  * 
@@ -22,7 +24,9 @@ public class CollectionUtilsTest {
 	
 	/**
 	 * {@link CollectionUtils#union(java.util.Collection, java.util.Collection)} 테스트<br>
+	 * <code>union()</code>에선 같은 요소가 있는지 보고 합칠지 말지 결정하는데 리스트의 요소가 해시맵이면 값만 같아도 같은 요소로 보고 합치지 않는다.<br>
 	 * 
+	 * @see HashMapTest#testEquals()
 	 * @author noritersand
 	 */
 	@Test

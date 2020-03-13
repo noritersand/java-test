@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.TreeMap;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,14 +13,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ * {@link HashMap} 테스트 유닛
  * 
  * @since 2017-07-27
  * @author fixalot
  */
-public class MapTest {
-	private static final Logger logger = LoggerFactory.getLogger(MapTest.class);
+public class HashMapTest {
+	private static final Logger logger = LoggerFactory.getLogger(HashMapTest.class);
 
+	/**
+	 * 해시맵은 내부의 값이 같으면 동등하다고 판단함.
+	 * 
+	 * @author noritersand
+	 */
+	@Test
+	public void testEquals() {
+		HashMap<String, Object> x = new HashMap<>();
+		HashMap<String, Object> y = new HashMap<>();
+		x.put("a", "b");
+		y.put("a", "b");
+		Assert.assertTrue(x != y); // 인스턴스는 다르지만
+		Assert.assertTrue(x.hashCode() == y.hashCode()); // AbstractMap.hashCode()에서 반환하는 값은 같고
+		Assert.assertTrue(x.equals(y)); // AbstractMap.equals()는 둘이 동등하다고 판단함.
+	}
+	
 	@Test
 	public void testEntry() {
 		HashMap<String, String> map = new HashMap<>();
@@ -41,18 +56,6 @@ public class MapTest {
 	public void shouldBeNull() {
 		HashMap<String, String> map = new HashMap<>();
 		assertNull(map.get("야"));
-	}
-
-	@Test
-	public void hashMap() {
-		Map<String, Object> map = new HashMap<>();
-		Assert.assertNull(map.get("not-exist-key"));
-	}
-
-	@Test
-	public void tree() {
-		TreeMap<String, String> tree = new TreeMap<>();
-		Assert.assertNotNull(tree);
 	}
 
 	@Test

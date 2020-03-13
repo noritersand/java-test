@@ -13,13 +13,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ * {@link ArrayList} 테스트 유닛
  * 
  * @since 2017-07-27
  * @author fixalot
  */
-public class ListTest {
-	private static final Logger logger = LoggerFactory.getLogger(ListTest.class);
+public class ArrayListTest {
+	private static final Logger logger = LoggerFactory.getLogger(ArrayListTest.class);
 
 	@Test
 	public void testAdd() {
@@ -261,7 +261,6 @@ public class ListTest {
 		List<Integer> firstBorn = numbers.subList(0, 1); // 5
 		Assert.assertEquals(1, firstBorn.size());
 		Assert.assertEquals(Arrays.asList(5), firstBorn);
-		
 
 		List<Integer> head = numbers.subList(0, 4); // 5, 3, 1, 2
 		Assert.assertEquals(4, head.size());
