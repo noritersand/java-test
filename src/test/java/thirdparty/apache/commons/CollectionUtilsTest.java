@@ -11,6 +11,12 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * {@link CollectionUtils} 테스트 유닛<br> 
+ * 
+ * @since 2020-03-13
+ * @author noritersand
+ */
 public class CollectionUtilsTest {
 	private static final Logger logger = LoggerFactory.getLogger(CollectionUtilsTest.class);
 	
@@ -42,6 +48,11 @@ public class CollectionUtilsTest {
 		logger.debug("{}", c);
 	}
 	
+	/**
+	 * Map 대신 POJO 사용해서 테스트
+	 * 
+	 * @author noritersand
+	 */
 	@Test
 	public void testUnionWithPOJO1() {
 		List<ListTestModel> x = generatePOJOList();
@@ -57,14 +68,20 @@ public class CollectionUtilsTest {
 		
 		// 합침
 		@SuppressWarnings("unchecked")
-		List<HashMap<String, Object>> c = (List<HashMap<String, Object>>) CollectionUtils.union(x, y);
+		List<ListTestModel> c = (List<ListTestModel>) CollectionUtils.union(x, y);
 		
 		// 합치기 전 사이즈와 합친 후의 사이즈가 다름
 		Assert.assertNotEquals(x.size(), c.size());
-		// Map과 다르게 정말 같은 인스턴스인지 엄격히 비교함
+		
+		// 결론: Map과 다르게 정말 같은 인스턴스인지 엄격히 비교함
 		logger.debug("{}", c); // 그래서 보면 first가 두 개임
 	}
 	
+	/**
+	 * POJO 사용하되 서로 다른 리스트이지만 요소의 인스턴스가 같으면 어떻게 작동하는지 테스트
+	 * 
+	 * @author noritersand
+	 */
 	@Test
 	public void testUnionWithPOJO2() {
 		List<ListTestModel> x = generatePOJOList();
@@ -78,11 +95,12 @@ public class CollectionUtilsTest {
 		
 		// 합침
 		@SuppressWarnings("unchecked")
-		List<HashMap<String, Object>> c = (List<HashMap<String, Object>>) CollectionUtils.union(x, y);
+		List<ListTestModel> c = (List<ListTestModel>) CollectionUtils.union(x, y);
 		
 		// 합치기 전 사이즈와 합친 후의 사이즈가 같음
 		Assert.assertEquals(x.size(), c.size());
-		// 같은 인스턴스니까 합치치 않고 무시함
+		
+		// 결론: 같은 인스턴스니까 합치치 않고 무시함
 		logger.debug("{}", c);
 	}
 	
