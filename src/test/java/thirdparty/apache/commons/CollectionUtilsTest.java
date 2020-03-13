@@ -24,7 +24,7 @@ public class CollectionUtilsTest {
 	
 	/**
 	 * {@link CollectionUtils#union(java.util.Collection, java.util.Collection)} 테스트<br>
-	 * <code>union()</code>에선 같은 요소가 있는지 보고 합칠지 말지 결정하는데 리스트의 요소가 해시맵이면 값만 같아도 같은 요소로 보고 합치지 않는다.<br>
+	 * <code>union()</code>에선 중복을 제외하고 합치는데, 리스트의 요소가 해시맵이면 엔트리만 같아도 중복이라 판단한다.<br>
 	 * 
 	 * @see HashMapTest#testEquals()
 	 * @author noritersand
@@ -48,7 +48,7 @@ public class CollectionUtilsTest {
 		
 		// 합치기 전 사이즈와 합친 후의 사이즈가 같음
 		Assert.assertEquals(a.size(), c.size());
-		// 아마 요소가 map이고 map의 값들이 모두 같으면 같은 요소라고 판단하는 모양임.
+		// 요소가 해시맵이기 때문에 엔트리가 같으면 이미 있는걸로 보고 합치지 않는다.
 		logger.debug("{}", c);
 	}
 	

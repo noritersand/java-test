@@ -22,7 +22,7 @@ public class HashMapTest {
 	private static final Logger logger = LoggerFactory.getLogger(HashMapTest.class);
 
 	/**
-	 * 해시맵은 내부의 값이 같으면 동등하다고 판단함.
+	 * 해시맵은 엔트리(내부의 구성 요소)가 같으면 동등하다고 판단함.
 	 * 
 	 * @author noritersand
 	 */
@@ -32,9 +32,13 @@ public class HashMapTest {
 		HashMap<String, Object> y = new HashMap<>();
 		x.put("a", "b");
 		y.put("a", "b");
-		Assert.assertTrue(x != y); // 인스턴스는 다르지만
-		Assert.assertTrue(x.hashCode() == y.hashCode()); // AbstractMap.hashCode()에서 반환하는 값은 같고
-		Assert.assertTrue(x.equals(y)); // AbstractMap.equals()는 둘이 동등하다고 판단함.
+		
+		// 인스턴스는 다르지만
+		Assert.assertTrue(x != y);
+		// AbstractMap.hashCode()는 엔트리의 hashCode()를 이어 붙인 값이다. 따라서 같다고 판단한다.
+		Assert.assertTrue(x.hashCode() == y.hashCode());
+		// AbstractMap.equals()는 엔트리의 키:값 구성이 같은지를 비교한다. 따라서 둘은 동등하다.
+		Assert.assertTrue(x.equals(y));
 	}
 	
 	@Test
