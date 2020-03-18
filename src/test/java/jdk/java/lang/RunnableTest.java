@@ -21,15 +21,15 @@ public class RunnableTest {
 //	}
 	
 	public static void main(String[] args) {
-		Thread thr = new Thread(new LazyOne());
+		Thread thr = new Thread(new Lazy(), "lazy one");
 		thr.start();
 		
-		Thread thr2 = new Thread(new NotLazyOne());
+		Thread thr2 = new Thread(new NotLazy(), "not lazy one");
 		thr2.start();
 	}
 
-	private static class LazyOne implements Runnable {
-		private static final Logger logger = LoggerFactory.getLogger(RunnableTest.LazyOne.class);
+	private static class Lazy implements Runnable {
+		private static final Logger logger = LoggerFactory.getLogger(RunnableTest.Lazy.class);
 		
 		@Override
 		public void run() {
@@ -42,8 +42,8 @@ public class RunnableTest {
 		}
 	}
 	
-	private static class NotLazyOne implements Runnable {
-		private static final Logger logger = LoggerFactory.getLogger(RunnableTest.NotLazyOne.class);
+	private static class NotLazy implements Runnable {
+		private static final Logger logger = LoggerFactory.getLogger(RunnableTest.NotLazy.class);
 		
 		@Override
 		public void run() {
