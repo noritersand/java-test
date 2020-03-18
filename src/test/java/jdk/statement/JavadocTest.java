@@ -7,6 +7,7 @@ package jdk.statement;
  * @author fixalot
  */
 public class JavadocTest {
+	
 	public static void main(String[] args) {
 		// 자바 - 코드 스타일 - 포매터 설정에서 블럭 코멘트는 자동 포맷하지 않도록 설정해서 자바독 내용만 포맷됨.
 

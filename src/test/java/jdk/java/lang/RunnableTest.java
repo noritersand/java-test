@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * {@link Runnable}을 구체화한 클래스로 쓰레드 만드는 방법
+ * {@link Runnable}을 구체화한 클래스로 쓰레드 만드는 방법 예시
  * 
  * @since 2020-03-18
  * @author noritersand

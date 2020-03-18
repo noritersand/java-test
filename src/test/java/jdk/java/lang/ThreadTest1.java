@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
  * @since 2017-07-05
  * @author fixalot
  */
-public class ThreadTest {
-	private static final Logger logger = LoggerFactory.getLogger(ThreadTest.class);
+public class ThreadTest1 {
+	private static final Logger logger = LoggerFactory.getLogger(ThreadTest1.class);
 
 	public static void main(String[] args) {
 		Thread thread = new Thread() {
