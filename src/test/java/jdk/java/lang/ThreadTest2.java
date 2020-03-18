@@ -36,28 +36,28 @@ public class ThreadTest2 {
 			throw new IllegalAccessError("여기 오면 안되는데 2");
 		}
 	}
-}
-
-class ChildThread extends Thread {
-	private static final Logger logger = LoggerFactory.getLogger(ChildThread.class);
 	
-	@Override
-	public void run() {
-		workForNothing();
-	}
-
-	@Override
-	public void interrupt() {
-		logger.debug("im dying. :<");
-		super.interrupt();
-	}
-
-	private void workForNothing() {
-		logger.debug("work-for-nothing: start");
-		long sum = 0;
-		for (int i = 0; i < Integer.MAX_VALUE; i++) {
-			sum += i;
+	private static class ChildThread extends Thread {
+		private static final Logger logger = LoggerFactory.getLogger(ChildThread.class);
+		
+		@Override
+		public void run() {
+			workForNothing();
 		}
-		logger.debug("work-for-nothing: end, sum is {}", sum);
+
+		@Override
+		public void interrupt() {
+			logger.debug("im dying. :<");
+			super.interrupt();
+		}
+
+		private void workForNothing() {
+			logger.debug("work-for-nothing: start");
+			long sum = 0;
+			for (int i = 0; i < Integer.MAX_VALUE; i++) {
+				sum += i;
+			}
+			logger.debug("work-for-nothing: end, sum is {}", sum);
+		}
 	}
 }
