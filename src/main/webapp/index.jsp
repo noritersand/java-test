@@ -83,11 +83,11 @@
 						<li><a href="/test/js/form/form-to-json-test.html">form: Form element to JSON</a></li>
 					</ul>
 				</li>
-				<li>string
-					<ul>
-						<li><a href="/test/js/string/calculate-byte-length-test.html">string: calculate byte length</a></li>
-					</ul>
-				</li>
+				<li>event
+					 <ul>
+					 	<li><a href="/test/js/event/keyboard-event-keycode-test.html">KeyboardEvent.keyCode</a></li>
+					 </ul>
+				</li>				
 			</ul>	
 		</li>
 		<li>
