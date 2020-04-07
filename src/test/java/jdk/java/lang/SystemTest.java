@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ * {@link System} 테스트 유닛
  * 
  * @since 2017-07-27
  * @author fixalot
@@ -30,38 +30,34 @@ public class SystemTest {
 	}
 
 	/**
-	 * 모든 환경 변수 조회. 로그가 길어져서 주석 처리 함.
+	 * 모든 환경 변수 조회.
 	 */
 	@Test
 	public void getSystemEnvironmentVariables() {
 		Map<String, String> env = System.getenv();
 		Set<String> keySet = env.keySet();
-//		logger.debug("env logging begin");
 		for (String envname : keySet) {
-			logger.debug("envname: {}, value: {}", envname, env.get(envname));
+			logger.debug("{}={}", envname, env.get(envname));
 		}
-//		logger.debug("env logging done");
 	}
 
 	/**
-	 * 모든 시스템 프로퍼티 조회. 로그가 길어져서 주석 처리 함.
+	 * 모든 시스템 프로퍼티 조회.
 	 */
 	@Test
 	public void getSystemProperties() {
 		Properties props = System.getProperties();
 		Enumeration<?> names = props.propertyNames();
-//		logger.debug("property logging begin");
 		while (names.hasMoreElements()) {
 			final String propname = (String) names.nextElement();
-			logger.debug("propname: {}, value: {}", propname, props.getProperty(propname));
+			logger.debug("{}={}", propname, props.getProperty(propname));
 		}
-//		logger.debug("property logging done");
 	}
 
 	@Test
 	public void getDefaultEncodingProperty() {
-		logger.debug("file.encoding: {}", System.getProperty("file.encoding"));
-		logger.debug("default character set: {}", Charset.defaultCharset());
+		logger.debug("file.encoding={}", System.getProperty("file.encoding"));
+		logger.debug("default character set={}", Charset.defaultCharset());
 		Assert.assertEquals(Charset.defaultCharset().toString(), System.getProperty("file.encoding").toUpperCase());
 	}
 
@@ -70,13 +66,9 @@ public class SystemTest {
 		Assert.assertNull(System.getProperty("i'm not here"));
 	}
 
-	@Test
-	public void getOsName() {
-		logger.debug(System.getProperty("os.name"));
-	}
-
-	@Test
-	public void getMavenHome() {
-		Assert.assertNull(null, System.getenv("MAVEN_HOME"));
-	}
+//	@Test
+//	public void testLoadLibrary() {
+//		System.load("c:/some-file-name");
+//		System.loadLibrary("some-library-name");
+//	}
 }
