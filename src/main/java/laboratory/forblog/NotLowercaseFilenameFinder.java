@@ -56,7 +56,7 @@ public class NotLowercaseFilenameFinder {
 		targetList.close();
 
 		if (counter.count <= 0) {
-			logger.debug("결과: 발견된 대문자 파일 음슴");
+			logger.debug("결과: 발견된 대문자 음슴");
 		}
 	}
 }
