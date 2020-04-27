@@ -10,13 +10,13 @@ my little laboratory.
 
 ## TODO
 
-- 파폭에서 'http://localhost:8080/test/uncategorized/read-body.data' 요청 안날라가는거 확인할 것
+- 파폭에서 'http://localhost:8080/page/uncategorized/read-body.data' 요청 안날라가는거 확인할 것
 - uncategorized 밑에 있는 얘들 분류할 것.
 - 파일명 변경. (바로 아래 도움말을 봐라)
 
 ## 글 작성 도움말
 
-파일명은 경로나 폴더, 패키지 참고 없이 파일만으로 성격을 파악할 수 있을 수준으로 작성한다. e.g. `/webapp/test/js/js-date-test.html`
+파일명은 경로나 폴더, 패키지 참고 없이 파일만으로 성격을 파악할 수 있을 수준으로 작성한다. e.g. `/webapp/page/js/js-date-test.html`
 
 2019-04-18 기준 스타일(css)이 가장 잘 정의된 파일은 `browser-history-test.html`이다.
 

@@ -32,12 +32,12 @@ import laboratory.servlet.core.view.View;
 public class OreillyFileUploadController {
 	private static final Logger logger = LoggerFactory.getLogger(OreillyFileUploadController.class);
 
-	@UrlMapping("/test/oreilly/oreilly-fileupload-test.view")
+	@UrlMapping("/page/oreilly/oreilly-fileupload-test.view")
 	public View drawOreillyFileuploadTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 
-	@UrlMapping("/test/oreilly/upload-file-with-oreilly.data")
+	@UrlMapping("/page/oreilly/upload-file-with-oreilly.data")
 	public JsonResponseObject uploadWithOreiily(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		JsonResponseObject json = new JsonResponseObject();
 

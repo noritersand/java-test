@@ -21,7 +21,7 @@ import laboratory.util.request.RequestUtil;
  * @author fixalot
  */
 public class HttpTestController {
-	private static final String TEST_HTTP_YOU_SHOULD_BE_HERE_DATA = "/test/http/you-should-be-here.data";
+	private static final String TEST_HTTP_YOU_SHOULD_BE_HERE_DATA = "/page/http/you-should-be-here.data";
 	private static final String LOCATION = "Location";
 	private static final Logger logger = LoggerFactory.getLogger(HttpTestController.class);
 	
@@ -33,7 +33,7 @@ public class HttpTestController {
 	 * @return
 	 * @author fixal
 	 */
-	@UrlMapping("/test/http/response-status-code-test.view")
+	@UrlMapping("/page/http/response-status-code-test.view")
 	public View drawResponseStatusCodeTest(HttpServletRequest request, HttpServletResponse response) {
 		
 		return new View(request);
@@ -48,7 +48,7 @@ public class HttpTestController {
 	 * @author fixal
 	 * @throws IOException 
 	 */
-	@UrlMapping("/test/http/let-me-301-moved-permanently.data")
+	@UrlMapping("/page/http/let-me-301-moved-permanently.data")
 	public void letMe301MovedPermanently(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY); // 301
 		response.setHeader(LOCATION, TEST_HTTP_YOU_SHOULD_BE_HERE_DATA);
@@ -64,12 +64,12 @@ public class HttpTestController {
 	 * @author fixal
 	 * @throws IOException 
 	 */
-	@UrlMapping("/test/http/let-me-302-found.data")
+	@UrlMapping("/page/http/let-me-302-found.data")
 	public void letMe302Found(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setStatus(HttpServletResponse.SC_FOUND); // 302
 		response.setHeader(LOCATION, TEST_HTTP_YOU_SHOULD_BE_HERE_DATA);
 		response.flushBuffer();
-//		response.sendRedirect("/test/http/you-should-be-here.data"); // 위 3줄과 같음
+//		response.sendRedirect("/page/http/you-should-be-here.data"); // 위 3줄과 같음
 	}
 	
 	/**
@@ -82,7 +82,7 @@ public class HttpTestController {
 	 * @author fixal
 	 * @throws IOException 
 	 */
-	@UrlMapping("/test/http/let-me-307-temporary-redirect.data")
+	@UrlMapping("/page/http/let-me-307-temporary-redirect.data")
 	public void letMe307TemporaryRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT); // 307
 		response.setHeader(LOCATION, TEST_HTTP_YOU_SHOULD_BE_HERE_DATA);
@@ -100,7 +100,7 @@ public class HttpTestController {
 	 * @author fixal
 	 * @throws IOException 
 	 */
-	@UrlMapping("/test/http/let-me-308-permanent-redirect.data")
+	@UrlMapping("/page/http/let-me-308-permanent-redirect.data")
 	public void letMe308PermanentRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setStatus(308);
 		response.setHeader(LOCATION, TEST_HTTP_YOU_SHOULD_BE_HERE_DATA);
@@ -132,7 +132,7 @@ public class HttpTestController {
 	 * @return
 	 * @author fixalot
 	 */
-	@UrlMapping("/test/http/take-my-cross-origin-attack.data")
+	@UrlMapping("/page/http/take-my-cross-origin-attack.data")
 	public JsonResponseObject takeMyCrossOriginAttack(HttpServletRequest request, HttpServletResponse response) {
 //		response.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
 		response.setHeader("Access-Control-Allow-Origin", "*");

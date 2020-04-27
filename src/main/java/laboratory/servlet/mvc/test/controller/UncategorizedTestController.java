@@ -25,18 +25,18 @@ public class UncategorizedTestController {
 	 * 유니코드 문자 전송 테스트 화면.
 	 * UTF-8 인코딩 사용.
 	 */
-	@UrlMapping("/test/uncategorized/submission-charset/sender-test.view")
+	@UrlMapping("/page/uncategorized/submission-charset/sender-test.view")
 	public View drawSenderTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/uncategorized/submission-charset/sender-euc-kr-test.view")
+	@UrlMapping("/page/uncategorized/submission-charset/sender-euc-kr-test.view")
 	public View drawSenderEucKrTest(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug(RequestUtil.getRequestParameter(request).toString());
-		return new View("/test/uncategorized/submission-charset/sender-euc-kr-test");
+		return new View("/page/uncategorized/submission-charset/sender-euc-kr-test");
 	}
 	
-	@UrlMapping("/test/uncategorized/submission-charset/sender-iso-8859-1-test.view")
+	@UrlMapping("/page/uncategorized/submission-charset/sender-iso-8859-1-test.view")
 	public View drawSenderIso88591Test(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug(RequestUtil.getRequestParameter(request).toString());
 		return new View(request);
@@ -50,7 +50,7 @@ public class UncategorizedTestController {
 	 * @return
 	 * @author fixalot
 	 */
-	@UrlMapping("/test/uncategorized/submission-charset/receiver-test.view")
+	@UrlMapping("/page/uncategorized/submission-charset/receiver-test.view")
 	public View drawReceiverTest(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug(RequestUtil.getRequestParameter(request).toString());
 		return new View(request);
@@ -65,7 +65,7 @@ public class UncategorizedTestController {
 	 * @author fixalot
 	 * @throws IOException 
 	 */
-	@UrlMapping("/test/uncategorized/read-querystring.data")
+	@UrlMapping("/page/uncategorized/read-querystring.data")
 	public JsonResponseObject readQuerystring(HttpServletRequest request, HttpServletResponse response) {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		logger.debug(params.toString());
@@ -84,7 +84,7 @@ public class UncategorizedTestController {
 	 * @author fixalot
 	 * @throws IOException 
 	 */
-	@UrlMapping("/test/uncategorized/read-body.data")
+	@UrlMapping("/page/uncategorized/read-body.data")
 	public Map<String, Object> readBody(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		final RequestParameter params = RequestUtil.getRequestParameter(request);
 		final String body = RequestUtil.readBody(request);
@@ -113,7 +113,7 @@ public class UncategorizedTestController {
 	 * @return
 	 * @author fixalot
 	 */
-	@UrlMapping("/test/uncategorized/customtag/parent-test.view")
+	@UrlMapping("/page/uncategorized/customtag/parent-test.view")
 	public View drawParentTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
@@ -126,32 +126,32 @@ public class UncategorizedTestController {
 	 * @return
 	 * @author fixalot
 	 */
-	@UrlMapping("/test/uncategorized/jstl/parse-number-from-string-test.view")
+	@UrlMapping("/page/uncategorized/jstl/parse-number-from-string-test.view")
 	public View drawParseNumberFromStringTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/uncategorized/include/include-with-jsp-test.view")
+	@UrlMapping("/page/uncategorized/include/include-with-jsp-test.view")
 	public View drawIncludeWithJspTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/uncategorized/include/include-with-html-test.view")
+	@UrlMapping("/page/uncategorized/include/include-with-html-test.view")
 	public View drawIncludeWithHtmlTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/uncategorized/jstl/el-scope-test.view")
+	@UrlMapping("/page/uncategorized/jstl/el-scope-test.view")
 	public View drawElScopeTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/uncategorized/jstl/jstl-test.view")
+	@UrlMapping("/page/uncategorized/jstl/jstl-test.view")
 	public View drawJstlTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/uncategorized/jstl/el-operator-test.view")
+	@UrlMapping("/page/uncategorized/jstl/el-operator-test.view")
 	public View drawElOperatorTest(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("longZero", 0L);
 		request.setAttribute("longOne", 1L);
@@ -163,7 +163,7 @@ public class UncategorizedTestController {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/uncategorized/scope/test-set-attributes.data")
+	@UrlMapping("/page/uncategorized/scope/test-set-attributes.data")
 	public JsonResponseObject testSetAttributes(HttpServletRequest request, HttpServletResponse response) {
 		JsonResponseObject json = new JsonResponseObject();
 		
@@ -176,12 +176,12 @@ public class UncategorizedTestController {
 		return json;
 	}
 	
-	@UrlMapping("/test/uncategorized/what-is-payload-body-test.view")
+	@UrlMapping("/page/uncategorized/what-is-payload-body-test.view")
 	public View drawWhatIsPayloadBodyTest(HttpServletRequest request, HttpServletResponse response) {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/uncategorized/session-invalidate-test.view")
+	@UrlMapping("/page/uncategorized/session-invalidate-test.view")
 	public View drawSessionInvalidateTest(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		
@@ -203,20 +203,20 @@ public class UncategorizedTestController {
 		return new View(request);
 	}
 	
-	@UrlMapping("/test/uncategorized/response-not-found-error-test.view")
+	@UrlMapping("/page/uncategorized/response-not-found-error-test.view")
 	public void drawResponseNotFoundErrorTest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("utf-8"); // 얘는 왜 안해주면 ISO-8859-1로 인식하는지 모르겠구만. 메타 태그 있는디...
 		response.sendError(404);
 	}
 	
-	@UrlMapping("/test/uncategorized/make-some-error-test.view")
+	@UrlMapping("/page/uncategorized/make-some-error-test.view")
 	public View drawMakeSomeErrorTest(HttpServletRequest request, HttpServletResponse response) {
 		@SuppressWarnings("unused")
 		int nan = 1 / 0;
 		return null; 
 	}
 	
-	@UrlMapping("/test/uncategorized/test-reponse-character-set.data")
+	@UrlMapping("/page/uncategorized/test-reponse-character-set.data")
 	public void testReponseCharacterSet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		logger.debug(System.getProperty("file.encoding"));
 	

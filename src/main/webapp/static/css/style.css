@@ -39,3 +39,9 @@ hr {
 	color: red;
 	font-weight: bold;
 }
+code {
+	font-family: Consolas,Monaco,"Lucida Console",monospace;
+	padding: 4px;
+	white-space: nowrap;
+	background-color: #EFEFEF;
+}

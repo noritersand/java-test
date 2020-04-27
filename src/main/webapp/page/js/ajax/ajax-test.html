@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>JavaScript AJAX test</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<div class="align-center">
+	<h1>JavaScript AJAX test</h1>
+	<p>get method response: <span style="color: red" id="result1"></span></p>
+	<p>post method response: <span style="color: red" id="result2"></span></p>
+</div>
+<script>
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+	if (xhr.readyState == 4) {
+// 		console.log('status:', xhr.status);
+// 		console.log('statusText:', xhr.statusText);
+// 		console.log('responseText:', xhr.responseText);
+		console.log('xhr:', xhr);
+		
+		let div = document.querySelector('#result1');
+		try {
+			div.innerHTML = JSON.parse(xhr.responseText).message;
+		} catch (e) {
+			throw new Error('JSON parse error');
+		}
+	}
+};
+// get method
+xhr.open('get', '/page/uncategorized/read-querystring.data?a=1&b=2&c=3');
+xhr.send();
+
+var xhr2 = new XMLHttpRequest();
+xhr2.onreadystatechange = function() {
+	if (xhr2.readyState == 4) {
+// 		console.log('status:', xhr2.status);
+// 		console.log('statusText:', xhr2.statusText);
+// 		console.log('responseText:', xhr2.responseText);
+		console.log('xhr2:', xhr2);
+		
+		let div = document.querySelector('#result2');
+		try {
+			div.innerHTML = JSON.parse(xhr2.responseText).body;
+		} catch (e) {
+			throw new Error('JSON parse error');
+		}
+	}
+};
+
+//post method#1
+xhr2.open('post', '/page/uncategorized/read-body.data?a=1'); // 파폭은 url에 read-payload를 붙이면 ajax 요청이 안날라가는 이슈가 있음.
+xhr2.setRequestHeader('Content-type', 'application/json');
+xhr2.send('b=2&c=3'); // 바디로 읽어야 함
+
+// post method#2
+// let data = new FormData();
+// data.append('b', 2);
+// data.append('c', 3);
+// xhr2.open('post', '/page/uncategorized/read-body.data?a=1');
+// xhr2.setRequestHeader('Content-type', 'application/json');
+// xhr2.setRequestHeader('Accept', 'application/json, text/javascript, */*; q=0.01');
+// xhr2.send(data); // 바디로 읽어야 함
+</script>
+</body>
+</html>

@@ -26,7 +26,7 @@ public class FilterTestController {
 	/**
 	 * HTMLTagFilter 테스트
 	 */
-	@UrlMapping("/test/filter/replace-httpservletrequest-test.view")
+	@UrlMapping("/page/filter/replace-httpservletrequest-test.view")
 	public View drawReplaceHttpservletrequestTest(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug("instanceof HTMLTagFilterRequestWrapper: {}", String.valueOf(request instanceof HTMLTagFilterRequestWrapper));
 		logger.debug("instanceof HttpServletRequestWrapper: {}", String.valueOf(request instanceof HttpServletRequestWrapper));
@@ -40,7 +40,7 @@ public class FilterTestController {
 	/**
 	 * HTMLTagFilter 테스트2
 	 */
-	@UrlMapping("/test/filter/replace-httpservletrequest.data")
+	@UrlMapping("/page/filter/replace-httpservletrequest.data")
 	public JsonResponseObject replaceHttpservletrequest(HttpServletRequest request, HttpServletResponse response) {
 		logger.debug("instanceof HTMLTagFilterRequestWrapper: {}", String.valueOf(request instanceof HTMLTagFilterRequestWrapper));
 		logger.debug("instanceof HttpServletRequestWrapper: {}", String.valueOf(request instanceof HttpServletRequestWrapper));

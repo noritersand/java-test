@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>JavaScript CORS test</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css"/>
+<script>
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+	if (xhr.readyState == 4) {
+		console.log('status:', xhr.status);
+		console.log('statusText:', xhr.statusText);
+		console.log('responseText:', xhr.responseText);
+	}
+};
+xhr.open('GET', 'https://127.0.0.1:8443/page/http/take-my-cross-origin-attack.data');
+xhr.send();
+</script>
+</head>
+<body>
+<div class="align-center">
+	<h1>JavaScript CORS test</h1>
+	<p>Watch the console.</p>
+	<p>테스트 하려면 SSL 설정 필요함.</p>
+</div>
+</body>
+</html>
