@@ -56,8 +56,9 @@
 		<li>
 			<h4>CSS</h4>
 			<ul>
-				<li><a href="/page/html/css/align-center-test1.html">가운데 정렬 #1</a></li>
-				<li><a href="/page/html/css/align-center-test2.html">가운데 정렬 #2</a></li>
+				<li><a href="/page/html/css/align-center-1.html">가운데 정렬 #1</a></li>
+				<li><a href="/page/html/css/align-center-2.html">가운데 정렬 #2</a></li>
+				<li><a href="/page/html/css/align-center-3.html">가운데 정렬 + 검정색 배경 + 인라인 스타일</a></li>
 				<li><a href="/page/html/css/how-draw-pretty-test.html">가운데 정렬 + 그라데이션 + 비디오</a></li>
 			</ul>
 		</li>
