@@ -1,5 +1,7 @@
 package misc;
 
+import java.util.Arrays;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,24 +10,15 @@ public class TryEverything {
 	private static final Logger logger = LoggerFactory.getLogger(TryEverything.class);
 
 	public static void main(String[] arg) {
-		int a = 3;
-		int A = a * 2 - 1;
-		int K = 1;
-		int B = a - 1;
-
-		for (int i = 1; i <= A; i++) {
-			if (i <= a) {
-				for (int k = 0; k < K; k++) {
-					System.out.print("*");
-				}
-			} else {
-				for (int k = 0; k < B; k++) {
-					System.out.print("*");
-				}
-				B--;
-			}
-			K++;
-			System.out.print("\n");
+		int numArr[] = new int[5];
+		for (int i = 0; i < numArr.length; i++) {
+			numArr[i] = i + 1;
 		}
+
+		String str = Arrays.toString(numArr);
+		System.out.println(str);
+		System.out.println(str.substring(3, 6));
+		System.out.println(str.substring(0, 4));
+		System.out.println(str.substring(5));
 	}
 }

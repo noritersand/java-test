@@ -23,6 +23,7 @@ public class StringTest {
 	@Test
 	public void testIndexOf() {
 		String a = "INFO  log4jdbc.log4j2 - 5. ResultSet.close() returned void";
+		Assert.assertEquals(0, a.indexOf("I"));
 		Assert.assertEquals(27, a.indexOf("ResultSet.")); // 첫 번째 "ResultSet."
 		Assert.assertEquals(14, a.indexOf(".")); // 첫 번째 "."
 		Assert.assertEquals(25, a.indexOf(".", 15)); // 인덱스 15 이후부터 찾음
@@ -161,15 +162,18 @@ public class StringTest {
 	}
 
 	@Test
-	public void getSubstring() {
-		String str = "a234567890b234567890c234567890d234";
+	public void testSubstring() {
+		String str = "a1234567890b234567890c234567890d23";
+		Assert.assertEquals("a", str.substring(0, 1));
+		Assert.assertEquals("a12345", str.substring(0, 6));
+		Assert.assertEquals("456", str.substring(4, 7));
 		Assert.assertEquals(34, str.length());
-		Assert.assertEquals("a234567890b234567890c234567890", str.substring(0, 30));
+		Assert.assertEquals("a1234567890b234567890c23456789", str.substring(0, 30));
 		Assert.assertEquals(30, str.substring(0, 30).length());
 	}
 
 	@Test
-	public void getLastIndexOf() {
+	public void testLastIndexOf() {
 		String str = "/abcd";
 		Assert.assertEquals(0, str.lastIndexOf("/"));
 		Assert.assertEquals("abcd", str.substring(str.lastIndexOf("/") + 1));
@@ -239,16 +243,6 @@ public class StringTest {
 //			logger.debug(ele);
 //		}
 		Assert.assertArrayEquals(strArray, splitByLength(str, 1333));
-	}
-
-	@Test
-	public void getAbs() {
-		Assert.assertEquals(0, Math.abs(1000 / 1333));
-		Assert.assertEquals(1, Math.abs(1333 / 1333));
-		Assert.assertEquals(1, Math.abs(1334 / 1333));
-		Assert.assertEquals(1, Math.abs(2665 / 1333));
-		Assert.assertEquals(2, Math.abs(2666 / 1333));
-		Assert.assertEquals(2, Math.abs(2667 / 1333));
 	}
 
 	@Test
