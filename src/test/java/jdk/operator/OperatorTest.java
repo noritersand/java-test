@@ -99,5 +99,38 @@ public class OperatorTest {
 		Assert.assertEquals(2, 5 % 3);
 		Assert.assertEquals(0, 6 % 3);
 	}
-	
+
+	@Test
+	public void leftShiftOperator() {
+		int a = 9;
+		Assert.assertEquals("1001", Integer.toBinaryString(a));
+		Assert.assertEquals(36, a << 2);
+		Assert.assertEquals("100100", Integer.toBinaryString(a << 2));
+	}
+
+	@Test
+	public void rightShiftOperator() {
+		int a = 9;
+		Assert.assertEquals("1001", Integer.toBinaryString(a));
+		Assert.assertEquals("10", Integer.toBinaryString(a >> 2));
+		Assert.assertEquals(2, a >> 2);
+
+		int b = -9;
+		Assert.assertEquals("11111111111111111111111111110111", Integer.toBinaryString(b));
+		Assert.assertEquals("11111111111111111111111111111101", Integer.toBinaryString(b >> 2));
+		Assert.assertEquals(-3, b >> 2);
+	}
+
+	@Test
+	public void unsignedRightShiftOperator() {
+		int a = 9; // 1001
+		Assert.assertEquals("1001", Integer.toBinaryString(a));
+		Assert.assertEquals("10", Integer.toBinaryString(a >>> 2));
+		Assert.assertEquals(2, a >>> 2);
+
+		int b = -9; // 11111111111111111111111110011100
+		Assert.assertEquals("11111111111111111111111111110111", Integer.toBinaryString(b));
+		Assert.assertEquals(1073741821, b >>> 2);
+		Assert.assertEquals("111111111111111111111111111101", Integer.toBinaryString(b >>> 2));
+	}
 }
