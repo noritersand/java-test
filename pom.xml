@@ -137,7 +137,7 @@
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>RELEASE</version>
+			<version>1.9.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -148,7 +148,7 @@
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>RELEASE</version>
+			<version>1.9.4</version>
 			<exclusions>
 				<exclusion>
 					<groupId>commons-logging</groupId>
