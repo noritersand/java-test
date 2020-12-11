@@ -1,6 +1,6 @@
 # laboratory-jdk
 
-My tiny little laboratory for JDK, JSP, Java third party libraries and ETC.
+My tiny little laboratory for testing JDK, JSP, Java third party libraries and ETC.
 
 #### environments
 
