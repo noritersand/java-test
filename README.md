@@ -8,7 +8,7 @@ My tiny little laboratory for testing JDK, JSP, Java third party libraries and E
 - ojdkbuild12
 - tomcat9
 
-## 작성 가이드
+## 작성 규칙
 
 - 스프링은 스프링 테스트 프로젝트로.
 - 자바 클래스를 제외한 파일명은 소문자로만 작성할 것.
