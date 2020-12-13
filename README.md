@@ -1,6 +1,6 @@
 # laboratory-jdk
 
-My tiny little laboratory for testing JDK, JSP, Java third party libraries and ETC.
+Java와 써드 파티 라이브러리 테스트용 저장소.  
 
 #### environments
 
