@@ -27,9 +27,13 @@ public class PropertiesTest {
 		Properties prop = new Properties();
 		prop.load(fis);
 		fis.close();
-		System.out.println(prop);
-
-		Assert.assertEquals("{web.root=http://daum.net, a.b.c=123, korean=한글}", prop.toString());
+		Assert.assertTrue(prop.containsKey("a.b.c"));
+		logger.debug("{}", prop);
+		
+		Assert.assertEquals("http://daum.net", prop.getProperty("web.root"));
+		Assert.assertEquals("123", prop.getProperty("a.b.c"));
+		Assert.assertEquals("한글", prop.getProperty("korean"));
+		Assert.assertEquals("한글2", prop.getProperty("korean2"));
 	}
 
 	@Test
@@ -38,9 +42,13 @@ public class PropertiesTest {
 		Properties prop = new Properties();
 		prop.load(reader);
 		reader.close();
+		Assert.assertTrue(prop.containsKey("a.b.c"));
 		logger.debug("{}", prop);
 
-		Assert.assertEquals("{web.root=http://daum.net, a.b.c=123, korean=한글}", prop.toString());
+		Assert.assertEquals("http://daum.net", prop.getProperty("web.root"));
+		Assert.assertEquals("123", prop.getProperty("a.b.c"));
+		Assert.assertEquals("한글", prop.getProperty("korean"));
+		Assert.assertEquals("한글2", prop.getProperty("korean2"));
 	}
 
 	@Test
@@ -49,6 +57,8 @@ public class PropertiesTest {
 		Properties prop = new Properties();
 		prop.loadFromXML(fis);
 		fis.close();
+		Assert.assertTrue(prop.containsKey("image.root"));
+		logger.debug("{}", prop);
 
 		Enumeration<Object> keys = prop.keys();
 		while (keys.hasMoreElements()) {
@@ -59,6 +69,7 @@ public class PropertiesTest {
 		// key: some.korean, value: 한글
 		// key: image.root, value: http://tistory.com
 
-		Assert.assertEquals("{image.root=http://tistory.com, some.korean=한글}", prop.toString());
+		Assert.assertEquals("http://tistory.com", prop.getProperty("image.root"));
+		Assert.assertEquals("한글", prop.getProperty("some.korean"));
 	}
 }
