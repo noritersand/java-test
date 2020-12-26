@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 팩토리얼 테스트 케이스
+ * 팩토리얼 테스트 유닛
  * 
  * @since 2018-10-31
  * @author fixalot

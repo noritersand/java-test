@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * StringBuffer 테스트 케이스
+ * StringBuffer 테스트 유닛
  * 
  * @since 2018-09-28
  * @author fixal

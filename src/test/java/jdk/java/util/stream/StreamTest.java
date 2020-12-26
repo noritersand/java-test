@@ -50,6 +50,7 @@ public class StreamTest {
 		});
 		stream2.close();
 		Assert.assertArrayEquals(new Integer[] { 1, 3, 7 }, basket.toArray(new Integer[list.size()]));
+		Assert.assertEquals(3, basket.size());
 	}
 
 	@Test
