@@ -29,12 +29,12 @@ public class CollectionsTest {
 	 * <pre>
 	 * An instantiation of a generic type where the type argument is a wildcard (as opposed to a concrete type). A wildcard parameterized
 	 * type is an instantiation of a generic type where at least one type argument is a wildcard. Examples of wildcard parameterized types
-	 * are Collection<?> , List<? extends Number> , Comparator<? super String> and Pair<String,?> . A wildcard parameterized type denotes a
+	 * are Collection<?> , List<? extends Number> , Comparator<? super String> and Pair<String,?>. A wildcard parameterized type denotes a
 	 * family of types comprising concrete instantiations of a generic type. The kind of the wildcard being used determines which concrete
 	 * parameterized types belong to the family. For instance, the wildcard parameterized type Collection<?> denotes the family of all
 	 * instantiations of the Collection interface regardless of the type argument. The wildcard parameterized type List<? extends Number>
-	 * denotes the family of all list types where the element type is a subtype of Number . The wildcard parameterized type Comparator<?
-	 * super String> is the family of all instantiations of the Comparator interface for type argument types that are supertypes of String .
+	 * denotes the family of all list types where the element type is a subtype of Number. The wildcard parameterized type Comparator<?
+	 * super String> is the family of all instantiations of the Comparator interface for type argument types that are supertypes of String.
 	 * 
 	 * A wildcard parameterized type is not a concrete type that could appear in a new expression. A wildcard parameterized type is similar
 	 * to an interface type in the sense that reference variables of a wildcard parameterized type can be declared, but no objects of the
