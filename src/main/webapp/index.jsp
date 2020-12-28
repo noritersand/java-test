@@ -132,6 +132,8 @@
 				<li><a href="/page/uncategorized/jstl/el-operator-test.view">EL: operator</a></li>
 				<li>error page
 					<ul>
+						<li><a href="/page/uncategorized/response-bad-request-test.view">400 error page</a></li>
+						<li><a href="/page/uncategorized/response-forbidden-test.view">403 error page</a></li>
 						<li><a href="/some-not-exist-url">404 error page</a></li>
 						<li><a href="/page/uncategorized/response-not-found-error-test.view">404 error page 2</a></li>
 						<li><a href="/page/uncategorized/make-some-error-test.view">500 error page</a></li>

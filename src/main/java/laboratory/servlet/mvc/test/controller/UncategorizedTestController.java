@@ -203,6 +203,18 @@ public class UncategorizedTestController {
 		return new View(request);
 	}
 	
+	@UrlMapping("/page/uncategorized/response-bad-request-test.view")
+	public void drawBadRequestTest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setCharacterEncoding("utf-8"); // 얘는 왜 안해주면 ISO-8859-1로 인식하는지 모르겠구만. 메타 태그 있는디...
+		response.sendError(400);
+	}
+	
+	@UrlMapping("/page/uncategorized/response-forbidden-test.view")
+	public void drawForbiddenTest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setCharacterEncoding("utf-8"); // 얘는 왜 안해주면 ISO-8859-1로 인식하는지 모르겠구만. 메타 태그 있는디...
+		response.sendError(403);
+	}
+	
 	@UrlMapping("/page/uncategorized/response-not-found-error-test.view")
 	public void drawResponseNotFoundErrorTest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("utf-8"); // 얘는 왜 안해주면 ISO-8859-1로 인식하는지 모르겠구만. 메타 태그 있는디...
