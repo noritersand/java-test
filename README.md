@@ -1,4 +1,4 @@
-# laboratory-jdk
+# laboratory-java
 
 Java와 써드 파티 라이브러리 테스트용 저장소. 
 
