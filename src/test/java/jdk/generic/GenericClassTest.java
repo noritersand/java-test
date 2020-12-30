@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 제네릭 클래스 테스트 유닛.
+ * 제네릭 클래스 테스트.
  * 
  * @since 2017-07-27
  * @author fixalot

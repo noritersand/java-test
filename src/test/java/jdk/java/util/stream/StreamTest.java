@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Predicate;
 
 /**
- * Stream 클래스 테스트 유닛
+ * Stream 클래스 테스트
  * 
  * required jdk8 or higher
  * 

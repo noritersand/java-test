@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 캐스팅 테스트 유닛
+ * 캐스팅 테스트
  * 
  * @since 2017-07-27
  * @author fixalot

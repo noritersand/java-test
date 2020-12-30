@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import jdk.statement.NestedClassFactory.NestedClass;
 
 /**
- * non-static 중첩 클래스 공장장 테스트 유닛
+ * non-static 중첩 클래스 공장장 테스트
  * 
  * @since 2019-02-25
  * @author fixalot

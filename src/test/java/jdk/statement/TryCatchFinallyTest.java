@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import misc.ExceptionTest;
 
 /**
- * try-catch-finally 테스트 유닛
+ * try-catch-finally 테스트
  * 
  * @since 2018-02-01
  * @author fixalot

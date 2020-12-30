@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 병렬 Stream 테스트 유닛
+ * 병렬 Stream 테스트
  * 
  * required jdk8 or higher
  * 

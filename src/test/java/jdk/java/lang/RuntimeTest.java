@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Runtime 클래스 테스트 유닛
+ * Runtime 클래스 테스트
  * 
  * @since 2018-12-11
  * @author fixalot

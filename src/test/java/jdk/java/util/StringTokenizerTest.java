@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * java.util.StringTokenizer 테스트 유닛
+ * java.util.StringTokenizer 테스트
  * 
  * @since 2017-12-20
  * @author fixalot

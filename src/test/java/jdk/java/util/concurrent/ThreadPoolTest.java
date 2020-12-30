@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ThreadPool 테스트 유닛<br>
+ * ThreadPool 테스트<br>
  * {@link Mythread} 클래스가 중요하며 홀수/짝수는 큰 의미 없다.
  * 
  * @since 2019-12-19

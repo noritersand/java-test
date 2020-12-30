@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * apache commons NUmberUtils 테스트 유닛
+ * apache commons NUmberUtils 테스트
  * 
  * @since 2019-03-21
  * @author fixalot

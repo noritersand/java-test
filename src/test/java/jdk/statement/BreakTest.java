@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * break문 테스트 유닛
+ * break문 테스트
  * 
  * @since 2020-04-03
  * @author noritersand

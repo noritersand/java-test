@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * {@link ArrayList} 테스트 유닛
+ * {@link ArrayList} 테스트
  * 
  * @since 2017-07-27
  * @author fixalot

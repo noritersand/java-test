@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import jdk.statement.TryCatchFinallyTest;
 
 /**
- * 예외 테스트 유닛
+ * 예외 테스트
  * 
  * @since 2017-07-27
  * @author fixalot

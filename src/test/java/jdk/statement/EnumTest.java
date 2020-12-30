@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * enum 테스트 유닛
+ * enum 테스트
  * 
  * @since 2017-07-27
  * @author fixalot

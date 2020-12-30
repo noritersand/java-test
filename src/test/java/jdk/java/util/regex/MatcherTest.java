@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * java.util.regex.Matcher 테스트 유닛
+ * java.util.regex.Matcher 테스트
  * 
  * @since 2019-02-26
  * @author fixalot

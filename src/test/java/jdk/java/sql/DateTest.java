@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Date 테스트 유닛
+ * Date 테스트
  * 
  * @since 2019-01-11
  * @author fixalot

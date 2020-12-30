@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * {@link Formatter} 테스트 유닛
+ * {@link Formatter} 테스트
  * 
  * @since 2018-10-31
  * @author fixalot

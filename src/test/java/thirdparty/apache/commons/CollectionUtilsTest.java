@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import jdk.java.util.HashMapTest;
 
 /**
- * {@link CollectionUtils} 테스트 유닛<br> 
+ * {@link CollectionUtils} 테스트<br> 
  * 
  * @since 2020-03-13
  * @author noritersand

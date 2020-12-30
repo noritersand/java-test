@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 람다 표현식 테스트 유닛
+ * 람다 표현식 테스트
  * 
  * - https://d2.naver.com/helloworld/4911107
  * 

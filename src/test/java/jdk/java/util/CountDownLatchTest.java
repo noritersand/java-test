@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * java.util.CountDownLatch 테스트 유닛
+ * java.util.CountDownLatch 테스트
  * 
  * @since 2018-01-24
  * @author fixalot

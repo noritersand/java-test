@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Lightbend의 com.typesafe.config.Config 테스트 유닛
+ * Lightbend의 com.typesafe.config.Config 테스트
  * 
  * @since 2019-07-19
  * @author fixalot

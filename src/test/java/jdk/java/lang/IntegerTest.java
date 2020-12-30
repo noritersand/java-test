@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * java.lang.Integer 테스트 유닛
+ * java.lang.Integer 테스트
  * 
  * @since 2017-07-27
  * @author fixalot

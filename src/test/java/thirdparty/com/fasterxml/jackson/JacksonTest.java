@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * com.fasterxml.jackson 테스트 유닛
+ * com.fasterxml.jackson 테스트
  * 
  * @since 2019-01-23
  * @author fixalot

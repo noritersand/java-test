@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * JDK BigInteger 테스트 유닛
+ * JDK BigInteger 테스트
  * 
  * @since 2019-12-16
  * @author noritersand
