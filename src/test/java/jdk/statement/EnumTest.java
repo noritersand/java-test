@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.CaseFormat;
+
 /**
  * enum 테스트
  * 
@@ -95,9 +97,11 @@ public class EnumTest {
 	 */
 	@Test
 	public void howExtendEnum() {
-
 		ImSpecial.A.destroySelf();
 		ImSpecial.B.destroySelf();
+		
+		String result = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName");
+		Assert.assertEquals("MY_NAME", result);
 	}
 
 	private enum ImSpecial {
@@ -148,6 +152,7 @@ public class EnumTest {
 
 	private enum Apple {
 		A(10), B(9), C(12), D(15), E(8);
+//		public static final Apple F = new Apple();
 
 		private int price; // price of each apple
 

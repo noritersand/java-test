@@ -25,10 +25,15 @@ public class GenericMethodTest {
 		
 		List<LittleDecimal> list = Arrays.asList(new LittleDecimal[] { new LittleDecimal(123) });
 		gen.getSome2(list); // correct
+		
+		gen.getSome3(new LittleDecimal(0));
+		gen.getSome3(new TinyDecimal(123));
+		
+		
 	}
 
 	@Test
-	public void shouldCompileError() {
+	public void shouldBeCompileError() {
 //		CustomGeneric gen = new CustomGeneric();
 		
 //		gen.getSome("123"); // wrong
@@ -40,6 +45,9 @@ public class GenericMethodTest {
 //		List<Integer> list = Arrays.asList(new Integer[] { Integer.valueOf(123) });
 //		gen.getSome2(list); // wrong
 		// The method getSome2(List<? super GenericMethodTest.TinyDecimal>) in the type GenericMethodTest.CustomGeneric is not applicable for the arguments (List<Integer>)
+		
+//		gen.getSome3("123"); // 컴파일 에러
+		// The method getSome3(T) in the type GenericMethodTest.CustomGeneric is not applicable for the arguments (String)
 	}
 
 	private class CustomGeneric {
@@ -47,8 +55,12 @@ public class GenericMethodTest {
 			logger.debug("{}", number);
 		}
 		
-		public <T extends BigDecimal> void getSome2(List<? super TinyDecimal> number) {
+		public void getSome2(List<? super TinyDecimal> number) {
 			logger.debug("{}", number);
+		}
+		
+		public <T extends BigDecimal> void getSome3(T a) {
+			logger.debug("{}", a);
 		}
 	}
 
