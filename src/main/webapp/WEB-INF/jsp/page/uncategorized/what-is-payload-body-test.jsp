@@ -4,7 +4,7 @@
 <head>
 <title>what is payload body</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="/static/css/style.css"/>
+<jsp:include page="/WEB-INF/jsp/include/head.jsp"/>
 <script src="/static/js/jquery-1.12.4.js"></script>
 </head>
 <body>

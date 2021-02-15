@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="/WEB-INF/jsp/include/head.jsp"/>
+<jsp:include page="/WEB-INF/jsp/include/head-old.jsp"/>
 <title>HTTP 응답 코드 테스트</title>
 <script>
 </script>

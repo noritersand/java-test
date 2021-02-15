@@ -6,6 +6,12 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 얘가 뭐하는 놈이냐면, 너무 오래되서 기억이 잘 안나는데 아마도 {@link HttpServletRequest}의 메서드 구현체를 교체하는 놈이었을 것이여.
+ * 
+ * @since 2021-02-16
+ * @author noritersand
+ */
 public class HTMLTagFilterRequestWrapper extends HttpServletRequestWrapper {
 	private static final Logger logger = LoggerFactory.getLogger(HTMLTagFilterRequestWrapper.class);
 

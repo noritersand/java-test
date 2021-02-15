@@ -4,13 +4,11 @@
 <head>
 <title>index</title>
 <meta charset="utf-8">
-<link rel="icon" type="image/png" href="/static/image/favicon/favicon.png">
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" href="/static/css/style.css"/>
+<jsp:include page="/WEB-INF/jsp/include/head.jsp"/>
 </head>
 <body>
 <div class="align-center">
-	<h1>LABORATORY</h1>
+	<h1>LABORATORY: Java testing</h1>
 	<h2>Index</h2>
 	<ul>
 		<li><a href="/page/html/test-file-template.html">테스트 파일 템플릿</a></li>

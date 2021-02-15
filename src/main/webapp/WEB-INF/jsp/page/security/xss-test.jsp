@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="/WEB-INF/jsp/include/head.jsp"/>
+<jsp:include page="/WEB-INF/jsp/include/head-old.jsp"/>
 <title>XSS test</title>
 <script>
 </script>

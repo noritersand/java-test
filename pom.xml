@@ -5,8 +5,8 @@
 	<artifactId>laboratory-java</artifactId>
 	<version>0.2.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>laboratory Maven Webapp</name>
-	<url>https://github.com/noritersand/laboratory</url>
+	<name>laboratory-java Maven Webapp</name>
+	<url>https://github.com/noritersand/laboratory-java</url>
 
 	<properties>
 		<encoding>UTF-8</encoding>
@@ -19,7 +19,7 @@
 
 	<!-- 빌드 -->
 	<build>
-		<finalName>laboratory</finalName>
+		<finalName>laboratory-java</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
