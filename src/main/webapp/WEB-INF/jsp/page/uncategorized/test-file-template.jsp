@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>what is payload body</title>
+<jsp:include page="/WEB-INF/jsp/include/head.jsp"/>
+<script src="/static/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div class="align-center">
+	<h1>PAGE TITLE HERE</h1>
+	<hr>
+	<p>description</p>
+	<img src="/static/image/in-a-nuttshell.png" style="width:640px" alt="" >
+	
+	<h2>sub title</h2>
+	<p>대문자는 h1까지만 하기로 하자.</p>
+	
+	<h3>lower sub title</h3>
+	<p>blah blah blah blah blah blah blah blah blah blah blah blah</p>
+	
+	<h4>lowest sub title</h4>
+	<p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+	
+	<hr>
+	
+	<h2>sub title2</h2>
+	<p>수평선 태그는 너무 많이 쓰면 글이 난잡해 보임.</p>
+	
+	<h3>LOWER SUB TITLE2</h3>
+	<p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+	
+	<p class="description"><strong>테스트 결과:</strong><br><br>이 곳은 특정 테스트의 결과를 기술하는 영역이다.</p>
+</div>
+</body>
+</html>

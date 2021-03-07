@@ -22,6 +22,18 @@ public class UncategorizedTestController {
 	private static final Logger logger = LoggerFactory.getLogger(UncategorizedTestController.class);
 	
 	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @author noritersand
+	 */
+	@UrlMapping("/page/uncategorized/test-file-template.view")
+	public View drawTestFileTemplate(HttpServletRequest request, HttpServletResponse response) {
+		return new View(request);
+	}
+	
+	/**
 	 * 유니코드 문자 전송 테스트 화면.
 	 * UTF-8 인코딩 사용.
 	 */
