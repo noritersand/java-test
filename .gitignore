@@ -32,3 +32,4 @@ target/*
 .settings
 .classpath
 .project
+.idea
