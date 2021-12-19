@@ -25,51 +25,6 @@
 				<li><a href="/page/security/xss-test.view?param1=">XSS</a></li>
 			</ul>
 		</li>
-<!-- 		<li> -->
-<!-- 			<h4>JavaScript</h4> -->
-<!-- 			<ul> -->
-<!-- 				<li><a href="/page/js/cookie/cookie-util-test.html">cookie: cookie util</a></li> -->
-<!-- 				<li><a href="/page/js/parameter/parameter-util-test.html">parameter: parameter util</a></li> -->
-<!-- 				<li>AJAX -->
-<!-- 					<ul> -->
-<!-- 						<li><a href="/page/js/ajax/ajax-test.html">JavaScript AJAX</a></li> -->
-<!-- 						<li><a href="/page/js/ajax/cors-test.html">CORS test</a></li> -->
-<!-- 						<li><a href="/page/js/ajax/return-value-with-ajax-test.html">비동기 통신의 반환값은 어떻게 처리될까</a></li> -->
-<!-- 					</ul> -->
-<!-- 				</li> -->
-<!-- 				<li>date -->
-<!-- 					<ul> -->
-<!-- 						<li><a href="/page/js/date/select-month-test.html">date: select month 셀렉트 박스에서 달 선택</a></li> -->
-<!-- 					</ul> -->
-<!-- 				</li> -->
-<!-- 				<li>form -->
-<!-- 					<ul> -->
-<!-- 						<li><a href="/page/js/form/form-to-json-test.html">form: Form element to JSON</a></li> -->
-<!-- 					</ul> -->
-<!-- 				</li> -->
-<!-- 				<li>event -->
-<!-- 					 <ul> -->
-<!-- 					 	<li><a href="/page/js/event/keyboard-event-keycode-test.html">KeyboardEvent.keyCode</a></li> -->
-<!-- 					 </ul> -->
-<!-- 				</li>				 -->
-<!-- 			</ul>	 -->
-<!-- 		</li> -->
-<!-- 		<li> -->
-<!-- 			<h4>jQuery</h4> -->
-<!-- 			<ul> -->
-<!-- 				<li><a href="/page/jquery/exercise-book-jquery-1-x-x.html">[연습장] jQuery 1.x</a></li> -->
-<!-- 				<li><a href="/page/jquery/ajax-test.html">ajax</a></li> -->
-<!-- 				<li><a href="/page/jquery/ajax-setup-test.html">ajaxSetup</a></li> -->
-<!-- 				<li><a href="/page/jquery/append-input-tag-from-querystring-test.html">querystring to input tag</a></li> -->
-<!-- 				<li><a href="/page/jquery/exercise-book-jquery-3-x-x.html">[연습장] jQuery 3.x</a></li> -->
-<!-- 				<li><a href="/page/jquery/jquery-3-x-x-test.html">jQuery 3.x</a></li> -->
-<!-- 				<li><a href="/page/jquery/form-empty-check-test.html">form empty check</a></li> -->
-<!-- 				<li><a href="/page/jquery/set-value-in-attribute-test.html">set value in attribute</a></li> -->
-<!-- 				<li><a href="/page/jquery/cors-test.html">CORS</a></li> -->
-<!-- 				<li><a href="/page/jquery/selector-test.html">selector</a></li> -->
-<!-- 				<li><a href="/page/jquery/form-value-save-and-load-test.html">form value save and load</a></li> -->
-<!-- 			</ul> -->
-<!-- 		</li> -->
 		<li>
 			<h4>JAVA &amp; JSP &amp; Servlet</h4>
 			<ul>
