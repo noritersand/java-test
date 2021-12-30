@@ -6,7 +6,7 @@
 			<property name="LOG_HOME" value="${app.log.home}" />
 		</then>
 		<else>
-			<property name="LOG_HOME" value="/laboratory/logs" />		
+			<property name="LOG_HOME" value="/lab/logs" />
 		</else>
 	</if>
 
@@ -44,7 +44,7 @@
 	</appender>
 
 	<logger name="ch.qos.logback" level="TRACE" />
-	<logger name="laboratory" level="TRACE" />
+	<logger name="lab" level="TRACE" />
 
 	<root level="DEBUG">
 		<appender-ref ref="CONSOLE" />
