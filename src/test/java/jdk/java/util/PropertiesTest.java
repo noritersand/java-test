@@ -22,6 +22,12 @@ public class PropertiesTest {
 	private static final Logger logger = LoggerFactory.getLogger(PropertiesTest.class);
 
 	@Test
+	public void getPropertyDefault() {
+		Properties prop = new Properties();
+		Assert.assertEquals("hello-world", prop.getProperty("I'm not exist", "hello-world").toString());
+	}
+
+	@Test
 	public void getPropertyByInputStream() throws IOException {
 		FileInputStream fis = new FileInputStream("src\\test\\resources\\properties-test\\access-test.properties");
 		Properties prop = new Properties();
