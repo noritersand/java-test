@@ -1,9 +1,7 @@
 package jdk.java.util;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Path;
 import java.util.Enumeration;
 import java.util.Properties;
 
@@ -20,6 +18,29 @@ import org.slf4j.LoggerFactory;
  */
 public class PropertiesTest {
 	private static final Logger logger = LoggerFactory.getLogger(PropertiesTest.class);
+
+	@Test
+	public void testStore() throws IOException {
+		// 상대경로를 지정하면 루트는 '워크스페이스/프로젝트' 폴더다.
+		File dir = new File("temp");
+		Path testProperties = new File("temp/test.properties").toPath();
+		File file = new File(testProperties.toString());
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		if (!file.exists()) {
+			file.createNewFile();
+		}
+		FileOutputStream fos = new FileOutputStream(testProperties.toString());
+		Properties prop = new Properties();
+		prop.put("서울의수도", "서울에수도가어디있어");
+		prop.store(fos, "코멘트테스트");
+		fos.close();
+
+		Properties newProp = new Properties();
+		newProp.load(new FileInputStream(testProperties.toString()));
+		Assert.assertEquals("서울에수도가어디있어", newProp.get("서울의수도"));
+	}
 
 	@Test
 	public void getPropertyDefault() {
