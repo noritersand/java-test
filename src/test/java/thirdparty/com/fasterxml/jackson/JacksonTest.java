@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import lombok.ToString;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -106,6 +107,35 @@ public class JacksonTest {
 		map.put("job", "baker");
 		final String jsonText = mapper.writeValueAsString(map);
 		Assert.assertEquals("{\"name\":\"steave\",\"job\":\"baker\",\"age\":\"32\"}", jsonText);
+	}
+
+	@Test
+	public void testWriteValueWithCustomPOJO() throws JsonProcessingException {
+		class Pojo {
+			private String id;
+			private String name;
+			public String getId() {
+				return id;
+			}
+			public void setId(String id) {
+				this.id = id;
+			}
+			public String getName() {
+				return name;
+			}
+			public void setName(String name) {
+				this.name = name;
+			}
+		}
+
+		Pojo e1 = new Pojo();
+		e1.setId("123");
+		e1.setName("abc");
+		Assert.assertEquals("{\"id\":\"123\",\"name\":\"abc\"}", mapper.writeValueAsString(e1));
+
+		List<Pojo> list = new ArrayList<>(1);
+		list.add(e1);
+		Assert.assertEquals("[{\"id\":\"123\",\"name\":\"abc\"}]", mapper.writeValueAsString(list));
 	}
 
 	/**
