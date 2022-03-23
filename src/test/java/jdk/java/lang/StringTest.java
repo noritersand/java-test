@@ -68,10 +68,10 @@ public class StringTest {
 
 	@Test
 	public void testGetBytes() throws UnsupportedEncodingException {
-		final String korean = "한";
-		Assert.assertArrayEquals(new byte[] { -19, -107, -100 }, korean.getBytes(StandardCharsets.UTF_8));
-		Assert.assertArrayEquals(new byte[] { -2, -1, -43, 92 }, korean.getBytes(StandardCharsets.UTF_16));
-		Assert.assertArrayEquals(new byte[] { -57, -47 }, korean.getBytes(Charset.forName("EUC-KR")));
+		final String str = "한";
+		Assert.assertArrayEquals(new byte[] { -19, -107, -100 }, str.getBytes(StandardCharsets.UTF_8));
+		Assert.assertArrayEquals(new byte[] { -2, -1, -43, 92 }, str.getBytes(StandardCharsets.UTF_16));
+		Assert.assertArrayEquals(new byte[] { -57, -47 }, str.getBytes(Charset.forName("EUC-KR")));
 	}
 
 	@Test
