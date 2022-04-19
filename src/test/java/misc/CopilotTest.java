@@ -7,10 +7,10 @@ public class CopilotTest {
     private static final Logger logger = LoggerFactory.getLogger(CopilotTest.class);
 
     /**
-     * 단축키:
-     * - 코파일럿 발동: alt + \
-     * - 코파일럿 제안 선택: tab
-     * - 자동 완성 제안 창 보기: Find Action -> Open GitHub Copilot
+     * <b>단축키:
+     * <li>코파일럿 발동: alt + \
+     * <li>코파일럿 제안 선택: tab
+     * <li>자동 완성 제안 창 보기: Find Action -> Open GitHub Copilot
      */
     public static void main(String[] args) {
         printGugudan();
