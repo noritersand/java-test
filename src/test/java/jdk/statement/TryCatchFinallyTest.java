@@ -3,8 +3,9 @@ package jdk.statement;
 import java.io.IOException;
 import java.io.Writer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +33,7 @@ public class TryCatchFinallyTest {
 	@Test
 	public void tryWithResources() throws IOException {
 		try (Writer output = null) {
-			Assert.assertTrue(1 != 2);
+			assertTrue(1 != 2);
 		}
 	}
 	
@@ -71,7 +72,7 @@ public class TryCatchFinallyTest {
 				logger.debug("You know nothing John snow!");
 			}
 		} catch (ArithmeticException e) {
-			Assert.assertEquals("/ by zero", e.getMessage());
+			assertEquals("/ by zero", e.getMessage());
 		}
 	}
 
@@ -83,7 +84,7 @@ public class TryCatchFinallyTest {
 		} finally {
 			str += " finally";
 		}
-		Assert.assertEquals("try finally", str);
+		assertEquals("try finally", str);
 	}
 
 	@Test
@@ -97,20 +98,20 @@ public class TryCatchFinallyTest {
 		} finally {
 			str += " finally";
 		}
-		Assert.assertEquals("try catch finally", str);
+		assertEquals("try catch finally", str);
 	}
 
 	@Test
 	public void finallyTest3() {
 		String str = weirdStatement();
-		Assert.assertEquals("weirdStatement", str);
+		assertEquals("weirdStatement", str);
 		
 		try {
 			str = weirdStatement2();			
 		} catch (Exception e) {
 			str = "Hello world!"; // catch의 throw는 finally가 있어 무시되었기 때문에 이 라인은 dead code가 됨.
 		}
-		Assert.assertEquals("weirdStatement2", str);
+		assertEquals("weirdStatement2", str);
 	}
 
 	/**

@@ -2,8 +2,9 @@ package jdk.java.util.regex;
 
 import java.util.regex.Matcher;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,20 +25,20 @@ public class MatcherTest {
 	 */
 	@Test
 	public void testQuoteReplacement() {
-		Assert.assertEquals("\\\\", Matcher.quoteReplacement("\\"));
-		Assert.assertEquals("	", Matcher.quoteReplacement("\t"));
-		Assert.assertEquals("'", Matcher.quoteReplacement("\'"));
+		assertEquals("\\\\", Matcher.quoteReplacement("\\"));
+		assertEquals("	", Matcher.quoteReplacement("\t"));
+		assertEquals("'", Matcher.quoteReplacement("\'"));
 	}
 
 	@Test
 	public void usingWithStringReplace() {
 		String str = "a/b/c/d";
 		str = str.replaceAll("/", Matcher.quoteReplacement("\\"));
-		Assert.assertEquals("a\\b\\c\\d", str);
+		assertEquals("a\\b\\c\\d", str);
 		
 		// 반대로도 됨
 		String str2 = "a\\b\\c\\d";
 		str2 = str2.replaceAll(Matcher.quoteReplacement("\\"), "/");
-		Assert.assertEquals("a/b/c/d", str2);
+		assertEquals("a/b/c/d", str2);
 	}
 }

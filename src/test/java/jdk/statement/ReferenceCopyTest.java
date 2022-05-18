@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 
@@ -13,9 +14,9 @@ public class ReferenceCopyTest {
 	@Test
 	public void avoidReassigningParameters() {
 		Vo vo = new Vo();
-		Assert.assertEquals(0, vo.getNum());
+		assertEquals(0, vo.getNum());
 		copyParam(vo);
-		Assert.assertNotEquals(0, vo.getNum());
+		assertNotEquals(0, vo.getNum());
 	}
 
 	/**
@@ -33,22 +34,22 @@ public class ReferenceCopyTest {
 	public void test() {
 		String str = "a";
 		doSomething(str);
-		Assert.assertNotEquals("b", str);
+		assertNotEquals("b", str);
 
 		int num = 1;
 		doSomething(num);
-		Assert.assertNotEquals(2, num);
+		assertNotEquals(2, num);
 
 		Integer number = 1;
 		doSomething(number);
-		Assert.assertNotEquals(Integer.valueOf(2), number);
+		assertNotEquals(Integer.valueOf(2), number);
 
 		Vo vo = new Vo();
 		vo.setStr("a");
 		vo.setNum(1);
 		doSomething(vo);
-		Assert.assertEquals("b", vo.getStr());
-		Assert.assertEquals(2, vo.getNum());
+		assertEquals("b", vo.getStr());
+		assertEquals(2, vo.getNum());
 	}
 
 	private void doSomething(Vo vo) {

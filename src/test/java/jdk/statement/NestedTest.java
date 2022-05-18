@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,10 +19,10 @@ public class NestedTest {
 	@Test
 	public void test() {
 		NonStaticOuter outer = new NonStaticOuter();
-		Assert.assertEquals("invoking outerMethod", outer.executeOuterMethod());
+		assertEquals("invoking outerMethod", outer.executeOuterMethod());
 
 		NonStaticOuter.Inner inner = new NonStaticOuter().getInner();
-		Assert.assertEquals("invoking innerMethod", inner.executeInnerMethod());
+		assertEquals("invoking innerMethod", inner.executeInnerMethod());
 	}
 
 	@Test

@@ -4,8 +4,9 @@ import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,25 +24,25 @@ public class DateTest {
 		long mills = System.currentTimeMillis();
 		logger.debug("currentTimeMills: {}", mills);
 		Date date = new Date(mills);
-		Assert.assertEquals(mills, date.getTime());
+		assertEquals(mills, date.getTime());
 	}
 	
 	@Test
 	public void testJavaSqlDate() {
 		Date date = new Date(1547168374396L);
-		Assert.assertEquals("2019-01-11", date.toString());
+		assertEquals("2019-01-11", date.toString());
 	}
 	
 	@Test
 	public void testJavaSqlTime() {
 		Time time = new Time(1547168374396L);
-		Assert.assertEquals("09:59:34", time.toString());
+		assertEquals("09:59:34", time.toString());
 		
 	}
 	
 	@Test
 	public void testJavaSqlTimestamp() {
 		Timestamp timestamp = new Timestamp(1547168374396L);
-		Assert.assertEquals("2019-01-11 09:59:34.396", timestamp.toString());
+		assertEquals("2019-01-11 09:59:34.396", timestamp.toString());
 	}
 }

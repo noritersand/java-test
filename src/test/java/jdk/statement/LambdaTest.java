@@ -6,8 +6,9 @@ import java.util.function.Predicate;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,6 +34,6 @@ public class LambdaTest {
 		Map<String, Object> goods = new HashMap<>();
 		goods.put("adultYn", "1");
 		Predicate<Map<String, Object>> isAdultGoods = g -> StringUtils.equals(MapUtils.getString(g, "adultYn"), "1");
-		Assert.assertTrue(isAdultGoods.test(goods));
+		assertTrue(isAdultGoods.test(goods));
 	}
 }

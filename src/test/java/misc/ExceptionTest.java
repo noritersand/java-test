@@ -2,8 +2,9 @@ package misc;
 
 import java.io.IOException;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -79,7 +80,7 @@ public class ExceptionTest {
 		try {
 			throw new RuntimeException();
 		} catch (Exception e) {
-			Assert.assertNull(e.getMessage());
+			assertNull(e.getMessage());
 		}
 	}
 }

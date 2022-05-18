@@ -6,8 +6,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,13 +24,13 @@ public class StringTest {
 	@Test
 	public void testIndexOf() {
 		String a = "INFO  log4jdbc.log4j2 - 5. ResultSet.close() returned void";
-		Assert.assertEquals(0, a.indexOf("I"));
-		Assert.assertEquals(27, a.indexOf("ResultSet.")); // 첫 번째 "ResultSet."
-		Assert.assertEquals(14, a.indexOf(".")); // 첫 번째 "."
-		Assert.assertEquals(25, a.indexOf(".", 15)); // 인덱스 15 이후부터 찾음
+		assertEquals(0, a.indexOf("I"));
+		assertEquals(27, a.indexOf("ResultSet.")); // 첫 번째 "ResultSet."
+		assertEquals(14, a.indexOf(".")); // 첫 번째 "."
+		assertEquals(25, a.indexOf(".", 15)); // 인덱스 15 이후부터 찾음
 		
-		Assert.assertEquals(36, a.lastIndexOf(".")); // 마지막 "."
-		Assert.assertEquals(25, a.lastIndexOf(".", 35)); // 인덱스 35 이전부터 찾음
+		assertEquals(36, a.lastIndexOf(".")); // 마지막 "."
+		assertEquals(25, a.lastIndexOf(".", 35)); // 인덱스 35 이전부터 찾음
 	}
 
 	@Test
@@ -45,15 +46,15 @@ public class StringTest {
         Formatter formatter = new Formatter();
 		
         // 소수점 2자리까지  표현
-        Assert.assertEquals("1.00", formatter.floatFormat(1D));
-		Assert.assertEquals("100.00", formatter.floatFormat(100D));
-		Assert.assertEquals("0.50", formatter.floatFormat(0.5D));
+        assertEquals("1.00", formatter.floatFormat(1D));
+		assertEquals("100.00", formatter.floatFormat(100D));
+		assertEquals("0.50", formatter.floatFormat(0.5D));
 		
 		// 정수 표현(소수점은 반올림 처리)
-		Assert.assertEquals("0", formatter.binaryFormat(0.4D));
-		Assert.assertEquals("1", formatter.binaryFormat(0.5D));
-		Assert.assertEquals("1", formatter.binaryFormat(1.3D));
-		Assert.assertEquals("3", formatter.binaryFormat(2.6D));
+		assertEquals("0", formatter.binaryFormat(0.4D));
+		assertEquals("1", formatter.binaryFormat(0.5D));
+		assertEquals("1", formatter.binaryFormat(1.3D));
+		assertEquals("3", formatter.binaryFormat(2.6D));
 	}
 
 	@SuppressWarnings("unlikely-arg-type")
@@ -61,64 +62,64 @@ public class StringTest {
 	public void compareWithCharacter() {
 		String a = "A";
 		char b = 'A';
-		Assert.assertFalse(a.equals(b));
-		Assert.assertTrue(a.charAt(0) == b);
-		Assert.assertTrue(a.equals(String.valueOf(b)));
+		assertFalse(a.equals(b));
+		assertTrue(a.charAt(0) == b);
+		assertTrue(a.equals(String.valueOf(b)));
 	}
 
 	@Test
 	public void testGetBytes() throws UnsupportedEncodingException {
 		final String str = "한";
-		Assert.assertArrayEquals(new byte[] { -19, -107, -100 }, str.getBytes(StandardCharsets.UTF_8));
-		Assert.assertArrayEquals(new byte[] { -2, -1, -43, 92 }, str.getBytes(StandardCharsets.UTF_16));
-		Assert.assertArrayEquals(new byte[] { -57, -47 }, str.getBytes(Charset.forName("EUC-KR")));
+		assertArrayEquals(new byte[] { -19, -107, -100 }, str.getBytes(StandardCharsets.UTF_8));
+		assertArrayEquals(new byte[] { -2, -1, -43, 92 }, str.getBytes(StandardCharsets.UTF_16));
+		assertArrayEquals(new byte[] { -57, -47 }, str.getBytes(Charset.forName("EUC-KR")));
 	}
 
 	@Test
 	public void testToStringFromBytes() {
 		byte[] bytes = new byte[] { -19, -107, -100 };
 		String korean = new String(bytes, StandardCharsets.UTF_8);
-		Assert.assertEquals("한", korean);
+		assertEquals("한", korean);
 	}
 
 	@Test
 	public void testConcat() {
 		String a = "a";
-		Assert.assertEquals("ab", a.concat("b"));
-		Assert.assertEquals("a", a);
+		assertEquals("ab", a.concat("b"));
+		assertEquals("a", a);
 		try {
-			Assert.assertEquals("anull", a.concat(null)); // NPE
+			assertEquals("anull", a.concat(null)); // NPE
 		} catch (Exception e) {
 		}
-		Assert.assertEquals("anull", a + null);
+		assertEquals("anull", a + null);
 	}
 
 	@Test
 	public void autoInstantiate() {
 		String a = "a";
 		String b = "a";
-		Assert.assertTrue(a == b);
+		assertTrue(a == b);
 		b = a; // new String(a)처럼 명시적으로 새 인스턴스를 할당하지 않아도.
 		b = "b"; // 리터럴이 바뀌면 참조하고 있는 인스턴스의 값이 변경되는게 아니라 새 인스턴스가 할당된다. (String 타입의 특징)
-		Assert.assertEquals("a", a); // 그래서 a는 원래의 값을 유지할 수 있다.
+		assertEquals("a", a); // 그래서 a는 원래의 값을 유지할 수 있다.
 	}
 
 	@Test
 	public void useBuilder() {
 		StringBuilder builder = new StringBuilder();
-		Assert.assertEquals(0, builder.length());
-		Assert.assertEquals("", builder.toString());
+		assertEquals(0, builder.length());
+		assertEquals("", builder.toString());
 	}
 
 	@Test
 	public void getLengthWithLineDelimiter() {
 		String a = "totcnt123\nstart";
 		String b = "totcnt123start";
-		Assert.assertEquals(10, a.indexOf("start"));
-		Assert.assertEquals("start", a.substring(a.indexOf("start"), a.length()));
+		assertEquals(10, a.indexOf("start"));
+		assertEquals("start", a.substring(a.indexOf("start"), a.length()));
 
-		Assert.assertEquals(9, b.indexOf("start"));
-		Assert.assertEquals("start", b.substring(b.indexOf("start"), b.length()));
+		assertEquals(9, b.indexOf("start"));
+		assertEquals("start", b.substring(b.indexOf("start"), b.length()));
 	}
 
 	@Test
@@ -126,63 +127,63 @@ public class StringTest {
 		// 아래처럼 초기화될 땐 intern()을 쓰든 안쓰든 String의 주소값은 같다.
 		String a = "경기";
 		String b = "경기";
-		Assert.assertTrue(a == b);
+		assertTrue(a == b);
 
 		// 요로케 해야됨
 		String c = "AAA";
 		String d = new String("AAA");
-		Assert.assertFalse(c == d);
+		assertFalse(c == d);
 
 		d = d.intern();
-		Assert.assertTrue(c == d);
+		assertTrue(c == d);
 
-		Assert.assertTrue(new String("BBB").intern() == "BBB");
-		Assert.assertTrue(new String("CCC").intern() == "CCC");
-		Assert.assertEquals(new String("CCC").intern().hashCode(), "CCC".hashCode());
+		assertTrue(new String("BBB").intern() == "BBB");
+		assertTrue(new String("CCC").intern() == "CCC");
+		assertEquals(new String("CCC").intern().hashCode(), "CCC".hashCode());
 	}
 
 	@Test
 	public void testReplaceAll() {
-		Assert.assertEquals("경기", "경기도".replaceAll("도", ""));
-		Assert.assertEquals("a-b", "a:b".replaceAll(":", "-"));
-		Assert.assertEquals("a-b", "a:b".replaceAll("\\:", "\\-"));
+		assertEquals("경기", "경기도".replaceAll("도", ""));
+		assertEquals("a-b", "a:b".replaceAll(":", "-"));
+		assertEquals("a-b", "a:b".replaceAll("\\:", "\\-"));
 	}
 
 	@Test
 	public void testReplaceFirst() {
 		String str = "/qwe/test/submit/sender";
-		Assert.assertEquals("/test/submit/sender", str.replaceFirst("/qwe", ""));
+		assertEquals("/test/submit/sender", str.replaceFirst("/qwe", ""));
 	}
 
 	@Test
 	public void splitDomain() {
-		Assert.assertEquals(1, "localhost".split("\\.").length);
-		Assert.assertEquals(3, "master.benecafe.com".split("\\.").length);
-		Assert.assertEquals(2, "daum.net".split("\\.").length);
+		assertEquals(1, "localhost".split("\\.").length);
+		assertEquals(3, "master.benecafe.com".split("\\.").length);
+		assertEquals(2, "daum.net".split("\\.").length);
 	}
 
 	@Test
 	public void testSubstring() {
 		String str = "a1234567890b234567890c234567890d23";
-		Assert.assertEquals("a", str.substring(0, 1));
-		Assert.assertEquals("a12345", str.substring(0, 6));
-		Assert.assertEquals("456", str.substring(4, 7));
-		Assert.assertEquals(34, str.length());
-		Assert.assertEquals("a1234567890b234567890c23456789", str.substring(0, 30));
-		Assert.assertEquals(30, str.substring(0, 30).length());
+		assertEquals("a", str.substring(0, 1));
+		assertEquals("a12345", str.substring(0, 6));
+		assertEquals("456", str.substring(4, 7));
+		assertEquals(34, str.length());
+		assertEquals("a1234567890b234567890c23456789", str.substring(0, 30));
+		assertEquals(30, str.substring(0, 30).length());
 	}
 
 	@Test
 	public void testLastIndexOf() {
 		String str = "/abcd";
-		Assert.assertEquals(0, str.lastIndexOf("/"));
-		Assert.assertEquals("abcd", str.substring(str.lastIndexOf("/") + 1));
+		assertEquals(0, str.lastIndexOf("/"));
+		assertEquals("abcd", str.substring(str.lastIndexOf("/") + 1));
 	}
 
 	@Test
 	public void testSplit() {
 		String splitMe = "abcdefghijklmn";
-		Assert.assertEquals(splitMe, splitMe.split("\\|")[0]);
+		assertEquals(splitMe, splitMe.split("\\|")[0]);
 		try {
 			logger.debug(splitMe.split("\\|")[1]);
 		} catch (IndexOutOfBoundsException e) {
@@ -190,15 +191,15 @@ public class StringTest {
 		}
 
 		String splitMe2 = "abcdefghijklmn";
-		Assert.assertEquals(14, splitMe2.length());
-		Assert.assertEquals(splitMe2.substring(1, 5), splitMe2.subSequence(1, 5));
+		assertEquals(14, splitMe2.length());
+		assertEquals(splitMe2.substring(1, 5), splitMe2.subSequence(1, 5));
 
 		String splitMe3 = "a\nb\nc\nd";
-		Assert.assertEquals(4, splitMe3.split("\\n").length);
+		assertEquals(4, splitMe3.split("\\n").length);
 		
 		String splitMe4 = "";
 		String[] splited = splitMe4.split("\\|");
-		Assert.assertEquals("", splited[0]);
+		assertEquals("", splited[0]);
 	}
 
 	@Test
@@ -242,15 +243,15 @@ public class StringTest {
 //		for (String ele : strArray) {
 //			logger.debug(ele);
 //		}
-		Assert.assertArrayEquals(strArray, splitByLength(str, 1333));
+		assertArrayEquals(strArray, splitByLength(str, 1333));
 	}
 
 	@Test
 	public void testSplitByLength() {
-		Assert.assertArrayEquals(new String[] { "abc", "def" }, splitByLength("abcdef", 3));
-		Assert.assertArrayEquals(new String[] { "abc", "def", "ef" }, splitByLength("abcdefef", 3));
-		Assert.assertArrayEquals(new String[] { "abcd", "ef12", "34" }, splitByLength("abcdef1234", 4));
-		Assert.assertArrayEquals(new String[] { "abcde", "f1234", "5" }, splitByLength("abcdef12345", 5));
+		assertArrayEquals(new String[] { "abc", "def" }, splitByLength("abcdef", 3));
+		assertArrayEquals(new String[] { "abc", "def", "ef" }, splitByLength("abcdefef", 3));
+		assertArrayEquals(new String[] { "abcd", "ef12", "34" }, splitByLength("abcdef1234", 4));
+		assertArrayEquals(new String[] { "abcde", "f1234", "5" }, splitByLength("abcdef12345", 5));
 	}
 
 	public static String[] splitByLength1333(String str) {
@@ -288,6 +289,6 @@ public class StringTest {
 	@Test
 	public void testJoin() {
 		List<String> texts = Arrays.asList("a", "b", "c");
-		Assert.assertEquals("a, b, c", String.join(", ", texts));
+		assertEquals("a, b, c", String.join(", ", texts));
 	}
 }

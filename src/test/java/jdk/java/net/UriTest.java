@@ -2,8 +2,9 @@ package jdk.java.net;
 
 import java.net.URI;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,40 +22,40 @@ public class UriTest {
 	@Test
 	public void initialize() {
 		URI uri = URI.create("somefolder/somefile.png");
-		Assert.assertEquals("somefolder/somefile.png", uri.toString());
-		Assert.assertEquals(null, uri.getScheme());
+		assertEquals("somefolder/somefile.png", uri.toString());
+		assertEquals(null, uri.getScheme());
 
 		URI uri2 = URI.create("file://somefolder/somefile.png");
-		Assert.assertEquals("file://somefolder/somefile.png", uri2.toString());
-		Assert.assertEquals("file", uri2.getScheme());
+		assertEquals("file://somefolder/somefile.png", uri2.toString());
+		assertEquals("file", uri2.getScheme());
 		
 		URI uri3 = URI.create("http://google.com/someone?a=야");
-		Assert.assertEquals("http://google.com/someone?a=야", uri3.toString());
-		Assert.assertEquals("http", uri3.getScheme());
+		assertEquals("http://google.com/someone?a=야", uri3.toString());
+		assertEquals("http", uri3.getScheme());
 	}
 	
 	@Test
 	public void getSpecificInformation() {
 		URI uri = URI.create("http://google.com/someone?a=야");
 
-		Assert.assertEquals("http", uri.getScheme());
+		assertEquals("http", uri.getScheme());
 
-		Assert.assertEquals("google.com", uri.getAuthority());
-		Assert.assertEquals("google.com", uri.getRawAuthority());
+		assertEquals("google.com", uri.getAuthority());
+		assertEquals("google.com", uri.getRawAuthority());
 
-		Assert.assertEquals(null, uri.getFragment());
-		Assert.assertEquals(null, uri.getRawFragment());
+		assertEquals(null, uri.getFragment());
+		assertEquals(null, uri.getRawFragment());
 
-		Assert.assertEquals("/someone", uri.getPath());
-		Assert.assertEquals("/someone", uri.getRawPath());
+		assertEquals("/someone", uri.getPath());
+		assertEquals("/someone", uri.getRawPath());
 
-		Assert.assertEquals("a=야", uri.getQuery());
-		Assert.assertEquals("a=야", uri.getRawQuery());
+		assertEquals("a=야", uri.getQuery());
+		assertEquals("a=야", uri.getRawQuery());
 
-		Assert.assertEquals(-1, uri.getPort());
+		assertEquals(-1, uri.getPort());
 
-		Assert.assertEquals("//google.com/someone?a=야", uri.getRawSchemeSpecificPart());
+		assertEquals("//google.com/someone?a=야", uri.getRawSchemeSpecificPart());
 
-		Assert.assertEquals(null, uri.getRawUserInfo());
+		assertEquals(null, uri.getRawUserInfo());
 	}
 }

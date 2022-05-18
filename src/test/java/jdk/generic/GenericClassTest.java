@@ -2,8 +2,9 @@ package jdk.generic;
 
 import java.math.BigDecimal;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +22,7 @@ public class GenericClassTest {
 	public void testNormalGeneric() {
 		NormalGeneric<String> gen = new NormalGeneric<>();
 		gen.setName("Waldo");
-		Assert.assertEquals("Waldo", gen.getName());
+		assertEquals("Waldo", gen.getName());
 	}
 
 	@Test
@@ -41,8 +42,8 @@ public class GenericClassTest {
 	@Test
 	public void testGenericMethod() {
 		GenericMethodOnly gen = new GenericMethodOnly();
-		Assert.assertTrue(Integer.class == gen.getType(Integer.valueOf(123)));
-		Assert.assertTrue(String.class == gen.getType("Text"));
+		assertTrue(Integer.class == gen.getType(Integer.valueOf(123)));
+		assertTrue(String.class == gen.getType("Text"));
 	}
 	
 	@Test

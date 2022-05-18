@@ -7,8 +7,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import lombok.ToString;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,12 +56,12 @@ public class JacksonTest {
 		String text = "{\"aaa\": \"Hello world!\", \"bbb\": {\"ccc\": \"welcome to dead man club\"}}";
 
 		UpperObject upper = mapper.readValue(text, UpperObject.class);
-		Assert.assertNotNull(upper);
+		assertNotNull(upper);
 		List<ElementObject> elementList = upper.getBbb();
-		Assert.assertEquals(1, elementList.size());
+		assertEquals(1, elementList.size());
 		ElementObject element = elementList.get(0);
-		Assert.assertEquals(ElementObject.class, element.getClass());
-		Assert.assertEquals("welcome to dead man club", element.getCcc());
+		assertEquals(ElementObject.class, element.getClass());
+		assertEquals("welcome to dead man club", element.getCcc());
 	}
 	
 	/**
@@ -76,11 +77,11 @@ public class JacksonTest {
 		String jsonText = "[{\"html1\":\"<p>홀홀</p>\",\"html2\":\"<p>ㅗㅎ롷ㄹ</p>\"}]";
 		final List<HashMap<String, Object>> collection
 				= mapper.readValue(jsonText, new TypeReference<ArrayList<HashMap<String, Object>>>() {});
-		Assert.assertEquals(1, collection.size());
-		Assert.assertEquals("<p>홀홀</p>", collection.get(0).get("html1"));
-		Assert.assertEquals("<p>ㅗㅎ롷ㄹ</p>", collection.get(0).get("html2"));
-		Assert.assertEquals(ArrayList.class, collection.getClass());
-		Assert.assertEquals(HashMap.class, collection.get(0).getClass());
+		assertEquals(1, collection.size());
+		assertEquals("<p>홀홀</p>", collection.get(0).get("html1"));
+		assertEquals("<p>ㅗㅎ롷ㄹ</p>", collection.get(0).get("html2"));
+		assertEquals(ArrayList.class, collection.getClass());
+		assertEquals(HashMap.class, collection.get(0).getClass());
 	}
 	
 	@Test
@@ -88,9 +89,9 @@ public class JacksonTest {
 		String jsonText = "[{\"html1\":\"<p>홀홀</p>\",\"html2\":\"<p>ㅗㅎ롷ㄹ</p>\"}]";
 		final List<Object> collection
 				= mapper.readValue(jsonText, new TypeReference<List<Object>>() {});
-		Assert.assertEquals(1, collection.size());
-		Assert.assertEquals(ArrayList.class, collection.getClass());
-		Assert.assertEquals(LinkedHashMap.class, collection.get(0).getClass());
+		assertEquals(1, collection.size());
+		assertEquals(ArrayList.class, collection.getClass());
+		assertEquals(LinkedHashMap.class, collection.get(0).getClass());
 	}
 
 	/**
@@ -106,7 +107,7 @@ public class JacksonTest {
 		map.put("age", "32");
 		map.put("job", "baker");
 		final String jsonText = mapper.writeValueAsString(map);
-		Assert.assertEquals("{\"name\":\"steave\",\"job\":\"baker\",\"age\":\"32\"}", jsonText);
+		assertEquals("{\"name\":\"steave\",\"job\":\"baker\",\"age\":\"32\"}", jsonText);
 	}
 
 	@Test
@@ -131,11 +132,11 @@ public class JacksonTest {
 		Pojo e1 = new Pojo();
 		e1.setId("123");
 		e1.setName("abc");
-		Assert.assertEquals("{\"id\":\"123\",\"name\":\"abc\"}", mapper.writeValueAsString(e1));
+		assertEquals("{\"id\":\"123\",\"name\":\"abc\"}", mapper.writeValueAsString(e1));
 
 		List<Pojo> list = new ArrayList<>(1);
 		list.add(e1);
-		Assert.assertEquals("[{\"id\":\"123\",\"name\":\"abc\"}]", mapper.writeValueAsString(list));
+		assertEquals("[{\"id\":\"123\",\"name\":\"abc\"}]", mapper.writeValueAsString(list));
 	}
 
 	/**
@@ -152,8 +153,8 @@ public class JacksonTest {
 		map.put("dead", "true");
 		
 		PlainObject po = mapper.convertValue(map, PlainObject.class);
-		Assert.assertEquals("steave", po.getName());
-		Assert.assertEquals(Integer.valueOf(32), po.getAge());
+		assertEquals("steave", po.getName());
+		assertEquals(Integer.valueOf(32), po.getAge());
 		
 		// #2: list<map> -> po
 		HashMap<String, Object> map2 = new HashMap<>();
@@ -166,10 +167,10 @@ public class JacksonTest {
 		list.add(map2);
 		
 		ArrayList<PlainObject> poList = mapper.convertValue(list, new TypeReference<ArrayList<PlainObject>>() {});
-		Assert.assertEquals("soap", poList.get(1).getName());
-		Assert.assertEquals(Integer.valueOf(32), poList.get(0).getAge());
-		Assert.assertEquals(Integer.valueOf(43), poList.get(1).getAge());
-		Assert.assertTrue(poList.get(0).isDead());
-		Assert.assertTrue(poList.get(1).isDead());
+		assertEquals("soap", poList.get(1).getName());
+		assertEquals(Integer.valueOf(32), poList.get(0).getAge());
+		assertEquals(Integer.valueOf(43), poList.get(1).getAge());
+		assertTrue(poList.get(0).isDead());
+		assertTrue(poList.get(1).isDead());
 	}
 }

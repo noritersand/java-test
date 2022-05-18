@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +29,6 @@ public class PropertiesToJsonConverterTest {
 		Map<String, Object> depth0 = ((Map<String, Object>) map.get("man"));
 		Map<String, Object> depth1 = ((Map<String, Object>) depth0.get("insurance"));
 		Double depth2 = ((Double) depth1.get("cost"));
-		Assert.assertEquals(Double.parseDouble("126.543"), depth2, 0);
+		assertEquals(Double.parseDouble("126.543"), depth2, 0);
 	}
 }

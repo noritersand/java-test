@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,6 +22,6 @@ public class WhileStatementTest {
 			++n;
 			logger.debug("{}", n);
 		}
-		Assert.assertEquals(2, n);
+		assertEquals(2, n);
 	}
 }

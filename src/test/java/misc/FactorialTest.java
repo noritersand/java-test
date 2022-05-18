@@ -1,7 +1,8 @@
 package misc;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,11 +23,11 @@ public class FactorialTest {
 		// 4! = 4 x 3! = 24
 		// 4! = 4! = 24
 
-		Assert.assertEquals(1, factorial(1));
-		Assert.assertEquals(2, factorial(2));
-		Assert.assertEquals(6, factorial(3));
-		Assert.assertEquals(24, factorial(4));
-		Assert.assertEquals(120, factorial(5));
+		assertEquals(1, factorial(1));
+		assertEquals(2, factorial(2));
+		assertEquals(6, factorial(3));
+		assertEquals(24, factorial(4));
+		assertEquals(120, factorial(5));
 	}
 
 	public int factorial(int n) {

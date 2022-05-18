@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,22 +23,22 @@ public class UrlTest {
 	@Test
 	public void initialize() throws MalformedURLException {
 		URL url = new URL("http://google.com/someone?a=야");
-		Assert.assertEquals("http://google.com/someone?a=야", url.toString());
+		assertEquals("http://google.com/someone?a=야", url.toString());
 	}
 
 	@Test
 	public void getSpecificInformation() throws IOException {
 		URL url = new URL("http://google.com/someone?a=야");
-		Assert.assertEquals("http", url.getProtocol());
-		Assert.assertEquals("google.com", url.getHost());
-		Assert.assertEquals("/someone", url.getPath());
-		Assert.assertEquals("a=야", url.getQuery());
+		assertEquals("http", url.getProtocol());
+		assertEquals("google.com", url.getHost());
+		assertEquals("/someone", url.getPath());
+		assertEquals("a=야", url.getQuery());
 
-		Assert.assertEquals(-1, url.getPort());
-		Assert.assertEquals(80, url.getDefaultPort());
+		assertEquals(-1, url.getPort());
+		assertEquals(80, url.getDefaultPort());
 
-		Assert.assertEquals("google.com", url.getAuthority());
-		Assert.assertEquals(null, url.getUserInfo());
-		Assert.assertEquals(null, url.getRef());
+		assertEquals("google.com", url.getAuthority());
+		assertEquals(null, url.getUserInfo());
+		assertEquals(null, url.getRef());
 	}
 }

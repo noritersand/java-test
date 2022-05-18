@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +19,7 @@ public class NestedEnumTest {
 	@Test
 	public void test() {
 		NestedEnumTestBean.InsertType insertType = NestedEnumTestBean.InsertType.APPEND;
-		Assert.assertEquals("APPEND", insertType.toString());
+		assertEquals("APPEND", insertType.toString());
 	}
 }
 

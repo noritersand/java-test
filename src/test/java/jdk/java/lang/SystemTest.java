@@ -6,8 +6,9 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,9 +24,9 @@ public class SystemTest {
 	@Test
 	public void getCurrentTime() {
 		String millisecond = String.valueOf(System.currentTimeMillis());
-		Assert.assertEquals(13, millisecond.length());
+		assertEquals(13, millisecond.length());
 //		String nanosecond = String.valueOf(System.nanoTime());
-//		Assert.assertEquals(15, nanosecond.length());
+//		assertEquals(15, nanosecond.length());
 		// 둘이 합쳐 28이 아니고 나노초는 14자일때도 있음.
 	}
 
@@ -58,12 +59,12 @@ public class SystemTest {
 	public void getDefaultEncodingProperty() {
 		logger.debug("file.encoding={}", System.getProperty("file.encoding"));
 		logger.debug("default character set={}", Charset.defaultCharset());
-		Assert.assertEquals(Charset.defaultCharset().toString(), System.getProperty("file.encoding").toUpperCase());
+		assertEquals(Charset.defaultCharset().toString(), System.getProperty("file.encoding").toUpperCase());
 	}
 
 	@Test
 	public void shouldBeNull() {
-		Assert.assertNull(System.getProperty("i'm not here"));
+		assertNull(System.getProperty("i'm not here"));
 	}
 
 //	@Test

@@ -7,8 +7,9 @@ import java.nio.charset.Charset;
 import java.nio.file.Paths;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +39,7 @@ public class FileUtilsTest {
 
 		// read
 		String textFromFile = FileUtils.readFileToString(file, Charset.forName("UTF-8"));
-		Assert.assertEquals("some\ntext", textFromFile);
+		assertEquals("some\ntext", textFromFile);
 	}
 	
 	/**
@@ -54,7 +55,7 @@ public class FileUtilsTest {
 		final URL source = new URL("http://google.com");
 		final File destination = Paths.get("src/test/resources/file/file-from-url.txt").toFile();
 		FileUtils.copyURLToFile(source, destination);
-		Assert.assertTrue(destination.exists());
+		assertTrue(destination.exists());
 		destination.delete();
 	}
 }

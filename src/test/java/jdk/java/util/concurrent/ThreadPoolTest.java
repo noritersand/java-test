@@ -9,8 +9,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,8 +64,8 @@ public class ThreadPoolTest {
 				}
 			}
 		}
-		Assert.assertTrue(getEvenLength() == successCount); // 짝수만큼 성공
-		Assert.assertTrue(getOddLength() == this.instanceLength - successCount); // 홀수만큼 실패
+		assertTrue(getEvenLength() == successCount); // 짝수만큼 성공
+		assertTrue(getOddLength() == this.instanceLength - successCount); // 홀수만큼 실패
 	}
 
 	/**

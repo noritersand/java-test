@@ -1,7 +1,8 @@
 package thirdparty.google.guava;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +20,7 @@ public class BooleansTest {
 
 	@Test
 	public void test() {
-		Assert.assertEquals(5, Booleans.asList(false, true, false, true, true).size());
-		Assert.assertEquals("true, false", Booleans.join(", ", true, false));
+		assertEquals(5, Booleans.asList(false, true, false, true, true).size());
+		assertEquals("true, false", Booleans.join(", ", true, false));
 	}
 }

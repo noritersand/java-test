@@ -2,10 +2,11 @@ package jdk.statement;
 
 import java.util.Arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 
@@ -32,20 +33,20 @@ public class ArrayTest {
 				str[i] += String.valueOf(arr[i][j]);
 			}
 		}
-		Assert.assertTrue(Arrays.equals(new String[] { "1x2x6", "3x4" }, str));
+		assertTrue(Arrays.equals(new String[] { "1x2x6", "3x4" }, str));
 	}
 
 	@Test
 	public void getLength() {
 		int[][] arr = new int[][] { { 1, 2, 6 }, { 3, 4 } };
-		Assert.assertEquals(2, arr.length);
-		Assert.assertEquals(3, arr[0].length);
-		Assert.assertEquals(2, arr[1].length);
+		assertEquals(2, arr.length);
+		assertEquals(3, arr[0].length);
+		assertEquals(2, arr[1].length);
 	}
 
 	@Test
 	public void join() {
 		final String[] arr = { "a", "b", "c" };
-		Assert.assertEquals("a,b,c", String.join(",", arr));
+		assertEquals("a,b,c", String.join(",", arr));
 	}
 }

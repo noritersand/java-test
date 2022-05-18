@@ -8,8 +8,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,8 +50,8 @@ public class StreamTest {
 			basket.add(k);
 		});
 		stream2.close();
-		Assert.assertArrayEquals(new Integer[] { 1, 3, 7 }, basket.toArray(new Integer[list.size()]));
-		Assert.assertEquals(3, basket.size());
+		assertArrayEquals(new Integer[] { 1, 3, 7 }, basket.toArray(new Integer[list.size()]));
+		assertEquals(3, basket.size());
 	}
 
 	@Test
@@ -71,12 +72,12 @@ public class StreamTest {
 		// 필터링 결과 모두 출력
 		Stream<Integer> stream = list.stream();
 		List<Integer> result1 = stream.filter(predicate).collect(Collectors.toList());
-		Assert.assertEquals(Arrays.asList(new Integer[] { 2, 4, 6, 8 }), result1);
+		assertEquals(Arrays.asList(new Integer[] { 2, 4, 6, 8 }), result1);
 
 		// 필터링 결과 중 첫 번째
 		stream = list.stream();
 		Integer result2 = stream.filter(predicate).findFirst().get();
-		Assert.assertEquals(2, result2.intValue());
+		assertEquals(2, result2.intValue());
 
 		// 필터링 결과 중 아무거나?? 그냥 첫 번째꺼 나오는거 같은데...
 		stream = list.stream();
@@ -94,6 +95,6 @@ public class StreamTest {
 			}
 			return false;
 		});
-		Assert.assertFalse(result); // list에는 10보다 큰게 없음.
+		assertFalse(result); // list에는 10보다 큰게 없음.
 	}
 }

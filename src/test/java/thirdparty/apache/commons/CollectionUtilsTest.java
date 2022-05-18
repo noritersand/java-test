@@ -6,8 +6,9 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,21 +34,21 @@ public class CollectionUtilsTest {
 	public void testUnionWithMap() {
 		List<HashMap<String, Object>> a = generateMapList();
 		List<HashMap<String, Object>> b = generateMapList();
-		Assert.assertTrue(a != b);
-		Assert.assertEquals(4, a.size());
+		assertTrue(a != b);
+		assertEquals(4, a.size());
 		
 		// b 리스트는 key=a만 남김 
 		b = b.subList(0, 1);
-		Assert.assertEquals(1, b.size());
+		assertEquals(1, b.size());
 		
-		Assert.assertTrue(a.get(0) != b.get(0));
+		assertTrue(a.get(0) != b.get(0));
 		
 		// 합침
 		@SuppressWarnings("unchecked")
 		List<HashMap<String, Object>> c = (List<HashMap<String, Object>>) CollectionUtils.union(a, b);
 		
 		// 합치기 전 사이즈와 합친 후의 사이즈가 같음
-		Assert.assertEquals(a.size(), c.size());
+		assertEquals(a.size(), c.size());
 		// 요소가 해시맵이기 때문에 엔트리가 같으면 이미 있는걸로 보고 합치지 않는다.
 		logger.debug("{}", c);
 	}
@@ -61,21 +62,21 @@ public class CollectionUtilsTest {
 	public void testUnionWithPOJO1() {
 		List<ListTestModel> x = generatePOJOList();
 		List<ListTestModel> y = generatePOJOList();
-		Assert.assertTrue(x != y);
-		Assert.assertEquals(4, x.size());
+		assertTrue(x != y);
+		assertEquals(4, x.size());
 		
 		// y 리스트는 key=a만 남김 
 		y = y.subList(0, 1);
-		Assert.assertEquals(1, y.size());
+		assertEquals(1, y.size());
 
-		Assert.assertTrue(x.get(0) != y.get(0));
+		assertTrue(x.get(0) != y.get(0));
 		
 		// 합침
 		@SuppressWarnings("unchecked")
 		List<ListTestModel> c = (List<ListTestModel>) CollectionUtils.union(x, y);
 		
 		// 합치기 전 사이즈와 합친 후의 사이즈가 다름
-		Assert.assertNotEquals(x.size(), c.size());
+		assertNotEquals(x.size(), c.size());
 		
 		// 결론: Map과 다르게 정말 같은 인스턴스인지 엄격히 비교함
 		logger.debug("{}", c); // 그래서 보면 first가 두 개임
@@ -90,19 +91,19 @@ public class CollectionUtilsTest {
 	public void testUnionWithPOJO2() {
 		List<ListTestModel> x = generatePOJOList();
 		List<ListTestModel> y = new ArrayList<>();
-		Assert.assertTrue(x != y);
-		Assert.assertEquals(4, x.size());
+		assertTrue(x != y);
+		assertEquals(4, x.size());
 		
 		// x에서 하나 꺼내 y에 추가
 		y.add(x.get(0));
-		Assert.assertEquals(1, y.size());
+		assertEquals(1, y.size());
 		
 		// 합침
 		@SuppressWarnings("unchecked")
 		List<ListTestModel> c = (List<ListTestModel>) CollectionUtils.union(x, y);
 		
 		// 합치기 전 사이즈와 합친 후의 사이즈가 같음
-		Assert.assertEquals(x.size(), c.size());
+		assertEquals(x.size(), c.size());
 		
 		// 결론: 같은 인스턴스니까 합치치 않고 무시함
 		logger.debug("{}", c);
@@ -126,10 +127,10 @@ public class CollectionUtilsTest {
 		};
 		@SuppressWarnings("unchecked")
 		List<HashMap<String, Object>> searchResult = (ArrayList<HashMap<String, Object>>) CollectionUtils.select(list, condition);
-		Assert.assertEquals(4, list.size()); // 원래 리스트는 변하지 않음
-		Assert.assertEquals(2, searchResult.size()); // filter의 조건에 맞는 새로운 리스트의 길이
-		Assert.assertEquals("123", searchResult.get(0).get("value"));
-		Assert.assertEquals("789", searchResult.get(1).get("value"));
+		assertEquals(4, list.size()); // 원래 리스트는 변하지 않음
+		assertEquals(2, searchResult.size()); // filter의 조건에 맞는 새로운 리스트의 길이
+		assertEquals("123", searchResult.get(0).get("value"));
+		assertEquals("789", searchResult.get(1).get("value"));
 	}
 	
 	@Test
@@ -137,7 +138,7 @@ public class CollectionUtilsTest {
 //		int[] arr = new int[] { 1, 2, 6, 3, 4 };
 		Integer[] arr = new Integer[] { 1, 2, 6, 3, 4 };
 		CollectionUtils.reverseArray(arr);
-		Assert.assertArrayEquals(new Integer[] { 4, 3, 6, 2, 1 }, arr);
+		assertArrayEquals(new Integer[] { 4, 3, 6, 2, 1 }, arr);
 	}
 	
 	private List<HashMap<String, Object>> generateMapList() {

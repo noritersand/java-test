@@ -16,10 +16,11 @@ import org.jdom2.Element;
 import org.jdom2.input.DOMBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 
@@ -39,12 +40,12 @@ public class HandleXMLTest {
 		File common = Paths.get("C:\\project\\workspace\\etbs\\common\\target\\pmd.xml").toFile();
 		File frontweb = Paths.get("C:\\project\\workspace\\etbs\\frontweb\\target\\pmd.xml").toFile();
 		File welfare = Paths.get("C:\\project\\workspace\\etbs\\welfare\\target\\pmd.xml").toFile();
-		Assert.assertTrue(backweb.exists());
-		Assert.assertTrue(batch.exists());
-		Assert.assertTrue(cardrelay.exists());
-		Assert.assertTrue(common.exists());
-		Assert.assertTrue(frontweb.exists());
-		Assert.assertTrue(welfare.exists());
+		assertTrue(backweb.exists());
+		assertTrue(batch.exists());
+		assertTrue(cardrelay.exists());
+		assertTrue(common.exists());
+		assertTrue(frontweb.exists());
+		assertTrue(welfare.exists());
 
 		ArrayList<File> files = new ArrayList<>();
 		files.add(backweb);
@@ -69,7 +70,7 @@ public class HandleXMLTest {
 			Element innerRoot = innerJdomDoc.getRootElement();
 			List<Element> childrenList = innerRoot.getChildren("file");
 			for (Element ele : childrenList) {
-				Assert.assertEquals("file", ele.getName());
+				assertEquals("file", ele.getName());
 				Element eleCopy = ele.clone();
 				eleCopy.detach(); // JDOM2에서 DOM요소는 다른데로 옮기기 전에 detach 해야함.
 				fileTagList.add(eleCopy);
@@ -80,7 +81,7 @@ public class HandleXMLTest {
 		doc.setRootElement(new Element("pmd"));
 
 		for (Element ele : fileTagList) {
-			Assert.assertEquals("file", ele.getName());
+			assertEquals("file", ele.getName());
 			doc.getRootElement().addContent(ele);
 		}
 		XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());

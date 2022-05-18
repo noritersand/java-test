@@ -2,8 +2,9 @@ package jdk.java.util;
 
 import java.util.Date;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +23,7 @@ public class DateTest {
 		long mills = System.currentTimeMillis();
 		logger.debug("currentTimeMills: {}", mills);
 		Date now = new Date(mills);
-		Assert.assertEquals(mills, now.getTime());
+		assertEquals(mills, now.getTime());
 	}
 	
 	@Test
@@ -31,6 +32,6 @@ public class DateTest {
 		logger.debug("{}", now);
 		
 		now = new Date(1547168374396L);
-		Assert.assertEquals("Fri Jan 11 09:59:34 KST 2019", now.toString());
+		assertEquals("Fri Jan 11 09:59:34 KST 2019", now.toString());
 	}
 }

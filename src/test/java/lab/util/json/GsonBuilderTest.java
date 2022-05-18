@@ -7,8 +7,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,14 +30,14 @@ public class GsonBuilderTest {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		Gson gson = gsonBuilder.getGson();
 		GsonTestModel convertedModel = gson.fromJson(makeJsonObjectText(), GsonTestModel.class);
-		Assert.assertNull(convertedModel.getCharValue());
-		Assert.assertEquals("", convertedModel.getStringValue());
-		Assert.assertNull(convertedModel.getShortValue());
-		Assert.assertNull(convertedModel.getIntValue());
-		Assert.assertNull(convertedModel.getLongValue());
-		Assert.assertNull(convertedModel.getDoubleValue());
-		Assert.assertNull(convertedModel.getBigDecimalValue());
-		Assert.assertNull(convertedModel.getBoolValue());
+		assertNull(convertedModel.getCharValue());
+		assertEquals("", convertedModel.getStringValue());
+		assertNull(convertedModel.getShortValue());
+		assertNull(convertedModel.getIntValue());
+		assertNull(convertedModel.getLongValue());
+		assertNull(convertedModel.getDoubleValue());
+		assertNull(convertedModel.getBigDecimalValue());
+		assertNull(convertedModel.getBoolValue());
 	}
 
 	@Test
@@ -64,12 +65,12 @@ public class GsonBuilderTest {
 		List<GsonTestModel> convertedModelList = gson.fromJson(makeJsonArrayInArrayText(), new TypeToken<ArrayList<GsonTestModel>>() {}.getType());
 		
 		GsonTestChild[] convertedModel = convertedModelList.get(0).getGsonTestChild();
-		Assert.assertTrue(convertedModel.length == 1);
-		Assert.assertEquals(GsonTestChild[].class, convertedModel.getClass());
+		assertTrue(convertedModel.length == 1);
+		assertEquals(GsonTestChild[].class, convertedModel.getClass());
 		
 		GsonTestChild gsonTestChild = convertedModel[0];
-		Assert.assertEquals("1", gsonTestChild.getA());
-		Assert.assertEquals("2", gsonTestChild.getB());
+		assertEquals("1", gsonTestChild.getA());
+		assertEquals("2", gsonTestChild.getB());
 	}
 
 	public String makeJsonObjectText() {

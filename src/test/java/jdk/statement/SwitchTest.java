@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +32,7 @@ public class SwitchTest {
 //				b; // 이렇게 하면 컴파일 에러: Syntax error, insert "VariableDeclarators" to complete LocalVariableDeclaration
 				b = 3;
 				logger.debug("{}", b);
-				Assert.assertEquals(3, b);
+				assertEquals(3, b);
 				break;
 		}
 	}
@@ -54,10 +55,10 @@ public class SwitchTest {
 					logger.debug("it is null");
 					break;
 			}
-			Assert.assertTrue(1 == 2);
+			assertTrue(1 == 2);
 		} catch (NullPointerException e) {
 			logger.debug("에러 났습니당.");
-			Assert.assertFalse(1 == 2);
+			assertFalse(1 == 2);
 		}
 	}
 	

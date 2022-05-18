@@ -2,8 +2,9 @@ package thirdparty.uid;
 
 import java.util.UUID;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +29,7 @@ public class GenerateUniqueValueTest {
 		if (millsPlusNanos.length() > 19) {
 			millsPlusNanos = millsPlusNanos.substring(0, 19);
 		}
-		Assert.assertEquals(19, millsPlusNanos.length());
+		assertEquals(19, millsPlusNanos.length());
 		logger.debug("{}", Long.valueOf(millsPlusNanos));
 	}
 

@@ -1,7 +1,8 @@
 package misc;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,12 +21,12 @@ public class GreatestCommonDivisorTest {
 		/*
 		 * input a input b 출력 169 104 -> 13 100 250 -> 50 1 1 -> 1 1000000 5 -> 5 104711 104717 -> 1 98304 65536 -> 32768
 		 */
-		Assert.assertEquals(13, getGCD(169, 104));
-		Assert.assertEquals(50, getGCD(100, 250));
-		Assert.assertEquals(1, getGCD(1, 1));
-		Assert.assertEquals(5, getGCD(1000000, 5));
-		Assert.assertEquals(1, getGCD(104711, 104717));
-		Assert.assertEquals(32768, getGCD(98304, 65536));
+		assertEquals(13, getGCD(169, 104));
+		assertEquals(50, getGCD(100, 250));
+		assertEquals(1, getGCD(1, 1));
+		assertEquals(5, getGCD(1000000, 5));
+		assertEquals(1, getGCD(104711, 104717));
+		assertEquals(32768, getGCD(98304, 65536));
 	}
 
 	/**

@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +42,7 @@ public class EnumTest {
 	@Test
 	public void useEqualityOperator() {
 		Color red = Color.RED;
-		Assert.assertTrue(red == Color.RED);
+		assertTrue(red == Color.RED);
 	}
 	
 	@Test
@@ -62,14 +63,14 @@ public class EnumTest {
 		Class<Color> clazz = Color.class;
 		String source = "red";
 		Enum<Color> color = Enum.valueOf(clazz, source.trim().toUpperCase());
-		Assert.assertEquals(Color.RED, color);
+		assertEquals(Color.RED, color);
 	}
 
 	@Test
 	public void testValueOfIAESafe() {
 		String txt = "NOT_BACK_OFFICE";
 		SystemType systemType = SystemType.valueOfIAESafe(txt);
-		Assert.assertEquals("BACK_OFFICE", String.valueOf(systemType));
+		assertEquals("BACK_OFFICE", String.valueOf(systemType));
 	}
 
 	/**
@@ -80,14 +81,14 @@ public class EnumTest {
 	@Test
 	public void testGetDeclaringClass() {
 		// 평범한 enum은 getClass()나 getDeclaringClass()나 별 차이 없지만
-		Assert.assertEquals(SystemType.BACK_OFFICE.getClass(), SystemType.BACK_OFFICE.getDeclaringClass());
-		Assert.assertEquals(SystemType.FRONT_OFFICE.getDeclaringClass(), SystemType.BACK_OFFICE.getDeclaringClass());
+		assertEquals(SystemType.BACK_OFFICE.getClass(), SystemType.BACK_OFFICE.getDeclaringClass());
+		assertEquals(SystemType.FRONT_OFFICE.getDeclaringClass(), SystemType.BACK_OFFICE.getDeclaringClass());
 
 		// 클래스 본문이 있는 enum은 getClass()가 내부의 서브클래스를 반환함.
-		Assert.assertNotEquals(ImSpecial.class, ImSpecial.A.getClass());
-		Assert.assertNotEquals(ImSpecial.class, ImSpecial.B.getClass());
-		Assert.assertEquals(ImSpecial.class, ImSpecial.A.getDeclaringClass());
-		Assert.assertEquals(ImSpecial.class, ImSpecial.B.getDeclaringClass());
+		assertNotEquals(ImSpecial.class, ImSpecial.A.getClass());
+		assertNotEquals(ImSpecial.class, ImSpecial.B.getClass());
+		assertEquals(ImSpecial.class, ImSpecial.A.getDeclaringClass());
+		assertEquals(ImSpecial.class, ImSpecial.B.getDeclaringClass());
 	}
 
 	/**
@@ -101,7 +102,7 @@ public class EnumTest {
 		ImSpecial.B.destroySelf();
 		
 		String result = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName");
-		Assert.assertEquals("MY_NAME", result);
+		assertEquals("MY_NAME", result);
 	}
 
 	private enum ImSpecial {

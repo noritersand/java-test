@@ -1,8 +1,9 @@
 package thirdparty.apache.commons;
 
 import org.apache.commons.lang3.math.NumberUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,35 +19,35 @@ public class NumberUtilsTest {
 
 	@Test
 	public void testIsNumber() {
-		Assert.assertTrue(NumberUtils.isDigits("0"));
-		Assert.assertTrue(NumberUtils.isDigits("01"));
-		Assert.assertTrue(NumberUtils.isDigits("58789"));
+		assertTrue(NumberUtils.isDigits("0"));
+		assertTrue(NumberUtils.isDigits("01"));
+		assertTrue(NumberUtils.isDigits("58789"));
 		
-		Assert.assertFalse(NumberUtils.isDigits(""));
-		Assert.assertFalse(NumberUtils.isDigits(" "));
-		Assert.assertFalse(NumberUtils.isDigits("ONE"));
+		assertFalse(NumberUtils.isDigits(""));
+		assertFalse(NumberUtils.isDigits(" "));
+		assertFalse(NumberUtils.isDigits("ONE"));
 		
-		Assert.assertFalse(NumberUtils.isDigits("3.14"));
-		Assert.assertFalse(NumberUtils.isDigits("0x10"));
-		Assert.assertFalse(NumberUtils.isDigits("58789123124L"));
-		Assert.assertFalse(NumberUtils.isDigits("58789123124.924123D"));
-		Assert.assertFalse(NumberUtils.isDigits("0124.11F"));
+		assertFalse(NumberUtils.isDigits("3.14"));
+		assertFalse(NumberUtils.isDigits("0x10"));
+		assertFalse(NumberUtils.isDigits("58789123124L"));
+		assertFalse(NumberUtils.isDigits("58789123124.924123D"));
+		assertFalse(NumberUtils.isDigits("0124.11F"));
 	}
 
 	@Test
 	public void testIsCreatable() {
-		Assert.assertTrue(NumberUtils.isCreatable("0"));
-		Assert.assertTrue(NumberUtils.isCreatable("01"));
-		Assert.assertTrue(NumberUtils.isCreatable("58789"));
+		assertTrue(NumberUtils.isCreatable("0"));
+		assertTrue(NumberUtils.isCreatable("01"));
+		assertTrue(NumberUtils.isCreatable("58789"));
 		
-		Assert.assertFalse(NumberUtils.isCreatable(""));
-		Assert.assertFalse(NumberUtils.isCreatable(" "));
-		Assert.assertFalse(NumberUtils.isCreatable("ONE"));
+		assertFalse(NumberUtils.isCreatable(""));
+		assertFalse(NumberUtils.isCreatable(" "));
+		assertFalse(NumberUtils.isCreatable("ONE"));
 		
-		Assert.assertTrue(NumberUtils.isCreatable("3.14"));
-		Assert.assertTrue(NumberUtils.isCreatable("0x10"));
-		Assert.assertTrue(NumberUtils.isCreatable("58789123124L"));
-		Assert.assertTrue(NumberUtils.isCreatable("58789123124.924123D"));
-		Assert.assertTrue(NumberUtils.isCreatable("0124.11F"));
+		assertTrue(NumberUtils.isCreatable("3.14"));
+		assertTrue(NumberUtils.isCreatable("0x10"));
+		assertTrue(NumberUtils.isCreatable("58789123124L"));
+		assertTrue(NumberUtils.isCreatable("58789123124.924123D"));
+		assertTrue(NumberUtils.isCreatable("0124.11F"));
 	}
 }

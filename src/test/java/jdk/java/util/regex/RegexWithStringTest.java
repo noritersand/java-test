@@ -1,8 +1,9 @@
 package jdk.java.util.regex;
 
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,14 +19,14 @@ public class RegexWithStringTest {
 
 	@Test
 	public void shoulBeEquals() {
-		Assert.assertEquals("AA1062329819", removeTail("AA1062329819_1"));
-		Assert.assertEquals("AA1062329819", removeTail("AA1062329819_199A"));
+		assertEquals("AA1062329819", removeTail("AA1062329819_1"));
+		assertEquals("AA1062329819", removeTail("AA1062329819_199A"));
 
-		Assert.assertEquals("1", extractTail("AA1062329819_1"));
-		Assert.assertEquals("199A", extractTail("AA1062329819_199A"));
+		assertEquals("1", extractTail("AA1062329819_1"));
+		assertEquals("199A", extractTail("AA1062329819_199A"));
 
-		Assert.assertEquals("1", extractTailUsingApacheCommons("AA1062329819_1"));
-		Assert.assertEquals("12A3", extractTailUsingApacheCommons("AA1062329819_12A3"));
+		assertEquals("1", extractTailUsingApacheCommons("AA1062329819_1"));
+		assertEquals("12A3", extractTailUsingApacheCommons("AA1062329819_12A3"));
 	}
 
 	public static String removeTail(String str) {

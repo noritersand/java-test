@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +34,7 @@ public class GsonTest {
 		@SuppressWarnings("serial")
 		Type listType = new TypeToken<ArrayList<HashMap<String, String>>>() {}.getType();
 		Object result = new Gson().fromJson(reader, listType);
-		Assert.assertEquals(new ArrayList<HashMap<String, String>>().getClass(), result.getClass());
+		assertEquals(new ArrayList<HashMap<String, String>>().getClass(), result.getClass());
 		logger.debug("{}", result);
 	}
 
@@ -42,15 +43,15 @@ public class GsonTest {
 		JsonObject job = new JsonObject();
 		job.addProperty("key", "value");
 
-		Assert.assertEquals("{\"key\":\"value\"}", new Gson().toJson(job));
+		assertEquals("{\"key\":\"value\"}", new Gson().toJson(job));
 	}
 
 	@Test
 	public void parseToPlainObject() {
 		String json = "{\"key\":\"first\",\"value\":\"1234\"}";
 		MyClass myClass = new Gson().fromJson(json, MyClass.class);
-		Assert.assertEquals("first", myClass.getKey());
-		Assert.assertEquals("1234", myClass.getValue());
+		assertEquals("first", myClass.getKey());
+		assertEquals("1234", myClass.getValue());
 	}
 
 	@Test
@@ -59,10 +60,10 @@ public class GsonTest {
 		@SuppressWarnings("serial")
 		Type listType = new TypeToken<ArrayList<MyClass>>() {}.getType();
 		ArrayList<MyClass> myClassList = new Gson().fromJson(json, listType);
-		Assert.assertEquals("first", myClassList.get(0).getKey());
-		Assert.assertEquals("1234", myClassList.get(0).getValue());
-		Assert.assertEquals("second", myClassList.get(1).getKey());
-		Assert.assertEquals("5678", myClassList.get(1).getValue());
+		assertEquals("first", myClassList.get(0).getKey());
+		assertEquals("1234", myClassList.get(0).getValue());
+		assertEquals("second", myClassList.get(1).getKey());
+		assertEquals("5678", myClassList.get(1).getValue());
 	}
 	
 	@Test
@@ -71,8 +72,8 @@ public class GsonTest {
 		@SuppressWarnings("serial")
 		Type listType = new TypeToken<List<Object>>() {}.getType();
 		List<Object> list = new Gson().fromJson(json, listType);
-		Assert.assertEquals(ArrayList.class, list.getClass());
-		Assert.assertEquals(LinkedTreeMap.class, list.get(0).getClass());
+		assertEquals(ArrayList.class, list.getClass());
+		assertEquals(LinkedTreeMap.class, list.get(0).getClass());
 	}
 }
 

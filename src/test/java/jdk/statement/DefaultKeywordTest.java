@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 
@@ -13,8 +14,8 @@ public class DefaultKeywordTest {
 	@Test
 	public void test1() {
 		C c = new C();
-		Assert.assertEquals("aaa", c.a());
-		Assert.assertEquals("hi", c.b());
+		assertEquals("aaa", c.a());
+		assertEquals("hi", c.b());
 	}
 }
 

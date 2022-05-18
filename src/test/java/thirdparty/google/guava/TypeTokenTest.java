@@ -3,8 +3,9 @@ package thirdparty.google.guava;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +25,7 @@ public class TypeTokenTest {
 	public void useTypeToken() {
 		@SuppressWarnings("serial")
 		Type listType = new TypeToken<ArrayList<MyClass>>() {}.getType();
-		Assert.assertEquals("java.util.ArrayList<thirdparty.google.guava.MyClass>", String.valueOf(listType));
+		assertEquals("java.util.ArrayList<thirdparty.google.guava.MyClass>", String.valueOf(listType));
 	}
 }
 

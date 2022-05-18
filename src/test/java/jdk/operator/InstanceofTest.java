@@ -5,8 +5,9 @@ import java.util.List;
 
 import javax.management.relation.RoleList;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,10 +26,10 @@ public class InstanceofTest {
 		Object object = new Object();
 		String string = new String();
 
-		Assert.assertTrue(string instanceof String);
-		Assert.assertTrue(string instanceof Object);
-		Assert.assertFalse(object instanceof String);
-		Assert.assertTrue(object instanceof Object);
+		assertTrue(string instanceof String);
+		assertTrue(string instanceof Object);
+		assertFalse(object instanceof String);
+		assertTrue(object instanceof Object);
 	}
 
 	@Test
@@ -36,13 +37,13 @@ public class InstanceofTest {
 		ArrayList<Object> arrayList = new ArrayList<>();
 		RoleList roleList = new RoleList();
 
-		Assert.assertTrue(arrayList instanceof List);
-		Assert.assertTrue(roleList instanceof List);
-		Assert.assertFalse(arrayList instanceof RoleList);
+		assertTrue(arrayList instanceof List);
+		assertTrue(roleList instanceof List);
+		assertFalse(arrayList instanceof RoleList);
 	}
 	
 	@Test
 	public void testThis() {
-		Assert.assertTrue(this instanceof InstanceofTest);
+		assertTrue(this instanceof InstanceofTest);
 	}
 }

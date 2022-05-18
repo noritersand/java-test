@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +32,7 @@ public class ForStatementTest {
 		for (i = 0; i < 1; i++) {
 			logger.debug("{} 바퀴", i);
 		}
-		Assert.assertEquals(1, i);
+		assertEquals(1, i);
 		
 		// 무한 루프
 		for (;;) {
@@ -57,7 +58,7 @@ public class ForStatementTest {
 				iterator.remove();
 			}
 		}
-		Assert.assertEquals(3, list.size());
+		assertEquals(3, list.size());
 	}
 	
 }

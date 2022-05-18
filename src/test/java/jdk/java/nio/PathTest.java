@@ -7,8 +7,9 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,35 +34,35 @@ public class PathTest {
 		Path path3 = Paths.get("localhost/upload");
 		Path path4 = Paths.get("/localhost/upload");
 
-		Assert.assertEquals("src\\test\\resources\\path-test\\amiexist.txt", path.toString());
-		Assert.assertEquals("\\\\C\\project\\workspace", path1.toString());
-		Assert.assertEquals("C:\\project\\workspace", path2.toString());
-		Assert.assertEquals("localhost\\upload", path3.toString());
-		Assert.assertEquals("localhost\\upload", path3.toString());
-		Assert.assertEquals("\\localhost\\upload", path4.toString());
+		assertEquals("src\\test\\resources\\path-test\\amiexist.txt", path.toString());
+		assertEquals("\\\\C\\project\\workspace", path1.toString());
+		assertEquals("C:\\project\\workspace", path2.toString());
+		assertEquals("localhost\\upload", path3.toString());
+		assertEquals("localhost\\upload", path3.toString());
+		assertEquals("\\localhost\\upload", path4.toString());
 	}
 
 	@Test
 	public void testRelativize() {
 		Path dev = new File("c:\\dev\\git").toPath();
 		Path sso = new File("c:\\sso").toPath();
-		Assert.assertEquals("..\\..\\sso", dev.relativize(sso).toString()); // dev에서 sso로 가려면 'cd ..\..\sso'
-		Assert.assertEquals("..\\dev\\git", sso.relativize(dev).toString()); // sso에서 dev로 가려면 'cd ..\dev\git'
-		Assert.assertEquals("", dev.relativize(dev).toString()); // dev에서 dev로 가려면 'cd .'
+		assertEquals("..\\..\\sso", dev.relativize(sso).toString()); // dev에서 sso로 가려면 'cd ..\..\sso'
+		assertEquals("..\\dev\\git", sso.relativize(dev).toString()); // sso에서 dev로 가려면 'cd ..\dev\git'
+		assertEquals("", dev.relativize(dev).toString()); // dev에서 dev로 가려면 'cd .'
 	}
 
 	@Test
 	public void testRelativize2() {
 		Path source = new File("webapp\\upload\\temp\\").toPath();
 		Path target = new File("webapp\\upload\\temp\\201612\\28201838255.png").toPath();
-		Assert.assertEquals("201612\\28201838255.png", source.relativize(target).toString()); // dev에서 sso로 가려면 'cd ..\..\sso'
+		assertEquals("201612\\28201838255.png", source.relativize(target).toString()); // dev에서 sso로 가려면 'cd ..\..\sso'
 	}
 
 	@Test
 	public void testResolve() throws IOException {
 		Path dev = new File("c:\\dev\\git").toPath();
 		Path someFile = dev.resolve("someFile");
-		Assert.assertEquals("c:\\dev\\git\\someFile", someFile.toString());
+		assertEquals("c:\\dev\\git\\someFile", someFile.toString());
 	}
 
 	@Test
@@ -72,7 +73,7 @@ public class PathTest {
 			// file 프로토콜이 붙으면 파일이 없을때 에러난다.
 			Paths.get("file://c:\\ppp");
 		} catch (Exception e) {
-			Assert.assertTrue(e instanceof InvalidPathException);
+			assertTrue(e instanceof InvalidPathException);
 		}
 	}
 

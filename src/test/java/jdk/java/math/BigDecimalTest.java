@@ -4,8 +4,9 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +21,7 @@ public class BigDecimalTest {
 
 	@Test
 	public void instantiate() {
-		Assert.assertEquals(BigDecimal.valueOf(123), new BigDecimal("123"));
+		assertEquals(BigDecimal.valueOf(123), new BigDecimal("123"));
 	}
 
 	/**
@@ -30,9 +31,9 @@ public class BigDecimalTest {
 	 */
 	@Test
 	public void testCompareTo() {
-		Assert.assertEquals(0, BigDecimal.ZERO.compareTo(BigDecimal.ZERO)); // a.compareTo(b)에서 0이면 a와 b가 같음
-		Assert.assertEquals(-1, BigDecimal.ZERO.compareTo(BigDecimal.ONE)); // a.compareTo(b)에서 -1이면 a가 b보다 작음
-		Assert.assertEquals(1, BigDecimal.ZERO.compareTo(new BigDecimal(-1))); // a.compareTo(b)에서 1이면 a가 b보다 큼
+		assertEquals(0, BigDecimal.ZERO.compareTo(BigDecimal.ZERO)); // a.compareTo(b)에서 0이면 a와 b가 같음
+		assertEquals(-1, BigDecimal.ZERO.compareTo(BigDecimal.ONE)); // a.compareTo(b)에서 -1이면 a가 b보다 작음
+		assertEquals(1, BigDecimal.ZERO.compareTo(new BigDecimal(-1))); // a.compareTo(b)에서 1이면 a가 b보다 큼
 	}
 	
 	/**
@@ -42,11 +43,11 @@ public class BigDecimalTest {
 	 */
 	@Test
 	public void testEquals() {
-		Assert.assertTrue(new BigDecimal("0").equals(BigDecimal.ZERO));
-		Assert.assertFalse(new BigDecimal("0.0").equals(BigDecimal.ZERO)); // 0.0과 0은 같지 않음.
-		Assert.assertTrue(new BigDecimal("1").equals(BigDecimal.ONE));
-		Assert.assertFalse(new BigDecimal("1.0").equals(BigDecimal.ONE)); // 1.1과 1은 같지 않음.
-		Assert.assertTrue(new BigDecimal("123.1").equals(new BigDecimal("123.1")));
+		assertTrue(new BigDecimal("0").equals(BigDecimal.ZERO));
+		assertFalse(new BigDecimal("0.0").equals(BigDecimal.ZERO)); // 0.0과 0은 같지 않음.
+		assertTrue(new BigDecimal("1").equals(BigDecimal.ONE));
+		assertFalse(new BigDecimal("1.0").equals(BigDecimal.ONE)); // 1.1과 1은 같지 않음.
+		assertTrue(new BigDecimal("123.1").equals(new BigDecimal("123.1")));
 	}
 
 	/**
@@ -56,16 +57,16 @@ public class BigDecimalTest {
 	 */
 	@Test
 	public void testAbs() {
-		Assert.assertEquals(new BigDecimal("0.1"), new BigDecimal("-0.1").abs());
-		Assert.assertEquals(new BigDecimal("1.6"), new BigDecimal("1.6").abs());
-		Assert.assertEquals(new BigDecimal("10.592834"), new BigDecimal("-10.592834").abs());
+		assertEquals(new BigDecimal("0.1"), new BigDecimal("-0.1").abs());
+		assertEquals(new BigDecimal("1.6"), new BigDecimal("1.6").abs());
+		assertEquals(new BigDecimal("10.592834"), new BigDecimal("-10.592834").abs());
 	}
 	
 	@Test
 	public void getConst() {
-		Assert.assertEquals(BigDecimal.ZERO, new BigDecimal(0));
-		Assert.assertEquals(BigDecimal.ONE, new BigDecimal(1));
-		Assert.assertEquals(BigDecimal.TEN, new BigDecimal(10));
+		assertEquals(BigDecimal.ZERO, new BigDecimal(0));
+		assertEquals(BigDecimal.ONE, new BigDecimal(1));
+		assertEquals(BigDecimal.TEN, new BigDecimal(10));
 	}
 
 	/**
@@ -78,10 +79,10 @@ public class BigDecimalTest {
 		BigDecimal a = new BigDecimal("10");
 		BigDecimal b = new BigDecimal("20");
 
-		Assert.assertEquals(new BigDecimal("30"), a.add(b));
-		Assert.assertEquals(new BigDecimal("10"), b.subtract(a));
-		Assert.assertEquals(new BigDecimal("200"), a.multiply(b));
-		Assert.assertEquals(new BigDecimal("2"), b.divide(a));
+		assertEquals(new BigDecimal("30"), a.add(b));
+		assertEquals(new BigDecimal("10"), b.subtract(a));
+		assertEquals(new BigDecimal("200"), a.multiply(b));
+		assertEquals(new BigDecimal("2"), b.divide(a));
 	}
 	
 	/**
@@ -102,7 +103,7 @@ public class BigDecimalTest {
 		}
 		// 소수점 셋 째 자리에서 반올림
 		BigDecimal result = smallOne.divide(bigOne, 2, RoundingMode.HALF_UP);
-		Assert.assertEquals(new BigDecimal("0.93"), result);
+		assertEquals(new BigDecimal("0.93"), result);
 	}
 
 	/**
@@ -116,8 +117,8 @@ public class BigDecimalTest {
 		BigDecimal bigOne = new BigDecimal("8000");
 		BigDecimal percentage = new BigDecimal("25");
 
-		Assert.assertEquals(25, smallOne.divide(bigOne).multiply(new BigDecimal(100)).intValue());
-		Assert.assertEquals(2000, bigOne.multiply(percentage).divide(new BigDecimal(100)).intValue());
+		assertEquals(25, smallOne.divide(bigOne).multiply(new BigDecimal(100)).intValue());
+		assertEquals(2000, bigOne.multiply(percentage).divide(new BigDecimal(100)).intValue());
 	}
 
 	/**
@@ -128,7 +129,7 @@ public class BigDecimalTest {
 	@Test
 	public void testPrecision() {
 		BigDecimal n = new BigDecimal("1.003");
-		Assert.assertEquals(4, n.precision());
+		assertEquals(4, n.precision());
 	}
 
 	/**
@@ -139,7 +140,7 @@ public class BigDecimalTest {
 	@Test
 	public void testScale() {
 		BigDecimal n = new BigDecimal("1.003");
-		Assert.assertEquals(3, n.scale());
+		assertEquals(3, n.scale());
 	}
 	
 	/**
@@ -151,21 +152,21 @@ public class BigDecimalTest {
 	public void testSetScale() {
 		// 반올림
 		BigDecimal roundMe = new BigDecimal("12.536512304");
-		Assert.assertEquals(new BigDecimal("12.54"), roundMe.setScale(2, RoundingMode.HALF_UP));
-		Assert.assertEquals(new BigDecimal("12.537"), roundMe.setScale(3, RoundingMode.HALF_UP));
-		Assert.assertEquals(new BigDecimal("12.5365"), roundMe.setScale(4, RoundingMode.HALF_UP));
+		assertEquals(new BigDecimal("12.54"), roundMe.setScale(2, RoundingMode.HALF_UP));
+		assertEquals(new BigDecimal("12.537"), roundMe.setScale(3, RoundingMode.HALF_UP));
+		assertEquals(new BigDecimal("12.5365"), roundMe.setScale(4, RoundingMode.HALF_UP));
 		
 		// 올림
 		BigDecimal ceilMe = new BigDecimal("12.536512304");
-		Assert.assertEquals(new BigDecimal("12.54"), ceilMe.setScale(2, RoundingMode.CEILING));
-		Assert.assertEquals(new BigDecimal("12.537"), ceilMe.setScale(3, RoundingMode.CEILING));
-		Assert.assertEquals(new BigDecimal("12.5366"), ceilMe.setScale(4, RoundingMode.CEILING));
+		assertEquals(new BigDecimal("12.54"), ceilMe.setScale(2, RoundingMode.CEILING));
+		assertEquals(new BigDecimal("12.537"), ceilMe.setScale(3, RoundingMode.CEILING));
+		assertEquals(new BigDecimal("12.5366"), ceilMe.setScale(4, RoundingMode.CEILING));
 		
 		// 내림(=버림, 절삭)
 		BigDecimal floorMe = new BigDecimal("12.536512304");
-		Assert.assertEquals(new BigDecimal("12.53"), floorMe.setScale(2, RoundingMode.FLOOR));
-		Assert.assertEquals(new BigDecimal("12.536"), floorMe.setScale(3, RoundingMode.FLOOR));
-		Assert.assertEquals(new BigDecimal("12.5365"), floorMe.setScale(4, RoundingMode.FLOOR));
+		assertEquals(new BigDecimal("12.53"), floorMe.setScale(2, RoundingMode.FLOOR));
+		assertEquals(new BigDecimal("12.536"), floorMe.setScale(3, RoundingMode.FLOOR));
+		assertEquals(new BigDecimal("12.5365"), floorMe.setScale(4, RoundingMode.FLOOR));
 	}
 	
 	/**
@@ -175,8 +176,8 @@ public class BigDecimalTest {
 	 */
 	@Test
 	public void testScaleByPowerOfTen() {
-		Assert.assertEquals(1.20345D, new BigDecimal(120.345).scaleByPowerOfTen(-2).doubleValue(), 0);
-		Assert.assertEquals(12034.5D, new BigDecimal(120.345).scaleByPowerOfTen(2).doubleValue(), 0);
+		assertEquals(1.20345D, new BigDecimal(120.345).scaleByPowerOfTen(-2).doubleValue(), 0);
+		assertEquals(12034.5D, new BigDecimal(120.345).scaleByPowerOfTen(2).doubleValue(), 0);
 	}
 
 	/**
@@ -186,7 +187,7 @@ public class BigDecimalTest {
 	 */
 	@Test
 	public void testMovePointLeft() {
-		Assert.assertEquals(10.0D, new BigDecimal(100).movePointLeft(1).doubleValue(), 0);
+		assertEquals(10.0D, new BigDecimal(100).movePointLeft(1).doubleValue(), 0);
 	}
 
 	/**
@@ -196,7 +197,7 @@ public class BigDecimalTest {
 	 */
 	@Test
 	public void testMovePointRight() {
-		Assert.assertEquals(1000D, new BigDecimal(100).movePointRight(1).doubleValue(), 0);
+		assertEquals(1000D, new BigDecimal(100).movePointRight(1).doubleValue(), 0);
 	}
 
 	/**
@@ -211,8 +212,8 @@ public class BigDecimalTest {
 		BigDecimal bigVal1 = new BigDecimal("1.5");
 		BigDecimal bigVal2 = new BigDecimal("0.3");
 
-		Assert.assertEquals(0.44999999999999996D, val1 * val2, 0);
-		Assert.assertEquals(new BigDecimal("0.45"), bigVal1.multiply(bigVal2));
+		assertEquals(0.44999999999999996D, val1 * val2, 0);
+		assertEquals(new BigDecimal("0.45"), bigVal1.multiply(bigVal2));
 	}
 
 
@@ -223,16 +224,16 @@ public class BigDecimalTest {
 	 */
 	@Test
 	public void testUnscaledValue() {
-		Assert.assertEquals(BigInteger.ONE, new BigDecimal("0.1").unscaledValue());
-		Assert.assertEquals(new BigInteger("16"), new BigDecimal("1.6").unscaledValue());
-		Assert.assertEquals(new BigInteger("10592834"), new BigDecimal("10.592834").unscaledValue());
+		assertEquals(BigInteger.ONE, new BigDecimal("0.1").unscaledValue());
+		assertEquals(new BigInteger("16"), new BigDecimal("1.6").unscaledValue());
+		assertEquals(new BigInteger("10592834"), new BigDecimal("10.592834").unscaledValue());
 	}
 	
 	@Test
 	public void testToBigInteger() {
 		// BigInteger로 변환시 소수점 이하는 버린다.
-		Assert.assertEquals(BigInteger.TWO, new BigDecimal("2.123").toBigInteger());
-		Assert.assertEquals(BigInteger.TWO, new BigDecimal("2.723").toBigInteger());
+		assertEquals(BigInteger.TWO, new BigDecimal("2.123").toBigInteger());
+		assertEquals(BigInteger.TWO, new BigDecimal("2.723").toBigInteger());
 		
 		// BigInteger와 BigDecimal은 비교/연산할 수 없다.
 //		BigInteger.ONE.equals(BigDecimal.ONE); 

@@ -6,8 +6,9 @@ import java.util.HashMap;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,9 +44,9 @@ public class BeanUtilsTest {
 
 		BeanUtils.copyProperties(newbie, oldbie);
 
-		Assert.assertTrue(oldbie != newbie);
-		Assert.assertEquals(oldbie.getName(), newbie.getName());
-		Assert.assertEquals(oldbie.getNumber(), newbie.getNumber());
+		assertTrue(oldbie != newbie);
+		assertEquals(oldbie.getName(), newbie.getName());
+		assertEquals(oldbie.getNumber(), newbie.getNumber());
 	}
 
 	/**
@@ -67,8 +68,8 @@ public class BeanUtilsTest {
 
 		BeanUtils.populate(model, map);
 
-		Assert.assertEquals("야", model.getName());
-		Assert.assertEquals(101, model.getNumber());
+		assertEquals("야", model.getName());
+		assertEquals(101, model.getNumber());
 	}
 
 	/**
@@ -90,7 +91,7 @@ public class BeanUtilsTest {
 		BeanUtils.copyProperties(model, model);
 
 		// 집에서 돌리면 이게 맞음.
-		Assert.assertEquals("{number=101, name=야, when=null}",
+		assertEquals("{number=101, name=야, when=null}",
 				String.valueOf(BeanUtils.describe(model)));
 
 		// TODO: null 무시 하려면 이렇게 하라는데 안됨

@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,10 +27,10 @@ public class RandomTest {
 			Random random = new Random();
 			
 			int num = random.nextInt(); // int의 최솟값 이상 최댓값 미만 사이의 랜덤값 추출
-			Assert.assertTrue(Integer.MIN_VALUE <= num && num < Integer.MAX_VALUE);
+			assertTrue(Integer.MIN_VALUE <= num && num < Integer.MAX_VALUE);
 			
 			num = random.nextInt(5); // 0 이상 5 미만 사이의 랜덤값 추출
-			Assert.assertTrue(0 <= num && num < 5);
+			assertTrue(0 <= num && num < 5);
 		}
 	}
 	
@@ -42,9 +43,9 @@ public class RandomTest {
 	public void testInts() {
 		Random random = new Random();
 		IntStream a = random.ints();
-		Assert.assertEquals(9223372036854775807L, a.count());
+		assertEquals(9223372036854775807L, a.count());
 		a = random.ints(100);
-		Assert.assertEquals(100L, a.count());
+		assertEquals(100L, a.count());
 	}
 	
 	/**
@@ -67,9 +68,9 @@ public class RandomTest {
 		list.add("열");
 		for (int i = 0; i < 100; ++i) {
 			String element = list.get(new Random().nextInt(list.size()));
-			Assert.assertNotNull(element);
-			Assert.assertFalse(element.isEmpty());
-			Assert.assertTrue(element instanceof String);
+			assertNotNull(element);
+			assertFalse(element.isEmpty());
+			assertTrue(element instanceof String);
 			if (i == 99) {
 				logger.debug(element);
 			}

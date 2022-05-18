@@ -13,8 +13,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +32,7 @@ public class HttpComponentsTest {
 	@Test
 	public void send() throws Exception {
 		String result = sendSimpleRequest("http://google.com");
-		Assert.assertTrue(result != null && !result.isEmpty());
+		assertTrue(result != null && !result.isEmpty());
 		logger.debug(result);
 	}
 

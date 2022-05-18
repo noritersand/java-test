@@ -1,7 +1,8 @@
 package misc;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,29 +34,29 @@ public class PrimitiveTest {
 
 	@Test
 	public void getMinMaxRange() {
-		Assert.assertEquals(-128, Byte.MIN_VALUE);
-		Assert.assertEquals(127, Byte.MAX_VALUE);
-		Assert.assertEquals(-32768, Short.MIN_VALUE);
-		Assert.assertEquals(32767, Short.MAX_VALUE);
-		Assert.assertEquals(-2147483648, Integer.MIN_VALUE);
-		Assert.assertEquals(2147483647, Integer.MAX_VALUE);
-		Assert.assertEquals(-9223372036854775808L, Long.MIN_VALUE);
-		Assert.assertEquals(9223372036854775807L, Long.MAX_VALUE);
-		Assert.assertEquals("1.4E-45", String.valueOf(Float.MIN_VALUE));
-		Assert.assertEquals("3.4028235E38", String.valueOf(Float.MAX_VALUE));
-		Assert.assertEquals("4.9E-324", String.valueOf(Double.MIN_VALUE));
-		Assert.assertEquals("1.7976931348623157E308", String.valueOf(Double.MAX_VALUE));
+		assertEquals(-128, Byte.MIN_VALUE);
+		assertEquals(127, Byte.MAX_VALUE);
+		assertEquals(-32768, Short.MIN_VALUE);
+		assertEquals(32767, Short.MAX_VALUE);
+		assertEquals(-2147483648, Integer.MIN_VALUE);
+		assertEquals(2147483647, Integer.MAX_VALUE);
+		assertEquals(-9223372036854775808L, Long.MIN_VALUE);
+		assertEquals(9223372036854775807L, Long.MAX_VALUE);
+		assertEquals("1.4E-45", String.valueOf(Float.MIN_VALUE));
+		assertEquals("3.4028235E38", String.valueOf(Float.MAX_VALUE));
+		assertEquals("4.9E-324", String.valueOf(Double.MIN_VALUE));
+		assertEquals("1.7976931348623157E308", String.valueOf(Double.MAX_VALUE));
 	}
 
 	@Test
 	public void autoBoxing() {
-		Assert.assertEquals(1, (long) Long.valueOf(1));
+		assertEquals(1, (long) Long.valueOf(1));
 	}
 	
 	@Test
 	public void testValueOf() {
 		int number = Integer.valueOf("1");
-		Assert.assertEquals(1, number);
+		assertEquals(1, number);
 		try {
 			Integer.valueOf(""); // 빈 문자열은 valueOf 불가
 		} catch (NumberFormatException e) {
@@ -74,9 +75,9 @@ public class PrimitiveTest {
 		double val2 = 0.3;
 		
 		// 오차 허용 안함
-		Assert.assertEquals(0.44999999999999996, val1 * val2, 0);
+		assertEquals(0.44999999999999996, val1 * val2, 0);
 		
 		// 0.0000000000000001까지 오차 허용
-		Assert.assertEquals(0.45, val1 * val2, 0.0000000000000001);
+		assertEquals(0.45, val1 * val2, 0.0000000000000001);
 	}
 }

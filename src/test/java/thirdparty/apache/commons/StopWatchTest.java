@@ -1,8 +1,9 @@
 package thirdparty.apache.commons;
 
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,19 +26,19 @@ public class StopWatchTest {
 	public void test() {
 		StopWatch watch = new StopWatch();
 		doUselessThing();
-		Assert.assertEquals(0, watch.getNanoTime()); // 시작하기 전에는 0
+		assertEquals(0, watch.getNanoTime()); // 시작하기 전에는 0
 
 		watch.start(); // 시작
-		Assert.assertTrue(watch.isStarted());
+		assertTrue(watch.isStarted());
 
 		doUselessThing();
 		logger.debug("경과 시간(나노초): {}", String.valueOf(watch.getNanoTime()));
 
 		watch.suspend(); // 일시정지
-		Assert.assertTrue(watch.isSuspended());
+		assertTrue(watch.isSuspended());
 
 		watch.resume(); // 재시작
-		Assert.assertTrue(watch.isStarted());
+		assertTrue(watch.isStarted());
 
 		watch.split(); // 임시 기록
 		logger.debug("임시 기록 시간(나노초): {}", String.valueOf(watch.getSplitNanoTime()));
@@ -47,7 +48,7 @@ public class StopWatchTest {
 		watch.stop(); // 중단
 		watch.reset(); // 초기화
 
-		Assert.assertTrue(watch.isStopped());
+		assertTrue(watch.isStopped());
 	}
 
 	private long doUselessThing() {

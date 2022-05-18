@@ -2,8 +2,9 @@ package jdk.java.util;
 
 import lab.dummy.generator.ListGenerator;
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,13 +22,13 @@ public class CollectionsTest {
 	@Test
 	public void testMin() {
 		List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
-		Assert.assertEquals(Integer.valueOf(1), Collections.min(list));
+		assertEquals(Integer.valueOf(1), Collections.min(list));
 	}
 
 	@Test
 	public void testMax() {
 		List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
-		Assert.assertEquals(Integer.valueOf(99), Collections.max(list));
+		assertEquals(Integer.valueOf(99), Collections.max(list));
 		list.get(0);
 	}
 
@@ -67,7 +68,7 @@ public class CollectionsTest {
 		long afterSearchTime = watch.getNanoTime();
 		logger.debug("pure searching time: {}", afterSearchTime - afterSortingTime);
 
-		Assert.assertEquals(findMe, list.get(found));
+		assertEquals(findMe, list.get(found));
 	}
 
 	@Test
@@ -90,7 +91,7 @@ public class CollectionsTest {
 		watch.stop();
 		logger.debug("searching time: {}", watch.getNanoTime());
 
-		Assert.assertEquals(findMe, list.get(found));
+		assertEquals(findMe, list.get(found));
 	}
 
 	/**
@@ -117,7 +118,7 @@ public class CollectionsTest {
 	@Test
 	public void testWildcardParameterizedType() {
 		List<? super String> strList = Arrays.asList(new String[] { "a", "b" });
-		Assert.assertTrue(strList.contains("a"));
+		assertTrue(strList.contains("a"));
 	}
 
 

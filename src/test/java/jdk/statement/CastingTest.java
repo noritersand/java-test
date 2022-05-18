@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,14 +19,14 @@ public class CastingTest {
 	public void castNullToString() {
 		Object imnotnotnull = null;
 		String string = (String) imnotnotnull;
-		Assert.assertNull(string);
+		assertNull(string);
 	}
 
 	@Test
 	public void upCasting() {
 		Child c = new Child();
 		Parent p = c;
-		Assert.assertEquals("Child", p.getName());
+		assertEquals("Child", p.getName());
 //		p.play(); // undefined method
 	}
 
@@ -44,7 +45,7 @@ public class CastingTest {
 		Parent p = new Child();
 		Child c = (Child) p;
 		
-		Assert.assertEquals("Child", c.getName());
+		assertEquals("Child", c.getName());
 		c.play();
 	}
 	

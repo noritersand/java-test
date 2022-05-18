@@ -1,8 +1,9 @@
 package thirdparty.apache.commons;
 
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,13 +19,13 @@ public class StringUtilsTest {
 
 	@Test
 	public void testDefault() {
-		Assert.assertEquals("", StringUtils.defaultString("", "0"));
-		Assert.assertEquals("0", StringUtils.defaultIfBlank("", "0"));
+		assertEquals("", StringUtils.defaultString("", "0"));
+		assertEquals("0", StringUtils.defaultIfBlank("", "0"));
 	}
 
 	@Test
 	public void testPadding() {
-		Assert.assertEquals("001", StringUtils.leftPad("1", 3, "0"));
-		Assert.assertEquals("10000", StringUtils.rightPad("1", 5, "0"));
+		assertEquals("001", StringUtils.leftPad("1", 3, "0"));
+		assertEquals("10000", StringUtils.rightPad("1", 5, "0"));
 	}
 }

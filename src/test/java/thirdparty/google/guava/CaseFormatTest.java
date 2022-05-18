@@ -1,7 +1,8 @@
 package thirdparty.google.guava;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,14 +21,14 @@ public class CaseFormatTest {
 	@Test
 	public void testFormat() {
 		// lower camel -> upper underscore
-		Assert.assertEquals("MY_NAME", CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName"));
+		assertEquals("MY_NAME", CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName"));
 
 		// upper underscore -> lower camel
-		Assert.assertEquals("setBulkReservationNotPossible",
+		assertEquals("setBulkReservationNotPossible",
 				CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "SET_BULK_RESERVATION_NOT_POSSIBLE"));
 
 		// lower hyphen -> lower camel
-		Assert.assertEquals("setBulkReservationNotPossible",
+		assertEquals("setBulkReservationNotPossible",
 				CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, "set-bulk-reservation-not-possible"));
 	}
 }

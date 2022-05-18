@@ -2,7 +2,7 @@ package jdk.java.util;
 
 import java.util.concurrent.CountDownLatch;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +26,7 @@ public class CountDownLatchTest {
 	public void printElapsedTime() throws InterruptedException {
 		final CountDownLatch latch = new CountDownLatch(1);
 //		boolean success = lacth.await(2000, TimeUnit.MILLISECONDS);
-//		Assert.assertTrue(success);
+//		assertTrue(success);
 		
 		long start = System.currentTimeMillis();
         for (long i = 0; i < 10; i++) {

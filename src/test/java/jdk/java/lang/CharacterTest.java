@@ -1,7 +1,8 @@
 package jdk.java.lang;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,22 +25,22 @@ public class CharacterTest {
 		Character bb = 'b';
 
 		// 동등 비교
-		Assert.assertTrue(a == 'a');
-		Assert.assertFalse(a == b);
-		Assert.assertTrue(a == aa);
-		Assert.assertTrue(bb.equals(b));
+		assertTrue(a == 'a');
+		assertFalse(a == b);
+		assertTrue(a == aa);
+		assertTrue(bb.equals(b));
 
 		// String과 비교
-		Assert.assertFalse("a".equals('a')); // equals()로는 다른 타입끼리 비교 불가
-		Assert.assertTrue(a == "a".charAt(0));
+		assertFalse("a".equals('a')); // equals()로는 다른 타입끼리 비교 불가
+		assertTrue(a == "a".charAt(0));
 
 		// 새로 만든 인스턴스와 비교
 		Character inst = Character.valueOf('a');
-		Assert.assertTrue(a == inst); // Character.equals()에서 래퍼타입이 갖고 있는 value로 비교함.
-		Assert.assertTrue(aa == inst); // 이것도 마찬가지. 래퍼타입이 갖고 있는 value로 비교됨. JDK9부터 되는걸로 추정
-		Assert.assertFalse(inst.equals("a")); // equals()로는 다른 타입끼리 비교 불가
-		Assert.assertTrue(inst.equals("a".charAt(0)));
-		Assert.assertTrue(inst == "a".charAt(0));
+		assertTrue(a == inst); // Character.equals()에서 래퍼타입이 갖고 있는 value로 비교함.
+		assertTrue(aa == inst); // 이것도 마찬가지. 래퍼타입이 갖고 있는 value로 비교됨. JDK9부터 되는걸로 추정
+		assertFalse(inst.equals("a")); // equals()로는 다른 타입끼리 비교 불가
+		assertTrue(inst.equals("a".charAt(0)));
+		assertTrue(inst == "a".charAt(0));
 	}
 
 	@Test
@@ -70,7 +71,7 @@ public class CharacterTest {
 	public void fromASCIICode() {
 		char a = 65;
 		char b = 98;
-		Assert.assertEquals('A', a);
-		Assert.assertEquals('b', b);
+		assertEquals('A', a);
+		assertEquals('b', b);
 	}
 }

@@ -1,14 +1,13 @@
 package jdk.java.util;
 
-import static org.junit.Assert.assertNull;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,11 +33,11 @@ public class HashMapTest {
 		y.put("a", "b");
 		
 		// 인스턴스는 다르지만
-		Assert.assertTrue(x != y);
+		assertTrue(x != y);
 		// AbstractMap.hashCode()는 엔트리의 hashCode()를 이어 붙인 값이다. 따라서 같다고 판단한다.
-		Assert.assertTrue(x.hashCode() == y.hashCode());
+		assertTrue(x.hashCode() == y.hashCode());
 		// AbstractMap.equals()는 엔트리의 키:값 구성이 같은지를 비교한다. 따라서 둘은 동등하다.
-		Assert.assertTrue(x.equals(y));
+		assertTrue(x.equals(y));
 	}
 	
 	@Test
@@ -66,7 +65,7 @@ public class HashMapTest {
 	public void checkNPE() {
 		Map<String, Object> map = new HashMap<>();
 		final String empty = (String) map.get("empty");
-		Assert.assertNull(empty);
+		assertNull(empty);
 	}
 	
 	/**
@@ -84,7 +83,7 @@ public class HashMapTest {
 		
 		Set<String> keySet = map.keySet();
 		for (String key : keySet) {
-			Assert.assertNotNull(map.get(key));
+			assertNotNull(map.get(key));
 		}
 	}
 	

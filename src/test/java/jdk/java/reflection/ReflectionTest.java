@@ -3,8 +3,9 @@ package jdk.java.reflection;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,15 +26,15 @@ public class ReflectionTest {
 
 		// invoke method
 		Method method = clazz.getDeclaredMethod("myMethod");
-		Assert.assertNotNull(method);
-		Assert.assertEquals("finally you found me!", method.invoke(instance));
-		Assert.assertEquals("myMethod", method.getName());
+		assertNotNull(method);
+		assertEquals("finally you found me!", method.invoke(instance));
+		assertEquals("myMethod", method.getName());
 
 		// access field
 		Field field = clazz.getDeclaredField("myField");
-		Assert.assertNotNull(field);
-		Assert.assertEquals(0, field.get(instance));
-		Assert.assertEquals("myField", field.getName());
+		assertNotNull(field);
+		assertEquals(0, field.get(instance));
+		assertEquals("myField", field.getName());
 	}
 
 	@SuppressWarnings("unused")

@@ -2,8 +2,9 @@ package jdk.statement;
 
 import java.time.LocalDateTime;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +39,7 @@ public class SynchronizedTest {
 		while (first.isAlive() || second.isAlive()) {
 			// first와 second가 종료될 때까지 대기
 		}
-		Assert.assertEquals(10000, instance.getAcc());
+		assertEquals(10000, instance.getAcc());
 	}
 	
 	@Test
@@ -63,7 +64,7 @@ public class SynchronizedTest {
 		while (third.isAlive() || fourth.isAlive()) {
 			// third와 fourth가 종료될 때까지 대기
 		}
-		Assert.assertEquals(10000, instance.getAcc());
+		assertEquals(10000, instance.getAcc());
 	}
 
 	private int acc = 0;

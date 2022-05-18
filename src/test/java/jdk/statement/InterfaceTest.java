@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +24,7 @@ public class InterfaceTest {
 	@Test
 	public void test() {
 		String fourfivesix = ImplementMe.fourFiveSix;
-		Assert.assertEquals(fourfivesix, "456");
+		assertEquals(fourfivesix, "456");
 		ImplementMe aa = new ImplementMe() {
 			
 			@Override
@@ -32,7 +33,7 @@ public class InterfaceTest {
 				return null;
 			}
 		};
-		Assert.assertEquals("Hi.", aa.sayHello());
+		assertEquals("Hi.", aa.sayHello());
 	}
 }
 

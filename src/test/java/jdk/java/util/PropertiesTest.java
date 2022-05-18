@@ -5,8 +5,9 @@ import java.nio.file.Path;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,13 +40,13 @@ public class PropertiesTest {
 
 		Properties newProp = new Properties();
 		newProp.load(new FileInputStream(testProperties.toString()));
-		Assert.assertEquals("서울에수도가어디있어", newProp.get("서울의수도"));
+		assertEquals("서울에수도가어디있어", newProp.get("서울의수도"));
 	}
 
 	@Test
 	public void getPropertyDefault() {
 		Properties prop = new Properties();
-		Assert.assertEquals("hello-world", prop.getProperty("I'm not exist", "hello-world").toString());
+		assertEquals("hello-world", prop.getProperty("I'm not exist", "hello-world").toString());
 	}
 
 	@Test
@@ -54,13 +55,13 @@ public class PropertiesTest {
 		Properties prop = new Properties();
 		prop.load(fis);
 		fis.close();
-		Assert.assertTrue(prop.containsKey("a.b.c"));
+		assertTrue(prop.containsKey("a.b.c"));
 		logger.debug("{}", prop);
 		
-		Assert.assertEquals("http://daum.net", prop.getProperty("web.root"));
-		Assert.assertEquals("123", prop.getProperty("a.b.c"));
-		Assert.assertEquals("한글", prop.getProperty("korean"));
-		Assert.assertEquals("한글2", prop.getProperty("korean2"));
+		assertEquals("http://daum.net", prop.getProperty("web.root"));
+		assertEquals("123", prop.getProperty("a.b.c"));
+		assertEquals("한글", prop.getProperty("korean"));
+		assertEquals("한글2", prop.getProperty("korean2"));
 	}
 
 	@Test
@@ -69,13 +70,13 @@ public class PropertiesTest {
 		Properties prop = new Properties();
 		prop.load(reader);
 		reader.close();
-		Assert.assertTrue(prop.containsKey("a.b.c"));
+		assertTrue(prop.containsKey("a.b.c"));
 		logger.debug("{}", prop);
 
-		Assert.assertEquals("http://daum.net", prop.getProperty("web.root"));
-		Assert.assertEquals("123", prop.getProperty("a.b.c"));
-		Assert.assertEquals("한글", prop.getProperty("korean"));
-		Assert.assertEquals("한글2", prop.getProperty("korean2"));
+		assertEquals("http://daum.net", prop.getProperty("web.root"));
+		assertEquals("123", prop.getProperty("a.b.c"));
+		assertEquals("한글", prop.getProperty("korean"));
+		assertEquals("한글2", prop.getProperty("korean2"));
 	}
 
 	@Test
@@ -84,7 +85,7 @@ public class PropertiesTest {
 		Properties prop = new Properties();
 		prop.loadFromXML(fis);
 		fis.close();
-		Assert.assertTrue(prop.containsKey("image.root"));
+		assertTrue(prop.containsKey("image.root"));
 		logger.debug("{}", prop);
 
 		Enumeration<Object> keys = prop.keys();
@@ -96,7 +97,7 @@ public class PropertiesTest {
 		// key: some.korean, value: 한글
 		// key: image.root, value: http://tistory.com
 
-		Assert.assertEquals("http://tistory.com", prop.getProperty("image.root"));
-		Assert.assertEquals("한글", prop.getProperty("some.korean"));
+		assertEquals("http://tistory.com", prop.getProperty("image.root"));
+		assertEquals("한글", prop.getProperty("some.korean"));
 	}
 }

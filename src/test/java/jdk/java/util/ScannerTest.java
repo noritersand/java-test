@@ -2,8 +2,9 @@ package jdk.java.util;
 
 import java.util.Scanner;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +24,7 @@ public class ScannerTest {
 	@Test
 	public void initialize() {
 		Scanner scanner = new Scanner(FULL_TEXT);
-		Assert.assertNotNull(scanner);
+		assertNotNull(scanner);
 		scanner.close();
 	}
 	
@@ -36,7 +37,7 @@ public class ScannerTest {
 	@Test
 	public void testNext() {
 		Scanner scanner = new Scanner(FULL_TEXT);
-		Assert.assertEquals("\\p{javaWhitespace}+", scanner.delimiter().toString());
+		assertEquals("\\p{javaWhitespace}+", scanner.delimiter().toString());
 		while (scanner.hasNext()) {
 			final String text = scanner.next();
 			logger.debug(text);

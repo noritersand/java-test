@@ -2,8 +2,9 @@ package jdk.java.lang;
 
 import java.nio.charset.StandardCharsets;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,19 +28,19 @@ public class StringBufferTest {
 	public void concatBytes() {
 		final String origin = "가나다라";
 		final byte[] bytes = origin.getBytes(StandardCharsets.UTF_8);
-		Assert.assertArrayEquals(new byte[] { -22, -80, -128, -21, -126, -104, -21, -117, -92, -21, -99, -68 }, bytes);
+		assertArrayEquals(new byte[] { -22, -80, -128, -21, -126, -104, -21, -117, -92, -21, -99, -68 }, bytes);
 		
-		Assert.assertEquals("가", new String(bytes, 0, 3, StandardCharsets.UTF_8));
-		Assert.assertEquals("나", new String(bytes, 3, 3, StandardCharsets.UTF_8));
-		Assert.assertEquals("다", new String(bytes, 6, 3, StandardCharsets.UTF_8));
-		Assert.assertEquals("라", new String(bytes, 9, 3, StandardCharsets.UTF_8));
+		assertEquals("가", new String(bytes, 0, 3, StandardCharsets.UTF_8));
+		assertEquals("나", new String(bytes, 3, 3, StandardCharsets.UTF_8));
+		assertEquals("다", new String(bytes, 6, 3, StandardCharsets.UTF_8));
+		assertEquals("라", new String(bytes, 9, 3, StandardCharsets.UTF_8));
 		
 		String a, b, c;
-		Assert.assertEquals("가�", a = new String(bytes, 0, 4, StandardCharsets.UTF_8));
-		Assert.assertEquals("���", b = new String(bytes, 4, 4, StandardCharsets.UTF_8));
-		Assert.assertEquals("�라", c = new String(bytes, 8, 4, StandardCharsets.UTF_8));
+		assertEquals("가�", a = new String(bytes, 0, 4, StandardCharsets.UTF_8));
+		assertEquals("���", b = new String(bytes, 4, 4, StandardCharsets.UTF_8));
+		assertEquals("�라", c = new String(bytes, 8, 4, StandardCharsets.UTF_8));
 		StringBuffer buffer = new StringBuffer().append(a).append(b).append(c);
 		
-		Assert.assertEquals("가�����라", buffer.toString());
+		assertEquals("가�����라", buffer.toString());
 	}
 }

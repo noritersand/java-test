@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,12 +23,12 @@ public class BreakTest {
 	public void withLabeledIfStatement() {
 		int n = 10;
 		hello: if (n > 0) {
-		    Assert.assertTrue(T);
+		    assertTrue(T);
 		    if (n == 10) {
-		    	Assert.assertTrue(T);
+		    	assertTrue(T);
 		        break hello; // hello if를 탈출
 		    }
-		    Assert.assertTrue(F); // 실행되지 않음
+		    assertTrue(F); // 실행되지 않음
 		}
 	}
 	
@@ -36,10 +37,10 @@ public class BreakTest {
 		char c = 'A';
 		yoohoo: {
 		    if (c == 'A') {
-		    	Assert.assertTrue(T);
+		    	assertTrue(T);
 		        break yoohoo; // yoohoo 블록을 탈출
 		    }
-		    Assert.assertTrue(F); // 실행되지 않음
+		    assertTrue(F); // 실행되지 않음
 		}
 	}
 }

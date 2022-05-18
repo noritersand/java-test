@@ -2,8 +2,9 @@ package thirdparty.org.projectlombok;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,12 +18,12 @@ public class LombokTest {
 //        BuildMe bm1 = new BuildMe();
 
         BuildMe bm2 = new BuildMe("yo", 123);
-        Assert.assertEquals("yo", bm2.getA()); // 이 getter는 @Getter 어노테이션이 만들어줌
-        Assert.assertEquals(123, bm2.getB());
+        assertEquals("yo", bm2.getA()); // 이 getter는 @Getter 어노테이션이 만들어줌
+        assertEquals(123, bm2.getB());
 
         BuildMe bm3 = BuildMe.builder().a("yo").b(123).build();
-        Assert.assertEquals("yo", bm3.getA());
-        Assert.assertEquals(123, bm3.getB());
+        assertEquals("yo", bm3.getA());
+        assertEquals(123, bm3.getB());
 
         // setter를 만들어주는 건 아니라서 컴파일 에러
 //        bm2.setA("hi");

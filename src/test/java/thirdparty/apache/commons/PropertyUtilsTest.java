@@ -4,8 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,8 +43,8 @@ public class PropertyUtilsTest {
 		PropertyUtils.copyProperties(newbie, oldbie);
 //		BeanUtils.populate(interworkModel, product); // target 필드가 java.util.Date 타입인데 값으로 null이 들어오면 에러남.
 
-		Assert.assertTrue(oldbie != newbie);
-		Assert.assertEquals(oldbie.getName(), newbie.getName());
-		Assert.assertEquals(oldbie.getNumber(), newbie.getNumber());
+		assertTrue(oldbie != newbie);
+		assertEquals(oldbie.getName(), newbie.getName());
+		assertEquals(oldbie.getNumber(), newbie.getNumber());
 	}
 }

@@ -2,8 +2,9 @@ package jdk.java.util;
 
 import java.util.StringTokenizer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,16 +26,16 @@ public class StringTokenizerTest {
 		StringTokenizer token2 = new StringTokenizer(text, "|");
 		
 //		token1.hasMoreElements(); // 내부에서 hasMoreTokens()를 호출함
-		Assert.assertTrue(token1.hasMoreTokens());
-		Assert.assertEquals("a", token1.nextToken());
-		Assert.assertEquals("b|c", token1.nextToken());
-		Assert.assertEquals("d", token1.nextToken());
-		Assert.assertFalse(token1.hasMoreTokens());
+		assertTrue(token1.hasMoreTokens());
+		assertEquals("a", token1.nextToken());
+		assertEquals("b|c", token1.nextToken());
+		assertEquals("d", token1.nextToken());
+		assertFalse(token1.hasMoreTokens());
 		
-		Assert.assertTrue(token2.hasMoreTokens());
-		Assert.assertEquals("a,b", token2.nextToken());
-		Assert.assertEquals("c,d", token2.nextToken());
-		Assert.assertFalse(token2.hasMoreTokens());
+		assertTrue(token2.hasMoreTokens());
+		assertEquals("a,b", token2.nextToken());
+		assertEquals("c,d", token2.nextToken());
+		assertFalse(token2.hasMoreTokens());
 	}
 	
 }

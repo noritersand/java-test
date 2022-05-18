@@ -1,7 +1,8 @@
 package jdk.statement;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,18 +19,18 @@ public class WrapperClassTest {
 	public void copy() {
 		final Integer a = Integer.valueOf(123);
 		Integer b = a;
-		Assert.assertEquals(123, b.intValue());
+		assertEquals(123, b.intValue());
 		b = 456; // b = new Integer(456); String과 마찬가지로 새 객체가 할당된다.
-		Assert.assertEquals(123, a.intValue());
-		Assert.assertEquals(456, b.intValue());
+		assertEquals(123, a.intValue());
+		assertEquals(456, b.intValue());
 	}
 	
 	@Test
 	public void testEquals() {
 		Long a = Long.valueOf(12345);
 		Long b = Long.valueOf(12345);
-		Assert.assertFalse(a == b); // wrapper 타입은 동등 연산자에서 객체 아이디를 비교하지 값을 비교하지 않음.
-		Assert.assertTrue(a.equals(b)); // correct
+		assertFalse(a == b); // wrapper 타입은 동등 연산자에서 객체 아이디를 비교하지 값을 비교하지 않음.
+		assertTrue(a.equals(b)); // correct
 	}
 	
 	@Test
@@ -37,7 +38,7 @@ public class WrapperClassTest {
 		Integer num = 456;
 		changeValue(num); // 내부에서 123으로 변경
 		// 그래도 num은 456으로 유지된다. wrapper 타입이 일반적인 reference 타입과 다른 특징임.
-		Assert.assertEquals(Integer.valueOf(456), num);
+		assertEquals(Integer.valueOf(456), num);
 	}
 	
 	private void changeValue(Integer num) {
@@ -53,7 +54,7 @@ public class WrapperClassTest {
 	public void testNullSafe() {
 		Object a = null;
 		String txt = (String) a;
-		Assert.assertNull(txt);
+		assertNull(txt);
 	}
 	
 	/**

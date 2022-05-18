@@ -5,8 +5,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,7 @@ public class FileTest {
 	@Test
 	public void initialize() {
 		File file = new File("/im-g-root"); // 이클립스를 실행한 드라이브의 루트의 qweasdqweasd 폴더
-		Assert.assertFalse(file.exists());
+		assertFalse(file.exists());
 	}
 
 	@Test
@@ -35,10 +36,10 @@ public class FileTest {
 		Path path = Paths.get("src/test/resources/file-test/amiexist.txt");
 		logger.debug(path.toString());
 		File file = path.toFile();
-		Assert.assertEquals(path.toString(), file.toString());
+		assertEquals(path.toString(), file.toString());
 		logger.debug(file.getAbsolutePath());
-		Assert.assertEquals(file.getAbsolutePath(), file.getAbsoluteFile().toString());
-		Assert.assertTrue(file.exists());
+		assertEquals(file.getAbsolutePath(), file.getAbsoluteFile().toString());
+		assertTrue(file.exists());
 	}
 	
 	@Test
