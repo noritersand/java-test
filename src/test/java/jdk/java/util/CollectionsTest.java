@@ -32,6 +32,42 @@ public class CollectionsTest {
 		list.get(0);
 	}
 
+	@Test
+	public void testSort() {
+		Integer[] chaos = new Integer[] { 105, 99, 2, 44, 73, 99 };
+		Integer[] sortedAsc = new Integer[] { 2, 44, 73, 99, 99, 105 };
+		Integer[] sortedDesc = new Integer[] { 105, 99, 99, 73, 44, 2 };
+		List<Integer> list = Arrays.asList(chaos);
+
+		// 그냥 호출하면 오름차순
+		Collections.sort(list);
+		assertArrayEquals(sortedAsc, list.toArray());
+
+		// 내림차순
+		Collections.sort(list, Collections.reverseOrder());
+		assertArrayEquals(sortedDesc, list.toArray());
+
+		// Comparator 직접 작성하기: 오름차순
+		list = Arrays.asList(chaos);
+		// 아래 줄은 요렇게 쓴 거랑 같음:
+		/*
+		Collections.sort(list, (o1, o2) -> {
+		  return o1 - o2;
+		});
+		*/
+		Collections.sort(list, (o1, o2) -> o1 - o2);
+		// 음수를 반환하면 o1을 좌측으로, 0을 반환하게 하면 그대로 유지, 양수를 반환하면 o1을 우측으로 정렬한다.
+		// 이 경우 음수가 반환되려면 o1이 o2보다 작아야하므로 작은 값이 좌측으로 정렬되는 오름차순 정렬이 된다.
+		assertArrayEquals(sortedAsc, list.toArray());
+
+		// Comparator 직접 작성하기: 내림차순
+		list = Arrays.asList(chaos);
+		Collections.sort(list, (o1, o2) -> o2 - o1);
+		// 음수: o1을 좌측으로, 0: 유지, 양수: 01을 우측으로
+		// 이 경우 음수가 반환되려면 o1이 o2보다 커야하므로 큰 값이 좌측으로 정렬되는 내림차순 정렬이다.
+		assertArrayEquals(sortedDesc, list.toArray());
+	}
+
 	/**
 	 * 정렬 알고리즘 중 가장 빠르다는 이진 탐색 테스트. 빠르긴 한데 정렬이 불가능한 데이터에는 사용할 수 없는 한계가 있다.<p>
 	 *

@@ -57,6 +57,14 @@ public class StringTest {
 		assertEquals("3", formatter.binaryFormat(2.6D));
 	}
 
+	@Test
+	public void getASCIICode() {
+		String a = "abc";
+		assertEquals(97, (int) a.charAt(0));
+		assertEquals(98, (short) a.charAt(1));
+		assertEquals(99, (byte) a.charAt(2));
+	}
+
 	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void compareWithCharacter() {

@@ -15,6 +15,14 @@ public class ListGenerator {
     private ListGenerator() {
     }
 
+    public static List<String> generateAlphabeticList(@NotNull final int size) {
+        final List<String> list = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            list.add(RandomStringUtils.randomAlphabetic(1));
+        }
+        return list;
+    }
+
     @NotNull
     public static List<String> generateStringList(int size) {
         List<String> list = new ArrayList<>(size);
