@@ -17,7 +17,7 @@ public class LombokTest {
         // 'BuildMe(java.lang.String)' in 'thirdparty.org.projectlombok.BuildMe' cannot be applied to '()'
 //        BuildMe bm1 = new BuildMe();
 
-        BuildMe bm2 = new BuildMe("yo", 123);
+        BuildMe bm2 = new BuildMe("yo", 123); // 이건 패키지 다르면 접근 안되니 주의할 것
         assertEquals("yo", bm2.getA()); // 이 getter는 @Getter 어노테이션이 만들어줌
         assertEquals(123, bm2.getB());
 
