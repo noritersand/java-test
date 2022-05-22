@@ -68,6 +68,20 @@ public class JavaTimeTest {
 	}
 
 	@Test
+	public void parseLocalDateToSqlDate() {
+		LocalDate a = LocalDate.of(2017, Month.DECEMBER, 31);
+		java.sql.Date b = java.sql.Date.valueOf(a);
+		assertEquals("2017-12-31", b.toString());
+	}
+
+	@Test
+	public void parseSqlDateToLocalDate() {
+		java.sql.Date a = java.sql.Date.valueOf("2020-12-31");
+		LocalDate b = a.toLocalDate();
+		assertEquals("2020-12-31", b.toString());
+	}
+
+	@Test
 	public void getMonthDay() {
 		MonthDay a = MonthDay.now();
 		logger.debug("{}", a); // --MM-dd
