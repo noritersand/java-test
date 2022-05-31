@@ -20,7 +20,8 @@ import org.slf4j.LoggerFactory;
 public class PhoneNumberSplitter {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(PhoneNumberSplitter.class);
-	
+	public static final String DELIMITER = "-";
+
 	private PhoneNumberSplitter() {}
 
 	public static Result split(String str) {
@@ -38,7 +39,7 @@ public class PhoneNumberSplitter {
 
 		result.setSeparated(separated);
 		List<String> strList = Arrays.asList(separated);
-		String joined = String.join("-", strList);
+		String joined = String.join(DELIMITER, strList);
 		result.setJoined(joined);
 		return result;
 	}
