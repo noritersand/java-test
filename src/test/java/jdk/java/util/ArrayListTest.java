@@ -68,7 +68,7 @@ public class ArrayListTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void removeElement1() {
+	public void removeElementWithIterator() {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
 		Iterator<String> iter = list.iterator();
 		while (iter.hasNext()) {
@@ -77,6 +77,8 @@ public class ArrayListTest {
 				iter.remove();
 			}
 		}
+		assertEquals(Arrays.asList("b", "c", "d"), list);
+		assertEquals(3, list.size());
 	}
 
 	/**
@@ -85,7 +87,7 @@ public class ArrayListTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void removeElement2() {
+	public void removeElementByIndex() {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
 		for (int i = 0; i < list.size(); i++) {
 			final String str = list.get(i);
@@ -104,18 +106,11 @@ public class ArrayListTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void removeElement3() {
+	public void removeElementInWhile() {
 		String[] strs = { "a", "b", "c", "d", "e" };
 
 		// 앞 3개 지우기
 		List<String> list = Arrays.stream(strs).collect(Collectors.toList());
-//		for (int cnt = 0, i = 0; i < list.size(); i++) {
-//			if (cnt < 3) {
-//				list.remove(0);
-//				i--;
-//				cnt++;
-//			}
-//		} // for 필요 없잖여
 		{
 			int cnt = 0;
 			while (true) {
@@ -138,20 +133,6 @@ public class ArrayListTest {
 			}
 		}
 		assertEquals("[a, b]", list.toString());
-	}
-
-	@Test
-	public void removeElementWithIterator() {
-		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
-		Iterator<String> iter = list.iterator();
-		while (iter.hasNext()) {
-			String s = iter.next();
-			if (s.equals("a")) {
-				iter.remove();
-			}
-		}
-		assertEquals(Arrays.asList("b", "c", "d"), list);
-		assertEquals(3, list.size());
 	}
 
 //	@Test

@@ -97,7 +97,7 @@ public class StreamTest {
     @Test
     public void testSorted() {
         List<String> list = Arrays.asList("9", "A", "Z", "1", "B", "Y", "4", "a", "c");
-        // List<String> sortedList = list.stream() .sorted((o1,o2)-> o2.compareTo(o1)) .collect(Collectors.toList());
+        // List<String> sortedList = list.stream().sorted((o1,o2)-> o2.compareTo(o1)).collect(Collectors.toList());
         // 위처럼 쓴거랑 같음
         List<String> sortedList = list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
         assertEquals(Arrays.asList("c", "a", "Z", "Y", "B", "A", "9", "4", "1"), sortedList);
