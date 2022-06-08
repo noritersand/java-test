@@ -29,8 +29,44 @@ public class WrapperClassTest {
 	public void testEquals() {
 		Long a = Long.valueOf(12345);
 		Long b = Long.valueOf(12345);
-		assertFalse(a == b); // wrapper 타입은 동등 연산자에서 객체 아이디를 비교하지 값을 비교하지 않음.
+		assertFalse(a == b); // wrapper 타입은 동등 연산자에서 객체 아이디를 비교하지 값을 비교하지 않음. **반만 맞는 설명임. 아래를 볼 것**
 		assertTrue(a.equals(b)); // correct
+
+
+		// 2022-06-08 어마어마한 것을 발견함
+		assertTrue(Long.valueOf(-129) != Long.valueOf(-129));
+		assertTrue(Long.valueOf(-128) == Long.valueOf(-128));
+		assertTrue(Long.valueOf(0) == Long.valueOf(0));
+		assertTrue(Long.valueOf(1L) == Long.valueOf(1L));
+		assertTrue(Long.valueOf(20L) == Long.valueOf(20L));
+		assertTrue(Long.valueOf(30L) == Long.valueOf(30L));
+		assertTrue(Long.valueOf(40L) == Long.valueOf(40L));
+		assertTrue(Long.valueOf(50L) == Long.valueOf(50L));
+		assertTrue(Long.valueOf(60L) == Long.valueOf(60L));
+		assertTrue(Long.valueOf(70L) == Long.valueOf(70L));
+		assertTrue(Long.valueOf(80L) == Long.valueOf(80L));
+		assertTrue(Long.valueOf(90L) == Long.valueOf(90L));
+		assertTrue(Long.valueOf(100L) == Long.valueOf(100L));
+		assertTrue(Long.valueOf(110L) == Long.valueOf(110L));
+		assertTrue(Long.valueOf(120L) == Long.valueOf(120L));
+		assertTrue(Long.valueOf(121L) == Long.valueOf(121L));
+		assertTrue(Long.valueOf(122L) == Long.valueOf(122L));
+		assertTrue(Long.valueOf(123L) == Long.valueOf(123L));
+		assertTrue(Long.valueOf(124L) == Long.valueOf(124L));
+		assertTrue(Long.valueOf(125L) == Long.valueOf(125L));
+		assertTrue(Long.valueOf(126L) == Long.valueOf(126L));
+		assertTrue(Long.valueOf(127L) == Long.valueOf(127L));
+		// 여기까지는 동등 연산자에서 객체 아이디를 비교하지 않음. 127L 까지는 1바이트라서 정수로 변환된다고 함(자바니께 원시타입으로 변환되는거겠지)
+		// 1바이트는 -128부터 127까지 표현 가능 (2^7 = 128)
+		assertTrue(Long.valueOf(128L) != Long.valueOf(128L));
+		assertTrue(Long.valueOf(129L) != Long.valueOf(129L));
+		assertTrue(Long.valueOf(130L) != Long.valueOf(130L));
+		assertTrue(Long.valueOf(12345L) != Long.valueOf(12345L));
+		assertTrue(Long.valueOf(65536L) != Long.valueOf(65536L));
+		assertTrue(Long.valueOf(4294967296L) != Long.valueOf(4294967296L));
+
+		assertTrue(Integer.valueOf(127) == Integer.valueOf(127));
+		assertTrue(Integer.valueOf(128) != Integer.valueOf(128));
 	}
 	
 	@Test
