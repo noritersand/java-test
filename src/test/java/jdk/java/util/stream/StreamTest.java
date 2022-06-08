@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import lab.dummy.generator.ListGenerator;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -114,5 +115,15 @@ public class StreamTest {
             return false;
         });
         assertFalse(result); // list에는 10보다 큰게 없음.
+    }
+
+    @Test
+    public void testMap() {
+        List<ListGenerator.Obj> objList = ListGenerator.generateObjList(10);
+        logger.debug("objList: {}", objList);
+        List<Integer> indexList = objList.stream().map(ele -> ele.getIndex()).collect(Collectors.toList());
+        logger.debug("indexList: {}", indexList);
+        assertTrue(indexList.size() == 10);
+        assertEquals(1, indexList.get(1));
     }
 }

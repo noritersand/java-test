@@ -1,5 +1,6 @@
 package lab.dummy.generator;
 
+import lombok.Data;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.codehaus.commons.nullanalysis.NotNull;
 import org.slf4j.Logger;
@@ -48,8 +49,24 @@ public class ListGenerator {
     @NotNull
     private static String randomString() {
         int length = 10;
-        boolean useLetters = true;
-        boolean useNumbers = false;
-        return RandomStringUtils.random(length, useLetters, useNumbers);
+        return RandomStringUtils.random(length, true, false);
+    }
+
+    public static List<Obj> generateObjList(int size) {
+        List<Obj> list = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            Obj obj = new Obj();
+            list.add(obj);
+            obj.setIndex(i);
+            obj.setName(RandomStringUtils.random(10, true, false));
+        }
+        return list;
+    }
+
+    @Data
+    public static class Obj {
+        private Integer index;
+        private String name;
     }
 }
+
