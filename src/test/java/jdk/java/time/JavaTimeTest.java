@@ -1,5 +1,6 @@
 package jdk.java.time;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -68,20 +69,6 @@ public class JavaTimeTest {
 	}
 
 	@Test
-	public void parseLocalDateToSqlDate() {
-		LocalDate a = LocalDate.of(2017, Month.DECEMBER, 31);
-		java.sql.Date b = java.sql.Date.valueOf(a);
-		assertEquals("2017-12-31", b.toString());
-	}
-
-	@Test
-	public void parseSqlDateToLocalDate() {
-		java.sql.Date a = java.sql.Date.valueOf("2020-12-31");
-		LocalDate b = a.toLocalDate();
-		assertEquals("2020-12-31", b.toString());
-	}
-
-	@Test
 	public void getMonthDay() {
 		MonthDay a = MonthDay.now();
 		logger.debug("{}", a); // --MM-dd
@@ -119,9 +106,86 @@ public class JavaTimeTest {
 		assertEquals("[2016-03-05, 2016-03-06, 2016-03-07, 2016-03-08, 2016-03-09, 2016-03-10]", list.toString());
 	}
 
+	@Test
+	public void calculateDays() {
+		LocalDate targetDay = LocalDate.of(2017, Month.DECEMBER, 31);
+		LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
+		Period period = Period.between(today, targetDay);
+		long period2 = ChronoUnit.DAYS.between(today, targetDay);
+		assertEquals("0 years, 11 months, 7 days later. (341 days total)", (period.getYears() + " years, " + period.getMonths()
+				+ " months, " + period.getDays() + " days later. (" + period2 + " days total)"));
+	}
+
+	/**
+	 * LocalDate -> java.sql.Date
+	 */
+	@Test
+	public void parseLocalDateToSqlDate() {
+		LocalDate a = LocalDate.of(2017, Month.DECEMBER, 31);
+		java.sql.Date b = java.sql.Date.valueOf(a);
+		assertEquals("2017-12-31", b.toString());
+	}
+
+	/**
+	 * java.sql.Date -> LocalDate
+	 */
+	@Test
+	public void parseSqlDateToLocalDate() {
+		java.sql.Date a = java.sql.Date.valueOf("2020-12-31");
+		LocalDate b = a.toLocalDate();
+		assertEquals("2020-12-31", b.toString());
+	}
+
+	/**
+	 * JavaTime 타입을 문자열로 변환하되 포매터 사용
+	 *
+	 * @author fixalot
+	 */
+	@Test
+	public void parseToStringFromJavaTimeWithFormatter() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		LocalDateTime dateTime = LocalDateTime.of(2011, Month.DECEMBER, 03, 10, 15, 30);
+		assertEquals("2011-12-03 10:15:30", dateTime.format(formatter));
+	}
+
+	/**
+	 * 문자열을 JavaTime 타입으로 변환
+	 *
+	 * @author fixalot
+	 */
+	@Test
+	public void parseToJavaTimeFromStringWithFormatter() {
+		// 연월일 변환
+		String input11 = "20111231";
+		LocalDate date11 = LocalDate.parse(input11, DateTimeFormatter.BASIC_ISO_DATE);
+		assertEquals(LocalDate.of(2011, Month.DECEMBER, 31), date11);
+
+		// 연월일 변환 #2
+		String input12 = "2022-01-02";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate date12 = LocalDate.parse(input12, formatter);
+		assertEquals(LocalDate.of(2022, Month.JANUARY, 2), date12);
+
+		// 연월일 변환 #3 SimpleDateFormat으로
+		String input13 = "2023-05-10";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		LocalDate.parse(input13, sdf); // 응 안됨
+
+		// 연월일 시분초 변환
+		String input21 = "2011-12-03T10:15:30";
+		LocalDateTime dateTime = LocalDateTime.parse(input21, DateTimeFormatter.ISO_DATE_TIME);
+		assertEquals(LocalDateTime.of(2011, Month.DECEMBER, 03, 10, 15, 30), dateTime);
+
+		// 연월일 시분초 변환 #2
+		String input22 = "2011-12-03 10:15:30";
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		LocalDateTime anotherDateTime = LocalDateTime.parse(input22, formatter2);
+		assertEquals(LocalDateTime.of(2011, Month.DECEMBER, 03, 10, 15, 30), anotherDateTime);
+	}
+
 	/**
 	 * java.util.Date -> String
-	 * 
+	 *
 	 * @author fixalot
 	 */
 	@Test
@@ -134,74 +198,28 @@ public class JavaTimeTest {
 
 	/**
 	 * java.time -> java.util.Date
-	 * 
+	 *
 	 * @author fixalot
 	 */
 	@Test
 	public void parseToJavaUtilDateFromJavaTime() {
 		// case#1
-		logger.debug("case#1: {}", Date.from(Instant.now()).toString());
+		logger.debug("case#1: {}", Date.from(Instant.now()));
 
 		// case#2
-		logger.debug("case#2: {}", Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString());
+		logger.debug("case#2: {}", Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 
 		// case#3
 		LocalDateTime ldt = LocalDateTime.now();
 		ZonedDateTime zdt = ldt.atZone(ZoneId.systemDefault());
 		Date out = Date.from(zdt.toInstant());
-		logger.debug("case#3: {}", String.valueOf(out));
+		logger.debug("case#3: {}", out);
 
 		// case#4
 //		Date in = new Date();
 //		LocalDateTime ldt2 = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
 		LocalDateTime ldt2 = LocalDateTime.now();
 		Date out2 = Date.from(ldt2.atZone(ZoneId.systemDefault()).toInstant());
-		logger.debug("case#4: {}", out2.toString());
-	}
-
-	@Test
-	public void calculateDays() {
-		LocalDate targetDay = LocalDate.of(2017, Month.DECEMBER, 31);
-		LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
-		Period period = Period.between(today, targetDay);
-		long period2 = ChronoUnit.DAYS.between(today, targetDay);
-		assertEquals("0 years, 11 months, 7 days later. (341 days total)", (period.getYears() + " years, " + period.getMonths()
-				+ " months, " + period.getDays() + " days later. (" + period2 + " days total)"));
-	}
-
-	/**
-	 * 문자열을 JavaTime 타입으로 변환
-	 * 
-	 * @author fixalot
-	 */
-	@Test
-	public void parseToJavaTimeFromStringWithFormatter() {
-		// 연월일 변환
-		String input = "20111231";
-		LocalDate date = LocalDate.parse(input, DateTimeFormatter.BASIC_ISO_DATE);
-		assertEquals(LocalDate.of(2011, Month.DECEMBER, 31), date);
-
-		// 연월일 시분초 변환
-		String input2 = "2011-12-03T10:15:30";
-		LocalDateTime dateTime = LocalDateTime.parse(input2, DateTimeFormatter.ISO_DATE_TIME);
-		assertEquals(LocalDateTime.of(2011, Month.DECEMBER, 03, 10, 15, 30), dateTime);
-
-		// 연월일 시분초 변환 #2
-		String input3 = "2011-12-03 10:15:30";
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		LocalDateTime anotherDateTime = LocalDateTime.parse(input3, formatter);
-		assertEquals(LocalDateTime.of(2011, Month.DECEMBER, 03, 10, 15, 30), anotherDateTime);
-	}
-
-	/**
-	 * JavaTime 타입을 문자열로 변환하되 포매터 사용
-	 * 
-	 * @author fixalot
-	 */
-	@Test
-	public void parseToStringFromJavaTimeWithFormatter() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		LocalDateTime dateTime = LocalDateTime.of(2011, Month.DECEMBER, 03, 10, 15, 30);
-		assertEquals("2011-12-03 10:15:30", dateTime.format(formatter));
+		logger.debug("case#4: {}", out2);
 	}
 }
