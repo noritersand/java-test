@@ -92,6 +92,28 @@ public class WrapperClassTest {
 		String txt = (String) a;
 		assertNull(txt);
 	}
+
+	/**
+	 * .valueOf() 메서드 테스트
+	 */
+	@Test
+	public void testLongValueOf() {
+		// null은 valueOf() 불가
+		try {
+			String nullValue = null;
+			assertEquals(0, Long.valueOf(nullValue));
+		} catch (NumberFormatException e) {
+			logger.debug("{}", "java.lang.NumberFormatException: Cannot parse null string");
+		}
+		// empty string도 불가
+		try {
+			String blank = "";
+			assertEquals(0, Long.valueOf(blank));
+		} catch (NumberFormatException e) {
+			logger.debug("{}", "java.lang.NumberFormatException: For input string: \"\"");
+		}
+		// 대신 apache NumberUtils를 쓰라고 하는데, 그건 0으로 반환함.
+	}
 	
 	/**
 	 * null을 (오토언박싱이든 아니든) 원시타입으로 형 변환 하려고 하면 null-safe하지 않음.

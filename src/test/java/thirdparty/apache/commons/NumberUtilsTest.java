@@ -50,4 +50,10 @@ public class NumberUtilsTest {
 		assertTrue(NumberUtils.isCreatable("58789123124.924123D"));
 		assertTrue(NumberUtils.isCreatable("0124.11F"));
 	}
+
+	@Test
+	public void testNullSafe() {
+		assertEquals(0, NumberUtils.toLong(null));
+		assertEquals(0, NumberUtils.toLong(""));
+	}
 }
