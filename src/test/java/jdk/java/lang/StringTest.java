@@ -201,6 +201,7 @@ public class StringTest {
 		String splitMe2 = "abcdefghijklmn";
 		assertEquals(14, splitMe2.length());
 		assertEquals(splitMe2.substring(1, 5), splitMe2.subSequence(1, 5));
+		assertEquals(splitMe2, splitMe2.substring(0, splitMe2.length())); // 맨 왼쪽은 0, 맨 오른쪽은 length
 
 		String splitMe3 = "a\nb\nc\nd";
 		assertEquals(4, splitMe3.split("\\n").length);
