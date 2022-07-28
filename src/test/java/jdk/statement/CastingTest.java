@@ -16,10 +16,13 @@ public class CastingTest {
 	private static final Logger logger = LoggerFactory.getLogger(CastingTest.class);
 
 	@Test
-	public void castNullToString() {
+	public void castNull() {
 		Object imnotnotnull = null;
 		String string = (String) imnotnotnull;
 		assertNull(string);
+
+		Integer integer = (Integer) imnotnotnull;
+		assertNull(integer);
 	}
 
 	@Test
