@@ -13,9 +13,9 @@ import org.slf4j.LoggerFactory;
  * @since 2017-07-27
  * @author fixalot
  */
-public class StringUtilsTest {
+public class ApacheStringUtilsTest {
 	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(StringUtilsTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ApacheStringUtilsTest.class);
 
 	@Test
 	public void testDefault() {
