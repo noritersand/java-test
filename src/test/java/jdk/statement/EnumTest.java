@@ -2,7 +2,11 @@ package jdk.statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import model.Apple;
+import model.Color;
+import model.ImSpecial;
 import model.SystemType;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,6 +69,13 @@ public class EnumTest {
 		String source = "red";
 		Enum<Color> color = Enum.valueOf(clazz, source.trim().toUpperCase());
 		assertEquals(Color.RED, color);
+	}
+
+	@Test
+	public void testCustomValueOf() {
+		Apple target = Apple.valueOf(12);
+		assertEquals(Apple.C, target);
+
 	}
 
 	@Test

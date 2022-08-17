@@ -1,7 +1,4 @@
-package jdk.statement;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package model;
 
 public enum Apple {
     A(10), B(9), C(12), D(15), E(8);
@@ -16,5 +13,14 @@ public enum Apple {
 
     public int getPrice() {
         return price;
+    }
+
+    public static Apple valueOf(int price) {
+        for (Apple ele : Apple.values()) {
+            if (ele.getPrice() == price) {
+                return ele;
+            }
+        }
+        return null;
     }
 }
