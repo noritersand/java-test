@@ -20,7 +20,7 @@ public enum SystemType {
         try {
             return SystemType.valueOf(arg);
         } catch (IllegalArgumentException e) {
-            return BACK_OFFICE;
+            return null;
         }
     }
 }

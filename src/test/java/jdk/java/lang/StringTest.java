@@ -179,6 +179,9 @@ public class StringTest {
 		assertEquals(34, str.length());
 		assertEquals("a1234567890b234567890c23456789", str.substring(0, 30));
 		assertEquals(30, str.substring(0, 30).length());
+		assertEquals("1", "8804127".substring(4, 5));
+		assertEquals("2", "8804127".substring(5, 6));
+		assertEquals("7", "8804127".substring(6, 7));
 	}
 
 	@Test

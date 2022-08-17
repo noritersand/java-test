@@ -80,9 +80,7 @@ public class EnumTest {
 
 	@Test
 	public void testValueOfIAESafe() {
-		String txt = "NOT_BACK_OFFICE";
-		SystemType systemType = SystemType.valueOfIAESafe(txt);
-		assertEquals("BACK_OFFICE", String.valueOf(systemType));
+		assertNull(SystemType.valueOfIAESafe("NOT_BACK_OFFICE"));
 	}
 
 	/**

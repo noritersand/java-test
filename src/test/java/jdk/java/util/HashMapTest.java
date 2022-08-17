@@ -64,8 +64,12 @@ public class HashMapTest {
 	@Test
 	public void checkNPE() {
 		Map<String, Object> map = new HashMap<>();
-		final String empty = (String) map.get("empty");
+		String empty = (String) map.get("empty");
 		assertNull(empty);
+
+		map.put("NOT_NULL", null);
+		Object notNull = map.get("NOT_NULL");
+		assertNull(notNull);
 	}
 	
 	/**
