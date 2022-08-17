@@ -2,6 +2,7 @@ package jdk.statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import model.SystemType;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,69 +106,4 @@ public class EnumTest {
 		assertEquals("MY_NAME", result);
 	}
 
-	private enum ImSpecial {
-		// enum은 값(=상수)별 클래스 본문을 가질 수 있음. (value-specific class bodies)
-		A {
-			@Override
-			public void destroySelf() {
-				logger.debug("I'm dying :<");
-			}
-		},
-
-		B {
-			@Override
-			public void destroySelf() {
-				logger.debug("Noooooooooo...");
-			}
-		};
-
-		public void destroySelf() {
-			this.destroySelf();
-		}
-	}
-
-	private enum SystemType {
-		BACK_OFFICE, FRONT_OFFICE("front office system");
-
-		private SystemType() {} // 기본 생성자
-
-		private String optionalField;
-
-		private SystemType(final String option) {
-			this.optionalField = option;
-		}
-
-		public String getOptionalField() {
-			return this.optionalField;
-		}
-
-		public static SystemType valueOfIAESafe(String arg) {
-			try {
-				return SystemType.valueOf(arg);
-			} catch (IllegalArgumentException e) {
-				logger.debug(e.getMessage());
-				return BACK_OFFICE;
-			}
-		}
-	}
-
-	private enum Apple {
-		A(10), B(9), C(12), D(15), E(8);
-//		public static final Apple F = new Apple();
-
-		private int price; // price of each apple
-
-		// Constructor
-		private Apple(int p) {
-			price = p;
-		}
-
-		public int getPrice() {
-			return price;
-		}
-	}
-
-	private enum Color {
-		RED, BLUE, GREEN, YELLOW
-	}
 }
