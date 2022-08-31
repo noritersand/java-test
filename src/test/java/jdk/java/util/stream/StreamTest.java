@@ -115,6 +115,12 @@ public class StreamTest {
             return false;
         });
         assertFalse(result); // list에는 10보다 큰게 없음.
+
+		final String[] arr = { "/findme", "/beginning", "/start" };
+        final String compareme = "/beginning/list/hello";
+        Stream<String> stream2 = Arrays.asList(arr).stream();
+        boolean existsForeMatch = stream2.anyMatch(e -> compareme.indexOf(e) == 0);
+        assertTrue(existsForeMatch);
     }
 
     @Test
