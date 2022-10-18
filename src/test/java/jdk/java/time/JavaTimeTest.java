@@ -16,11 +16,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -50,6 +46,21 @@ public class JavaTimeTest {
 
 		// create instance from ISO date time string
 		assertEquals("2017-04-18T01:24:48.842Z", Instant.parse("2017-04-18T01:24:48.842Z").toString());
+	}
+
+	/**
+	 * <p>
+	 * <p>서울은
+	 */
+	@Test
+	public void testZoneIds() {
+		// 사용 가능한 zone ID 출력.
+		Set<String> zoneIds= ZoneId.getAvailableZoneIds();
+		for (String zone : zoneIds) {
+			logger.debug("zoneId: {}", zoneIds);
+		}
+		ZoneId zid = ZoneId.of("Asia/Seoul");
+		assertNotNull(zid);
 	}
 
 	@Test
@@ -117,26 +128,6 @@ public class JavaTimeTest {
 	}
 
 	/**
-	 * LocalDate -> java.sql.Date
-	 */
-	@Test
-	public void parseLocalDateToSqlDate() {
-		LocalDate a = LocalDate.of(2017, Month.DECEMBER, 31);
-		java.sql.Date b = java.sql.Date.valueOf(a);
-		assertEquals("2017-12-31", b.toString());
-	}
-
-	/**
-	 * java.sql.Date -> LocalDate
-	 */
-	@Test
-	public void parseSqlDateToLocalDate() {
-		java.sql.Date a = java.sql.Date.valueOf("2020-12-31");
-		LocalDate b = a.toLocalDate();
-		assertEquals("2020-12-31", b.toString());
-	}
-
-	/**
 	 * JavaTime 타입을 문자열로 변환하되 포매터 사용
 	 *
 	 * @author fixalot
@@ -184,7 +175,27 @@ public class JavaTimeTest {
 	}
 
 	/**
-	 * java.util.Date -> String
+	 * LocalDate -> java.sql.Date
+	 */
+	@Test
+	public void parseLocalDateToSqlDate() {
+		LocalDate a = LocalDate.of(2017, Month.DECEMBER, 31);
+		java.sql.Date b = java.sql.Date.valueOf(a);
+		assertEquals("2017-12-31", b.toString());
+	}
+
+	/**
+	 * java.sql.Date -> LocalDate
+	 */
+	@Test
+	public void parseSqlDateToLocalDate() {
+		java.sql.Date a = java.sql.Date.valueOf("2020-12-31");
+		LocalDate b = a.toLocalDate();
+		assertEquals("2020-12-31", b.toString());
+	}
+
+	/**
+	 * java.util.Date -> java.time -> String
 	 *
 	 * @author fixalot
 	 */
@@ -222,4 +233,5 @@ public class JavaTimeTest {
 		Date out2 = Date.from(ldt2.atZone(ZoneId.systemDefault()).toInstant());
 		logger.debug("case#4: {}", out2);
 	}
+
 }
