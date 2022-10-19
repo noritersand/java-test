@@ -1,19 +1,7 @@
 package jdk.java.time;
 
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Month;
-import java.time.MonthDay;
-import java.time.OffsetDateTime;
-import java.time.OffsetTime;
-import java.time.Period;
-import java.time.YearMonth;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -33,6 +21,9 @@ import org.slf4j.LoggerFactory;
 public class JavaTimeTest {
 	private static final Logger logger = LoggerFactory.getLogger(JavaTimeTest.class);
 
+	/**
+	 * 인스턴트 만들기
+	 */
 	@Test
 	public void create() {
 		logger.debug("{}", Instant.now());
@@ -49,12 +40,27 @@ public class JavaTimeTest {
 	}
 
 	/**
-	 * <p>
-	 * <p>서울은
+	 * 날짜 비교
+	 */
+	@Test
+	public void comparing() {
+		LocalDate beginingOfWorld = LocalDate.parse("1970-01-01", DateTimeFormatter.ISO_LOCAL_DATE);
+		LocalDate endOfUs = LocalDate.parse("9999-01-01", DateTimeFormatter.ISO_LOCAL_DATE);
+		assertFalse(beginingOfWorld.isEqual(endOfUs));
+		assertTrue(beginingOfWorld.isBefore(endOfUs));
+		assertTrue(endOfUs.isAfter(beginingOfWorld));
+
+		LocalDate a = LocalDate.parse("2022-10-19", DateTimeFormatter.ISO_LOCAL_DATE);
+		LocalDate b = LocalDate.now();
+		assertTrue(a.isEqual(b));
+	}
+
+	/**
+	 * 서울의 Zone ID는 Asia/Seoul
 	 */
 	@Test
 	public void testZoneIds() {
-		// 사용 가능한 zone ID 출력.
+		// 사용 가능한 Zone ID 출력.
 		Set<String> zoneIds= ZoneId.getAvailableZoneIds();
 		for (String zone : zoneIds) {
 			logger.debug("zoneId: {}", zoneIds);
@@ -64,7 +70,28 @@ public class JavaTimeTest {
 	}
 
 	@Test
-	public void setCustomTime() {
+	public void YearMonth() {
+		YearMonth ins = YearMonth.parse("2022-12");
+		assertEquals("2022-12", ins.toString());
+	}
+
+	@Test
+	public void MonthDay() {
+		MonthDay ins = MonthDay.parse("--12-31");
+		assertEquals("--12-31", ins.toString());
+	}
+
+	@Test
+	public void LocalDate() {
+		LocalDate today = LocalDate.now();
+		LocalDate ins = LocalDate.parse("2021-01-01", DateTimeFormatter.ISO_LOCAL_DATE);// DateTimeFormatter.ofPattern("yyyy-MM-dd")
+		assertEquals("2021-01-01", ins.toString());
+		assertEquals("2017-12-31", LocalDate.of(2017, Month.DECEMBER, 31).toString());
+		assertEquals("2017-04-10T23:49", LocalDateTime.of(2017, Month.APRIL, 10, 23, 49).toString());
+	}
+
+	@Test
+	public void LocalDateTime() {
 		LocalDateTime now = LocalDateTime.now();
 		now = now.withYear(2019).withMonth(1).withDayOfMonth(31);
 		now = now.withHour(0).withMinute(0).withSecond(0).withNano(0);
@@ -72,23 +99,12 @@ public class JavaTimeTest {
 	}
 
 	@Test
-	public void getLocalDate() {
-		LocalDate a = LocalDate.now();
-		logger.debug("{}", a); // yyyy-MM-dd
-		assertEquals("2017-12-31", LocalDate.of(2017, Month.DECEMBER, 31).toString());
-		assertEquals("2017-04-10T23:49", LocalDateTime.of(2017, Month.APRIL, 10, 23, 49).toString());
-	}
-
-	@Test
-	public void getMonthDay() {
-		MonthDay a = MonthDay.now();
-		logger.debug("{}", a); // --MM-dd
-	}
-
-	@Test
-	public void getYearMonth() {
-		YearMonth a = YearMonth.now();
-		logger.debug("{}", a); // yyyy-MM
+	public void testGetDayOfWeek() {
+		LocalDate instance = LocalDate.parse("2022-12-31");
+		DayOfWeek dayOfWeek = instance.getDayOfWeek();
+		assertEquals(DayOfWeek.SATURDAY, dayOfWeek);
+		assertEquals(5, dayOfWeek.ordinal());
+		assertEquals(6, dayOfWeek.getValue());
 	}
 
 	@Test
@@ -153,8 +169,7 @@ public class JavaTimeTest {
 
 		// 연월일 변환 #2
 		String input12 = "2022-01-02";
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate date12 = LocalDate.parse(input12, formatter);
+		LocalDate date12 = LocalDate.parse(input12, DateTimeFormatter.ISO_LOCAL_DATE);
 		assertEquals(LocalDate.of(2022, Month.JANUARY, 2), date12);
 
 		// 연월일 변환 #3 SimpleDateFormat으로

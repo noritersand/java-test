@@ -10,39 +10,49 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
- * 
- * @since 2017-07-27
  * @author fixalot
+ * @since 2017-07-27
  */
 public class ReflectionTest {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(ReflectionTest.class);
+    @SuppressWarnings("unused")
+    private static final Logger logger = LoggerFactory.getLogger(ReflectionTest.class);
 
-	@Test
-	public void test() throws Exception {
-		Object instance = new MyClass();
-		Class<?> clazz = instance.getClass();
+    @Test
+    public void test() throws Exception {
+        Object instance = new MyClass();
+        Class<?> clazz = instance.getClass();
 
-		// invoke method
-		Method method = clazz.getDeclaredMethod("myMethod");
-		assertNotNull(method);
-		assertEquals("finally you found me!", method.invoke(instance));
-		assertEquals("myMethod", method.getName());
+        // 메서드 찾기
+        Method method1 = clazz.getDeclaredMethod("withoutParameter");
+        assertNotNull(method1);
+        // invoke method
+        assertEquals("withoutParameter", method1.getName());
+        assertEquals("finally you found me!", method1.invoke(instance));
 
-		// access field
-		Field field = clazz.getDeclaredField("myField");
-		assertNotNull(field);
-		assertEquals(0, field.get(instance));
-		assertEquals("myField", field.getName());
-	}
+        // 메서드 찾기: 파라미터가 있는 메서드는 타입을 지정해줘야 찾음
+        Method method2 = clazz.getDeclaredMethod("withParameter", String.class);
+        assertNotNull(method2);
+        assertEquals("withParameter", method2.getName());
+        assertEquals("oOoOoOoOo", method2.invoke(instance, "oOoOoOoOo"));
 
-	@SuppressWarnings("unused")
-	private class MyClass {
-		public int myField = 0;
+        // access field
+        Field field = clazz.getDeclaredField("myField");
+        assertNotNull(field);
+        field.setAccessible(true);
+        assertEquals("myField", field.getName());
+        assertEquals(0, field.get(instance));
+    }
 
-		public String myMethod() {
-			return "finally you found me!";
-		}
-	}
+}
+
+class MyClass {
+    private int myField = 0;
+
+    public String withoutParameter() {
+        return "finally you found me!";
+    }
+
+    public String withParameter(String txt) {
+        return txt;
+    }
 }

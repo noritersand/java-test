@@ -2,11 +2,10 @@ package jdk.statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import model.Apple;
+import model.Fruit;
 import model.Color;
 import model.ImSpecial;
 import model.SystemType;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,10 +27,10 @@ public class EnumTest {
 		System.out.println(Color.RED.name()); // RED
 
 		// Display price of Winsap.
-		System.out.println(Apple.A.getPrice());
+		System.out.println(Fruit.APPLE.getPrice());
 		// Display all apples and prices.
 		System.out.println("All apple prices:");
-		for (Apple ele : Apple.values()) {
+		for (Fruit ele : Fruit.values()) {
 			System.out.println(ele + " costs " + ele.getPrice() + " cents.");
 		}
 
@@ -73,8 +72,8 @@ public class EnumTest {
 
 	@Test
 	public void testCustomValueOf() {
-		Apple target = Apple.valueOf(12);
-		assertEquals(Apple.C, target);
+		Fruit target = Fruit.valueOf(12);
+		assertEquals(Fruit.COCONUT, target);
 
 	}
 
@@ -115,4 +114,13 @@ public class EnumTest {
 		assertEquals("MY_NAME", result);
 	}
 
+	/**
+	 * Enum 상수의 선언된 순서(Zero-based indexing)를 반환하는 ordinal() 메서드 테스트
+	 */
+	@Test
+	public void testOrdinal() {
+		assertEquals(0, Fruit.APPLE.ordinal());
+		assertEquals(1, Fruit.BANANA.ordinal());
+		assertEquals(2, Fruit.COCONUT.ordinal());
+	}
 }
