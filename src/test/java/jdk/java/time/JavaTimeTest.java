@@ -1,16 +1,17 @@
 package jdk.java.time;
 
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -56,6 +57,24 @@ public class JavaTimeTest {
 	}
 
 	/**
+	 * java.time 인스턴스의 객체 복제
+	 */
+	@Test
+	public void cloneInstance() {
+		LocalDate a = LocalDate.now();
+		// 이 인스턴스는 immutable하기 때문에 단순 할당만 해도 괜찮음
+		LocalDate b = a;
+		assertEquals(a, b);
+		assertTrue(a == b);
+		// 여기까진 a와 b는 동일하며 동등하지만?
+
+		// 시간이 변하는 메서드를 호출하면 그 때부턴 달라짐
+		b = b.plusDays(1);
+		assertNotEquals(a, b);
+		assertFalse(a == b);
+	}
+
+	/**
 	 * 서울의 Zone ID는 Asia/Seoul
 	 */
 	@Test
@@ -79,6 +98,9 @@ public class JavaTimeTest {
 	public void MonthDay() {
 		MonthDay ins = MonthDay.parse("--12-31");
 		assertEquals("--12-31", ins.toString());
+		
+		ins = MonthDay.parse("05-05", DateTimeFormatter.ofPattern("MM-dd"));
+		assertEquals(MonthDay.parse("--05-05"), ins);
 	}
 
 	@Test
@@ -144,12 +166,42 @@ public class JavaTimeTest {
 	}
 
 	/**
+	 * {@link TemporalAdjusters}를 이용한 다음 월요일 구하기
+	 */
+	@Test
+	public void getNextMonday() {
+		LocalDate today = LocalDate.parse("2022-10-22");
+		LocalDate nextMonday = today.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+		assertEquals(LocalDate.parse("2022-10-24"), nextMonday);
+	}
+
+	/**
+	 * {@link TemporalAdjusters}를 이용한 다음 달의 첫 날 구하기
+	 */
+	@Test
+	public void getFirstDayOfMonth() {
+		LocalDate today = LocalDate.parse("2022-10-22");
+		LocalDate nextMonday2 = today.with(TemporalAdjusters.firstDayOfNextMonth());
+		// 아래처럼 한 달 더하고 첫 날 구하는 것과 같음
+//		LocalDate nextMonday = today.plusMonths(1)
+//				.with(TemporalAdjusters.firstDayOfMonth());
+		assertEquals(LocalDate.parse("2022-11-01"), nextMonday2);
+	}
+
+	@Test
+	public void parseMonthDayToLocalDate() {
+		MonthDay monthDay = MonthDay.parse("--12-31");
+		LocalDate localDate = LocalDate.of(2022, monthDay.getMonth(), monthDay.getDayOfMonth());
+		assertEquals(LocalDate.parse("2022-12-31"), localDate);
+	}
+
+	/**
 	 * JavaTime 타입을 문자열로 변환하되 포매터 사용
 	 *
 	 * @author fixalot
 	 */
 	@Test
-	public void parseToStringFromJavaTimeWithFormatter() {
+	public void parseJavaTimeToStringWithFormatter() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		LocalDateTime dateTime = LocalDateTime.of(2011, Month.DECEMBER, 03, 10, 15, 30);
 		assertEquals("2011-12-03 10:15:30", dateTime.format(formatter));
@@ -161,7 +213,7 @@ public class JavaTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void parseToJavaTimeFromStringWithFormatter() {
+	public void parseStringToJavaTimeWithFormatter() {
 		// 연월일 변환
 		String input11 = "20111231";
 		LocalDate date11 = LocalDate.parse(input11, DateTimeFormatter.BASIC_ISO_DATE);
