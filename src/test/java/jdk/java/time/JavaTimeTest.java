@@ -1,9 +1,11 @@
 package jdk.java.time;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -19,17 +21,17 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2017-07-27
  * @author fixalot
  */
+@Slf4j
 public class JavaTimeTest {
-	private static final Logger logger = LoggerFactory.getLogger(JavaTimeTest.class);
 
 	/**
 	 * 인스턴트 만들기
 	 */
 	@Test
 	public void create() {
-		logger.debug("{}", Instant.now());
-		logger.debug("{}", LocalDate.now()); // yyyy-MM-dd
-		logger.debug("{}", LocalTime.now()); // HH:mm:ss.SSS
+		log.debug("{}", Instant.now());
+		log.debug("{}", LocalDate.now()); // yyyy-MM-dd
+		log.debug("{}", LocalTime.now()); // HH:mm:ss.SSS
 
 		assertEquals("1970-01-01T00:00:00Z", Instant.ofEpochMilli(0).toString());
 		assertEquals("2017-09-19T06:10:46.820Z", Instant.ofEpochMilli(1505801446820L).toString());
@@ -82,20 +84,20 @@ public class JavaTimeTest {
 		// 사용 가능한 Zone ID 출력.
 		Set<String> zoneIds= ZoneId.getAvailableZoneIds();
 		for (String zone : zoneIds) {
-			logger.debug("zoneId: {}", zoneIds);
+			log.debug("zoneId: {}", zoneIds);
 		}
 		ZoneId zid = ZoneId.of("Asia/Seoul");
 		assertNotNull(zid);
 	}
 
 	@Test
-	public void YearMonth() {
+	public void testYearMonth() {
 		YearMonth ins = YearMonth.parse("2022-12");
 		assertEquals("2022-12", ins.toString());
 	}
 
 	@Test
-	public void MonthDay() {
+	public void testMonthDay() {
 		MonthDay ins = MonthDay.parse("--12-31");
 		assertEquals("--12-31", ins.toString());
 		
@@ -104,7 +106,7 @@ public class JavaTimeTest {
 	}
 
 	@Test
-	public void LocalDate() {
+	public void testLocalDate() {
 		LocalDate today = LocalDate.now();
 		LocalDate ins = LocalDate.parse("2021-01-01", DateTimeFormatter.ISO_LOCAL_DATE);// DateTimeFormatter.ofPattern("yyyy-MM-dd")
 		assertEquals("2021-01-01", ins.toString());
@@ -113,7 +115,7 @@ public class JavaTimeTest {
 	}
 
 	@Test
-	public void LocalDateTime() {
+	public void testLocalDateTime() {
 		LocalDateTime now = LocalDateTime.now();
 		now = now.withYear(2019).withMonth(1).withDayOfMonth(31);
 		now = now.withHour(0).withMinute(0).withSecond(0).withNano(0);
@@ -130,14 +132,14 @@ public class JavaTimeTest {
 	}
 
 	@Test
-	public void getOffsetDateTime() {
+	public void testGetOffsetDateTime() {
 		assertEquals("2017-12-31T23:59:59.999999999Z",
 				OffsetDateTime.of(LocalDate.of(2017, Month.DECEMBER, 31), LocalTime.MAX, ZoneOffset.UTC).toString());
 		assertEquals("2017-01-14T10:20:30Z", OffsetDateTime.of(2017, 1, 14, 10, 20, 30, 0, ZoneOffset.UTC).toString());
 	}
 
 	@Test
-	public void getOffsetTime() {
+	public void testGetOffsetTime() {
 		assertEquals("22:58+18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MAX).toString());
 		assertEquals("22:58-18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MIN).toString());
 		assertEquals("22:58Z", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.UTC).toString());
@@ -267,7 +269,7 @@ public class JavaTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void parseToStringFromJavaUtilDate() {
+	public void parseJavaUtilDateToStringFrom() {
 		Calendar input = new GregorianCalendar(2016, 2, 5);
 		Date date = input.getTime();
 		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -280,25 +282,31 @@ public class JavaTimeTest {
 	 * @author fixalot
 	 */
 	@Test
-	public void parseToJavaUtilDateFromJavaTime() {
+	public void parseJavaTimeToJavaUtilDate() {
 		// case#1
-		logger.debug("case#1: {}", Date.from(Instant.now()));
+		log.debug("case#1: {}", Date.from(Instant.now()));
 
 		// case#2
-		logger.debug("case#2: {}", Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		log.debug("case#2: {}", Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 
 		// case#3
 		LocalDateTime ldt = LocalDateTime.now();
 		ZonedDateTime zdt = ldt.atZone(ZoneId.systemDefault());
 		Date out = Date.from(zdt.toInstant());
-		logger.debug("case#3: {}", out);
+		log.debug("case#3: {}", out);
 
 		// case#4
 //		Date in = new Date();
 //		LocalDateTime ldt2 = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
 		LocalDateTime ldt2 = LocalDateTime.now();
 		Date out2 = Date.from(ldt2.atZone(ZoneId.systemDefault()).toInstant());
-		logger.debug("case#4: {}", out2);
+		log.debug("case#4: {}", out2);
 	}
 
+	@Test
+	public void parseTimestampToLocalDateTime() {
+		LocalDateTime ldt = LocalDateTime.parse("2019-01-31T00:00:00.000");
+		Timestamp ts = Timestamp.valueOf(ldt);
+		log.debug("ts: {}", ts);
+	}
 }

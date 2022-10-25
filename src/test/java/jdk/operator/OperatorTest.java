@@ -2,23 +2,34 @@ package jdk.operator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
- * 
+ * 연산자 테스트 슈트
  * 
  * @since 2017-07-27
  * @author fixalot
  */
+@Slf4j
 public class OperatorTest {
-	private static final Logger logger = LoggerFactory.getLogger(OperatorTest.class);
+
+	/**
+	 * 산술 연산자(arithmetic operator) 테스트
+	 */
+	@Test
+	public void arithmeticOperator() {
+		int n = 2665 / 1333; // 연산할 때 타입 명시가 없으면 int 타입으로 처리됨
+        long l = 2665 / 1333;
+        double d = 2665D / 1333D;
+
+        assertEquals(1, n);
+        assertEquals(1, l);
+        assertEquals(1.9992498124531132783195798949737, d);
+	}
 
 	/**
 	 * 할당 연산자<sup>assignment operator</sup> 테스트
-	 * 
-	 * @author noritersand
 	 */
 	@Test
 	public void assignmentOperator() {
@@ -46,7 +57,10 @@ public class OperatorTest {
 		a = b = c = d = e = 100; // 다섯개를 한 번에 조로록
 		assertTrue(a == b && b == c && c == d && d == e && e == 100); // 당연히 다섯 변수의 값은 같음
 	}
-	
+
+	/**
+	 * 음수 부호 테스트
+	 */
 	@Test
 	public void negativeSign() {
 		assertTrue(-3 < 0);
@@ -55,6 +69,11 @@ public class OperatorTest {
 		assertEquals(-3, -three);
 		assertEquals(3, -(-three));
 		assertEquals(-3, -(-(-three)));
+
+		// convert to negative value
+		assertEquals(-45, 45 * -1);
+		assertEquals(-90, 90 * -1);
+		assertEquals(-312, 312 * -1);
 	}
 	
 	@Test
@@ -78,10 +97,10 @@ public class OperatorTest {
 
 		// 반복문에서 증감연산자는 피연산자의 어느쪽에 있어도 상관 없다.
 		for (int i = 0; i < 2; ++i) {
-			logger.debug("{}", i);
+			log.debug("{}", i);
 		}
 		for (int i = 0; i < 2; i++) {
-			logger.debug("{}", i);
+			log.debug("{}", i);
 		}
 	}
 	

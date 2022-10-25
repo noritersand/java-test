@@ -39,21 +39,7 @@ public class WrapperClassTest {
 		assertTrue(Long.valueOf(0) == Long.valueOf(0));
 		assertTrue(Long.valueOf(1L) == Long.valueOf(1L));
 		assertTrue(Long.valueOf(20L) == Long.valueOf(20L));
-		assertTrue(Long.valueOf(30L) == Long.valueOf(30L));
-		assertTrue(Long.valueOf(40L) == Long.valueOf(40L));
-		assertTrue(Long.valueOf(50L) == Long.valueOf(50L));
-		assertTrue(Long.valueOf(60L) == Long.valueOf(60L));
-		assertTrue(Long.valueOf(70L) == Long.valueOf(70L));
-		assertTrue(Long.valueOf(80L) == Long.valueOf(80L));
-		assertTrue(Long.valueOf(90L) == Long.valueOf(90L));
 		assertTrue(Long.valueOf(100L) == Long.valueOf(100L));
-		assertTrue(Long.valueOf(110L) == Long.valueOf(110L));
-		assertTrue(Long.valueOf(120L) == Long.valueOf(120L));
-		assertTrue(Long.valueOf(121L) == Long.valueOf(121L));
-		assertTrue(Long.valueOf(122L) == Long.valueOf(122L));
-		assertTrue(Long.valueOf(123L) == Long.valueOf(123L));
-		assertTrue(Long.valueOf(124L) == Long.valueOf(124L));
-		assertTrue(Long.valueOf(125L) == Long.valueOf(125L));
 		assertTrue(Long.valueOf(126L) == Long.valueOf(126L));
 		assertTrue(Long.valueOf(127L) == Long.valueOf(127L));
 		// 여기까지는 동등 연산자에서 객체 아이디를 비교하지 않음. 127L 까지는 1바이트라서 정수로 변환된다고 함(자바니께 원시타입으로 변환되는거겠지)
@@ -137,5 +123,10 @@ public class WrapperClassTest {
 		} catch (Exception e) {
 			logger.debug("예외 발생#2: {}", e.getLocalizedMessage());
 		}
+	}
+
+	@Test
+	public void checkZero() {
+		assertTrue(Long.valueOf(0L).equals(Long.valueOf(0L)));
 	}
 }

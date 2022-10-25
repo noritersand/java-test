@@ -3,9 +3,12 @@ package jdk.java.sql;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,13 +19,13 @@ import org.slf4j.LoggerFactory;
  * @since 2019-01-11
  * @author fixalot
  */
+@Slf4j
 public class DateTest {
-	private static final Logger logger = LoggerFactory.getLogger(DateTest.class);
 
 	@Test
 	public void shouldBeEqual() {
 		long mills = System.currentTimeMillis();
-		logger.debug("currentTimeMills: {}", mills);
+		log.debug("currentTimeMills: {}", mills);
 		Date date = new Date(mills);
 		assertEquals(mills, date.getTime());
 	}
@@ -31,6 +34,14 @@ public class DateTest {
 	public void testJavaSqlDate() {
 		Date date = new Date(1547168374396L);
 		assertEquals("2019-01-11", date.toString());
+
+		Calendar calendar = GregorianCalendar.getInstance();
+
+		Date ins1 = new Date(calendar.getTimeInMillis());
+		log.debug("ins1: {}", ins1);
+
+		java.util.Date ins2 = calendar.getTime();
+		log.debug("ins2: {}", ins2);
 	}
 	
 	@Test

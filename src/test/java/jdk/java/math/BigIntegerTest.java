@@ -5,6 +5,7 @@ import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,14 +16,19 @@ import org.slf4j.LoggerFactory;
  * @since 2019-12-16
  * @author noritersand
  */
+@Slf4j
 public class BigIntegerTest {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(BigIntegerTest.class);
 
 	@Test
 	public void instantiate() {
 		assertEquals(BigInteger.valueOf(123), new BigInteger("123"));
 //		assertEquals(BigInteger.valueOf(123), new BigInteger("123.456")); // java.lang.NumberFormatException: For input string: "123.456"
+	}
+
+	@Test
+	public void testMaxValue() {
+		assertEquals(456,
+				new BigInteger("123").max(new BigInteger("456")).intValue());
 	}
 	
 	@Test
