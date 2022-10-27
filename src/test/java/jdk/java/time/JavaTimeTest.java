@@ -11,6 +11,8 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.TemporalAmount;
+import java.time.temporal.TemporalField;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,6 +25,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @Slf4j
 public class JavaTimeTest {
+
+	public static final ZoneId ZONE_ID_ASIA_SEOUL = ZoneId.of("Asia/Seoul");
+	public static final ZoneId ZONE_ID_UTC = ZoneId.of("UTC");
 
 	/**
 	 * 인스턴트 만들기
@@ -76,20 +81,6 @@ public class JavaTimeTest {
 		assertFalse(a == b);
 	}
 
-	/**
-	 * 서울의 Zone ID는 Asia/Seoul
-	 */
-	@Test
-	public void testZoneIds() {
-		// 사용 가능한 Zone ID 출력.
-		Set<String> zoneIds= ZoneId.getAvailableZoneIds();
-		for (String zone : zoneIds) {
-			log.debug("zoneId: {}", zoneIds);
-		}
-		ZoneId zid = ZoneId.of("Asia/Seoul");
-		assertNotNull(zid);
-	}
-
 	@Test
 	public void testYearMonth() {
 		YearMonth ins = YearMonth.parse("2022-12");
@@ -100,7 +91,7 @@ public class JavaTimeTest {
 	public void testMonthDay() {
 		MonthDay ins = MonthDay.parse("--12-31");
 		assertEquals("--12-31", ins.toString());
-		
+
 		ins = MonthDay.parse("05-05", DateTimeFormatter.ofPattern("MM-dd"));
 		assertEquals(MonthDay.parse("--05-05"), ins);
 	}
@@ -120,6 +111,53 @@ public class JavaTimeTest {
 		now = now.withYear(2019).withMonth(1).withDayOfMonth(31);
 		now = now.withHour(0).withMinute(0).withSecond(0).withNano(0);
 		assertEquals(LocalDateTime.parse("2019-01-31T00:00:00.000"), now);
+	}
+
+	/**
+	 * 서울의 Zone ID는 Asia/Seoul
+	 */
+	@Test
+	public void testZoneIds() {
+		// 사용 가능한 Zone ID 출력.
+		Set<String> zoneIds= ZoneId.getAvailableZoneIds();
+		for (String zone : zoneIds) {
+			log.debug("zoneId: {}", zoneIds);
+		}
+		ZoneId zid = ZONE_ID_ASIA_SEOUL;
+		assertNotNull(zid);
+	}
+
+	/**
+	 * 현재 시간을 만들 때 타임 존 지정하기
+	 */
+	@Test
+	public void setTimeZone() {
+		Instant instant = Instant.now();
+		LocalDateTime utc1 = LocalDateTime.ofInstant(instant, ZONE_ID_UTC);
+		LocalDateTime kst1 = LocalDateTime.ofInstant(instant, ZONE_ID_ASIA_SEOUL);
+		assertEquals(utc1, kst1.minusHours(9));
+
+		LocalDateTime utc2 = LocalDateTime.now(ZONE_ID_UTC);
+		LocalDateTime kst2 = LocalDateTime.now(ZONE_ID_ASIA_SEOUL);
+		assertEquals(utc2, kst2.minus(Duration.ofHours(9)));
+	}
+
+	/**
+	 * 이미 만들어진 시간 객체의 타임 존 변경하기
+	 */
+	@Test
+	public void changeTimeZone() {
+		// 이건 뭔가 이상함. 이미 만들어진 인스턴스의 타임존을 바꿨으나 시간은 그대로
+		LocalDateTime utc3 = LocalDateTime.now(ZONE_ID_UTC);
+		ZonedDateTime kst3 = utc3.atZone(ZONE_ID_ASIA_SEOUL);
+		assertEquals(ZONE_ID_ASIA_SEOUL, kst3.getZone());
+		assertEquals(utc3, kst3.toLocalDateTime());
+
+		// TODO 잘 안됨
+//		LocalDateTime kst4 = LocalDateTime.now(ZONE_ID_ASIA_SEOUL);
+//		log.debug("kst4: {}", kst4);
+//		Instant instant1 = kst4.toInstant(ZoneOffset.ofHours(-9));
+//		log.debug("instant1: {}", instant1);
 	}
 
 	@Test
