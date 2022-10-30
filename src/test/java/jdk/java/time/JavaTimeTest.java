@@ -25,10 +25,17 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @Slf4j
 public class JavaTimeTest {
-
 	public static final ZoneId ZONE_ID_ASIA_SEOUL = ZoneId.of("Asia/Seoul");
 	public static final ZoneId ZONE_ID_UTC = ZoneId.of("UTC");
 
+	@Test
+	public void test() {
+		LocalDateTime now1 = LocalDateTime.now().minusHours(9);
+		LocalDateTime now2 = LocalDateTime.now(ZoneId.of("UTC"));
+		
+		assertEquals(now1, now2);
+	}
+	
 	/**
 	 * 인스턴트 만들기
 	 */
@@ -59,7 +66,7 @@ public class JavaTimeTest {
 		assertTrue(endOfUs.isAfter(beginingOfWorld));
 
 		LocalDate a = LocalDate.parse("2022-10-19", DateTimeFormatter.ISO_LOCAL_DATE);
-		LocalDate b = LocalDate.now();
+		LocalDate b = LocalDate.parse("2022-10-19");
 		assertTrue(a.isEqual(b));
 	}
 
@@ -111,6 +118,7 @@ public class JavaTimeTest {
 		now = now.withYear(2019).withMonth(1).withDayOfMonth(31);
 		now = now.withHour(0).withMinute(0).withSecond(0).withNano(0);
 		assertEquals(LocalDateTime.parse("2019-01-31T00:00:00.000"), now);
+
 	}
 
 	/**
@@ -125,6 +133,13 @@ public class JavaTimeTest {
 		}
 		ZoneId zid = ZONE_ID_ASIA_SEOUL;
 		assertNotNull(zid);
+	}
+	
+	@Test
+	public void testMinusDays() {
+		LocalDate ins = LocalDate.parse("2022-10-30");
+		LocalDate yesterday = ins.minusDays(1);
+		assertEquals(LocalDate.parse("2022-10-29"), yesterday);
 	}
 
 	/**
@@ -289,6 +304,16 @@ public class JavaTimeTest {
 		LocalDate a = LocalDate.of(2017, Month.DECEMBER, 31);
 		java.sql.Date b = java.sql.Date.valueOf(a);
 		assertEquals("2017-12-31", b.toString());
+	}
+
+	/**
+	 * LocalDateTime -> LocalDate
+	 */
+	@Test
+	public void parseLocalDateTimeToLocalDate() {
+		LocalDateTime localDateTime = LocalDateTime.parse("2022-12-31T00:00:00.000");
+		LocalDate localDate = localDateTime.toLocalDate();
+		assertEquals(LocalDate.parse("2022-12-31"), localDate);
 	}
 
 	/**

@@ -43,4 +43,27 @@ public class StringBufferTest {
 		
 		assertEquals("가�����라", buffer.toString());
 	}
+	
+	@Test
+	public void testDelete() {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("abc").append("def");
+		assertEquals(6, buffer.length());
+
+		buffer.delete(0, buffer.length());
+		assertEquals(0, buffer.length());
+	}
+
+	/**
+	 * StringBuilder도 쓰는 방법은 비슷함
+	 */
+	@Test
+	public void testStringBuilder() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("abc").append("def");
+		assertEquals(6, builder.length());
+
+		builder.delete(0, builder.length());
+		assertEquals(0, builder.length());
+	}
 }
