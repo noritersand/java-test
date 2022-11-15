@@ -2,10 +2,7 @@ package jdk.statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import model.Fruit;
-import model.Color;
-import model.ImSpecial;
-import model.SystemType;
+import model.*;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -122,5 +119,13 @@ public class EnumTest {
 		assertEquals(0, Fruit.APPLE.ordinal());
 		assertEquals(1, Fruit.BANANA.ordinal());
 		assertEquals(2, Fruit.COCONUT.ordinal());
+	}
+
+	@Test
+	public void heritance() {
+		SubEnum dummy = SubEnum.DUMMY;
+		int one = SuperEnum.ONE;
+		int one2 = SubEnum.ONE;
+
 	}
 }

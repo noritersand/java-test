@@ -1,63 +1,55 @@
 package jdk.java.sql;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
- * 
- * @since 2017-07-27
  * @author fixalot
+ * @since 2017-07-27
  */
+@Slf4j
 public class PreparedStatementTest {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(PreparedStatementTest.class);
 
-	/**
-	 * usage
-	 * 
-	 * @author fixalot
-	 */
-	@Test
-	public void test() {
-		// TODO
+    /**
+     * usage
+     *
+     * @author fixalot
+     */
+//	@Test
+    public void test() {
+        try (Connection con = DriverManager.getConnection("")) {
+            PreparedStatement stmt = con.prepareStatement("SELECT 123");
+            stmt.setFetchSize(2000);
+            ResultSet rs = stmt.executeQuery();
+            getResultMapRows(rs);
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+        }
+    }
 
-		/*
-			try (Connection con = dataSource.getConnection()) { 
-				java.sql.PreparedStatement stmt = con.prepareStatement( "some query");
-				stmt.setFetchSize(2000);
-				ResultSet rs = stmt.executeQuery();
-				getResultMapRows(rs);
-			} catch (SQLException e) {
-				e.printStackTrace(); 
-			}
-		 */
-	}
-
-	@SuppressWarnings("unused")
-	private List<Map<String, Object>> getResultMapRows(ResultSet rs) throws SQLException {
-		ResultSetMetaData metaData = rs.getMetaData();
-		int sizeOfColumn = metaData.getColumnCount();
-		List<Map<String, Object>> list = new ArrayList<>();
-		Map<String, Object> map;
-		String column;
-		while (rs.next()) {
-			map = new HashMap<String, Object>();
-			for (int indexOfcolumn = 0; indexOfcolumn < sizeOfColumn; indexOfcolumn++) {
-				column = metaData.getColumnName(indexOfcolumn + 1);
-				map.put(column, rs.getString(column));
-			}
-			list.add(map);
-		}
-		return list;
-	}
+    @SuppressWarnings("unused")
+    private List<Map<String, Object>> getResultMapRows(ResultSet rs) throws SQLException {
+        ResultSetMetaData metaData = rs.getMetaData();
+        int sizeOfColumn = metaData.getColumnCount();
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> map;
+        String column;
+        while (rs.next()) {
+            map = new HashMap<String, Object>();
+            for (int indexOfcolumn = 0; indexOfcolumn < sizeOfColumn; indexOfcolumn++) {
+                column = metaData.getColumnName(indexOfcolumn + 1);
+                map.put(column, rs.getString(column));
+            }
+            list.add(map);
+        }
+        return list;
+    }
 }

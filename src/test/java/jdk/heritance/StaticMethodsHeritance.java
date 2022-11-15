@@ -1,29 +1,36 @@
 package jdk.heritance;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class StaticMethodsHeritance {
-    public static void main(String[] args) {
-        Parent instance = new Child();
-        instance.print(); // Child 출력됨
-        instance.staticPrint(); // Parent 출력됨
+    @Test
+    public void shouldBeEquals() {
+        Parent ins1 = new Child();
+        assertEquals("Child", ins1.print());
+        assertEquals("Parent", ins1.staticPrint());
+
+        assertEquals("Child", Child.staticPrint());
     }
 }
 
 class Parent {
-    public void print() {
-        System.out.println("Parent");
+    public String print() {
+        return "Parent";
     }
 
-    public static void staticPrint() {
-        System.out.println("Parent");
+    public static String staticPrint() {
+        return "Parent";
     }
 }
 
 class Child extends Parent {
-    public void print() {
-        System.out.println("Child");
+    public String print() {
+        return "Child";
     }
 
-    public static void staticPrint() {
-        System.out.println("Child");
+    public static String staticPrint() {
+        return "Child";
     }
 }
