@@ -1,5 +1,6 @@
 package jdk.java.lang;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,15 +10,15 @@ import org.slf4j.LoggerFactory;
  * @since 2017-07-27
  * @author fixalot
  */
+@Slf4j
 public class ThreadTest2 {
 	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(ThreadTest2.class);
 
 	public static void main(String[] args) {
 		ChildThread thread = new ChildThread(); // thread는 null일 수 없음
 		thread.start();
 		if (!thread.isAlive()) {
-			throw new IllegalAccessError("여기 오면 안되는데");
+			throw new RuntimeException("여기 오면 안되는데");
 		}
 		
 		// isAlive()는 스레드 생성 즉시 true를 반환하기 때문에 while문은 무의미함. (데몬 스레드도 아니고...)
@@ -25,7 +26,7 @@ public class ThreadTest2 {
 //			if (thread.isAlive()) { // thread가 alive를 true로 반환할 때까지 무한루프
 //				thread.interrupt();
 //				if (!thread.isInterrupted()) {
-//					throw new IllegalAccessError("여기 오면 안되는데 2");
+//					throw new RuntimeException()("여기 오면 안되는데 2");
 //				}
 //				break;
 //			}
@@ -33,7 +34,7 @@ public class ThreadTest2 {
 		
 		thread.interrupt();
 		if (!thread.isInterrupted()) {
-			throw new IllegalAccessError("여기 오면 안되는데 2");
+			throw new RuntimeException("여기 오면 안되는데 2");
 		}
 	}
 	

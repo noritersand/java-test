@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import lab.InappropriateArgumentException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,7 @@ public class PhoneNumberSplitter {
 
 	public static Result split(String str) {
 		if (StringUtils.isEmpty(str) || str.length() < 9) {
-			throw new IllegalArgumentException("전화번호는 필수값이며 9자리 이상이어야 해요.");
+			throw new InappropriateArgumentException("전화번호는 필수값이며 9자리 이상이어야 해요.");
 		}
 
 		Result result = new Result();
@@ -40,7 +41,7 @@ public class PhoneNumberSplitter {
 			separated = new String[] { matcher.group(1), matcher.group(2), matcher.group(3) };
 		} else {
 			if (str.length() < 11) {
-				throw new IllegalArgumentException("뭔가 이상한 전화번호에요");
+				throw new InappropriateArgumentException("뭔가 이상한 전화번호에요");
 			}
 			String str1 = str.substring(0, 3);
 			String str2 = str.substring(3, 7);

@@ -11,35 +11,36 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  */
 public class LogbackTest {
-	private static final Logger logger = LoggerFactory.getLogger(LogbackTest.class);
+	private static final Logger log = LoggerFactory.getLogger(LogbackTest.class);
 
 	public static void main(String[] args) {
-		logger.debug("running java application");
+		log.debug("running java application");
 	}
 
 	@Test
 	public void loggingWithJunit() {
 		Integer a = Integer.valueOf("123");
-		logger.debug("{}", a);
+		log.debug("{}", a);
 		
-		logger.debug("unit testing");
-		logger.debug("unit", "testing"); // "testing"은 안찍힘
+		log.debug("unit testing");
+		log.debug("unit", "testing"); // "testing"은 안찍힘
 	}
 
 	@Test
 	public void loggingWithFormat() {
-		logger.debug("{} {} {} {}", "이건가", "저건가", "나는 누구", "여긴 어디");
-		logger.debug("{} {}", new Object[] { "hello there!", "if you ask, im waldo" });
-//		logger.debug("im {}", null); // 이렇게는 안됨
-		logger.debug("im {}", "null");
+		log.debug("{} {} {} {}", "이거", "저거", "나는 누구", "여긴 어디");
+		log.debug("{} {}", new Object[] { "hello there!", "if you ask, im waldo" });
+//		log.debug("im {}", null); // 이렇게는 안됨
+		log.debug("im {}", "null");
 	}
 	
-//	@Test
+	@Test
 	public void loggingError() {
 		try {
-			throw new IllegalAccessError("1234");
+			throw new RuntimeException("1234");
 		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
+			log.error("exceptionName: {}, message: {}", e.getClass().getName(), e.getMessage());
+			log.error(e.getMessage(), e);
 		}
 	}
 }

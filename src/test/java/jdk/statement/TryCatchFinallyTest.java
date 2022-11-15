@@ -5,6 +5,8 @@ import java.io.Writer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import lab.InappropriateArgumentException;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +20,9 @@ import misc.ExceptionTest;
  * @author fixalot
  * @see ExceptionTest
  */
+@Slf4j
 public class TryCatchFinallyTest {
-	private static final Logger logger = LoggerFactory.getLogger(TryCatchFinallyTest.class);
 
-	
 	/**
 	 * 새로 나온 try-with-resources statement<br>
 	 * catch나 finally 없어도 컴파일 에러 발생하지 않음<br>
@@ -39,9 +40,9 @@ public class TryCatchFinallyTest {
 	
 	/**
 	 * catch 작성 순서는 매우 중요하며, 아무렇게나 작성하면 컴파일 에러가 발생할 수 있다.<br>
-	 * 아래의 경우 catch 우선순위는 RuntimeException, Exception, IllegalArgumentException순이다. 즉, catch 우선순위는 작성 순서를 따른다.<br>
-	 * 그리고 try에서 IllegalArgumentException을 throw 하더라도  'Exception' catch에서 흡수해버리므로(부모를 잡으라고 작성하면 자식도 잡힘)<br>
-	 * 'IllegalArgumentException' catch는 dead code가 된다. 
+	 * 아래의 경우 catch 우선순위는 RuntimeException, Exception, InappropriateArgumentException(순이다. 즉, catch 우선순위는 작성 순서를 따른다.<br>
+	 * 그리고 try에서 InappropriateArgumentException(을 throw 하더라도  'Exception' catch에서 흡수해버리므로(부모를 잡으라고 작성하면 자식도 잡힘)<br>
+	 * 'InappropriateArgumentException(' catch는 dead code가 된다.
 	 * 
 	 * @author noritersand
 	 */
@@ -50,14 +51,14 @@ public class TryCatchFinallyTest {
 		try {
 			int a = 0;
 			if (a == 0) {
-				throw new IllegalArgumentException();
+				throw new InappropriateArgumentException();
 			}
 		} catch (RuntimeException e) {
 			// do nothing
 		} catch (Exception e) {
 			// do nothing
-//		} catch (IllegalArgumentException e) { // 이 코멘트를 풀면 컴파일 에러 발생함: 
-			// Unreachable catch block for IllegalArgumentException. It is already handled by the catch block for Exception
+//		} catch (InappropriateArgumentException(e) { // 이 코멘트를 풀면 컴파일 에러 발생함:
+//			 Unreachable catch block for InappropriateArgumentException(. It is already handled by the catch block for Exception
 		}
 	}
 
@@ -69,7 +70,7 @@ public class TryCatchFinallyTest {
 				int nan = 1 / 0; // 여기서 발생한 예외는 가장 바깥의 catch에서 받음
 			} finally {
 				// catch가 없으면 finally라도 있어야 컴파일 에러 안남
-				logger.debug("You know nothing John snow!");
+				log.debug("You know nothing John snow!");
 			}
 		} catch (ArithmeticException e) {
 			assertEquals("/ by zero", e.getMessage());
@@ -92,8 +93,8 @@ public class TryCatchFinallyTest {
 		String str = "";
 		try {
 			str += "try";
-			throw new IllegalAccessError();
-		} catch (IllegalAccessError e) {
+			throw new RuntimeException();
+		} catch (RuntimeException e) {
 			str += " catch";
 		} finally {
 			str += " finally";
@@ -127,14 +128,14 @@ public class TryCatchFinallyTest {
 		String str = "";
 		try {
 			str += "weird";
-			throw new IllegalAccessError();
-		} catch (IllegalAccessError e) {
+			throw new RuntimeException();
+		} catch (RuntimeException e) {
 			str += "State";
-			logger.debug(str);
+			log.debug(str);
 			return "";
 		} finally {
 			str += "ment";
-			logger.debug(str);
+			log.debug(str);
 			return str; // finally block does not complete normally
 		}
 	}
@@ -152,14 +153,14 @@ public class TryCatchFinallyTest {
 		String str = "";
 		try {
 			str += "weird";
-			throw new IllegalAccessError();
-		} catch (IllegalAccessError e) {
+			throw new RuntimeException();
+		} catch (RuntimeException e) {
 			str += "State";
-			logger.debug(str);
+			log.debug(str);
 			throw e;
 		} finally {
 			str += "ment2";
-			logger.debug(str);
+			log.debug(str);
 			return str; // finally block does not complete normally
 		}
 	}
