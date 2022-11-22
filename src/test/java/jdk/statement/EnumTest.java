@@ -122,10 +122,18 @@ public class EnumTest {
 	}
 
 	@Test
-	public void heritance() {
+	public void heritanceTest() {
 		SubEnum dummy = SubEnum.DUMMY;
-		int one = SuperEnum.ONE;
-		int one2 = SubEnum.ONE;
+		assertEquals(1, dummy.ONE);
+		assertEquals(1, SubEnum.ONE);
+		assertEquals(1, SuperEnum.ONE);
+		assertEquals("1234", SuperEnum.doSomething());;
+//		dummy.doSomething();
+//		SubEnum.doSomething();
+		
+		assertEquals("5678", SubEnum.DUMMY.overrideMe());
 
+		// TODO SuperEnum, SubEnum 만지다 말았음.
+		
 	}
 }

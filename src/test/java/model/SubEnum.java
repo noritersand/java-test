@@ -1,5 +1,10 @@
 package model;
 
 public enum SubEnum implements SuperEnum {
-    DUMMY
+    DUMMY {
+        @Override
+        public String overrideMe() {
+            return "5678";
+        }
+    }
 }
