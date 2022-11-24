@@ -1,4 +1,4 @@
-package model;
+package constant;
 
 public enum SystemType {
     BACK_OFFICE, FRONT_OFFICE("front office system");

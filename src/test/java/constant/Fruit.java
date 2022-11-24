@@ -1,4 +1,4 @@
-package model;
+package constant;
 
 public enum Fruit {
     APPLE(10), BANANA(9), COCONUT(12), DURIAN(15), EGGPLANT(8);
@@ -7,7 +7,7 @@ public enum Fruit {
     private int price; // price of each apple
 
     // Constructor
-    private Fruit(int p) {
+    Fruit(int p) {
         price = p;
     }
 

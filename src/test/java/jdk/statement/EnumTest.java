@@ -2,7 +2,7 @@ package jdk.statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import model.*;
+import constant.*;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +38,16 @@ public class EnumTest {
 		System.out.println(var2); // FRONT_OFFICE
 		System.out.println(var2.name()); // FRONT_OFFICE
 		System.out.println(var2.getOptionalField()); // front office system
+	}
+
+	/**
+	 * toString()을 오버라이딩하고 호출하면 뭐가 나오나
+	 */
+	@Test
+	public void overrideToStringTest() {
+		// 응 안됨
+		assertNotEquals("10", InvokeMe.TEN);
+		assertEquals(InvokeMe.TEN, InvokeMe.TEN);
 	}
 
 	@Test
@@ -134,6 +144,6 @@ public class EnumTest {
 		assertEquals("5678", SubEnum.DUMMY.overrideMe());
 
 		// TODO SuperEnum, SubEnum 만지다 말았음.
-		
 	}
+
 }

@@ -1,4 +1,4 @@
-package model;
+package constant;
 
 public interface SuperEnum {
     int ONE = 1;
