@@ -64,7 +64,14 @@ public class DateTest {
 	public void changeTimeZone() {
 		Date date = new Date(1547168374396L);
 		assertEquals("2019-01-11", date.toString());
-		Instant instant = date.toInstant();
+		try {
+			date.toInstant();
+		} catch (UnsupportedOperationException e) {
+			// java.sql.Date는 시간을 지원하지 않아서 항상 예외 발생
+			log.debug("Exception 발생");
+		}
+		// .toInstant()를 쓰고 싶으면 time component 가 있는 클래스를 써야함
+		Instant instant = new Timestamp(1547168374396L).toInstant();
 		LocalDateTime utc1 = LocalDateTime.ofInstant(instant, ZONE_ID_UTC);
 		LocalDateTime kst1 = LocalDateTime.ofInstant(instant, ZONE_ID_ASIA_SEOUL);
 		assertEquals(utc1, kst1.minusHours(9));

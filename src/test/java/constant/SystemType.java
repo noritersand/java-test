@@ -8,11 +8,11 @@ public enum SystemType {
 
     private String optionalField;
 
-    private SystemType(final String option) {
-        this.optionalField = option;
+    private SystemType(String optionalField) {
+        this.optionalField = optionalField;
     }
 
-    public String getOptionalField() {
+    public String optionalField() {
         return this.optionalField;
     }
 

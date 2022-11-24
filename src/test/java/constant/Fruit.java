@@ -11,13 +11,13 @@ public enum Fruit {
         price = p;
     }
 
-    public int getPrice() {
+    public int price() {
         return price;
     }
 
     public static Fruit valueOf(int price) {
         for (Fruit ele : Fruit.values()) {
-            if (ele.getPrice() == price) {
+            if (ele.price() == price) {
                 return ele;
             }
         }

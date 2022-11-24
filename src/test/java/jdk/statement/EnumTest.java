@@ -24,11 +24,11 @@ public class EnumTest {
 		System.out.println(Color.RED.name()); // RED
 
 		// Display price of Winsap.
-		System.out.println(Fruit.APPLE.getPrice());
+		System.out.println(Fruit.APPLE.price());
 		// Display all apples and prices.
 		System.out.println("All apple prices:");
 		for (Fruit ele : Fruit.values()) {
-			System.out.println(ele + " costs " + ele.getPrice() + " cents.");
+			System.out.println(ele + " costs " + ele.price() + " cents.");
 		}
 
 		SystemType var1 = SystemType.BACK_OFFICE;
@@ -37,7 +37,7 @@ public class EnumTest {
 		System.out.println(var1); // BACK_OFFICE
 		System.out.println(var2); // FRONT_OFFICE
 		System.out.println(var2.name()); // FRONT_OFFICE
-		System.out.println(var2.getOptionalField()); // front office system
+		System.out.println(var2.optionalField()); // front office system
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class EnumTest {
 	@Test
 	public void overrideToStringTest() {
 		// 응 안됨
-		assertNotEquals("10", InvokeMe.TEN);
+		assertFalse("10".equals(InvokeMe.TEN));
 		assertEquals(InvokeMe.TEN, InvokeMe.TEN);
 	}
 
