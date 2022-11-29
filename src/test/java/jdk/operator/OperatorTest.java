@@ -35,11 +35,19 @@ public class OperatorTest {
     public void negativeNumberTest() {
         int p = 123;
         assertEquals(-123, -p);
+        assertEquals(-123, -(p));
         assertEquals(-123, -1 * p);
+		assertEquals(-246, -(p) + -p);
 
-        int n = -456;
-        assertEquals(456, -n);
-        assertEquals(456, -1 * n);
+        int n = -400;
+        assertEquals(400, -n);
+        assertEquals(400, -(n));
+        assertEquals(400, -1 * n);
+		assertEquals(500, 100 - n);
+		assertEquals(300, -100 + -(n));
+		assertEquals(-300, 100 + n);
+		assertEquals(-500, -100 + n);
+
     }
 
 	/**
