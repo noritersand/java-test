@@ -20,8 +20,8 @@
 			<OnMismatch>NEUTRAL</OnMismatch>
 		</filter>
 		<encoder>
-			<!-- <pattern>|-%-5level %msg%n</pattern> -->
-			<pattern>%date{HH:mm:ss.SSS} |-%-5level %method: %msg%n</pattern>
+			 <pattern>%msg%n</pattern>
+<!--			<pattern>%date{HH:mm:ss.SSS} |-%-5level %method: %msg%n</pattern>-->
 			<!-- <pattern>|-%-5level %thread: %logger#%method: %msg%n</pattern> -->
 			<!-- <pattern>|-%-5level %date{ISO8601} %logger - %msg%n</pattern> -->
 			<!-- official example -->

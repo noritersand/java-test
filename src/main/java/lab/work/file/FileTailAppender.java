@@ -28,7 +28,7 @@ public class FileTailAppender {
 	/**
 	 * '대상 파일의 경로를 적어놓은 파일'의 경로. 라인으로 각 파일명을 구분한다.
 	 */
-	private static final String TARGET_LOCATION_FILE = "C:/dev/test/locations.txt";
+	private static final String TARGET_LOCATION_FILE = "C:/dev/temp/test/locations.txt";
 
 	public static void main(String[] args) {
 		File locationFile = new File(TARGET_LOCATION_FILE);
