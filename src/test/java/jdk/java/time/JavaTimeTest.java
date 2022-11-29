@@ -367,9 +367,16 @@ public class JavaTimeTest {
 	}
 
 	@Test
-	public void parseTimestampToLocalDateTime() {
+	public void parseLocalDateTimeToTimestamp() {
 		LocalDateTime ldt = LocalDateTime.parse("2019-01-31T00:00:00.000");
 		Timestamp ts = Timestamp.valueOf(ldt);
 		log.debug("ts: {}", ts);
+	}
+
+	@Test
+	public void parseTimestampToLocalDateTime() {
+		Timestamp timestamp = Timestamp.valueOf("2022-11-25 12:45:00.000");
+		LocalDateTime localDateTime = timestamp.toLocalDateTime();
+		assertEquals(LocalDateTime.parse("2022-11-25T12:45:00.000"), localDateTime);
 	}
 }

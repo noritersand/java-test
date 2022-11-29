@@ -29,6 +29,20 @@ public class OperatorTest {
 	}
 
 	/**
+	 * 음수 테스트
+	 */
+	@Test
+    public void negativeNumberTest() {
+        int p = 123;
+        assertEquals(-123, -p);
+        assertEquals(-123, -1 * p);
+
+        int n = -456;
+        assertEquals(456, -n);
+        assertEquals(456, -1 * n);
+    }
+
+	/**
 	 * 할당 연산자<sup>assignment operator</sup> 테스트
 	 */
 	@Test
