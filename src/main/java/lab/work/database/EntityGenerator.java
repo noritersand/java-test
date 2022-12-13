@@ -14,7 +14,7 @@ import java.util.*;
 @Slf4j
 public class EntityGenerator {
     private static final String TABLE_NAME = "TB_WOFF";
-    
+
     public static void main(String[] args) throws IOException, SQLException {
         Path datasourceFile = new File("src/main/resources/config/DO_NOT_COMMIT_ME.properties").toPath();
 
@@ -110,7 +110,7 @@ public class EntityGenerator {
                 return "FIXME";
         }
     }
-    
+
     private static List<Map<String, Object>> getResultMapRows(ResultSet rs) throws SQLException {
         ResultSetMetaData metaData = rs.getMetaData();
         int sizeOfColumn = metaData.getColumnCount();
@@ -133,7 +133,8 @@ public class EntityGenerator {
 
         private static Connection connection = null;
 
-        private DataSource() {}
+        private DataSource() {
+        }
 
         public static Connection getConnection(String url, String username, String password) {
             if (connection == null) {

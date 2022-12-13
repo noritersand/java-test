@@ -9,18 +9,16 @@ import org.slf4j.LoggerFactory;
 import com.google.common.primitives.Booleans;
 
 /**
- * 
- * 
- * @since 2017-07-27
  * @author fixalot
+ * @since 2017-07-27
  */
 public class BooleansTest {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(BooleansTest.class);
+    @SuppressWarnings("unused")
+    private static final Logger logger = LoggerFactory.getLogger(BooleansTest.class);
 
-	@Test
-	public void test() {
-		assertEquals(5, Booleans.asList(false, true, false, true, true).size());
-		assertEquals("true, false", Booleans.join(", ", true, false));
-	}
+    @Test
+    public void test() {
+        assertEquals(5, Booleans.asList(false, true, false, true, true).size());
+        assertEquals("true, false", Booleans.join(", ", true, false));
+    }
 }

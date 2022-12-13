@@ -8,7 +8,8 @@ package lab;
  */
 public class InappropriateArgumentException extends BusinessRuleViolationException {
 
-    public InappropriateArgumentException() {}
+    public InappropriateArgumentException() {
+    }
 
     public InappropriateArgumentException(String message) {
         super(message);

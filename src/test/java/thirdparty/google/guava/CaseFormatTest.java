@@ -9,26 +9,24 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.CaseFormat;
 
 /**
- * 
- * 
- * @since 2017-07-27
  * @author fixalot
+ * @since 2017-07-27
  */
 public class CaseFormatTest {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(CaseFormatTest.class);
+    @SuppressWarnings("unused")
+    private static final Logger logger = LoggerFactory.getLogger(CaseFormatTest.class);
 
-	@Test
-	public void testFormat() {
-		// lower camel -> upper underscore
-		assertEquals("MY_NAME", CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName"));
+    @Test
+    public void testFormat() {
+        // lower camel -> upper underscore
+        assertEquals("MY_NAME", CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName"));
 
-		// upper underscore -> lower camel
-		assertEquals("setBulkReservationNotPossible",
-				CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "SET_BULK_RESERVATION_NOT_POSSIBLE"));
+        // upper underscore -> lower camel
+        assertEquals("setBulkReservationNotPossible",
+                CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "SET_BULK_RESERVATION_NOT_POSSIBLE"));
 
-		// lower hyphen -> lower camel
-		assertEquals("setBulkReservationNotPossible",
-				CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, "set-bulk-reservation-not-possible"));
-	}
+        // lower hyphen -> lower camel
+        assertEquals("setBulkReservationNotPossible",
+                CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, "set-bulk-reservation-not-possible"));
+    }
 }

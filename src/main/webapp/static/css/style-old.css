@@ -3,15 +3,18 @@
 /*TODO style.css랑 합쳐야 함.*/
 
 section {
-	margin-top: 50px;
-	margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
+
 input.small {
-	width: 80px;
+    width: 80px;
 }
+
 input.medium {
-	width: 160px;
+    width: 160px;
 }
+
 input.max {
-	width: 100%;
+    width: 100%;
 }

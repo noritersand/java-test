@@ -11,25 +11,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class HttpURLConnectionTest {
-	private static final Logger logger = LoggerFactory.getLogger(HttpURLConnectionTest.class);
-	
-	/**
-	 * 로컬 서버 안띄워놓으면 접속 안되서 막음.
-	 * 
-	 * @throws IOException
-	 * @author fixal
-	 */
+    private static final Logger logger = LoggerFactory.getLogger(HttpURLConnectionTest.class);
+
+    /**
+     * 로컬 서버 안띄워놓으면 접속 안되서 막음.
+     *
+     * @throws IOException
+     * @author fixal
+     */
 //	@Test
-	public void connectionTest() throws IOException {
-		URL url = new URL("http://localhost:8080");
-		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-		con.setDoOutput(true);
-		con.setConnectTimeout(2000);
-		con.setRequestMethod("GET");
-		
-		con.setRequestProperty("Accept-Encoding", "gzip, deflate, br");
-		con.setRequestProperty("Accept-Language", "en-US,en;q=0.9,ko;q=0.8");
-		con.setRequestProperty("Accept", "text/html");
+    public void connectionTest() throws IOException {
+        URL url = new URL("http://localhost:8080");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setConnectTimeout(2000);
+        con.setRequestMethod("GET");
+
+        con.setRequestProperty("Accept-Encoding", "gzip, deflate, br");
+        con.setRequestProperty("Accept-Language", "en-US,en;q=0.9,ko;q=0.8");
+        con.setRequestProperty("Accept", "text/html");
 //		con.setRequestProperty("Accept-Charset", "utf-8");
 //		con.setRequestProperty("Connection", "keep-alive");
 //		con.setRequestProperty("Host", "localhost");
@@ -37,28 +37,28 @@ public class HttpURLConnectionTest {
 //		con.setRequestProperty("Cache-Control", "no-cache"); // 캐시 비활성화
 //		con.setRequestProperty("Pragma", "no-cache"); // 캐시 비활성화
 //		con.setRequestProperty("Content-Type", "text/html; charset=UTF-8");
-		
-		logger.debug("response header: Content-Type: {}", con.getContentType());
-		logger.debug("response code: {}", con.getResponseCode());
-		
-		InputStream in = con.getInputStream();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		String singleline = "";
-		while ((singleline = reader.readLine()) != null) {
-			logger.debug(singleline);
-		}
 
-		reader.close();
-		in.close();
-		con.disconnect();
-	}
-	
-	/**
-	 * 원래 JSP에 있는 소스 퍼옴.
-	 * 
-	 * @author fixalot
-	 */
-	public void example1() {
+        logger.debug("response header: Content-Type: {}", con.getContentType());
+        logger.debug("response code: {}", con.getResponseCode());
+
+        InputStream in = con.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        String singleline = "";
+        while ((singleline = reader.readLine()) != null) {
+            logger.debug(singleline);
+        }
+
+        reader.close();
+        in.close();
+        con.disconnect();
+    }
+
+    /**
+     * 원래 JSP에 있는 소스 퍼옴.
+     *
+     * @author fixalot
+     */
+    public void example1() {
 		/*
 		String[] serverUrls = { "https://some-media-server.com" };
 		
@@ -120,5 +120,5 @@ public class HttpURLConnectionTest {
 		
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		*/
-	}
+    }
 }

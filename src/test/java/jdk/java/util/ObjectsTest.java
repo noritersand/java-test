@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @Slf4j
 public class ObjectsTest {
-    
+
     @Test
     public void test() {
 
@@ -21,7 +21,7 @@ public class ObjectsTest {
 
     /**
      * requireNonNull()과 파생 메서드 테스트
-     */   
+     */
     @Test
     public void testRequireNonNull() {
         // #1 넘겨진 인자가 null이면 NPE 발생시킴

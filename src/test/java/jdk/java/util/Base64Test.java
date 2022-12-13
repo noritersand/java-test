@@ -20,7 +20,7 @@ public class Base64Test {
         Base64.Encoder encoder = Base64.getEncoder();
         String str = "Hello World!";
         byte[] encoded = encoder.encode(str.getBytes(StandardCharsets.UTF_8));
-        assertArrayEquals(new byte[] { 83, 71, 86, 115, 98, 71, 56, 103, 86, 50, 57, 121, 98, 71, 81, 104 }, encoded);
+        assertArrayEquals(new byte[]{83, 71, 86, 115, 98, 71, 56, 103, 86, 50, 57, 121, 98, 71, 81, 104}, encoded);
         assertEquals("SGVsbG8gV29ybGQh", new String(encoded));
     }
 

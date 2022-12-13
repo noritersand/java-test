@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <configuration scan="true" scanPeriod="5 seconds"> <!-- 5초마다 설정 변경 감지 -->
-	<if condition='property("app.log.home") != null &amp;&amp; !property("app.log.home").equals("")'>
-		<then>
-			<property name="LOG_HOME" value="${app.log.home}" />
-		</then>
-		<else>
-			<property name="LOG_HOME" value="/lab/logs" />
-		</else>
-	</if>
+    <if condition='property("app.log.home") != null &amp;&amp; !property("app.log.home").equals("")'>
+        <then>
+            <property name="LOG_HOME" value="${app.log.home}"/>
+        </then>
+        <else>
+            <property name="LOG_HOME" value="/lab/logs"/>
+        </else>
+    </if>
 
-	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
-		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-			<evaluator>
-				<expression>return message.contains("someSql.someId");</expression>
-			</evaluator>
-			<OnMatch>DENY</OnMatch>
-			<OnMismatch>NEUTRAL</OnMismatch>
-		</filter>
-		<encoder>
-			<!-- <pattern>|-%-5level %msg%n</pattern> -->
-			<pattern>%date{HH:mm:ss.SSS} |-%-5level %method: %msg%n</pattern>
-			<!-- <pattern>|-%-5level %thread: %logger#%method: %msg%n</pattern> -->
-			<!-- <pattern>|-%-5level %date{ISO8601} %logger - %msg%n</pattern> -->
-			<!-- official example -->
-			<!-- <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level: %logger{36} - %msg%n</pattern> -->
-		</encoder>
-	</appender>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>return message.contains("someSql.someId");</expression>
+            </evaluator>
+            <OnMatch>DENY</OnMatch>
+            <OnMismatch>NEUTRAL</OnMismatch>
+        </filter>
+        <encoder>
+            <!-- <pattern>|-%-5level %msg%n</pattern> -->
+            <pattern>%date{HH:mm:ss.SSS} |-%-5level %method: %msg%n</pattern>
+            <!-- <pattern>|-%-5level %thread: %logger#%method: %msg%n</pattern> -->
+            <!-- <pattern>|-%-5level %date{ISO8601} %logger - %msg%n</pattern> -->
+            <!-- official example -->
+            <!-- <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level: %logger{36} - %msg%n</pattern> -->
+        </encoder>
+    </appender>
 
-	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${LOG_HOME}/webapp.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_HOME}/webapp-%d{yyyyMMdd}-%i.log</fileNamePattern>
-			<maxFileSize>20MB</maxFileSize> <!-- 파일 크기가 30메가바이트를 넘기면 새 파일로 -->
-			<maxHistory>30</maxHistory> <!-- 30일이 지난 파일은 삭제 -->
-			<totalSizeCap>20GB</totalSizeCap> <!-- 모든 파일의 전체 크기 제한 -->
-		</rollingPolicy>
-		<encoder>
-			<pattern>|-%-5level %date{ISO8601}: %X{req.remoteHost}|%X{req.requestURI}|%X{req.requestMethod}: %logger#%method: %msg%n</pattern>
-			<!-- <pattern>|-%-5level %date{ISO8601} %logger#%method: %msg%n</pattern> -->
-		</encoder>
-	</appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/webapp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/webapp-%d{yyyyMMdd}-%i.log</fileNamePattern>
+            <maxFileSize>20MB</maxFileSize> <!-- 파일 크기가 30메가바이트를 넘기면 새 파일로 -->
+            <maxHistory>30</maxHistory> <!-- 30일이 지난 파일은 삭제 -->
+            <totalSizeCap>20GB</totalSizeCap> <!-- 모든 파일의 전체 크기 제한 -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>|-%-5level %date{ISO8601}: %X{req.remoteHost}|%X{req.requestURI}|%X{req.requestMethod}:
+                %logger#%method: %msg%n
+            </pattern>
+            <!-- <pattern>|-%-5level %date{ISO8601} %logger#%method: %msg%n</pattern> -->
+        </encoder>
+    </appender>
 
-	<logger name="ch.qos.logback" level="TRACE" />
-	<logger name="lab" level="TRACE" />
+    <logger name="ch.qos.logback" level="TRACE"/>
+    <logger name="lab" level="TRACE"/>
 
-	<root level="DEBUG">
-		<appender-ref ref="CONSOLE" />
-		<appender-ref ref="FILE" />
-	</root>
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
 </configuration>

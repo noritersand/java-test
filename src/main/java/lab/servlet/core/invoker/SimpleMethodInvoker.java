@@ -10,12 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SimpleMethodInvoker implements MethodInvoker {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(SimpleMethodInvoker.class);
+    @SuppressWarnings("unused")
+    private static final Logger logger = LoggerFactory.getLogger(SimpleMethodInvoker.class);
 
-	@Override
-	public Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response)
-			throws IllegalAccessException, InvocationTargetException {
-		return method.invoke(instance, request, response);
-	}
+    @Override
+    public Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response)
+            throws IllegalAccessException, InvocationTargetException {
+        return method.invoke(instance, request, response);
+    }
 }

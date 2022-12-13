@@ -1,31 +1,29 @@
 package misc;
 
 /**
- * 
- * 
- * @since 2017-07-27
  * @author fixalot
+ * @since 2017-07-27
  */
 public class AtomicTest {
-	private int a = 0;
+    private int a = 0;
 
-	public int incrementAndGet() {
-		return a++;
-	}
+    public int incrementAndGet() {
+        return a++;
+    }
 
-	public static void main(String[] args) {
-		final AtomicTest test = new AtomicTest();
-		for (int i = 0; i < 100; i++) {
+    public static void main(String[] args) {
+        final AtomicTest test = new AtomicTest();
+        for (int i = 0; i < 100; i++) {
 
-			Thread thread = new Thread() {
-				public void run() {
-					for (int j = 0; j < 1000; j++) {
-						System.out.println(test.incrementAndGet());
-					}
-				}
-			};
-			thread.start();
-		}
+            Thread thread = new Thread() {
+                public void run() {
+                    for (int j = 0; j < 1000; j++) {
+                        System.out.println(test.incrementAndGet());
+                    }
+                }
+            };
+            thread.start();
+        }
 
 //		synchronized (Object.class) {
 //
@@ -58,5 +56,5 @@ public class AtomicTest {
 //		for (Integer integer : a) {
 //			System.out.println(integer);
 //		}
-	}
+    }
 }

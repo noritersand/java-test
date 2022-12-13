@@ -12,21 +12,20 @@ import org.slf4j.LoggerFactory;
 import com.google.common.reflect.TypeToken;
 
 /**
- * 
- * 
- * @since 2017-07-27
  * @author fixalot
+ * @since 2017-07-27
  */
 public class TypeTokenTest {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(TypeTokenTest.class);
+    @SuppressWarnings("unused")
+    private static final Logger logger = LoggerFactory.getLogger(TypeTokenTest.class);
 
-	@Test
-	public void useTypeToken() {
-		@SuppressWarnings("serial")
-		Type listType = new TypeToken<ArrayList<MyClass>>() {}.getType();
-		assertEquals("java.util.ArrayList<thirdparty.google.guava.MyClass>", String.valueOf(listType));
-	}
+    @Test
+    public void useTypeToken() {
+        @SuppressWarnings("serial")
+        Type listType = new TypeToken<ArrayList<MyClass>>() {
+        }.getType();
+        assertEquals("java.util.ArrayList<thirdparty.google.guava.MyClass>", String.valueOf(listType));
+    }
 }
 
 class MyClass {

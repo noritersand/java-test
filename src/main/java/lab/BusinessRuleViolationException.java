@@ -8,10 +8,11 @@ package lab;
  */
 public class BusinessRuleViolationException extends RuntimeException {
 
-    public BusinessRuleViolationException() {}
+    public BusinessRuleViolationException() {
+    }
 
     public BusinessRuleViolationException(String message) {
         super(message);
     }
-    
+
 }

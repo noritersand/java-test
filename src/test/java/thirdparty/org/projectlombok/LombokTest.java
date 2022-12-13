@@ -3,6 +3,7 @@ package thirdparty.org.projectlombok;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -43,7 +44,8 @@ public class LombokTest {
 @Getter
 @AllArgsConstructor
 class BuildMe {
-    public BuildMe() {}
+    public BuildMe() {
+    }
 
     private String a;
     private int b;

@@ -8,7 +8,8 @@ package lab;
  */
 public class DataUpdateFailureException extends BusinessRuleViolationException {
 
-    public DataUpdateFailureException() {}
+    public DataUpdateFailureException() {
+    }
 
     public DataUpdateFailureException(String message) {
         super(message);

@@ -8,23 +8,23 @@ import org.slf4j.LoggerFactory;
 
 /**
  * {@link Formatter} 테스트
- * 
- * @since 2018-10-31
+ *
  * @author fixalot
+ * @since 2018-10-31
  */
 public class FormatterTest {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(FormatterTest.class);
+    @SuppressWarnings("unused")
+    private static final Logger logger = LoggerFactory.getLogger(FormatterTest.class);
 
-	/**
-	 * usage
-	 * 
-	 * @author fixalot
-	 */
-	@Test
-	public void test() {
+    /**
+     * usage
+     *
+     * @author fixalot
+     */
+    @Test
+    public void test() {
 //		System.out.printf("크기%,d, 파일%,d개, 폴더%,d\n", sizeSum, fileCnt, folderCnt);
-		
-		// TODO
-	}
+
+        // TODO
+    }
 }

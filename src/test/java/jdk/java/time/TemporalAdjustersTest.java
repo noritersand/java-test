@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * {@link java.time.temporal.TemporalAdjusters} 테스트 슈트
- * 
+ *
  * @author fixalot
  * @since 2022-12-13
  */
 public class TemporalAdjustersTest {
-    
+
     /**
      * <p>다음 주 월요일 구하기</p>
      */

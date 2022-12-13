@@ -9,7 +9,8 @@ package lab;
  */
 public class ReferenceConstraintException extends BusinessRuleViolationException {
 
-    public ReferenceConstraintException() {}
+    public ReferenceConstraintException() {
+    }
 
     public ReferenceConstraintException(String message) {
         super(message);

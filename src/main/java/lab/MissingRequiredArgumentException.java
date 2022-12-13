@@ -8,7 +8,8 @@ package lab;
  */
 public class MissingRequiredArgumentException extends BusinessRuleViolationException {
 
-    public MissingRequiredArgumentException() {}
+    public MissingRequiredArgumentException() {
+    }
 
     public MissingRequiredArgumentException(String message) {
         super(message);

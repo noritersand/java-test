@@ -3,35 +3,33 @@ package jdk.statement;
 import org.junit.jupiter.api.Test;
 
 /**
- * 
- * 
- * @since 2017-07-27
  * @author fixalot
+ * @since 2017-07-27
  */
 public class OverridingTest {
-	@Test
-	public void override() {
+    @Test
+    public void override() {
 
-	}
+    }
 }
 
 class Parent {
-	public void m01() {
+    public void m01() {
 
-	}
+    }
 
-	public static void m02() {
+    public static void m02() {
 
-	}
+    }
 }
 
 class Child extends Parent {
-	@Override
-	public void m01() {
+    @Override
+    public void m01() {
 
-	}
+    }
 
-	public static void m02() {
+    public static void m02() {
 
-	}
+    }
 }
