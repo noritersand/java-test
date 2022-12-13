@@ -38,7 +38,7 @@ public class DateTest {
         Date date = new Date(1547168374396L);
         assertEquals("2019-01-11", date.toString());
 
-        Calendar calendar = GregorianCalendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
 
         Date ins1 = new Date(calendar.getTimeInMillis());
         log.debug("ins1: {}", ins1);

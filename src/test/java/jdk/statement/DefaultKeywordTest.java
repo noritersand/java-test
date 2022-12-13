@@ -18,9 +18,9 @@ public class DefaultKeywordTest {
 }
 
 interface I {
-    public String a();
+    String a();
 
-    default public String b() {
+    default String b() {
         return "hi";
     }
 }

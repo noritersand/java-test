@@ -12,15 +12,16 @@ import org.junit.jupiter.api.Test;
 public class JavaAssertionTest {
     public static void main(String[] args) {
         int i = -1;
-        assert i > 0;
+        assert 0 < i;
 
         int sum = 0;
-        while (i <= 6) {
-            sum += i++;
+        while (6 >= i) {
+            sum += i;
+            i++;
         }
-        assert sum == 1 : "엥";
+        assert 1 == sum : "엥";
         try {
-            assert sum == 21 : "어케쓰는거지";
+            assert 21 == sum : "어케쓰는거지";
         } catch (AssertionError e) {
             System.out.println(e.getMessage());
         }
@@ -39,14 +40,14 @@ public class JavaAssertionTest {
         assert a != b;
 
         int i = -1;
-        assert i < 0;
+        assert 0 > i;
 
         String pageNo = "abc";
-        assert (!pageNo.equals(""));
+        assert (!"".equals(pageNo));
 
         int age = -1;
         try {
-            assert age > 0 : "나이는 음수가 될 수 없습니다:" + age;
+            assert 0 < age : "나이는 음수가 될 수 없습니다:" + age;
         } catch (Error e) {
             System.out.println("assertion fail: " + e);
         }

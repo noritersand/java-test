@@ -26,8 +26,8 @@ import java.time.format.DateTimeFormatter;
  * @since 2016-12-12
  */
 public class GsonBuilder {
-    private com.google.gson.GsonBuilder builder;
-    private Gson gson;
+    private final com.google.gson.GsonBuilder builder;
+    private final Gson gson;
 
     public Gson getGson() {
         return this.gson;
@@ -50,7 +50,7 @@ public class GsonBuilder {
         this.builder.registerTypeAdapter(Character.class, new TypeAdapter<Character>() {
             @Override
             public Character read(JsonReader in) throws IOException {
-                if (in.peek() == JsonToken.NULL) {
+                if (JsonToken.NULL == in.peek()) {
                     in.nextNull();
                     return null;
                 }
@@ -76,7 +76,7 @@ public class GsonBuilder {
         this.builder.registerTypeAdapter(Short.class, new TypeAdapter<Short>() {
             @Override
             public Short read(JsonReader in) throws IOException {
-                if (in.peek() == JsonToken.NULL) {
+                if (JsonToken.NULL == in.peek()) {
                     in.nextNull();
                     return null;
                 }
@@ -102,7 +102,7 @@ public class GsonBuilder {
         this.builder.registerTypeAdapter(Integer.class, new TypeAdapter<Integer>() {
             @Override
             public Integer read(JsonReader in) throws IOException {
-                if (in.peek() == JsonToken.NULL) {
+                if (JsonToken.NULL == in.peek()) {
                     in.nextNull();
                     return null;
                 }
@@ -128,7 +128,7 @@ public class GsonBuilder {
         this.builder.registerTypeAdapter(Long.class, new TypeAdapter<Long>() {
             @Override
             public Long read(JsonReader in) throws IOException {
-                if (in.peek() == JsonToken.NULL) {
+                if (JsonToken.NULL == in.peek()) {
                     in.nextNull();
                     return null;
                 }
@@ -154,7 +154,7 @@ public class GsonBuilder {
         this.builder.registerTypeAdapter(Double.class, new TypeAdapter<Double>() {
             @Override
             public Double read(JsonReader in) throws IOException {
-                if (in.peek() == JsonToken.NULL) {
+                if (JsonToken.NULL == in.peek()) {
                     in.nextNull();
                     return null;
                 }
@@ -180,7 +180,7 @@ public class GsonBuilder {
         this.builder.registerTypeAdapter(BigDecimal.class, new TypeAdapter<BigDecimal>() {
             @Override
             public BigDecimal read(JsonReader in) throws IOException {
-                if (in.peek() == JsonToken.NULL) {
+                if (JsonToken.NULL == in.peek()) {
                     in.nextNull();
                     return null;
                 }
@@ -206,7 +206,7 @@ public class GsonBuilder {
         this.builder.registerTypeAdapter(Boolean.class, new TypeAdapter<Boolean>() {
             @Override
             public Boolean read(JsonReader in) throws IOException {
-                if (in.peek() == JsonToken.NULL) {
+                if (JsonToken.NULL == in.peek()) {
                     in.nextNull();
                     return null;
                 }
@@ -239,7 +239,7 @@ public class GsonBuilder {
         this.builder.registerTypeAdapter(LocalDateTime.class, new TypeAdapter<LocalDateTime>() {
             @Override
             public LocalDateTime read(JsonReader in) throws IOException {
-                if (in.peek() == JsonToken.NULL) {
+                if (JsonToken.NULL == in.peek()) {
                     in.nextNull();
                     return null;
                 }

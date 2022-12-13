@@ -1,26 +1,24 @@
 package thirdparty.apache.commons;
 
+import lombok.extern.slf4j.Slf4j;
 import model.TestModel;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class BeanUtilsTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(BeanUtilsTest.class);
 
     /**
      * 인스턴스의 프로퍼티 복사. 복사하려는 타입이 private이면 작동하지 않음
@@ -32,7 +30,7 @@ public class BeanUtilsTest {
      * @author fixalot
      */
     @Test
-    public void testCopyProperties() throws IllegalAccessException, InvocationTargetException {
+    public void testCopyProperties() throws Exception {
         TestModel oldbie = new TestModel();
         oldbie.setName("야");
         oldbie.setNumber(101);
@@ -42,7 +40,7 @@ public class BeanUtilsTest {
 
         BeanUtils.copyProperties(newbie, oldbie);
 
-        assertTrue(oldbie != newbie);
+        assertNotSame(oldbie, newbie);
         assertEquals(oldbie.getName(), newbie.getName());
         assertEquals(oldbie.getNumber(), newbie.getNumber());
     }
@@ -55,7 +53,7 @@ public class BeanUtilsTest {
      * @author fixalot
      */
     @Test
-    public void testPopulate() throws IllegalAccessException, InvocationTargetException {
+    public void testPopulate() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         map.put("name", "야");
         map.put("number", 101);
@@ -79,7 +77,7 @@ public class BeanUtilsTest {
      * @author fixalot
      */
     @Test
-    public void testDescribe() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void testDescribe() throws Exception {
         TestModel model = new TestModel();
         model.setName("야");
         model.setNumber(101);
@@ -94,6 +92,6 @@ public class BeanUtilsTest {
         // TODO: null 무시 하려면 이렇게 하라는데 안됨
 //		BeanUtilsBean instance = BeanUtilsBean.getInstance();
 //		instance.getConvertUtils().register(false, false, 0);
-//		logger.debug("{}", instance.describe(model));
+//		log.debug("{}", instance.describe(model));
     }
 }

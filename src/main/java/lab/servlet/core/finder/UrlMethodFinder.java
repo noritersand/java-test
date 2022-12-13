@@ -1,20 +1,19 @@
 package lab.servlet.core.finder;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 import java.util.List;
 
+@Slf4j
 public class UrlMethodFinder implements MethodFinder {
     //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(UrlMethodFinder.class);
 
     @Override
     public Object[] findMethod(List<Object> instanceList, HttpServletRequest request, HttpServletResponse response) {
-        final String url = request.getRequestURI();
+        String url = request.getRequestURI();
 
         // XXX 이걸 왜 주석 처리 했더라?
 //		final String path = url.substring(0, url.lastIndexOf("."));
@@ -32,7 +31,7 @@ public class UrlMethodFinder implements MethodFinder {
                 if (url.equals(mapping.value())) {
                     returnObject[0] = instance;
                     returnObject[1] = method;
-                    logger.debug("method found: {}#{}", instance.getClass().getSimpleName(), method.getName());
+                    log.debug("method found: {}#{}", instance.getClass().getSimpleName(), method.getName());
                     return returnObject;
                 }
             }

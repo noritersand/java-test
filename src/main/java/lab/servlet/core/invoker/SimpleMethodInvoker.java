@@ -1,16 +1,14 @@
 package lab.servlet.core.invoker;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+@Slf4j
 public class SimpleMethodInvoker implements MethodInvoker {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(SimpleMethodInvoker.class);
 
     @Override
     public Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response)

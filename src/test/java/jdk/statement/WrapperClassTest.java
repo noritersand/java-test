@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class WrapperClassTest {
-    private static final Logger logger = LoggerFactory.getLogger(WrapperClassTest.class);
 
     @Test
     public void copy() {
-        final Integer a = Integer.valueOf(123);
+        Integer a = Integer.valueOf(123);
         Integer b = a;
         assertEquals(123, b.intValue());
         b = 456; // b = new Integer(456); String과 마찬가지로 새 객체가 할당된다.
@@ -87,14 +86,14 @@ public class WrapperClassTest {
             String nullValue = null;
             assertEquals(0, Long.valueOf(nullValue));
         } catch (NumberFormatException e) {
-            logger.debug("{}", "java.lang.NumberFormatException: Cannot parse null string");
+            log.debug("{}", "java.lang.NumberFormatException: Cannot parse null string");
         }
         // empty string도 불가
         try {
             String blank = "";
             assertEquals(0, Long.valueOf(blank));
         } catch (NumberFormatException e) {
-            logger.debug("{}", "java.lang.NumberFormatException: For input string: \"\"");
+            log.debug("{}", "java.lang.NumberFormatException: For input string: \"\"");
         }
         // 대신 apache NumberUtils를 쓰라고 하는데, 그건 0으로 반환함.
     }
@@ -111,7 +110,7 @@ public class WrapperClassTest {
             @SuppressWarnings({"unused", "null"})
             int imgonnabenull = (Integer) chuckNorris;
         } catch (Exception e) {
-            logger.debug("예외 발생#1: {}", e.getLocalizedMessage());
+            log.debug("예외 발생#1: {}", e.getLocalizedMessage());
         }
 
         try {
@@ -119,12 +118,12 @@ public class WrapperClassTest {
             @SuppressWarnings({"unused", "null"})
             int imgonnabenull = chucknorris;
         } catch (Exception e) {
-            logger.debug("예외 발생#2: {}", e.getLocalizedMessage());
+            log.debug("예외 발생#2: {}", e.getLocalizedMessage());
         }
     }
 
     @Test
     public void checkZero() {
-        assertTrue(Long.valueOf(0L).equals(Long.valueOf(0L)));
+        assertEquals(Long.valueOf(0L), Long.valueOf(0L));
     }
 }

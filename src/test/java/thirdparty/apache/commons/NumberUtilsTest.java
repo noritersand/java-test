@@ -1,9 +1,8 @@
 package thirdparty.apache.commons;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,9 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2019-03-21
  */
+@Slf4j
 public class NumberUtilsTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(NumberUtilsTest.class);
 
     @Test
     public void testIsNumber() {

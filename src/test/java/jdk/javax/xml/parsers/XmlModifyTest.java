@@ -1,7 +1,6 @@
 package jdk.javax.xml.parsers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -27,8 +26,8 @@ import java.io.IOException;
  * @author fixalot
  * @since 2017-05-25
  */
+@Slf4j
 public class XmlModifyTest {
-    private static final Logger logger = LoggerFactory.getLogger(XmlModifyTest.class);
 
     //	@Test // 독타입 때문에 xml 파일에 경고떠서 테스트 케이스에서 제외
     public void modifyXml() throws TransformerException, ParserConfigurationException, SAXException, IOException {
@@ -65,7 +64,7 @@ public class XmlModifyTest {
 //		transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, doctype.getPublicId());
 //		transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, doctype.getSystemId());
         transformer.transform(source, result);
-        logger.debug("XML file updated successfully");
+        log.debug("XML file updated successfully");
     }
 
     private static void addElement(Document doc) {
@@ -111,7 +110,7 @@ public class XmlModifyTest {
         for (int i = 0; i < employees.getLength(); i++) {
             emp = (Element) employees.item(i);
             String gender = emp.getElementsByTagName("gender").item(0).getFirstChild().getNodeValue();
-            if (gender.equalsIgnoreCase("male")) {
+            if ("male".equalsIgnoreCase(gender)) {
                 // prefix id attribute with M
                 emp.setAttribute("id", "M" + emp.getAttribute("id"));
             } else {

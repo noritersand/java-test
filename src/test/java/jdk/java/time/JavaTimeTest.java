@@ -41,7 +41,7 @@ public class JavaTimeTest {
         assertEquals("1970-01-01T00:00:00Z", Instant.ofEpochMilli(0).toString());
         assertEquals("2017-09-19T06:10:46.820Z", Instant.ofEpochMilli(1505801446820L).toString());
         assertEquals("2009-02-13T23:20:23Z", Instant.ofEpochSecond(1234567223L).toString());
-        assertTrue(Instant.ofEpochMilli(915152400123L).equals(Instant.parse("1999-01-01T01:00:00.123Z"))); // 표준 포맷으로 생성하기
+		assertEquals(Instant.ofEpochMilli(915152400123L), Instant.parse("1999-01-01T01:00:00.123Z")); // 표준 포맷으로 생성하기
 
         // create instance from ISO date time string
         assertEquals("2017-04-18T01:24:48.842Z", Instant.parse("2017-04-18T01:24:48.842Z").toString());
@@ -72,13 +72,13 @@ public class JavaTimeTest {
         // 이 인스턴스는 immutable하기 때문에 단순 할당만 해도 괜찮음
         LocalDate b = a;
         assertEquals(a, b);
-        assertTrue(a == b);
+		assertSame(a, b);
         // 여기까진 a와 b는 동일하며 동등하지만?
 
         // 시간이 변하는 메서드를 호출하면 그 때부턴 달라짐
         b = b.plusDays(1);
         assertNotEquals(a, b);
-        assertFalse(a == b);
+		assertNotSame(a, b);
     }
 
     @Test

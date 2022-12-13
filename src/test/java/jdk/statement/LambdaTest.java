@@ -1,10 +1,9 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,9 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class LambdaTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(LambdaTest.class);
 
     /**
      * 이게 대체 뭐냐

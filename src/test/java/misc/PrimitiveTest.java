@@ -1,8 +1,7 @@
 package misc;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -10,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class PrimitiveTest {
-    private static final Logger logger = LoggerFactory.getLogger(PrimitiveTest.class);
 
     @Test
     @SuppressWarnings("unused")
@@ -23,11 +22,11 @@ public class PrimitiveTest {
         Integer it = 12345;
         int it2 = 12345;
         Long lg = 1234L;
-        long lg2 = 1234l;
-        Float flt = 1234F;
-        float flt2 = 1234f;
-        Double db = 1234D;
-        double db2 = 1234d;
+        long lg2 = 1234L;
+        Float flt = 1234.0F;
+        float flt2 = 1234.0f;
+        Double db = 1234.0D;
+        double db2 = 1234.0d;
     }
 
     @Test
@@ -58,12 +57,12 @@ public class PrimitiveTest {
         try {
             Integer.valueOf(""); // 빈 문자열은 valueOf 불가
         } catch (NumberFormatException e) {
-            logger.debug("NumberFormatException 발생: {}", e.getMessage());
+            log.debug("NumberFormatException 발생: {}", e.getMessage());
         }
         try {
             Integer.valueOf(null); // null은 valueOf 불가
         } catch (NumberFormatException e) {
-            logger.debug("NumberFormatException 발생: {}", e.getMessage());
+            log.debug("NumberFormatException 발생: {}", e.getMessage());
         }
     }
 

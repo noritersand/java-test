@@ -1,8 +1,7 @@
 package jdk.java.util.stream;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,22 +20,21 @@ import java.util.concurrent.Executors;
  * @author fixalot
  * @since 2018-07-16
  */
+@Slf4j
 public class ParallelStreamTest {
-    private static final Logger logger = LoggerFactory.getLogger(ParallelStreamTest.class);
 
     @Test
     public void testParallelLoopOldWay() {
-        List<String> list = new ArrayList<String>(Arrays.asList(new String[]{"01", "02", "03", "04", "05", "06", "07", "08"}));
+        List<String> list = new ArrayList<String>(Arrays.asList("01", "02", "03", "04", "05", "06", "07", "08"));
         ExecutorService executor = Executors.newFixedThreadPool(5);
         for (int i = 0; i < list.size(); i++) {
-            final String element = list.get(i);
+            String element = list.get(i);
             executor.submit(() -> {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
                 }
-                logger.debug("testParallelLoopOldWay Starting:" + Thread.currentThread().getName() + ", element=" + element + ", ended at "
-                        + LocalDateTime.now());
+                log.debug("testParallelLoopOldWay Starting:{}, element={}, ended at {}", Thread.currentThread().getName(), element, LocalDateTime.now());
             });
         }
         executor.shutdown();
@@ -44,10 +42,9 @@ public class ParallelStreamTest {
 
     @Test
     public void testParallelStream() {
-        List<String> list = new ArrayList<String>(Arrays.asList(new String[]{"하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟"}));
+        List<String> list = new ArrayList<String>(Arrays.asList("하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟"));
         list.parallelStream().forEach(element -> {
-            logger.debug(
-                    "testParallelStream Starting:" + Thread.currentThread().getName() + ", element=" + element + ", " + LocalDateTime.now());
+            log.debug("testParallelStream Starting:{}, element={}, {}", Thread.currentThread().getName(), element, LocalDateTime.now());
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {

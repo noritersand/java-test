@@ -1,14 +1,13 @@
 package lab.util.string;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 public class PhoneNumberSplitterTest {
-    private static final Logger logger = LoggerFactory.getLogger(PhoneNumberSplitterTest.class);
 
     @Test
     public void testSplit() {
@@ -34,12 +33,12 @@ public class PhoneNumberSplitterTest {
         try {
             PhoneNumberSplitter.split("01234567");
         } catch (RuntimeException e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
     }
 
     @Test
     public void testToString() {
-        logger.debug(PhoneNumberSplitter.split("07012341234").toString());
+        log.debug(PhoneNumberSplitter.split("07012341234").toString());
     }
 }

@@ -1,27 +1,25 @@
 package thirdparty.apache.commons;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class ToStringBuilderTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(ToStringBuilderTest.class);
 
     @Test
     public void printToStringResult() {
         PlainObject po = new PlainObject();
-        logger.debug(ToStringBuilder.reflectionToString(po));
+        log.debug(ToStringBuilder.reflectionToString(po));
         po.setStringField("야");
         po.setIntField(65536);
-        logger.debug(ToStringBuilder.reflectionToString(po));
+        log.debug(ToStringBuilder.reflectionToString(po));
         try {
-            logger.debug(ToStringBuilder.reflectionToString(null)); // 에러남
+            log.debug(ToStringBuilder.reflectionToString(null)); // 에러남
         } catch (Exception e) {
             // do nothing
         }

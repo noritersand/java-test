@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,9 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author noritersand
  * @since 2020-04-03
  */
+@Slf4j
 public class BreakTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(BreakTest.class);
 
     private static final boolean T = true;
     private static final boolean F = false;
@@ -23,9 +21,9 @@ public class BreakTest {
     public void withLabeledIfStatement() {
         int n = 10;
         hello:
-        if (n > 0) {
+        if (0 < n) {
             assertTrue(T);
-            if (n == 10) {
+            if (10 == n) {
                 assertTrue(T);
                 break hello; // hello if를 탈출
             }
@@ -38,7 +36,7 @@ public class BreakTest {
         char c = 'A';
         yoohoo:
         {
-            if (c == 'A') {
+            if ('A' == c) {
                 assertTrue(T);
                 break yoohoo; // yoohoo 블록을 탈출
             }

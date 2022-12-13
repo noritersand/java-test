@@ -5,8 +5,7 @@ import lab.servlet.core.finder.UrlMapping;
 import lab.servlet.core.view.View;
 import lab.util.request.RequestParameter;
 import lab.util.request.RequestUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +17,10 @@ import java.io.IOException;
  * @author fixalot
  * @since 2018-10-26
  */
+@Slf4j
 public class HttpTestController {
     private static final String TEST_HTTP_YOU_SHOULD_BE_HERE_DATA = "/page/http/you-should-be-here.data";
     private static final String LOCATION = "Location";
-    private static final Logger logger = LoggerFactory.getLogger(HttpTestController.class);
 
     /**
      * HTTP 응답코드 테스트.
@@ -114,8 +113,8 @@ public class HttpTestController {
      */
     @UrlMapping(TEST_HTTP_YOU_SHOULD_BE_HERE_DATA)
     public JsonResponseObject youShoudBeHere(HttpServletRequest request, HttpServletResponse response) {
-        final RequestParameter params = RequestUtil.getRequestParameter(request);
-        logger.debug("{}", params);
+        RequestParameter params = RequestUtil.getRequestParameter(request);
+        log.debug("{}", params);
         JsonResponseObject responseJSON = new JsonResponseObject();
         responseJSON.setSuccess(true);
         responseJSON.setMessage(params.toString());

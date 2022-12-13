@@ -1,8 +1,7 @@
 package jdk.misc;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,9 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2019-06-18
  */
+@Slf4j
 public class PassByValueTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(PassByValueTest.class);
 
     @Test
     public void test() {
@@ -40,7 +38,7 @@ public class PassByValueTest {
         // 그래서 '파라미터를 재할당하지 말 것'이라는 코딩 규칙이 의미가 있는지 싶다.
 
         mutate(list);
-        assertTrue(list.size() > 0);
+        assertTrue(0 < list.size());
         assertEquals("Grr", list.get(0)); // 이건 좀 얘기가 다름
     }
 

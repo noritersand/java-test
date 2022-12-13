@@ -1,12 +1,12 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class PropertiesTest {
-    private static final Logger logger = LoggerFactory.getLogger(PropertiesTest.class);
 
     @Test
     public void testStore() throws IOException {
@@ -39,13 +39,13 @@ public class PropertiesTest {
 
         Properties newProp = new Properties();
         newProp.load(new FileInputStream(testProperties.toString()));
-        assertEquals("서울에수도가어디있어", newProp.get("서울의수도"));
+        assertEquals("서울에수도가어디있어", newProp.getProperty("서울의수도"));
     }
 
     @Test
     public void getPropertyDefault() {
         Properties prop = new Properties();
-        assertEquals("hello-world", prop.getProperty("I'm not exist", "hello-world").toString());
+        assertEquals("hello-world", prop.getProperty("I'm not exist", "hello-world"));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class PropertiesTest {
         prop.load(fis);
         fis.close();
         assertTrue(prop.containsKey("a.b.c"));
-        logger.debug("{}", prop);
+        log.debug("{}", prop);
 
         assertEquals("http://daum.net", prop.getProperty("web.root"));
         assertEquals("123", prop.getProperty("a.b.c"));
@@ -65,12 +65,12 @@ public class PropertiesTest {
 
     @Test
     public void getPropertyByReader() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("src\\test\\resources\\properties-test\\access-test.properties"));
+        BufferedReader reader = new BufferedReader(new FileReader("src\\test\\resources\\properties-test\\access-test.properties", StandardCharsets.UTF_8));
         Properties prop = new Properties();
         prop.load(reader);
         reader.close();
         assertTrue(prop.containsKey("a.b.c"));
-        logger.debug("{}", prop);
+        log.debug("{}", prop);
 
         assertEquals("http://daum.net", prop.getProperty("web.root"));
         assertEquals("123", prop.getProperty("a.b.c"));
@@ -85,12 +85,12 @@ public class PropertiesTest {
         prop.loadFromXML(fis);
         fis.close();
         assertTrue(prop.containsKey("image.root"));
-        logger.debug("{}", prop);
+        log.debug("{}", prop);
 
-        Enumeration<Object> keys = prop.keys();
-        while (keys.hasMoreElements()) {
-            String key = (String) keys.nextElement();
-            logger.debug("key: " + key + ", value: " + prop.getProperty(key));
+        Iterator<Object> iterator = prop.keySet().iterator();
+        while (iterator.hasNext()) {
+            String key = (String) iterator.next();
+            log.debug("key: {}, value: {}", key, prop.getProperty(key));
         }
 
         // key: some.korean, value: 한글

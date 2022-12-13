@@ -1,8 +1,7 @@
 package jdk.java.nio;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.DirectoryNotEmptyException;
@@ -16,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class FilesTest {
-    private static final Logger logger = LoggerFactory.getLogger(FilesTest.class);
 
     @Test
     public void testProbeContentType() throws IOException {
@@ -34,7 +33,7 @@ public class FilesTest {
     public void testDelete() throws IOException {
         Path dir = Paths.get("src/test/resources/file/delete-me");
         Files.createDirectories(dir);
-        logger.debug(dir.toFile().getAbsolutePath());
+        log.debug(dir.toFile().getAbsolutePath());
         Files.delete(dir);
         assertFalse(Files.exists(dir));
 

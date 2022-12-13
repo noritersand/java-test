@@ -1,10 +1,9 @@
 package jdk.java.util;
 
 import lab.dummy.generator.ListGenerator;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,9 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * java.util.Collections 테스트 슈트
  */
+@Slf4j
 public class CollectionsTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(CollectionsTest.class);
 
     @Test
     public void testMin() {
@@ -34,9 +32,9 @@ public class CollectionsTest {
 
     @Test
     public void testSort() {
-        Integer[] chaos = new Integer[]{105, 99, 2, 44, 73, 99};
-        Integer[] sortedAsc = new Integer[]{2, 44, 73, 99, 99, 105};
-        Integer[] sortedDesc = new Integer[]{105, 99, 99, 73, 44, 2};
+        Integer[] chaos = {105, 99, 2, 44, 73, 99};
+        Integer[] sortedAsc = {2, 44, 73, 99, 99, 105};
+        Integer[] sortedDesc = {105, 99, 99, 73, 44, 2};
         List<Integer> list = Arrays.asList(chaos);
 
         // 그냥 호출하면 오름차순
@@ -95,14 +93,14 @@ public class CollectionsTest {
 
         watch.suspend();
         long afterSortingTime = watch.getNanoTime();
-        logger.debug("sorting time: {}", afterSortingTime);
+        log.debug("sorting time: {}", afterSortingTime);
         watch.resume();
 
         int found = Collections.binarySearch(list, findMe);
 
         watch.stop();
         long afterSearchTime = watch.getNanoTime();
-        logger.debug("pure searching time: {}", afterSearchTime - afterSortingTime);
+        log.debug("pure searching time: {}", afterSearchTime - afterSortingTime);
 
         assertEquals(findMe, list.get(found));
     }
@@ -125,7 +123,7 @@ public class CollectionsTest {
         }
 
         watch.stop();
-        logger.debug("searching time: {}", watch.getNanoTime());
+        log.debug("searching time: {}", watch.getNanoTime());
 
         assertEquals(findMe, list.get(found));
     }
@@ -153,7 +151,7 @@ public class CollectionsTest {
      */
     @Test
     public void testWildcardParameterizedType() {
-        List<? super String> strList = Arrays.asList(new String[]{"a", "b"});
+        List<? super String> strList = Arrays.asList("a", "b");
         assertTrue(strList.contains("a"));
     }
 

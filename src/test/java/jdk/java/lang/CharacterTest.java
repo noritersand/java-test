@@ -1,8 +1,7 @@
 package jdk.java.lang;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,9 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class CharacterTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(CharacterTest.class);
 
     @SuppressWarnings("unlikely-arg-type")
     @Test
@@ -23,22 +21,22 @@ public class CharacterTest {
         Character bb = 'b';
 
         // 동등 비교
-        assertTrue(a == 'a');
-        assertFalse(a == b);
-        assertTrue(a == aa);
-        assertTrue(bb.equals(b));
+        assertEquals('a', a);
+        assertNotEquals(a, b);
+        assertEquals(a, (char) aa);
+        assertEquals((char) bb, b);
 
         // String과 비교
-        assertFalse("a".equals('a')); // equals()로는 다른 타입끼리 비교 불가
-        assertTrue(a == "a".charAt(0));
+        assertNotEquals("a", 'a'); // equals()로는 다른 타입끼리 비교 불가
+        assertEquals('a', a);
 
         // 새로 만든 인스턴스와 비교
         Character inst = Character.valueOf('a');
-        assertTrue(a == inst); // Character.equals()에서 래퍼타입이 갖고 있는 value로 비교함.
-        assertTrue(aa == inst); // 이것도 마찬가지. 래퍼타입이 갖고 있는 value로 비교됨. JDK9부터 되는걸로 추정
-        assertFalse(inst.equals("a")); // equals()로는 다른 타입끼리 비교 불가
-        assertTrue(inst.equals("a".charAt(0)));
-        assertTrue(inst == "a".charAt(0));
+        assertEquals(a, (char) inst); // Character.equals()에서 래퍼타입이 갖고 있는 value로 비교함.
+        assertSame(aa, inst); // 이것도 마찬가지. 래퍼타입이 갖고 있는 value로 비교됨. JDK9부터 되는걸로 추정
+        assertNotEquals("a", inst); // equals()로는 다른 타입끼리 비교 불가
+        assertEquals('a', (char) inst);
+        assertEquals('a', (char) inst);
     }
 
     @Test
@@ -46,10 +44,10 @@ public class CharacterTest {
     public void compareWithNull() {
         try {
             Character e = null;
-            boolean equal = e == 'b'; // NullPointerException
+            boolean equal = 'b' == e; // NullPointerException
 
             Integer i = null;
-            equal = i == 1; // NullPointerException
+            equal = 1 == i; // NullPointerException
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -60,9 +58,9 @@ public class CharacterTest {
         final String binary = "5";
         final String alphabet = "a";
         final String korean = "한";
-        logger.debug("{}", (int) binary.charAt(0));
-        logger.debug("{}", (int) alphabet.charAt(0));
-        logger.debug("{}", (int) korean.charAt(0));
+        log.debug("{}", (int) binary.charAt(0));
+        log.debug("{}", (int) alphabet.charAt(0));
+        log.debug("{}", (int) korean.charAt(0));
     }
 
     @Test

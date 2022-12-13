@@ -1,7 +1,6 @@
 package jdk.javax.xml.parsers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -24,8 +23,8 @@ import java.io.File;
  * @author fixalot
  * @since 2017-05-25
  */
+@Slf4j
 public class XmlWriteTest {
-    private static final Logger logger = LoggerFactory.getLogger(XmlWriteTest.class);
 
     //	@Test // 독타입 때문에 xml 파일에 경고떠서 테스트 케이스에서 제외
     public void writeXml() throws ParserConfigurationException, TransformerException {
@@ -65,7 +64,7 @@ public class XmlWriteTest {
         transformer.transform(source, console);
         transformer.transform(source, file);
 
-        logger.debug("done");
+        log.debug("done");
     }
 
     private Node getEmployee(Document doc, String id, String name, String age, String role, String gender) {

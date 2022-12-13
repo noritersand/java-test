@@ -1,8 +1,7 @@
 package jdk.java.util.regex;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.regex.Matcher;
 
@@ -14,9 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2019-02-26
  */
+@Slf4j
 public class MatcherTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(MatcherTest.class);
 
     /**
      * 주어진 문자열의 리터럴 대체 문자열(??? regex 패턴 문자열인가...)을 반환한다.
@@ -27,7 +25,7 @@ public class MatcherTest {
     public void testQuoteReplacement() {
         assertEquals("\\\\", Matcher.quoteReplacement("\\"));
         assertEquals("	", Matcher.quoteReplacement("\t"));
-        assertEquals("'", Matcher.quoteReplacement("\'"));
+        assertEquals("'", Matcher.quoteReplacement("'"));
     }
 
     @Test

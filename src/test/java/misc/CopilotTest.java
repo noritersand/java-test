@@ -1,10 +1,10 @@
 package misc;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
-public class CopilotTest {
-    private static final Logger logger = LoggerFactory.getLogger(CopilotTest.class);
+@Slf4j
+public enum CopilotTest {
+    ;
 
     /**
      * <b>단축키:
@@ -20,9 +20,9 @@ public class CopilotTest {
      * 구구단 출력
      */
     private static void printGugudan() {
-        for (int i = 2; i < 10; i++) {
-            for (int j = 1; j < 10; j++) {
-                logger.info("{} * {} = {}", i, j, i * j);
+        for (int i = 2; 10 > i; i++) {
+            for (int j = 1; 10 > j; j++) {
+                log.info("{} * {} = {}", i, j, i * j);
             }
         }
     }

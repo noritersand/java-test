@@ -1,16 +1,14 @@
 package thirdparty.json;
 
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 public class JSONObjectTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(JSONObjectTest.class);
 
     @Test
     public void test() {

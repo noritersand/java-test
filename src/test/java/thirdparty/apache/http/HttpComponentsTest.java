@@ -1,5 +1,6 @@
 package thirdparty.apache.http;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -7,8 +8,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +15,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -23,15 +23,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class HttpComponentsTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(HttpComponentsTest.class);
 
     @Test
     public void send() throws Exception {
         String result = sendSimpleRequest("http://google.com");
-        assertTrue(result != null && !result.isEmpty());
-        logger.debug(result);
+        assertTrue(null != result && !result.isEmpty());
+        log.debug(result);
     }
 
     /**
@@ -44,15 +43,15 @@ public class HttpComponentsTest {
      */
     private String sendSimpleRequest(String uri) throws Exception {
         HttpGet request = new HttpGet(uri);
-        try (CloseableHttpClient httpclient = HttpClients.createDefault(); CloseableHttpResponse response = httpclient.execute(request);) {
+        try (CloseableHttpClient httpclient = HttpClients.createDefault(); CloseableHttpResponse response = httpclient.execute(request)) {
 
-//			logger.debug("{}", Arrays.toString(response.getAllHeaders()));
-//			logger.debug("{}", response.getStatusLine().getStatusCode());
-//			logger.debug("{}", response.getStatusLine().getProtocolVersion());
-//			logger.debug("{}", response.getStatusLine().getReasonPhrase());
+//			log.debug("{}", Arrays.toString(response.getAllHeaders()));
+//			log.debug("{}", response.getStatusLine().getStatusCode());
+//			log.debug("{}", response.getStatusLine().getProtocolVersion());
+//			log.debug("{}", response.getStatusLine().getReasonPhrase());
 
             HttpEntity entity = response.getEntity();
-            if (entity != null) {
+            if (null != entity) {
                 String result = EntityUtils.toString(entity, "UTF-8");
                 return result;
             }
@@ -82,7 +81,7 @@ public class HttpComponentsTest {
         con.setRequestProperty("Accept", "application/x-www-form-urlencoded");
         con.setRequestMethod("POST");
 
-        OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
+        OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream(), StandardCharsets.UTF_8);
 
         wr.write(param);
         wr.flush();
@@ -91,16 +90,16 @@ public class HttpComponentsTest {
 
         StringBuilder sb = new StringBuilder();
         int HttpResult = con.getResponseCode();
-        if (HttpResult == HttpURLConnection.HTTP_OK) {
-            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+        if (HttpURLConnection.HTTP_OK == HttpResult) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8));
             String line = null;
 
-            while ((line = br.readLine()) != null) {
+            while (null != (line = br.readLine())) {
                 sb.append(line + "\n");
             }
             br.close();
 
-            System.out.println("" + sb.toString());
+            System.out.println(sb);
 
         } else {
             System.out.println(con.getResponseMessage());

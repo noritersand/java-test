@@ -22,7 +22,7 @@ public class RequestParameter {
 
     @Override
     public String toString() {
-        final Map<String, String> params = this.parameterMap;
+        Map<String, String> params = this.parameterMap;
         Set<String> keySet = params.keySet();
         StringBuilder builder = new StringBuilder();
         Iterator<String> iterator = keySet.iterator();
@@ -45,7 +45,7 @@ public class RequestParameter {
 		while (iterator.hasNext()) {
 			String key = iterator.next();
 			String[] values = parameterMap.get(key);
-			logger.debug(key + ": " + Arrays.toString(values));
+			log.debug(key + ": " + Arrays.toString(values));
 		}
 	}
 	//		while (iterator.hasNext()) {

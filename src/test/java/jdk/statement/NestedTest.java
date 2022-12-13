@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -10,9 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class NestedTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(NestedTest.class);
 
     @Test
     public void test() {
@@ -30,14 +28,14 @@ public class NestedTest {
 }
 
 class NonStaticOuter {
-    private String text = "outer";
+    private final String text = "outer";
 
     public Inner getInner() {
         return new Inner();
     }
 
     public class Inner {
-        private String text = "inner";
+        private final String text = "inner";
 
         public String executeInnerMethod() {
             return "invoking " + text + "Method";
@@ -50,12 +48,12 @@ class NonStaticOuter {
 }
 
 class Outer {
-    private static String a = "static outer member";
-    private String b = "non-static outer member";
+    private static final String a = "static outer member";
+    private final String b = "non-static outer member";
 
     private class Inner {
         //		private static String c = "static inner member"; // non-static 내부 클래스에는 스태틱 멤버를 선언할 수 없음
-        private String d = "non-static inner member";
+        private final String d = "non-static inner member";
 
         private void innerMethod() {
             System.out.println(Outer.a);

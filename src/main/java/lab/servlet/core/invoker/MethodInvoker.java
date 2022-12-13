@@ -12,6 +12,6 @@ import java.lang.reflect.Method;
  * @since 2017-08-09
  */
 public interface MethodInvoker {
-    public Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response)
+    Object invoke(Object instance, Method method, HttpServletRequest request, HttpServletResponse response)
             throws IllegalAccessException, InvocationTargetException;
 }

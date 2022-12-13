@@ -1,8 +1,7 @@
 package jdk.java.lang;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.nio.charset.Charset;
 import java.util.Enumeration;
@@ -19,8 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class SystemTest {
-    private static final Logger logger = LoggerFactory.getLogger(SystemTest.class);
 
     @Test
     public void getCurrentTime() {
@@ -39,7 +38,7 @@ public class SystemTest {
         Map<String, String> env = System.getenv();
         Set<String> keySet = env.keySet();
         for (String envname : keySet) {
-            logger.debug("{}={}", envname, env.get(envname));
+            log.debug("{}={}", envname, env.get(envname));
         }
     }
 
@@ -51,15 +50,15 @@ public class SystemTest {
         Properties props = System.getProperties();
         Enumeration<?> names = props.propertyNames();
         while (names.hasMoreElements()) {
-            final String propname = (String) names.nextElement();
-            logger.debug("{}={}", propname, props.getProperty(propname));
+            String propname = (String) names.nextElement();
+            log.debug("{}={}", propname, props.getProperty(propname));
         }
     }
 
     @Test
     public void getDefaultEncodingProperty() {
-        logger.debug("file.encoding={}", System.getProperty("file.encoding"));
-        logger.debug("default character set={}", Charset.defaultCharset());
+        log.debug("file.encoding={}", System.getProperty("file.encoding"));
+        log.debug("default character set={}", Charset.defaultCharset());
         assertEquals(Charset.defaultCharset().toString(), System.getProperty("file.encoding").toUpperCase());
     }
 

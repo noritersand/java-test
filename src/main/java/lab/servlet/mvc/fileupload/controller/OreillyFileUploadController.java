@@ -5,8 +5,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import lab.servlet.core.bean.JsonResponseObject;
 import lab.servlet.core.finder.UrlMapping;
 import lab.servlet.core.view.View;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +21,8 @@ import java.util.*;
  * @author fixalot
  * @since 2017-08-11
  */
+@Slf4j
 public class OreillyFileUploadController {
-    private static final Logger logger = LoggerFactory.getLogger(OreillyFileUploadController.class);
 
     @UrlMapping("/page/oreilly/oreilly-fileupload-test.view")
     public View drawOreillyFileuploadTest(HttpServletRequest request, HttpServletResponse response) {
@@ -41,22 +40,22 @@ public class OreillyFileUploadController {
             uploadPath.mkdirs();
         }
 
-        final String encType = StandardCharsets.UTF_8.name();
+        String encType = StandardCharsets.UTF_8.name();
         final int maxFilesize = 20 * 1024 * 1024; // 20MB
 
         // MultipartRequest(request, 저장경로[, 최대허용크기, 인코딩케릭터셋, 동일한 파일명 보호 여부]), 이 함수가 호출됨과 동시에 업로드 됨.
         MultipartRequest multipart
                 = new MultipartRequest(request, uploadPath.toString(), maxFilesize, encType, new DefaultFileRenamePolicy());
 
-        logger.debug("title: {}", multipart.getParameter("title")); // 입력된 문자
+        log.debug("title: {}", multipart.getParameter("title")); // 입력된 문자
 
         Enumeration<?> inputNames = multipart.getFileNames(); // 모든 파일 타입 인풋의 이름 반환
         int index = 0;
         List<Map<String, Object>> list = new LinkedList<>();
         while (inputNames.hasMoreElements()) {
-            final String inputName = (String) inputNames.nextElement();
-            final File uploadFile = multipart.getFile(inputName);
-            if (uploadFile == null) {
+            String inputName = (String) inputNames.nextElement();
+            File uploadFile = multipart.getFile(inputName);
+            if (null == uploadFile) {
                 continue;
             }
             Map<String, Object> map = new HashMap<>();

@@ -1,7 +1,6 @@
 package lab.servlet.core.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -12,8 +11,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
  * @author noritersand
  * @since 2021-02-16
  */
+@Slf4j
 public class HTMLTagFilterRequestWrapper extends HttpServletRequestWrapper {
-    private static final Logger logger = LoggerFactory.getLogger(HTMLTagFilterRequestWrapper.class);
 
     public HTMLTagFilterRequestWrapper(HttpServletRequest request) {
         super(request);
@@ -21,13 +20,13 @@ public class HTMLTagFilterRequestWrapper extends HttpServletRequestWrapper {
 
     public String[] getParameterValues(String parameter) {
         String[] values = super.getParameterValues(parameter);
-        logger.debug("유후후!!");
+        log.debug("유후후!!");
         return values;
     }
 
     public String getParameter(String parameter) {
         String value = super.getParameter(parameter);
-        logger.debug("유후!");
+        log.debug("유후!");
         return value;
     }
 }

@@ -1,8 +1,7 @@
 package lab.servlet.core.filter;
 
 import ch.qos.logback.classic.ClassicConstants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 
 import javax.servlet.*;
@@ -15,8 +14,8 @@ import java.io.IOException;
  * @author fixalot
  * @since 2017-06-01
  */
+@Slf4j
 public class LogbackMdcFilter implements Filter {
-    private static final Logger logger = LoggerFactory.getLogger(LogbackMdcFilter.class);
     public static final String REQUEST_METHOD_MDC_KEY = "req.requestMethod";
 
     @Override
@@ -42,8 +41,7 @@ public class LogbackMdcFilter implements Filter {
     private void generate(ServletRequest request) {
         try {
             MDC.put(ClassicConstants.REQUEST_REMOTE_HOST_MDC_KEY, request.getRemoteAddr());
-            if (request instanceof HttpServletRequest) {
-                HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+            if (request instanceof HttpServletRequest httpServletRequest) {
                 MDC.put(ClassicConstants.REQUEST_REQUEST_URI, httpServletRequest.getRequestURI());
 //				StringBuffer requestURL = httpServletRequest.getRequestURL();
 //				if (requestURL != null) {
@@ -53,7 +51,7 @@ public class LogbackMdcFilter implements Filter {
                 MDC.put(REQUEST_METHOD_MDC_KEY, httpServletRequest.getMethod());
             }
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
     }
 

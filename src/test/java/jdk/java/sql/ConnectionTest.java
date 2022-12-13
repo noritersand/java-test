@@ -1,7 +1,6 @@
 package jdk.java.sql;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,8 +15,9 @@ import java.util.Map;
  * @author noritersand
  * @since 2020-03-18
  */
-public class ConnectionTest {
-    private static final Logger logger = LoggerFactory.getLogger(ConnectionTest.class);
+@Slf4j
+public enum ConnectionTest {
+    ;
 
     public static void main(String[] args) {
         final String sql = "SELECT ? AS DOODOO FROM DUAL";
@@ -32,9 +32,9 @@ public class ConnectionTest {
             statement.setString(1, "getsome"); // 제로 인덱스가 아님
             ResultSet resultSet = statement.executeQuery();
             List<Map<String, Object>> resultList = getResultMapRows(resultSet);
-            logger.debug(resultList.toString());
+            log.debug(resultList.toString());
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
     }
 
@@ -55,16 +55,14 @@ public class ConnectionTest {
         return list;
     }
 
-    private static class DataSource {
-        private static final Logger logger = LoggerFactory.getLogger(DataSource.class);
+    @Slf4j
+    private enum DataSource {
+        ;
 
-        private static Connection connection = null;
-
-        private DataSource() {
-        }
+        private static Connection connection;
 
         public static Connection getConnection(String url, String user, String pswd) {
-            if (connection == null) {
+            if (null == DataSource.connection) {
                 try {
                     /*
                      * 예전에는 아래처럼 해야했지만, 인스턴스가 생성된 드라이버들이 알아서 DriverManager에 스스로를 추가하는걸로 추정됨. (java.sql.Driver의 구현체라서 이렇게 되는게 아닐까?)
@@ -81,19 +79,19 @@ public class ConnectionTest {
 //					Class.forName("oracle.jdbc.driver.OracleDriver");
                     connection = DriverManager.getConnection(url, user, pswd);
                 } catch (Exception e) {
-                    logger.error(e.getMessage(), e);
+                    log.error(e.getMessage(), e);
                 }
             }
             return connection;
         }
 
         public static void close() {
-            if (connection != null) {
+            if (null != DataSource.connection) {
                 try {
                     if (!connection.isClosed())
                         connection.close();
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e.getMessage(), e);
                 }
             }
             connection = null;

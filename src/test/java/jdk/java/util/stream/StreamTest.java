@@ -2,10 +2,9 @@ package jdk.java.util.stream;
 
 import com.google.common.base.Predicate;
 import lab.dummy.generator.ListGenerator;
+import lombok.extern.slf4j.Slf4j;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,8 +26,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2018-07-16
  */
+@Slf4j
 public class StreamTest {
-    private static final Logger logger = LoggerFactory.getLogger(StreamTest.class);
 
     /**
      * Stream.forEach() 테스트<br>
@@ -39,7 +38,7 @@ public class StreamTest {
      */
     @Test
     public void testForEach() throws IOException {
-        List<Integer> list = Arrays.asList(new Integer[]{1, 3, 7});
+        List<Integer> list = Arrays.asList(1, 3, 7);
         Stream<Integer> stream = list.stream();
         stream.forEach(System.out::println);
         stream.close(); // 생략 가능
@@ -47,7 +46,7 @@ public class StreamTest {
         Stream<Integer> stream2 = list.stream();
         List<Integer> basket = new ArrayList<Integer>();
         stream2.forEach((k) -> {
-            logger.debug("ele: {}", k.toString());
+            log.debug("ele: {}", k.toString());
             basket.add(k);
         });
         stream2.close();
@@ -57,23 +56,20 @@ public class StreamTest {
 
     @Test
     public void testFilter() {
-        List<Integer> list = Arrays.asList(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
         // 짝수 찾기
         Predicate<Integer> predicate = new Predicate<Integer>() {
             @Override
             public boolean apply(@Nullable Integer input) {
-                if (input % 2 == 0) {
-                    return true;
-                }
-                return false;
+                return 0 == input % 2;
             }
         };
 
         // 필터링 결과 모두 출력
         Stream<Integer> stream = list.stream();
         List<Integer> result1 = stream.filter(predicate).collect(Collectors.toList());
-        assertEquals(Arrays.asList(new Integer[]{2, 4, 6, 8}), result1);
+        assertEquals(Arrays.asList(2, 4, 6, 8), result1);
 
         // 필터링 결과 중 첫 번째
         stream = list.stream();
@@ -83,12 +79,12 @@ public class StreamTest {
         // 필터링 결과 중 아무거나?? 그냥 첫 번째꺼 나오는거 같은데...
         stream = list.stream();
         Integer result3 = stream.filter(predicate).findAny().get();
-        logger.debug("{}", result3);
+        log.debug("{}", result3);
     }
 
     @Test
     public void testMax() {
-        List<Integer> list = Arrays.asList(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         int max = list.stream().max(Integer::compareTo).get();
         assertEquals(9, max);
     }
@@ -104,30 +100,27 @@ public class StreamTest {
 
     @Test
     public void testAnyMatch() {
-        List<Integer> list = Arrays.asList(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         Stream<Integer> stream = list.stream();
         boolean result = stream.anyMatch(e -> {
-            if (e > 10) {
-                return true;
-            }
-            return false;
+            return 10 < e;
         });
         assertFalse(result); // list에는 10보다 큰게 없음.
 
-        final String[] arr = {"/findme", "/beginning", "/start"};
+        String[] arr = {"/findme", "/beginning", "/start"};
         final String compareme = "/beginning/list/hello";
         Stream<String> stream2 = Arrays.asList(arr).stream();
-        boolean existsForeMatch = stream2.anyMatch(e -> compareme.indexOf(e) == 0);
+        boolean existsForeMatch = stream2.anyMatch(e -> 0 == compareme.indexOf(e));
         assertTrue(existsForeMatch);
     }
 
     @Test
     public void testMap() {
         List<ListGenerator.Obj> objList = ListGenerator.generateObjList(10);
-        logger.debug("objList: {}", objList);
+        log.debug("objList: {}", objList);
         List<Integer> indexList = objList.stream().map(ele -> ele.getIndex()).collect(Collectors.toList());
-        logger.debug("indexList: {}", indexList);
-        assertTrue(indexList.size() == 10);
+        log.debug("indexList: {}", indexList);
+        assertEquals(10, indexList.size());
         assertEquals(1, indexList.get(1));
     }
 }

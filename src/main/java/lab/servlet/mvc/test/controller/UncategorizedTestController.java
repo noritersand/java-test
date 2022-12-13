@@ -5,8 +5,7 @@ import lab.servlet.core.finder.UrlMapping;
 import lab.servlet.core.view.View;
 import lab.util.request.RequestParameter;
 import lab.util.request.RequestUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +15,8 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 public class UncategorizedTestController {
-    private static final Logger logger = LoggerFactory.getLogger(UncategorizedTestController.class);
 
     /**
      * @param request
@@ -41,13 +40,13 @@ public class UncategorizedTestController {
 
     @UrlMapping("/page/uncategorized/submission-charset/sender-euc-kr-test.view")
     public View drawSenderEucKrTest(HttpServletRequest request, HttpServletResponse response) {
-        logger.debug(RequestUtil.getRequestParameter(request).toString());
+        log.debug(RequestUtil.getRequestParameter(request).toString());
         return new View("/page/uncategorized/submission-charset/sender-euc-kr-test");
     }
 
     @UrlMapping("/page/uncategorized/submission-charset/sender-iso-8859-1-test.view")
     public View drawSenderIso88591Test(HttpServletRequest request, HttpServletResponse response) {
-        logger.debug(RequestUtil.getRequestParameter(request).toString());
+        log.debug(RequestUtil.getRequestParameter(request).toString());
         return new View(request);
     }
 
@@ -61,7 +60,7 @@ public class UncategorizedTestController {
      */
     @UrlMapping("/page/uncategorized/submission-charset/receiver-test.view")
     public View drawReceiverTest(HttpServletRequest request, HttpServletResponse response) {
-        logger.debug(RequestUtil.getRequestParameter(request).toString());
+        log.debug(RequestUtil.getRequestParameter(request).toString());
         return new View(request);
     }
 
@@ -76,8 +75,8 @@ public class UncategorizedTestController {
      */
     @UrlMapping("/page/uncategorized/read-querystring.data")
     public JsonResponseObject readQuerystring(HttpServletRequest request, HttpServletResponse response) {
-        final RequestParameter params = RequestUtil.getRequestParameter(request);
-        logger.debug(params.toString());
+        RequestParameter params = RequestUtil.getRequestParameter(request);
+        log.debug(params.toString());
         JsonResponseObject responseJSON = new JsonResponseObject();
         responseJSON.setSuccess(true);
         responseJSON.setMessage(params.toString());
@@ -95,17 +94,17 @@ public class UncategorizedTestController {
      */
     @UrlMapping("/page/uncategorized/read-body.data")
     public Map<String, Object> readBody(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        final RequestParameter params = RequestUtil.getRequestParameter(request);
-        final String body = RequestUtil.readBody(request);
-        logger.debug("formal parameter: {}", params);
-        logger.debug("payload body: {}", body);
+        RequestParameter params = RequestUtil.getRequestParameter(request);
+        String body = RequestUtil.readBody(request);
+        log.debug("formal parameter: {}", params);
+        log.debug("payload body: {}", body);
 
-//		logger.debug("헤더 목록:");
+//		log.debug("헤더 목록:");
 //		RequestUtil.printHeaders(request);
-//		logger.debug("-------------------------- 헤더 끗.");
+//		log.debug("-------------------------- 헤더 끗.");
 
 //		HashMap<String, String> headersMap = RequestUtil.getHeadersMap(request);
-//		logger.debug(headersMap.toString());
+//		log.debug(headersMap.toString());
 
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("success", true);
@@ -194,16 +193,16 @@ public class UncategorizedTestController {
     public View drawSessionInvalidateTest(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
-        logger.debug("session id: {}", session.getId());
+        log.debug("session id: {}", session.getId());
 
         session.setAttribute("a", 123);
         int a = (int) session.getAttribute("a");
-        logger.debug("{}", a == 123);
+        log.debug("{}", 123 == a);
 
         session.invalidate(); // 세션 무효화
 
         // 아이디는 아직 그대로
-        logger.debug("session id after invalidate: {}", session.getId());
+        log.debug("session id after invalidate: {}", session.getId());
 
         // invalidate() 호출 후에는 set이나 get을 할 수 없음.
 //		ss.setAttribute("b", 456); // IllegalStateException: setAttribute: Session has already been invalidated
@@ -239,7 +238,7 @@ public class UncategorizedTestController {
 
     @UrlMapping("/page/uncategorized/test-reponse-character-set.data")
     public void testReponseCharacterSet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        logger.debug(System.getProperty("file.encoding"));
+        log.debug(System.getProperty("file.encoding"));
 
         /**
          * response의 케릭터셋을 지정하지 않는 경우 응답의 케릭터셋은 요청과 같으며,

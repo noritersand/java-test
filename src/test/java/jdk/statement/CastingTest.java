@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -13,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class CastingTest {
-    private static final Logger logger = LoggerFactory.getLogger(CastingTest.class);
 
     @Test
     public void castNull() {
@@ -42,7 +41,7 @@ public class CastingTest {
             @SuppressWarnings("unused")
             Child c = (Child) p;
         } catch (ClassCastException e) {
-            logger.debug("캐스팅 익셉션 발생함.");
+            log.debug("캐스팅 익셉션 발생함.");
         }
 
         // 요로케는 됨.
@@ -61,7 +60,7 @@ public class CastingTest {
 
     private class Child extends Parent {
         public void play() {
-            logger.debug("uoo-hoo!");
+            log.debug("uoo-hoo!");
         }
 
         @Override

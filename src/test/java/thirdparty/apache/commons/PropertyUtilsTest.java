@@ -1,24 +1,22 @@
 package thirdparty.apache.commons;
 
+import lombok.extern.slf4j.Slf4j;
 import model.TestModel;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class PropertyUtilsTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(PropertyUtilsTest.class);
 
     /**
      * 인스턴스의 프로퍼티 복사. 복사하려는 타입이 private이면 작동하지 않음
@@ -31,7 +29,7 @@ public class PropertyUtilsTest {
      * @author fixalot
      */
     @Test
-    public void testCopyProperties() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void testCopyProperties() throws Exception {
         TestModel oldbie = new TestModel();
         oldbie.setName("야");
         oldbie.setNumber(101);
@@ -41,7 +39,7 @@ public class PropertyUtilsTest {
         PropertyUtils.copyProperties(newbie, oldbie);
 //		BeanUtils.populate(interworkModel, product); // target 필드가 java.util.Date 타입인데 값으로 null이 들어오면 에러남.
 
-        assertTrue(oldbie != newbie);
+        assertNotSame(oldbie, newbie);
         assertEquals(oldbie.getName(), newbie.getName());
         assertEquals(oldbie.getNumber(), newbie.getNumber());
     }

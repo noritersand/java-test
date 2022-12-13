@@ -1,13 +1,12 @@
 package jdk.generic;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 /**
  * 제네릭 클래스 테스트.
@@ -15,9 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class GenericClassTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(GenericClassTest.class);
 
     @Test
     public void testNormalGeneric() {
@@ -43,8 +41,8 @@ public class GenericClassTest {
     @Test
     public void testGenericMethod() {
         GenericMethodOnly gen = new GenericMethodOnly();
-        assertTrue(Integer.class == gen.getType(Integer.valueOf(123)));
-        assertTrue(String.class == gen.getType("Text"));
+        assertSame(Integer.class, gen.getType(Integer.valueOf(123)));
+        assertSame(String.class, gen.getType("Text"));
     }
 
     @Test

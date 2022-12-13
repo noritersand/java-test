@@ -1,8 +1,7 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -10,9 +9,8 @@ import java.util.Queue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Slf4j
 public class ArrayDequeTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(ArrayDequeTest.class);
 
     @Test
     public void test() {

@@ -11,8 +11,7 @@ import lab.servlet.mvc.test.controller.FilterTestController;
 import lab.servlet.mvc.test.controller.HttpTestController;
 import lab.servlet.mvc.test.controller.SecurityTestController;
 import lab.servlet.mvc.test.controller.UncategorizedTestController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,11 +27,11 @@ import java.util.List;
  * @author fixalot
  * @since 2017-06-19
  */
+@Slf4j
 public class DefaultDispatcher extends HttpServlet {
     private static final long serialVersionUID = 6174311087878978970L;
 
     //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(DefaultDispatcher.class);
 
     @SuppressWarnings("unused")
     private static final String VIEW_SUFIX = ".view";
@@ -89,7 +88,7 @@ public class DefaultDispatcher extends HttpServlet {
         try {
             object = methodFinder.findMethod(instanceList, request, response);
         } catch (NotFoundMappingException e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             response.sendError(404);
             return;
         }
@@ -103,7 +102,7 @@ public class DefaultDispatcher extends HttpServlet {
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
             // send error
 //			response.sendError(sc, msg);
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             response.sendError(500);
         }
     }

@@ -14,7 +14,7 @@ public class TestModel {
     private Date when;
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -22,7 +22,7 @@ public class TestModel {
     }
 
     public int getNumber() {
-        return number;
+        return this.number;
     }
 
     public void setNumber(int number) {
@@ -30,7 +30,7 @@ public class TestModel {
     }
 
     public Date getWhen() {
-        return when;
+        return this.when;
     }
 
     public void setWhen(Date when) {

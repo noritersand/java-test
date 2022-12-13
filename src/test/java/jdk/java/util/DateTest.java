@@ -1,8 +1,7 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,14 +16,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class DateTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(DateTest.class);
 
     @Test
     public void shouldBeEquals() {
         long mills = System.currentTimeMillis();
-        logger.debug("currentTimeMills: {}", mills);
+        log.debug("currentTimeMills: {}", mills);
         Date now = new Date(mills);
         assertEquals(mills, now.getTime());
     }
@@ -32,7 +30,7 @@ public class DateTest {
     @Test
     public void testJavaUtilDate() {
         Date now = new Date();
-        logger.debug("{}", now);
+        log.debug("{}", now);
 
         now = new Date(1547168374396L);
         assertEquals("Fri Jan 11 09:59:34 KST 2019", now.toString());

@@ -5,19 +5,21 @@ package misc;
  * @since 2017-07-27
  */
 public class AtomicTest {
-    private int a = 0;
+    private int a;
 
     public int incrementAndGet() {
-        return a++;
+        int i = this.a;
+        this.a++;
+        return i;
     }
 
     public static void main(String[] args) {
-        final AtomicTest test = new AtomicTest();
-        for (int i = 0; i < 100; i++) {
+        AtomicTest test = new AtomicTest();
+        for (int i = 0; 100 > i; i++) {
 
             Thread thread = new Thread() {
                 public void run() {
-                    for (int j = 0; j < 1000; j++) {
+                    for (int j = 0; 1000 > j; j++) {
                         System.out.println(test.incrementAndGet());
                     }
                 }

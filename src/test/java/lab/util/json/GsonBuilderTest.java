@@ -2,9 +2,8 @@ package lab.util.json;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -13,7 +12,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * 커스텀 TypeAdeptor가 선언된 GsonBuilder 테스트
@@ -21,8 +21,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2017-12-01
  */
+@Slf4j
 public class GsonBuilderTest {
-    private static final Logger logger = LoggerFactory.getLogger(GsonBuilderTest.class);
 
     @Test
     public void testFromJsonForPlainObject() {
@@ -44,7 +44,7 @@ public class GsonBuilderTest {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.getGson();
         GsonTestModel[] convertedModel = gson.fromJson(makeJsonArrayText(), GsonTestModel[].class);
-        logger.debug(Arrays.toString(convertedModel));
+        log.debug(Arrays.toString(convertedModel));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class GsonBuilderTest {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.getGson();
         GsonTestModel[] convertedModel = gson.fromJson(makeJsonArrayInArrayText(), GsonTestModel[].class);
-        logger.debug(Arrays.toString(convertedModel));
+        log.debug(Arrays.toString(convertedModel));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class GsonBuilderTest {
         }.getType());
 
         GsonTestChild[] convertedModel = convertedModelList.get(0).getGsonTestChild();
-        assertTrue(convertedModel.length == 1);
+        assertEquals(1, convertedModel.length);
         assertEquals(GsonTestChild[].class, convertedModel.getClass());
 
         GsonTestChild gsonTestChild = convertedModel[0];
@@ -74,61 +74,55 @@ public class GsonBuilderTest {
     }
 
     public String makeJsonObjectText() {
-        StringBuilder sb = new StringBuilder()
-                .append("{")
-                .append("\"stringValue\":\"\"")
-                .append(",").append("\"imAlone\":\"\"")
-                .append(",").append("\"charValue\":\"\"")
-                .append(",").append("\"shortValue\":\"\"")
-                .append(",").append("\"intValue\":\"\"")
-                .append(",").append("\"longValue\":\"\"")
-                .append(",").append("\"doubleValue\":\"\"")
-                .append(",").append("\"bigDecimalValue\":\"\"")
-                .append(",").append("\"boolValue\":\"\"")
+        String text = "{" +
+                "\"stringValue\":\"\"" +
+                "," + "\"imAlone\":\"\"" +
+                "," + "\"charValue\":\"\"" +
+                "," + "\"shortValue\":\"\"" +
+                "," + "\"intValue\":\"\"" +
+                "," + "\"longValue\":\"\"" +
+                "," + "\"doubleValue\":\"\"" +
+                "," + "\"bigDecimalValue\":\"\"" +
+                "," + "\"boolValue\":\"\"" +
 //				.append(",").append("\"dateValue\":\"1999-01-01\"")
-                .append("}");
-        String text = sb.toString();
-        logger.debug("text: " + text);
+                "}";
+        log.debug("text: {}", text);
         return text;
     }
 
     public String makeJsonArrayText() {
-        StringBuilder sb = new StringBuilder()
-                .append("[")
-                .append("{")
-                .append("\"stringValue\":\"\"")
-                .append(",").append("\"charValue\":\"\"")
-                .append(",").append("\"shortValue\":\"\"")
-                .append(",").append("\"intValue\":\"\"")
-                .append(",").append("\"longValue\":\"\"")
-                .append(",").append("\"doubleValue\":\"\"")
-                .append(",").append("\"bigDecimalValue\":\"\"")
-                .append(",").append("\"boolValue\":\"\"")
+        String text = "[" +
+                "{" +
+                "\"stringValue\":\"\"" +
+                "," + "\"charValue\":\"\"" +
+                "," + "\"shortValue\":\"\"" +
+                "," + "\"intValue\":\"\"" +
+                "," + "\"longValue\":\"\"" +
+                "," + "\"doubleValue\":\"\"" +
+                "," + "\"bigDecimalValue\":\"\"" +
+                "," + "\"boolValue\":\"\"" +
 //				.append(",").append("\"dateValue\":\"\"")
-                .append("}")
-                .append("]");
-        String text = sb.toString();
-        logger.debug("text: " + text);
+                "}" +
+                "]";
+        log.debug("text: {}", text);
         return text;
     }
 
     public String makeJsonArrayInArrayText() {
-        StringBuilder sb = new StringBuilder()
-                .append("[")
-                .append("{")
-                .append("\"stringValue\":\"\"")
-                .append(",").append("\"charValue\":\"\"")
-                .append(",").append("\"shortValue\":\"\"")
-                .append(",").append("\"intValue\":\"\"")
-                .append(",").append("\"longValue\":\"\"")
-                .append(",").append("\"doubleValue\":\"\"")
-                .append(",").append("\"bigDecimalValue\":\"\"")
-                .append(",").append("\"boolValue\":\"\"")
-                .append(",").append("\"gsonTestChild\": [{ \"a\":\"1\", \"b\":\"2\" }]")
-                .append("}")
-                .append("]");
-        String text = sb.toString();
-        logger.debug("text: " + text);
+        String text = "[" +
+                "{" +
+                "\"stringValue\":\"\"" +
+                "," + "\"charValue\":\"\"" +
+                "," + "\"shortValue\":\"\"" +
+                "," + "\"intValue\":\"\"" +
+                "," + "\"longValue\":\"\"" +
+                "," + "\"doubleValue\":\"\"" +
+                "," + "\"bigDecimalValue\":\"\"" +
+                "," + "\"boolValue\":\"\"" +
+                "," + "\"gsonTestChild\": [{ \"a\":\"1\", \"b\":\"2\" }]" +
+                "}" +
+                "]";
+        log.debug("text: {}", text);
         return text;
     }
 
@@ -242,10 +236,10 @@ public class GsonBuilderTest {
                     returnString.append(field.get(this));
                 } catch (IllegalArgumentException e) {
                     returnString.append("IllegalArgumentException occured!!");
-                    returnString.append(e.toString());
+                    returnString.append(e);
                 } catch (IllegalAccessException e) {
                     returnString.append("IllegalAccessException occured!!");
-                    returnString.append(e.toString());
+                    returnString.append(e);
                 }
                 returnString.append(";\n");
             }

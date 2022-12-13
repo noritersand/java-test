@@ -1,16 +1,15 @@
 package misc;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
 
-public class TryEverything {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(TryEverything.class);
+@Slf4j
+public enum TryEverything {
+	;
 
     public static void main(String[] arg) {
-        int numArr[] = new int[5];
+        int[] numArr = new int[5];
         for (int i = 0; i < numArr.length; i++) {
             numArr[i] = i + 1;
         }

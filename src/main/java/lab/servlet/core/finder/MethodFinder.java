@@ -9,5 +9,5 @@ import java.util.List;
  * @since 2017-08-09
  */
 public interface MethodFinder {
-    public Object[] findMethod(List<Object> instanceList, HttpServletRequest request, HttpServletResponse response);
+    Object[] findMethod(List<Object> instanceList, HttpServletRequest request, HttpServletResponse response);
 }

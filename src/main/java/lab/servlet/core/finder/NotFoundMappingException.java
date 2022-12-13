@@ -10,7 +10,6 @@ public class NotFoundMappingException extends RuntimeException {
     private static final long serialVersionUID = 4918349620626683926L;
 
     public NotFoundMappingException() {
-        super();
     }
 
     public NotFoundMappingException(String message) {

@@ -1,7 +1,6 @@
 package jdk.statement;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * static 키워드 테스트
@@ -9,8 +8,9 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  * @since 2017-07-27
  */
-public class StaticTest {
-    private static final Logger logger = LoggerFactory.getLogger(StaticTest.class);
+@Slf4j
+public enum StaticTest {
+    ;
 
     /**
      * 스태틱 블록은 언제 실행되나.
@@ -29,9 +29,9 @@ public class StaticTest {
      * 스태틱 블록이나 스태틱 멤버가 초기화&실행되는 시점은, 정확하진 않지만 브레이크 포인트로 테스트해보면 JVM이 올라갈 때인걸로 추정된다.
      */
     @SuppressWarnings("unused")
-    private static String textB = "욜룰루";
+    private static final String textB = "욜룰루";
 
     public static void main(String[] args) {
-        logger.debug("안녕 세상아!");
+        log.debug("안녕 세상아!");
     }
 }

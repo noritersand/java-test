@@ -1,7 +1,6 @@
 package lab.work.file;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,8 +17,9 @@ import java.util.stream.Stream;
  * @author noritersand
  * @since 2020-01-29
  */
-public class FileNameReplacer {
-    private static final Logger logger = LoggerFactory.getLogger(FileNameReplacer.class);
+@Slf4j
+public enum FileNameReplacer {
+    ;
 
     private static final String TARGET_LOCATION = "C:\\Users\\norit\\Downloads\\wallpaper";
     private static final String DEST_LOCATION = "C:\\Users\\norit\\Downloads\\wallpaper\\temp";
@@ -29,7 +29,7 @@ public class FileNameReplacer {
     static {
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-        final String yyyyMmdd = today.format(formatter);
+        String yyyyMmdd = today.format(formatter);
 
         PREFIX = "wallpaper" + "-" + yyyyMmdd + "-";
     }
@@ -48,7 +48,7 @@ public class FileNameReplacer {
             addPrefix(list);
 //			removePrefix(list);
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             System.exit(1);
         }
     }
@@ -57,12 +57,12 @@ public class FileNameReplacer {
     private static void removePrefix(Stream<Path> list) {
         list.forEach(k -> {
             if (!Files.isDirectory(k)) {
-                final String fileName = k.toString();
-                final String newFileName = (fileName.substring(fileName.lastIndexOf(File.separator) + 1)).replaceFirst(REMOVE_ME, "");
+                String fileName = k.toString();
+                String newFileName = (fileName.substring(fileName.lastIndexOf(File.separator) + 1)).replaceFirst(REMOVE_ME, "");
                 Path newPath = new File(DEST_LOCATION, newFileName).toPath();
 
                 // logging
-                logger.debug("{} -> {}", k, newPath);
+                log.debug("{} -> {}", k, newPath);
 
                 try {
                     Files.copy(k, newPath, StandardCopyOption.REPLACE_EXISTING);
@@ -78,12 +78,12 @@ public class FileNameReplacer {
     private static void addPrefix(Stream<Path> list) {
         list.forEach(k -> {
             if (!Files.isDirectory(k)) {
-                final String fileName = k.toString();
-                final String newFileName = PREFIX + fileName.substring(fileName.lastIndexOf(File.separator) + 1);
+                String fileName = k.toString();
+                String newFileName = PREFIX + fileName.substring(fileName.lastIndexOf(File.separator) + 1);
                 Path newPath = new File(DEST_LOCATION, newFileName).toPath();
 
                 // logging
-                logger.debug("{} -> {}", k, newPath);
+                log.debug("{} -> {}", k, newPath);
 
                 try {
                     Files.copy(k, newPath, StandardCopyOption.REPLACE_EXISTING);

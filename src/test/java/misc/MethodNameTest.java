@@ -1,16 +1,14 @@
 package misc;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class MethodNameTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(MethodNameTest.class);
 
     private static final int CLIENT_CODE_STACK_INDEX;
 
@@ -37,17 +35,17 @@ public class MethodNameTest {
 
     @Test
     public void test1() {
-        logger.debug("methodName() = " + methodName());
-        logger.debug("CLIENT_CODE_STACK_INDEX = " + CLIENT_CODE_STACK_INDEX);
+        log.debug("methodName() = {}", methodName());
+        log.debug("CLIENT_CODE_STACK_INDEX = {}", CLIENT_CODE_STACK_INDEX);
     }
 
     @Test
     public void test2() {
         String className = new Object() {
         }.getClass().getEnclosingClass().getName();
-        logger.debug("className: " + className);
+        log.debug("className: {}", className);
         String methodName = new Object() {
         }.getClass().getEnclosingMethod().getName();
-        logger.debug("methodName: " + methodName);
+        log.debug("methodName: {}", methodName);
     }
 }

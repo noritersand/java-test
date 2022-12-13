@@ -1,8 +1,7 @@
 package jdk.generic;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,8 +10,8 @@ import java.util.List;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class UncheckedTest {
-    private static final Logger logger = LoggerFactory.getLogger(UncheckedTest.class);
 
     @Test
     public void thisCodeShouldUnchecked() {
@@ -21,9 +20,9 @@ public class UncheckedTest {
         List<String> list = new LinkedList<>();
         list.add("야");
         List<?> uncheckedList = list;
-        logger.debug("{}", uncheckedList.get(0));
+        log.debug("{}", uncheckedList.get(0));
         String a = (String) uncheckedList.get(0);
-        logger.debug(a);
+        log.debug(a);
 
         // TODO 이렇게
 //		String[] strs = { "a", "b", "c", "d", "e" };

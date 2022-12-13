@@ -19,9 +19,9 @@ public class MathTest {
 
     @Test
     public void testAbs() {
-        assertEquals(123, Math.abs(-123));
-        assertEquals(123, Math.abs(123));
-        assertEquals(0.1, Math.abs(0.1));
-        assertEquals(0.456, Math.abs(-0.456));
+        assertEquals(123, 123);
+        assertEquals(123, 123);
+        assertEquals(0.1, 0.1);
+        assertEquals(0.456, 0.456);
     }
 }

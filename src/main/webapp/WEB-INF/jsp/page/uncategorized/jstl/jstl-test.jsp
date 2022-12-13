@@ -28,12 +28,12 @@
 %>
 <%
     final String localVar = "i'm text2";
-    final HashMap<String, String> obj = new HashMap<>();
+    HashMap<String, String> obj = new HashMap<>();
 %>
 <table>
     <tr>
         <th scope="col">scriptlet:</th>
-        <td><%=this.globalVar%>
+        <td><%=globalVar%>
         </td>
         <td><%=localVar%>
         </td>

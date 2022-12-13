@@ -1,8 +1,7 @@
 package jdk.java.nio;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,9 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class PathTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(PathTest.class);
 
     @Test
     public void initialize() throws IOException {
@@ -80,16 +78,16 @@ public class PathTest {
 
     @Test
     public void getRoot() {
-        logger.debug("relative paths:");
-        logger.debug(Paths.get("/").toString()); // just "\"
-        logger.debug(Paths.get("").toString()); // ""
-        logger.debug(Paths.get("/").toFile().toString()); // just "\"
-        logger.debug(Paths.get("").toFile().toString()); // ""
+        log.debug("relative paths:");
+        log.debug(Paths.get("/").toString()); // just "\"
+        log.debug(Paths.get("").toString()); // ""
+        log.debug(Paths.get("/").toFile().toString()); // just "\"
+        log.debug(Paths.get("").toFile().toString()); // ""
 
-        logger.debug("absolute paths:");
-        logger.debug(Paths.get("/").toAbsolutePath().toString()); // just "\"
-        logger.debug(Paths.get("").toAbsolutePath().toString()); // ""
-        logger.debug(Paths.get("/").toAbsolutePath().toFile().toString()); // just "\"
-        logger.debug(Paths.get("").toAbsolutePath().toFile().toString()); // ""
+        log.debug("absolute paths:");
+        log.debug(Paths.get("/").toAbsolutePath().toString()); // just "\"
+        log.debug(Paths.get("").toAbsolutePath().toString()); // ""
+        log.debug(Paths.get("/").toAbsolutePath().toFile().toString()); // just "\"
+        log.debug(Paths.get("").toAbsolutePath().toFile().toString()); // ""
     }
 }

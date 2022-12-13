@@ -1,8 +1,7 @@
 package jdk.operator;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.management.relation.RoleList;
 import java.util.ArrayList;
@@ -15,14 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class InstanceofTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(InstanceofTest.class);
 
     @Test
     public void testExtends() {
         Object object = new Object();
-        String string = new String();
+        String string = "";
 
         assertTrue(string instanceof String);
         assertTrue(string instanceof Object);

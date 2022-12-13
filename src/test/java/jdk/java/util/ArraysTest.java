@@ -1,38 +1,37 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class ArraysTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(ArraysTest.class);
 
     @Test
     public void testToString() {
         String[] a = {"a", "b", "c"};
-        logger.debug(Arrays.toString(a));
+        log.debug(Arrays.toString(a));
     }
 
     @Test
     public void shouldEqual() {
         String[] a = {"a", "b", "c"};
         String[] b = {"a", "b", "c"};
-        assertTrue(Arrays.equals(a, b));
+        assertArrayEquals(a, b);
     }
 
     @Test
     public void testAsList() {
-        List<Integer> list = Arrays.asList(new Integer[]{6, 3, 1, 56, 99, 2, 41, 27, 54, 3});
+        List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
         List<Integer> list2 = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
         assertEquals(list, list2);
     }

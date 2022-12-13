@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.nio.file.Paths;
@@ -10,18 +9,14 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * @author fixalot
- * @since 2017-07-27
+ * 내부 클래스를 시리얼라이즈 하려면 외부 클래스도 시리얼라이즈 가능해야함
  */
-// 내부 클래스를 시리얼라이즈히랴먄 외부 클래스도 시리얼라이즈 가능해야함
+@Slf4j
 public class SerializeTest implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(SerializeTest.class);
-
     @Test
-    public void deserialize() throws ClassNotFoundException, IOException {
+    public void deserialize() throws Exception {
         File file = Paths.get("src/test/resources/serialize-test/test.ser").toFile();
 
         // some instance

@@ -27,20 +27,20 @@ public class WebAppInitializer implements ServletContextListener {
         // 케릭터인코딩 필터
         FilterRegistration.Dynamic encodingFilter = context.addFilter("encodingFilter", new CharacterEncodingFilter());
         encodingFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD,
-                DispatcherType.ERROR, DispatcherType.INCLUDE), false, VIEW, DATA);
+                DispatcherType.ERROR, DispatcherType.INCLUDE), false, WebAppInitializer.VIEW, WebAppInitializer.DATA);
 
         // 로그백 MDC 필터 등록. static resource 요청은 로그가 필요 없으므로 서블릿 URL 패턴과 동일하게 설정한다.
         FilterRegistration.Dynamic logbackMdcFilter = context.addFilter("logbackMdcFilter", new LogbackMdcFilter());
         logbackMdcFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD), false,
-                VIEW, DATA);
+                WebAppInitializer.VIEW, WebAppInitializer.DATA);
 
         FilterRegistration.Dynamic htmlTagFilter = context.addFilter("htmlTagFilter", new HTMLTagFilter());
         htmlTagFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD), false,
                 "/page/filter/replace-httpservletrequest-test.view", "/page/filter/replace-httpservletrequest.data");
 
         ServletRegistration.Dynamic servlet = context.addServlet("defaultDispatcher", new DefaultDispatcher());
-        servlet.addMapping(VIEW);
-        servlet.addMapping(DATA);
+        servlet.addMapping(WebAppInitializer.VIEW);
+        servlet.addMapping(WebAppInitializer.DATA);
         servlet.setLoadOnStartup(1);
     }
 

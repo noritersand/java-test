@@ -1,24 +1,22 @@
 package thirdparty.apache.commons;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class SystemUtilsTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(SystemUtilsTest.class);
 
     @Test
     public void test() {
-        logger.debug("{}", SystemUtils.IS_OS_WINDOWS);
-        logger.debug("{}", SystemUtils.IS_OS_UNIX);
-        logger.debug("{}", SystemUtils.IS_OS_LINUX);
-        logger.debug("{}", SystemUtils.IS_OS_MAC);
-        logger.debug("{}", SystemUtils.FILE_ENCODING);
+        log.debug("{}", SystemUtils.IS_OS_WINDOWS);
+        log.debug("{}", SystemUtils.IS_OS_UNIX);
+        log.debug("{}", SystemUtils.IS_OS_LINUX);
+        log.debug("{}", SystemUtils.IS_OS_MAC);
+        log.debug("{}", SystemUtils.FILE_ENCODING);
     }
 }

@@ -17,6 +17,6 @@ public enum ImSpecial {
     };
 
     public String destroySelf() {
-        return this.destroySelf();
+        return destroySelf();
     }
 }

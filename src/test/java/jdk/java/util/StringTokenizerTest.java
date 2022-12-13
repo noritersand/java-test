@@ -1,8 +1,7 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.StringTokenizer;
 
@@ -14,9 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2017-12-20
  */
+@Slf4j
 public class StringTokenizerTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(StringTokenizerTest.class);
 
     @Test
     public void test() {

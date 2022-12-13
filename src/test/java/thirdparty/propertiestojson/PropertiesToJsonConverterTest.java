@@ -1,29 +1,26 @@
 package thirdparty.propertiestojson;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+import pl.jalokim.propertiestojson.util.PropertiesToJsonConverter;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import pl.jalokim.propertiestojson.util.PropertiesToJsonConverter;
-
+@Slf4j
 public class PropertiesToJsonConverterTest {
-    private static final Logger logger = LoggerFactory.getLogger(PropertiesToJsonConverterTest.class);
 
     @SuppressWarnings("unchecked")
     @Test
     public void test() throws IOException {
         String jsonFromProperties = new PropertiesToJsonConverter()
                 .convertPropertiesFromFileToJson("src\\test\\resources\\properties-test\\convert-test.properties");
-        logger.debug(jsonFromProperties);
+        log.debug(jsonFromProperties);
         HashMap<String, Object> map = new Gson().fromJson(jsonFromProperties, new TypeToken<HashMap<String, Object>>() {
         }.getType());
         map.get("man.insurance.cost");

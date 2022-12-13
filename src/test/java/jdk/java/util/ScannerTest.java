@@ -1,8 +1,7 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
@@ -15,9 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @author fixalot
  * @since 2017-09-25
  */
+@Slf4j
 public class ScannerTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(ScannerTest.class);
 
     private static final String FULL_TEXT = "abcdefg hijklmn	opqrstu|vwxyz\n12345,67890\n가나다라마바사^아자차카타파하";
 
@@ -39,8 +37,8 @@ public class ScannerTest {
         Scanner scanner = new Scanner(FULL_TEXT);
         assertEquals("\\p{javaWhitespace}+", scanner.delimiter().toString());
         while (scanner.hasNext()) {
-            final String text = scanner.next();
-            logger.debug(text);
+            String text = scanner.next();
+            log.debug(text);
         }
         scanner.close();
     }
@@ -55,8 +53,8 @@ public class ScannerTest {
         Scanner scanner = new Scanner(FULL_TEXT);
         scanner.useDelimiter("\\^");
         while (scanner.hasNext()) {
-            final String text = scanner.next();
-            logger.debug(text);
+            String text = scanner.next();
+            log.debug(text);
         }
         scanner.close();
     }
@@ -70,8 +68,8 @@ public class ScannerTest {
     public void testNextLine() {
         Scanner scanner = new Scanner(FULL_TEXT);
         while (scanner.hasNext()) {
-            final String text = scanner.nextLine();
-            logger.debug(text);
+            String text = scanner.nextLine();
+            log.debug(text);
         }
         scanner.close();
     }

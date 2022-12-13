@@ -1,7 +1,6 @@
 package jdk.java.lang;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * ThreadGroup 사용법 테스트
@@ -9,9 +8,9 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  * @since 2017-07-27
  */
-public class ThreadGroupTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(ThreadGroupTest.class);
+@Slf4j
+public enum ThreadGroupTest {
+    ;
 
     /**
      * TOOD 어떻게 쓰는건지 몰겄다.
@@ -23,16 +22,16 @@ public class ThreadGroupTest {
         ThreadGroup threadGroup = Thread.currentThread().getThreadGroup();
         while (true) {
             ThreadGroup parentGroup = threadGroup.getParent();
-            if (parentGroup == null) {
-                logger.debug("parent group is null");
+            if (null == parentGroup) {
+                log.debug("parent group is null");
                 break;
             } else {
-                logger.debug("parent group is not null");
+                log.debug("parent group is not null");
                 threadGroup = parentGroup;
             }
         }
         Thread[] threads = new Thread[256];
         threadGroup.enumerate(threads);
-        logger.debug("{}", threadGroup.activeCount());
+        log.debug("{}", threadGroup.activeCount());
     }
 }

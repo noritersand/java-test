@@ -1,17 +1,15 @@
 package jdk.java.text;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+@Slf4j
 public class SimpleDateFormatTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(SimpleDateFormatTest.class);
 
     @Test
     public void test() throws ParseException {
@@ -46,11 +44,11 @@ public class SimpleDateFormatTest {
         // Date 타입을 형식화
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
         String dateWithFormat = sdf.format(now);
-        logger.debug(dateWithFormat); // 2015년 07월 07일 20시 02분 19초
+        log.debug(dateWithFormat); // 2015년 07월 07일 20시 02분 19초
 
         // Calendar 타입을 형식화
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String calendarWithFormat = sdf2.format(now2.getTime());
-        logger.debug(calendarWithFormat); // 2015-07-07 20:01:53
+        log.debug(calendarWithFormat); // 2015-07-07 20:01:53
     }
 }

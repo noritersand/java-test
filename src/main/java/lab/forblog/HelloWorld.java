@@ -1,6 +1,7 @@
 package lab.forblog;
 
-public class HelloWorld {
+public enum HelloWorld {
+    ;
 
     public static void main(String[] args) {
 

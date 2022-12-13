@@ -1,8 +1,7 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Formatter;
 
@@ -12,9 +11,8 @@ import java.util.Formatter;
  * @author fixalot
  * @since 2018-10-31
  */
+@Slf4j
 public class FormatterTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(FormatterTest.class);
 
     /**
      * usage

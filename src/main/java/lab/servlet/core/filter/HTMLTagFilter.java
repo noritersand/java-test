@@ -1,15 +1,13 @@
 package lab.servlet.core.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+@Slf4j
 public class HTMLTagFilter implements Filter {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(HTMLTagFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

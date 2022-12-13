@@ -1,8 +1,7 @@
 package jdk.java.reflection;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -14,9 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class ReflectionTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(ReflectionTest.class);
 
     @Test
     public void test() throws Exception {
@@ -47,7 +45,7 @@ public class ReflectionTest {
 }
 
 class MyClass {
-    private int myField = 0;
+    private final int myField = 0;
 
     public String withoutParameter() {
         return "finally you found me!";

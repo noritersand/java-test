@@ -3,14 +3,13 @@ package thirdparty.org.projectlombok;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 public class LombokTest {
-    private static final Logger logger = LoggerFactory.getLogger(LombokTest.class);
 
     /**
      * <p>lombok의 @Builder 어노테이션을 적용하면 생성자 대신 빌더 패턴으로 인스턴스를 초기화 할 수 있음.

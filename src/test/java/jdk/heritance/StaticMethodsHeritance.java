@@ -9,7 +9,7 @@ public class StaticMethodsHeritance {
     public void shouldBeEquals() {
         Parent ins1 = new Child();
         assertEquals("Child", ins1.print());
-        assertEquals("Parent", ins1.staticPrint());
+        assertEquals("Parent", Parent.staticPrint());
 
         assertEquals("Child", Child.staticPrint());
     }

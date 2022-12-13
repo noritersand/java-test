@@ -1,19 +1,17 @@
 package jdk.generic;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class GenericMethodTest {
-    private static final Logger logger = LoggerFactory.getLogger(GenericMethodTest.class);
 
     @Test
     public void shouldSuccess() {
@@ -21,7 +19,7 @@ public class GenericMethodTest {
 
         gen.getSome(new LittleDecimal(123)); // correct
 
-        List<LittleDecimal> list = Arrays.asList(new LittleDecimal[]{new LittleDecimal(123)});
+        List<LittleDecimal> list = List.of(new LittleDecimal(123));
         gen.getSome2(list); // correct
 
         gen.getSome3(new LittleDecimal(0));
@@ -50,15 +48,15 @@ public class GenericMethodTest {
 
     private class CustomGeneric {
         public <T extends BigDecimal> void getSome(T number) {
-            logger.debug("{}", number);
+            log.debug("{}", number);
         }
 
         public void getSome2(List<? super TinyDecimal> number) {
-            logger.debug("{}", number);
+            log.debug("{}", number);
         }
 
         public <T extends BigDecimal> void getSome3(T a) {
-            logger.debug("{}", a);
+            log.debug("{}", a);
         }
     }
 

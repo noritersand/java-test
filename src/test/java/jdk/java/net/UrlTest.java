@@ -1,14 +1,14 @@
 package jdk.java.net;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * URL을 다루기 위한 타입 테스트. URL은 URI보다 하위 개념이며 인터넷 자원을 의미한다.
@@ -16,9 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-08-21
  */
+@Slf4j
 public class UrlTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(UrlTest.class);
 
     @Test
     public void initialize() throws MalformedURLException {
@@ -38,7 +37,7 @@ public class UrlTest {
         assertEquals(80, url.getDefaultPort());
 
         assertEquals("google.com", url.getAuthority());
-        assertEquals(null, url.getUserInfo());
-        assertEquals(null, url.getRef());
+        assertNull(url.getUserInfo());
+        assertNull(url.getRef());
     }
 }

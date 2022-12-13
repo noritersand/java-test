@@ -1,8 +1,7 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -15,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class ArrayListTest {
-    private static final Logger logger = LoggerFactory.getLogger(ArrayListTest.class);
 
     @Test
     public void testAdd() {
@@ -35,7 +34,7 @@ public class ArrayListTest {
         ArrayList<ListTestModel> newbies = new ArrayList<>(origins);
 
         assertEquals(origins.get(0), newbies.get(0));
-        assertTrue(origins.get(0) == newbies.get(0));
+        assertSame(origins.get(0), newbies.get(0));
     }
 
     @Test
@@ -51,7 +50,7 @@ public class ArrayListTest {
         }
 
         assertNotEquals(origins.get(0), newbies.get(0));
-        assertTrue(origins.get(0) != newbies.get(0));
+        assertNotSame(origins.get(0), newbies.get(0));
     }
 
     @Test
@@ -73,7 +72,7 @@ public class ArrayListTest {
         Iterator<String> iter = list.iterator();
         while (iter.hasNext()) {
             String s = iter.next(); // 반드시 remove() 전에 호출되어야 함.
-            if (s.equals("a")) {
+            if ("a".equals(s)) {
                 iter.remove();
             }
         }
@@ -90,8 +89,8 @@ public class ArrayListTest {
     public void removeElementByIndex() {
         ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
         for (int i = 0; i < list.size(); i++) {
-            final String str = list.get(i);
-            if (str.equals("a")) {
+            String str = list.get(i);
+            if ("a".equals(str)) {
                 list.remove(i);
                 i--;
             }
@@ -114,7 +113,7 @@ public class ArrayListTest {
         {
             int cnt = 0;
             while (true) {
-                if (cnt == 3) {
+                if (3 == cnt) {
                     break;
                 }
                 list.remove(0);
@@ -125,8 +124,8 @@ public class ArrayListTest {
 
         // 뒤 3개 지우기
         list = Arrays.stream(strs).collect(Collectors.toList());
-        for (int cnt = 0, i = list.size(); i >= 0; i--) {
-            if (cnt < 3) {
+        for (int cnt = 0, i = list.size(); 0 <= i; i--) {
+            if (3 > cnt) {
                 list.remove(list.size() - 1);
                 i++;
                 cnt++;
@@ -152,7 +151,7 @@ public class ArrayListTest {
         int targetIndex = 99;
 
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) == targetValue) {
+            if (targetValue == list.get(i)) {
                 targetIndex = i;
                 break;
             }
@@ -196,7 +195,7 @@ public class ArrayListTest {
         List<String> stringList = Arrays.stream(strs).collect(Collectors.toList());
         assertEquals("[a, b, c, d, e]", stringList.toString());
 
-        int[] spam = new int[]{1, 2, 3};
+        int[] spam = {1, 2, 3};
         List<Integer> integerList = Arrays.stream(spam).boxed().collect(Collectors.toList());
         assertEquals("[1, 2, 3]", integerList.toString());
     }
@@ -238,7 +237,7 @@ public class ArrayListTest {
 
         List<Integer> firstBorn = numbers.subList(0, 1); // 5
         assertEquals(1, firstBorn.size());
-        assertEquals(Arrays.asList(5), firstBorn);
+        assertEquals(List.of(5), firstBorn);
 
         List<Integer> head = numbers.subList(0, 4); // 5, 3, 1, 2
         assertEquals(4, head.size());
@@ -260,7 +259,7 @@ public class ArrayListTest {
         Integer[] values = {1, 3, 7};
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
         list.forEach(k -> {
-            logger.debug("ele: {}", k);
+            log.debug("ele: {}", k);
         });
     }
 
@@ -268,7 +267,7 @@ public class ArrayListTest {
     public void testRemoveif() {
         Integer[] values = {1, 3, 7};
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
-        list.removeIf(p -> p == 3);
+        list.removeIf(p -> 3 == p);
         assertEquals("[1, 7]", list.toString());
     }
 

@@ -1,8 +1,6 @@
 package lab.work.database;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,7 +10,8 @@ import java.sql.*;
 import java.util.*;
 
 @Slf4j
-public class EntityGenerator {
+public enum EntityGenerator {
+    ;
     private static final String TABLE_NAME = "TB_WOFF";
 
     public static void main(String[] args) throws IOException, SQLException {
@@ -63,7 +62,7 @@ public class EntityGenerator {
     }
 
     private static String columnTypeToJavaType(String columnType) {
-        int firstBracket = columnType.indexOf("(");
+        int firstBracket = columnType.indexOf('(');
         if (-1 < firstBracket) {
             columnType = columnType.substring(0, firstBracket);
         }
@@ -128,27 +127,25 @@ public class EntityGenerator {
         return list;
     }
 
-    private static class DataSource {
-        private static final Logger logger = LoggerFactory.getLogger(DataSource.class);
+    @Slf4j
+    private enum DataSource {
+        ;
 
-        private static Connection connection = null;
-
-        private DataSource() {
-        }
+        private static Connection connection;
 
         public static Connection getConnection(String url, String username, String password) {
-            if (connection == null) {
+            if (null == DataSource.connection) {
                 try {
                     connection = DriverManager.getConnection(url, username, password);
                 } catch (Exception e) {
-                    logger.error(e.getMessage(), e);
+                    log.error(e.getMessage(), e);
                 }
             }
             return connection;
         }
 
         public static void close() {
-            if (connection != null) {
+            if (null != DataSource.connection) {
                 try {
                     if (!connection.isClosed())
                         connection.close();

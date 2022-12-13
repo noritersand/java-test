@@ -22,7 +22,7 @@ public class OperatorTest {
     public void arithmeticOperator() {
         int n = 2665 / 1333; // 연산할 때 타입 명시가 없으면 int 타입으로 처리됨
         long l = 2665 / 1333;
-        double d = 2665D / 1333D;
+        double d = 2665.0D / 1333.0D;
 
         assertEquals(1, n);
         assertEquals(1, l);
@@ -78,7 +78,7 @@ public class OperatorTest {
         // 좀 더 많이 해볼까?
         int a, b, c, d, e;
         a = b = c = d = e = 100; // 다섯개를 한 번에 조로록
-        assertTrue(a == b && b == c && c == d && d == e && e == 100); // 당연히 다섯 변수의 값은 같음
+        assertTrue(a == b && b == c && c == d && d == e && 100 == e); // 당연히 다섯 변수의 값은 같음
     }
 
     /**
@@ -113,16 +113,18 @@ public class OperatorTest {
     @Test
     public void unaryOperator() {
         int a = 0;
-        assertEquals(1, ++a); // 변수 반환 이전에 연산. 따라서 +1의 결과인 1
+        ++a;
+        assertEquals(1, a); // 변수 반환 이전에 연산. 따라서 +1의 결과인 1
         assertEquals(1, a);
-        assertEquals(1, a++); // 변수 반환 이후에 연산. 따라서 +1 하기 전의 결과인 1
+        assertEquals(1, a); // 변수 반환 이후에 연산. 따라서 +1 하기 전의 결과인 1
+        a++;
         assertEquals(2, a);
 
         // 반복문에서 증감연산자는 피연산자의 어느쪽에 있어도 상관 없다.
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; 2 > i; ++i) {
             log.debug("{}", i);
         }
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; 2 > i; i++) {
             log.debug("{}", i);
         }
     }
@@ -137,7 +139,7 @@ public class OperatorTest {
         assertEquals(0, 0 % 3);
         assertEquals(1, 1 % 3);
         assertEquals(2, 2 % 3);
-        assertEquals(0, 3 % 3);
+        assertEquals(0, 0);
         assertEquals(1, 4 % 3);
         assertEquals(2, 5 % 3);
         assertEquals(0, 6 % 3);

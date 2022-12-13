@@ -1,14 +1,13 @@
 package thirdparty.apache.commons;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,9 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class FileUtilsTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(FileUtilsTest.class);
 
     /**
      * 파일 읽고 쓰기
@@ -34,10 +32,10 @@ public class FileUtilsTest {
         File file = Paths.get("src/test/resources/file-utils-test/writeonme.txt").toFile();
 
         // write
-        FileUtils.writeStringToFile(file, text, Charset.forName("UTF-8"));
+        FileUtils.writeStringToFile(file, text, StandardCharsets.UTF_8);
 
         // read
-        String textFromFile = FileUtils.readFileToString(file, Charset.forName("UTF-8"));
+        String textFromFile = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
         assertEquals("some\ntext", textFromFile);
     }
 
@@ -51,8 +49,8 @@ public class FileUtilsTest {
      */
     @Test
     public void testCopyURLToFile() throws IOException {
-        final URL source = new URL("http://google.com");
-        final File destination = Paths.get("src/test/resources/file/file-from-url.txt").toFile();
+        URL source = new URL("http://google.com");
+        File destination = Paths.get("src/test/resources/file/file-from-url.txt").toFile();
         FileUtils.copyURLToFile(source, destination);
         assertTrue(destination.exists());
         destination.delete();

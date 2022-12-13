@@ -1,7 +1,6 @@
 package lab.forblog;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +14,9 @@ import java.util.stream.Stream;
  * @author fixalot
  * @since 2018-12-09
  */
-public class NotLowercaseFilenameFinder {
-    private static final Logger logger = LoggerFactory.getLogger(NotLowercaseFilenameFinder.class);
+@Slf4j
+public enum NotLowercaseFilenameFinder {
+    ;
 
     public static void main(String[] args) {
         String[] targetLocations = {
@@ -26,16 +26,16 @@ public class NotLowercaseFilenameFinder {
 
         try {
             for (String ele : targetLocations) {
-                find(ele);
+                NotLowercaseFilenameFinder.find(ele);
             }
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             System.exit(1);
         }
     }
 
     private static void find(String path) throws IOException {
-        logger.debug("찾을 위치: {} ", path);
+        log.debug("찾을 위치: {} ", path);
 
         Path targetPath = new File(path).toPath();
         Stream<Path> targetList = Files.list(targetPath);
@@ -45,18 +45,18 @@ public class NotLowercaseFilenameFinder {
         }
         Counter counter = new Counter();
         targetList.forEach((Path ele) -> {
-            final String fileName = ele.getFileName().toString();
-            final String lowerCaseFileName = fileName.toLowerCase();
+            String fileName = ele.getFileName().toString();
+            String lowerCaseFileName = fileName.toLowerCase();
 
             if (!fileName.equals(lowerCaseFileName)) {
-                logger.debug(fileName);
+                log.debug(fileName);
                 ++counter.count;
             }
         });
         targetList.close();
 
-        if (counter.count <= 0) {
-            logger.debug("결과: 발견된 대문자 음슴");
+        if (0 >= counter.count) {
+            log.debug("결과: 발견된 대문자 음슴");
         }
     }
 }

@@ -1,8 +1,7 @@
 package jdk.java.lang;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.nio.charset.StandardCharsets;
 
@@ -15,9 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixal
  * @since 2018-09-28
  */
+@Slf4j
 public class StringBufferTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(StringBufferTest.class);
 
     /**
      * 한글을 3바이트로 처리하는 UTF-8의 바이트배열을 4바이트씩 잘라서 String으로 만들면 한글이 망가지는데,
@@ -28,7 +26,7 @@ public class StringBufferTest {
     @Test
     public void concatBytes() {
         final String origin = "가나다라";
-        final byte[] bytes = origin.getBytes(StandardCharsets.UTF_8);
+        byte[] bytes = origin.getBytes(StandardCharsets.UTF_8);
         assertArrayEquals(new byte[]{-22, -80, -128, -21, -126, -104, -21, -117, -92, -21, -99, -68}, bytes);
 
         assertEquals("가", new String(bytes, 0, 3, StandardCharsets.UTF_8));
@@ -40,9 +38,8 @@ public class StringBufferTest {
         assertEquals("가�", a = new String(bytes, 0, 4, StandardCharsets.UTF_8));
         assertEquals("���", b = new String(bytes, 4, 4, StandardCharsets.UTF_8));
         assertEquals("�라", c = new String(bytes, 8, 4, StandardCharsets.UTF_8));
-        StringBuffer buffer = new StringBuffer().append(a).append(b).append(c);
 
-        assertEquals("가�����라", buffer.toString());
+        assertEquals("가�����라", a + b + c);
     }
 
     @Test

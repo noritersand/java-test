@@ -1,13 +1,12 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@Slf4j
 public class AbstractClassTest {
-    private static final Logger logger = LoggerFactory.getLogger(AbstractClassTest.class);
 
     @Test
     public void shouldBeCompileError() {

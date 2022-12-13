@@ -6,9 +6,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,11 +23,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2019-01-23
  */
+@Slf4j
 public class JacksonTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(JacksonTest.class);
 
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
 
     /**
      * 파싱할 문자열이 array[]인지 object{}인지 알 수 없을때 처리 방법
@@ -39,7 +37,7 @@ public class JacksonTest {
      * @author noritersand
      */
     @Test
-    public void testSingleValueAsArray() throws JsonParseException, JsonMappingException, IOException {
+    public void testSingleValueAsArray() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
 
         // 원래는 이런 문자만 파싱할 수 있지만...
@@ -71,10 +69,10 @@ public class JacksonTest {
      * @author fixalot
      */
     @Test
-    public void testReadValue() throws JsonParseException, JsonMappingException, IOException {
+    public void testReadValue() throws Exception {
         String jsonText = "[{\"html1\":\"<p>홀홀</p>\",\"html2\":\"<p>ㅗㅎ롷ㄹ</p>\"}]";
-        final List<HashMap<String, Object>> collection
-                = mapper.readValue(jsonText, new TypeReference<ArrayList<HashMap<String, Object>>>() {
+        List<HashMap<String, Object>> collection
+                = this.mapper.readValue(jsonText, new TypeReference<ArrayList<HashMap<String, Object>>>() {
         });
         assertEquals(1, collection.size());
         assertEquals("<p>홀홀</p>", collection.get(0).get("html1"));
@@ -84,10 +82,10 @@ public class JacksonTest {
     }
 
     @Test
-    public void testReadValueWithAmbiguousTypeDeclare() throws JsonMappingException, JsonProcessingException {
+    public void testReadValueWithAmbiguousTypeDeclare() throws Exception {
         String jsonText = "[{\"html1\":\"<p>홀홀</p>\",\"html2\":\"<p>ㅗㅎ롷ㄹ</p>\"}]";
-        final List<Object> collection
-                = mapper.readValue(jsonText, new TypeReference<List<Object>>() {
+        List<Object> collection
+                = this.mapper.readValue(jsonText, new TypeReference<List<Object>>() {
         });
         assertEquals(1, collection.size());
         assertEquals(ArrayList.class, collection.getClass());
@@ -106,7 +104,7 @@ public class JacksonTest {
         map.put("name", "steave");
         map.put("age", "32");
         map.put("job", "baker");
-        final String jsonText = mapper.writeValueAsString(map);
+        String jsonText = this.mapper.writeValueAsString(map);
         assertEquals("{\"name\":\"steave\",\"job\":\"baker\",\"age\":\"32\"}", jsonText);
     }
 
@@ -117,7 +115,7 @@ public class JacksonTest {
             private String name;
 
             public String getId() {
-                return id;
+                return this.id;
             }
 
             public void setId(String id) {
@@ -125,7 +123,7 @@ public class JacksonTest {
             }
 
             public String getName() {
-                return name;
+                return this.name;
             }
 
             public void setName(String name) {
@@ -136,11 +134,11 @@ public class JacksonTest {
         Pojo e1 = new Pojo();
         e1.setId("123");
         e1.setName("abc");
-        assertEquals("{\"id\":\"123\",\"name\":\"abc\"}", mapper.writeValueAsString(e1));
+        assertEquals("{\"id\":\"123\",\"name\":\"abc\"}", this.mapper.writeValueAsString(e1));
 
         List<Pojo> list = new ArrayList<>(1);
         list.add(e1);
-        assertEquals("[{\"id\":\"123\",\"name\":\"abc\"}]", mapper.writeValueAsString(list));
+        assertEquals("[{\"id\":\"123\",\"name\":\"abc\"}]", this.mapper.writeValueAsString(list));
     }
 
     /**
@@ -156,7 +154,7 @@ public class JacksonTest {
         map.put("age", "32");
         map.put("dead", "true");
 
-        PlainObject po = mapper.convertValue(map, PlainObject.class);
+        PlainObject po = this.mapper.convertValue(map, PlainObject.class);
         assertEquals("steave", po.getName());
         assertEquals(Integer.valueOf(32), po.getAge());
 
@@ -170,7 +168,7 @@ public class JacksonTest {
         list.add(map);
         list.add(map2);
 
-        ArrayList<PlainObject> poList = mapper.convertValue(list, new TypeReference<ArrayList<PlainObject>>() {
+        ArrayList<PlainObject> poList = this.mapper.convertValue(list, new TypeReference<ArrayList<PlainObject>>() {
         });
         assertEquals("soap", poList.get(1).getName());
         assertEquals(Integer.valueOf(32), poList.get(0).getAge());

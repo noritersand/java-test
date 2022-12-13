@@ -1,8 +1,7 @@
 package jdk.java.lang;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Thread 테스트
@@ -10,14 +9,14 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  * @since 2017-07-05
  */
+@Slf4j
 public class ThreadTest1 {
-    private static final Logger logger = LoggerFactory.getLogger(ThreadTest1.class);
 
     public static void main(String[] args) {
         Thread thread = new Thread() {
             @Override
             public void run() {
-                logger.debug("i'm main!");
+                log.debug("I'm main!");
             }
         };
         thread.start();
@@ -25,19 +24,19 @@ public class ThreadTest1 {
 
     @Test
     public void getCurrentMethodName() {
-        final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
+        StackTraceElement[] ste = Thread.currentThread().getStackTrace();
 
         // System. out.println(ste[ste.length-depth].getClassName()+"#"+ste[ste.length-depth].getMethodName());
         // return ste[ste.length - depth].getMethodName(); //Wrong, fails for depth = 0
 //		return ste[ste.length - 1 - depth].getMethodName(); // Thank you Tom Tresansky
 
-        logger.debug(ste[ste.length - 1].getMethodName());
-        logger.debug(ste[ste.length - 2].getMethodName());
-        logger.debug(ste[ste.length - 3].getMethodName());
-        logger.debug(ste[ste.length - 4].getMethodName());
-        logger.debug(ste[ste.length - 5].getMethodName());
+        log.debug(ste[ste.length - 1].getMethodName());
+        log.debug(ste[ste.length - 2].getMethodName());
+        log.debug(ste[ste.length - 3].getMethodName());
+        log.debug(ste[ste.length - 4].getMethodName());
+        log.debug(ste[ste.length - 5].getMethodName());
 
-//		logger.debug(ste[ste.length - 1 - depth].getMethodName());
-//		logger.debug(ste[ste.length - 1 - depth].getMethodName());
+//		log.debug(ste[ste.length - 1 - depth].getMethodName());
+//		log.debug(ste[ste.length - 1 - depth].getMethodName());
     }
 }

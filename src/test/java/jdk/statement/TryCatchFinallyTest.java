@@ -48,7 +48,7 @@ public class TryCatchFinallyTest {
     public void catchOrder() {
         try {
             int a = 0;
-            if (a == 0) {
+            if (0 == a) {
                 throw new InappropriateArgumentException();
             }
         } catch (RuntimeException e) {

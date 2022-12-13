@@ -1,9 +1,8 @@
 package lab.util.string;
 
 import lab.InappropriateArgumentException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,17 +17,14 @@ import java.util.regex.Pattern;
  * @author fixalot
  * @since 2019-05-28
  */
-public class PhoneNumberSplitter {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(PhoneNumberSplitter.class);
+@Slf4j
+public enum PhoneNumberSplitter {
+    ;
     public static final String DELIMITER = "-";
     public static final String REGEX = "^(01\\d{1}|02|0505|0502|0506|0\\d{1,2})-?(\\d{3,4})-?(\\d{4})";
 
-    private PhoneNumberSplitter() {
-    }
-
     public static Result split(String str) {
-        if (StringUtils.isEmpty(str) || str.length() < 9) {
+        if (StringUtils.isEmpty(str) || 9 > str.length()) {
             throw new InappropriateArgumentException("전화번호는 필수값이며 9자리 이상이어야 해요.");
         }
 
@@ -41,7 +37,7 @@ public class PhoneNumberSplitter {
         if (matcher.matches()) {
             separated = new String[]{matcher.group(1), matcher.group(2), matcher.group(3)};
         } else {
-            if (str.length() < 11) {
+            if (11 > str.length()) {
                 throw new InappropriateArgumentException("뭔가 이상한 전화번호에요");
             }
             String str1 = str.substring(0, 3);

@@ -3,7 +3,8 @@ package jdk.env;
 /**
  * <p>System.getProperty()와 System.getenv()의 차이를 테스트
  */
-public class WhatDifferenceBetweenPropertyAndEnv {
+public enum WhatDifferenceBetweenPropertyAndEnv {
+    ;
 
     /**
      * <p>System.getProperty()는 VM 옵션으로 지정한 System properties를 가져온다. (e.g. -Dfoo=bar)

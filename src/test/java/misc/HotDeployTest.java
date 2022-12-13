@@ -1,10 +1,10 @@
 package misc;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
-public class HotDeployTest {
-    private static final Logger logger = LoggerFactory.getLogger(HotDeployTest.class);
+@Slf4j
+public enum HotDeployTest {
+    ;
 
     public static void main(String[] args) {
         RunMe runMe = new RunMe();
@@ -12,16 +12,16 @@ public class HotDeployTest {
     }
 }
 
+@Slf4j
 class RunMe {
-    private static final Logger logger = LoggerFactory.getLogger(RunMe.class);
 
     public void doSomething() {
         while (true) {
-            logger.info("Hello World!");
+            log.info("Hello World!");
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                logger.error(e.getMessage(), e);
+                log.error(e.getMessage(), e);
             }
         }
     }

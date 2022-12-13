@@ -1,19 +1,18 @@
 package jdk.heritance;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 public class HeritanceTest {
-    private static final Logger logger = LoggerFactory.getLogger(HeritanceTest.class);
 
     @Test
     public void test() {
         X obj = new Z();
         assertEquals("3", obj.f());
-        assertEquals("2", obj.g());
+        assertEquals("2", X.g());
 
         Object obj2 = new Wahappen();
         assertEquals("Wa happening here", obj2.toString());

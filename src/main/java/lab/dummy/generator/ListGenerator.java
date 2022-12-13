@@ -1,23 +1,19 @@
 package lab.dummy.generator;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.codehaus.commons.nullanalysis.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListGenerator {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(ListGenerator.class);
+@Slf4j
+public enum ListGenerator {
+    ;
 
-    private ListGenerator() {
-    }
-
-    public static List<String> generateAlphabeticList(@NotNull final int size) {
-        final List<String> list = new ArrayList<>(size);
+    public static List<String> generateAlphabeticList(@NotNull int size) {
+        List<String> list = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
             list.add(RandomStringUtils.randomAlphabetic(1));
         }

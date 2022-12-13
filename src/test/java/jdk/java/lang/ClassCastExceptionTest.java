@@ -1,8 +1,7 @@
 package jdk.java.lang;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 형변환 실패 예외 테스트
@@ -10,17 +9,17 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  * @since 2017-09-08
  */
+@Slf4j
 public class ClassCastExceptionTest {
-    private static final Logger logger = LoggerFactory.getLogger(ClassCastExceptionTest.class);
 
     @Test
     public void case1() {
         Object nan = "i'm not number";
         try {
             Integer number = (Integer) nan; // should be exception
-            logger.debug(String.valueOf(number));
+            log.debug(String.valueOf(number));
         } catch (ClassCastException e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
     }
 }

@@ -1,24 +1,20 @@
 package jdk.java.lang;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 import java.util.AbstractMap;
 import java.util.Arrays;
-import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class ClassClassTest {
-    private static final Logger logger = LoggerFactory.getLogger(ClassClassTest.class);
-
     @Test
     public void shouldNotEquals() {
         assertNotEquals(String.class, String[].class);
@@ -39,7 +35,7 @@ public class ClassClassTest {
     }
 
     @Test
-    public void testForName() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public void testForName() throws Exception {
         Class<?> cls = Class.forName("jdk.java.lang.MyClass");
         assertEquals(java.lang.Class.class, cls.getClass());
         assertEquals("jdk.java.lang.MyClass", cls.getName());
@@ -54,7 +50,7 @@ public class ClassClassTest {
         // standard
         assertEquals("java.util.AbstractMap", AbstractMap.class.getName());
         // inner class
-        assertEquals("java.util.AbstractMap$SimpleEntry", HashMap.SimpleEntry.class.getName());
+        assertEquals("java.util.AbstractMap$SimpleEntry", AbstractMap.SimpleEntry.class.getName());
         // anonymous inner class, $1은 첫 번째로 생성된 익명 내부 클래스를 의미한다.
         assertEquals("jdk.java.lang.ClassClassTest$1", new Serializable() {
         }.getClass().getName());
@@ -66,7 +62,7 @@ public class ClassClassTest {
         // standard
         assertEquals("java.util.AbstractMap", AbstractMap.class.getTypeName());
         // inner class
-        assertEquals("java.util.AbstractMap$SimpleEntry", HashMap.SimpleEntry.class.getTypeName());
+        assertEquals("java.util.AbstractMap$SimpleEntry", AbstractMap.SimpleEntry.class.getTypeName());
         // anonymous inner class, $2은 첫 번째로 생성된 익명 내부 클래스를 의미한다.
         assertEquals("jdk.java.lang.ClassClassTest$2", new Serializable() {
         }.getClass().getTypeName());
@@ -78,9 +74,9 @@ public class ClassClassTest {
         // standard
         assertEquals("java.util.AbstractMap", AbstractMap.class.getCanonicalName());
         // inner class
-        assertEquals("java.util.AbstractMap.SimpleEntry", HashMap.SimpleEntry.class.getCanonicalName());
+        assertEquals("java.util.AbstractMap.SimpleEntry", AbstractMap.SimpleEntry.class.getCanonicalName());
         // anonymous inner class
-        assertEquals(null, new Serializable() {
+        assertNull(new Serializable() {
         }.getClass().getCanonicalName());
     }
 
@@ -90,7 +86,7 @@ public class ClassClassTest {
         // standard
         assertEquals("AbstractMap", AbstractMap.class.getSimpleName());
         // inner class
-        assertEquals("SimpleEntry", HashMap.SimpleEntry.class.getSimpleName());
+        assertEquals("SimpleEntry", AbstractMap.SimpleEntry.class.getSimpleName());
         // anonymous inner class
         assertEquals("", new Serializable() {
         }.getClass().getSimpleName());
@@ -99,7 +95,7 @@ public class ClassClassTest {
     @Test
     public void testCurrentMethodName() {
         // #1: 익명 클래스를 생성하고, 해당 클래스가 생성된 환경의 정보 중 메서드 이름을 가져오는 일종의 꼼수. 컴파일 시 불필요한 클래스가 생성되는것에 주의할 것
-        final String methodName = new Object() {
+        String methodName = new Object() {
         }.getClass().getEnclosingMethod().getName();
         assertEquals("testCurrentMethodName", methodName);
 
@@ -111,16 +107,16 @@ public class ClassClassTest {
          * 	In the extreme case, a virtual machine that has no stack trace information concerning
          * 	this thread is permitted to return a zero-length array from this method.
          */
-        final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
-        logger.debug(Arrays.toString(ste));
+        StackTraceElement[] ste = Thread.currentThread().getStackTrace();
+        log.debug(Arrays.toString(ste));
         assertEquals("getStackTrace", ste[0].getMethodName());
         assertEquals("testCurrentMethodName", ste[1].getMethodName());
     }
 
     @Test
     public void testCurrentClassName() {
-        final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
-        logger.debug(Arrays.toString(ste));
+        StackTraceElement[] ste = Thread.currentThread().getStackTrace();
+        log.debug(Arrays.toString(ste));
         assertEquals("jdk.java.lang.ClassClassTest", ste[1].getClassName());
     }
 }

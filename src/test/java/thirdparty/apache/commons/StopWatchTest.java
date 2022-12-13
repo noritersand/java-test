@@ -1,9 +1,8 @@
 package thirdparty.apache.commons;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,9 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class StopWatchTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(StopWatchTest.class);
 
     /**
      * usage
@@ -31,7 +29,7 @@ public class StopWatchTest {
         assertTrue(watch.isStarted());
 
         doUselessThing();
-        logger.debug("경과 시간(나노초): {}", String.valueOf(watch.getNanoTime()));
+        log.debug("경과 시간(나노초): {}", watch.getNanoTime());
 
         watch.suspend(); // 일시정지
         assertTrue(watch.isSuspended());
@@ -40,9 +38,9 @@ public class StopWatchTest {
         assertTrue(watch.isStarted());
 
         watch.split(); // 임시 기록
-        logger.debug("임시 기록 시간(나노초): {}", String.valueOf(watch.getSplitNanoTime()));
+        log.debug("임시 기록 시간(나노초): {}", watch.getSplitNanoTime());
 
-        logger.debug("시작된 시간(나노초): {}", String.valueOf(watch.getStartTime()));
+        log.debug("시작된 시간(나노초): {}", watch.getStartTime());
 
         watch.stop(); // 중단
         watch.reset(); // 초기화
@@ -52,7 +50,7 @@ public class StopWatchTest {
 
     private long doUselessThing() {
         long sum = 0;
-        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+        for (int i = 0; Integer.MAX_VALUE > i; i++) {
             sum += i;
         }
         return sum;

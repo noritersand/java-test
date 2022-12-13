@@ -1,8 +1,7 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,20 +14,19 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2018-01-23
  */
+@Slf4j
 public class RandomTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(RandomTest.class);
 
     @Test
     public void testNextInt() {
-        for (int i = 0; i < 1000; ++i) {
+        for (int i = 0; 1000 > i; ++i) {
             Random random = new Random();
 
             int num = random.nextInt(); // int의 최솟값 이상 최댓값 미만 사이의 랜덤값 추출
-            assertTrue(Integer.MIN_VALUE <= num && num < Integer.MAX_VALUE);
+            assertTrue(Integer.MIN_VALUE <= num && Integer.MAX_VALUE > num);
 
             num = random.nextInt(5); // 0 이상 5 미만 사이의 랜덤값 추출
-            assertTrue(0 <= num && num < 5);
+            assertTrue(0 <= num && 5 > num);
         }
     }
 
@@ -64,13 +62,13 @@ public class RandomTest {
         list.add("여덟");
         list.add("아홉");
         list.add("열");
-        for (int i = 0; i < 100; ++i) {
+        for (int i = 0; 100 > i; ++i) {
             String element = list.get(new Random().nextInt(list.size()));
             assertNotNull(element);
             assertFalse(element.isEmpty());
             assertTrue(element instanceof String);
-            if (i == 99) {
-                logger.debug(element);
+            if (99 == i) {
+                log.debug(element);
             }
         }
     }

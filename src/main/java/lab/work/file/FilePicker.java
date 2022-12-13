@@ -1,7 +1,6 @@
 package lab.work.file;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,15 +18,16 @@ import java.util.stream.Stream;
  * @author noritersand
  * @since 2020-01-29
  */
-public class FilePicker {
-    private static final Logger logger = LoggerFactory.getLogger(FilePicker.class);
+@Slf4j
+public enum FilePicker {
+    ;
 
     private static final String TARGET_LOCATION = "c:/dev/temp";
     private static final String DEST_LOCATION = "c:/dev/temp2";
     private static final String[] FILE_NAMES = {"a", "b"};
 
     public static void main(String[] args) {
-        final File destDirectory = new File(DEST_LOCATION);
+        File destDirectory = new File(DEST_LOCATION);
         if (!destDirectory.exists()) {
             destDirectory.mkdirs();
         }
@@ -38,21 +38,21 @@ public class FilePicker {
             List<String> fileNameList = new ArrayList<>(Arrays.asList(FILE_NAMES));
 
             targetList.forEach((Path ele) -> {
-                final String fileName = ele.getFileName().toString();
+                String fileName = ele.getFileName().toString();
                 if (fileNameList.contains(fileName)) {
                     Path newPath = new File(DEST_LOCATION, fileName).toPath();
                     try {
                         Files.copy(ele, newPath, StandardCopyOption.REPLACE_EXISTING);
-                        logger.debug("file copied: {} => {}", ele, newPath);
+                        log.debug("file copied: {} => {}", ele, newPath);
                     } catch (IOException e) {
-                        logger.error(e.getMessage(), e);
+                        log.error(e.getMessage(), e);
                         System.exit(1);
                     }
                 }
             });
 
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             System.exit(1);
         }
 

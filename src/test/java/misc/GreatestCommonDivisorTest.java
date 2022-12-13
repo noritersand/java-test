@@ -1,8 +1,7 @@
 package misc;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,21 +11,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-05-30
  */
+@Slf4j
 public class GreatestCommonDivisorTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(GreatestCommonDivisorTest.class);
 
     @Test
     public void shouldEqual() {
         /*
          * input a input b 출력 169 104 -> 13 100 250 -> 50 1 1 -> 1 1000000 5 -> 5 104711 104717 -> 1 98304 65536 -> 32768
          */
-        assertEquals(13, getGCD(169, 104));
-        assertEquals(50, getGCD(100, 250));
-        assertEquals(1, getGCD(1, 1));
-        assertEquals(5, getGCD(1000000, 5));
-        assertEquals(1, getGCD(104711, 104717));
-        assertEquals(32768, getGCD(98304, 65536));
+        assertEquals(13, this.getGCD(169, 104));
+        assertEquals(50, this.getGCD(100, 250));
+        assertEquals(1, this.getGCD(1, 1));
+        assertEquals(5, this.getGCD(1000000, 5));
+        assertEquals(1, this.getGCD(104711, 104717));
+        assertEquals(32768, this.getGCD(98304, 65536));
     }
 
     /**
@@ -42,7 +40,7 @@ public class GreatestCommonDivisorTest {
         a = b > a ? b : a;
         int gcd = 0;
         for (int i = 1; i <= bigger; i++) {
-            if (a % i == 0 && b % i == 0) {
+            if (0 == a % i && 0 == b % i) {
                 gcd = i;
             }
         }

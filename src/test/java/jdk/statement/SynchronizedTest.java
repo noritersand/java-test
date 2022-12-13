@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
@@ -12,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class SynchronizedTest {
-    private static final Logger logger = LoggerFactory.getLogger(SynchronizedTest.class);
 
     @Test
     public void testSynchronizedMethod() {
@@ -37,7 +36,7 @@ public class SynchronizedTest {
         while (first.isAlive() || second.isAlive()) {
             // first와 second가 종료될 때까지 대기
         }
-        assertEquals(10000, instance.getAcc());
+        assertEquals(10000, instance.acc);
     }
 
     @Test
@@ -62,10 +61,10 @@ public class SynchronizedTest {
         while (third.isAlive() || fourth.isAlive()) {
             // third와 fourth가 종료될 때까지 대기
         }
-        assertEquals(10000, instance.getAcc());
+        assertEquals(10000, instance.acc);
     }
 
-    private int acc = 0;
+    private int acc;
 
     public int getAcc() {
         return acc;
@@ -76,21 +75,21 @@ public class SynchronizedTest {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
-        logger.debug("=========== 시작 ================");
-        logger.debug("this: {}, time: {}, current method: {}(), line: {}", String.valueOf(this), LocalDateTime.now(),
+        log.debug("=========== 시작 ================");
+        log.debug("this: {}, time: {}, current method: {}(), line: {}", this, LocalDateTime.now(),
                 new Throwable().getStackTrace()[0].getClassName() + "." + new Throwable().getStackTrace()[0].getMethodName(),
                 new Throwable().getStackTrace()[0].getLineNumber());
         acc = 0;
-        for (int i = 0; i < 10000; ++i) {
+        for (int i = 0; 10000 > i; ++i) {
             ++acc;
             if (acc != i + 1) {
-                logger.error("broken! acc: {}", acc);
+                log.error("broken! acc: {}", acc);
                 break;
             }
         }
-        logger.debug("=========== 끗 ================");
+        log.debug("=========== 끗 ================");
     }
 
     public void synchronizedStatement() {
@@ -98,21 +97,21 @@ public class SynchronizedTest {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                logger.error(e.getMessage(), e);
+                log.error(e.getMessage(), e);
             }
-            logger.debug("=========== 시작 ================");
-            logger.debug("this: {}, time: {}, current method: {}(), line: {}", String.valueOf(this), LocalDateTime.now(),
+            log.debug("=========== 시작 ================");
+            log.debug("this: {}, time: {}, current method: {}(), line: {}", this, LocalDateTime.now(),
                     new Throwable().getStackTrace()[0].getClassName() + "." + new Throwable().getStackTrace()[0].getMethodName(),
                     new Throwable().getStackTrace()[0].getLineNumber());
             acc = 0;
-            for (int i = 0; i < 10000; ++i) {
+            for (int i = 0; 10000 > i; ++i) {
                 ++acc;
                 if (acc != i + 1) {
-                    logger.error("broken! acc: {}", acc);
+                    log.error("broken! acc: {}", acc);
                     break;
                 }
             }
-            logger.debug("=========== 끗 ================");
+            log.debug("=========== 끗 ================");
         }
     }
 }

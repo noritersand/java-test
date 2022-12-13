@@ -1,8 +1,7 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
@@ -11,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * java.util.Optional 테스트 슈ㅌ
  */
+@Slf4j
 public class OptionalTest {
-    private static final Logger logger = LoggerFactory.getLogger(OptionalTest.class);
 
     @Test
     public void testEmpty() {
@@ -24,10 +23,9 @@ public class OptionalTest {
     public void testOf() {
         Optional<String> txt = Optional.of("1234");
         assertEquals("1234", txt.get());
-        ;
         assertTrue(txt.isPresent());
         assertFalse(txt.isEmpty());
         assertEquals("Optional[1234]", txt.toString());
-        assertTrue(txt.equals(Optional.of("1234")));
+        assertEquals(txt, Optional.of("1234"));
     }
 }

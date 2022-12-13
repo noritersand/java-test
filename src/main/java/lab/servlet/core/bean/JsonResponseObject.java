@@ -28,17 +28,17 @@ public class JsonResponseObject {
     private Map<String, Object> resultMap;
 
     public JsonResponseObject addResultMapItem(String key, Object value) {
-        if (resultMap == null) {
-            this.resultMap = new HashMap<>();
-            this.resultMap.put(key, value);
+        if (null == resultMap) {
+            resultMap = new HashMap<>();
+            resultMap.put(key, value);
         } else {
-            this.resultMap.put(key, value);
+            resultMap.put(key, value);
         }
         return this;
     }
 
     public Boolean getSuccess() {
-        return success;
+        return this.success;
     }
 
     public void setSuccess(Boolean success) {
@@ -46,7 +46,7 @@ public class JsonResponseObject {
     }
 
     public String getMessage() {
-        return message;
+        return this.message;
     }
 
     public void setMessage(String message) {
@@ -54,7 +54,7 @@ public class JsonResponseObject {
     }
 
     public String getResultCode() {
-        return resultCode;
+        return this.resultCode;
     }
 
     public void setResultCode(String resultCode) {
@@ -62,7 +62,7 @@ public class JsonResponseObject {
     }
 
     public Map<String, Object> getResultMap() {
-        return resultMap;
+        return this.resultMap;
     }
 
     public void setResultMap(Map<String, Object> resultMap) {

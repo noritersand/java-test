@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,15 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class WhileStatementTest {
-    private static final Logger logger = LoggerFactory.getLogger(WhileStatementTest.class);
 
     @Test
     public void testWhile() {
         int n = 0;
-        while (n != 2) { // condition이 true면 반복함
+        while (2 != n) { // condition이 true면 반복함
             ++n;
-            logger.debug("{}", n);
+            log.debug("{}", n);
         }
         assertEquals(2, n);
     }

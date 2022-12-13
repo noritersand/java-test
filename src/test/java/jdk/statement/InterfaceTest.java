@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,9 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author noritersand
  * @since 2021-01-06
  */
+@Slf4j
 public class InterfaceTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(InterfaceTest.class);
 
     @Test
     public void test() {
@@ -33,8 +31,8 @@ public class InterfaceTest {
 }
 
 interface ImplementMe {
-    final String oneTwoThree = "123";
-    final String fourFiveSix = "456";
+    String oneTwoThree = "123";
+    String fourFiveSix = "456";
 
     static String getAng() {
         return "ang?";

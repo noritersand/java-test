@@ -1,7 +1,6 @@
 package jdk.java.net;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,9 +8,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
+@Slf4j
 public class HttpURLConnectionTest {
-    private static final Logger logger = LoggerFactory.getLogger(HttpURLConnectionTest.class);
 
     /**
      * 로컬 서버 안띄워놓으면 접속 안되서 막음.
@@ -38,14 +38,14 @@ public class HttpURLConnectionTest {
 //		con.setRequestProperty("Pragma", "no-cache"); // 캐시 비활성화
 //		con.setRequestProperty("Content-Type", "text/html; charset=UTF-8");
 
-        logger.debug("response header: Content-Type: {}", con.getContentType());
-        logger.debug("response code: {}", con.getResponseCode());
+        log.debug("response header: Content-Type: {}", con.getContentType());
+        log.debug("response code: {}", con.getResponseCode());
 
         InputStream in = con.getInputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
         String singleline = "";
-        while ((singleline = reader.readLine()) != null) {
-            logger.debug(singleline);
+        while (null != (singleline = reader.readLine())) {
+            log.debug(singleline);
         }
 
         reader.close();

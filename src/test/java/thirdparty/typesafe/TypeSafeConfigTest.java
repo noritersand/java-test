@@ -1,14 +1,13 @@
 package thirdparty.typesafe;
 
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Lightbend의 com.typesafe.config.Config 테스트
@@ -16,9 +15,8 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  * @since 2019-07-19
  */
+@Slf4j
 public class TypeSafeConfigTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(TypeSafeConfigTest.class);
 
     @Test
     public void testConvertToHierarchicalJsonString() throws IOException {

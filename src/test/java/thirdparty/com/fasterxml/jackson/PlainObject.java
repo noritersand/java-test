@@ -13,7 +13,7 @@ class PlainObject {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -21,7 +21,7 @@ class PlainObject {
     }
 
     public Integer getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(Integer age) {
@@ -29,7 +29,7 @@ class PlainObject {
     }
 
     public boolean isDead() {
-        return dead;
+        return this.dead;
     }
 
     public void setDead(boolean dead) {

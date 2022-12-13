@@ -1,25 +1,25 @@
 package lab.work.file;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 
-public class DirectoryInspector {
-    private static final Logger logger = LoggerFactory.getLogger(DirectoryInspector.class);
+@Slf4j
+public enum DirectoryInspector {
+    ;
 
     public static void main(String[] args) {
         File dir = new File("C:/dev/temp");
         inspect(dir);
 
-        logger.debug("크기: {} 바이트", sizeSum);
-        logger.debug("파일: {} 개", fileCnt);
-        logger.debug("폴더: {} 개", directoryCnt);
+        log.debug("크기: {} 바이트", DirectoryInspector.sizeSum);
+        log.debug("파일: {} 개", DirectoryInspector.fileCnt);
+        log.debug("폴더: {} 개", DirectoryInspector.directoryCnt);
     }
 
-    static int fileCnt = 0;
-    static int directoryCnt = 0;
-    static long sizeSum = 0;
+    static int fileCnt;
+    static int directoryCnt;
+    static long sizeSum;
 
     /**
      * static 클래스 변수에 값 누적

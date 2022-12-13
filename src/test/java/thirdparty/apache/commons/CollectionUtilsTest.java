@@ -1,11 +1,10 @@
 package thirdparty.apache.commons;
 
 import jdk.java.util.HashMapTest;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,28 +18,28 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author noritersand
  * @since 2020-03-13
  */
+@Slf4j
 public class CollectionUtilsTest {
-    private static final Logger logger = LoggerFactory.getLogger(CollectionUtilsTest.class);
 
     /**
      * {@link CollectionUtils#union(java.util.Collection, java.util.Collection)} 테스트<br>
-     * <code>union()</code>에선 중복을 제외하고 합치는데, 리스트의 요소가 해시맵이면 엔트리만 같아도 중복이라 판단한다.<br>
+     * {@code union()}에선 중복을 제외하고 합치는데, 리스트의 요소가 해시맵이면 엔트리만 같아도 중복이라 판단한다.<br>
      *
      * @author noritersand
-     * @see HashMapTest#testEquals()
+     * @see HashMapTest#equality()
      */
     @Test
     public void testUnionWithMap() {
         List<HashMap<String, Object>> a = generateMapList();
         List<HashMap<String, Object>> b = generateMapList();
-        assertTrue(a != b);
+        assertNotSame(a, b);
         assertEquals(4, a.size());
 
         // b 리스트는 key=a만 남김
         b = b.subList(0, 1);
         assertEquals(1, b.size());
 
-        assertTrue(a.get(0) != b.get(0));
+        assertNotSame(a.get(0), b.get(0));
 
         // 합침
         @SuppressWarnings("unchecked")
@@ -49,7 +48,7 @@ public class CollectionUtilsTest {
         // 합치기 전 사이즈와 합친 후의 사이즈가 같음
         assertEquals(a.size(), c.size());
         // 요소가 해시맵이기 때문에 엔트리가 같으면 이미 있는걸로 보고 합치지 않는다.
-        logger.debug("{}", c);
+        log.debug("{}", c);
     }
 
     /**
@@ -61,14 +60,14 @@ public class CollectionUtilsTest {
     public void testUnionWithPOJO1() {
         List<ListTestModel> x = generatePOJOList();
         List<ListTestModel> y = generatePOJOList();
-        assertTrue(x != y);
+        assertNotSame(x, y);
         assertEquals(4, x.size());
 
         // y 리스트는 key=a만 남김
         y = y.subList(0, 1);
         assertEquals(1, y.size());
 
-        assertTrue(x.get(0) != y.get(0));
+        assertNotSame(x.get(0), y.get(0));
 
         // 합침
         @SuppressWarnings("unchecked")
@@ -78,7 +77,7 @@ public class CollectionUtilsTest {
         assertNotEquals(x.size(), c.size());
 
         // 결론: Map과 다르게 정말 같은 인스턴스인지 엄격히 비교함
-        logger.debug("{}", c); // 그래서 보면 first가 두 개임
+        log.debug("{}", c); // 그래서 보면 first가 두 개임
     }
 
     /**
@@ -90,7 +89,7 @@ public class CollectionUtilsTest {
     public void testUnionWithPOJO2() {
         List<ListTestModel> x = generatePOJOList();
         List<ListTestModel> y = new ArrayList<>();
-        assertTrue(x != y);
+        assertNotSame(x, y);
         assertEquals(4, x.size());
 
         // x에서 하나 꺼내 y에 추가
@@ -105,7 +104,7 @@ public class CollectionUtilsTest {
         assertEquals(x.size(), c.size());
 
         // 결론: 같은 인스턴스니까 합치치 않고 무시함
-        logger.debug("{}", c);
+        log.debug("{}", c);
     }
 
     /**
@@ -135,7 +134,7 @@ public class CollectionUtilsTest {
     @Test
     public void testReverseArray() {
 //		int[] arr = new int[] { 1, 2, 6, 3, 4 };
-        Integer[] arr = new Integer[]{1, 2, 6, 3, 4};
+        Integer[] arr = {1, 2, 6, 3, 4};
         CollectionUtils.reverseArray(arr);
         assertArrayEquals(new Integer[]{4, 3, 6, 2, 1}, arr);
     }
@@ -175,7 +174,7 @@ public class CollectionUtilsTest {
     }
 
     private class ListTestModel {
-        private String name;
+        private final String name;
 
         public ListTestModel(String name) {
             this.name = name;

@@ -1,8 +1,7 @@
 package jdk.java.io;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class FileTest {
-    private static final Logger logger = LoggerFactory.getLogger(FileTest.class);
 
     /*
      * src/main 혹은 src/test는 이클립스에서 직접 VM을 실행할 때에만 사용해야하는 경로다. 이 경로들은 메이븐 개발 환경에서만 존재하는 폴더 구조이고 war나 jar로 빌드되면 존재하지 않는 경로이기 때문.
@@ -32,10 +31,10 @@ public class FileTest {
     @Test
     public void initializeWithPath() {
         Path path = Paths.get("src/test/resources/file-test/amiexist.txt");
-        logger.debug(path.toString());
+        log.debug(path.toString());
         File file = path.toFile();
         assertEquals(path.toString(), file.toString());
-        logger.debug(file.getAbsolutePath());
+        log.debug(file.getAbsolutePath());
         assertEquals(file.getAbsolutePath(), file.getAbsoluteFile().toString());
         assertTrue(file.exists());
     }
@@ -43,6 +42,6 @@ public class FileTest {
     @Test
     public void testCreateTempFile() throws IOException {
         File file = File.createTempFile("head-", ".tmp");
-        logger.debug(file.getPath());
+        log.debug(file.getPath());
     }
 }

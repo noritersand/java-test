@@ -1,8 +1,7 @@
 package misc;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,9 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2018-10-31
  */
+@Slf4j
 public class FactorialTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(FactorialTest.class);
 
     @Test
     public void test() {
@@ -31,7 +29,7 @@ public class FactorialTest {
     }
 
     public int factorial(int n) {
-        if (n > 1) {
+        if (1 < n) {
             return n * factorial(n - 1); // 재귀호출
         } else {
             return 1;

@@ -1,23 +1,20 @@
 package thirdparty.google.guava;
 
+import com.google.common.reflect.TypeToken;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.reflect.TypeToken;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class TypeTokenTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(TypeTokenTest.class);
 
     @Test
     public void useTypeToken() {

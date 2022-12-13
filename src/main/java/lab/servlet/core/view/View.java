@@ -16,11 +16,11 @@ public class View {
     }
 
     public View(HttpServletRequest request) {
-        setViewName(request);
+        this.setViewName(request);
     }
 
     public String getViewName() {
-        return viewName;
+        return this.viewName;
     }
 
     public void setViewName(String viewName) {
@@ -28,8 +28,8 @@ public class View {
     }
 
     public void setViewName(HttpServletRequest request) {
-        final String requestURI = request.getRequestURI();
-        final String path = requestURI.substring(0, requestURI.lastIndexOf('.'));
-        this.viewName = path;
+        String requestURI = request.getRequestURI();
+        String path = requestURI.substring(0, requestURI.lastIndexOf('.'));
+        viewName = path;
     }
 }

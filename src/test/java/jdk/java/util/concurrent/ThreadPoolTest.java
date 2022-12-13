@@ -1,8 +1,7 @@
 package jdk.java.util.concurrent;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,7 +12,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * ThreadPool 테스트<br>
@@ -22,10 +21,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author noritersand
  * @since 2019-12-19
  */
+@Slf4j
 public class ThreadPoolTest {
-    private static final Logger logger = LoggerFactory.getLogger(ThreadPoolTest.class);
 
-    private int instanceLength = 10;
+    private final int instanceLength = 10;
 
     /**
      * 쓰레드를 여러개 생성해서 메서드를 동시 호출하는 테스트 케이스.<br>
@@ -39,7 +38,7 @@ public class ThreadPoolTest {
         int howManyThread = 10;
         try {
             List<Myclass> list = getList();
-            if (list != null && list.size() > 0) {
+            if (null != list && 0 < list.size()) {
                 threadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(howManyThread);
                 threadList = new ArrayList<Callable<Integer>>();
                 for (int i = 0; i < list.size(); i++) {
@@ -54,18 +53,18 @@ public class ThreadPoolTest {
                 }
             }
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         } finally {
-            if (threadPool != null) {
+            if (null != threadPool) {
                 try {
                     threadPool.shutdown();
                 } catch (Exception e) {
-                    logger.error(e.getMessage(), e);
+                    log.error(e.getMessage(), e);
                 }
             }
         }
-        assertTrue(getEvenLength() == successCount); // 짝수만큼 성공
-        assertTrue(getOddLength() == this.instanceLength - successCount); // 홀수만큼 실패
+        assertEquals(getEvenLength(), successCount); // 짝수만큼 성공
+        assertEquals(getOddLength(), this.instanceLength - successCount); // 홀수만큼 실패
     }
 
     /**
@@ -73,7 +72,7 @@ public class ThreadPoolTest {
      */
     public List<Myclass> getList() {
         List<Myclass> list = new LinkedList<Myclass>();
-        for (int i = 0; i < instanceLength; ++i) {
+        for (int i = 0; this.instanceLength > i; ++i) {
             list.add(new Myclass(i));
         }
         return list;
@@ -84,7 +83,7 @@ public class ThreadPoolTest {
      * {@link ThreadPoolTest}에서만 참조하고 있어서 private으로 설정함.
      */
     private class Mythread implements Callable<Integer> {
-        private Myclass var;
+        private final Myclass var;
 
         public Mythread(Myclass myclass) {
             this.var = myclass;
@@ -96,11 +95,11 @@ public class ThreadPoolTest {
         @Override
         public Integer call() throws Exception {
             // 두 썸띵
-            final int idx = this.var.getIdx();
-            logger.debug("{}번 째 인스턴스", idx);
+            int idx = this.var.getIdx();
+            log.debug("{}번 째 인스턴스", idx);
 
             // 짝수는 성공, 홀수는 실패하게 함
-            if (idx % 2 == 0) {
+            if (0 == idx % 2) {
                 return 1; // 성공
             } else {
                 return 0; // 패실
@@ -113,7 +112,7 @@ public class ThreadPoolTest {
      * 그냥 POJO
      */
     private class Myclass {
-        private int idx;
+        private final int idx;
 
         public Myclass(int idx) {
             this.idx = idx;
@@ -129,8 +128,8 @@ public class ThreadPoolTest {
      */
     private int getEvenLength() {
         int length = 0;
-        for (int i = 0; i < this.instanceLength; ++i) {
-            length += i % 2 == 0 ? 1 : 0;
+        for (int i = 0; instanceLength > i; ++i) {
+            length += 0 == i % 2 ? 1 : 0;
         }
         return length;
     }
@@ -140,8 +139,8 @@ public class ThreadPoolTest {
      */
     private int getOddLength() {
         int length = 0;
-        for (int i = 0; i < this.instanceLength; ++i) {
-            length += i % 2 == 0 ? 1 : 0;
+        for (int i = 0; instanceLength > i; ++i) {
+            length += 0 == i % 2 ? 1 : 0;
         }
         return length;
     }

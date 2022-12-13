@@ -1,20 +1,15 @@
 package jdk.javax.xml.parsers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,11 +20,11 @@ import java.util.List;
  * @author fixalot
  * @since 2017-05-25
  */
+@Slf4j
 public class XmlReadTest {
-    private static final Logger logger = LoggerFactory.getLogger(XmlReadTest.class);
 
     @Test
-    public void readXml() throws ParserConfigurationException, TransformerException, SAXException, IOException {
+    public void readXml() throws Exception {
         String filePath = "src/test/resources/xml-read-test/readme.xml";
         File xmlFile = new File(filePath);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -37,7 +32,7 @@ public class XmlReadTest {
         Document doc = dBuilder.parse(xmlFile);
         doc.getDocumentElement().normalize();
 
-        logger.debug("Root element :" + doc.getDocumentElement().getNodeName());
+        log.debug("Root element :{}", doc.getDocumentElement().getNodeName());
 
         NodeList nodeList = doc.getElementsByTagName("Employee");
         // now XML is loaded as Document in memory, lets convert it to Object List
@@ -47,14 +42,14 @@ public class XmlReadTest {
         }
         // lets print Employee list information
         for (Employee emp : empList) {
-            logger.debug(emp.toString());
+            log.debug(emp.toString());
         }
     }
 
     private Employee getEmployee(Node node) {
         // XMLReaderDOM domReader = new XMLReaderDOM();
         Employee emp = new Employee();
-        if (node.getNodeType() == Node.ELEMENT_NODE) {
+        if (Node.ELEMENT_NODE == node.getNodeType()) {
             Element element = (Element) node;
             emp.setName(getTagValue("name", element));
             emp.setAge(Integer.parseInt(getTagValue("age", element)));

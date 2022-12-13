@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Java unlimited method arguments test case
@@ -10,12 +9,12 @@ import org.slf4j.LoggerFactory;
  * @author fixalot
  * @since 2018-04-03
  */
+@Slf4j
 public class MethodArgumentsTest {
-    private static final Logger logger = LoggerFactory.getLogger(MethodArgumentsTest.class);
 
     public static void testMe(int... args) {
         for (int ele : args) {
-            logger.debug("{}", ele);
+            log.debug("{}", ele);
         }
     }
 

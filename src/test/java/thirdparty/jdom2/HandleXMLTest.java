@@ -1,12 +1,11 @@
 package thirdparty.jdom2;
 
+import lombok.extern.slf4j.Slf4j;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.DOMBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -26,9 +25,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class HandleXMLTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(HandleXMLTest.class);
 
     //	@Test
     public void merge() throws SAXException, IOException, ParserConfigurationException {

@@ -1,9 +1,8 @@
 package misc;
 
 import jdk.statement.TryCatchFinallyTest;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -16,15 +15,15 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  * @see TryCatchFinallyTest
  * @since 2017-07-27
  */
+@Slf4j
 public class ExceptionTest {
-    private static final Logger logger = LoggerFactory.getLogger(ExceptionTest.class);
 
     @Test
     public void logging() {
         try {
             throw new RuntimeException("for test");
         } catch (Exception e) {
-            logger.debug("I'll catch you so much!");
+            log.debug("I'll catch you so much!");
         }
     }
 
@@ -70,7 +69,7 @@ public class ExceptionTest {
          * 에러 메시지를 설정하지 않으면 에러 메시지가 null로 찍힘.
          * NullPointerException과는 관계 없으나 혼동할 가능성이 있다.
          *
-         * logger.error(e.getMessage(), e);
+         * log.error(e.getMessage(), e);
          * ->
          * [ERROR] shouldBeNull: null
          * java.lang.RuntimeException: null

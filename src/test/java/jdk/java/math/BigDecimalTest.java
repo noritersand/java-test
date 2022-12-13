@@ -1,8 +1,7 @@
 package jdk.java.math;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -14,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author noritersand
  * @since 2017-07-27
  */
+@Slf4j
 public class BigDecimalTest {
-    private static final Logger logger = LoggerFactory.getLogger(BigDecimalTest.class);
 
     @Test
     public void instantiate() {
@@ -97,7 +96,7 @@ public class BigDecimalTest {
             // 그냥 나눠버리면 BigDecimal도 감당 못하는 결과가 나옴
             smallOne.divide(bigOne);
         } catch (ArithmeticException e) {
-            logger.debug("에러 난다요.");
+            log.debug("에러 난다요.");
         }
         // 소수점 셋 째 자리에서 반올림
         BigDecimal result = smallOne.divide(bigOne, 2, RoundingMode.HALF_UP);
@@ -174,8 +173,8 @@ public class BigDecimalTest {
      */
     @Test
     public void testScaleByPowerOfTen() {
-        assertEquals(1.20345D, new BigDecimal(120.345).scaleByPowerOfTen(-2).doubleValue(), 0);
-        assertEquals(12034.5D, new BigDecimal(120.345).scaleByPowerOfTen(2).doubleValue(), 0);
+        assertEquals(1.20345D, new BigDecimal("120.345").scaleByPowerOfTen(-2).doubleValue(), 0);
+        assertEquals(12034.5D, new BigDecimal("120.345").scaleByPowerOfTen(2).doubleValue(), 0);
     }
 
     /**
@@ -195,7 +194,7 @@ public class BigDecimalTest {
      */
     @Test
     public void testMovePointRight() {
-        assertEquals(1000D, new BigDecimal(100).movePointRight(1).doubleValue(), 0);
+        assertEquals(1000.0D, new BigDecimal(100).movePointRight(1).doubleValue(), 0);
     }
 
     /**

@@ -2,14 +2,13 @@ package lab.servlet.mvc.test.controller;
 
 import lab.servlet.core.finder.UrlMapping;
 import lab.servlet.core.view.View;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@Slf4j
 public class SecurityTestController {
-    private static final Logger logger = LoggerFactory.getLogger(SecurityTestController.class);
 
     /**
      * XSS(크로스 사이트 스크립트) 테스트
@@ -21,7 +20,7 @@ public class SecurityTestController {
 
     @UrlMapping("/page/security/test-xss.data")
     public void testXss(HttpServletRequest request, HttpServletResponse response) {
-        logger.debug("first: {}", request.getParameter("first"));
-        logger.debug("second: {}", request.getParameter("second"));
+        log.debug("first: {}", request.getParameter("first"));
+        log.debug("second: {}", request.getParameter("second"));
     }
 }

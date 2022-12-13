@@ -1,8 +1,7 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -12,8 +11,8 @@ import java.util.concurrent.CountDownLatch;
  * @author fixalot
  * @since 2018-01-24
  */
+@Slf4j
 public class CountDownLatchTest {
-    private static final Logger logger = LoggerFactory.getLogger(CountDownLatchTest.class);
 
     /**
      * 쓰레드 동기화에 사용되는 클래스라는데 도통 어떻게 쓰는건지...
@@ -24,25 +23,25 @@ public class CountDownLatchTest {
      */
     @Test
     public void printElapsedTime() throws InterruptedException {
-        final CountDownLatch latch = new CountDownLatch(1);
+        CountDownLatch latch = new CountDownLatch(1);
 //		boolean success = lacth.await(2000, TimeUnit.MILLISECONDS);
 //		assertTrue(success);
 
         long start = System.currentTimeMillis();
-        for (long i = 0; i < 10; i++) {
+        for (long i = 0; 10 > i; i++) {
             new Thread(new Worker(latch)).start();
         }
 
         latch.await();
         long elapsedTime = System.currentTimeMillis() - start;
-        logger.debug("testCountDownLatch elapsed time -> " + elapsedTime);
+        log.debug("testCountDownLatch elapsed time -> {}", elapsedTime);
     }
 
     /**
      * Job 쓰레드
      */
     private static class Worker implements Runnable {
-        private CountDownLatch latch;
+        private final CountDownLatch latch;
 
         public Worker(CountDownLatch latch) {
             this.latch = latch;
@@ -55,7 +54,7 @@ public class CountDownLatchTest {
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             } finally {
-                if (this.latch == null)
+                if (null == latch)
                     return;
 
                 latch.countDown();

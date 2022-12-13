@@ -1,12 +1,10 @@
 package jdk.java.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class HashMapTest {
-    private static final Logger logger = LoggerFactory.getLogger(HashMapTest.class);
 
     /**
      * 해시맵은 엔트리(내부의 구성 요소)가 같으면 동등하다고 판단함.
@@ -33,9 +31,11 @@ public class HashMapTest {
         y.put("a", "b");
 
         // 인스턴스는 다르지만
-        assertTrue(x != y);
+        assertNotSame(x, y);
+
         // AbstractMap.hashCode()는 엔트리의 hashCode()를 이어 붙인 값이다. 따라서 같다고 판단한다.
         assertTrue(x.hashCode() == y.hashCode());
+
         // AbstractMap.equals()는 엔트리의 키:값 구성이 같은지를 비교한다. 따라서 둘은 동등하다.
         assertTrue(x.equals(y));
     }
@@ -47,11 +47,11 @@ public class HashMapTest {
         map.put("second", "2nd");
         map.put("third", "3rd");
 
-        Set<Entry<String, String>> entry = map.entrySet();
-        for (Entry<String, String> ele : entry) {
+        Set<Map.Entry<String, String>> entry = map.entrySet();
+        for (Map.Entry<String, String> ele : entry) {
             String key = ele.getKey();
             String value = ele.getValue();
-            logger.debug("key: {}, value: {}", key, value);
+            log.debug("key: {}, value: {}", key, value);
         }
     }
 
@@ -97,7 +97,7 @@ public class HashMapTest {
         items.put("A", 10);
         items.put("B", 20);
         items.forEach((k, v) -> {
-            logger.debug("Item : " + k + " Count : " + v);
+            log.debug("Item : {} Count : {}", k, v);
         });
     }
 }

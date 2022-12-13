@@ -1,15 +1,14 @@
 package thirdparty.logback;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class LogbackTest {
-    private static final Logger log = LoggerFactory.getLogger(LogbackTest.class);
 
     public static void main(String[] args) {
         log.debug("running java application");
@@ -27,7 +26,7 @@ public class LogbackTest {
     @Test
     public void loggingWithFormat() {
         log.debug("{} {} {} {}", "이거", "저거", "나는 누구", "여긴 어디");
-        log.debug("{} {}", new Object[]{"hello there!", "if you ask, im waldo"});
+        log.debug("{} {}", "hello there!", "if you ask, im waldo");
 //		log.debug("im {}", null); // 이렇게는 안됨
         log.debug("im {}", "null");
     }

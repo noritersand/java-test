@@ -1,8 +1,6 @@
 package jdk.java.lang;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Thread 테스트 두 번째
@@ -11,7 +9,9 @@ import org.slf4j.LoggerFactory;
  * @since 2017-07-27
  */
 @Slf4j
-public class ThreadTest2 {
+public enum ThreadTest2 {
+    ;
+
     @SuppressWarnings("unused")
 
     public static void main(String[] args) {
@@ -38,8 +38,8 @@ public class ThreadTest2 {
         }
     }
 
+    @Slf4j
     private static class ChildThread extends Thread {
-        private static final Logger logger = LoggerFactory.getLogger(ChildThread.class);
 
         @Override
         public void run() {
@@ -48,17 +48,17 @@ public class ThreadTest2 {
 
         @Override
         public void interrupt() {
-            logger.debug("im dying. :<");
+            log.debug("im dying. :<");
             super.interrupt();
         }
 
         private void workForNothing() {
-            logger.debug("work-for-nothing: start");
+            log.debug("work-for-nothing: start");
             long sum = 0;
-            for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            for (int i = 0; Integer.MAX_VALUE > i; i++) {
                 sum += i;
             }
-            logger.debug("work-for-nothing: end, sum is {}", sum);
+            log.debug("work-for-nothing: end, sum is {}", sum);
         }
     }
 }

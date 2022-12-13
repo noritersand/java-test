@@ -1,8 +1,7 @@
 package jdk.statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,9 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class ForStatementTest {
-    //	@SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(ForStatementTest.class);
 
     /**
      * usage
@@ -29,22 +27,22 @@ public class ForStatementTest {
     public void test() {
         // 기본 사용 방법
         int i;
-        for (i = 0; i < 1; i++) {
-            logger.debug("{} 바퀴", i);
+        for (i = 0; 1 > i; i++) {
+            log.debug("{} 바퀴", i);
         }
         assertEquals(1, i);
 
         // 무한 루프
         for (; ; ) {
-            logger.debug("비상탈출!");
+            log.debug("비상탈출!");
             break;
         }
 
         // 이런 모양으로도 됨.
         int j = 0;
-        for (; j < 1; ) {
+        while (1 > j) {
             j++;
-            logger.debug("{} 바퀴", j);
+            log.debug("{} 바퀴", j);
         }
     }
 
@@ -52,7 +50,7 @@ public class ForStatementTest {
     public void testIterator() {
         ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
         for (Iterator<String> iterator = list.iterator(); iterator.hasNext(); ) {
-            logger.debug(iterator.next());
+            log.debug(iterator.next());
             // 마지막 요소 삭제
             if (!iterator.hasNext()) {
                 iterator.remove();

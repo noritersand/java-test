@@ -1,7 +1,6 @@
 package lab.servlet.core.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
 import java.io.IOException;
@@ -13,9 +12,8 @@ import java.nio.charset.StandardCharsets;
  * @author fixalot
  * @since 2017-06-05
  */
+@Slf4j
 public class CharacterEncodingFilter implements Filter {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(CharacterEncodingFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

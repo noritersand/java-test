@@ -1,5 +1,6 @@
 package lab.work.file;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -8,7 +9,8 @@ import java.util.Scanner;
  * @author noritersand
  * @since 2020-01-29
  */
-public class PrimitiveCalendar {
+public enum PrimitiveCalendar {
+    ;
 
     public static void main(String[] args) {
         printWithoutAPI();
@@ -21,7 +23,7 @@ public class PrimitiveCalendar {
         // // sum % 7 = 1(월) | sum % 7 = 2(화)
         // 2. 해당 년,월의 마지막일?
         // 2.1 윤년
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in, StandardCharsets.UTF_8);
 
         System.out.print("년도? : ");
         int inputYear = scan.nextInt(); // 년도 입력
@@ -37,7 +39,7 @@ public class PrimitiveCalendar {
         }
 
         for (int i = 1; i <= lastDay; ++i) {
-            if ((totalDays - 1 + i) % 7 != 6)
+            if (6 != (totalDays - 1 + i) % 7)
                 System.out.printf("%3d", i);
             else
                 System.out.printf("%3d\n", i);
@@ -143,7 +145,7 @@ public class PrimitiveCalendar {
      * @author fixalot
      */
     public static boolean isLeapYear(int year) {
-        return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
+        return (0 == year % 4 && 0 != year % 100 || 0 == year % 400);
     }
 
 }

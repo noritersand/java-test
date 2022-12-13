@@ -1,8 +1,7 @@
 package jdk.java.lang;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -16,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class StringTest {
-    private static final Logger logger = LoggerFactory.getLogger(StringTest.class);
 
     @Test
     public void testFormat() {
@@ -33,8 +32,8 @@ public class StringTest {
         Formatter formatter = new Formatter();
 
         // 소수점 2자리까지  표현
-        assertEquals("1.00", formatter.floatFormat(1D));
-        assertEquals("100.00", formatter.floatFormat(100D));
+        assertEquals("1.00", formatter.floatFormat(1.0D));
+        assertEquals("100.00", formatter.floatFormat(100.0D));
         assertEquals("0.50", formatter.floatFormat(0.5D));
 
         // 정수 표현(소수점은 반올림 처리)
@@ -47,7 +46,7 @@ public class StringTest {
     @Test
     public void getASCIICode() {
         String a = "abc";
-        assertEquals(97, (int) a.charAt(0));
+        assertEquals(97, a.charAt(0));
         assertEquals(98, (short) a.charAt(1));
         assertEquals(99, (byte) a.charAt(2));
     }
@@ -57,9 +56,9 @@ public class StringTest {
     public void compareWithCharacter() {
         String a = "A";
         char b = 'A';
-        assertFalse(a.equals(b));
-        assertTrue(a.charAt(0) == b);
-        assertTrue(a.equals(String.valueOf(b)));
+        assertNotEquals(a, b);
+        assertEquals(a.charAt(0), b);
+        assertEquals(a, String.valueOf(b));
     }
 
     @Test
@@ -72,7 +71,7 @@ public class StringTest {
 
     @Test
     public void testToStringFromBytes() {
-        byte[] bytes = new byte[]{-19, -107, -100};
+        byte[] bytes = {-19, -107, -100};
         String korean = new String(bytes, StandardCharsets.UTF_8);
         assertEquals("한", korean);
     }
@@ -80,10 +79,10 @@ public class StringTest {
     @Test
     public void testConcat() {
         String a = "a";
-        assertEquals("ab", a.concat("b"));
+        assertEquals("ab", a + "b");
         assertEquals("a", a);
         try {
-            assertEquals("anull", a.concat(null)); // NPE
+            assertEquals("anull", a + null); // NPE
         } catch (Exception e) {
         }
         assertEquals("anull", a + null);
@@ -93,7 +92,7 @@ public class StringTest {
     public void autoInstantiate() {
         String a = "a";
         String b = "a";
-        assertTrue(a == b);
+        assertSame(a, b);
         b = a; // new String(a)처럼 명시적으로 새 인스턴스를 할당하지 않아도.
         b = "b"; // 리터럴이 바뀌면 참조하고 있는 인스턴스의 값이 변경되는게 아니라 새 인스턴스가 할당된다. (String 타입의 특징)
         assertEquals("a", a); // 그래서 a는 원래의 값을 유지할 수 있다.
@@ -111,10 +110,10 @@ public class StringTest {
         String a = "totcnt123\nstart";
         String b = "totcnt123start";
         assertEquals(10, a.indexOf("start"));
-        assertEquals("start", a.substring(a.indexOf("start"), a.length()));
+        assertEquals("start", a.substring(a.indexOf("start")));
 
         assertEquals(9, b.indexOf("start"));
-        assertEquals("start", b.substring(b.indexOf("start"), b.length()));
+        assertEquals("start", b.substring(b.indexOf("start")));
     }
 
     @Test
@@ -122,18 +121,18 @@ public class StringTest {
         // 아래처럼 초기화될 땐 intern()을 쓰든 안쓰든 String의 주소값은 같다.
         String a = "경기";
         String b = "경기";
-        assertTrue(a == b);
+        assertSame(a, b);
 
         // 요로케 해야됨
         String c = "AAA";
         String d = new String("AAA");
-        assertFalse(c == d);
+        assertNotSame(c, d);
 
         d = d.intern();
-        assertTrue(c == d);
+        assertSame(c, d);
 
-        assertTrue(new String("BBB").intern() == "BBB");
-        assertTrue(new String("CCC").intern() == "CCC");
+        assertSame(new String("BBB").intern(), "BBB");
+        assertSame(new String("CCC").intern(), "CCC");
         assertEquals(new String("CCC").intern().hashCode(), "CCC".hashCode());
     }
 
@@ -170,26 +169,26 @@ public class StringTest {
         assertEquals("2", "8804127".substring(5, 6));
         assertEquals("7", "8804127".substring(6, 7));
 
-        assertEquals("a1234", str.substring(0, str.indexOf("5")));
+        assertEquals("a1234", str.substring(0, str.indexOf('5')));
     }
 
     @Test
     public void testIndexOf() {
         String a = "INFO  log4jdbc.log4j2 - 5. ResultSet.close() returned void";
-        assertEquals(0, a.indexOf("I"));
+        assertEquals(0, a.indexOf('I'));
         assertEquals(27, a.indexOf("ResultSet.")); // 첫 번째 "ResultSet."
-        assertEquals(14, a.indexOf(".")); // 첫 번째 "."
-        assertEquals(25, a.indexOf(".", 15)); // 인덱스 15 이후부터 찾음
+        assertEquals(14, a.indexOf('.')); // 첫 번째 "."
+        assertEquals(25, a.indexOf('.', 15)); // 인덱스 15 이후부터 찾음
 
-        assertEquals(36, a.lastIndexOf(".")); // 마지막 "."
-        assertEquals(25, a.lastIndexOf(".", 35)); // 인덱스 35 이전부터 찾음
+        assertEquals(36, a.lastIndexOf('.')); // 마지막 "."
+        assertEquals(25, a.lastIndexOf('.', 35)); // 인덱스 35 이전부터 찾음
     }
 
     @Test
     public void testLastIndexOf() {
         String str = "/abcd";
-        assertEquals(0, str.lastIndexOf("/"));
-        assertEquals("abcd", str.substring(str.lastIndexOf("/") + 1));
+        assertEquals(0, str.lastIndexOf('/'));
+        assertEquals("abcd", str.substring(str.lastIndexOf('/') + 1));
     }
 
     @Test
@@ -197,15 +196,15 @@ public class StringTest {
         String splitMe = "abcdefghijklmn";
         assertEquals(splitMe, splitMe.split("\\|")[0]);
         try {
-            logger.debug(splitMe.split("\\|")[1]);
+            log.debug(splitMe.split("\\|")[1]);
         } catch (IndexOutOfBoundsException e) {
-            logger.debug("에러 났지롱");
+            log.debug("에러 났지롱");
         }
 
         String splitMe2 = "abcdefghijklmn";
         assertEquals(14, splitMe2.length());
         assertEquals(splitMe2.substring(1, 5), splitMe2.subSequence(1, 5));
-        assertEquals(splitMe2, splitMe2.substring(0, splitMe2.length())); // 맨 왼쪽은 0, 맨 오른쪽은 length
+        assertEquals(splitMe2, splitMe2); // 맨 왼쪽은 0, 맨 오른쪽은 length
 
         String splitMe3 = "a\nb\nc\nd";
         assertEquals(4, splitMe3.split("\\n").length);
@@ -254,7 +253,7 @@ public class StringTest {
 
         String[] strArray = splitByLength1333(str);
 //		for (String ele : strArray) {
-//			logger.debug(ele);
+//			log.debug(ele);
 //		}
         assertArrayEquals(strArray, splitByLength(str, 1333));
     }
@@ -272,15 +271,15 @@ public class StringTest {
     }
 
     public static String[] splitByLength(String str, int splitLength) {
-        if (str == null) {
+        if (null == str) {
             return null;
         }
 
         int strLen = str.length();
-        int arrayLength = Math.abs(strLen / splitLength) + (strLen % splitLength != 0 ? 1 : 0);
+        int arrayLength = Math.abs(strLen / splitLength) + (0 != strLen % splitLength ? 1 : 0);
 
         String[] strArray = null;
-        if (arrayLength == 0) {
+        if (0 == arrayLength) {
             return new String[]{str};
         } else {
             strArray = new String[arrayLength];
@@ -290,9 +289,9 @@ public class StringTest {
         for (int i = 0; i < arrayLength; i++) {
             if (str.length() > splitLength) {
                 strArray[i] = str.substring(0, splitLength);
-                temp = str.substring(splitLength, str.length());
+                temp = str.substring(splitLength);
             } else {
-                strArray[i] = str.substring(0, str.length());
+                strArray[i] = str;
             }
             str = temp;
         }

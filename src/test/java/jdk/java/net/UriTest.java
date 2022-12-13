@@ -1,12 +1,12 @@
 package jdk.java.net;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * URI를 다루기 위한 타입 테스트.
@@ -15,15 +15,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-07-27
  */
+@Slf4j
 public class UriTest {
-    @SuppressWarnings("unused")
-    private static final Logger logger = LoggerFactory.getLogger(UriTest.class);
 
     @Test
     public void initialize() {
         URI uri = URI.create("somefolder/somefile.png");
         assertEquals("somefolder/somefile.png", uri.toString());
-        assertEquals(null, uri.getScheme());
+        assertNull(uri.getScheme());
 
         URI uri2 = URI.create("file://somefolder/somefile.png");
         assertEquals("file://somefolder/somefile.png", uri2.toString());
@@ -43,8 +42,8 @@ public class UriTest {
         assertEquals("google.com", uri.getAuthority());
         assertEquals("google.com", uri.getRawAuthority());
 
-        assertEquals(null, uri.getFragment());
-        assertEquals(null, uri.getRawFragment());
+        assertNull(uri.getFragment());
+        assertNull(uri.getRawFragment());
 
         assertEquals("/someone", uri.getPath());
         assertEquals("/someone", uri.getRawPath());
@@ -56,6 +55,6 @@ public class UriTest {
 
         assertEquals("//google.com/someone?a=야", uri.getRawSchemeSpecificPart());
 
-        assertEquals(null, uri.getRawUserInfo());
+        assertNull(uri.getRawUserInfo());
     }
 }

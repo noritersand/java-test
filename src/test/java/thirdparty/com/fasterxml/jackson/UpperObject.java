@@ -10,7 +10,7 @@ public class UpperObject {
     private List<ElementObject> bbb;
 
     public String getAaa() {
-        return aaa;
+        return this.aaa;
     }
 
     public void setAaa(String aaa) {
@@ -18,7 +18,7 @@ public class UpperObject {
     }
 
     public List<ElementObject> getBbb() {
-        return bbb;
+        return this.bbb;
     }
 
     public void setBbb(List<ElementObject> bbb) {
