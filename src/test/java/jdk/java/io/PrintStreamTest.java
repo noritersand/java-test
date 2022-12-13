@@ -1,11 +1,11 @@
 package jdk.java.io;
 
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 /**
  * PrintStream(STDOUT) 테스트

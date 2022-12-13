@@ -1,12 +1,11 @@
 package jdk.java.util.regex;
 
 import org.apache.commons.lang3.StringUtils;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * String과 함께하는 정규식 뿅뿅 파티!

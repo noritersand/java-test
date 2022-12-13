@@ -2,9 +2,6 @@ package jdk.java.util;
 
 import lab.dummy.generator.ListGenerator;
 import org.apache.commons.lang3.time.StopWatch;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * java.util.Collections 테스트 슈트

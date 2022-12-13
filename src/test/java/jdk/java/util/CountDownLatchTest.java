@@ -1,10 +1,10 @@
 package jdk.java.util;
 
-import java.util.concurrent.CountDownLatch;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.CountDownLatch;
 
 /**
  * java.util.CountDownLatch 테스트

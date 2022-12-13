@@ -1,22 +1,20 @@
 package lab.servlet.mvc.test.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import lab.servlet.core.bean.JsonResponseObject;
 import lab.servlet.core.finder.UrlMapping;
 import lab.servlet.core.view.View;
 import lab.util.request.RequestParameter;
 import lab.util.request.RequestUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UncategorizedTestController {
     private static final Logger logger = LoggerFactory.getLogger(UncategorizedTestController.class);

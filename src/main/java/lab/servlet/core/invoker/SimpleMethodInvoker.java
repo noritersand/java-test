@@ -1,13 +1,12 @@
 package lab.servlet.core.invoker;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class SimpleMethodInvoker implements MethodInvoker {
     @SuppressWarnings("unused")

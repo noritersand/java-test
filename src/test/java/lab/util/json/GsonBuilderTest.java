@@ -1,5 +1,11 @@
 package lab.util.json;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -8,13 +14,6 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
 
 /**
  * 커스텀 TypeAdeptor가 선언된 GsonBuilder 테스트

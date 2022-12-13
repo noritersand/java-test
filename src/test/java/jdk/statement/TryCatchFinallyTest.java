@@ -1,17 +1,15 @@
 package jdk.statement;
 
+import lab.InappropriateArgumentException;
+import lombok.extern.slf4j.Slf4j;
+import misc.ExceptionTest;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.io.Writer;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import lab.InappropriateArgumentException;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import misc.ExceptionTest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * try-catch-finally 테스트

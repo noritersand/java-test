@@ -1,13 +1,12 @@
 package jdk.statement;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import com.google.common.base.CaseFormat;
 import constant.*;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.CaseFormat;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * enum 테스트

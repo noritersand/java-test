@@ -1,12 +1,12 @@
 package jdk.java.util;
 
-import java.util.StringTokenizer;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.StringTokenizer;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * java.util.StringTokenizer 테스트

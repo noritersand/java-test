@@ -1,15 +1,15 @@
 package jdk.operator;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.management.relation.RoleList;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.management.relation.RoleList;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author fixalot

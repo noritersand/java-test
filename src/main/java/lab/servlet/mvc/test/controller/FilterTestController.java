@@ -1,24 +1,22 @@
 package lab.servlet.mvc.test.controller;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletRequestWrapper;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import lab.servlet.core.bean.JsonResponseObject;
 import lab.servlet.core.filter.HTMLTagFilterRequestWrapper;
 import lab.servlet.core.finder.UrlMapping;
 import lab.servlet.core.view.View;
 import lab.util.request.RequestParameter;
 import lab.util.request.RequestUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletRequestWrapper;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FilterTestController {
     private static final Logger logger = LoggerFactory.getLogger(FilterTestController.class);

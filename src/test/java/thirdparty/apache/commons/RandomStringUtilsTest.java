@@ -1,11 +1,11 @@
 package thirdparty.apache.commons;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * RandomStringUtils test suite

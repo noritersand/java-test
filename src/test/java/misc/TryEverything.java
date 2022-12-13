@@ -1,9 +1,9 @@
 package misc;
 
-import java.util.Arrays;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
 
 public class TryEverything {
     @SuppressWarnings("unused")

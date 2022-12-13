@@ -1,9 +1,10 @@
 package jdk.operator;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * 연산자 테스트 슈트

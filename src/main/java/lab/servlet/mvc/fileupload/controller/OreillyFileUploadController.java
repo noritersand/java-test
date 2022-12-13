@@ -1,27 +1,20 @@
 package lab.servlet.mvc.fileupload.controller;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import lab.servlet.core.bean.JsonResponseObject;
+import lab.servlet.core.finder.UrlMapping;
+import lab.servlet.core.view.View;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import lab.servlet.core.bean.JsonResponseObject;
-import lab.servlet.core.finder.UrlMapping;
-import lab.servlet.core.view.View;
+import java.util.*;
 
 /**
  * com.oreilly 패키지를 이용한 파일 업로드

@@ -1,11 +1,11 @@
 package jdk.java.lang;
 
-import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 
 /**
  * @author fixalot

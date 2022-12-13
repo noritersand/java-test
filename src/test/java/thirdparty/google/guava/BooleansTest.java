@@ -1,12 +1,11 @@
 package thirdparty.google.guava;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import com.google.common.primitives.Booleans;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.primitives.Booleans;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author fixalot

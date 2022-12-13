@@ -1,14 +1,13 @@
 package misc;
 
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import jdk.statement.TryCatchFinallyTest;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import jdk.statement.TryCatchFinallyTest;
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * 예외 테스트

@@ -1,9 +1,9 @@
 package lab.work.file;
 
-import java.io.File;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
 
 /**
  * JSON을 뭔가로 바꿈.

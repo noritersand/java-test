@@ -1,19 +1,13 @@
 package lab.servlet.core.config;
 
-import java.util.EnumSet;
-
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterRegistration;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletRegistration;
-import javax.servlet.annotation.WebListener;
-
 import lab.servlet.core.DefaultDispatcher;
 import lab.servlet.core.filter.CharacterEncodingFilter;
 import lab.servlet.core.filter.HTMLTagFilter;
 import lab.servlet.core.filter.LogbackMdcFilter;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebListener;
+import java.util.EnumSet;
 
 /**
  * web.xml을 대체하는 서블릿 설정

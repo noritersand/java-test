@@ -7,7 +7,8 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ArrayDequeTest {
     @SuppressWarnings("unused")

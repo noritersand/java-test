@@ -1,19 +1,17 @@
 package thirdparty.apache.commons;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
+import jdk.java.util.HashMapTest;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import jdk.java.util.HashMapTest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * {@link CollectionUtils} 테스트<br>

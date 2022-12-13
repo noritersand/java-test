@@ -1,17 +1,11 @@
 package lab.servlet.core.filter;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.servlet.*;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 기본 문자인코딩 설정 필터. 모든 필터/인터셉터보다 가장 먼저 진입되도록 설정해야 함.

@@ -2,12 +2,11 @@ package thirdparty.json;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JSONObjectTest {
     @SuppressWarnings("unused")

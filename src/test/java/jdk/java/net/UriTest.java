@@ -1,12 +1,12 @@
 package jdk.java.net;
 
-import java.net.URI;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.net.URI;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * URI를 다루기 위한 타입 테스트.
