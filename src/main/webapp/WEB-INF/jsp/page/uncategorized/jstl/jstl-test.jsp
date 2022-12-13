@@ -27,12 +27,12 @@ th, tr, td {
 %>
 <%
 	final String localVar = "i'm text2";
-	HashMap<String, String> obj = new HashMap<>();
+	final HashMap<String, String> obj = new HashMap<>();
 %>
 <table>
 	<tr>
 		<th scope="col">scriptlet: </th>
-		<td><%=globalVar%></td>
+		<td><%=this.globalVar%></td>
 		<td><%=localVar%></td>
 	</tr>
 	<tr>
@@ -54,21 +54,21 @@ th, tr, td {
 		<td><%=java.lang.Math.PI%></td>
 		<td><%=Math.PI%></td>
 		<td><%=Integer.MAX_VALUE %></td>
-		<td><%=Const.NAME %></td>
+		<td><%=Const.NAME.name() %></td>
 	</tr>
 	<tr>
 		<th scope="col">JSTL</th>
 		<td><c:out value="${java.lang.Math.PI}" default="패키지를 명시하면 안나옴" /></td>
 		<td><c:out value="${Math.PI}" default="java.lang 패키지는 임포트 생략" /></td>
 		<td><c:out value="${Integer.MAX_VALUE}" /></td>
-		<td><c:out value="${Const.NAME}" /></td>
+		<td><c:out value="${Const.NAME.name()}" /></td>
 	</tr>
 	<tr>
 		<th scope="col">EL</th>
 		<td>${empty java.lang.Math.PI ? '패키지를 명시하면 안나옴' : java.lang.Math.PI}</td>
 		<td>${empty Math.PI ? 'java.lang 패키지는 임포트 생략' : Math.PI}</td>
 		<td>${Integer.MAX_VALUE}</td>
-		<td>${Const.NAME}</td>
+		<td>${Const.NAME.name()}</td>
 	</tr>
 </table>
 

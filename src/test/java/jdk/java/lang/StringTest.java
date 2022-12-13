@@ -22,18 +22,6 @@ public class StringTest {
 	private static final Logger logger = LoggerFactory.getLogger(StringTest.class);
 	
 	@Test
-	public void testIndexOf() {
-		String a = "INFO  log4jdbc.log4j2 - 5. ResultSet.close() returned void";
-		assertEquals(0, a.indexOf("I"));
-		assertEquals(27, a.indexOf("ResultSet.")); // 첫 번째 "ResultSet."
-		assertEquals(14, a.indexOf(".")); // 첫 번째 "."
-		assertEquals(25, a.indexOf(".", 15)); // 인덱스 15 이후부터 찾음
-		
-		assertEquals(36, a.lastIndexOf(".")); // 마지막 "."
-		assertEquals(25, a.lastIndexOf(".", 35)); // 인덱스 35 이전부터 찾음
-	}
-
-	@Test
 	public void testFormat() {
         class Formatter {
             public String floatFormat(double number) {
@@ -182,6 +170,20 @@ public class StringTest {
 		assertEquals("1", "8804127".substring(4, 5));
 		assertEquals("2", "8804127".substring(5, 6));
 		assertEquals("7", "8804127".substring(6, 7));
+		
+		assertEquals("a1234", str.substring(0, str.indexOf("5")));
+	}
+
+	@Test
+	public void testIndexOf() {
+		String a = "INFO  log4jdbc.log4j2 - 5. ResultSet.close() returned void";
+		assertEquals(0, a.indexOf("I"));
+		assertEquals(27, a.indexOf("ResultSet.")); // 첫 번째 "ResultSet."
+		assertEquals(14, a.indexOf(".")); // 첫 번째 "."
+		assertEquals(25, a.indexOf(".", 15)); // 인덱스 15 이후부터 찾음
+
+		assertEquals(36, a.lastIndexOf(".")); // 마지막 "."
+		assertEquals(25, a.lastIndexOf(".", 35)); // 인덱스 35 이전부터 찾음
 	}
 
 	@Test
@@ -297,7 +299,7 @@ public class StringTest {
 		}
 		return strArray;
 	}
-	
+
 	@Test
 	public void testJoin() {
 		List<String> texts = Arrays.asList("a", "b", "c");

@@ -1,7 +1,11 @@
 package lab.constants;
 
-public class Const {
-	public static final String NAME = "waldo";
-	
-	private Const() {}
+public enum Const {
+    NAME("waldo");
+
+    private final String value;
+
+    Const(String value) {
+        this.value = value;
+    }
 }

@@ -2,17 +2,12 @@ package jdk.java.time;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjusters;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalField;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -218,29 +213,6 @@ public class JavaTimeTest {
 		long period2 = ChronoUnit.DAYS.between(today, targetDay);
 		assertEquals("0 years, 11 months, 7 days later. (341 days total)", (period.getYears() + " years, " + period.getMonths()
 				+ " months, " + period.getDays() + " days later. (" + period2 + " days total)"));
-	}
-
-	/**
-	 * {@link TemporalAdjusters}를 이용한 다음 월요일 구하기
-	 */
-	@Test
-	public void getNextMonday() {
-		LocalDate today = LocalDate.parse("2022-10-22");
-		LocalDate nextMonday = today.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-		assertEquals(LocalDate.parse("2022-10-24"), nextMonday);
-	}
-
-	/**
-	 * {@link TemporalAdjusters}를 이용한 다음 달의 첫 날 구하기
-	 */
-	@Test
-	public void getFirstDayOfMonth() {
-		LocalDate today = LocalDate.parse("2022-10-22");
-		LocalDate nextMonday2 = today.with(TemporalAdjusters.firstDayOfNextMonth());
-		// 아래처럼 한 달 더하고 첫 날 구하는 것과 같음
-//		LocalDate nextMonday = today.plusMonths(1)
-//				.with(TemporalAdjusters.firstDayOfMonth());
-		assertEquals(LocalDate.parse("2022-11-01"), nextMonday2);
 	}
 
 	@Test

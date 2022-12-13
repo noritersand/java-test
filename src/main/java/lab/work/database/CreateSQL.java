@@ -1,4 +1,4 @@
-package lab.work;
+package lab.work.database;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

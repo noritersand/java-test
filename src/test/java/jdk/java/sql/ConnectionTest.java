@@ -27,7 +27,12 @@ public class ConnectionTest {
     public static void main(String[] args) {
         final String sql = "SELECT ? AS DOODOO FROM DUAL";
 
-        try (Connection connection = DataSource.getConnection()) {
+        final String url = "jdbc:oracle:thin:@localhost:1521:sid";
+//        final String url = "jdbc:mysql://localhost:3306/database";
+        final String user = "TEST";
+        final String pswd = "TEST";
+
+        try (Connection connection = DataSource.getConnection(url, user, pswd)) {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, "getsome"); // 제로 인덱스가 아님
             ResultSet resultSet = statement.executeQuery();
@@ -63,11 +68,7 @@ public class ConnectionTest {
         private DataSource() {
         }
 
-        public static Connection getConnection() {
-            final String url = "jdbc:oracle:thin:@localhost:1521:sid";
-//			final String url = "jdbc:mysql://localhost:3306/database";
-            final String user = "TEST";
-            final String pswd = "TEST";
+        public static Connection getConnection(String url, String user, String pswd) {
             if (connection == null) {
                 try {
                     /*
