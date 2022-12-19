@@ -112,6 +112,10 @@ public class JavaTimeTest {
         now = now.withHour(0).withMinute(0).withSecond(0).withNano(0);
         assertEquals(LocalDateTime.parse("2019-01-31T00:00:00.000"), now);
 
+        LocalTime localTime = LocalTime.parse("15:26:45", DateTimeFormatter.ISO_LOCAL_TIME);
+        LocalDate localDate = LocalDate.parse("2021-01-01", DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);
+        assertEquals("2021-01-01T15:26:45", localDateTime.toString());
     }
 
     /**
