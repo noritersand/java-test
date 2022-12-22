@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -42,6 +43,26 @@ public class ReflectionTest {
         assertEquals(0, field.get(instance));
     }
 
+    @Test
+    public void test2() throws IllegalAccessException {
+        List<String> randomtxts = List.of("a", "b", "c");
+
+        MyClass2 data = new MyClass2();
+        data.setList(randomtxts);
+
+        Class<? extends Object> clazz = data.getClass();
+        for (Field field : clazz.getDeclaredFields()) {
+            if (field.getType().equals(List.class)) {
+                field.setAccessible(true);
+                List<String> list = (List<String>) field.get(data);
+                assertEquals(List.of("a", "b", "c"), list);
+                for (String s : list) {
+                    log.debug("s: {}", s);
+                }
+            }
+        }
+    }
+
 }
 
 class MyClass {
@@ -53,5 +74,22 @@ class MyClass {
 
     public String withParameter(String txt) {
         return txt;
+    }
+}
+
+class MyClass2 {
+    private int num = 0;
+    private List<String> list;
+
+    public int getNum() {
+        return this.num;
+    }
+
+    public List<String> getList() {
+        return this.list;
+    }
+
+    public void setList(List<String> list) {
+        this.list = list;
     }
 }

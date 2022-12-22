@@ -27,6 +27,9 @@ public class OperatorTest {
         assertEquals(1, n);
         assertEquals(1, l);
         assertEquals(1.9992498124531132783195798949737, d);
+
+        assertEquals(9, 6 / 2 * (1 + 2));
+        assertEquals(1, 6 / (2 * (1 + 2)));
     }
 
     /**
