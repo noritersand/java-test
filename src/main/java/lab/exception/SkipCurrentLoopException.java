@@ -1,12 +1,12 @@
-package lab;
+package lab.exception;
 
 /**
- * 예외이긴 한데 단순히 루프 continue로 사용할 때 필요한 클래스
+ * 예외이긴 한데 단순히 루프 continue 트리거로 사용할 때 필요한 클래스
  *
  * @author fixalot
  * @since 2022-11-15
  */
-public class SkipCurrentLoopException extends BusinessRuleViolationException {
+public class SkipCurrentLoopException extends RuntimeException {
 
     public SkipCurrentLoopException() {
     }

@@ -1,4 +1,4 @@
-package lab;
+package lab.exception.rule;
 
 /**
  * <p>참조 제약이 있음을 의미하는 exception.
@@ -9,8 +9,7 @@ package lab;
  */
 public class ReferenceConstraintException extends BusinessRuleViolationException {
 
-    public ReferenceConstraintException() {
-    }
+    public ReferenceConstraintException() {}
 
     public ReferenceConstraintException(String message) {
         super(message);

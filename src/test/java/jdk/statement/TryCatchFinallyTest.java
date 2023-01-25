@@ -1,6 +1,6 @@
 package jdk.statement;
 
-import lab.InappropriateArgumentException;
+import lab.exception.wrong.InappropriateArgumentException;
 import lombok.extern.slf4j.Slf4j;
 import misc.ExceptionTest;
 import org.junit.jupiter.api.Test;
