@@ -118,6 +118,14 @@ public class JavaTimeTest {
         assertEquals("2021-01-01T15:26:45", localDateTime.toString());
     }
 
+    @Test
+    public void testLocalTime() {
+        LocalTime localTime = LocalTime.now();
+        log.debug("localTime: {}", localTime);
+        LocalTime newTime = localTime.withHour(13).withMinute(30).withSecond(13).withNano(0);
+        assertEquals("13:30:13", newTime.toString());
+    }
+
     /**
      * 서울의 Zone ID는 Asia/Seoul
      */
