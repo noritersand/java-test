@@ -37,8 +37,9 @@ public class FilesTest {
         Files.delete(dir);
         assertFalse(Files.exists(dir));
 
-        dir = Paths.get("src/test/resources");
+        dir = Paths.get("src/test/resources/");
         try {
+            log.debug("Files.isDirectory(dir): {}", Files.isDirectory(dir));
             Files.delete(dir); // 폴더 하위에 파일이 있으면 예외 발생
         } catch (Exception e) {
             assertTrue(e instanceof DirectoryNotEmptyException);

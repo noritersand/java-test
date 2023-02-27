@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -85,6 +84,9 @@ public class JavaTimeTest {
     public void testYearMonth() {
         YearMonth ins = YearMonth.parse("2022-12");
         assertEquals("2022-12", ins.toString());
+
+        YearMonth ins2 = YearMonth.parse("2022-12", DateTimeFormatter.ofPattern("yyyy-MM"));
+        assertEquals("2022-12", ins2.toString());
     }
 
     @Test
@@ -100,6 +102,9 @@ public class JavaTimeTest {
     public void testLocalDate() {
         LocalDate today = LocalDate.now();
         LocalDate ins = LocalDate.parse("2021-01-01", DateTimeFormatter.ISO_LOCAL_DATE);// DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
+        assertEquals(2021, ins.getYear());
+        assertEquals(1, ins.getMonthValue());
         assertEquals("2021-01-01", ins.toString());
         assertEquals("2017-12-31", LocalDate.of(2017, Month.DECEMBER, 31).toString());
         assertEquals("2017-04-10T23:49", LocalDateTime.of(2017, Month.APRIL, 10, 23, 49).toString());
@@ -250,7 +255,7 @@ public class JavaTimeTest {
      * @author fixalot
      */
     @Test
-    public void parseStringToJavaTimeWithFormatter() {
+    public void parseStringToLocalDate() {
         // 연월일 변환
         String input11 = "20111231";
         LocalDate date11 = LocalDate.parse(input11, DateTimeFormatter.BASIC_ISO_DATE);
@@ -260,12 +265,10 @@ public class JavaTimeTest {
         String input12 = "2022-01-02";
         LocalDate date12 = LocalDate.parse(input12, DateTimeFormatter.ISO_LOCAL_DATE);
         assertEquals(LocalDate.of(2022, Month.JANUARY, 2), date12);
+    }
 
-        // 연월일 변환 #3 SimpleDateFormat으로
-        String input13 = "2023-05-10";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		LocalDate.parse(input13, sdf); // 응 안됨
-
+    @Test
+    public void parseStringToLocalDateTime() {
         // 연월일 시분초 변환
         String input21 = "2011-12-03T10:15:30";
         LocalDateTime dateTime = LocalDateTime.parse(input21, DateTimeFormatter.ISO_DATE_TIME);
@@ -314,7 +317,7 @@ public class JavaTimeTest {
      * @author fixalot
      */
     @Test
-    public void parseJavaUtilDateToStringFrom() {
+    public void parseJavaUtilDateToJavaTimeToString() {
         Calendar input = new GregorianCalendar(2016, 2, 5);
         Date date = input.getTime();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
