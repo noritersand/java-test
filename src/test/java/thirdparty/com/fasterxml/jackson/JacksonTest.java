@@ -1,15 +1,20 @@
 package thirdparty.com.fasterxml.jackson;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -175,5 +180,19 @@ public class JacksonTest {
         assertEquals(Integer.valueOf(43), poList.get(1).getAge());
         assertTrue(poList.get(0).isDead());
         assertTrue(poList.get(1).isDead());
+    }
+
+    @Test
+    public void testJsonFormat() throws JsonProcessingException {
+        String str = "{\"birthDate\":\"2018-01-01\"}";
+        mapper.registerModule(new JavaTimeModule());
+        ParseMe parseMe = mapper.readValue(str, ParseMe.class);
+        assertEquals(LocalDate.of(2018, 1, 1), parseMe.getBirthDate());
+    }
+
+    @Getter
+    @Setter
+    private static class ParseMe {
+        private LocalDate birthDate;
     }
 }

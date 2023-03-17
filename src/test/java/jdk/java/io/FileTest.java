@@ -11,6 +11,8 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * <p>{@link File} 클래스 테스트
+ *
  * @author fixalot
  * @since 2017-07-27
  */
@@ -43,5 +45,11 @@ public class FileTest {
     public void testCreateTempFile() throws IOException {
         File file = File.createTempFile("head-", ".tmp");
         log.debug(file.getPath());
+    }
+
+    @Test
+    public void testToString() {
+        File file = new File("src/test/resources/file-test/amiexist.txt");
+        assertEquals("src/test/resources/file-test/amiexist.txt", file.toString());
     }
 }

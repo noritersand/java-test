@@ -176,6 +176,7 @@ public class StringTest {
     public void testIndexOf() {
         String a = "INFO  log4jdbc.log4j2 - 5. ResultSet.close() returned void";
         assertEquals(0, a.indexOf('I'));
+        assertEquals(1, a.indexOf("NFO"));
         assertEquals(27, a.indexOf("ResultSet.")); // 첫 번째 "ResultSet."
         assertEquals(14, a.indexOf('.')); // 첫 번째 "."
         assertEquals(25, a.indexOf('.', 15)); // 인덱스 15 이후부터 찾음

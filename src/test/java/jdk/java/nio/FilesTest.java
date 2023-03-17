@@ -12,6 +12,8 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * <p>{@link Files} 클래스 테스트
+ *
  * @author fixalot
  * @since 2017-07-27
  */
