@@ -59,4 +59,18 @@ public class ForStatementTest {
         assertEquals(3, list.size());
     }
 
+    @Test
+    public void testAdvencedForStatement() {
+        ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
+        for (String s : list) {
+            log.debug("s: {}", s);
+        }
+
+        // null이면 어떻게 될까?
+        list = null;
+//        for (String s : list) {
+//            log.debug("s: {}", s);
+//        }
+        // NPE 발생함
+    }
 }
