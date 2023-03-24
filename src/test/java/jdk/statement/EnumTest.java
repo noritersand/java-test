@@ -144,4 +144,47 @@ public class EnumTest {
         // TODO SuperEnum, SubEnum 만지다 말았음.
     }
 
+    @Test
+    public void testCrudModeClass() {
+        assertEquals(CrudMode.READ, CrudMode.of("R"));
+        assertNull(CrudMode.of("READ"));
+        assertNull(CrudMode.of("X"));
+
+        assertEquals(CrudMode.READ, CrudMode.valueOfIAESafe("READ"));
+        assertNull(CrudMode.valueOfIAESafe("R"));
+        assertNull(CrudMode.valueOfIAESafe("X"));
+    }
+
+    private enum CrudMode {
+        READ("R"), CREATE("C"), UPDATE("U"), DELETE("D");
+
+        private final String label;
+
+        CrudMode(String label) {
+            this.label = label;
+        }
+
+        public String label() {
+            return label;
+        }
+
+        public static CrudMode of(String label) {
+            CrudMode[] values = CrudMode.values();
+            for (CrudMode ele : values) {
+                if (ele.label().equals(label)) {
+                    return ele;
+                }
+            }
+            return null;
+        }
+
+        public static CrudMode valueOfIAESafe(String name) {
+            try {
+                return CrudMode.valueOf(name);
+            } catch (IllegalArgumentException e) {
+                return null;
+            }
+        }
+    }
+
 }

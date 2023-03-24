@@ -149,5 +149,15 @@ public class CollectionsTest {
         assertTrue(strList.contains("a"));
     }
 
+    @Test
+    public void howToAvoidNpeWithForStatement() {
+        List<String> texts = null;
+        for (String s : npeSafe(texts)) {
+            log.debug("s: {}", s);
+        }
+    }
 
+    private Iterable<? extends String> npeSafe(List<String> texts) {
+        return texts == null ? Collections.emptyList() : texts;
+    }
 }
