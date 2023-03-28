@@ -40,15 +40,44 @@ public class ParallelStreamTest {
         executor.shutdown();
     }
 
+    /**
+     * JavaScript의 async 처럼 내가 작성한 코드가 분할 처리 되는 게 아니라 내부에서 처리방식이 병렬로 수행되어 성능 향상 가능성이 있는 것 쯤이라 생각하면 되겠다.
+     */
     @Test
     public void testParallelStream() {
-        List<String> list = new ArrayList<String>(Arrays.asList("하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟"));
+        List<String> list = List.of("하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟");
+        log.debug("{}", "누가 먼저 보일까요");
         list.parallelStream().forEach(element -> {
-            log.debug("testParallelStream Starting:{}, element={}, {}", Thread.currentThread().getName(), element, LocalDateTime.now());
+            log.debug("First testParalelStream:{}, element: {}", Thread.currentThread().getName(), element);
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
             }
         });
+        list.parallelStream().forEach(element -> {
+            log.debug("Second testParallelStream:{}, element: {}", Thread.currentThread().getName(), element);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+            }
+        });
+        log.debug("{}", "몰루?");
+    }
+
+    /**
+     * 체이닝으로 이어지는 메서드들이 병렬로 도는건지 테스트하려 했더니 로그가 안찍히네
+     */
+    @Test
+    public void testParallelStream2() {
+        List<String> list = List.of("하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟");
+        log.debug("{}", "누가 먼저 보일까요 #2");
+        list.parallelStream().filter(element -> {
+            log.debug("First testParalelStream:, element: {}");
+            return true;
+        }).filter(element -> {
+            log.debug("second testParalelStream:, element: {}");
+            return true;
+        });
+        log.debug("{}", "몰루?");
     }
 }
