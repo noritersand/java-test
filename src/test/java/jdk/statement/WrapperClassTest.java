@@ -39,7 +39,7 @@ public class WrapperClassTest {
         assertTrue(Long.valueOf(100L) == Long.valueOf(100L));
         assertTrue(Long.valueOf(126L) == Long.valueOf(126L));
         assertTrue(Long.valueOf(127L) == Long.valueOf(127L));
-        // 여기까지는 동등 연산자에서 객체 아이디를 비교하지 않음. 127L 까지는 1바이트라서 정수로 변환된다고 함(자바니께 원시타입으로 변환되는거겠지)
+        // -128에서 127까지는 동등 연산자가 인스턴스 참조값을 비교하지 않음. 1바이트로 표현 가능한 범위 내에선 정수로 변환된다고 함(아마 원시타입으로 변환되는거겠지)
         // 1바이트는 -128부터 127까지 표현 가능 (2^7 = 128)
         assertTrue(Long.valueOf(128L) != Long.valueOf(128L));
         assertTrue(Long.valueOf(129L) != Long.valueOf(129L));
@@ -50,6 +50,7 @@ public class WrapperClassTest {
 
         assertTrue(Integer.valueOf(127) == Integer.valueOf(127));
         assertTrue(Integer.valueOf(128) != Integer.valueOf(128));
+
     }
 
     @Test
