@@ -1,4 +1,4 @@
-package lab.exception.wrong;
+package lab.exception.serverfault;
 
 /**
  * 메서드 전달인자가 잘못됐음을 의미하는 exception
@@ -6,9 +6,10 @@ package lab.exception.wrong;
  * @author fixalot
  * @since 2022-11-15
  */
-public class InappropriateArgumentException extends InappropriateStateException {
+public class InappropriateArgumentException extends ServerFaultException {
 
-    public InappropriateArgumentException() {}
+    public InappropriateArgumentException() {
+    }
 
     public InappropriateArgumentException(String message) {
         super(message);

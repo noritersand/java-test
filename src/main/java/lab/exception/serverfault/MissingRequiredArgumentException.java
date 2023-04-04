@@ -1,4 +1,4 @@
-package lab.exception.wrong;
+package lab.exception.serverfault;
 
 /**
  * 필요한 파라미터가 없음을 의미하는 exception
@@ -6,9 +6,10 @@ package lab.exception.wrong;
  * @author fixalot
  * @since 2022-08-17
  */
-public class MissingRequiredArgumentException extends InappropriateStateException {
+public class MissingRequiredArgumentException extends InappropriateArgumentException {
 
-    public MissingRequiredArgumentException() {}
+    public MissingRequiredArgumentException() {
+    }
 
     public MissingRequiredArgumentException(String message) {
         super(message);

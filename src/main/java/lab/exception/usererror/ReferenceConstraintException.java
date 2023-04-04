@@ -1,4 +1,4 @@
-package lab.exception.rule;
+package lab.exception.usererror;
 
 /**
  * <p>참조 제약이 있음을 의미하는 exception.

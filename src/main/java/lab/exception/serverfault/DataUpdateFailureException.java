@@ -1,7 +1,7 @@
-package lab.exception.wrong;
+package lab.exception.serverfault;
 
 /**
- * 데이터 insert/update/delete가 실패했을 때 사용
+ * <p>데이터 insert/update/delete가 실패했을 때 사용</p>
  *
  * @author fixalot
  * @since 2022-11-15

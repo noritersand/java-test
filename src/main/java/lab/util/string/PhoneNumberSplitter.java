@@ -1,6 +1,6 @@
 package lab.util.string;
 
-import lab.exception.wrong.InappropriateArgumentException;
+import lab.exception.serverfault.MissingRequiredArgumentException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -25,7 +25,7 @@ public enum PhoneNumberSplitter {
 
     public static Result split(String str) {
         if (StringUtils.isEmpty(str) || 9 > str.length()) {
-            throw new InappropriateArgumentException("전화번호는 필수값이며 9자리 이상이어야 해요.");
+            throw new MissingRequiredArgumentException("전화번호는 필수값이며 9자리 이상이어야 해요.");
         }
 
         Result result = new Result();
@@ -38,7 +38,7 @@ public enum PhoneNumberSplitter {
             separated = new String[]{matcher.group(1), matcher.group(2), matcher.group(3)};
         } else {
             if (11 > str.length()) {
-                throw new InappropriateArgumentException("뭔가 이상한 전화번호에요");
+                throw new MissingRequiredArgumentException("뭔가 이상한 전화번호에요");
             }
             String str1 = str.substring(0, 3);
             String str2 = str.substring(3, 7);
