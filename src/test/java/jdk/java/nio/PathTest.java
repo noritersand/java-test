@@ -5,13 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * <p>{@link Path} 클래스 테스트
@@ -84,15 +80,40 @@ public class PathTest {
     }
 
     /**
-     * directory에 file을 붙여서 경로를 만든다.
+     * <p>기존 Path 객체에 문자열을 이어 붙여 하위 경로를 생성할 때 사용한다.</p>
+     * <p>단순히 이어붙이기만 현재 경로와 주어진 경로를 결합하는데,</p>
+     * <p>만약 주어진 경로에 ..  / 같은 문자가 있으면 현재 경로에서 상위 경로로 이동하는 결과가 나온다</p>
      *
      * @throws IOException
      */
     @Test
     public void testResolve() throws IOException {
-        Path directory = new File("c:/dev/git").toPath();
-        Path file = directory.resolve("someFile");
-        assertEquals(Path.of("C:/dev/git/someFile"), file);
+        // 원본
+        Path directory = new File("c:/dev/repo").toPath();
+        Path directory2 = Path.of(directory.toString());
+        Path directory3 = Path.of(directory.toString());
+        Path directory4 = Path.of(directory.toString());
+
+        // 파일명으로 붙이기
+        directory = directory.resolve("a.txt");
+        assertEquals(Path.of("C:/dev/repo/a.txt"), directory);
+
+        // 여러개 이어붙이기
+        String[] addtionalDirectories = new String[]{"a", "b", "c"};
+        for (String addtionalDirectory : addtionalDirectories) {
+            directory2 = directory2.resolve(addtionalDirectory);
+        }
+        assertEquals(Path.of("C:/dev/repo/a/b/c"), directory2);
+
+        // 상위 경로로 이동하기
+        directory3 = directory3.resolve("../parent");
+        assertEquals(Path.of("C:/dev/repo/../parent"), directory3);
+        // 만약 정규화된 경로를 얻고 싶다면 Path.normalize()를 사용함
+        assertEquals(Path.of("C:/dev/parent"), directory3.normalize());
+
+        // 상위 경로로 이동하기: 특이 케이스
+        directory4 = directory4.resolve("/super");
+        assertEquals(Path.of("C:/super"), directory4);
     }
 
     /**

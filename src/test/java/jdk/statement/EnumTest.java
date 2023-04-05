@@ -35,7 +35,7 @@ public class EnumTest {
         System.out.println(var1); // BACK_OFFICE
         System.out.println(var2); // FRONT_OFFICE
         System.out.println(var2.name()); // FRONT_OFFICE
-        System.out.println(var2.optionalField()); // front office system
+        System.out.println(var2.getLabel()); // front office system
     }
 
     /**

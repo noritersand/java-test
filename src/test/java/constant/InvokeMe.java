@@ -3,10 +3,10 @@ package constant;
 public enum InvokeMe {
     TEN("10");
 
-    private final String value;
+    private final String label;
 
-    InvokeMe(String value) {
-        this.value = value;
+    InvokeMe(String label) {
+        this.label = label;
     }
 
     /**
@@ -19,6 +19,6 @@ public enum InvokeMe {
      */
     @Override
     public String toString() {
-        return value;
+        return label;
     }
 }

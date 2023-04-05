@@ -2,6 +2,7 @@ package jdk.java.lang;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -55,5 +56,16 @@ public class IntegerTest {
         assertEquals("ff", Integer.toHexString(255));
         assertEquals("400", Integer.toHexString(1024));
         assertEquals("10000", Integer.toHexString(65536));
+    }
+
+    /**
+     * 얘네 다 nullSafe 하지 않음
+     */
+    @Test
+    public void isNullSafe() {
+        String str = "";
+//        Integer a = Integer.parseInt(str);
+//        Integer a = Integer.valueOf(str);
+//        Integer a = Integer.valueOf(StringUtils.defaultIfBlank(str, null));
     }
 }

@@ -28,22 +28,28 @@ public class ForStatementTest {
         // 기본 사용 방법
         int i;
         for (i = 0; 1 > i; i++) {
-            log.debug("{} 바퀴", i);
+            log.debug("i: {} 바퀴", i);
         }
         assertEquals(1, i);
 
         // 무한 루프
+        int k = 0;
         for (; ; ) {
-            log.debug("비상탈출!");
-            break;
+            ++k;
+            if (k > 2) {
+                log.debug("비상탈출!");
+                break;
+            }
         }
+        assertEquals(3, k);
 
-        // 이런 모양으로도 됨.
+        // while로 하면 이렇게
         int j = 0;
-        while (1 > j) {
+        while (2 > j) {
             j++;
-            log.debug("{} 바퀴", j);
+            log.debug("j: {} 바퀴", j);
         }
+        assertEquals(2, j);
     }
 
     @Test
@@ -59,8 +65,11 @@ public class ForStatementTest {
         assertEquals(3, list.size());
     }
 
+    /**
+     * <p>enhanced for문이라 불리는 for-each 테스트</p>
+     */
     @Test
-    public void testAdvencedForStatement() {
+    public void testEnhancedForStatement() {
         ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
         for (String s : list) {
             log.debug("s: {}", s);
@@ -68,9 +77,14 @@ public class ForStatementTest {
 
         // null이면 어떻게 될까?
         list = null;
-//        for (String s : list) {
-//            log.debug("s: {}", s);
-//        }
-        // NPE 발생함
+        try {
+            for (String s : list) {
+                log.debug("s: {}", s);
+            }
+        } catch (NullPointerException e) {
+            // NPE 발생함
+            log.debug("NPE 발생함");
+        }
+
     }
 }

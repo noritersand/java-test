@@ -3,9 +3,13 @@ package lab.constants;
 public enum Const {
     NAME("waldo");
 
-    private final String value;
+    private final String label;
 
-    Const(String value) {
-        this.value = value;
+    Const(String label) {
+        this.label = label;
+    }
+
+    public String getLabel() {
+        return this.label;
     }
 }

@@ -6,14 +6,14 @@ public enum SystemType {
     SystemType() {
     } // 기본 생성자
 
-    private String optionalField;
+    private String label;
 
-    SystemType(String optionalField) {
-        this.optionalField = optionalField;
+    SystemType(String label) {
+        this.label = label;
     }
 
-    public String optionalField() {
-        return optionalField;
+    public String getLabel() {
+        return this.label;
     }
 
     public static SystemType valueOfIAESafe(String arg) {

@@ -82,11 +82,15 @@ public class JavaTimeTest {
 
     @Test
     public void testYearMonth() {
-        YearMonth ins = YearMonth.parse("2022-12");
-        assertEquals("2022-12", ins.toString());
+        YearMonth ins = YearMonth.parse("2022-09");
+        assertEquals("2022-09", ins.toString());
 
         String yyyyMM = ins.format(DateTimeFormatter.ofPattern("yyyyMM"));
-        assertEquals("202212", yyyyMM);
+        assertEquals("202209", yyyyMM);
+
+        assertEquals(2022, ins.getYear());
+        assertEquals(Month.SEPTEMBER, ins.getMonth());
+        assertEquals(9, ins.getMonthValue());
     }
 
     @Test
