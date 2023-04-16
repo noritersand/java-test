@@ -26,12 +26,15 @@ public enum FileNameReplacer {
     private static final String REMOVE_ME = "wallpaper-warhammer40k-";
     private static final String PREFIX;
 
+    private static final String HYPHEN = "-";
+
     static {
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         String yyyyMmdd = today.format(formatter);
 
-        PREFIX = "wallpaper" + "-" + yyyyMmdd + "-";
+        PREFIX = "wallpaper" + HYPHEN;
+//        PREFIX = "wallpaper" + HYPHEN + yyyyMmdd + HYPHEN;
     }
 //	private static final String suffix = "";
 
