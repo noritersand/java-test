@@ -34,7 +34,7 @@ public class OreillyFileUploadController {
         JsonResponseObject json = new JsonResponseObject();
 
 //		final String pathname = request.getSession().getServletContext().getRealPath("/") + "upload";
-        File uploadPath = Paths.get("~/lab-java/upload").toFile();
+        File uploadPath = Paths.get("~/java-lab/upload").toFile();
         if (!uploadPath.exists()) {
             // 폴더가 존재하지 않으면 폴더 생성
             uploadPath.mkdirs();
