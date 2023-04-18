@@ -146,6 +146,9 @@ public class OperatorTest {
         assertEquals(1, 4 % 3);
         assertEquals(2, 5 % 3);
         assertEquals(0, 6 % 3);
+
+        // 특정 값보다 큰 수를 제거할 때 사용할 수 있음
+        assertEquals(99, 41799 % 100);
     }
 
     @Test

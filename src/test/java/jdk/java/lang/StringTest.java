@@ -20,6 +20,13 @@ public class StringTest {
 
     @Test
     public void testFormat() {
+        // %05d는 5자리 숫자를 의미하며, 숫자가 5자리보다 작으면 앞에 0을 채운다.
+        String result = String.format("%05d", 1);
+        assertEquals("00001", result);
+    }
+
+    @Test
+    public void testCustomFormatter() {
         class Formatter {
             public String floatFormat(double number) {
                 return String.format("%.2f", number); // dot(.)과 바로 뒤에오는 숫자는 정밀도를 의미한다.
