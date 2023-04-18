@@ -18,28 +18,67 @@ public class OptionalTest {
         Optional<Object> empty = Optional.empty();
         assertNotNull(empty);
     }
-
+    
+    /**
+     * <p>Optional 인스턴스를 생성하는 메서드 of() 테스트</p>
+     * <p>null이 주어지면 NPE 발생함</p>
+     */
     @Test
     public void testOf() {
-        Optional<String> txt = Optional.of("1234");
-        assertEquals("1234", txt.get());
-        assertTrue(txt.isPresent());
-        assertFalse(txt.isEmpty());
-        assertEquals("Optional[1234]", txt.toString());
-        assertEquals(txt, Optional.of("1234"));
+        Optional<String> op = Optional.of("1234");
+        assertEquals("1234", op.get());
+        assertEquals("Optional[1234]", op.toString());
+        assertEquals(op, Optional.of("1234"));
+
+        try {
+            Optional<String> op2 = Optional.of(null);
+        } catch (Exception e) {
+            assertTrue(e instanceof NullPointerException);
+        }
     }
-    
+
+    /**
+     * <p>ofNullable()은 of()와 달리 NPE에 안전함</p>
+     */
+    @Test
+    public void testOfNullable() {
+        Optional<String> op = Optional.ofNullable("1234");
+    }
+
+    /**
+     * <p>isPresent()는 Optional에 값이 있으면 true를 반환함</p>
+     */
+    @Test
+    public void testIsPresent() {
+        assertTrue(Optional.of("1234").isPresent());
+        assertTrue(Optional.of("").isPresent()); // 빈 문자열인지는 판단하지 않음
+        assertFalse(Optional.ofNullable(null).isPresent());
+    }
+
+    /**
+     * <p>isEmpty()는 isPresent()와 반대로 Optional에 값이 비어있어야 true를 반환함</p>
+     */
+    @Test
+    public void testIsEmpty() {
+        assertTrue(Optional.ofNullable(null).isEmpty());
+        assertFalse(Optional.of("1234").isEmpty());
+        assertFalse(Optional.of("").isEmpty());
+    }
+
+    /**
+     * <p>Optional의 값이 있으면 실행할 콜백 메서드</p>
+     */
     @Test
     public void testIfPresent() {
         String str = "qwer";
-        Optional<String> so = Optional.of(str);
-        so.ifPresent(s -> {
+        Optional<String> op = Optional.of(str);
+        op.ifPresent(s -> {
             log.debug("{}", "It is presented.");
         });
     }
 
     /**
-     * 이렇게 쓰는 건가...?
+     * <p>값이 비어 있으면(null이면) 실행할 콜백 메서드까지 지정할 수 있음</p>>
      */
     @Test
     public void testIfPresentOrElse() {

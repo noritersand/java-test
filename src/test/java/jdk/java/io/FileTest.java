@@ -26,8 +26,11 @@ public class FileTest {
 
     @Test
     public void initialize() {
-        File file = new File("/im-g-root"); // 이클립스를 실행한 드라이브의 루트의 qweasdqweasd 폴더
+        File file = new File("/im-g-root");
         assertFalse(file.exists());
+
+        File file2 = new File("/dev", "repo");
+        assertTrue(file2.exists());
     }
 
     @Test
