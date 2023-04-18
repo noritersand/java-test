@@ -14,4 +14,11 @@ public class InappropriateStateException extends ServerFaultException {
         super(message);
     }
 
+    public InappropriateStateException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public InappropriateStateException(Throwable cause) {
+        super(cause);
+    }
 }

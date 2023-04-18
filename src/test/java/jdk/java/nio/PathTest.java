@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,6 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @Slf4j
 public class PathTest {
+    public static final String SLASH = "/";
+    public static final String BACKSLASH = "\\";
 
     @Test
     public void testOf() {
@@ -32,6 +36,29 @@ public class PathTest {
         assertEquals(path3, path4);
 
         assertEquals(new File("/a/b/c"), path.toFile());
+    }
+
+    /**
+     * Path.toString()은 디렉터리 구분자를 운영 체제의 파일 시스템 구분자를 사용하기 때문에, 윈도우에선 \\로 반환한다.
+     */
+    @Test
+    public void testToString() {
+        Path path = Path.of("/a/b/c");
+        assertEquals("\\a\\b\\c", path.toString());
+
+        // 만약 /로 바꾸고 싶다면 replace를 하거나
+        assertEquals("/a/b/c", path.toString().replace(BACKSLASH, SLASH));
+
+        // 아니면 iterator를 이용하는 방법이 있다.
+        StringBuilder sb = new StringBuilder().append(SLASH);
+        Iterator<Path> iterator = path.iterator();
+        while (iterator.hasNext()) {
+            sb.append(iterator.next().toString());
+            if (iterator.hasNext()) {
+                sb.append(SLASH);
+            }
+        }
+        assertEquals("/a/b/c", sb.toString());
     }
 
     /**
@@ -55,6 +82,14 @@ public class PathTest {
         Path path = Path.of("/a/b/c");
         assertEquals("file:///C:/a/b/c", path.toUri().toString());
         assertEquals("/C:/a/b/c", path.toUri().getPath().toString());
+
+        // 이렇게 하면 file:///C:/dev/intellij-workspace/java-lab/a/b/c 이런 식으로 상대 경로가 나와서 코멘트 처리 함
+//        Path path2 = Path.of("a/b/c");
+//        assertEquals("file:///C:/a/b/c", path2.toUri().toString());
+//        assertEquals("/C:/a/b/c", path2.toUri().getPath().toString());
+
+        Path path3 = Paths.get("C:\\Users\\User\\Documents\\file.txt");
+        assertEquals("/C:/Users/User/Documents/file.txt", path3.toUri().getPath());
     }
 
     /**

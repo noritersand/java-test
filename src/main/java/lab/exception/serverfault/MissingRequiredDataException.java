@@ -8,10 +8,18 @@ package lab.exception.serverfault;
  */
 public class MissingRequiredDataException extends InappropriateStateException {
 
-    public MissingRequiredDataException() {}
+    public MissingRequiredDataException() {
+    }
 
     public MissingRequiredDataException(String message) {
         super(message);
     }
 
+    public MissingRequiredDataException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public MissingRequiredDataException(Throwable cause) {
+        super(cause);
+    }
 }

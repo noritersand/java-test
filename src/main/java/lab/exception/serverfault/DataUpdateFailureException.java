@@ -15,4 +15,12 @@ public class DataUpdateFailureException extends InappropriateStateException {
         super(message);
     }
 
+    public DataUpdateFailureException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public DataUpdateFailureException(Throwable cause) {
+        super(cause);
+    }
+
 }

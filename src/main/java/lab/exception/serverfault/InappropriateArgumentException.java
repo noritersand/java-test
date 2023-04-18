@@ -15,4 +15,12 @@ public class InappropriateArgumentException extends ServerFaultException {
         super(message);
     }
 
+    public InappropriateArgumentException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public InappropriateArgumentException(Throwable cause) {
+        super(cause);
+    }
+
 }

@@ -15,4 +15,12 @@ public class ServerFaultException extends RuntimeException {
     public ServerFaultException(String message) {
         super(message);
     }
+
+    public ServerFaultException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public ServerFaultException(Throwable cause) {
+        super(cause);
+    }
 }

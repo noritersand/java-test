@@ -15,4 +15,12 @@ public class MissingRequiredArgumentException extends InappropriateArgumentExcep
         super(message);
     }
 
+    public MissingRequiredArgumentException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public MissingRequiredArgumentException(Throwable cause) {
+        super(cause);
+    }
+
 }
