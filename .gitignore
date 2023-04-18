@@ -29,6 +29,11 @@ target/*
 /build/
 /target/
 
+.gradle
+gradle
+gradlew
+gradlew.bat
+
 .settings
 .classpath
 .project
