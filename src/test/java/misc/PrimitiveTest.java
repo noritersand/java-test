@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author fixalot
@@ -54,16 +55,14 @@ public class PrimitiveTest {
     public void testValueOf() {
         int number = Integer.valueOf("1");
         assertEquals(1, number);
-        try {
+
+        assertThrows(NumberFormatException.class, () -> {
             Integer.valueOf(""); // 빈 문자열은 valueOf 불가
-        } catch (NumberFormatException e) {
-            log.debug("NumberFormatException 발생: {}", e.getMessage());
-        }
-        try {
+        });
+
+        assertThrows(NumberFormatException.class, () -> {
             Integer.valueOf(null); // null은 valueOf 불가
-        } catch (NumberFormatException e) {
-            log.debug("NumberFormatException 발생: {}", e.getMessage());
-        }
+        });
     }
 
     @Test

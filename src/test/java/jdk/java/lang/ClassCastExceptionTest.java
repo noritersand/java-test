@@ -1,6 +1,7 @@
 package jdk.java.lang;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -15,11 +16,9 @@ public class ClassCastExceptionTest {
     @Test
     public void case1() {
         Object nan = "i'm not number";
-        try {
+        Assertions.assertThrows(ClassCastException.class, () -> {
             Integer number = (Integer) nan; // should be exception
             log.debug(String.valueOf(number));
-        } catch (ClassCastException e) {
-            log.error(e.getMessage(), e);
-        }
+        });
     }
 }

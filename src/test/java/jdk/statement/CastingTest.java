@@ -3,8 +3,7 @@ package jdk.statement;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 캐스팅 테스트
@@ -36,13 +35,11 @@ public class CastingTest {
     @Test
     public void downCasting() {
         // 요로케는 안됨.
-        try {
+        assertThrows(ClassCastException.class, () -> {
             Parent p = new Parent();
             @SuppressWarnings("unused")
             Child c = (Child) p;
-        } catch (ClassCastException e) {
-            log.debug("캐스팅 익셉션 발생함.");
-        }
+        });
 
         // 요로케는 됨.
         Parent p = new Child();

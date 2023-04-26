@@ -9,8 +9,7 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * <p>{@link Paths} 테스트 슈트
@@ -41,12 +40,11 @@ public class PathsTest {
     public void shouldError() {
         // 없는 경로라도 단순 문자열이면 문제가 없지만
         Paths.get("c:", "\\ppp", "\\aaa");
-        try {
-            // file 프로토콜이 붙으면 파일이 없을때 에러난다.
+
+        // file 프로토콜이 붙으면 파일이 없을때 에러
+        assertThrows(InvalidPathException.class, () -> {
             Paths.get("file://c:\\ppp");
-        } catch (Exception e) {
-            assertTrue(e instanceof InvalidPathException);
-        }
+        });
     }
 
     @Test

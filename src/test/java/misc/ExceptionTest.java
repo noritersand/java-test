@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * 예외 테스트
@@ -20,11 +21,9 @@ public class ExceptionTest {
 
     @Test
     public void logging() {
-        try {
+        assertThrows(RuntimeException.class, () -> {
             throw new RuntimeException("for test");
-        } catch (Exception e) {
-            log.debug("I'll catch you so much!");
-        }
+        });
     }
 
     /**
@@ -67,7 +66,7 @@ public class ExceptionTest {
     public void shouldBeNull() {
         /*
          * 에러 메시지를 설정하지 않으면 에러 메시지가 null로 찍힘.
-         * NullPointerException과는 관계 없으나 혼동할 가능성이 있다.
+         * 사실 NullPointerException과는 관계 없는데, 혼동할 여지가 있다.
          *
          * log.error(e.getMessage(), e);
          * ->
@@ -75,10 +74,8 @@ public class ExceptionTest {
          * java.lang.RuntimeException: null
          * 			at etc.ExceptionTest.shouldBeNull(ExceptionTest.java:31)
          */
-        try {
+        assertThrows(RuntimeException.class, () -> {
             throw new RuntimeException();
-        } catch (Exception e) {
-            assertNull(e.getMessage());
-        }
+        });
     }
 }

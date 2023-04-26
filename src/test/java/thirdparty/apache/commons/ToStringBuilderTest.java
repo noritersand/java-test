@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 /**
  * @author fixalot
  * @since 2017-07-27
@@ -15,14 +17,14 @@ public class ToStringBuilderTest {
     public void printToStringResult() {
         PlainObject po = new PlainObject();
         log.debug(ToStringBuilder.reflectionToString(po));
+
         po.setStringField("야");
         po.setIntField(65536);
         log.debug(ToStringBuilder.reflectionToString(po));
-        try {
-            log.debug(ToStringBuilder.reflectionToString(null)); // 에러남
-        } catch (Exception e) {
-            // do nothing
-        }
+
+        assertThrows(RuntimeException.class, () -> {
+            log.debug(ToStringBuilder.reflectionToString(null));
+        });
     }
 
     @SuppressWarnings("unused")

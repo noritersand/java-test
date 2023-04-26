@@ -92,12 +92,9 @@ public class BigDecimalTest {
         BigDecimal smallOne = new BigDecimal("64000.00");
         BigDecimal bigOne = new BigDecimal("69000.00");
 
-        try {
-            // 그냥 나눠버리면 BigDecimal도 감당 못하는 결과가 나옴
-            smallOne.divide(bigOne);
-        } catch (ArithmeticException e) {
-            log.debug("에러 난다요.");
-        }
+        // 그냥 나눠버리면 BigDecimal도 감당 못하는 결과가 나옴
+        assertThrows(ArithmeticException.class, () -> smallOne.divide(bigOne));
+
         // 소수점 셋 째 자리에서 반올림
         BigDecimal result = smallOne.divide(bigOne, 2, RoundingMode.HALF_UP);
         assertEquals(new BigDecimal("0.93"), result);

@@ -53,6 +53,6 @@ public class FileTest {
     @Test
     public void testToString() {
         File file = new File("src/test/resources/file-test/amiexist.txt");
-        assertEquals("src/test/resources/file-test/amiexist.txt", file.toString());
+        assertEquals("src\\test\\resources\\file-test\\amiexist.txt", file.toString());
     }
 }

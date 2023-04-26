@@ -88,10 +88,6 @@ public class StringTest {
         String a = "a";
         assertEquals("ab", a + "b");
         assertEquals("a", a);
-        try {
-            assertEquals("anull", a + null); // NPE
-        } catch (Exception e) {
-        }
         assertEquals("anull", a + null);
     }
 
@@ -203,11 +199,10 @@ public class StringTest {
     public void testSplit() {
         String splitMe = "abcdefghijklmn";
         assertEquals(splitMe, splitMe.split("\\|")[0]);
-        try {
-            log.debug(splitMe.split("\\|")[1]);
-        } catch (IndexOutOfBoundsException e) {
-            log.debug("에러 났지롱");
-        }
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            String arr = splitMe.split("\\|")[1];
+        });
 
         String splitMe2 = "abcdefghijklmn";
         assertEquals(14, splitMe2.length());

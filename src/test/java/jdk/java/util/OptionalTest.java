@@ -32,11 +32,9 @@ public class OptionalTest {
         assertEquals("Optional[1234]", op.toString());
         assertEquals(op, Optional.of("1234"));
 
-        try {
+        assertThrowsExactly(NullPointerException.class, () -> {
             Optional<String> op2 = Optional.of(null);
-        } catch (Exception e) {
-            assertTrue(e instanceof NullPointerException);
-        }
+        });
     }
 
     /**

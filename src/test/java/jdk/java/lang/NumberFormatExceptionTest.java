@@ -1,6 +1,7 @@
 package jdk.java.lang;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -13,13 +14,11 @@ import org.junit.jupiter.api.Test;
 public class NumberFormatExceptionTest {
 
     @Test
-    public void test() {
-        try {
+    public void shouldBeError() {
+        Assertions.assertThrows(NumberFormatException.class, () -> {
             String s = "FOOBAR";
             int i = Integer.parseInt(s);
             log.debug("int value = {}", i); // this line of code will never be reached
-        } catch (NumberFormatException e) {
-            log.error(e.getMessage(), e);
-        }
+        });
     }
 }

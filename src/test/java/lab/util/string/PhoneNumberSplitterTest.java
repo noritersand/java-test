@@ -3,8 +3,7 @@ package lab.util.string;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 public class PhoneNumberSplitterTest {
@@ -30,11 +29,7 @@ public class PhoneNumberSplitterTest {
 
     @Test
     public void shouldBeException() {
-        try {
-            PhoneNumberSplitter.split("01234567");
-        } catch (RuntimeException e) {
-            log.error(e.getMessage(), e);
-        }
+        assertThrows(RuntimeException.class, () -> PhoneNumberSplitter.split("01234567"));
     }
 
     @Test

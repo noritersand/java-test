@@ -48,4 +48,5 @@ class ExtendYou extends ExtendMe {
     protected String getText4() {
         return null;
     }
+
 }

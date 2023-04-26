@@ -43,7 +43,7 @@ public class SwitchTest {
     @SuppressWarnings("null")
     public void howAboutActualArgumentIsNull() {
         String imNull = null;
-        try {
+        assertThrows(NullPointerException.class, () -> {
             switch (imNull) {
                 case "a":
                     log.debug("it is 'a'");
@@ -52,11 +52,8 @@ public class SwitchTest {
                     log.debug("it is null");
                     break;
             }
-            assertTrue(1 == 2);
-        } catch (NullPointerException e) {
-            log.debug("에러 났습니당.");
-            assertNotEquals(1, 2);
-        }
+        });
+         assertNotEquals(1, 2);
     }
 
     /**

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * for문 테스트
@@ -76,15 +77,12 @@ public class ForStatementTest {
         }
 
         // null이면 어떻게 될까?
-        list = null;
-        try {
-            for (String s : list) {
+        assertThrows(NullPointerException.class, () -> {
+            ArrayList<String> list2 = null;
+            for (String s : list2) {
                 log.debug("s: {}", s);
             }
-        } catch (NullPointerException e) {
-            // NPE 발생함
-            log.debug("NPE 발생함");
-        }
+        });
 
     }
 }

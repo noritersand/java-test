@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Date 테스트
@@ -64,12 +65,12 @@ public class DateTest {
     public void changeTimeZone() {
         Date date = new Date(1547168374396L);
         assertEquals("2019-01-11", date.toString());
-        try {
+
+        // java.sql.Date는 시간을 지원하지 않아서 항상 예외 발생
+        assertThrows(UnsupportedOperationException.class, () -> {
             date.toInstant();
-        } catch (UnsupportedOperationException e) {
-            // java.sql.Date는 시간을 지원하지 않아서 항상 예외 발생
-            log.debug("Exception 발생");
-        }
+        });
+
         // .toInstant()를 쓰고 싶으면 time component 가 있는 클래스를 써야함
         Instant instant = new Timestamp(1547168374396L).toInstant();
         LocalDateTime utc1 = LocalDateTime.ofInstant(instant, ZONE_ID_UTC);

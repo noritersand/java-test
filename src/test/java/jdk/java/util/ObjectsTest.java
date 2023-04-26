@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * java.util.Objects 테스트 슈ㅌ
@@ -24,18 +25,15 @@ public class ObjectsTest {
     @Test
     public void testRequireNonNull() {
         // #1 넘겨진 인자가 null이면 NPE 발생시킴
-        try {
+        assertThrows(NullPointerException.class, () -> {
             Objects.requireNonNull(null);
-        } catch (NullPointerException e) {
-            log.debug("NPE 발생함: {}", e.getMessage());
-        }
+        });
+
 
         // #2 넘겨진 인자가 null이면 NPE 발생시키는 것까진 같지만, 에러 메시지를 별도로 지정함
-        try {
-            Objects.requireNonNull(null, "message");
-        } catch (NullPointerException e) {
-            assertEquals("message", e.getMessage());
-        }
+        assertThrows(NullPointerException.class, () -> {
+            Object thisIsThatMessage = Objects.requireNonNull(null, "This is that message");
+        });
 
         // #3 넘겨진 인자가 null이면 NPE 발생 대신 지정한 defaultObj를 반환함
         assertEquals("default", Objects.requireNonNullElse(null, "default"));

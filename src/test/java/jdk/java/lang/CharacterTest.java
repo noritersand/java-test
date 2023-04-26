@@ -41,16 +41,15 @@ public class CharacterTest {
 
     @Test
     @SuppressWarnings({"null", "unused"})
-    public void compareWithNull() {
-        try {
+    public void shouldBeError() {
+        assertThrows(NullPointerException.class, () -> {
             Character e = null;
-            boolean equal = 'b' == e; // NullPointerException
-
+            boolean equal = 'b' == e;
+        });
+        assertThrows(NullPointerException.class, () -> {
             Integer i = null;
-            equal = 1 == i; // NullPointerException
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
+            boolean equal = 1 == i;
+        });
     }
 
     @Test

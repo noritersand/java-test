@@ -40,12 +40,10 @@ public class FilesTest {
         assertFalse(Files.exists(dir));
 
         dir = Paths.get("src/test/resources/");
-        try {
-            log.debug("Files.isDirectory(dir): {}", Files.isDirectory(dir));
-            Files.delete(dir); // 폴더 하위에 파일이 있으면 예외 발생
-        } catch (Exception e) {
-            assertTrue(e instanceof DirectoryNotEmptyException);
-        }
+        Path finalDir = dir;
+        assertThrows(DirectoryNotEmptyException.class, () -> {
+            Files.delete(finalDir);
+        });
     }
 
     @Test
@@ -56,10 +54,9 @@ public class FilesTest {
         assertFalse(Files.deleteIfExists(dir)); // 파일이 없으면 false. NoSuchFileException은 내부에서 catch 됨
 
         dir = Paths.get("src/test/resources");
-        try {
-            Files.deleteIfExists(dir); // 폴더 하위에 파일이 있으면 예외 발생
-        } catch (Exception e) {
-            assertTrue(e instanceof DirectoryNotEmptyException);
-        }
+        Path finalDir = dir;
+        assertThrows(DirectoryNotEmptyException.class, () -> {
+            Files.deleteIfExists(finalDir);
+        });
     }
 }

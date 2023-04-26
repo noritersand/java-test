@@ -83,19 +83,16 @@ public class WrapperClassTest {
     @Test
     public void testLongValueOf() {
         // null은 valueOf() 불가
-        try {
+        assertThrows(NumberFormatException.class, () -> {
             String nullValue = null;
             assertEquals(0, Long.valueOf(nullValue));
-        } catch (NumberFormatException e) {
-            log.debug("{}", "java.lang.NumberFormatException: Cannot parse null string");
-        }
+        });
+
         // empty string도 불가
-        try {
+        assertThrows(NumberFormatException.class, () -> {
             String blank = "";
             assertEquals(0, Long.valueOf(blank));
-        } catch (NumberFormatException e) {
-            log.debug("{}", "java.lang.NumberFormatException: For input string: \"\"");
-        }
+        });
         // 대신 apache NumberUtils를 쓰라고 하는데, 그건 0으로 반환함.
     }
 
@@ -106,21 +103,15 @@ public class WrapperClassTest {
      */
     @Test
     public void testNullSafe2() {
-        try {
+        assertThrows(NullPointerException.class, () -> {
             Object chuckNorris = null;
-            @SuppressWarnings({"unused", "null"})
-            int imgonnabenull = (Integer) chuckNorris;
-        } catch (Exception e) {
-            log.debug("예외 발생#1: {}", e.getLocalizedMessage());
-        }
+            int illBeNull = (Integer) chuckNorris;
+        });
 
-        try {
+        assertThrows(NullPointerException.class, () -> {
             Integer chucknorris = null;
-            @SuppressWarnings({"unused", "null"})
-            int imgonnabenull = chucknorris;
-        } catch (Exception e) {
-            log.debug("예외 발생#2: {}", e.getLocalizedMessage());
-        }
+            int illBeNull = chucknorris;
+        });
     }
 
     @Test
