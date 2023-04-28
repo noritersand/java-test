@@ -306,4 +306,28 @@ public class StringTest {
         List<String> texts = Arrays.asList("a", "b", "c");
         assertEquals("a, b, c", String.join(", ", texts));
     }
+
+    @Test
+    public void testIsEmpty() {
+        assertTrue("".isEmpty());
+        assertFalse(" ".isEmpty());
+        assertFalse("  ".isEmpty());
+        assertFalse("qwer".isEmpty());
+        assertThrows(NullPointerException.class, () -> {
+            String str = null;
+            str.isEmpty();
+        });
+    }
+
+    @Test
+    public void testIsBlank() {
+        assertTrue("".isBlank());
+        assertTrue(" ".isBlank());
+        assertTrue("  ".isBlank());
+        assertFalse("qwer".isBlank());
+        assertThrows(NullPointerException.class, () -> {
+            String str = null;
+            str.isBlank();
+        });
+    }
 }
