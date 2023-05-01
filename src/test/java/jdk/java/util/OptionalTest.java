@@ -137,6 +137,25 @@ public class OptionalTest {
             return "numbers";
         });
         assertTrue(op3.isEmpty());
+
+        // null이던 null-string이던 NPE에서 안전함
+        String str3 = null;
+//        String str3 = "";
+        Integer userNo = Optional.ofNullable(str3)
+                .filter(v -> !v.isBlank())
+                .map(Integer::valueOf).orElse(null);
+        assertNull(userNo);
+
+        // 하지만 문자열로 "null"인 경우는 얘기가 다름
+        assertThrows(NumberFormatException.class, () -> {
+            String str4 = "null";
+            Optional.ofNullable(str4)
+                .filter(v -> !v.isBlank())
+                .map(s -> {
+                    // Integer.valueOf()를 하려다 NFE 발생함
+                    return Integer.valueOf(s);
+                }).orElse(null);
+        });
     }
 
     /**

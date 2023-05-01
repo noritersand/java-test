@@ -7,10 +7,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -41,6 +38,9 @@ public class StreamTest {
         List<Integer> list = Arrays.asList(1, 3, 7);
         Stream<Integer> stream = list.stream();
         stream.forEach(System.out::println);
+        assertThrows(IllegalStateException.class, () -> {
+            stream.forEach(System.out::println);
+        });
         stream.close(); // 생략 가능
 
         Stream<Integer> stream2 = list.stream();
@@ -80,6 +80,15 @@ public class StreamTest {
         stream = list.stream();
         Integer result3 = stream.filter(predicate).findAny().get();
         log.debug("{}", result3);
+    }
+
+    /**
+     * 합계 구할 때 많이 쓰는 reduce() 테스트
+     */
+    public void testReduce() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        Optional<Integer> reduce = list.stream().reduce((a, b) -> a + b);
+        assertEquals(45, reduce);
     }
 
     @Test
