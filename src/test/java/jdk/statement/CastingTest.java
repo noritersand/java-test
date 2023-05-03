@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CastingTest {
 
     @Test
-    public void castNull() {
+    void castNull() {
         Object imnotnotnull = null;
         String string = (String) imnotnotnull;
         assertNull(string);
@@ -25,7 +25,7 @@ public class CastingTest {
     }
 
     @Test
-    public void upCasting() {
+    void upCasting() {
         Child c = new Child();
         Parent p = c;
         assertEquals("Child", p.getName());
@@ -33,7 +33,7 @@ public class CastingTest {
     }
 
     @Test
-    public void downCasting() {
+    void downCasting() {
         // 요로케는 안됨.
         assertThrows(ClassCastException.class, () -> {
             Parent p = new Parent();

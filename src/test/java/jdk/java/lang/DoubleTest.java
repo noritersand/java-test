@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DoubleTest {
 
     @Test
-    public void handleDecimalPlaces() {
+    void handleDecimalPlaces() {
         int portion = 18;
         int total = 26;
         double result = ((double) portion / total) * 100;

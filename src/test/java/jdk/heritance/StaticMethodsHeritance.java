@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StaticMethodsHeritance {
     @Test
-    public void shouldBeEquals() {
+    void shouldBeEquals() {
         Parent ins1 = new Child();
         assertEquals("Child", ins1.print());
         assertEquals("Parent", Parent.staticPrint());

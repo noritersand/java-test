@@ -18,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ArrayListTest {
 
     @Test
-    public void testAdd() {
+    void testAdd() {
         List<Object> list = new ArrayList<>();
         list.add(null);
     }
 
     @Test
-    public void wrongWayClone() {
+    void wrongWayClone() {
         ArrayList<ListTestModel> origins = new ArrayList<>();
         origins.add(new ListTestModel("123"));
         origins.add(new ListTestModel("456"));
@@ -38,7 +38,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void cloneManual() {
+    void cloneManual() {
         ArrayList<ListTestModel> origins = new ArrayList<>();
         origins.add(new ListTestModel("123"));
         origins.add(new ListTestModel("456"));
@@ -54,7 +54,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void getSize() {
+    void getSize() {
         ArrayList<String> stringList = new ArrayList<>();
         assertEquals(0, stringList.size());
         stringList = new ArrayList<>(10); // 리스트의 capacity를 지정한다. size가 아니다.
@@ -67,7 +67,7 @@ public class ArrayListTest {
      * @author fixalot
      */
     @Test
-    public void removeElementWithIterator() {
+    void removeElementWithIterator() {
         ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
         Iterator<String> iter = list.iterator();
         while (iter.hasNext()) {
@@ -86,7 +86,7 @@ public class ArrayListTest {
      * @author fixalot
      */
     @Test
-    public void removeElementByIndex() {
+    void removeElementByIndex() {
         ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
         for (int i = 0; i < list.size(); i++) {
             String str = list.get(i);
@@ -105,7 +105,7 @@ public class ArrayListTest {
      * @author fixalot
      */
     @Test
-    public void removeElementInWhile() {
+    void removeElementInWhile() {
         String[] strs = {"a", "b", "c", "d", "e"};
 
         // 앞 3개 지우기
@@ -144,7 +144,7 @@ public class ArrayListTest {
      * 리스트 검색 테스트 1: for문으로 전체 검색
      */
     @Test
-    public void search() {
+    void search() {
         Integer[] values = {1, 3, 7};
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
         final int targetValue = 3;
@@ -163,7 +163,7 @@ public class ArrayListTest {
      * 리스트 검색 테스트 3: java8의 StreamAPI 사용
      */
     @Test
-    public void searchWithStream() {
+    void searchWithStream() {
         List<HashMap<String, Object>> list = getSomeList();
         List<HashMap<String, Object>> searchResult
                 = list.stream().filter(ele -> "b".equals(ele.get("key")) || "d".equals(ele.get("key"))).collect(Collectors.toList());
@@ -174,7 +174,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void testToArray() {
+    void testToArray() {
         List<Integer> list = new ArrayList<Integer>();
         list.add(123);
         list.add(234);
@@ -183,14 +183,14 @@ public class ArrayListTest {
     }
 
     @Test
-    public void fromArray() {
+    void fromArray() {
         Integer[] values = {1, 3, 7};
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
         assertEquals("[1, 3, 7]", list.toString());
     }
 
     @Test
-    public void fromArrayByStream() {
+    void fromArrayByStream() {
         String[] strs = {"a", "b", "c", "d", "e"};
         List<String> stringList = Arrays.stream(strs).collect(Collectors.toList());
         assertEquals("[a, b, c, d, e]", stringList.toString());
@@ -201,7 +201,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void testClear() {
+    void testClear() {
         ArrayList<Integer> list = new ArrayList<>();
         assertNotNull(list);
         list.clear();
@@ -209,7 +209,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void arrayList() {
+    void arrayList() {
         ArrayList<Integer> list = new ArrayList<>();
         list.add(9);
         list.add(8);
@@ -232,7 +232,7 @@ public class ArrayListTest {
      * @author fixalot
      */
     @Test
-    public void testSublist() {
+    void testSublist() {
         List<Integer> numbers = Arrays.asList(5, 3, 1, 2, 9, 5, 0, 7);
 
         List<Integer> firstBorn = numbers.subList(0, 1); // 5
@@ -249,13 +249,13 @@ public class ArrayListTest {
     }
 
     @Test
-    public void testJoin() {
+    void testJoin() {
         List<String> texts = Arrays.asList("a", "b", "c");
         assertEquals("a, b, c", String.join(", ", texts));
     }
 
     @Test
-    public void testForEach() {
+    void testForEach() {
         Integer[] values = {1, 3, 7};
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
         list.forEach(k -> {
@@ -264,7 +264,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void testRemoveif() {
+    void testRemoveif() {
         Integer[] values = {1, 3, 7};
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
         list.removeIf(p -> 3 == p);

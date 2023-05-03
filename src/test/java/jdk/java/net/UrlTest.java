@@ -20,13 +20,13 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class UrlTest {
 
     @Test
-    public void initialize() throws MalformedURLException {
+    void initialize() throws MalformedURLException {
         URL url = new URL("http://google.com/someone?a=야");
         assertEquals("http://google.com/someone?a=야", url.toString());
     }
 
     @Test
-    public void getSpecificInformation() throws IOException {
+    void getSpecificInformation() throws IOException {
         URL url = new URL("http://google.com/someone?a=야");
         assertEquals("http", url.getProtocol());
         assertEquals("google.com", url.getHost());

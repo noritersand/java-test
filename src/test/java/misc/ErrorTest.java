@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ErrorTest {
 
     @Test
-    public void test() {
+    void test() {
         assertThrows(Error.class, () -> {
             throw new Error();
         });

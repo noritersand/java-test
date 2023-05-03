@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JoinerTest {
 
     @Test
-    public void listJoin() {
+    void listJoin() {
         List<Integer> numbers = Arrays.asList(1, 2, 3);
         Joiner joiner = Joiner.on(", ");
         assertEquals("1, 2, 3", joiner.join(numbers));

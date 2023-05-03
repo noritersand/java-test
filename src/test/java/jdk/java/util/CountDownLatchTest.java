@@ -22,7 +22,7 @@ public class CountDownLatchTest {
      * @author fixalot
      */
     @Test
-    public void printElapsedTime() throws InterruptedException {
+    void printElapsedTime() throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(1);
 //		boolean success = lacth.await(2000, TimeUnit.MILLISECONDS);
 //		assertTrue(success);

@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CharsetTest {
 
     @Test
-    public void useCharset() {
+    void useCharset() {
         assertTrue(Charset.isSupported("UTF-8"));
 
 //		Charset charset = Charset.defaultCharset(); // default는 의도하지 않은 결과가 나올 수 있음.
@@ -34,7 +34,7 @@ public class CharsetTest {
     }
 
     @Test
-    public void useStandardCharset() {
+    void useStandardCharset() {
         assertEquals("US-ASCII", StandardCharsets.US_ASCII.name());
         assertEquals("ISO-8859-1", StandardCharsets.ISO_8859_1.name());
         assertEquals("UTF-8", StandardCharsets.UTF_8.name());

@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 public class GenericClassTest {
 
     @Test
-    public void testNormalGeneric() {
+    void testNormalGeneric() {
         NormalGeneric<String> gen = new NormalGeneric<>();
         gen.setName("Waldo");
         assertEquals("Waldo", gen.getName());
@@ -32,21 +32,21 @@ public class GenericClassTest {
     }
 
     @Test
-    public void shouldCompileError() {
+    void shouldCompileError() {
 //		CustomGeneric<Integer> gen3 = new CustomGeneric<>(); // wrong 
         // Bound mismatch: The type Integer is not a valid substitute for the bounded parameter <T extends BigDecimal> of the type
         // CustomGeneric<T>
     }
 
     @Test
-    public void testGenericMethod() {
+    void testGenericMethod() {
         GenericMethodOnly gen = new GenericMethodOnly();
         assertSame(Integer.class, gen.getType(Integer.valueOf(123)));
         assertSame(String.class, gen.getType("Text"));
     }
 
     @Test
-    public void testLimitedGeneric() {
+    void testLimitedGeneric() {
 //		LimitedGeneric<Integer> a = new LimitedGeneric<>(); // Bound mismatch: The type Integer is not a valid substitute for the bounded parameter <T extends BigDecimal> of the type LimitedGeneric<T>
     }
 

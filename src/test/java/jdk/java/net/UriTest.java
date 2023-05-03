@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class UriTest {
 
     @Test
-    public void initialize() {
+    void initialize() {
         URI uri = URI.create("somefolder/somefile.png");
         assertEquals("somefolder/somefile.png", uri.toString());
         assertNull(uri.getScheme());
@@ -34,7 +34,7 @@ public class UriTest {
     }
 
     @Test
-    public void getSpecificInformation() {
+    void getSpecificInformation() {
         URI uri = URI.create("http://google.com/someone?a=야");
 
         assertEquals("http", uri.getScheme());

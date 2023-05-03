@@ -30,7 +30,7 @@ public class TryCatchFinallyTest {
      * @author noritersand
      */
     @Test
-    public void tryWithResources() throws IOException {
+    void tryWithResources() throws IOException {
         try (Writer output = null) {
             assertTrue(1 != 2);
         }
@@ -45,7 +45,7 @@ public class TryCatchFinallyTest {
      * @author noritersand
      */
     @Test
-    public void catchOrder() {
+    void catchOrder() {
         try {
             int a = 0;
             if (0 == a) {
@@ -61,7 +61,7 @@ public class TryCatchFinallyTest {
     }
 
     @Test
-    public void withOutCatchStatement() {
+    void withOutCatchStatement() {
         try {
             try {
                 @SuppressWarnings("unused")
@@ -76,7 +76,7 @@ public class TryCatchFinallyTest {
     }
 
     @Test
-    public void finallyTest() {
+    void finallyTest() {
         String str = "";
         try {
             str += "try";
@@ -87,7 +87,7 @@ public class TryCatchFinallyTest {
     }
 
     @Test
-    public void finallyTest2() {
+    void finallyTest2() {
         String str = "";
         try {
             str += "try";
@@ -101,7 +101,7 @@ public class TryCatchFinallyTest {
     }
 
     @Test
-    public void finallyTest3() {
+    void finallyTest3() {
         String str = weirdStatement();
         assertEquals("weirdStatement", str);
 

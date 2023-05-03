@@ -20,7 +20,7 @@ public class StopWatchTest {
      * @author fixalot
      */
     @Test
-    public void test() {
+    void test() {
         StopWatch watch = new StopWatch();
         doUselessThing();
         assertEquals(0, watch.getNanoTime()); // 시작하기 전에는 0

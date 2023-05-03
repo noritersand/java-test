@@ -25,7 +25,7 @@ public class ForStatementTest {
      * @author fixalot
      */
     @Test
-    public void test() {
+    void test() {
         // 기본 사용 방법
         int i;
         for (i = 0; 1 > i; i++) {
@@ -54,7 +54,7 @@ public class ForStatementTest {
     }
 
     @Test
-    public void testIterator() {
+    void testIterator() {
         ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
         for (Iterator<String> iterator = list.iterator(); iterator.hasNext(); ) {
             log.debug(iterator.next());
@@ -70,7 +70,7 @@ public class ForStatementTest {
      * <p>enhanced for문이라 불리는 for-each 테스트</p>
      */
     @Test
-    public void testEnhancedForStatement() {
+    void testEnhancedForStatement() {
         ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
         for (String s : list) {
             log.debug("s: {}", s);

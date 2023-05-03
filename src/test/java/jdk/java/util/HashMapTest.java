@@ -24,7 +24,7 @@ public class HashMapTest {
      * @author noritersand
      */
     @Test
-    public void testEquals() {
+    void testEquals() {
         HashMap<String, Object> x = new HashMap<>();
         HashMap<String, Object> y = new HashMap<>();
         x.put("a", "b");
@@ -41,7 +41,7 @@ public class HashMapTest {
     }
 
     @Test
-    public void testEntry() {
+    void testEntry() {
         HashMap<String, String> map = new HashMap<>();
         map.put("first", "1st");
         map.put("second", "2nd");
@@ -56,13 +56,13 @@ public class HashMapTest {
     }
 
     @Test
-    public void shouldBeNull() {
+    void shouldBeNull() {
         HashMap<String, String> map = new HashMap<>();
         assertNull(map.get("야"));
     }
 
     @Test
-    public void checkNPE() {
+    void checkNPE() {
         Map<String, Object> map = new HashMap<>();
         String empty = (String) map.get("empty");
         assertNull(empty);
@@ -79,7 +79,7 @@ public class HashMapTest {
      * @author fixalot
      */
     @Test
-    public void possibleLoopStatement() {
+    void possibleLoopStatement() {
         Map<String, Object> map = new HashMap<>();
         map.put("a", 1234);
         map.put("b", 5678);
@@ -92,7 +92,7 @@ public class HashMapTest {
     }
 
     @Test
-    public void testForEach() {
+    void testForEach() {
         Map<String, Integer> items = new HashMap<>();
         items.put("A", 10);
         items.put("B", 20);

@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class InterfaceTest {
 
     @Test
-    public void test() {
+    void test() {
         String fourfivesix = ImplementMe.fourFiveSix;
         assertEquals(fourfivesix, "456");
         ImplementMe aa = new ImplementMe() {

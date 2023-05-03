@@ -13,12 +13,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MathTest {
 
     @Test
-    public void test() {
+    void test() {
         log.debug("{}", Math.random());
     }
 
     @Test
-    public void testAbs() {
+    void testAbs() {
         assertEquals(123, 123);
         assertEquals(123, 123);
         assertEquals(0.1, 0.1);

@@ -14,7 +14,7 @@ import java.util.List;
 public class GenericMethodTest {
 
     @Test
-    public void shouldSuccess() {
+    void shouldSuccess() {
         CustomGeneric gen = new CustomGeneric();
 
         gen.getSome(new LittleDecimal(123)); // correct
@@ -29,7 +29,7 @@ public class GenericMethodTest {
     }
 
     @Test
-    public void shouldBeCompileError() {
+    void shouldBeCompileError() {
 //		CustomGeneric gen = new CustomGeneric();
 
 //		gen.getSome("123"); // wrong

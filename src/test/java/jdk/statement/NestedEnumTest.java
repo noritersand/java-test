@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class NestedEnumTest {
 
     @Test
-    public void test() {
+    void test() {
         NestedEnumTestBean.InsertType insertType = NestedEnumTestBean.InsertType.APPEND;
         assertEquals("APPEND", insertType.toString());
     }

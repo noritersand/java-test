@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class SystemTest {
 
     @Test
-    public void getCurrentTime() {
+    void getCurrentTime() {
         String millisecond = String.valueOf(System.currentTimeMillis());
         assertEquals(13, millisecond.length());
 //		String nanosecond = String.valueOf(System.nanoTime());
@@ -34,7 +34,7 @@ public class SystemTest {
      * 모든 환경 변수 조회.
      */
     @Test
-    public void getSystemEnvironmentVariables() {
+    void getSystemEnvironmentVariables() {
         Map<String, String> env = System.getenv();
         Set<String> keySet = env.keySet();
         for (String envname : keySet) {
@@ -46,7 +46,7 @@ public class SystemTest {
      * 모든 시스템 프로퍼티 조회.
      */
     @Test
-    public void getSystemProperties() {
+    void getSystemProperties() {
         Properties props = System.getProperties();
         Enumeration<?> names = props.propertyNames();
         while (names.hasMoreElements()) {
@@ -56,14 +56,14 @@ public class SystemTest {
     }
 
     @Test
-    public void getDefaultEncodingProperty() {
+    void getDefaultEncodingProperty() {
         log.debug("file.encoding={}", System.getProperty("file.encoding"));
         log.debug("default character set={}", Charset.defaultCharset());
         assertEquals(Charset.defaultCharset().toString(), System.getProperty("file.encoding").toUpperCase());
     }
 
     @Test
-    public void shouldBeNull() {
+    void shouldBeNull() {
         assertNull(System.getProperty("i'm not here"));
     }
 

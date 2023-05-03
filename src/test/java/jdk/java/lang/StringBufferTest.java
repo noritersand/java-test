@@ -24,7 +24,7 @@ public class StringBufferTest {
      * @author fixal
      */
     @Test
-    public void concatBytes() {
+    void concatBytes() {
         final String origin = "가나다라";
         byte[] bytes = origin.getBytes(StandardCharsets.UTF_8);
         assertArrayEquals(new byte[]{-22, -80, -128, -21, -126, -104, -21, -117, -92, -21, -99, -68}, bytes);
@@ -43,7 +43,7 @@ public class StringBufferTest {
     }
 
     @Test
-    public void testDelete() {
+    void testDelete() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("abc").append("def");
         assertEquals(6, buffer.length());
@@ -56,7 +56,7 @@ public class StringBufferTest {
      * StringBuilder도 쓰는 방법은 비슷함
      */
     @Test
-    public void testStringBuilder() {
+    void testStringBuilder() {
         StringBuilder builder = new StringBuilder();
         builder.append("abc").append("def");
         assertEquals(6, builder.length());

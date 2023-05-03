@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HeritanceTest {
 
     @Test
-    public void test() {
+    void test() {
         X obj = new Z();
         assertEquals("3", obj.f());
         assertEquals("2", X.g());

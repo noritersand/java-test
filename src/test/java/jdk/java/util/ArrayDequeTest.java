@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ArrayDequeTest {
 
     @Test
-    public void test() {
+    void test() {
         Queue<String> queue = new ArrayDeque<>();
         queue.add("a"); // add(): 큐에 요소 추가
         queue.add("b");

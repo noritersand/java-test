@@ -14,7 +14,7 @@ public class CharacterTest {
 
     @SuppressWarnings("unlikely-arg-type")
     @Test
-    public void compare() {
+    void compare() {
         char a = 'a';
         char b = 'b';
         Character aa = 'a';
@@ -53,7 +53,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void getASCIICode() {
+    void getASCIICode() {
         final String binary = "5";
         final String alphabet = "a";
         final String korean = "한";
@@ -63,7 +63,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void fromASCIICode() {
+    void fromASCIICode() {
         char a = 65;
         char b = 98;
         assertEquals('A', a);

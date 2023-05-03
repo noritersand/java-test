@@ -19,7 +19,7 @@ public class CallableStatementTest {
      * @author fixalot
      */
 //	@Test
-    public void test() throws SQLException {
+    void test() throws SQLException {
         Connection conn = DriverManager.getConnection("", "", "");
         CallableStatement cstmt = conn.prepareCall("{call TEST_PROCEDURE(?, ?) }");
         cstmt.setInt(0, 12345);

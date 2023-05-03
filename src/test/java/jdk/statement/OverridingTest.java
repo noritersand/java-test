@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  */
 public class OverridingTest {
     @Test
-    public void override() {
+    void override() {
 
     }
 }

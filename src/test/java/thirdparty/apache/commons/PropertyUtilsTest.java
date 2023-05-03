@@ -29,7 +29,7 @@ public class PropertyUtilsTest {
      * @author fixalot
      */
     @Test
-    public void testCopyProperties() throws Exception {
+    void testCopyProperties() throws Exception {
         TestModel oldbie = new TestModel();
         oldbie.setName("야");
         oldbie.setNumber(101);

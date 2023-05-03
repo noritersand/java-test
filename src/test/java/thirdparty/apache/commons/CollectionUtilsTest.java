@@ -29,7 +29,7 @@ public class CollectionUtilsTest {
      * @see HashMapTest#equality()
      */
     @Test
-    public void testUnionWithMap() {
+    void testUnionWithMap() {
         List<HashMap<String, Object>> a = generateMapList();
         List<HashMap<String, Object>> b = generateMapList();
         assertNotSame(a, b);
@@ -57,7 +57,7 @@ public class CollectionUtilsTest {
      * @author noritersand
      */
     @Test
-    public void testUnionWithPOJO1() {
+    void testUnionWithPOJO1() {
         List<ListTestModel> x = generatePOJOList();
         List<ListTestModel> y = generatePOJOList();
         assertNotSame(x, y);
@@ -86,7 +86,7 @@ public class CollectionUtilsTest {
      * @author noritersand
      */
     @Test
-    public void testUnionWithPOJO2() {
+    void testUnionWithPOJO2() {
         List<ListTestModel> x = generatePOJOList();
         List<ListTestModel> y = new ArrayList<>();
         assertNotSame(x, y);
@@ -111,7 +111,7 @@ public class CollectionUtilsTest {
      * 리스트 검색 테스트
      */
     @Test
-    public void testSelect() {
+    void testSelect() {
         List<HashMap<String, Object>> list = generateMapList();
         // filter에 사용할 predicate 설정
         Predicate condition = new Predicate() {
@@ -132,7 +132,7 @@ public class CollectionUtilsTest {
     }
 
     @Test
-    public void testReverseArray() {
+    void testReverseArray() {
 //		int[] arr = new int[] { 1, 2, 6, 3, 4 };
         Integer[] arr = {1, 2, 6, 3, 4};
         CollectionUtils.reverseArray(arr);

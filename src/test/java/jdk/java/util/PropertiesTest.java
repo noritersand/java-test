@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PropertiesTest {
 
     @Test
-    public void testStore() throws IOException {
+    void testStore() throws IOException {
         // 상대경로를 지정하면 루트는 '워크스페이스/프로젝트' 폴더다.
         File dir = new File("temp");
         Path testProperties = new File("temp/test.properties").toPath();
@@ -43,13 +43,13 @@ public class PropertiesTest {
     }
 
     @Test
-    public void getPropertyDefault() {
+    void getPropertyDefault() {
         Properties prop = new Properties();
         assertEquals("hello-world", prop.getProperty("I'm not exist", "hello-world"));
     }
 
     @Test
-    public void getPropertyByInputStream() throws IOException {
+    void getPropertyByInputStream() throws IOException {
         FileInputStream fis = new FileInputStream("src\\test\\resources\\properties-test\\access-test.properties");
         Properties prop = new Properties();
         prop.load(fis);
@@ -64,7 +64,7 @@ public class PropertiesTest {
     }
 
     @Test
-    public void getPropertyByReader() throws IOException {
+    void getPropertyByReader() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src\\test\\resources\\properties-test\\access-test.properties", StandardCharsets.UTF_8));
         Properties prop = new Properties();
         prop.load(reader);
@@ -79,7 +79,7 @@ public class PropertiesTest {
     }
 
     @Test
-    public void getPropertyFromXml() throws IOException {
+    void getPropertyFromXml() throws IOException {
         FileInputStream fis = new FileInputStream("src\\test\\resources\\properties-test\\uri-test.xml");
         Properties prop = new Properties();
         prop.loadFromXML(fis);

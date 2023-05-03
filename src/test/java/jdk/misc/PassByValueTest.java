@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PassByValueTest {
 
     @Test
-    public void test() {
+    void test() {
         String a = "a";
         final String b = "b";
         reassign(a);

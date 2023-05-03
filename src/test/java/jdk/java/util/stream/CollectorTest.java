@@ -45,7 +45,7 @@ public class CollectorTest {
      * SQL의 group by와 비슷한 Collectors.groupingBy() 테스트
      */
     @Test
-    public void testGroupingBy() {
+    void testGroupingBy() {
         List<Dummy> hashMaps = this.generateDummyList();
         Map<String, List<Dummy>> collect = hashMaps.stream()
                 .collect(Collectors.groupingBy(Dummy::getGroup));

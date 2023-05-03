@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class MoreObjectsTest {
 
     @Test
-    public void useToStringHelper() {
+    void useToStringHelper() {
         MoreObjects.ToStringHelper helper = MoreObjects.toStringHelper(PlainObject.class);
         log.debug(helper.toString());
 

@@ -28,7 +28,7 @@ public class LambdaTest {
      * @author fixalot
      */
     @Test
-    public void test1() {
+    void test1() {
         Map<String, Object> goods = new HashMap<>();
         goods.put("adultYn", "1");
         Predicate<Map<String, Object>> isAdultGoods = g -> StringUtils.equals(MapUtils.getString(g, "adultYn"), "1");

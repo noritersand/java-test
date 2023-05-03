@@ -16,7 +16,7 @@ public class SerializeTest implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Test
-    public void deserialize() throws Exception {
+    void deserialize() throws Exception {
         File file = Paths.get("src/test/resources/serialize-test/test.ser").toFile();
 
         // some instance

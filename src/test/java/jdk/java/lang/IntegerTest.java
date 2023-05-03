@@ -22,7 +22,7 @@ public class IntegerTest {
      * @author fixalot
      */
     @Test
-    public void convertToBinary() {
+    void convertToBinary() {
         assertEquals("0", Integer.toBinaryString(0));
         assertEquals("1010", Integer.toBinaryString(10));
         assertEquals("11111111", Integer.toBinaryString(255));
@@ -36,7 +36,7 @@ public class IntegerTest {
      * @author fixalot
      */
     @Test
-    public void convertToOctonary() {
+    void convertToOctonary() {
         assertEquals("0", Integer.toOctalString(0));
         assertEquals("12", Integer.toOctalString(10));
         assertEquals("377", Integer.toOctalString(255));
@@ -50,7 +50,7 @@ public class IntegerTest {
      * @author fixalot
      */
     @Test
-    public void convertToHexadecimal() {
+    void convertToHexadecimal() {
         assertEquals("0", Integer.toHexString(0));
         assertEquals("a", Integer.toHexString(10));
         assertEquals("ff", Integer.toHexString(255));
@@ -62,7 +62,7 @@ public class IntegerTest {
      * 얘네 다 nullSafe 하지 않음
      */
     @Test
-    public void isNullSafe() {
+    void isNullSafe() {
         String str = "";
 //        Integer a = Integer.parseInt(str);
 //        Integer a = Integer.valueOf(str);

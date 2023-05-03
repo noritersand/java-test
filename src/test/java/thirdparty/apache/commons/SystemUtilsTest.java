@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class SystemUtilsTest {
 
     @Test
-    public void test() {
+    void test() {
         log.debug("{}", SystemUtils.IS_OS_WINDOWS);
         log.debug("{}", SystemUtils.IS_OS_UNIX);
         log.debug("{}", SystemUtils.IS_OS_LINUX);

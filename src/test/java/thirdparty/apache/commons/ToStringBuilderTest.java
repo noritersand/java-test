@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ToStringBuilderTest {
 
     @Test
-    public void printToStringResult() {
+    void printToStringResult() {
         PlainObject po = new PlainObject();
         log.debug(ToStringBuilder.reflectionToString(po));
 

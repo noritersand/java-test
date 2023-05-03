@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PathsTest {
 
     @Test
-    public void initialize() throws IOException {
+    void initialize() throws IOException {
         Path path = Paths.get("src/test/resources/path-test/amiexist.txt");
         Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
         Path path2 = Paths.get("C:\\project\\workspace");
@@ -37,7 +37,7 @@ public class PathsTest {
     }
 
     @Test
-    public void shouldError() {
+    void shouldError() {
         // 없는 경로라도 단순 문자열이면 문제가 없지만
         Paths.get("c:", "\\ppp", "\\aaa");
 
@@ -48,7 +48,7 @@ public class PathsTest {
     }
 
     @Test
-    public void getRoot() {
+    void getRoot() {
         log.debug("relative paths:");
         log.debug(Paths.get("/").toString()); // just "\"
         log.debug(Paths.get("").toString()); // ""

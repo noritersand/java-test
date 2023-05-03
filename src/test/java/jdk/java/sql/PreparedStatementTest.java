@@ -21,7 +21,7 @@ public class PreparedStatementTest {
      * @author fixalot
      */
 //	@Test
-    public void test() {
+    void test() {
         try (Connection con = DriverManager.getConnection("")) {
             PreparedStatement stmt = con.prepareStatement("SELECT 123");
             stmt.setFetchSize(2000);

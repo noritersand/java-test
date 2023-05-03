@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class HandleXMLTest {
 
     //	@Test
-    public void merge() throws SAXException, IOException, ParserConfigurationException {
+    void merge() throws SAXException, IOException, ParserConfigurationException {
         File backweb = Paths.get("C:\\project\\workspace\\etbs\\backweb\\target\\pmd.xml").toFile();
         File batch = Paths.get("C:\\project\\workspace\\etbs\\batch\\target\\pmd.xml").toFile();
         File cardrelay = Paths.get("C:\\project\\workspace\\etbs\\cardrelay\\target\\pmd.xml").toFile();

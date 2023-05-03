@@ -16,12 +16,12 @@ import static org.junit.jupiter.api.Assertions.*;
 @Slf4j
 public class ClassClassTest {
     @Test
-    public void shouldNotEquals() {
+    void shouldNotEquals() {
         assertNotEquals(String.class, String[].class);
     }
 
     @Test
-    public void testGetClass() {
+    void testGetClass() {
         MyClass my = new MyClass();
         assertEquals(MyClass.class, my.getClass());
         assertNotEquals(MyClass.class, my.getClass().getClass());
@@ -30,12 +30,12 @@ public class ClassClassTest {
     }
 
     @Test
-    public void testGetPackage() {
+    void testGetPackage() {
         assertEquals("jdk.java.lang", ClassClassTest.class.getPackage().getName());
     }
 
     @Test
-    public void testForName() throws Exception {
+    void testForName() throws Exception {
         Class<?> cls = Class.forName("jdk.java.lang.MyClass");
         assertEquals(java.lang.Class.class, cls.getClass());
         assertEquals("jdk.java.lang.MyClass", cls.getName());
@@ -93,7 +93,7 @@ public class ClassClassTest {
     }
 
     @Test
-    public void testCurrentMethodName() {
+    void testCurrentMethodName() {
         // #1: 익명 클래스를 생성하고, 해당 클래스가 생성된 환경의 정보 중 메서드 이름을 가져오는 일종의 꼼수. 컴파일 시 불필요한 클래스가 생성되는것에 주의할 것
         String methodName = new Object() {
         }.getClass().getEnclosingMethod().getName();
@@ -114,7 +114,7 @@ public class ClassClassTest {
     }
 
     @Test
-    public void testCurrentClassName() {
+    void testCurrentClassName() {
         StackTraceElement[] ste = Thread.currentThread().getStackTrace();
         log.debug(Arrays.toString(ste));
         assertEquals("jdk.java.lang.ClassClassTest", ste[1].getClassName());

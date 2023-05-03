@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BooleansTest {
 
     @Test
-    public void test() {
+    void test() {
         assertEquals(5, Booleans.asList(false, true, false, true, true).size());
         assertEquals("true, false", Booleans.join(", ", true, false));
     }

@@ -18,26 +18,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BigIntegerTest {
 
     @Test
-    public void instantiate() {
+    void instantiate() {
         assertEquals(BigInteger.valueOf(123), new BigInteger("123"));
 //		assertEquals(BigInteger.valueOf(123), new BigInteger("123.456")); // java.lang.NumberFormatException: For input string: "123.456"
     }
 
     @Test
-    public void testMaxValue() {
+    void testMaxValue() {
         assertEquals(456,
                 new BigInteger("123").max(new BigInteger("456")).intValue());
     }
 
     @Test
-    public void fromBigDecimal() {
+    void fromBigDecimal() {
         // BigInteger로 변환시 소수점 이하는 버린다.
         assertEquals(BigInteger.TWO, new BigDecimal("2.123").toBigInteger());
         assertEquals(BigInteger.TWO, new BigDecimal("2.723").toBigInteger());
     }
 
     @Test
-    public void arithmeticOperation() {
+    void arithmeticOperation() {
         BigInteger ten = BigInteger.TEN;
         BigInteger two = BigInteger.TWO;
         assertEquals(BigInteger.valueOf(12), ten.add(two));
@@ -47,7 +47,7 @@ public class BigIntegerTest {
     }
 
     @Test
-    public void logicalOperation() {
+    void logicalOperation() {
         BigInteger zero = BigInteger.ZERO;
         BigInteger one = BigInteger.ONE;
         assertEquals("-1", zero.not().toString());

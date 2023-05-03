@@ -31,7 +31,7 @@ public class PrimitiveTest {
     }
 
     @Test
-    public void getMinMaxRange() {
+    void getMinMaxRange() {
         assertEquals(-128, Byte.MIN_VALUE);
         assertEquals(127, Byte.MAX_VALUE);
         assertEquals(-32768, Short.MIN_VALUE);
@@ -47,12 +47,12 @@ public class PrimitiveTest {
     }
 
     @Test
-    public void autoBoxing() {
+    void autoBoxing() {
         assertEquals(1, (long) Long.valueOf(1));
     }
 
     @Test
-    public void testValueOf() {
+    void testValueOf() {
         int number = Integer.valueOf("1");
         assertEquals(1, number);
 
@@ -66,7 +66,7 @@ public class PrimitiveTest {
     }
 
     @Test
-    public void floatCalculateErrorRange() {
+    void floatCalculateErrorRange() {
         double val1 = 1.5;
         double val2 = 0.3;
 

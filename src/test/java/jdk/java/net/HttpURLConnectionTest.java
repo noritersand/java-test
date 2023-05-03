@@ -20,7 +20,7 @@ public class HttpURLConnectionTest {
      * @author fixal
      */
 //	@Test
-    public void connectionTest() throws IOException {
+    void connectionTest() throws IOException {
         URL url = new URL("http://localhost:8080");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setDoOutput(true);

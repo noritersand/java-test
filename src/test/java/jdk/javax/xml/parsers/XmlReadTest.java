@@ -24,7 +24,7 @@ import java.util.List;
 public class XmlReadTest {
 
     @Test
-    public void readXml() throws Exception {
+    void readXml() throws Exception {
         String filePath = "src/test/resources/xml-read-test/readme.xml";
         File xmlFile = new File(filePath);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

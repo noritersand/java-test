@@ -18,7 +18,7 @@ public class SwitchTest {
      * @author fixalot
      */
     @Test
-    public void whenVariableInitialize() {
+    void whenVariableInitialize() {
         int a = 2;
         switch (a) {
             case 1:
@@ -62,7 +62,7 @@ public class SwitchTest {
      * @author noritersand
      */
     @Test
-    public void shouldBeCompileError() {
+    void shouldBeCompileError() {
         if (1 == SwitchTest.myS) {//			case (myS + 0): // case expressions must be constant expressions
 //			case (myS + 1): // case expressions must be constant expressions
             log.debug("정상값 입력");

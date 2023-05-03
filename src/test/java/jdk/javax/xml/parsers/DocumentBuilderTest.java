@@ -19,7 +19,7 @@ import java.io.File;
 public class DocumentBuilderTest {
 
     @Test
-    public void readXml() throws Exception {
+    void readXml() throws Exception {
         File file = new File("src/test/resources/document-builder-test/try-read-this.xml");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();

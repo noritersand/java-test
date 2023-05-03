@@ -12,7 +12,7 @@ import java.util.Date;
 public class SimpleDateFormatTest {
 
     @Test
-    public void test() throws ParseException {
+    void test() throws ParseException {
         Calendar cal = Calendar.getInstance();
 
         // 2013-02-19일 설정

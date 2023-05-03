@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Base64Test {
 
     @Test
-    public void testEncode() {
+    void testEncode() {
         Base64.Encoder encoder = Base64.getEncoder();
         String str = "Hello World!";
         byte[] encoded = encoder.encode(str.getBytes(StandardCharsets.UTF_8));
@@ -25,14 +25,14 @@ public class Base64Test {
     }
 
     @Test
-    public void testDecode() {
+    void testDecode() {
         Base64.Decoder decoder = Base64.getDecoder();
         byte[] decoded = decoder.decode("SGVsbG8gV29ybGQh");
         assertEquals("Hello World!", new String(decoded, StandardCharsets.UTF_8));
     }
 
     @Test
-    public void shouldBeEquals() {
+    void shouldBeEquals() {
         Base64.Encoder encoder = Base64.getEncoder();
         assertEquals("YXxi", new String(encoder.encode("a|b".getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8));
         assertEquals("YTpi", new String(encoder.encode("a:b".getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8));

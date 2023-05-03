@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 public class ClassCastExceptionTest {
 
     @Test
-    public void case1() {
+    void case1() {
         Object nan = "i'm not number";
         Assertions.assertThrows(ClassCastException.class, () -> {
             Integer number = (Integer) nan; // should be exception

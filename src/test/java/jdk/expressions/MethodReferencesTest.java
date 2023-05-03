@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 public class MethodReferencesTest {
 
     @Test
-    public void testMethodReference2() {
+    void testMethodReference2() {
         final String txt = "Hello";
         // 아래 넷은 모두 결과가 같다.
 
@@ -51,7 +51,7 @@ public class MethodReferencesTest {
      * @author masca
      */
     @Test
-    public void testMethodReference3() {
+    void testMethodReference3() {
         final String txt = "Hi";
         Foo.call(txt, (str) -> {
             log.debug(str);

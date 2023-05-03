@@ -9,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class AbstractClassTest {
 
     @Test
-    public void shouldBeCompileError() {
+    void shouldBeCompileError() {
 //		ExtendMe extendMe = new ExtendMe(); // 추상 클래스는 인스턴스 생성 불가 Cannot instantiate the type ExtendMe
     }
 
     @Test
-    public void shouldBeNotNull() {
+    void shouldBeNotNull() {
         ExtendYou extendYou = new ExtendYou();
         assertNotNull(extendYou);
     }

@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CalculateElapsedTimeTest {
 
     @Test
-    public void calculate() {
+    void calculate() {
         long start = new GregorianCalendar(2016, 2, 5).getTimeInMillis();
         long end = new GregorianCalendar(2017, 2, 5).getTimeInMillis();
         long elapsedDays = (end - start) / 1000 / 60 / 60 / 24;

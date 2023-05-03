@@ -23,7 +23,7 @@ public class ThreadTest1 {
     }
 
     @Test
-    public void getCurrentMethodName() {
+    void getCurrentMethodName() {
         StackTraceElement[] ste = Thread.currentThread().getStackTrace();
 
         // System. out.println(ste[ste.length-depth].getClassName()+"#"+ste[ste.length-depth].getMethodName());

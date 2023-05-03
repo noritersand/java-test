@@ -19,7 +19,7 @@ public class OperatorTest {
      * 산술 연산자(arithmetic operator) 테스트
      */
     @Test
-    public void arithmeticOperator() {
+    void arithmeticOperator() {
         int n = 2665 / 1333; // 연산할 때 타입 명시가 없으면 int 타입으로 처리됨
         long l = 2665 / 1333;
         double d = 2665.0D / 1333.0D;
@@ -36,7 +36,7 @@ public class OperatorTest {
      * 음수 테스트
      */
     @Test
-    public void negativeNumberTest() {
+    void negativeNumberTest() {
         int p = 123;
         assertEquals(-123, -p);
         assertEquals(-123, -(p));
@@ -58,7 +58,7 @@ public class OperatorTest {
      * 할당 연산자<sup>assignment operator</sup> 테스트
      */
     @Test
-    public void assignmentOperator() {
+    void assignmentOperator() {
         // 할당
         int n = 1;
         assertEquals(1, n);
@@ -88,7 +88,7 @@ public class OperatorTest {
      * 음수 부호 테스트
      */
     @Test
-    public void negativeSign() {
+    void negativeSign() {
         assertTrue(-3 < 0);
         final int three = 3;
         assertEquals(-3, -(three));
@@ -103,7 +103,7 @@ public class OperatorTest {
     }
 
     @Test
-    public void ternaryOperator() {
+    void ternaryOperator() {
         String first = "1";
         String second = "2";
         String third = "3";
@@ -114,7 +114,7 @@ public class OperatorTest {
     }
 
     @Test
-    public void unaryOperator() {
+    void unaryOperator() {
         int a = 0;
         ++a;
         assertEquals(1, a); // 변수 반환 이전에 연산. 따라서 +1의 결과인 1
@@ -133,12 +133,12 @@ public class OperatorTest {
     }
 
     @Test
-    public void binaryOperator() {
+    void binaryOperator() {
         assertEquals(2, 1 + 1);
     }
 
     @Test
-    public void modulusOperator() {
+    void modulusOperator() {
         assertEquals(0, 0 % 3);
         assertEquals(1, 1 % 3);
         assertEquals(2, 2 % 3);
@@ -152,7 +152,7 @@ public class OperatorTest {
     }
 
     @Test
-    public void leftShiftOperator() {
+    void leftShiftOperator() {
         int a = 9;
         assertEquals("1001", Integer.toBinaryString(a));
         assertEquals(36, a << 2);
@@ -160,7 +160,7 @@ public class OperatorTest {
     }
 
     @Test
-    public void rightShiftOperator() {
+    void rightShiftOperator() {
         int a = 9;
         assertEquals("1001", Integer.toBinaryString(a));
         assertEquals("10", Integer.toBinaryString(a >> 2));
@@ -173,7 +173,7 @@ public class OperatorTest {
     }
 
     @Test
-    public void unsignedRightShiftOperator() {
+    void unsignedRightShiftOperator() {
         int a = 9; // 1001
         assertEquals("1001", Integer.toBinaryString(a));
         assertEquals("10", Integer.toBinaryString(a >>> 2));

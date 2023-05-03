@@ -20,7 +20,7 @@ public class FormatterTest {
      * @author fixalot
      */
     @Test
-    public void test() {
+    void test() {
 //		System.out.printf("크기%,d, 파일%,d개, 폴더%,d\n", sizeSum, fileCnt, folderCnt);
 
         // TODO

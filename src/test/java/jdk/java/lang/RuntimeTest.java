@@ -26,7 +26,7 @@ public class RuntimeTest {
      * @author fixalot
      */
 //	@Test
-    public void test() throws IOException {
+    void test() throws IOException {
 
         // TODO 미완성
 

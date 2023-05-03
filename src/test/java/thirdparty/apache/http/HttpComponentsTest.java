@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class HttpComponentsTest {
 
     @Test
-    public void send() throws Exception {
+    void send() throws Exception {
         String result = sendSimpleRequest("http://google.com");
         assertTrue(null != result && !result.isEmpty());
         log.debug(result);

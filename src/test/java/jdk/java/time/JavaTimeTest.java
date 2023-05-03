@@ -21,7 +21,7 @@ public class JavaTimeTest {
     public static final ZoneId ZONE_ID_UTC = ZoneId.of("UTC");
 
     @Test
-    public void test() {
+    void test() {
         LocalDateTime now1 = LocalDateTime.now().minusHours(9);
         LocalDateTime now2 = LocalDateTime.now(ZoneId.of("UTC"));
 
@@ -32,7 +32,7 @@ public class JavaTimeTest {
      * 인스턴트 만들기
      */
     @Test
-    public void create() {
+    void create() {
         log.debug("{}", Instant.now());
         log.debug("{}", LocalDate.now()); // yyyy-MM-dd
         log.debug("{}", LocalTime.now()); // HH:mm:ss.SSS
@@ -50,7 +50,7 @@ public class JavaTimeTest {
      * 날짜 비교
      */
     @Test
-    public void comparing() {
+    void comparing() {
         LocalDate beginingOfWorld = LocalDate.parse("1970-01-01", DateTimeFormatter.ISO_LOCAL_DATE);
         LocalDate endOfUs = LocalDate.parse("9999-01-01", DateTimeFormatter.ISO_LOCAL_DATE);
         assertFalse(beginingOfWorld.isEqual(endOfUs));
@@ -66,7 +66,7 @@ public class JavaTimeTest {
      * java.time 인스턴스의 객체 복제
      */
     @Test
-    public void cloneInstance() {
+    void cloneInstance() {
         LocalDate a = LocalDate.now();
         // 이 인스턴스는 immutable하기 때문에 단순 할당만 해도 괜찮음
         LocalDate b = a;
@@ -81,7 +81,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void testYearMonth() {
+    void testYearMonth() {
         YearMonth ins = YearMonth.parse("2022-09");
         assertEquals("2022-09", ins.toString());
 
@@ -94,7 +94,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void testMonthDay() {
+    void testMonthDay() {
         MonthDay ins = MonthDay.parse("--12-31");
         assertEquals("--12-31", ins.toString());
 
@@ -103,7 +103,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void testLocalDate() {
+    void testLocalDate() {
         LocalDate today = LocalDate.now();
         LocalDate ins = LocalDate.parse("2021-01-01", DateTimeFormatter.ISO_LOCAL_DATE);// DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
@@ -115,7 +115,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void testLocalDateTime() {
+    void testLocalDateTime() {
         LocalDateTime now = LocalDateTime.now();
         now = now.withYear(2019).withMonth(1).withDayOfMonth(31);
         now = now.withHour(0).withMinute(0).withSecond(0).withNano(0);
@@ -128,7 +128,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void testLocalTime() {
+    void testLocalTime() {
         LocalTime localTime = LocalTime.now();
         log.debug("localTime: {}", localTime);
         LocalTime newTime = localTime.withHour(13).withMinute(30).withSecond(13).withNano(0);
@@ -139,7 +139,7 @@ public class JavaTimeTest {
      * 서울의 Zone ID는 Asia/Seoul
      */
     @Test
-    public void testZoneIds() {
+    void testZoneIds() {
         // 사용 가능한 Zone ID 출력.
         Set<String> zoneIds = ZoneId.getAvailableZoneIds();
         for (String zone : zoneIds) {
@@ -150,7 +150,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void testMinusDays() {
+    void testMinusDays() {
         LocalDate ins = LocalDate.parse("2022-10-30");
         LocalDate yesterday = ins.minusDays(1);
         assertEquals(LocalDate.parse("2022-10-29"), yesterday);
@@ -160,7 +160,7 @@ public class JavaTimeTest {
      * 현재 시간을 만들 때 타임 존 지정하기
      */
     @Test
-    public void setTimeZone() {
+    void setTimeZone() {
         Instant instant = Instant.now();
         LocalDateTime utc1 = LocalDateTime.ofInstant(instant, ZONE_ID_UTC);
         LocalDateTime kst1 = LocalDateTime.ofInstant(instant, ZONE_ID_ASIA_SEOUL);
@@ -175,7 +175,7 @@ public class JavaTimeTest {
      * 이미 만들어진 시간 객체의 타임 존 변경하기
      */
     @Test
-    public void changeTimeZone() {
+    void changeTimeZone() {
         // 이건 뭔가 이상함. 이미 만들어진 인스턴스의 타임존을 바꿨으나 시간은 그대로
         LocalDateTime utc3 = LocalDateTime.now(ZONE_ID_UTC);
         ZonedDateTime kst3 = utc3.atZone(ZONE_ID_ASIA_SEOUL);
@@ -190,7 +190,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void testGetDayOfWeek() {
+    void testGetDayOfWeek() {
         LocalDate instance = LocalDate.parse("2022-12-31");
         DayOfWeek dayOfWeek = instance.getDayOfWeek();
         assertEquals(DayOfWeek.SATURDAY, dayOfWeek);
@@ -199,21 +199,21 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void testGetOffsetDateTime() {
+    void testGetOffsetDateTime() {
         assertEquals("2017-12-31T23:59:59.999999999Z",
                 OffsetDateTime.of(LocalDate.of(2017, Month.DECEMBER, 31), LocalTime.MAX, ZoneOffset.UTC).toString());
         assertEquals("2017-01-14T10:20:30Z", OffsetDateTime.of(2017, 1, 14, 10, 20, 30, 0, ZoneOffset.UTC).toString());
     }
 
     @Test
-    public void testGetOffsetTime() {
+    void testGetOffsetTime() {
         assertEquals("22:58+18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MAX).toString());
         assertEquals("22:58-18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MIN).toString());
         assertEquals("22:58Z", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.UTC).toString());
     }
 
     @Test
-    public void splitDate() {
+    void splitDate() {
         LocalDate start = new GregorianCalendar(2016, 2, 5).getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate end = new GregorianCalendar(2016, 2, 11).getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         long periodDays = ChronoUnit.DAYS.between(start, end);
@@ -225,7 +225,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void calculateDays() {
+    void calculateDays() {
         LocalDate targetDay = LocalDate.of(2017, Month.DECEMBER, 31);
         LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
         Period period = Period.between(today, targetDay);
@@ -235,7 +235,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void parseMonthDayToLocalDate() {
+    void parseMonthDayToLocalDate() {
         MonthDay monthDay = MonthDay.parse("--12-31");
         LocalDate localDate = LocalDate.of(2022, monthDay.getMonth(), monthDay.getDayOfMonth());
         assertEquals(LocalDate.parse("2022-12-31"), localDate);
@@ -247,7 +247,7 @@ public class JavaTimeTest {
      * @author fixalot
      */
     @Test
-    public void parseJavaTimeToStringWithFormatter() {
+    void parseJavaTimeToStringWithFormatter() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.of(2011, Month.DECEMBER, 03, 10, 15, 30);
         assertEquals("2011-12-03 10:15:30", dateTime.format(formatter));
@@ -259,7 +259,7 @@ public class JavaTimeTest {
      * @author fixalot
      */
     @Test
-    public void parseStringToLocalDate() {
+    void parseStringToLocalDate() {
         // 연월일 변환
         String input11 = "20111231";
         LocalDate date11 = LocalDate.parse(input11, DateTimeFormatter.BASIC_ISO_DATE);
@@ -272,7 +272,7 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void parseStringToLocalDateTime() {
+    void parseStringToLocalDateTime() {
         // 연월일 시분초 변환
         String input21 = "2011-12-03T10:15:30";
         LocalDateTime dateTime = LocalDateTime.parse(input21, DateTimeFormatter.ISO_DATE_TIME);
@@ -289,7 +289,7 @@ public class JavaTimeTest {
      * LocalDate -> java.sql.Date
      */
     @Test
-    public void parseLocalDateToSqlDate() {
+    void parseLocalDateToSqlDate() {
         LocalDate a = LocalDate.of(2017, Month.DECEMBER, 31);
         java.sql.Date b = java.sql.Date.valueOf(a);
         assertEquals("2017-12-31", b.toString());
@@ -299,7 +299,7 @@ public class JavaTimeTest {
      * LocalDateTime -> LocalDate
      */
     @Test
-    public void parseLocalDateTimeToLocalDate() {
+    void parseLocalDateTimeToLocalDate() {
         LocalDateTime localDateTime = LocalDateTime.parse("2022-12-31T00:00:00.000");
         LocalDate localDate = localDateTime.toLocalDate();
         assertEquals(LocalDate.parse("2022-12-31"), localDate);
@@ -309,7 +309,7 @@ public class JavaTimeTest {
      * java.sql.Date -> LocalDate
      */
     @Test
-    public void parseSqlDateToLocalDate() {
+    void parseSqlDateToLocalDate() {
         java.sql.Date a = java.sql.Date.valueOf("2020-12-31");
         LocalDate b = a.toLocalDate();
         assertEquals("2020-12-31", b.toString());
@@ -321,7 +321,7 @@ public class JavaTimeTest {
      * @author fixalot
      */
     @Test
-    public void parseJavaUtilDateToJavaTimeToString() {
+    void parseJavaUtilDateToJavaTimeToString() {
         Calendar input = new GregorianCalendar(2016, 2, 5);
         Date date = input.getTime();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -334,7 +334,7 @@ public class JavaTimeTest {
      * @author fixalot
      */
     @Test
-    public void parseJavaTimeToJavaUtilDate() {
+    void parseJavaTimeToJavaUtilDate() {
         // case#1
         log.debug("case#1: {}", Date.from(Instant.now()));
 
@@ -356,14 +356,14 @@ public class JavaTimeTest {
     }
 
     @Test
-    public void parseLocalDateTimeToTimestamp() {
+    void parseLocalDateTimeToTimestamp() {
         LocalDateTime ldt = LocalDateTime.parse("2019-01-31T00:00:00.000");
         Timestamp ts = Timestamp.valueOf(ldt);
         log.debug("ts: {}", ts);
     }
 
     @Test
-    public void parseTimestampToLocalDateTime() {
+    void parseTimestampToLocalDateTime() {
         Timestamp timestamp = Timestamp.valueOf("2022-11-25 12:45:00.000");
         LocalDateTime localDateTime = timestamp.toLocalDateTime();
         assertEquals(LocalDateTime.parse("2022-11-25T12:45:00.000"), localDateTime);

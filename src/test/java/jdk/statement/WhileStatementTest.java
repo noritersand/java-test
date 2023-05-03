@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class WhileStatementTest {
 
     @Test
-    public void testWhile() {
+    void testWhile() {
         int n = 0;
         while (2 != n) { // condition이 true면 반복함
             ++n;

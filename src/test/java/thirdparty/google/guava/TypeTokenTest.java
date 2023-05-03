@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TypeTokenTest {
 
     @Test
-    public void useTypeToken() {
+    void useTypeToken() {
         @SuppressWarnings("serial")
         Type listType = new TypeToken<ArrayList<MyClass>>() {
         }.getType();

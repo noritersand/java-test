@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SynchronizedTest {
 
     @Test
-    public void testSynchronizedMethod() {
+    void testSynchronizedMethod() {
         SynchronizedTest instance = new SynchronizedTest();
 
         // test #1: synchronized 메서드
@@ -40,7 +40,7 @@ public class SynchronizedTest {
     }
 
     @Test
-    public void testSynchronizedStatement() {
+    void testSynchronizedStatement() {
         SynchronizedTest instance = new SynchronizedTest();
 
         // test #2: synchronized 블럭

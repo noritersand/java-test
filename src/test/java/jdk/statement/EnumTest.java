@@ -42,20 +42,20 @@ public class EnumTest {
      * toString()을 오버라이딩하고 호출하면 뭐가 나오나
      */
     @Test
-    public void overrideToStringTest() {
+    void overrideToStringTest() {
         // 응 안됨
         assertNotEquals("10", InvokeMe.TEN);
         assertEquals(InvokeMe.TEN, InvokeMe.TEN);
     }
 
     @Test
-    public void useEqualityOperator() {
+    void useEqualityOperator() {
         Color red = Color.RED;
         assertSame(Color.RED, red);
     }
 
     @Test
-    public void useSwitch() {
+    void useSwitch() {
         String div = "back_office";
         switch (SystemType.valueOf(div.toUpperCase())) {
             case BACK_OFFICE:
@@ -68,7 +68,7 @@ public class EnumTest {
     }
 
     @Test
-    public void fromString() {
+    void fromString() {
         Class<Color> clazz = Color.class;
         String source = "red";
         Enum<Color> color = Enum.valueOf(clazz, source.trim().toUpperCase());
@@ -76,14 +76,14 @@ public class EnumTest {
     }
 
     @Test
-    public void testCustomValueOf() {
+    void testCustomValueOf() {
         Fruit target = Fruit.valueOf(12);
         assertEquals(Fruit.COCONUT, target);
 
     }
 
     @Test
-    public void testValueOfIAESafe() {
+    void testValueOfIAESafe() {
         assertNull(SystemType.valueOfIAESafe("NOT_BACK_OFFICE"));
     }
 
@@ -93,7 +93,7 @@ public class EnumTest {
      * @author fixalot
      */
     @Test
-    public void testGetDeclaringClass() {
+    void testGetDeclaringClass() {
         // 평범한 enum은 getClass()나 getDeclaringClass()나 별 차이 없지만
         assertEquals(SystemType.BACK_OFFICE.getClass(), SystemType.BACK_OFFICE.getDeclaringClass());
         assertEquals(SystemType.FRONT_OFFICE.getDeclaringClass(), SystemType.BACK_OFFICE.getDeclaringClass());
@@ -111,7 +111,7 @@ public class EnumTest {
      * @author fixalot
      */
     @Test
-    public void howExtendEnum() {
+    void howExtendEnum() {
         ImSpecial.A.destroySelf();
         ImSpecial.B.destroySelf();
 
@@ -123,14 +123,14 @@ public class EnumTest {
      * Enum 상수의 선언된 순서(Zero-based indexing)를 반환하는 ordinal() 메서드 테스트
      */
     @Test
-    public void testOrdinal() {
+    void testOrdinal() {
         assertEquals(0, Fruit.APPLE.ordinal());
         assertEquals(1, Fruit.BANANA.ordinal());
         assertEquals(2, Fruit.COCONUT.ordinal());
     }
 
     @Test
-    public void heritanceTest() {
+    void heritanceTest() {
         SubEnum dummy = SubEnum.DUMMY;
         assertEquals(1, dummy.ONE);
         assertEquals(1, SuperEnum.ONE);
@@ -145,7 +145,7 @@ public class EnumTest {
     }
 
     @Test
-    public void testCrudModeClass() {
+    void testCrudModeClass() {
         assertEquals(CrudMode.READ, CrudMode.of("R"));
         assertNull(CrudMode.of("READ"));
         assertNull(CrudMode.of("X"));

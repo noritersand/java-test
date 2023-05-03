@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 public class FileReaderTest {
 
     @Test
-    public void compareEachLine() throws IOException {
+    void compareEachLine() throws IOException {
         File file = new File("src/test/resources/file-reader-test/amiexist.txt");
         File file2 = new File("src/test/resources/file-reader-test/writeonme.txt");
 

@@ -14,7 +14,7 @@ import java.util.List;
 public class UncheckedTest {
 
     @Test
-    public void thisCodeShouldUnchecked() {
+    void thisCodeShouldUnchecked() {
         // TODO 어떻게 하면 경고 뜨더라?
 
         List<String> list = new LinkedList<>();

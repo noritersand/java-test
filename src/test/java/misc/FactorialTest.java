@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FactorialTest {
 
     @Test
-    public void test() {
+    void test() {
         // 4! = 4 x 3 x 2 x 1 = 24
         // 4! = 4 x 3 x 2! = 24
         // 4! = 4 x 3! = 24

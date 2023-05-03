@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ArrayTest {
 
     @Test
-    public void getString() {
+    void getString() {
         int[][] arr = {{1, 2, 6}, {3, 4}};
         String[] str = new String[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -34,7 +34,7 @@ public class ArrayTest {
     }
 
     @Test
-    public void getLength() {
+    void getLength() {
         int[][] arr = {{1, 2, 6}, {3, 4}};
         assertEquals(2, arr.length);
         assertEquals(3, arr[0].length);
@@ -42,13 +42,13 @@ public class ArrayTest {
     }
 
     @Test
-    public void join() {
+    void join() {
         String[] arr = {"a", "b", "c"};
         assertEquals("a,b,c", String.join(",", arr));
     }
 
     @Test
-    public void testFindFirstMatchUsingForStatement() {
+    void testFindFirstMatchUsingForStatement() {
         String[] arr = {"/findme", "/beginning", "/start"};
         final String URL = "/beginning/list/hello";
         for (String e : arr) {

@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CollectionsTest {
 
     @Test
-    public void testEmptyList() {
+    void testEmptyList() {
         List emptyList = Collections.EMPTY_LIST; // new EmptyList<>();
         assertEquals(0, emptyList.size());
 
@@ -28,20 +28,20 @@ public class CollectionsTest {
     }
 
     @Test
-    public void testMin() {
+    void testMin() {
         List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
         assertEquals(Integer.valueOf(1), Collections.min(list));
     }
 
     @Test
-    public void testMax() {
+    void testMax() {
         List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
         assertEquals(Integer.valueOf(99), Collections.max(list));
         list.get(0);
     }
 
     @Test
-    public void testSort() {
+    void testSort() {
         Integer[] chaos = {105, 99, 2, 44, 73, 99};
         Integer[] sortedAsc = {2, 44, 73, 99, 99, 105};
         Integer[] sortedDesc = {105, 99, 99, 73, 44, 2};
@@ -91,7 +91,7 @@ public class CollectionsTest {
      * </ul>
      */
     @Test
-    public void testBinarySearch() {
+    void testBinarySearch() {
         final String findMe = "날찾아봐요요러케";
         List<String> list = ListGenerator.generateStringList(100000, 45123, findMe);
 
@@ -116,7 +116,7 @@ public class CollectionsTest {
     }
 
     @Test
-    public void testPlanSearch() {
+    void testPlanSearch() {
         final String findMe = "날찾아봐요요러케";
         List<String> list = ListGenerator.generateStringList(100000, 45123, findMe);
 
@@ -144,13 +144,13 @@ public class CollectionsTest {
      * @author noritersand
      */
     @Test
-    public void testWildcardParameterizedType() {
+    void testWildcardParameterizedType() {
         List<? super String> strList = Arrays.asList("a", "b");
         assertTrue(strList.contains("a"));
     }
 
     @Test
-    public void howToAvoidNpeWithForStatement() {
+    void howToAvoidNpeWithForStatement() {
         List<String> texts = null;
         for (String s : npeSafe(texts)) {
             log.debug("s: {}", s);

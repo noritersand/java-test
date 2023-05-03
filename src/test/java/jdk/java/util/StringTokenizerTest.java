@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class StringTokenizerTest {
 
     @Test
-    public void test() {
+    void test() {
         final String text = "a,b|c,d";
 
         StringTokenizer token1 = new StringTokenizer(text, ",");

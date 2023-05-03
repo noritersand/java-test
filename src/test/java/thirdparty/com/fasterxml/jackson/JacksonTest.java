@@ -42,7 +42,7 @@ public class JacksonTest {
      * @author noritersand
      */
     @Test
-    public void testSingleValueAsArray() throws Exception {
+    void testSingleValueAsArray() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
 
         // 원래는 이런 문자만 파싱할 수 있지만...
@@ -74,7 +74,7 @@ public class JacksonTest {
      * @author fixalot
      */
     @Test
-    public void testReadValue() throws Exception {
+    void testReadValue() throws Exception {
         String jsonText = "[{\"html1\":\"<p>홀홀</p>\",\"html2\":\"<p>ㅗㅎ롷ㄹ</p>\"}]";
         List<HashMap<String, Object>> collection
                 = this.mapper.readValue(jsonText, new TypeReference<ArrayList<HashMap<String, Object>>>() {
@@ -87,7 +87,7 @@ public class JacksonTest {
     }
 
     @Test
-    public void testReadValueWithAmbiguousTypeDeclare() throws Exception {
+    void testReadValueWithAmbiguousTypeDeclare() throws Exception {
         String jsonText = "[{\"html1\":\"<p>홀홀</p>\",\"html2\":\"<p>ㅗㅎ롷ㄹ</p>\"}]";
         List<Object> collection
                 = this.mapper.readValue(jsonText, new TypeReference<List<Object>>() {
@@ -104,7 +104,7 @@ public class JacksonTest {
      * @author fixalot
      */
     @Test
-    public void testWriteValue() throws JsonProcessingException {
+    void testWriteValue() throws JsonProcessingException {
         HashMap<String, String> map = new HashMap<>();
         map.put("name", "steave");
         map.put("age", "32");
@@ -114,7 +114,7 @@ public class JacksonTest {
     }
 
     @Test
-    public void testWriteValueWithCustomPOJO() throws JsonProcessingException {
+    void testWriteValueWithCustomPOJO() throws JsonProcessingException {
         class Pojo {
             private String id;
             private String name;
@@ -152,7 +152,7 @@ public class JacksonTest {
      * @author fixalot
      */
     @Test
-    public void testConvertValue() {
+    void testConvertValue() {
         // #1: map -> po
         HashMap<String, Object> map = new HashMap<>();
         map.put("name", "steave");
@@ -183,7 +183,7 @@ public class JacksonTest {
     }
 
     @Test
-    public void testJsonFormat() throws JsonProcessingException {
+    void testJsonFormat() throws JsonProcessingException {
         String str = "{\"birthDate\":\"2018-01-01\"}";
         mapper.registerModule(new JavaTimeModule());
         ParseMe parseMe = mapper.readValue(str, ParseMe.class);

@@ -22,14 +22,14 @@ public class MatcherTest {
      * @author fixalot
      */
     @Test
-    public void testQuoteReplacement() {
+    void testQuoteReplacement() {
         assertEquals("\\\\", Matcher.quoteReplacement("\\"));
         assertEquals("	", Matcher.quoteReplacement("\t"));
         assertEquals("'", Matcher.quoteReplacement("'"));
     }
 
     @Test
-    public void usingWithStringReplace() {
+    void usingWithStringReplace() {
         String str = "a/b/c/d";
         str = str.replaceAll("/", Matcher.quoteReplacement("\\"));
         assertEquals("a\\b\\c\\d", str);

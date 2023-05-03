@@ -27,7 +27,7 @@ public class FileUtilsTest {
      * @author fixalot
      */
     @Test
-    public void writeAndRead() throws IOException {
+    void writeAndRead() throws IOException {
         String text = "some\ntext";
         File file = Paths.get("src/test/resources/file-utils-test/writeonme.txt").toFile();
 
@@ -48,7 +48,7 @@ public class FileUtilsTest {
      * @author fixalot
      */
     @Test
-    public void testCopyURLToFile() throws IOException {
+    void testCopyURLToFile() throws IOException {
         URL source = new URL("http://google.com");
         File destination = Paths.get("src/test/resources/file/file-from-url.txt").toFile();
         FileUtils.copyURLToFile(source, destination);

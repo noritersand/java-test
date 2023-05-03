@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WrapperClassTest {
 
     @Test
-    public void copy() {
+    void copy() {
         Integer a = Integer.valueOf(123);
         Integer b = a;
         assertEquals(123, b.intValue());
@@ -23,7 +23,7 @@ public class WrapperClassTest {
     }
 
     @Test
-    public void testEquals() {
+    void testEquals() {
         Long a = Long.valueOf(12345);
         Long b = Long.valueOf(12345);
         assertFalse(a == b); // wrapper 타입은 동등 연산자에서 객체 아이디를 비교하지 값을 비교하지 않음. **반만 맞는 설명임. 아래를 볼 것**
@@ -54,7 +54,7 @@ public class WrapperClassTest {
     }
 
     @Test
-    public void testPassedByValue() {
+    void testPassedByValue() {
         Integer num = 456;
         changeValue(num); // 내부에서 123으로 변경
         // 그래도 num은 456으로 유지된다. wrapper 타입이 일반적인 reference 타입과 다른 특징임.
@@ -71,7 +71,7 @@ public class WrapperClassTest {
      * @author fixalot
      */
     @Test
-    public void testNullSafe() {
+    void testNullSafe() {
         Object a = null;
         String txt = (String) a;
         assertNull(txt);
@@ -81,7 +81,7 @@ public class WrapperClassTest {
      * .valueOf() 메서드 테스트
      */
     @Test
-    public void testLongValueOf() {
+    void testLongValueOf() {
         // null은 valueOf() 불가
         assertThrows(NumberFormatException.class, () -> {
             String nullValue = null;
@@ -102,7 +102,7 @@ public class WrapperClassTest {
      * @author fixalot
      */
     @Test
-    public void testNullSafe2() {
+    void testNullSafe2() {
         assertThrows(NullPointerException.class, () -> {
             Object chuckNorris = null;
             int illBeNull = (Integer) chuckNorris;
@@ -115,7 +115,7 @@ public class WrapperClassTest {
     }
 
     @Test
-    public void checkZero() {
+    void checkZero() {
         assertEquals(Long.valueOf(0L), Long.valueOf(0L));
     }
 }

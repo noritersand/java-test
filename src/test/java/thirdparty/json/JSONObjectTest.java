@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JSONObjectTest {
 
     @Test
-    public void test() {
+    void test() {
         // 단일 객체
         JSONObject ob = new JSONObject();
         ob.put("이름1", "값1");
@@ -36,7 +36,7 @@ public class JSONObjectTest {
     }
 
     @Test
-    public void parseFromString() {
+    void parseFromString() {
         final String jsonString = "{\"status\":\"0000\",\"data\":[[1582464360000,\"321000\",\"320900\",\"321000\",\"320900\",\"11.7071\"],[],[]]}";
         JSONObject object = new JSONObject(jsonString);
 

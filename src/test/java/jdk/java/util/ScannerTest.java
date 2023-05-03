@@ -20,7 +20,7 @@ public class ScannerTest {
     private static final String FULL_TEXT = "abcdefg hijklmn	opqrstu|vwxyz\n12345,67890\n가나다라마바사^아자차카타파하";
 
     @Test
-    public void initialize() {
+    void initialize() {
         Scanner scanner = new Scanner(FULL_TEXT);
         assertNotNull(scanner);
         scanner.close();
@@ -33,7 +33,7 @@ public class ScannerTest {
      * @author fixalot
      */
     @Test
-    public void testNext() {
+    void testNext() {
         Scanner scanner = new Scanner(FULL_TEXT);
         assertEquals("\\p{javaWhitespace}+", scanner.delimiter().toString());
         while (scanner.hasNext()) {
@@ -49,7 +49,7 @@ public class ScannerTest {
      * @author fixalot
      */
     @Test
-    public void testNextWithCustomDelimiter() {
+    void testNextWithCustomDelimiter() {
         Scanner scanner = new Scanner(FULL_TEXT);
         scanner.useDelimiter("\\^");
         while (scanner.hasNext()) {
@@ -65,7 +65,7 @@ public class ScannerTest {
      * @author fixalot
      */
     @Test
-    public void testNextLine() {
+    void testNextLine() {
         Scanner scanner = new Scanner(FULL_TEXT);
         while (scanner.hasNext()) {
             String text = scanner.nextLine();

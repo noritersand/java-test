@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TypeSafeConfigTest {
 
     @Test
-    public void testConvertToHierarchicalJsonString() throws IOException {
+    void testConvertToHierarchicalJsonString() throws IOException {
         FileInputStream fis = new FileInputStream("src\\test\\resources\\properties-test\\convert-test.properties");
         Properties prop = new Properties();
         prop.load(fis);

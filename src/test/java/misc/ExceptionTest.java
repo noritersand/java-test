@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ExceptionTest {
 
     @Test
-    public void logging() {
+    void logging() {
         assertThrows(RuntimeException.class, () -> {
             throw new RuntimeException("for test");
         });
@@ -33,7 +33,7 @@ public class ExceptionTest {
      * @author fixalot
      */
 //	@Test
-    public void needThrowsKeyword() throws Exception {
+    void needThrowsKeyword() throws Exception {
         throw new Exception("hello");
     }
 
@@ -47,7 +47,7 @@ public class ExceptionTest {
      * @author fixalot
      */
 //	@Test
-    public void doNotNeedThrows() {
+    void doNotNeedThrows() {
         throw new RuntimeException("hello");
     }
 
@@ -58,12 +58,12 @@ public class ExceptionTest {
      * @author fixalot
      */
 //	@Test
-    public void needThrowsKeyword2() throws IOException {
+    void needThrowsKeyword2() throws IOException {
         throw new IOException("hello");
     }
 
     @Test
-    public void shouldBeNull() {
+    void shouldBeNull() {
         /*
          * 에러 메시지를 설정하지 않으면 에러 메시지가 null로 찍힘.
          * 사실 NullPointerException과는 관계 없는데, 혼동할 여지가 있다.

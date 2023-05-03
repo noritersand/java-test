@@ -25,7 +25,7 @@ public class FileTest {
      */
 
     @Test
-    public void initialize() {
+    void initialize() {
         File file = new File("/im-g-root");
         assertFalse(file.exists());
 
@@ -34,7 +34,7 @@ public class FileTest {
     }
 
     @Test
-    public void initializeWithPath() {
+    void initializeWithPath() {
         Path path = Paths.get("src/test/resources/file-test/amiexist.txt");
         log.debug(path.toString());
         File file = path.toFile();
@@ -45,13 +45,13 @@ public class FileTest {
     }
 
     @Test
-    public void testCreateTempFile() throws IOException {
+    void testCreateTempFile() throws IOException {
         File file = File.createTempFile("head-", ".tmp");
         log.debug(file.getPath());
     }
 
     @Test
-    public void testToString() {
+    void testToString() {
         File file = new File("src/test/resources/file-test/amiexist.txt");
         assertEquals("src\\test\\resources\\file-test\\amiexist.txt", file.toString());
     }

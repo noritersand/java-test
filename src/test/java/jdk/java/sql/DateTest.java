@@ -27,7 +27,7 @@ public class DateTest {
     public static final ZoneId ZONE_ID_UTC = ZoneId.of("UTC");
 
     @Test
-    public void shouldBeEqual() {
+    void shouldBeEqual() {
         long mills = System.currentTimeMillis();
         log.debug("currentTimeMills: {}", mills);
         Date date = new Date(mills);
@@ -35,7 +35,7 @@ public class DateTest {
     }
 
     @Test
-    public void testJavaSqlDate() {
+    void testJavaSqlDate() {
         Date date = new Date(1547168374396L);
         assertEquals("2019-01-11", date.toString());
 
@@ -49,20 +49,20 @@ public class DateTest {
     }
 
     @Test
-    public void testJavaSqlTime() {
+    void testJavaSqlTime() {
         Time time = new Time(1547168374396L);
         assertEquals("09:59:34", time.toString());
 
     }
 
     @Test
-    public void testJavaSqlTimestamp() {
+    void testJavaSqlTimestamp() {
         Timestamp timestamp = new Timestamp(1547168374396L);
         assertEquals("2019-01-11 09:59:34.396", timestamp.toString());
     }
 
     @Test
-    public void changeTimeZone() {
+    void changeTimeZone() {
         Date date = new Date(1547168374396L);
         assertEquals("2019-01-11", date.toString());
 

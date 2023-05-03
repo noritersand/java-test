@@ -17,7 +17,7 @@ public class LombokTest {
      * <p>근데 또 이러면 java: constructor BuildMe in class thirdparty.org.projectlombok.BuildMe cannot be applied to given types; 컴파일 에러가 나서 @AllArgsConstructor도 추가해야 함(그냥 쓰지 말까...)
      */
     @Test
-    public void visibilityTest() {
+    void visibilityTest() {
         // 기본 생성자는 안만들어지고, 필드만큼 파라미터를 받는 생성자는 만들어지지만 private이다.
         // 'BuildMe(java.lang.String)' in 'thirdparty.org.projectlombok.BuildMe' cannot be applied to '()'
 //        BuildMe bm1 = new BuildMe();
@@ -37,7 +37,6 @@ public class LombokTest {
     }
 
     @Builder
-    @Getter
     @AllArgsConstructor
     private static class BuildMe {
         public BuildMe() {
@@ -45,16 +44,34 @@ public class LombokTest {
 
         private String a;
         private int b;
+
+        public String getA() {
+            return this.a;
+        }
+
+        public void setA(String a) {
+            log.debug("{}", "@Builder 사용 시 setter는 호출되지 않는다.");
+            this.a = a;
+        }
+
+        public int getB() {
+            return this.b;
+        }
+
+        public void setB(int b) {
+            log.debug("{}", "@Builder 사용 시 setter는 호출되지 않는다.");
+            this.b = b;
+        }
     }
 
     @Test
-    public void testConstructor() {
+    void testConstructor() {
 //        new Child("aaa", 123, 256.789);
         // 부모의 필드도 초기화하는 생성자를 만들려거든 롬복으로 안되고 직접 만들어야 함
     }
 
     @Test
-    public void testSuperBuilder() {
+    void testSuperBuilder() {
         Child child = Child.builder()
                 .a("aaa")
                 .b(123)

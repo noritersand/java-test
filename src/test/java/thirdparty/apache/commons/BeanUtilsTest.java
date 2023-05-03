@@ -30,7 +30,7 @@ public class BeanUtilsTest {
      * @author fixalot
      */
     @Test
-    public void testCopyProperties() throws Exception {
+    void testCopyProperties() throws Exception {
         TestModel oldbie = new TestModel();
         oldbie.setName("야");
         oldbie.setNumber(101);
@@ -53,7 +53,7 @@ public class BeanUtilsTest {
      * @author fixalot
      */
     @Test
-    public void testPopulate() throws Exception {
+    void testPopulate() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         map.put("name", "야");
         map.put("number", 101);
@@ -77,7 +77,7 @@ public class BeanUtilsTest {
      * @author fixalot
      */
     @Test
-    public void testDescribe() throws Exception {
+    void testDescribe() throws Exception {
         TestModel model = new TestModel();
         model.setName("야");
         model.setNumber(101);

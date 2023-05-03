@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  */
 public class ReferenceCopyTest {
     @Test
-    public void avoidReassigningParameters() {
+    void avoidReassigningParameters() {
         Vo vo = new Vo();
         assertEquals(0, vo.getNum());
         copyParam(vo);
@@ -30,7 +30,7 @@ public class ReferenceCopyTest {
     }
 
     @Test
-    public void test() {
+    void test() {
         String str = "a";
         doSomething(str);
         assertNotEquals("b", str);

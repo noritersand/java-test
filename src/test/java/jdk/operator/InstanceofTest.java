@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class InstanceofTest {
 
     @Test
-    public void testExtends() {
+    void testExtends() {
         Object object = new Object();
         String string = "";
 
@@ -29,7 +29,7 @@ public class InstanceofTest {
     }
 
     @Test
-    public void testExtends2() {
+    void testExtends2() {
         ArrayList<Object> arrayList = new ArrayList<>();
         RoleList roleList = new RoleList();
 
@@ -39,7 +39,7 @@ public class InstanceofTest {
     }
 
     @Test
-    public void testThis() {
+    void testThis() {
         assertTrue(this instanceof InstanceofTest);
     }
 }

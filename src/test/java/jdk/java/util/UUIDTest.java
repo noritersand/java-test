@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class UUIDTest {
 
     @Test
-    public void testRandomUUID() {
+    void testRandomUUID() {
         UUID uuid = UUID.randomUUID();
         log.debug("uuid: {}", uuid);
         // 8-4-4-4-12 자릿수 조합의 랜덤 숫자(16진수)로 이루어진 UUID
@@ -37,7 +37,7 @@ public class UUIDTest {
      * <p>반대 개념으로 하위 64비트를 나타내는 leastSignificantBits가 있음.</p>
      */
     @Test
-    public void testMostSignificantBits() {
+    void testMostSignificantBits() {
         UUID uuid = UUID.randomUUID();
         long mostSignificantBits = uuid.getMostSignificantBits();
         log.debug("mostSignificantBits: {}", mostSignificantBits);

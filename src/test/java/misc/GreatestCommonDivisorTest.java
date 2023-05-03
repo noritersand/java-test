@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GreatestCommonDivisorTest {
 
     @Test
-    public void shouldEqual() {
+    void shouldEqual() {
         /*
          * input a input b 출력 169 104 -> 13 100 250 -> 50 1 1 -> 1 1000000 5 -> 5 104711 104717 -> 1 98304 65536 -> 32768
          */

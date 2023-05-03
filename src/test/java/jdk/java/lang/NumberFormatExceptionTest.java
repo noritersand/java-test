@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 public class NumberFormatExceptionTest {
 
     @Test
-    public void shouldBeError() {
+    void shouldBeError() {
         Assertions.assertThrows(NumberFormatException.class, () -> {
             String s = "FOOBAR";
             int i = Integer.parseInt(s);

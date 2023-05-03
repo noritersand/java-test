@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GenerateUniqueValueTest {
 
     @Test
-    public void getUniqueValue() {
+    void getUniqueValue() {
         log.debug("Long max value: {}", String.valueOf(Long.MAX_VALUE).length());
 
         long mills = System.currentTimeMillis();
@@ -30,7 +30,7 @@ public class GenerateUniqueValueTest {
     }
 
     @Test
-    public void getUniqueUuid() {
+    void getUniqueUuid() {
         log.debug(UUID.randomUUID().toString());
         log.debug("{}", UUID.fromString("cb9bc318-3ba1-4614-81b8-daed4efe6c62"));
 //		UUID.nameUUIDFromBytes(1) // 이건 어떻게 쓰는거람

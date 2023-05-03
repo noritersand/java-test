@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class ReflectionTest {
 
     @Test
-    public void test() throws Exception {
+    void test() throws Exception {
         Object instance = new MyClass();
         Class<?> clazz = instance.getClass();
 
@@ -44,7 +44,7 @@ public class ReflectionTest {
     }
 
     @Test
-    public void test2() throws IllegalAccessException {
+    void test2() throws IllegalAccessException {
         List<String> randomtxts = List.of("a", "b", "c");
 
         MyClass2 data = new MyClass2();

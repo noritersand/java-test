@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DateTest {
 
     @Test
-    public void shouldBeEquals() {
+    void shouldBeEquals() {
         long mills = System.currentTimeMillis();
         log.debug("currentTimeMills: {}", mills);
         Date now = new Date(mills);
@@ -28,7 +28,7 @@ public class DateTest {
     }
 
     @Test
-    public void testJavaUtilDate() {
+    void testJavaUtilDate() {
         Date now = new Date();
         log.debug("{}", now);
 
@@ -37,7 +37,7 @@ public class DateTest {
     }
 
     @Test
-    public void changeTimeZone() throws ParseException {
+    void changeTimeZone() throws ParseException {
         SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         isoFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date date1 = isoFormat.parse("2010-05-23T09:01:02");

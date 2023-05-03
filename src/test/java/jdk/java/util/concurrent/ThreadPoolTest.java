@@ -31,7 +31,7 @@ public class ThreadPoolTest {
      * 출력 결과를 보면 쓰레드 생성 순서와 호출 순서는 상관 없다는 것을 알 수 있다.
      */
     @Test
-    public void test() {
+    void test() {
         ThreadPoolExecutor threadPool = null;
         Collection<Callable<Integer>> threadList = null;
         int successCount = 0;

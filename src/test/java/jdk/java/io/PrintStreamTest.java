@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 public class PrintStreamTest {
 
     @Test
-    public void testCharset() throws UnsupportedEncodingException {
+    void testCharset() throws UnsupportedEncodingException {
         final String txt = "한글";
         log.debug(txt); // logger는 System.out 설정과 상관없는걸로 추정. logger는 인코딩 설정이 따로 있나?
 

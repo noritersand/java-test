@@ -21,18 +21,18 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FilesTest {
 
     @Test
-    public void testProbeContentType() throws IOException {
+    void testProbeContentType() throws IOException {
         assertEquals("text/plain", Files.probeContentType(Paths.get("src/test/resources/files-test/plaintext.txt")));
     }
 
     @Test
-    public void testIsReadable() {
+    void testIsReadable() {
         assertTrue(Files.isReadable(Paths.get("c:")));
         assertFalse(Files.isReadable(Paths.get("m:")));
     }
 
     @Test
-    public void testDelete() throws IOException {
+    void testDelete() throws IOException {
         Path dir = Paths.get("src/test/resources/file/delete-me");
         Files.createDirectories(dir);
         log.debug(dir.toFile().getAbsolutePath());
@@ -47,7 +47,7 @@ public class FilesTest {
     }
 
     @Test
-    public void testDeleteIfExists() throws IOException {
+    void testDeleteIfExists() throws IOException {
         Path dir = Paths.get("src/test/resources/file/delete-me");
         Files.createDirectories(dir);
         assertTrue(Files.deleteIfExists(dir)); // 파일이 있으면 true

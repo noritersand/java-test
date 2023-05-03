@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class DefaultKeywordTest {
     @Test
-    public void test1() {
+    void test1() {
         C c = new C();
         assertEquals("aaa", c.a());
         assertEquals("hi", c.b());

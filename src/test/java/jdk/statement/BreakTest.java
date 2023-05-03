@@ -18,7 +18,7 @@ public class BreakTest {
     private static final boolean F = false;
 
     @Test
-    public void withLabeledIfStatement() {
+    void withLabeledIfStatement() {
         int n = 10;
         hello:
         if (0 < n) {
@@ -32,7 +32,7 @@ public class BreakTest {
     }
 
     @Test
-    public void withLabeledBlock() {
+    void withLabeledBlock() {
         char c = 'A';
         yoohoo:
         {

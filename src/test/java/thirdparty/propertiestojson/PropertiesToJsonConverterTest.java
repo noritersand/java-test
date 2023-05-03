@@ -17,7 +17,7 @@ public class PropertiesToJsonConverterTest {
 
     @SuppressWarnings("unchecked")
     @Test
-    public void test() throws IOException {
+    void test() throws IOException {
         String jsonFromProperties = new PropertiesToJsonConverter()
                 .convertPropertiesFromFileToJson("src\\test\\resources\\properties-test\\convert-test.properties");
         log.debug(jsonFromProperties);

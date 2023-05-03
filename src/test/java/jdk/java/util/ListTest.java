@@ -23,7 +23,7 @@ public class ListTest {
      * <p>소스를 보면 ImmutableCollections.EMPTY_LIST를 반환한다.
      */
     @Test
-    public void testEmptyOf() {
+    void testEmptyOf() {
         List<Object> of = List.of();
         assertEquals(0, of.size());
     }
@@ -32,13 +32,13 @@ public class ListTest {
      *
      */
     @Test
-    public void testOf() {
+    void testOf() {
         List<String> alphabet = List.of("a", "b", "c");
         assertEquals(3, alphabet.size());
     }
 
     @Test
-    public void howToAvoidNpeWithForStatement() {
+    void howToAvoidNpeWithForStatement() {
         List<String> texts = null;
         for (String s : npeSafe(texts)) {
             log.debug("s: {}", s);

@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RegexWithStringTest {
 
     @Test
-    public void shoulBeEquals() {
+    void shoulBeEquals() {
         assertEquals("AA1062329819", removeTail("AA1062329819_1"));
         assertEquals("AA1062329819", removeTail("AA1062329819_199A"));
 

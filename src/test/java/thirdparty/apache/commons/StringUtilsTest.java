@@ -14,13 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StringUtilsTest {
 
     @Test
-    public void testDefault() {
+    void testDefault() {
         assertEquals("", StringUtils.defaultString("", "0"));
         assertEquals("0", StringUtils.defaultIfBlank("", "0"));
     }
 
     @Test
-    public void testPadding() {
+    void testPadding() {
         assertEquals("001", StringUtils.leftPad("1", 3, "0"));
         assertEquals("10000", StringUtils.rightPad("1", 5, "0"));
     }

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class NestedTest {
 
     @Test
-    public void test() {
+    void test() {
         NonStaticOuter outer = new NonStaticOuter();
         assertEquals("invoking outerMethod", outer.executeOuterMethod());
 
@@ -22,7 +22,7 @@ public class NestedTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         new Outer().outerMethod();
     }
 }

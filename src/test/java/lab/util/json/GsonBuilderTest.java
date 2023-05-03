@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class GsonBuilderTest {
 
     @Test
-    public void testFromJsonForPlainObject() {
+    void testFromJsonForPlainObject() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.getGson();
         GsonTestModel convertedModel = gson.fromJson(makeJsonObjectText(), GsonTestModel.class);
@@ -40,7 +40,7 @@ public class GsonBuilderTest {
     }
 
     @Test
-    public void testFromJsonForArray() {
+    void testFromJsonForArray() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.getGson();
         GsonTestModel[] convertedModel = gson.fromJson(makeJsonArrayText(), GsonTestModel[].class);
@@ -48,7 +48,7 @@ public class GsonBuilderTest {
     }
 
     @Test
-    public void testFromJsonForArrayInArray() {
+    void testFromJsonForArrayInArray() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.getGson();
         GsonTestModel[] convertedModel = gson.fromJson(makeJsonArrayInArrayText(), GsonTestModel[].class);
@@ -56,7 +56,7 @@ public class GsonBuilderTest {
     }
 
     @Test
-    public void testFromJsonForArrayInArrayToList() {
+    void testFromJsonForArrayInArrayToList() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.getGson();
 

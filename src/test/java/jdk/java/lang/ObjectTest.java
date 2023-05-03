@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ObjectTest {
 
     @Test
-    public void getHashCode() {
+    void getHashCode() {
         Object obj1 = new Object();
         Object obj2 = new Object();
         log.debug("{}", obj1.hashCode());
@@ -23,7 +23,7 @@ public class ObjectTest {
     }
 
     @Test
-    public void getString() {
+    void getString() {
         Object obj1 = new Object();
         Object[] obj2 = {null};
         log.debug(obj1.toString());

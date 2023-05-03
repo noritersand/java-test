@@ -34,7 +34,7 @@ public class StreamTest {
      * @author fixalot
      */
     @Test
-    public void testForEach() throws IOException {
+    void testForEach() throws IOException {
         List<Integer> list = Arrays.asList(1, 3, 7);
         Stream<Integer> stream = list.stream();
         stream.forEach(System.out::println);
@@ -55,7 +55,7 @@ public class StreamTest {
     }
 
     @Test
-    public void testFilter() {
+    void testFilter() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
         // 짝수 찾기
@@ -92,14 +92,14 @@ public class StreamTest {
     }
 
     @Test
-    public void testMax() {
+    void testMax() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         int max = list.stream().max(Integer::compareTo).get();
         assertEquals(9, max);
     }
 
     @Test
-    public void testSorted() {
+    void testSorted() {
         List<String> list = Arrays.asList("9", "A", "Z", "1", "B", "Y", "4", "a", "c");
         // List<String> sortedList = list.stream().sorted((o1,o2)-> o2.compareTo(o1)).collect(Collectors.toList());
         // 위처럼 쓴거랑 같음
@@ -108,7 +108,7 @@ public class StreamTest {
     }
 
     @Test
-    public void testAnyMatch() {
+    void testAnyMatch() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         Stream<Integer> stream = list.stream();
         boolean result = stream.anyMatch(e -> {
@@ -124,7 +124,7 @@ public class StreamTest {
     }
 
     @Test
-    public void testMap() {
+    void testMap() {
         List<ListGenerator.Obj> objList = ListGenerator.generateObjList(10);
         log.debug("objList: {}", objList);
         List<Integer> indexList = objList.stream().map(ele -> ele.getIndex()).collect(Collectors.toList());

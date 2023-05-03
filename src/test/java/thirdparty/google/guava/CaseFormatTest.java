@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CaseFormatTest {
 
     @Test
-    public void testFormat() {
+    void testFormat() {
         // lower camel -> upper underscore
         assertEquals("MY_NAME", CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName"));
 

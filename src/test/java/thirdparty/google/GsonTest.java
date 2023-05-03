@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GsonTest {
 
     @Test
-    public void getDataFromFile() throws IOException {
+    void getDataFromFile() throws IOException {
         JsonReader reader = new JsonReader(new FileReader("src\\test\\resources\\gson-test\\servers.json", StandardCharsets.UTF_8));
         @SuppressWarnings("serial")
         Type listType = new TypeToken<ArrayList<HashMap<String, String>>>() {
@@ -38,7 +38,7 @@ public class GsonTest {
     }
 
     @Test
-    public void toJSONString() {
+    void toJSONString() {
         JsonObject job = new JsonObject();
         job.addProperty("key", "value");
 
@@ -46,7 +46,7 @@ public class GsonTest {
     }
 
     @Test
-    public void parseToPlainObject() {
+    void parseToPlainObject() {
         String json = "{\"key\":\"first\",\"value\":\"1234\"}";
         MyClass myClass = new Gson().fromJson(json, MyClass.class);
         assertEquals("first", myClass.getKey());
@@ -54,7 +54,7 @@ public class GsonTest {
     }
 
     @Test
-    public void parseToCollections() {
+    void parseToCollections() {
         String json = "[{\"key\":\"first\",\"value\":\"1234\"}, {\"key\":\"second\",\"value\":\"5678\"}]";
         @SuppressWarnings("serial")
         Type listType = new TypeToken<ArrayList<MyClass>>() {
@@ -67,7 +67,7 @@ public class GsonTest {
     }
 
     @Test
-    public void parseToCollectionsWithAmbiguousTypeDeclare() {
+    void parseToCollectionsWithAmbiguousTypeDeclare() {
         String json = "[{\"key\":\"first\",\"value\":\"1234\"}, {\"key\":\"second\",\"value\":\"5678\"}]";
         @SuppressWarnings("serial")
         Type listType = new TypeToken<List<Object>>() {

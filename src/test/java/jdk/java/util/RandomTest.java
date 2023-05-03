@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RandomTest {
 
     @Test
-    public void testNextInt() {
+    void testNextInt() {
         for (int i = 0; 1000 > i; ++i) {
             Random random = new Random();
 
@@ -36,7 +36,7 @@ public class RandomTest {
      * @author noritersand
      */
     @Test
-    public void testInts() {
+    void testInts() {
         Random random = new Random();
         IntStream a = random.ints();
         assertEquals(9223372036854775807L, a.count());
@@ -50,7 +50,7 @@ public class RandomTest {
      * @author fixalot
      */
     @Test
-    public void getRandomElement() {
+    void getRandomElement() {
         List<String> list = new LinkedList<>();
         list.add("하나");
         list.add("둘");

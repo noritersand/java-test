@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class NumberUtilsTest {
 
     @Test
-    public void testIsNumber() {
+    void testIsNumber() {
         assertTrue(NumberUtils.isDigits("0"));
         assertTrue(NumberUtils.isDigits("01"));
         assertTrue(NumberUtils.isDigits("58789"));
@@ -33,7 +33,7 @@ public class NumberUtilsTest {
     }
 
     @Test
-    public void testIsCreatable() {
+    void testIsCreatable() {
         assertTrue(NumberUtils.isCreatable("0"));
         assertTrue(NumberUtils.isCreatable("01"));
         assertTrue(NumberUtils.isCreatable("58789"));
@@ -50,7 +50,7 @@ public class NumberUtilsTest {
     }
 
     @Test
-    public void testNullSafe() {
+    void testNullSafe() {
         assertEquals(0, NumberUtils.toLong(null));
         assertEquals(0, NumberUtils.toLong(""));
     }

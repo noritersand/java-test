@@ -26,7 +26,7 @@ public class PathTest {
     public static final String BACKSLASH = "\\";
 
     @Test
-    public void testOf() {
+    void testOf() {
         Path path = Path.of("/a/b/c");
         Path path2 = Path.of("/a", "b", "c");
         assertEquals(path, path2);
@@ -42,7 +42,7 @@ public class PathTest {
      * Path.toString()은 디렉터리 구분자를 운영 체제의 파일 시스템 구분자를 사용하기 때문에, 윈도우에선 \\로 반환한다.
      */
     @Test
-    public void testToString() {
+    void testToString() {
         Path path = Path.of("/a/b/c");
         assertEquals("\\a\\b\\c", path.toString());
 
@@ -66,7 +66,7 @@ public class PathTest {
      * <p>OS의 파일 시스템에 맞는 경로를 반환한다.
      */
     @Test
-    public void testAbsolutePath() {
+    void testAbsolutePath() {
         Path path = Path.of("/a/b/c");
         assertEquals(Path.of("C:\\a\\b\\c"), path.toAbsolutePath());
 
@@ -78,7 +78,7 @@ public class PathTest {
      * toUri() 테스트
      */
     @Test
-    public void testToUri() {
+    void testToUri() {
         Path path = Path.of("/a/b/c");
         assertEquals("file:///C:/a/b/c", path.toUri().toString());
         assertEquals("/C:/a/b/c", path.toUri().getPath().toString());
@@ -96,7 +96,7 @@ public class PathTest {
      * 어떠한 경로 두 개가 있을 때 서로의 상대 경로를 구하는 메서드
      */
     @Test
-    public void testRelativize() {
+    void testRelativize() {
         Path path1 = new File("c:/dev/git").toPath();
         Path path2 = new File("c:/sso").toPath();
         assertEquals(Path.of("../../sso"), path1.relativize(path2)); // dev에서 sso로 가려면 'cd ..\..\sso'
@@ -108,7 +108,7 @@ public class PathTest {
      * source부터 target까지의 상대 경로를 구한다.
      */
     @Test
-    public void testRelativize2() {
+    void testRelativize2() {
         Path source = new File("webapp/upload/temp/").toPath();
         Path target = new File("webapp/upload/temp/201612/28201838255.png").toPath();
         assertEquals(Path.of("201612/28201838255.png"), source.relativize(target)); // dev에서 sso로 가려면 'cd ..\..\sso'
@@ -122,7 +122,7 @@ public class PathTest {
      * @throws IOException
      */
     @Test
-    public void testResolve() throws IOException {
+    void testResolve() throws IOException {
         // 원본
         Path directory = new File("c:/dev/repo").toPath();
         Path directory2 = Path.of(directory.toString());
@@ -155,7 +155,7 @@ public class PathTest {
      * 주어진 경로에서 시작 인덱스와 종료 인덱스 만큼을 잘라냄
      */
     @Test
-    public void testSubpath() {
+    void testSubpath() {
         Path path = Path.of("/a/b/c/e/f/g.jpg");
         assertEquals(Path.of("a/b/c"), path.subpath(0, 3));
         assertEquals(Path.of("e/f/g.jpg"), path.subpath(3, 6));
@@ -165,7 +165,7 @@ public class PathTest {
      * normalize() 테스트
      */
     @Test
-    public void testNormalize() {
+    void testNormalize() {
         Path path = Path.of("./../../a/b/c.jpg");
         assertEquals(Path.of("../../a/b/c.jpg"), path.normalize());
     }

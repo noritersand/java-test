@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class OptionalTest {
 
     @Test
-    public void testEmpty() {
+    void testEmpty() {
         Optional<Object> empty = Optional.empty();
         assertNotNull(empty);
         assertTrue(empty.isEmpty());
@@ -26,7 +26,7 @@ public class OptionalTest {
      * <p>null이 주어지면 NPE 발생함</p>
      */
     @Test
-    public void testOf() {
+    void testOf() {
         Optional<String> op = Optional.of("1234");
         assertEquals("1234", op.get());
         assertEquals("Optional[1234]", op.toString());
@@ -41,7 +41,7 @@ public class OptionalTest {
      * <p>ofNullable()은 of()와 달리 NPE에 안전함</p>
      */
     @Test
-    public void testOfNullable() {
+    void testOfNullable() {
         Optional<String> op = Optional.ofNullable("1234");
     }
 
@@ -49,7 +49,7 @@ public class OptionalTest {
      * <p>isPresent()는 Optional에 값이 있으면 true를 반환함</p>
      */
     @Test
-    public void testIsPresent() {
+    void testIsPresent() {
         assertTrue(Optional.of("1234").isPresent());
         assertTrue(Optional.of("").isPresent()); // 빈 문자열인지는 판단하지 않음
         assertFalse(Optional.ofNullable(null).isPresent());
@@ -59,7 +59,7 @@ public class OptionalTest {
      * <p>isEmpty()는 isPresent()와 반대로 Optional에 값이 비어있어야 true를 반환함</p>
      */
     @Test
-    public void testIsEmpty() {
+    void testIsEmpty() {
         assertTrue(Optional.ofNullable(null).isEmpty());
         assertFalse(Optional.of("1234").isEmpty());
         assertFalse(Optional.of("").isEmpty());
@@ -69,7 +69,7 @@ public class OptionalTest {
      * <p>Optional의 값이 있으면 실행할 콜백 메서드</p>
      */
     @Test
-    public void testIfPresent() {
+    void testIfPresent() {
         String str = "qwer";
         Optional<String> op = Optional.of(str);
         op.ifPresent(s -> {
@@ -81,7 +81,7 @@ public class OptionalTest {
      * <p>값이 비어 있으면(null이면) 실행할 콜백 메서드까지 지정할 수 있음</p>>
      */
     @Test
-    public void testIfPresentOrElse() {
+    void testIfPresentOrElse() {
         String str = null;
         Optional<String> so = Optional.ofNullable(str);
         so.ifPresentOrElse(s -> {
@@ -92,7 +92,7 @@ public class OptionalTest {
     }
 
     @Test
-    public void testFilter() {
+    void testFilter() {
         // 이렇게 쓰는 뇨솤들이 있음
         String str2 = "hi";
         Optional<String> op2 = Optional.ofNullable(str2).filter(s -> {
@@ -115,7 +115,7 @@ public class OptionalTest {
     }
 
     @Test
-    public void testMap() {
+    void testMap() {
         String str = "1234";
         Optional<String> op = Optional.ofNullable(str).map(s -> {
             log.debug("{}", "이 코드는 실행됨");
@@ -162,7 +162,7 @@ public class OptionalTest {
      * or()은 Optional의 값이 null일 때 실행되며 Optional을 반환한다.
      */
     @Test
-    public void testOr() {
+    void testOr() {
         String str = null;
         Optional<String> op = Optional.ofNullable(str).or(() -> {
             log.debug("{}", "이건 뭘까");
@@ -175,7 +175,7 @@ public class OptionalTest {
      * orElse()는 or() 처럼 Optional의 값이 null일 때 실행되지만 Optional이 아닌 값을 반환한다. (이 코드에선 String)
      */
     @Test
-    public void testOrElse() {
+    void testOrElse() {
         String str = null;
         String str2 = Optional.ofNullable(str).orElse("yoo-hoo");
         assertEquals(str2, "yoo-hoo");
@@ -185,7 +185,7 @@ public class OptionalTest {
      * Optional을 이용해 null-safe한 타입변환 예시
      */
     @Test
-    public void nullSafeConvert() {
+    void nullSafeConvert() {
         String tisNull = null;
 
         // 원래는 NPE 때문에 이렇게 해야 하는데

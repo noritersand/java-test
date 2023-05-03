@@ -34,13 +34,13 @@ public class MethodNameTest {
     }
 
     @Test
-    public void test1() {
+    void test1() {
         log.debug("methodName() = {}", methodName());
         log.debug("CLIENT_CODE_STACK_INDEX = {}", CLIENT_CODE_STACK_INDEX);
     }
 
     @Test
-    public void test2() {
+    void test2() {
         String className = new Object() {
         }.getClass().getEnclosingClass().getName();
         log.debug("className: {}", className);

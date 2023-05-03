@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class ArrayUtilsTest {
 
     @Test
-    public void testSubarray() {
+    void testSubarray() {
         int[] arr = {1, 2, 3, 4, 5};
         assertArrayEquals(new int[]{1, 2}, ArrayUtils.subarray(arr, 0, 2));
         assertArrayEquals(new int[]{2}, ArrayUtils.subarray(arr, 1, 2));

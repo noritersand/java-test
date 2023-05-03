@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class StringTest {
 
     @Test
-    public void testFormat() {
+    void testFormat() {
         // %05d는 5자리 숫자를 의미하며, 숫자가 5자리보다 작으면 앞에 0을 채운다.
         String result = String.format("%05d", 1);
         assertEquals("00001", result);
     }
 
     @Test
-    public void testCustomFormatter() {
+    void testCustomFormatter() {
         class Formatter {
             public String floatFormat(double number) {
                 return String.format("%.2f", number); // dot(.)과 바로 뒤에오는 숫자는 정밀도를 의미한다.
@@ -51,7 +51,7 @@ public class StringTest {
     }
 
     @Test
-    public void getASCIICode() {
+    void getASCIICode() {
         String a = "abc";
         assertEquals(97, a.charAt(0));
         assertEquals(98, (short) a.charAt(1));
@@ -60,7 +60,7 @@ public class StringTest {
 
     @SuppressWarnings("unlikely-arg-type")
     @Test
-    public void compareWithCharacter() {
+    void compareWithCharacter() {
         String a = "A";
         char b = 'A';
         assertNotEquals(a, b);
@@ -69,7 +69,7 @@ public class StringTest {
     }
 
     @Test
-    public void testGetBytes() throws UnsupportedEncodingException {
+    void testGetBytes() throws UnsupportedEncodingException {
         final String str = "한";
         assertArrayEquals(new byte[]{-19, -107, -100}, str.getBytes(StandardCharsets.UTF_8));
         assertArrayEquals(new byte[]{-2, -1, -43, 92}, str.getBytes(StandardCharsets.UTF_16));
@@ -77,14 +77,14 @@ public class StringTest {
     }
 
     @Test
-    public void testToStringFromBytes() {
+    void testToStringFromBytes() {
         byte[] bytes = {-19, -107, -100};
         String korean = new String(bytes, StandardCharsets.UTF_8);
         assertEquals("한", korean);
     }
 
     @Test
-    public void testConcat() {
+    void testConcat() {
         String a = "a";
         assertEquals("ab", a + "b");
         assertEquals("a", a);
@@ -92,7 +92,7 @@ public class StringTest {
     }
 
     @Test
-    public void autoInstantiate() {
+    void autoInstantiate() {
         String a = "a";
         String b = "a";
         assertSame(a, b);
@@ -102,14 +102,14 @@ public class StringTest {
     }
 
     @Test
-    public void useBuilder() {
+    void useBuilder() {
         StringBuilder builder = new StringBuilder();
         assertEquals(0, builder.length());
         assertEquals("", builder.toString());
     }
 
     @Test
-    public void getLengthWithLineDelimiter() {
+    void getLengthWithLineDelimiter() {
         String a = "totcnt123\nstart";
         String b = "totcnt123start";
         assertEquals(10, a.indexOf("start"));
@@ -120,7 +120,7 @@ public class StringTest {
     }
 
     @Test
-    public void useIntern() {
+    void useIntern() {
         // 아래처럼 초기화될 땐 intern()을 쓰든 안쓰든 String의 주소값은 같다.
         String a = "경기";
         String b = "경기";
@@ -140,27 +140,27 @@ public class StringTest {
     }
 
     @Test
-    public void testReplaceAll() {
+    void testReplaceAll() {
         assertEquals("경기", "경기도".replaceAll("도", ""));
         assertEquals("a-b", "a:b".replaceAll(":", "-"));
         assertEquals("a-b", "a:b".replaceAll("\\:", "\\-"));
     }
 
     @Test
-    public void testReplaceFirst() {
+    void testReplaceFirst() {
         String str = "/qwe/test/submit/sender";
         assertEquals("/test/submit/sender", str.replaceFirst("/qwe", ""));
     }
 
     @Test
-    public void splitDomain() {
+    void splitDomain() {
         assertEquals(1, "localhost".split("\\.").length);
         assertEquals(3, "master.benecafe.com".split("\\.").length);
         assertEquals(2, "daum.net".split("\\.").length);
     }
 
     @Test
-    public void testSubstring() {
+    void testSubstring() {
         String str = "a1234567890b234567890c234567890d23";
         assertEquals("a", str.substring(0, 1));
         assertEquals("a12345", str.substring(0, 6));
@@ -176,7 +176,7 @@ public class StringTest {
     }
 
     @Test
-    public void testIndexOf() {
+    void testIndexOf() {
         String a = "INFO  log4jdbc.log4j2 - 5. ResultSet.close() returned void";
         assertEquals(0, a.indexOf('I'));
         assertEquals(1, a.indexOf("NFO"));
@@ -189,14 +189,14 @@ public class StringTest {
     }
 
     @Test
-    public void testLastIndexOf() {
+    void testLastIndexOf() {
         String str = "/abcd";
         assertEquals(0, str.lastIndexOf('/'));
         assertEquals("abcd", str.substring(str.lastIndexOf('/') + 1));
     }
 
     @Test
-    public void testSplit() {
+    void testSplit() {
         String splitMe = "abcdefghijklmn";
         assertEquals(splitMe, splitMe.split("\\|")[0]);
 
@@ -218,7 +218,7 @@ public class StringTest {
     }
 
     @Test
-    public void splitByLength1333() {
+    void splitByLength1333() {
         String str = "00x1111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000"; // 1
         str += "01x1111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000"; // 2
         str += "02x1111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000"; // 3
@@ -262,7 +262,7 @@ public class StringTest {
     }
 
     @Test
-    public void testSplitByLength() {
+    void testSplitByLength() {
         assertArrayEquals(new String[]{"abc", "def"}, splitByLength("abcdef", 3));
         assertArrayEquals(new String[]{"abc", "def", "ef"}, splitByLength("abcdefef", 3));
         assertArrayEquals(new String[]{"abcd", "ef12", "34"}, splitByLength("abcdef1234", 4));
@@ -302,13 +302,13 @@ public class StringTest {
     }
 
     @Test
-    public void testJoin() {
+    void testJoin() {
         List<String> texts = Arrays.asList("a", "b", "c");
         assertEquals("a, b, c", String.join(", ", texts));
     }
 
     @Test
-    public void testIsEmpty() {
+    void testIsEmpty() {
         assertTrue("".isEmpty());
         assertFalse(" ".isEmpty());
         assertFalse("  ".isEmpty());
@@ -320,7 +320,7 @@ public class StringTest {
     }
 
     @Test
-    public void testIsBlank() {
+    void testIsBlank() {
         assertTrue("".isBlank());
         assertTrue(" ".isBlank());
         assertTrue("  ".isBlank());

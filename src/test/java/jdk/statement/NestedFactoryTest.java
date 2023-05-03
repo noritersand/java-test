@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class NestedFactoryTest {
 
     @Test
-    public void test() {
+    void test() {
         // #1 내부 클래스가 public일 때: 인스턴스 직접 접근
         NestedClassFactory.NestedClass inner = NestedClassFactory.getNestedClass();
         assertNotNull(inner);
