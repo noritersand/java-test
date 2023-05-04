@@ -15,22 +15,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 public class ArrayTest {
 
+    /**
+     * 자바 Array는 indexOf()가 없음. contains()도 없다. Arrays에도 없으니 찾지 말자.
+     */
     @Test
-    void getString() {
-        int[][] arr = {{1, 2, 6}, {3, 4}};
-        String[] str = new String[arr.length];
+    void testIndexOfLike() {
+        String[] arr = {"a", "b", "c"};
+//        arr.indexOf("a");
+//        arr.contains("a");
+        assertEquals(1, indexOf(arr, "b"));;
+    }
+
+    private int indexOf(String[] arr, String target) {
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                if (null == str[i]) {
-                    str[i] = "";
-                }
-                if (0 != j) {
-                    str[i] += "x";
-                }
-                str[i] += String.valueOf(arr[i][j]);
+            // comparing element to the target element
+            if (target.equals(arr[i])) {
+                return i;
             }
         }
-        assertArrayEquals(new String[]{"1x2x6", "3x4"}, str);
+        return -1;
     }
 
     @Test
@@ -57,5 +60,23 @@ public class ArrayTest {
                 log.debug("e: {}", e);
             }
         }
+    }
+
+    @Test
+    void getString() {
+        int[][] arr = {{1, 2, 6}, {3, 4}};
+        String[] str = new String[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (null == str[i]) {
+                    str[i] = "";
+                }
+                if (0 != j) {
+                    str[i] += "x";
+                }
+                str[i] += String.valueOf(arr[i][j]);
+            }
+        }
+        assertArrayEquals(new String[]{"1x2x6", "3x4"}, str);
     }
 }

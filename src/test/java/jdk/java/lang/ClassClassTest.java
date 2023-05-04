@@ -83,13 +83,17 @@ public class ClassClassTest {
     @Test
     @SuppressWarnings("serial")
     public void testGetSimpleName() {
+        assertEquals("Object", Object.class.getSimpleName());
+        assertEquals("String", String.class.getSimpleName());
+        assertEquals("Integer", Integer.class.getSimpleName());
+        assertEquals("Boolean", Boolean.class.getSimpleName());
+
         // standard
         assertEquals("AbstractMap", AbstractMap.class.getSimpleName());
         // inner class
         assertEquals("SimpleEntry", AbstractMap.SimpleEntry.class.getSimpleName());
         // anonymous inner class
-        assertEquals("", new Serializable() {
-        }.getClass().getSimpleName());
+        assertEquals("", new Serializable() {}.getClass().getSimpleName());
     }
 
     @Test
