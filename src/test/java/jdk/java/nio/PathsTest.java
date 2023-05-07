@@ -23,21 +23,24 @@ public class PathsTest {
     @Test
     void initialize() throws IOException {
         Path path = Paths.get("src/test/resources/path-test/amiexist.txt");
-        Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
-        Path path2 = Paths.get("C:\\project\\workspace");
-        Path path3 = Paths.get("localhost/upload");
-        Path path4 = Paths.get("/localhost/upload");
-
         assertEquals("src\\test\\resources\\path-test\\amiexist.txt", path.toString());
+
+        Path path1 = Paths.get(URI.create("file://C:/project/workspace"));
         assertEquals("\\\\C\\project\\workspace", path1.toString());
+
+        Path path2 = Paths.get("C:\\project\\workspace");
         assertEquals("C:\\project\\workspace", path2.toString());
+
+        Path path3 = Paths.get("localhost/upload");
         assertEquals("localhost\\upload", path3.toString());
+
+        Path path4 = Paths.get("/localhost/upload");
         assertEquals("localhost\\upload", path3.toString());
         assertEquals("\\localhost\\upload", path4.toString());
     }
 
     @Test
-    void shouldError() {
+    void shouldBeError() {
         // 없는 경로라도 단순 문자열이면 문제가 없지만
         Paths.get("c:", "\\ppp", "\\aaa");
 

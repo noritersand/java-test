@@ -34,7 +34,7 @@ public class ObjectTest {
     }
 
     @Test
-    public void typeRecognize() {
+    void typeRecognize() {
         Object str1 = "qwe";
         Object int1 = 12345;
         Object bool1 = true;

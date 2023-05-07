@@ -46,7 +46,7 @@ public class ClassClassTest {
 
     @Test
     @SuppressWarnings("serial")
-    public void testGetName() {
+    void testGetName() {
         // standard
         assertEquals("java.util.AbstractMap", AbstractMap.class.getName());
         // inner class
@@ -58,7 +58,7 @@ public class ClassClassTest {
 
     @Test
     @SuppressWarnings("serial")
-    public void testGetTypeName() {
+    void testGetTypeName() {
         // standard
         assertEquals("java.util.AbstractMap", AbstractMap.class.getTypeName());
         // inner class
@@ -70,7 +70,7 @@ public class ClassClassTest {
 
     @Test
     @SuppressWarnings("serial")
-    public void testGetCanonicalName() {
+    void testGetCanonicalName() {
         // standard
         assertEquals("java.util.AbstractMap", AbstractMap.class.getCanonicalName());
         // inner class
@@ -82,7 +82,7 @@ public class ClassClassTest {
 
     @Test
     @SuppressWarnings("serial")
-    public void testGetSimpleName() {
+    void testGetSimpleName() {
         assertEquals("Object", Object.class.getSimpleName());
         assertEquals("String", String.class.getSimpleName());
         assertEquals("Integer", Integer.class.getSimpleName());
