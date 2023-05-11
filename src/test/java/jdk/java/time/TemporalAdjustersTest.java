@@ -49,4 +49,18 @@ public class TemporalAdjustersTest {
         assertEquals(LocalDate.parse("2023-10-22"), nextYearsDay);
         // 아래처럼 한 달 더하고 첫 날 구하는 것과 같음
     }
+    
+    @Test
+    void getNextThursday() {
+        LocalDate input = LocalDate.of(2023, 5, 29);
+        LocalDate nextThursday = input.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY));
+        assertEquals(LocalDate.of(2023, 6, 1), nextThursday);
+    }
+
+    @Test
+    void getPreviousThursday() {
+        LocalDate input = LocalDate.of(2023, 5, 29);
+        LocalDate nextThursday = input.with(TemporalAdjusters.previousOrSame(DayOfWeek.THURSDAY));
+        assertEquals(LocalDate.of(2023, 5, 25), nextThursday);
+    }
 }

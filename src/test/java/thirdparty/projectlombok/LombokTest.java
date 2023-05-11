@@ -1,4 +1,4 @@
-package thirdparty.org.projectlombok;
+package thirdparty.projectlombok;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;

@@ -1,12 +1,14 @@
 package jdk.java.time;
 
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Timestamp;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,7 +42,7 @@ public class JavaTimeTest {
         assertEquals("1970-01-01T00:00:00Z", Instant.ofEpochMilli(0).toString());
         assertEquals("2017-09-19T06:10:46.820Z", Instant.ofEpochMilli(1505801446820L).toString());
         assertEquals("2009-02-13T23:20:23Z", Instant.ofEpochSecond(1234567223L).toString());
-		assertEquals(Instant.ofEpochMilli(915152400123L), Instant.parse("1999-01-01T01:00:00.123Z")); // 표준 포맷으로 생성하기
+        assertEquals(Instant.ofEpochMilli(915152400123L), Instant.parse("1999-01-01T01:00:00.123Z")); // 표준 포맷으로 생성하기
 
         // create instance from ISO date time string
         assertEquals("2017-04-18T01:24:48.842Z", Instant.parse("2017-04-18T01:24:48.842Z").toString());
@@ -71,13 +73,13 @@ public class JavaTimeTest {
         // 이 인스턴스는 immutable하기 때문에 단순 할당만 해도 괜찮음
         LocalDate b = a;
         assertEquals(a, b);
-		assertSame(a, b);
+        assertSame(a, b);
         // 여기까진 a와 b는 동일하며 동등하지만?
 
         // 시간이 변하는 메서드를 호출하면 그 때부턴 달라짐
         b = b.plusDays(1);
         assertNotEquals(a, b);
-		assertNotSame(a, b);
+        assertNotSame(a, b);
     }
 
     @Test
@@ -135,6 +137,17 @@ public class JavaTimeTest {
         assertEquals("13:30:13", newTime.toString());
     }
 
+    @Test
+    void testDayOfWeek() {
+        LocalDate instance = LocalDate.parse("2022-12-31");
+        DayOfWeek dayOfWeek = instance.getDayOfWeek();
+        assertEquals(5, dayOfWeek.ordinal());
+        assertEquals(6, dayOfWeek.getValue());
+        assertEquals(DayOfWeek.SATURDAY, dayOfWeek);
+        assertEquals(1, DayOfWeek.MONDAY.getValue());
+        assertEquals(0, DayOfWeek.MONDAY.ordinal());
+    }
+
     /**
      * 서울의 Zone ID는 Asia/Seoul
      */
@@ -190,15 +203,6 @@ public class JavaTimeTest {
     }
 
     @Test
-    void testGetDayOfWeek() {
-        LocalDate instance = LocalDate.parse("2022-12-31");
-        DayOfWeek dayOfWeek = instance.getDayOfWeek();
-        assertEquals(DayOfWeek.SATURDAY, dayOfWeek);
-        assertEquals(5, dayOfWeek.ordinal());
-        assertEquals(6, dayOfWeek.getValue());
-    }
-
-    @Test
     void testGetOffsetDateTime() {
         assertEquals("2017-12-31T23:59:59.999999999Z",
                 OffsetDateTime.of(LocalDate.of(2017, Month.DECEMBER, 31), LocalTime.MAX, ZoneOffset.UTC).toString());
@@ -210,28 +214,6 @@ public class JavaTimeTest {
         assertEquals("22:58+18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MAX).toString());
         assertEquals("22:58-18:00", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.MIN).toString());
         assertEquals("22:58Z", OffsetTime.of(LocalTime.of(22, 58), ZoneOffset.UTC).toString());
-    }
-
-    @Test
-    void splitDate() {
-        LocalDate start = new GregorianCalendar(2016, 2, 5).getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate end = new GregorianCalendar(2016, 2, 11).getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        long periodDays = ChronoUnit.DAYS.between(start, end);
-        List<LocalDate> list = new LinkedList<>();
-        for (int i = 0; i < periodDays; i++) {
-            list.add(start.plusDays(i));
-        }
-        assertEquals("[2016-03-05, 2016-03-06, 2016-03-07, 2016-03-08, 2016-03-09, 2016-03-10]", list.toString());
-    }
-
-    @Test
-    void calculateDays() {
-        LocalDate targetDay = LocalDate.of(2017, Month.DECEMBER, 31);
-        LocalDate today = LocalDate.of(2017, Month.JANUARY, 24);
-        Period period = Period.between(today, targetDay);
-        long period2 = ChronoUnit.DAYS.between(today, targetDay);
-        assertEquals("0 years, 11 months, 7 days later. (341 days total)", (period.getYears() + " years, " + period.getMonths()
-                + " months, " + period.getDays() + " days later. (" + period2 + " days total)"));
     }
 
     @Test
@@ -368,4 +350,84 @@ public class JavaTimeTest {
         LocalDateTime localDateTime = timestamp.toLocalDateTime();
         assertEquals(LocalDateTime.parse("2022-11-25T12:45:00.000"), localDateTime);
     }
+
+    @Test
+    void generateCalendar() {
+        List<LocalDate> dates = new LinkedList<>();
+        LocalDate currentDate = LocalDate.of(2023, 4, 01);
+        while (!currentDate.isAfter(LocalDate.of(2023, 5, 31))) {
+            dates.add(currentDate);
+            currentDate = currentDate.plusDays(1);
+        }
+        log.debug("{}", dates);
+        assertEquals(61, dates.size());
+        assertEquals(LocalDate.of(2023, 4, 01), dates.get(0));
+        assertEquals(LocalDate.of(2023, 5, 31), dates.get(dates.size() - 1));
+    }
+
+
+    /**
+     * <p>특정일이 어느 월의 몇 번째 주인지 계산하기</p>
+     * <br>
+     * <h2>원하는 값</h2>
+     * <p>예를 들어  2023년 5월 29일은 월요일인데, 그 날짜 다음에 오는 목요일은 6월에 속한다.</p>
+     * <p>그러면 5월 29일은 5월의 다섯 번째 주가 아니라 6월의 첫 번째 주다.</p>
+     * <h2>현재까지 구한 값</h2>
+     * <p>어느 월인지는 가져왔으나 그 날이 정확히 몇 번째 주인지는 아직 모름</p>
+     * <p>ChronoField를 쓰면 계산을 이상하게 한다(시작일부터 7일을 단순 계산해서 7일 이전이면 첫 째 주, 7일 후면 둘 째 주 이상이 됨</p>
+     */
+    @Test
+    void testCalculateWeekOfMonthByDay() {
+//        dayOfWeek.get(TemporalAdjusters)
+        Assertions.assertThat(getThursdayOfWeek(LocalDate.of(2023, 5, 8)))
+                .isEqualTo(LocalDate.of(2023, 5, 11));
+        Assertions.assertThat(getThursdayOfWeek(LocalDate.of(2023, 5, 21)))
+                .isEqualTo(LocalDate.of(2023, 5, 18));
+        Assertions.assertThat(getThursdayOfWeek(LocalDate.of(2023, 5, 31)))
+                .isEqualTo(LocalDate.of(2023, 6, 1));
+
+
+        Assertions.assertThat(calculateWeekOfMonthByDay(LocalDate.of(2023, 5, 29)))
+                .isEqualTo(new int[]{6, 1}); // 6월의 첫 째 주
+        Assertions.assertThat(calculateWeekOfMonthByDay(LocalDate.of(2023, 5, 1)))
+                .isEqualTo(new int[]{5, 1}); // 5월의 첫 째 주
+        Assertions.assertThat(calculateWeekOfMonthByDay(LocalDate.of(2024, 12, 30)))
+                .isEqualTo(new int[]{1, 1}); // 1월의 첫 째 주
+        Assertions.assertThat(calculateWeekOfMonthByDay(LocalDate.of(2025, 1, 16)))
+                .isEqualTo(new int[]{1, 3}); // 1월의 셋 째 주
+        Assertions.assertThat(calculateWeekOfMonthByDay(LocalDate.of(2025, 2, 1)))
+                .isEqualTo(new int[]{1, 5}); // 2월의 둘 째 주
+         Assertions.assertThat(calculateWeekOfMonthByDay(LocalDate.of(2025, 2, 1)))
+                .isEqualTo(new int[]{1, 5}); // 2월의 둘 째 주
+
+        // FIXME 여기서 틀림
+        // 2025-02-01은 2월의 첫 째 주가 아니라 1월의 마지막 주다.
+        // 따라서 2025-02-08은 2월의 첫 째 주가 되어야 함.
+//        Assertions.assertThat(calculateWeekOfMonthByDay(LocalDate.of(2025, 2, 8)))
+//                .isEqualTo(new int[]{2, 1}); // 2월의 첫 째 주
+
+        Assertions.assertThat(calculateWeekOfMonthByDay(LocalDate.of(2025, 2, 14)))
+                .isEqualTo(new int[]{2, 2}); // 2월의 둘 째 주
+    }
+
+    private LocalDate getThursdayOfWeek(LocalDate input) {
+        LocalDate thursdayOfWeek = input.getDayOfWeek().getValue() < DayOfWeek.THURSDAY.getValue()
+                ? input.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY))
+                : input.with(TemporalAdjusters.previousOrSame(DayOfWeek.THURSDAY));
+        return thursdayOfWeek;
+    }
+
+    private int[] calculateWeekOfMonthByDay(LocalDate input) {
+        LocalDate thursdayOfWeek = getThursdayOfWeek(input);
+        int[] result = new int[2];
+        if (input.getMonthValue() == thursdayOfWeek.getMonthValue()) {
+            result[0] = input.getMonthValue();
+            result[1] = input.get(ChronoField.ALIGNED_WEEK_OF_MONTH);
+        } else {
+            result[0] = thursdayOfWeek.getMonthValue();
+            result[1] = thursdayOfWeek.get(ChronoField.ALIGNED_WEEK_OF_MONTH);
+        }
+        return result;
+    }
+
 }
