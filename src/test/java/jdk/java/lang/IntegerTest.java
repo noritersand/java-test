@@ -2,10 +2,10 @@ package jdk.java.lang;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * java.lang.Integer 테스트
@@ -15,6 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @Slf4j
 public class IntegerTest {
+
+    @Test
+    void testMinMax() {
+        assertThat(Integer.MAX_VALUE).isEqualTo(2147483647);
+        assertThat(Integer.MIN_VALUE).isEqualTo(-2147483648);
+    }
 
     /**
      * 10진수를 2진수로 변환
