@@ -1,6 +1,6 @@
 package thirdparty.apache.commons;
 
-import jdk.java.util.HashMapTest;
+import jdk.map.HashMapTest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
