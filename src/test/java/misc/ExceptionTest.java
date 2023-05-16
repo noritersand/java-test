@@ -1,6 +1,6 @@
 package misc;
 
-import jdk.statement.TryCatchFinallyTest;
+import builtin.statement.TryCatchFinallyTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
