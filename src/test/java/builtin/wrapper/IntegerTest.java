@@ -4,7 +4,6 @@ package builtin.wrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.*;
 
 /**
@@ -15,6 +14,19 @@ import static org.assertj.core.api.Assertions.*;
  */
 @Slf4j
 public class IntegerTest {
+
+    /**
+     * -128 ~ 127 사이의 값은 상수로 사용되기 때문에 동등 비교(==) 가능. 나머지 범위는 .equals()를 사용해야 함
+     */
+    @Test
+    void testEquals() {
+        assertThat(Integer.valueOf(-1000).equals(Integer.valueOf(-1000))).isTrue();
+        assertThat(Integer.valueOf(-129) != Integer.valueOf(-129)).isTrue();
+        assertThat(Integer.valueOf(-128) == Integer.valueOf(-128)).isTrue();
+        assertThat(Integer.valueOf(127) == Integer.valueOf(127)).isTrue();
+        assertThat(Integer.valueOf(128) != Integer.valueOf(128)).isTrue();
+        assertThat(Integer.valueOf(1000).equals(Integer.valueOf(1000))).isTrue();
+    }
 
     @Test
     void testMinMax() {
@@ -29,11 +41,11 @@ public class IntegerTest {
      */
     @Test
     void convertToBinary() {
-        assertEquals("0", Integer.toBinaryString(0));
-        assertEquals("1010", Integer.toBinaryString(10));
-        assertEquals("11111111", Integer.toBinaryString(255));
-        assertEquals("10000000000", Integer.toBinaryString(1024));
-        assertEquals("10000000000000000", Integer.toBinaryString(65536));
+        assertThat("0").isEqualTo(Integer.toBinaryString(0));
+        assertThat("1010").isEqualTo(Integer.toBinaryString(10));
+        assertThat("11111111").isEqualTo(Integer.toBinaryString(255));
+        assertThat("10000000000").isEqualTo(Integer.toBinaryString(1024));
+        assertThat("10000000000000000").isEqualTo(Integer.toBinaryString(65536));
     }
 
     /**
@@ -43,11 +55,11 @@ public class IntegerTest {
      */
     @Test
     void convertToOctonary() {
-        assertEquals("0", Integer.toOctalString(0));
-        assertEquals("12", Integer.toOctalString(10));
-        assertEquals("377", Integer.toOctalString(255));
-        assertEquals("2000", Integer.toOctalString(1024));
-        assertEquals("200000", Integer.toOctalString(65536));
+        assertThat("0").isEqualTo(Integer.toOctalString(0));
+        assertThat("12").isEqualTo(Integer.toOctalString(10));
+        assertThat("377").isEqualTo(Integer.toOctalString(255));
+        assertThat("2000").isEqualTo(Integer.toOctalString(1024));
+        assertThat("200000").isEqualTo(Integer.toOctalString(65536));
     }
 
     /**
@@ -57,11 +69,11 @@ public class IntegerTest {
      */
     @Test
     void convertToHexadecimal() {
-        assertEquals("0", Integer.toHexString(0));
-        assertEquals("a", Integer.toHexString(10));
-        assertEquals("ff", Integer.toHexString(255));
-        assertEquals("400", Integer.toHexString(1024));
-        assertEquals("10000", Integer.toHexString(65536));
+        assertThat("0").isEqualTo(Integer.toHexString(0));
+        assertThat("a").isEqualTo(Integer.toHexString(10));
+        assertThat("ff").isEqualTo(Integer.toHexString(255));
+        assertThat("400").isEqualTo(Integer.toHexString(1024));
+        assertThat("10000").isEqualTo(Integer.toHexString(65536));
     }
 
     /**

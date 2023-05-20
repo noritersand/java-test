@@ -39,8 +39,9 @@ public class WrapperClassTest {
         assertTrue(Long.valueOf(100L) == Long.valueOf(100L));
         assertTrue(Long.valueOf(126L) == Long.valueOf(126L));
         assertTrue(Long.valueOf(127L) == Long.valueOf(127L));
-        // -128에서 127까지는 동등 연산자가 인스턴스 참조값을 비교하지 않음. 1바이트로 표현 가능한 범위 내에선 정수로 변환된다고 함(아마 원시타입으로 변환되는거겠지)
-        // 1바이트는 -128부터 127까지 표현 가능 (2^7 = 128)
+        // -128에서 127까지는 동등 연산자가 인스턴스 참조값을 비교하지 않음.
+        // 이 범위의 값은 상수로 등록해서 사용한다고 함
+        // 참고로 -128부터 127까지 표현 가능한 것은 1바이트임 : 2^7 = 128
         assertTrue(Long.valueOf(128L) != Long.valueOf(128L));
         assertTrue(Long.valueOf(129L) != Long.valueOf(129L));
         assertTrue(Long.valueOf(130L) != Long.valueOf(130L));
