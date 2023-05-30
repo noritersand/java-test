@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.assertj.core.api.Assertions.*;
 /**
  * <p>{@link Path} 클래스 테스트
  *
@@ -36,6 +36,14 @@ public class PathTest {
         assertEquals(path3, path4);
 
         assertEquals(new File("/a/b/c"), path.toFile());
+
+        assertThatThrownBy(() -> {
+            Path.of("somewhere", null);
+        }).isInstanceOf(NullPointerException.class).hasMessage("Cannot read the array length because \"more\" is null");
+
+        assertThatThrownBy(() -> {
+            Path.of(null, "somewhere");
+        }).isInstanceOf(NullPointerException.class).hasMessage(null);
     }
 
     /**
