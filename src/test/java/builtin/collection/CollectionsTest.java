@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * java.util.Collections 테스트 슈트
@@ -20,40 +20,41 @@ public class CollectionsTest {
     @Test
     void getEmptyList() {
         List emptyList = Collections.EMPTY_LIST; // new EmptyList<>();
-        assertEquals(0, emptyList.size());
+        assertThat(emptyList.size()).isEqualTo(0);
 
         // 위와 같음
         List emptyList2 = Collections.emptyList(); // new EmptyList<>();
-        assertEquals(0, emptyList2.size());
+        assertThat(emptyList2.size()).isEqualTo(0);
     }
 
     @Test
     void testMin() {
         List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
-        assertEquals(Integer.valueOf(1), Collections.min(list));
+        assertThat(Collections.min(list)).isEqualTo(1);
     }
 
     @Test
     void testMax() {
         List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
-        assertEquals(Integer.valueOf(99), Collections.max(list));
+        assertThat(Collections.max(list)).isEqualTo(99);
         list.get(0);
     }
 
     @Test
     void testSort() {
         Integer[] chaos = {105, 99, 2, 44, 73, 99};
-        Integer[] sortedAsc = {2, 44, 73, 99, 99, 105};
-        Integer[] sortedDesc = {105, 99, 99, 73, 44, 2};
         List<Integer> list = Arrays.asList(chaos);
+
+        Integer[] ascSortComparison = {2, 44, 73, 99, 99, 105};
+        Integer[] descSortComparison = {105, 99, 99, 73, 44, 2};
 
         // 그냥 호출하면 오름차순
         Collections.sort(list);
-        assertArrayEquals(sortedAsc, list.toArray());
+        assertThat(list.toArray()).isEqualTo(ascSortComparison);
 
         // 내림차순
         Collections.sort(list, Collections.reverseOrder());
-        assertArrayEquals(sortedDesc, list.toArray());
+        assertThat(list.toArray()).isEqualTo(descSortComparison);
 
         // Comparator 직접 작성하기: 오름차순
         list = Arrays.asList(chaos);
@@ -66,14 +67,14 @@ public class CollectionsTest {
         Collections.sort(list, (o1, o2) -> o1 - o2);
         // 음수를 반환하면 o1을 좌측으로, 0을 반환하게 하면 그대로 유지, 양수를 반환하면 o1을 우측으로 정렬한다.
         // 이 경우 음수가 반환되려면 o1이 o2보다 작아야하므로 작은 값이 좌측으로 정렬되는 오름차순 정렬이 된다.
-        assertArrayEquals(sortedAsc, list.toArray());
+        assertThat(list.toArray()).isEqualTo(ascSortComparison);
 
         // Comparator 직접 작성하기: 내림차순
         list = Arrays.asList(chaos);
         Collections.sort(list, (o1, o2) -> o2 - o1);
         // 음수: o1을 좌측으로, 0: 유지, 양수: 01을 우측으로
         // 이 경우 음수가 반환되려면 o1이 o2보다 커야하므로 큰 값이 좌측으로 정렬되는 내림차순 정렬이다.
-        assertArrayEquals(sortedDesc, list.toArray());
+        assertThat(list.toArray()).isEqualTo(descSortComparison);
     }
 
     /**
@@ -112,7 +113,7 @@ public class CollectionsTest {
         long afterSearchTime = watch.getNanoTime();
         log.debug("pure searching time: {}", afterSearchTime - afterSortingTime);
 
-        assertEquals(findMe, list.get(found));
+        assertThat(list.get(found)).isEqualTo(findMe);
     }
 
     @Test
@@ -135,7 +136,7 @@ public class CollectionsTest {
         watch.stop();
         log.debug("searching time: {}", watch.getNanoTime());
 
-        assertEquals(findMe, list.get(found));
+        assertThat(list.get(found)).isEqualTo(findMe);
     }
 
     /**
@@ -146,7 +147,7 @@ public class CollectionsTest {
     @Test
     void testWildcardParameterizedType() {
         List<? super String> strList = Arrays.asList("a", "b");
-        assertTrue(strList.contains("a"));
+        assertThat(strList.contains("a")).isTrue();
     }
 
     @Test

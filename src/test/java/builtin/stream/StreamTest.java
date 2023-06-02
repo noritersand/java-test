@@ -14,7 +14,8 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Stream 클래스 테스트
@@ -41,9 +42,9 @@ public class StreamTest {
         List<Integer> list = Arrays.asList(1, 3, 7);
         Stream<Integer> stream = list.stream();
         stream.forEach(System.out::println);
-        assertThrows(IllegalStateException.class, () -> {
+        assertThatThrownBy(() -> {
             stream.forEach(System.out::println);
-        });
+        }).isInstanceOf(IllegalStateException.class);
         stream.close(); // 생략 가능
 
         Stream<Integer> stream2 = list.stream();
@@ -53,8 +54,8 @@ public class StreamTest {
             basket.add(k);
         });
         stream2.close();
-        assertArrayEquals(new Integer[]{1, 3, 7}, basket.toArray(new Integer[list.size()]));
-        assertEquals(3, basket.size());
+        assertThat(basket.toArray(new Integer[list.size()])).isEqualTo(new Integer[]{1, 3, 7});
+        assertThat(basket.size()).isEqualTo(3);
     }
 
     @Test
@@ -72,12 +73,12 @@ public class StreamTest {
         // 필터링 결과 모두 출력
         Stream<Integer> stream = list.stream();
         List<Integer> result1 = stream.filter(predicate).collect(Collectors.toList());
-        assertEquals(Arrays.asList(2, 4, 6, 8), result1);
+        assertThat(result1).isEqualTo(Arrays.asList(2, 4, 6, 8));
 
         // 필터링 결과 중 첫 번째
         stream = list.stream();
         Integer result2 = stream.filter(predicate).findFirst().get();
-        assertEquals(2, result2.intValue());
+        assertThat(result2.intValue()).isEqualTo(2);
 
         // 필터링 결과 중 아무거나?? 그냥 첫 번째꺼 나오는거 같은데...
         stream = list.stream();
@@ -91,14 +92,14 @@ public class StreamTest {
     public void testReduce() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         Optional<Integer> reduce = list.stream().reduce((a, b) -> a + b);
-        assertEquals(45, reduce);
+        assertThat(reduce).isEqualTo(45);
     }
 
     @Test
     void testMax() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         int max = list.stream().max(Integer::compareTo).get();
-        assertEquals(9, max);
+        assertThat(max).isEqualTo(9);
     }
 
     @Test
@@ -107,7 +108,7 @@ public class StreamTest {
         // List<String> sortedList = list.stream().sorted((o1,o2)-> o2.compareTo(o1)).collect(Collectors.toList());
         // 위처럼 쓴거랑 같음
         List<String> sortedList = list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
-        assertEquals(Arrays.asList("c", "a", "Z", "Y", "B", "A", "9", "4", "1"), sortedList);
+        assertThat(sortedList).isEqualTo(Arrays.asList("c", "a", "Z", "Y", "B", "A", "9", "4", "1"));
     }
 
     @Test
@@ -117,23 +118,50 @@ public class StreamTest {
         boolean result = stream.anyMatch(e -> {
             return 10 < e;
         });
-        assertFalse(result); // list에는 10보다 큰게 없음.
+        assertThat(result).isFalse(); // list에는 10보다 큰게 없음.
 
         String[] arr = {"/findme", "/beginning", "/start"};
         final String compareme = "/beginning/list/hello";
         Stream<String> stream2 = Arrays.asList(arr).stream();
         boolean existsForeMatch = stream2.anyMatch(e -> 0 == compareme.indexOf(e));
-        assertTrue(existsForeMatch);
+        assertThat(existsForeMatch).isTrue();
     }
 
     @Test
     void testMap() {
         List<ListGenerator.Obj> objList = ListGenerator.generateObjList(10);
         log.debug("objList: {}", objList);
-        List<Integer> indexList = objList.stream().map(ele -> ele.getIndex()).collect(Collectors.toList());
-        log.debug("indexList: {}", indexList);
-        assertEquals(10, indexList.size());
-        assertEquals(1, indexList.get(1));
+        List<Integer> nums = objList.stream().map(ele -> ele.getNum()).collect(Collectors.toList());
+        log.debug("nums: {}", nums);
+        assertThat(nums.size()).isEqualTo(10);
+        assertThat(nums.get(1)).isEqualTo(1);
+    }
+
+    /**
+     * stream의 distinct() 테스트
+     */
+    @Test
+    void testDistinct() {
+        List<ListGenerator.Obj> originalList = ListGenerator.generateObjList(10);
+        ListGenerator.Obj b = new ListGenerator.Obj(200, "b");
+        originalList.add(b);
+        originalList.add(b);
+        originalList.add(b);
+
+        assertThat(originalList.size()).isEqualTo(13);
+        List<ListGenerator.Obj> newList = originalList.stream().distinct().collect(Collectors.toList());
+        assertThat(newList.size()).isEqualTo(11);
+        // 당연히 같은 객체는 중복 제거 대상
+
+        // 만약 객체는 다른데 필드의 값만 같다면?
+        newList.add(new ListGenerator.Obj(100, "a"));
+        newList.add(new ListGenerator.Obj(100, "a"));
+        newList.add(new ListGenerator.Obj(100, "a"));
+
+        assertThat(newList.size()).isEqualTo(14);
+        List<ListGenerator.Obj> newList2 = newList.stream().distinct().collect(Collectors.toList());
+        assertThat(newList2.size()).isEqualTo(12);
+        // 어떤 원리인진 몰라도 이것도 중복 제거 잘됨
     }
 
     @Test

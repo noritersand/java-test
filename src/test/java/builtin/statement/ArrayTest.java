@@ -3,8 +3,7 @@ package builtin.statement;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * 배열 테스트 슈트
@@ -23,7 +22,7 @@ public class ArrayTest {
         String[] arr = {"a", "b", "c"};
 //        arr.indexOf("a");
 //        arr.contains("a");
-        assertEquals(1, indexOf(arr, "b"));;
+        assertThat(indexOf(arr, "b")).isEqualTo(1);
     }
 
     private int indexOf(String[] arr, String target) {
@@ -39,15 +38,15 @@ public class ArrayTest {
     @Test
     void getLength() {
         int[][] arr = {{1, 2, 6}, {3, 4}};
-        assertEquals(2, arr.length);
-        assertEquals(3, arr[0].length);
-        assertEquals(2, arr[1].length);
+        assertThat(arr.length).isEqualTo(2);
+        assertThat(arr[0].length).isEqualTo(3);
+        assertThat(arr[1].length).isEqualTo(2);
     }
 
     @Test
     void join() {
         String[] arr = {"a", "b", "c"};
-        assertEquals("a,b,c", String.join(",", arr));
+        assertThat(String.join(",", arr)).isEqualTo("a,b,c");
     }
 
     @Test
@@ -77,6 +76,6 @@ public class ArrayTest {
                 str[i] += String.valueOf(arr[i][j]);
             }
         }
-        assertArrayEquals(new String[]{"1x2x6", "3x4"}, str);
+        assertThat(str).isEqualTo(new String[]{"1x2x6", "3x4"});
     }
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * {@link List} 테스트
@@ -23,7 +23,7 @@ public class ListTest {
     @Test
     void getEmptyList() {
         List<Object> of = List.of();
-        assertEquals(0, of.size());
+        assertThat(of.size()).isEqualTo(0);
     }
 
     /**
@@ -32,7 +32,7 @@ public class ListTest {
     @Test
     void testOf() {
         List<String> alphabet = List.of("a", "b", "c");
-        assertEquals(3, alphabet.size());
+        assertThat(alphabet.size()).isEqualTo(3);
     }
 
     @Test

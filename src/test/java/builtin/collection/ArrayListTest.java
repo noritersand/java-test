@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * {@link ArrayList} 테스트
@@ -33,8 +33,8 @@ public class ArrayListTest {
         // 이건 클론이 아니라 그냥 복사. 같은 인스턴스를 사용한다.
         ArrayList<ListTestModel> newbies = new ArrayList<>(origins);
 
-        assertEquals(origins.get(0), newbies.get(0));
-        assertSame(origins.get(0), newbies.get(0));
+        assertThat(newbies.get(0)).isEqualTo(origins.get(0));
+        assertThat(newbies.get(0)).isEqualTo(origins.get(0));
     }
 
     @Test
@@ -49,16 +49,16 @@ public class ArrayListTest {
             newbies.add(new ListTestModel(ele.getName()));
         }
 
-        assertNotEquals(origins.get(0), newbies.get(0));
-        assertNotSame(origins.get(0), newbies.get(0));
+        assertThat(newbies.get(0)).isNotEqualTo(origins.get(0));
+        assertThat(newbies.get(0)).isNotEqualTo(origins.get(0));
     }
 
     @Test
     void getSize() {
         ArrayList<String> stringList = new ArrayList<>();
-        assertEquals(0, stringList.size());
+        assertThat(stringList.size()).isEqualTo(0);
         stringList = new ArrayList<>(10); // 리스트의 capacity를 지정한다. size가 아니다.
-        assertEquals(0, stringList.size()); // capacity 지정과 size는 관련 없음.
+        assertThat(stringList.size()).isEqualTo(0); // capacity 지정과 size는 관련 없음.
     }
 
     /**
@@ -76,8 +76,8 @@ public class ArrayListTest {
                 iter.remove();
             }
         }
-        assertEquals(Arrays.asList("b", "c", "d"), list);
-        assertEquals(3, list.size());
+        assertThat(list).isEqualTo(Arrays.asList("b", "c", "d"));
+        assertThat(list.size()).isEqualTo(3);
     }
 
     /**
@@ -95,8 +95,8 @@ public class ArrayListTest {
                 i--;
             }
         }
-        assertEquals(Arrays.asList("b", "c", "d"), list);
-        assertEquals(3, list.size());
+        assertThat(list).isEqualTo(Arrays.asList("b", "c", "d"));
+        assertThat(list.size()).isEqualTo(3);
     }
 
     /**
@@ -120,7 +120,7 @@ public class ArrayListTest {
                 cnt++;
             }
         }
-        assertEquals("[d, e]", list.toString());
+        assertThat(list.toString()).isEqualTo("[d, e]");
 
         // 뒤 3개 지우기
         list = Arrays.stream(strs).collect(Collectors.toList());
@@ -131,7 +131,7 @@ public class ArrayListTest {
                 cnt++;
             }
         }
-        assertEquals("[a, b]", list.toString());
+        assertThat(list.toString()).isEqualTo("[a, b]");
     }
 
 //	@Test
@@ -156,7 +156,7 @@ public class ArrayListTest {
                 break;
             }
         }
-        assertEquals(1, targetIndex);
+        assertThat(targetIndex).isEqualTo(1);
     }
 
     /**
@@ -167,10 +167,10 @@ public class ArrayListTest {
         List<HashMap<String, Object>> list = getSomeList();
         List<HashMap<String, Object>> searchResult
                 = list.stream().filter(ele -> "b".equals(ele.get("key")) || "d".equals(ele.get("key"))).collect(Collectors.toList());
-        assertEquals(4, list.size()); // 원래 리스트는 변하지 않음
-        assertEquals(2, searchResult.size()); // filter의 조건에 맞는 새로운 리스트의 길이
-        assertEquals("456", searchResult.get(0).get("value"));
-        assertEquals("012", searchResult.get(1).get("value"));
+        assertThat(list.size()).isEqualTo(4); // 원래 리스트는 변하지 않음
+        assertThat(searchResult.size()).isEqualTo(2); // filter의 조건에 맞는 새로운 리스트의 길이
+        assertThat(searchResult.get(0).get("value")).isEqualTo("456");
+        assertThat(searchResult.get(1).get("value")).isEqualTo("012");
     }
 
     @Test
@@ -179,33 +179,33 @@ public class ArrayListTest {
         list.add(123);
         list.add(234);
         list.add(345);
-        assertArrayEquals(new Integer[]{123, 234, 345}, list.toArray(new Integer[list.size()]));
+        assertThat(list.toArray(new Integer[list.size()])).isEqualTo(new Integer[]{123, 234, 345});
     }
 
     @Test
     void fromArray() {
         Integer[] values = {1, 3, 7};
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
-        assertEquals("[1, 3, 7]", list.toString());
+        assertThat(list.toString()).isEqualTo("[1, 3, 7]");
     }
 
     @Test
     void fromArrayByStream() {
         String[] strs = {"a", "b", "c", "d", "e"};
         List<String> stringList = Arrays.stream(strs).collect(Collectors.toList());
-        assertEquals("[a, b, c, d, e]", stringList.toString());
+        assertThat(stringList.toString()).isEqualTo("[a, b, c, d, e]");
 
         int[] spam = {1, 2, 3};
         List<Integer> integerList = Arrays.stream(spam).boxed().collect(Collectors.toList());
-        assertEquals("[1, 2, 3]", integerList.toString());
+        assertThat(integerList.toString()).isEqualTo("[1, 2, 3]");
     }
 
     @Test
     void testClear() {
         ArrayList<Integer> list = new ArrayList<>();
-        assertNotNull(list);
+        assertThat(list).isNotNull();
         list.clear();
-        assertNotNull(list);
+        assertThat(list).isNotNull();
     }
 
     @Test
@@ -223,7 +223,7 @@ public class ArrayListTest {
 
         list.remove(1);
 
-        assertEquals("[9, 7, 6, 5, 4, 3, 2, 1]", list.toString());
+        assertThat(list.toString()).isEqualTo("[9, 7, 6, 5, 4, 3, 2, 1]");
     }
 
     /**
@@ -236,22 +236,22 @@ public class ArrayListTest {
         List<Integer> numbers = Arrays.asList(5, 3, 1, 2, 9, 5, 0, 7);
 
         List<Integer> firstBorn = numbers.subList(0, 1); // 5
-        assertEquals(1, firstBorn.size());
-        assertEquals(List.of(5), firstBorn);
+        assertThat(firstBorn.size()).isEqualTo(1);
+        assertThat(firstBorn).isEqualTo(List.of(5));
 
         List<Integer> head = numbers.subList(0, 4); // 5, 3, 1, 2
-        assertEquals(4, head.size());
-        assertEquals(Arrays.asList(5, 3, 1, 2), head);
+        assertThat(head.size()).isEqualTo(4);
+        assertThat(head).isEqualTo(Arrays.asList(5, 3, 1, 2));
 
         List<Integer> tail = numbers.subList(4, numbers.size()); // 9, 5, 0, 7
-        assertEquals(4, tail.size());
-        assertEquals(Arrays.asList(9, 5, 0, 7), tail);
+        assertThat(tail.size()).isEqualTo(4);
+        assertThat(tail).isEqualTo(Arrays.asList(9, 5, 0, 7));
     }
 
     @Test
     void testJoin() {
         List<String> texts = Arrays.asList("a", "b", "c");
-        assertEquals("a, b, c", String.join(", ", texts));
+        assertThat(String.join(", ", texts)).isEqualTo("a, b, c");
     }
 
     @Test
@@ -268,7 +268,7 @@ public class ArrayListTest {
         Integer[] values = {1, 3, 7};
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
         list.removeIf(p -> 3 == p);
-        assertEquals("[1, 7]", list.toString());
+        assertThat(list.toString()).isEqualTo("[1, 7]");
     }
 
     private ArrayList<HashMap<String, Object>> getSomeList() {

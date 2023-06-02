@@ -1,6 +1,8 @@
 package lab.dummy.generator;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.codehaus.commons.nullanalysis.NotNull;
@@ -53,15 +55,17 @@ public enum ListGenerator {
         for (int i = 0; i < size; i++) {
             Obj obj = new Obj();
             list.add(obj);
-            obj.setIndex(i);
+            obj.setNum(i);
             obj.setName(RandomStringUtils.random(10, true, false));
         }
         return list;
     }
 
     @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Obj {
-        private Integer index;
+        private Integer num;
         private String name;
     }
 }
