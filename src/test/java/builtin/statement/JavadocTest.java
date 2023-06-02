@@ -39,8 +39,7 @@ package builtin.statement;
  * @author fixalot
  * @since 2016-11-19
  */
-public enum JavadocTest {
-    ;
+public class JavadocTest {
 
     /**
      *

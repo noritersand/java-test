@@ -9,8 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 2017-07-27
  */
 @Slf4j
-public enum ThreadTest2 {
-    ;
+public class ThreadTest2 {
 
     @SuppressWarnings("unused")
 

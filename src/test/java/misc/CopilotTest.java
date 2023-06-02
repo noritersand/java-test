@@ -3,8 +3,7 @@ package misc;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public enum CopilotTest {
-    ;
+public class CopilotTest {
 
     /**
      * <b>단축키:

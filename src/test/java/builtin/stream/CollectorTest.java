@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * java.util.stream.Collector 사용 방법 테스트
@@ -20,24 +20,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 public class CollectorTest {
 
-    @Getter
-    private class Dummy {
-        private String group;
-        private String name;
+    /**
+     * Collectors.joining() 테스트
+     */
+    @Test
+    void testJoining() {
+        List<String> list = new LinkedList<>();
+        list.add("eagle1");
+        list.add("eagle2");
+        list.add("eagle3");
+        list.add("eagle4");
+        list.add("eagle5");
 
-        public Dummy(String group, String name) {
-            this.group = group;
-            this.name = name;
-        }
-    }
+        String joined = list.stream()
+                .collect(Collectors.joining(", "));
 
-    public List<Dummy> generateDummyList() {
-        List<Dummy> list = new LinkedList<>();
-        list.add(new Dummy("A", "fixalot"));
-        list.add(new Dummy("A", "fixalot2"));
-        list.add(new Dummy("B", "fixalot3"));
-        list.add(new Dummy("B", "fixalot4"));
-        return list;
+        assertThat(joined).isEqualTo("eagle1, eagle2, eagle3, eagle4, eagle5");
     }
 
     /**
@@ -45,8 +43,13 @@ public class CollectorTest {
      */
     @Test
     void testGroupingBy() {
-        List<Dummy> hashMaps = this.generateDummyList();
-        Map<String, List<Dummy>> collect = hashMaps.stream()
+        List<Dummy> dummies = new LinkedList<>();
+        dummies.add(new Dummy("A", "fixalot"));
+        dummies.add(new Dummy("A", "fixalot2"));
+        dummies.add(new Dummy("B", "fixalot3"));
+        dummies.add(new Dummy("B", "fixalot4"));
+
+        Map<String, List<Dummy>> collect = dummies.stream()
                 .collect(Collectors.groupingBy(Dummy::getGroup));
 
         /*
@@ -82,13 +85,44 @@ public class CollectorTest {
         */
 
         List<Dummy> aDummy = collect.get("A");
-        assertEquals(2, aDummy.size());
-        assertEquals("A", aDummy.get(0).getGroup());
-        assertEquals("fixalot2", aDummy.get(1).getName());
+        assertThat(aDummy.size()).isEqualTo(2);
+        assertThat(aDummy.get(0).getGroup()).isEqualTo("A");
+        assertThat(aDummy.get(1).getName()).isEqualTo("fixalot2");
 
         List<Dummy> bDummy = collect.get("B");
-        assertEquals(2, bDummy.size());
-        assertEquals("B", bDummy.get(0).getGroup());
-        assertEquals("fixalot4", bDummy.get(1).getName());
+        assertThat(bDummy.size()).isEqualTo(2);
+        assertThat(bDummy.get(0).getGroup()).isEqualTo("B");
+        assertThat(bDummy.get(1).getName()).isEqualTo("fixalot4");
+    }
+
+    @Getter
+    private class Dummy {
+        private String group;
+        private String name;
+
+        public Dummy(String group, String name) {
+            this.group = group;
+            this.name = name;
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

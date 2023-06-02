@@ -9,8 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 2017-07-27
  */
 @Slf4j
-public enum StaticTest {
-    ;
+public class StaticTest {
 
     /**
      * 스태틱 블록은 언제 실행되나.
