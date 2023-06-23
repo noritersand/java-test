@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * java.util.Optional 테스트 슈ㅌ
@@ -17,8 +18,10 @@ public class OptionalTest {
     @Test
     void testEmpty() {
         Optional<Object> empty = Optional.empty();
-        assertNotNull(empty);
-        assertTrue(empty.isEmpty());
+        assertThat(empty).isNotNull();
+        assertThat(empty).isEmpty();
+        assertThat(empty.isEmpty()).isTrue();
+        assertThat(empty.isPresent()).isFalse();
     }
 
     /**
@@ -28,13 +31,13 @@ public class OptionalTest {
     @Test
     void testOf() {
         Optional<String> op = Optional.of("1234");
-        assertEquals("1234", op.get());
-        assertEquals("Optional[1234]", op.toString());
-        assertEquals(op, Optional.of("1234"));
+        assertThat(op.get()).isEqualTo("1234");
+        assertThat(op.toString()).isEqualTo("Optional[1234]");
+        assertThat(op).isEqualTo(Optional.of("1234"));
 
-        assertThrowsExactly(NullPointerException.class, () -> {
+        assertThatThrownBy(() -> {
             Optional<String> op2 = Optional.of(null);
-        });
+        }).isInstanceOf(NullPointerException.class);
     }
 
     /**
@@ -50,9 +53,9 @@ public class OptionalTest {
      */
     @Test
     void testIsPresent() {
-        assertTrue(Optional.of("1234").isPresent());
-        assertTrue(Optional.of("").isPresent()); // 빈 문자열인지는 판단하지 않음
-        assertFalse(Optional.ofNullable(null).isPresent());
+        assertThat(Optional.of("1234").isPresent()).isTrue();
+        assertThat(Optional.of("").isPresent()).isTrue(); // 빈 문자열인지는 판단하지 않음
+        assertThat(Optional.ofNullable("1234").isPresent()).isTrue();
     }
 
     /**
@@ -60,9 +63,9 @@ public class OptionalTest {
      */
     @Test
     void testIsEmpty() {
-        assertTrue(Optional.ofNullable(null).isEmpty());
-        assertFalse(Optional.of("1234").isEmpty());
-        assertFalse(Optional.of("").isEmpty());
+        assertThat(Optional.ofNullable(null).isEmpty()).isTrue();
+        assertThat(Optional.of("1234").isEmpty()).isFalse();
+        assertThat(Optional.of("").isEmpty()).isFalse();
     }
 
     /**
@@ -78,7 +81,7 @@ public class OptionalTest {
     }
 
     /**
-     * <p>값이 비어 있으면(null이면) 실행할 콜백 메서드까지 지정할 수 있음</p>>
+     * <p>값이 비어 있으면(null이면) 실행할 콜백 메서드까지 지정할 수 있음</p>
      */
     @Test
     void testIfPresentOrElse() {
@@ -111,7 +114,7 @@ public class OptionalTest {
 
         // filter()에서 false를 반환하면 Optional은 값이 없는 상태가 된다.
         Optional<String> abcd = Optional.ofNullable("abcd").filter(s -> false);
-        assertTrue(abcd.isEmpty());
+        assertThat(abcd.isEmpty()).isTrue();
     }
 
     @Test
@@ -121,7 +124,7 @@ public class OptionalTest {
             log.debug("{}", "이 코드는 실행됨");
             return "numbers";
         });
-        assertEquals("numbers", op.get());
+        assertThat(op.get()).isEqualTo("numbers");
 
         // map()도 filter()처럼 Optional의 값이 없을 때 실행되지 않는다.
         String str2 = null;
@@ -129,14 +132,14 @@ public class OptionalTest {
             log.debug("{}", "이 코드는 실행되지 않음");
             return "numbers";
         });
-        assertEquals(null, op2.orElseGet(() -> null));
-        
+        assertThat(op2.orElseGet(() -> null)).isNull();
+
         // filter()에서 false를 반환하면 Optional은 값이 없는 상태가 되기 때문에 map()도 실행되지 않는다.
         Optional<String> op3 = Optional.ofNullable("abcd").filter(s -> false).map(s -> {
             log.debug("{}", "이 코드는 실행되지 않음");
             return "numbers";
         });
-        assertTrue(op3.isEmpty());
+        assertThat(op3.isEmpty()).isTrue();
 
         // null이던 null-string이던 NPE에서 안전함
         String str3 = null;
@@ -144,18 +147,18 @@ public class OptionalTest {
         Integer userNo = Optional.ofNullable(str3)
                 .filter(v -> !v.isBlank())
                 .map(Integer::valueOf).orElse(null);
-        assertNull(userNo);
+        assertThat(userNo).isNull();
 
         // 하지만 문자열로 "null"인 경우는 얘기가 다름
-        assertThrows(NumberFormatException.class, () -> {
+        assertThatThrownBy(() -> {
             String str4 = "null";
             Optional.ofNullable(str4)
-                .filter(v -> !v.isBlank())
-                .map(s -> {
-                    // Integer.valueOf()를 하려다 NFE 발생함
-                    return Integer.valueOf(s);
-                }).orElse(null);
-        });
+                    .filter(v -> !v.isBlank())
+                    .map(s -> {
+                        // Integer.valueOf()를 하려다 NFE 발생함
+                        return Integer.valueOf(s);
+                    }).orElse(null);
+        }).isInstanceOf(NumberFormatException.class);
     }
 
     /**
@@ -168,7 +171,7 @@ public class OptionalTest {
             log.debug("{}", "이건 뭘까");
             return "hello".describeConstable();
         });
-        assertEquals(Optional.of("hello"), op);
+        assertThat(op).isEqualTo(Optional.of("hello"));
     }
 
     /**
@@ -178,7 +181,7 @@ public class OptionalTest {
     void testOrElse() {
         String str = null;
         String str2 = Optional.ofNullable(str).orElse("yoo-hoo");
-        assertEquals(str2, "yoo-hoo");
+        assertThat(str2).isEqualTo("yoo-hoo");
     }
 
     /**
@@ -190,7 +193,7 @@ public class OptionalTest {
 
         // 원래는 NPE 때문에 이렇게 해야 하는데
         Integer memberNo = StringUtils.isBlank(tisNull) ? null : Integer.valueOf(tisNull);
-        assertNull(memberNo);
+        assertThat(memberNo).isNull();
 
         // Optional을 쓴다면
         Integer memberNo2 = Optional.ofNullable(tisNull)
@@ -203,6 +206,6 @@ public class OptionalTest {
         // 3. 만약 값이 null이면 filter()와 map()을 건너뛰며 바로 orElse()를 실행함
         // 4. 만약 값이 null-string이면 filter()에서 Optional의 값을 비우므로 map()을 건너뛰고 orElse()를 실행한다.
 
-        assertNull(memberNo2); // 그래서 결국 null이 할당됨
+        assertThat(memberNo2).isNull(); // 그래서 결국 null이 할당됨
     }
 }
