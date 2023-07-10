@@ -6,7 +6,7 @@ package lab.exception.usererror;
  * @author fixalot
  * @since 2023-04-04
  */
-public class NotAllowedInputException extends BusinessRuleViolationException {
+public class NotAllowedInputException extends UserErrorException {
 
     public NotAllowedInputException() {}
 

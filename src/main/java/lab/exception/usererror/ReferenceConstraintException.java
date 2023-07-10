@@ -7,7 +7,7 @@ package lab.exception.usererror;
  * @author fixalot
  * @since 2022-05-31
  */
-public class ReferenceConstraintException extends BusinessRuleViolationException {
+public class ReferenceConstraintException extends UserErrorException {
 
     public ReferenceConstraintException() {}
 

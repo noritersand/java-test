@@ -6,7 +6,7 @@ package lab.exception.usererror;
  * @author fixalot
  * @since 2022-05-09
  */
-public class DataAlreadyExistsException extends BusinessRuleViolationException {
+public class DataAlreadyExistsException extends UserErrorException {
 
     public DataAlreadyExistsException() {}
 

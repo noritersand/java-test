@@ -7,7 +7,7 @@ package lab.exception.usererror;
  * @author fixalot
  * @since 2022-06-15
  */
-public class BusinessRuleViolationException extends RuntimeException {
+public class BusinessRuleViolationException extends UserErrorException {
 
     public BusinessRuleViolationException() {}
 
