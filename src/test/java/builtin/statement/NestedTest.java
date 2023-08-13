@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author fixalot
@@ -13,26 +14,37 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class NestedTest {
 
     @Test
-    void test() {
+    void testNonStaticOuter() {
         NonStaticOuter outer = new NonStaticOuter();
         assertEquals("invoking outerMethod", outer.executeOuterMethod());
 
-        NonStaticOuter.Inner inner = new NonStaticOuter().getInner();
+        // static이 아닌 public 중첩 클래스는 외부 클래스의 인스턴스를 통해 접근해야 함
+        NonStaticOuter.Inner inner = outer.new Inner();
         assertEquals("invoking innerMethod", inner.executeInnerMethod());
     }
 
     @Test
-    void test2() {
-        new Outer().outerMethod();
+    void testOuter() {
+        Outer outer = new Outer();
+        outer.outerMethod();
+
+        // static public 중첩 클래스는 이렇게 접근함
+        assertThat(Outer.StaticInner.staticValue).isEqualTo("staticValue");
+
+        // static public 중첩 클래스의 필드는 인스턴스를 먼저 생성해야 한다.
+        Outer.StaticInner staticInner = new Outer.StaticInner();
+        assertThat(staticInner.nonStaticValue).isEqualTo("nonStaticValue");
     }
+
+    @Test
+    void testOuter2() {
+
+    }
+
 }
 
 class NonStaticOuter {
     private final String text = "outer";
-
-    public Inner getInner() {
-        return new Inner();
-    }
 
     public class Inner {
         private final String text = "inner";
@@ -64,12 +76,19 @@ class Outer {
         }
     }
 
+    public static class StaticInner {
+        public String nonStaticValue = "nonStaticValue";
+        public static String staticValue = "staticValue";
+    }
+
     public void outerMethod() {
         System.out.println(a);
         System.out.println(this.b);
 
         Inner inner = new Inner();
         System.out.println(inner.d);
+
+        // private으로 접근을 제어하고 있지만 중첩 클래스의 메서드는 둘러싸는 외부 클래스에서도 접근 가능함
         inner.innerMethod();
     }
 }
