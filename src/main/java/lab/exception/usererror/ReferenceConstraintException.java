@@ -15,4 +15,11 @@ public class ReferenceConstraintException extends UserErrorException {
         super(message);
     }
 
+    public ReferenceConstraintException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public ReferenceConstraintException(Throwable cause) {
+        super(cause);
+    }
 }

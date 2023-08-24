@@ -14,4 +14,11 @@ public class DataAlreadyExistsException extends UserErrorException {
         super(message);
     }
 
+    public DataAlreadyExistsException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public DataAlreadyExistsException(Throwable cause) {
+        super(cause);
+    }
 }

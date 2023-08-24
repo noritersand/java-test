@@ -14,4 +14,12 @@ public class SkipCurrentLoopException extends RuntimeException {
     public SkipCurrentLoopException(String message) {
         super(message);
     }
+
+    public SkipCurrentLoopException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public SkipCurrentLoopException(Throwable cause) {
+        super(cause);
+    }
 }

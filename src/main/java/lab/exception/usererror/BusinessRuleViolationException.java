@@ -14,5 +14,12 @@ public class BusinessRuleViolationException extends UserErrorException {
     public BusinessRuleViolationException(String message) {
         super(message);
     }
-    
+
+    public BusinessRuleViolationException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public BusinessRuleViolationException(Throwable cause) {
+        super(cause);
+    }
 }

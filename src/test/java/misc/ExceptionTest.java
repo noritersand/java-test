@@ -1,6 +1,7 @@
 package misc;
 
 import builtin.statement.TryCatchFinallyTest;
+import lab.exception.serverfault.ServerFaultException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -77,5 +78,15 @@ public class ExceptionTest {
         assertThrows(RuntimeException.class, () -> {
             throw new RuntimeException();
         });
+    }
+
+//    @Test
+    void testLogging() {
+        try {
+            int nan = 1 / 0;
+        } catch (Exception e) {
+//            throw new ServerFaultException("헬로 에부리완");
+            throw new ServerFaultException("헬로 에부리완", e); // 이렇게 해야 예외의 원인도 같이 넘어감
+        }
     }
 }

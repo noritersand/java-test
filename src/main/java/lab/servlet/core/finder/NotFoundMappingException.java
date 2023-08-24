@@ -7,12 +7,19 @@ package lab.servlet.core.finder;
  * @since 2017-08-09
  */
 public class NotFoundMappingException extends RuntimeException {
-    private static final long serialVersionUID = 4918349620626683926L;
 
     public NotFoundMappingException() {
     }
 
     public NotFoundMappingException(String message) {
         super(message);
+    }
+
+    public NotFoundMappingException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public NotFoundMappingException(Throwable cause) {
+        super(cause);
     }
 }

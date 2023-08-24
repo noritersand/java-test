@@ -14,4 +14,11 @@ public class NotAllowedInputException extends UserErrorException {
         super(message);
     }
 
+    public NotAllowedInputException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public NotAllowedInputException(Throwable cause) {
+        super(cause);
+    }
 }
