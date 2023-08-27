@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.ZoneOffset;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.UnknownFormatConversionException;
@@ -21,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * @since 2018-10-31
  */
 @Slf4j
-public class FormatterTest {
+public class StringFormatterTest {
 
     /**
      * %와 알파뱃의 조합으로

@@ -1,4 +1,4 @@
-package builtin.statement;
+package builtin.statement.expressions;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -68,8 +68,8 @@ public class CastingTest {
             Parent p = new Parent();
             @SuppressWarnings("unused")
             Child c = (Child) p;
-        }).isInstanceOf(ClassCastException.class).hasMessage("class builtin.statement.CastingTest$Parent cannot be cast " +
-                "to class builtin.statement.CastingTest$Child (builtin.statement.CastingTest$Parent and builtin.statement.CastingTest$Child are in unnamed module of loader 'app')");
+        }).isInstanceOf(ClassCastException.class).hasMessage("class builtin.statement.expressions.CastingTest$Parent cannot be cast " +
+                "to class builtin.statement.expressions.CastingTest$Child (builtin.statement.expressions.CastingTest$Parent and builtin.statement.expressions.CastingTest$Child are in unnamed module of loader 'app')");
 
         // 요로케는 됨.
         Parent p = new Child();
