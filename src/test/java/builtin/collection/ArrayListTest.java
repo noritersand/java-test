@@ -24,7 +24,7 @@ public class ArrayListTest {
     }
 
     @Test
-    void wrongWayClone() {
+    void incorrectUsage() {
         ArrayList<ListTestModel> origins = new ArrayList<>();
         origins.add(new ListTestModel("123"));
         origins.add(new ListTestModel("456"));
