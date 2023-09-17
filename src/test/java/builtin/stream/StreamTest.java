@@ -1,7 +1,7 @@
 package builtin.stream;
 
 import com.google.common.base.Predicate;
-import lab.dummy.generator.ListGenerator;
+import testbed.dummy.generator.ListGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.junit.jupiter.api.Test;

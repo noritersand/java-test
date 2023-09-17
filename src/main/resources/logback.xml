@@ -46,7 +46,7 @@
     </appender>
 
     <logger name="ch.qos.logback" level="TRACE"/>
-    <logger name="lab" level="TRACE"/>
+    <logger name="testbed" level="TRACE"/>
 
     <root level="DEBUG">
         <appender-ref ref="CONSOLE"/>

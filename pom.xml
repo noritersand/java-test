@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>noritersand</groupId>
-	<artifactId>lab-java</artifactId>
+	<artifactId>java-testbed</artifactId>
 	<version>0.2.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>lab-java Maven Webapp</name>
-	<url>https://github.com/noritersand/lab-java</url>
+	<name>java-testbed Maven Webapp</name>
+	<url>https://github.com/noritersand/java-testbed</url>
 
 	<properties>
 		<encoding>UTF-8</encoding>
@@ -19,7 +19,7 @@
 
 	<!-- 빌드 -->
 	<build>
-		<finalName>lab-java</finalName>
+		<finalName>java-testbed</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

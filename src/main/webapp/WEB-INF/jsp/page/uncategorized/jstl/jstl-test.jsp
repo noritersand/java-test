@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.HashMap" %>
-<%@ page import="lab.constants.Const" %>
+<%@ page import="testbed.constants.Const" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>

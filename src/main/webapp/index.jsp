@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="align-center">
-    <h1>LABORATORY: Java testing</h1>
+    <h1>Test bed: Java testing</h1>
     <h2>Index</h2>
     <ul>
         <li><a href="/page/uncategorized/test-file-template.view">테스트 파일 템플릿.jsp</a></li>

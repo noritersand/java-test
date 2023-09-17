@@ -79,7 +79,7 @@ public class PathTest {
         assertEquals(Path.of("C:\\a\\b\\c"), path.toAbsolutePath());
 
         Path path2 = Path.of("a/b/c");
-//        assertEquals("C:\\dev\\intellij-workspace\\java-lab\\a\\b\\c", path2.toAbsolutePath().toString()); // 로컬 저장소 경로에 따라 달라질 수 있어서 코멘트 처리함
+//        assertEquals("C:\\dev\\intellij-workspace\\java-testbed\\a\\b\\c", path2.toAbsolutePath().toString()); // 로컬 저장소 경로에 따라 달라질 수 있어서 코멘트 처리함
     }
 
     /**
@@ -91,7 +91,7 @@ public class PathTest {
         assertEquals("file:///C:/a/b/c", path.toUri().toString());
         assertEquals("/C:/a/b/c", path.toUri().getPath().toString());
 
-        // 이렇게 하면 file:///C:/dev/intellij-workspace/java-lab/a/b/c 이런 식으로 상대 경로가 나와서 코멘트 처리 함
+        // 이렇게 하면 file:///C:/dev/intellij-workspace/java-testbed/a/b/c 이런 식으로 상대 경로가 나와서 코멘트 처리 함
 //        Path path2 = Path.of("a/b/c");
 //        assertEquals("file:///C:/a/b/c", path2.toUri().toString());
 //        assertEquals("/C:/a/b/c", path2.toUri().getPath().toString());

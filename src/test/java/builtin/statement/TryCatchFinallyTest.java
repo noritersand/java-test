@@ -1,6 +1,6 @@
 package builtin.statement;
 
-import lab.exception.serverfault.InappropriateArgumentException;
+import testbed.exception.serverfault.InappropriateArgumentException;
 import lombok.extern.slf4j.Slf4j;
 import misc.ExceptionTest;
 import org.junit.jupiter.api.Test;

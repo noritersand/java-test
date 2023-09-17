@@ -1,6 +1,6 @@
 package builtin.collection;
 
-import lab.dummy.generator.ListGenerator;
+import testbed.dummy.generator.ListGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
