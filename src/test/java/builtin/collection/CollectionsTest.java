@@ -66,7 +66,8 @@ public class CollectionsTest {
 		*/
         Collections.sort(list, (o1, o2) -> o1 - o2);
         // 음수를 반환하면 o1을 좌측으로, 0을 반환하게 하면 그대로 유지, 양수를 반환하면 o1을 우측으로 정렬한다.
-        // 이 경우 음수가 반환되려면 o1이 o2보다 작아야하므로 작은 값이 좌측으로 정렬되는 오름차순 정렬이 된다.
+        // o1에서 o2를 뺄 때, 음수가 되는 경우는 o1이 o2보다 작을 때다.
+        // 그래서 작은 값이 좌측으로 정렬되는 오름차순 정렬이 된다.
         assertThat(list.toArray()).isEqualTo(ascSortComparison);
 
         // Comparator 직접 작성하기: 내림차순

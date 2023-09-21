@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author fixalot
@@ -66,6 +67,30 @@ public class StringTest {
         assertNotEquals(a, b);
         assertEquals(a.charAt(0), b);
         assertEquals(a, String.valueOf(b));
+    }
+
+    /**
+     * 사전 상 순서를 비교하는 메서드 String.compareTo()
+     */
+    @Test
+    void testCompareTo() {
+        // 같으면 0
+        assertThat("A".compareTo("A")).isEqualTo(0);
+
+        // 비교 대상이 나중이면 -1 (= 좌측이 우선순위가 높으면)
+        assertThat("A".compareTo("B")).isEqualTo(-1);
+
+        // 비교 대상이 먼저면 1 (= 우측이 우선순위가 높으면
+        assertThat("B".compareTo("A")).isEqualTo(1);
+
+        // 대문자는 소문자보다 빠르고, 대문자에서 소문자까지는 32번만큼의 차이가 있다.
+        // 알파벳은 26개인데 왜 32냐면
+        // ASCII 코드표에서 대문자(65-90)와 소문자(97-122) 사이에 6개의 특수문자(91-96)가 있기 때문이다
+        // ... X Y Z [ | ] ^ _ ` a b c ...
+        assertThat("C".compareTo("c")).isEqualTo(-32);
+
+        // 대소문자 비교 거꾸로
+        assertThat("c".compareTo("C")).isEqualTo(32);
     }
 
     @Test
@@ -329,5 +354,18 @@ public class StringTest {
             String str = null;
             str.isBlank();
         });
+    }
+
+    // java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '11' for key 'beacon.uuid'
+    @Test
+    void extractColumnFromSqlException() {
+        String errorMessage = "java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '11' for key 'beacon.uuid'";
+        String[] s1 = errorMessage.split("Duplicate entry '");
+        String[] s2 = s1[1].split("' for key '");
+        String value = s2[0];
+        String column = s2[1].replaceAll("'", "");
+
+        assertThat(value).isEqualTo("11");
+        assertThat(column).isEqualTo("beacon.uuid");
     }
 }
