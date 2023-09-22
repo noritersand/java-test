@@ -8,7 +8,25 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * enum 테스트
+ * <h2>enum 타입 테스트 슈트</h2>
+ *
+ * <p>enum은 편의 상 enum만을 위한 문법적 형식을 가질 뿐, 사실은 클래스다.</p>
+ * <p>예를 들어 아래처럼 선언된 enum은:</p>
+ * <pre>
+ * enum Animal {
+ *     TIGGER, ZIBRA, SQUIRREL;
+ * }
+ * </pre>
+ * <p>아래와 같다:</p>
+ * <pre>
+ * class Animal {
+ *     public static final Animal TIGGER = new Animal();
+ *     public static final Animal ZIBRA = new Animal();
+ *     public static final Animal SQUIRREL = new Animal();
+ *
+ *     private Animal(){}
+ * }
+ * </pre>
  *
  * @author fixalot
  * @since 2017-07-27

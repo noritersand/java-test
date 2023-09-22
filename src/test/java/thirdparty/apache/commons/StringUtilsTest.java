@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author fixalot
@@ -15,13 +15,28 @@ public class StringUtilsTest {
 
     @Test
     void testDefault() {
-        assertEquals("", StringUtils.defaultString("", "0"));
-        assertEquals("0", StringUtils.defaultIfBlank("", "0"));
+        // null일 때만 defaultString으로 대체
+        assertThat(StringUtils.defaultString(null, "0")).isEqualTo("0");
+        assertThat(StringUtils.defaultString("", "0")).isEqualTo("");
+        assertThat(StringUtils.defaultString(" ", "0")).isEqualTo(" ");
+        assertThat(StringUtils.defaultString("bat", "0")).isEqualTo("bat");
+
+        // null과 null-string일 때 defaultString으로 대체
+        assertThat(StringUtils.defaultIfEmpty(null, "0")).isEqualTo("0");
+        assertThat(StringUtils.defaultIfEmpty("", "0")).isEqualTo("0");
+        assertThat(StringUtils.defaultIfEmpty(" ", "0")).isEqualTo(" ");
+        assertThat(StringUtils.defaultIfEmpty("bat", "0")).isEqualTo("bat");
+
+        // null과 null-string, blank-string일 때 defaultString으로 대체
+        assertThat(StringUtils.defaultIfBlank(null, "0")).isEqualTo("0");
+        assertThat(StringUtils.defaultIfBlank("", "0")).isEqualTo("0");
+        assertThat(StringUtils.defaultIfBlank(" ", "0")).isEqualTo("0");
+        assertThat(StringUtils.defaultIfBlank("bat", "0")).isEqualTo("bat");
     }
 
     @Test
     void testPadding() {
-        assertEquals("001", StringUtils.leftPad("1", 3, "0"));
-        assertEquals("10000", StringUtils.rightPad("1", 5, "0"));
+        assertThat(StringUtils.leftPad("1", 3, "0")).isEqualTo("001");
+        assertThat(StringUtils.rightPad("1", 5, "0")).isEqualTo("10000");
     }
 }
