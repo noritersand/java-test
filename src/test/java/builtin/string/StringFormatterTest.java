@@ -158,6 +158,8 @@ public class StringFormatterTest {
         assertThat(String.format("%-10s", "helloooo"))
                 .isEqualTo("helloooo  ");
 
+        assertThat(String.format("%02d", 4)).isEqualTo("04");
+
         assertThat(String.format("%x, %#x", 123, 123))
                 .isEqualTo("7b, 0x7b");
 

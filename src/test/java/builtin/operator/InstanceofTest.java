@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import javax.management.relation.RoleList;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author fixalot
@@ -22,24 +22,29 @@ public class InstanceofTest {
         Object object = new Object();
         String string = "";
 
-        assertTrue(string instanceof String);
-        assertTrue(string instanceof Object);
-        assertFalse(object instanceof String);
-        assertTrue(object instanceof Object);
+        assertThat(string instanceof String).isTrue();
+        assertThat(string instanceof Object).isTrue();
+        assertThat(object instanceof String).isFalse();
+        assertThat(object instanceof Object).isTrue();
     }
 
     @Test
     void testExtends2() {
         ArrayList<Object> arrayList = new ArrayList<>();
-        RoleList roleList = new RoleList();
+        assertThat(arrayList instanceof List).isTrue();
 
-        assertTrue(arrayList instanceof List);
-        assertTrue(roleList instanceof List);
-        assertFalse(arrayList instanceof RoleList);
+        assertThat(arrayList instanceof RoleList).isFalse();
+
+        RoleList roleList = new RoleList();
+        assertThat(roleList instanceof List).isTrue();
+
+        List<Object> linkedList = new LinkedList<>();
+        assertThat(linkedList instanceof List).isTrue();
+        assertThat(linkedList instanceof LinkedList).isTrue();
     }
 
     @Test
     void testThis() {
-        assertTrue(this instanceof InstanceofTest);
+        assertThat(this instanceof InstanceofTest).isTrue();
     }
 }
