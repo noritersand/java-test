@@ -79,6 +79,10 @@ public class JavaTimeTest {
         assertThat(DayOfWeek.MONDAY.ordinal()).isEqualTo(0);
     }
 
+    /**
+     * <p>시간과 시간 사이의 간격을 다루는 Duration 타입 테스트</p>
+     * <p>Duration 값을 날짜 데이터 없이 시간으로만 표현하려면 {@link testbed.time.TimeSegment}를 볼 것</p>
+     */
     @Test
     void DurationType() {
         LocalDateTime dateTime1 = LocalDateTime.of(2023, 1, 1, 01, 12, 05);
@@ -117,6 +121,40 @@ public class JavaTimeTest {
         }
         ZoneId zid = ZONE_ID_ASIA_SEOUL;
         assertThat(zid).isNotNull();
+    }
+
+    /**
+     * 현재 시간과 타임존 정보를 포함한 클래스
+     */
+    @Test
+    void ZonedDateTimeType() {
+        ZonedDateTime now = ZonedDateTime.now();
+        log.debug("{}", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(now)); // 2023-10-18T15:18:37.7571866+09:00
+        assertThat(now.getZone()).isEqualTo(ZoneId.of("Asia/Seoul"));
+        assertThat(now.getZone().toString()).isEqualTo("Asia/Seoul");
+
+        String formatted = DateTimeFormatter.ofPattern("z|Z|x|X").format(now);
+        assertThat(formatted).isEqualTo("KST|+0900|+09|+09");
+    }
+
+    /**
+     * 현재 시간과 오프셋 정보를 포함한 클래스
+     */
+    @Test
+    void OffSetDateTimeType() {
+        OffsetDateTime now = OffsetDateTime.now();
+        log.debug("now: {}", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(now)); // 2023-10-18T17:06:54.8219252+09:00
+        assertThat(now.getOffset()).isEqualTo(ZoneOffset.ofHours(9));
+        assertThat(now.getOffset().toString()).isEqualTo("+09:00");
+
+        assertThatThrownBy(() -> {
+            DateTimeFormatter.ofPattern("z|Z|x|X").format(now);
+        }).isInstanceOf(DateTimeException.class);
+
+        String formatted = DateTimeFormatter.ofPattern("Z|x|X").format(now);
+        assertThat(formatted).isEqualTo("+0900|+09|+09");
+
+        log.debug("now2: {}", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ").format(now)); // 2023-10-18T17:41:27+0900
     }
 
     @Test
@@ -255,6 +293,10 @@ public class JavaTimeTest {
      */
     @Test
     void parseJavaTimeToStringWithFormatter() {
+        LocalDateTime now = LocalDateTime.now();
+        log.debug("now: {}", now);
+        log.debug("{}", DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(now));;
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.of(2011, Month.DECEMBER, 03, 10, 15, 30);
         assertThat(dateTime.format(formatter)).isEqualTo("2011-12-03 10:15:30");
