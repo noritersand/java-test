@@ -111,8 +111,8 @@ public class StringTest {
     @Test
     void testConcat() {
         String a = "a";
-        assertEquals("ab", a + "b");
         assertEquals("a", a);
+        assertEquals("ab", a + "b");
         assertEquals("anull", a + null);
     }
 
