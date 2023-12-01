@@ -5,10 +5,47 @@ import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.*;
 
 @Slf4j
 public class LombokTest {
+
+    @Test
+    void testEqualsAndHashCode() {
+        Ophan ophan = new Ophan();
+        ophan.o = "1234";
+
+        Ophan ophan2 = new Ophan();
+        ophan2.o = "1234";
+
+        assertThat(ophan.equals(ophan2)).isTrue();
+        assertThat(ophan.hashCode()).isEqualTo(ophan2.hashCode());
+    }
+
+    @Test
+    void testEqualsAndHashCodeWithCallSuper() {
+        Entity entity = new Entity();
+        entity.a = "a";
+        entity.b = "b";
+        Entity entity2 = new Entity();
+        entity2.a = "aa";
+        entity2.b = "b";
+
+        assertThat(entity.equals(entity2)).isFalse();
+        assertThat(entity).isNotEqualTo(entity2);
+        assertThat(entity.hashCode()).isNotEqualTo(entity2.hashCode());
+
+        AnotherEntity anotherEntity = new AnotherEntity();
+        anotherEntity.a = "a";
+        anotherEntity.b = "b";
+        AnotherEntity anotherEntity2 = new AnotherEntity();
+        anotherEntity2.a = "aa";
+        anotherEntity2.b = "b";
+
+        assertThat(anotherEntity.equals(anotherEntity2)).isTrue();
+        assertThat(anotherEntity).isEqualTo(anotherEntity2);
+        assertThat(anotherEntity.hashCode()).isEqualTo(anotherEntity2.hashCode());
+    }
 
     /**
      * <p>lombok의 @Builder 어노테이션을 적용하면 생성자 대신 빌더 패턴으로 인스턴스를 초기화 할 수 있음.
@@ -23,51 +60,17 @@ public class LombokTest {
 //        BuildMe bm1 = new BuildMe();
         BuildMe bm2 = new BuildMe("yo", 123); // 이건 패키지 다르면 접근 안되니 주의할 것
 
-        assertEquals("yo", bm2.getA()); // 이 getter는 @Getter 어노테이션이 만들어줌
-        assertEquals(123, bm2.getB());
+        assertThat(bm2.getA()).isEqualTo("yo"); // 이 getter는 @Getter 어노테이션이 만들어줌
+        assertThat(bm2.getB()).isEqualTo(123);
 
         BuildMe bm3 = BuildMe.builder().a("yo").b(123).build();
-        assertEquals("yo", bm3.getA());
-        assertEquals(123, bm3.getB());
+        assertThat(bm3.getA()).isEqualTo("yo");
+        assertThat(bm3.getB()).isEqualTo(123);
 
         // setter를 만들어주는 건 아니라서 컴파일 에러
 //        bm2.setA("hi");
 
         new BuildMe();
-    }
-
-    @Builder
-    @AllArgsConstructor
-    private static class BuildMe {
-        public BuildMe() {
-        }
-
-        private String a;
-        private int b;
-
-        public String getA() {
-            return this.a;
-        }
-
-        public void setA(String a) {
-            log.debug("{}", "@Builder 사용 시 setter는 호출되지 않는다.");
-            this.a = a;
-        }
-
-        public int getB() {
-            return this.b;
-        }
-
-        public void setB(int b) {
-            log.debug("{}", "@Builder 사용 시 setter는 호출되지 않는다.");
-            this.b = b;
-        }
-    }
-
-    @Test
-    void testConstructor() {
-//        new Child("aaa", 123, 256.789);
-        // 부모의 필드도 초기화하는 생성자를 만들려거든 롬복으로 안되고 직접 만들어야 함
     }
 
     @Test
@@ -77,23 +80,86 @@ public class LombokTest {
                 .b(123)
                 .c(256.789).build();
 
-        assertEquals(child.getB(), 123);
+        assertThat(child.getB()).isEqualTo(123);
     }
 
-    @SuperBuilder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Data
-    public static class Child extends Parent {
-        private Double c;
+    @Test
+    void testConstructor() {
+    //        new Child("aaa", 123, 256.789);
+        // 부모의 필드도 초기화하는 생성자를 만들려거든 롬복으로 안되고 직접 만들어야 함
+    }
+}
+
+@EqualsAndHashCode
+class Ophan {
+    public String o;
+}
+
+@EqualsAndHashCode
+class SuperEntity {
+    public String a;
+}
+
+@EqualsAndHashCode(callSuper = true)
+class Entity extends SuperEntity {
+    public String b;
+}
+
+@EqualsAndHashCode
+class AnotherSuperEntity {
+    public String a;
+}
+
+@EqualsAndHashCode
+class AnotherEntity extends AnotherSuperEntity {
+    public String b;
+}
+
+
+@SuppressWarnings("LombokGetterMayBeUsed")
+@Builder
+@AllArgsConstructor
+@Slf4j
+class BuildMe {
+    public BuildMe() {
     }
 
-    @SuperBuilder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Data
-    public static class Parent {
-        private String a;
-        private int b;
+    private String a;
+    private int b;
+
+    public String getA() {
+        return this.a;
     }
+
+    public void setA(String a) {
+        log.debug("{}", "@Builder 사용 시 setter는 호출되지 않는다.");
+        this.a = a;
+    }
+
+    public int getB() {
+        return this.b;
+    }
+
+    public void setB(int b) {
+        log.debug("{}", "@Builder 사용 시 setter는 호출되지 않는다.");
+        this.b = b;
+    }
+}
+
+@EqualsAndHashCode(callSuper = true)
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+class Child extends Parent {
+    private Double c;
+}
+
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+class Parent {
+    private String a;
+    private int b;
 }

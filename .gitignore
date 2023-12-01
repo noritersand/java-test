@@ -42,3 +42,6 @@ gradlew.bat
 /temp
 
 DO_NOT_COMMIT_ME.properties
+
+# SonarLint
+*.iml
