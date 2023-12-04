@@ -1,7 +1,6 @@
 package builtin.time;
 
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Timestamp;
@@ -9,7 +8,6 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAdjusters;
-import java.time.temporal.TemporalField;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.*;
@@ -20,8 +18,10 @@ import static org.assertj.core.api.Assertions.*;
  */
 @Slf4j
 public class JavaTimeTest {
-    public static final ZoneId ZONE_ID_ASIA_SEOUL = ZoneId.of("Asia/Seoul");
-    public static final ZoneId ZONE_ID_UTC = ZoneId.of("UTC");
+    private static final String ID_ASIA_SEOUL = "Asia/Seoul";
+    private static final String ID_UTC = "UTC";
+
+    private static final String yyyyMMddHHmmss = "yyyyMMddHHmmss";
 
     @Test
     void YearMonthType() {
@@ -48,8 +48,17 @@ public class JavaTimeTest {
         assertThat(LocalDateTime.of(2017, Month.APRIL, 10, 23, 49).toString()).isEqualTo("2017-04-10T23:49");
     }
 
+    /**
+     * <p>🌟🌟🌟🌟🌟</p>
+     * <p>여기서 사용하는 <code>LocalDateTime.now(ZoneId.of("UTC"))</code> 코드는, localDateTime에 시간대를 설정하는 게 아니라,  ZoneId를 인자로 받아 해당 시간대에 맞는 현지(local)의 현재 시간을 계산하는 것이라 이해하면 된다.</p>
+     * <p>그리고 반환되는 LocalDateTime 인스턴스에는 시간대 정보가 없다. 애초에 {@link LocalDateTime} 타입은 날짜와 시간 정보만 다루는 타입이다.</p>
+     */
     @Test
     void LocalDateTimeType() {
+        LocalDateTime now1 = LocalDateTime.now().minusHours(9);
+        LocalDateTime now2 = LocalDateTime.now(ZoneId.of("UTC")); // <-- doc comment 참고
+        assertThat(now2).isNotEqualTo(now1);
+
         LocalDateTime now = LocalDateTime.now();
         now = now.withYear(2019).withMonth(1).withDayOfMonth(31);
         now = now.withHour(0).withMinute(0).withSecond(0).withNano(0);
@@ -67,6 +76,50 @@ public class JavaTimeTest {
         log.debug("localTime: {}", localTime);
         LocalTime newTime = localTime.withHour(13).withMinute(30).withSecond(13).withNano(0);
         assertThat(newTime.toString()).isEqualTo("13:30:13");
+    }
+
+    /**
+     * <p>🌟🌟🌟🌟🌟</p>
+     * <p>{@link Instant}: java.time 패키지에서 날짜/시간 데이터의 기반이 되는 타입. UTC 시간대를 기준으로 현재 시간을 나타낸다.</p>
+     * <p>{@link LocalDateTime}, {@link ZonedDateTime}, {@link OffsetDateTime} 등의 클래스는 내부적으로 {@link Instant}를 사용하여 UTC 기준 시간을 관리하고, 이를 바탕으로 해당 지역의 시간대에 맞게 날짜와 시간을 계산한다</p>
+     * <p>에포크 시간(Epoch time, 1970-01-01 00:00)으로부터의 시간을 초와 나노초 단위로 표현할 수 있다.</p>
+     * <p>Instant는 {@link LocalDateTime}이나 {@link LocalDate}처럼 시간대 정보를 포함하지 않는다.</p>
+     */
+    @Test
+    void InstantType() {
+        Instant inst1 = Instant.ofEpochSecond(0);
+        assertThat(inst1.toString()).isEqualTo("1970-01-01T00:00:00Z");
+
+        Instant inst2 = Instant.ofEpochSecond(1701665920L);
+        assertThat(inst2.toString()).isEqualTo("2023-12-04T04:58:40Z");
+
+        Instant inst3 = Instant.now();
+        log.debug("inst3.toString(): {}", inst3.toString()); // 2023-12-04T05:03:05.086102800Z
+
+        // 이 시간은
+        Instant inst4 = Instant.now(Clock.system(ZoneId.of(ID_UTC)));
+        log.debug("inst4.toString(): {}", inst4.toString());
+
+        // 이 시간과 차이가 없음
+        Instant inst5 = Instant.now(Clock.system(ZoneId.of(ID_ASIA_SEOUL)));
+        log.debug("inst5.toString(): {}", inst5.toString());
+
+        // 서울 시간대의 Clock을 넘겨도 어차피 UTC 기준으로 시간값을 반환하며, Instant.now()와 차이 없음.
+        String formatted = LocalDateTime.ofInstant(inst4, ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern(yyyyMMddHHmmss));
+        String formatted1 = LocalDateTime.ofInstant(inst5, ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern(yyyyMMddHHmmss));
+        assertThat(formatted).isEqualTo(formatted1);
+
+        // -----------------
+        // 에포크 시간 구하기
+
+        log.debug("inst5.toEpochMilli(): {}", inst5.toEpochMilli()); // 에포크 시간을 밀리초로
+        assertThat(inst5.toEpochMilli()).isGreaterThan(0); // 에포크 시간보다 무조건 큼
+
+        log.debug("inst5.getEpochSecond(): {}", inst5.getEpochSecond()); // 에포크 시간을 초로
+        log.debug("inst5.getNano(): {}", inst5.getNano()); // 나노초 출력. 이 값은 보정용으로 쓰이는듯함
+
+        // 이건 뭘까. 아마도 시간값에서 밀리초만 자른거?
+        log.debug("inst5.getLong(ChronoField.MILLI_OF_SECOND): {}", inst5.getLong(ChronoField.MILLI_OF_SECOND));;
     }
 
     @Test
@@ -111,29 +164,11 @@ public class JavaTimeTest {
     }
 
     /**
-     * <p>{@link Instant}: 에포크 시간(Epoch time, 1970-01-01 00:00)으로부터의 시간을 초와 나노초 단위로 표현한다</p>
+     * TODO Clock 타입에 대한 설명
      */
     @Test
-    void InstantType() {
-        Instant instant1 = Instant.ofEpochSecond(0);
-        assertThat(instant1.toString()).isEqualTo("1970-01-01T00:00:00Z");
-
-        Instant instant2 = Instant.ofEpochSecond(1701665920L);
-        assertThat(instant2.toString()).isEqualTo("2023-12-04T04:58:40Z");
-
-        Instant now1 = Instant.now();
-        log.debug("now1: {}", now1); // 2023-12-04T05:03:05.086102800Z
-        assertThat(now1.toString().length()).isGreaterThanOrEqualTo(30);
-
-        Instant now2 = Instant.now(Clock.system(ZONE_ID_UTC));
-        log.debug("now.toEpochMilli(): {}", now2.toEpochMilli()); // 에포크 시간을 밀리초로
-        assertThat(now2.toEpochMilli()).isGreaterThan(0); // 에포크 시간보다 무조건 큼
-
-        log.debug("now2.getEpochSecond(): {}", now2.getEpochSecond()); // 에포크 시간을 초로
-        log.debug("now2.getNano(): {}", now2.getNano()); // 나노초 출력. 이 값은 보정용으로 쓰이는듯함
-
-        // 이건 뭘까. 아마도 시간값에서 밀리초만 자른거?
-        log.debug("now2.getLong(ChronoField.MILLI_OF_SECOND): {}", now2.getLong(ChronoField.MILLI_OF_SECOND));;
+    void ClockType() {
+        Clock system = Clock.system(ZoneId.of(ID_ASIA_SEOUL));
     }
 
     /**
@@ -146,7 +181,7 @@ public class JavaTimeTest {
 //        for (String zoneId : ZoneId.getAvailableZoneIds()) {
 //            log.debug("zoneId: {}", zoneId);
 //        }
-        ZoneId zid = ZONE_ID_ASIA_SEOUL;
+        ZoneId zid = ZoneId.of(ID_ASIA_SEOUL);
         assertThat(zid).isNotNull();
         assertThat(zid.toString()).isEqualTo("Asia/Seoul");
     }
@@ -204,14 +239,6 @@ public class JavaTimeTest {
         assertThat(formatted).isEqualTo("+0900|+09|+09");
 
         log.debug("now2: {}", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ").format(now)); // 2023-10-18T17:41:27+0900
-    }
-
-    @Test
-    void test() {
-        LocalDateTime now1 = LocalDateTime.now().minusHours(9);
-        LocalDateTime now2 = LocalDateTime.now(ZoneId.of("UTC"));
-
-        assertThat(now2).isEqualTo(now1);
     }
 
     /**
@@ -288,12 +315,12 @@ public class JavaTimeTest {
     @Test
     void setTimeZone() {
         Instant instant = Instant.now();
-        LocalDateTime utc1 = LocalDateTime.ofInstant(instant, ZONE_ID_UTC);
-        LocalDateTime kst1 = LocalDateTime.ofInstant(instant, ZONE_ID_ASIA_SEOUL);
+        LocalDateTime utc1 = LocalDateTime.ofInstant(instant, ZoneId.of(ID_UTC));
+        LocalDateTime kst1 = LocalDateTime.ofInstant(instant, ZoneId.of(ID_ASIA_SEOUL));
         assertThat(kst1.minusHours(9)).isEqualTo(utc1);
 
-        LocalDateTime utc2 = LocalDateTime.now(ZONE_ID_UTC);
-        LocalDateTime kst2 = LocalDateTime.now(ZONE_ID_ASIA_SEOUL);
+        LocalDateTime utc2 = LocalDateTime.now(ZoneId.of(ID_UTC));
+        LocalDateTime kst2 = LocalDateTime.now(ZoneId.of(ID_ASIA_SEOUL));
         assertThat(kst2.minus(Duration.ofHours(9))).isEqualTo(utc2);
     }
 
@@ -303,9 +330,9 @@ public class JavaTimeTest {
     @Test
     void changeTimeZone() {
         // 이건 뭔가 이상함. 이미 만들어진 인스턴스의 타임존을 바꿨으나 시간은 그대로
-        LocalDateTime utc3 = LocalDateTime.now(ZONE_ID_UTC);
-        ZonedDateTime kst3 = utc3.atZone(ZONE_ID_ASIA_SEOUL);
-        assertThat(kst3.getZone()).isEqualTo(ZONE_ID_ASIA_SEOUL);
+        LocalDateTime utc3 = LocalDateTime.now(ZoneId.of(ID_UTC));
+        ZonedDateTime kst3 = utc3.atZone(ZoneId.of(ID_ASIA_SEOUL));
+        assertThat(kst3.getZone()).isEqualTo(ZoneId.of(ID_ASIA_SEOUL));
         assertThat(kst3.toLocalDateTime()).isEqualTo(utc3);
 
         // TODO 잘 안됨
