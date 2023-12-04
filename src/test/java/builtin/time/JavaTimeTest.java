@@ -9,6 +9,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.TemporalField;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.*;
@@ -110,21 +111,69 @@ public class JavaTimeTest {
     }
 
     /**
-     * 서울의 Zone ID는 Asia/Seoul
+     * <p>{@link Instant}: 에포크 시간(Epoch time, 1970-01-01 00:00)으로부터의 시간을 초와 나노초 단위로 표현한다</p>
+     */
+    @Test
+    void InstantType() {
+        Instant instant1 = Instant.ofEpochSecond(0);
+        assertThat(instant1.toString()).isEqualTo("1970-01-01T00:00:00Z");
+
+        Instant instant2 = Instant.ofEpochSecond(1701665920L);
+        assertThat(instant2.toString()).isEqualTo("2023-12-04T04:58:40Z");
+
+        Instant now1 = Instant.now();
+        log.debug("now1: {}", now1); // 2023-12-04T05:03:05.086102800Z
+        assertThat(now1.toString().length()).isGreaterThanOrEqualTo(30);
+
+        Instant now2 = Instant.now(Clock.system(ZONE_ID_UTC));
+        log.debug("now.toEpochMilli(): {}", now2.toEpochMilli()); // 에포크 시간을 밀리초로
+        assertThat(now2.toEpochMilli()).isGreaterThan(0); // 에포크 시간보다 무조건 큼
+
+        log.debug("now2.getEpochSecond(): {}", now2.getEpochSecond()); // 에포크 시간을 초로
+        log.debug("now2.getNano(): {}", now2.getNano()); // 나노초 출력. 이 값은 보정용으로 쓰이는듯함
+
+        // 이건 뭘까. 아마도 시간값에서 밀리초만 자른거?
+        log.debug("now2.getLong(ChronoField.MILLI_OF_SECOND): {}", now2.getLong(ChronoField.MILLI_OF_SECOND));;
+    }
+
+    /**
+     * <p>{@link ZoneId}: 시간대 식별자를 나타냄</p>
+     * <p>서울의 Zone ID는 Asia/Seoul</p>
      */
     @Test
     void ZoneIdType() {
         // 사용 가능한 Zone ID 출력.
-        Set<String> availableZoneIds = ZoneId.getAvailableZoneIds();
-        for (String zone : availableZoneIds) {
-            log.debug("zoneId: {}", availableZoneIds);
-        }
+//        for (String zoneId : ZoneId.getAvailableZoneIds()) {
+//            log.debug("zoneId: {}", zoneId);
+//        }
         ZoneId zid = ZONE_ID_ASIA_SEOUL;
         assertThat(zid).isNotNull();
+        assertThat(zid.toString()).isEqualTo("Asia/Seoul");
     }
 
     /**
-     * 현재 시간과 타임존 정보를 포함한 클래스
+     * <p>{@link ZoneOffset}: UTC와의 차이를 시간 오프셋(+-09:00 형식)으로 표현함</p>
+     */
+    @Test
+    void ZoneOffsetType() {
+        assertThat(ZoneOffset.UTC).isEqualTo(ZoneOffset.of("Z"));
+        assertThat(ZoneOffset.MAX).isEqualTo(ZoneOffset.of("+18:00"));
+        assertThat(ZoneOffset.MIN).isEqualTo(ZoneOffset.of("-18:00"));
+
+        ZoneOffset zoneOffset = ZoneOffset.of("+09:00");
+        assertThat(zoneOffset.toString()).isEqualTo("+09:00");
+
+//        for (String zoneId : ZoneOffset.getAvailableZoneIds()) {
+//            log.debug("zoneId: {}", zoneId);
+//        }
+
+        assertThat(ZoneOffset.ofHours(9)).isEqualTo(ZoneOffset.of("+09:00"));
+        assertThat(ZoneOffset.ofHoursMinutes(9, 20)).isEqualTo(ZoneOffset.of("+09:20"));
+        assertThat(ZoneOffset.ofHoursMinutesSeconds(9, 20, 30)).isEqualTo(ZoneOffset.of("+09:20:30"));
+    }
+
+    /**
+     * {@link ZonedDateTime}: 현재 시간과 타임존 정보를 포함한 클래스
      */
     @Test
     void ZonedDateTimeType() {
@@ -138,7 +187,7 @@ public class JavaTimeTest {
     }
 
     /**
-     * 현재 시간과 오프셋 정보를 포함한 클래스
+     * {@link OffsetDateTime}: 현재 시간과 오프셋 정보를 포함한 클래스
      */
     @Test
     void OffSetDateTimeType() {
