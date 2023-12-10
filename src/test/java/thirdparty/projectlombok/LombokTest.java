@@ -24,27 +24,27 @@ public class LombokTest {
 
     @Test
     void testEqualsAndHashCodeWithCallSuper() {
-        Entity entity = new Entity();
-        entity.a = "a";
-        entity.b = "b";
-        Entity entity2 = new Entity();
-        entity2.a = "aa";
-        entity2.b = "b";
-
-        assertThat(entity.equals(entity2)).isFalse();
-        assertThat(entity).isNotEqualTo(entity2);
-        assertThat(entity.hashCode()).isNotEqualTo(entity2.hashCode());
-
-        AnotherEntity anotherEntity = new AnotherEntity();
-        anotherEntity.a = "a";
-        anotherEntity.b = "b";
-        AnotherEntity anotherEntity2 = new AnotherEntity();
+        SubA subA = new SubA();
+        subA.a = "a";
+        subA.b = "b";
+        SubA anotherEntity2 = new SubA();
         anotherEntity2.a = "aa";
         anotherEntity2.b = "b";
 
-        assertThat(anotherEntity.equals(anotherEntity2)).isTrue();
-        assertThat(anotherEntity).isEqualTo(anotherEntity2);
-        assertThat(anotherEntity.hashCode()).isEqualTo(anotherEntity2.hashCode());
+        assertThat(subA.equals(anotherEntity2)).isTrue(); // pass
+        assertThat(subA).isEqualTo(anotherEntity2); // pass
+        assertThat(subA.hashCode()).isEqualTo(anotherEntity2.hashCode()); // pass
+
+        SubB subB = new SubB();
+        subB.a = "a";
+        subB.b = "b";
+        SubB entity2 = new SubB();
+        entity2.a = "aa";
+        entity2.b = "b";
+
+        assertThat(subB.equals(entity2)).isFalse(); // pass
+        assertThat(subB).isNotEqualTo(entity2); // pass
+        assertThat(subB.hashCode()).isNotEqualTo(entity2.hashCode()); // pass
     }
 
     /**
@@ -96,22 +96,17 @@ class Ophan {
 }
 
 @EqualsAndHashCode
-class SuperEntity {
+class SuperClass {
     public String a;
 }
 
-@EqualsAndHashCode(callSuper = true)
-class Entity extends SuperEntity {
+@EqualsAndHashCode
+class SubA extends SuperClass {
     public String b;
 }
 
-@EqualsAndHashCode
-class AnotherSuperEntity {
-    public String a;
-}
-
-@EqualsAndHashCode
-class AnotherEntity extends AnotherSuperEntity {
+@EqualsAndHashCode(callSuper = true)
+class SubB extends SuperClass {
     public String b;
 }
 
