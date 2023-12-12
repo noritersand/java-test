@@ -16,7 +16,7 @@ public enum SystemType {
         return this.label;
     }
 
-    public static SystemType valueOfIAESafe(String arg) {
+    public static SystemType valueOfSafe(String arg) {
         try {
             return valueOf(arg);
         } catch (IllegalArgumentException e) {

@@ -101,8 +101,8 @@ public class EnumTest {
     }
 
     @Test
-    void testValueOfIAESafe() {
-        assertNull(SystemType.valueOfIAESafe("NOT_BACK_OFFICE"));
+    void testValueOfSafe() {
+        assertNull(SystemType.valueOfSafe("NOT_BACK_OFFICE"));
     }
 
     /**
@@ -168,9 +168,9 @@ public class EnumTest {
         assertNull(CrudMode.of("READ"));
         assertNull(CrudMode.of("X"));
 
-        assertEquals(CrudMode.READ, CrudMode.valueOfIAESafe("READ"));
-        assertNull(CrudMode.valueOfIAESafe("R"));
-        assertNull(CrudMode.valueOfIAESafe("X"));
+        assertEquals(CrudMode.READ, CrudMode.valueOfSafe("READ"));
+        assertNull(CrudMode.valueOfSafe("R"));
+        assertNull(CrudMode.valueOfSafe("X"));
     }
 
     private enum CrudMode {
@@ -196,7 +196,7 @@ public class EnumTest {
             return null;
         }
 
-        public static CrudMode valueOfIAESafe(String name) {
+        public static CrudMode valueOfSafe(String name) {
             try {
                 return CrudMode.valueOf(name);
             } catch (IllegalArgumentException e) {
