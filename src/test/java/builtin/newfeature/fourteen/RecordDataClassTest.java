@@ -1,4 +1,4 @@
-package builtin.statement;
+package builtin.newfeature.fourteen;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,7 @@ public class RecordDataClassTest {
 
         // 자동 생성되는 모든 필드는 private final로 선언된다.
         // 따라서 필드에 직접 접근하거나 재할당은 불가능함
-//        log.debug("{}", rd.text); // COMPILE ERROR: 'text' has private access in 'builtin.statement.RecordData'
+//        log.debug("{}", rd.text); // COMPILE ERROR: 'text' has private access in 'builtin.newfeature.fourteen.RecordData'
 //        rd.text = "qwe"; // COMPILE ERROR
 
         // 대신 자동 생성되는 getter를 통해 읽기는 가능함

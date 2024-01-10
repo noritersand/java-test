@@ -1,4 +1,4 @@
-package builtin.statement;
+package builtin.newfeature.ten;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
  * Java 10의 신기능 타입 추론(type inference) var 기능 테스트
  */
 @Slf4j
-public class VarTest {
+public class TypeInferenceTest {
 
     /**
      * 컴파일러는 var 변수 우측변에 초기화되는 값으로 타입을 추론한다.
