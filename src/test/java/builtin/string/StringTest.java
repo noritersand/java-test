@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 /**
@@ -23,7 +22,7 @@ class StringTest {
     void testFormat() {
         // %05d는 5자리 숫자를 의미하며, 숫자가 5자리보다 작으면 앞에 0을 채운다.
         String result = String.format("%05d", 1);
-        assertEquals("00001", result);
+        assertThat(result).isEqualTo("00001");
     }
 
     @Test
@@ -40,23 +39,23 @@ class StringTest {
         Formatter formatter = new Formatter();
 
         // 소수점 2자리까지  표현
-        assertEquals("1.00", formatter.floatFormat(1.0D));
-        assertEquals("100.00", formatter.floatFormat(100.0D));
-        assertEquals("0.50", formatter.floatFormat(0.5D));
+        assertThat(formatter.floatFormat(1.0D)).isEqualTo("1.00");
+        assertThat(formatter.floatFormat(100.0D)).isEqualTo("100.00");
+        assertThat(formatter.floatFormat(0.5D)).isEqualTo("0.50");
 
         // 정수 표현(소수점은 반올림 처리)
-        assertEquals("0", formatter.binaryFormat(0.4D));
-        assertEquals("1", formatter.binaryFormat(0.5D));
-        assertEquals("1", formatter.binaryFormat(1.3D));
-        assertEquals("3", formatter.binaryFormat(2.6D));
+        assertThat(formatter.binaryFormat(0.4D)).isEqualTo("0");
+        assertThat(formatter.binaryFormat(0.5D)).isEqualTo("1");
+        assertThat(formatter.binaryFormat(1.3D)).isEqualTo("1");
+        assertThat(formatter.binaryFormat(2.6D)).isEqualTo("3");
     }
 
     @Test
     void getASCIICode() {
         String a = "abc";
-        assertEquals(97, a.charAt(0));
-        assertEquals(98, (short) a.charAt(1));
-        assertEquals(99, (byte) a.charAt(2));
+        assertThat(a.charAt(0)).isEqualTo('a');
+        assertThat((short) a.charAt(1)).isEqualTo(Short.parseShort("98"));
+        assertThat((byte) a.charAt(2)).isEqualTo(Byte.parseByte("99"));
     }
 
     @SuppressWarnings("unlikely-arg-type")
@@ -64,9 +63,9 @@ class StringTest {
     void compareWithCharacter() {
         String a = "A";
         char b = 'A';
-        assertNotEquals(a, b);
-        assertEquals(a.charAt(0), b);
-        assertEquals(a, String.valueOf(b));
+        assertThat(a).isNotEqualTo(b);
+        assertThat(b).isEqualTo(a.charAt(0));
+        assertThat(a).isEqualTo(String.valueOf(b));
     }
 
     /**
@@ -96,52 +95,52 @@ class StringTest {
     @Test
     void testGetBytes() throws UnsupportedEncodingException {
         final String str = "한";
-        assertArrayEquals(new byte[]{-19, -107, -100}, str.getBytes(StandardCharsets.UTF_8));
-        assertArrayEquals(new byte[]{-2, -1, -43, 92}, str.getBytes(StandardCharsets.UTF_16));
-        assertArrayEquals(new byte[]{-57, -47}, str.getBytes(Charset.forName("EUC-KR")));
+        assertThat(str.getBytes(StandardCharsets.UTF_8)).isEqualTo(new byte[]{-19, -107, -100});
+        assertThat(str.getBytes(StandardCharsets.UTF_16)).isEqualTo(new byte[]{-2, -1, -43, 92});
+        assertThat(str.getBytes(Charset.forName("EUC-KR"))).isEqualTo(new byte[]{-57, -47});
     }
 
     @Test
     void testToStringFromBytes() {
         byte[] bytes = {-19, -107, -100};
         String korean = new String(bytes, StandardCharsets.UTF_8);
-        assertEquals("한", korean);
+        assertThat(korean).isEqualTo("한");
     }
 
     @Test
     void testConcat() {
         String a = "a";
-        assertEquals("a", a);
-        assertEquals("ab", a + "b");
-        assertEquals("anull", a + null);
+        assertThat(a).isEqualTo("a");
+        assertThat(a + "b").isEqualTo("ab");
+        assertThat(a + null).isEqualTo("anull");
     }
 
     @Test
     void autoInstantiate() {
         String a = "a";
         String b = "a";
-        assertSame(a, b);
+        assertThat(a).isSameAs(b);
         b = a; // new String(a)처럼 명시적으로 새 인스턴스를 할당하지 않아도.
         b = "b"; // 리터럴이 바뀌면 참조하고 있는 인스턴스의 값이 변경되는게 아니라 새 인스턴스가 할당된다. (String 타입의 특징)
-        assertEquals("a", a); // 그래서 a는 원래의 값을 유지할 수 있다.
+        assertThat(a).isEqualTo("a"); // 그래서 a는 원래의 값을 유지할 수 있다.
     }
 
     @Test
     void useBuilder() {
         StringBuilder builder = new StringBuilder();
-        assertEquals(0, builder.length());
-        assertEquals("", builder.toString());
+        assertThat(builder.length()).isEqualTo(0);
+        assertThat(builder.toString()).isEqualTo("");
     }
 
     @Test
     void getLengthWithLineDelimiter() {
         String a = "totcnt123\nstart";
         String b = "totcnt123start";
-        assertEquals(10, a.indexOf("start"));
-        assertEquals("start", a.substring(a.indexOf("start")));
+        assertThat(a.indexOf("start")).isEqualTo(10);
+        assertThat(a.substring(a.indexOf("start"))).isEqualTo("start");
 
-        assertEquals(9, b.indexOf("start"));
-        assertEquals("start", b.substring(b.indexOf("start")));
+        assertThat(b.indexOf("start")).isEqualTo(9);
+        assertThat(b.substring(b.indexOf("start"))).isEqualTo("start");
     }
 
     @Test
@@ -149,97 +148,117 @@ class StringTest {
         // 아래처럼 초기화될 땐 intern()을 쓰든 안쓰든 String의 주소값은 같다.
         String a = "경기";
         String b = "경기";
-        assertSame(a, b);
+        assertThat(b).isSameAs(a);
 
         // 요로케 해야됨
         String c = "AAA";
         String d = new String("AAA");
-        assertNotSame(c, d);
+        assertThat(d).isNotSameAs(c);
 
         d = d.intern();
-        assertSame(c, d);
+        assertThat(d).isSameAs(c);
 
-        assertSame(new String("BBB").intern(), "BBB");
-        assertSame(new String("CCC").intern(), "CCC");
-        assertEquals(new String("CCC").intern().hashCode(), "CCC".hashCode());
+        assertThat("BBB").isSameAs(new String("BBB").intern());
+        assertThat("CCC").isSameAs(new String("CCC").intern());
+        assertThat("CCC".hashCode()).isEqualTo(new String("CCC").intern().hashCode());
     }
 
+    /**
+     * <p>String.replace()는 자바스크립트의 string.replace()와 달리 첫 번째 인자로 정규식을 받지 않는다. 문자열만 받으며, 문자열과 일치하는 모든 문자열을 치환한다.</p>
+     * <p>처음 발견한 하나만 치환하게 하고 싶으면 {@link String#replaceFirst(String, String)}를 사용할 것</p>
+     */
+    @Test
+    void testReplace() {
+        var str = "a'b'c'd'e'f'g";
+        String result = str.replace("'", "");
+        assertThat(result).isEqualTo("abcdefg");
+    }
+
+    /**
+     * String.replaceAll()은 첫 번째 인자로 정규식을 받으며, g 플래그를 사용한 것과 동일하게 작동한다.
+     */
     @Test
     void testReplaceAll() {
-        assertEquals("경기", "경기도".replaceAll("도", ""));
-        assertEquals("a-b", "a:b".replaceAll(":", "-"));
-        assertEquals("a-b", "a:b".replaceAll("\\:", "\\-"));
+        assertThat("경기도".replaceAll("도", "")).isEqualTo("경기");
+        assertThat("a:b".replaceAll(":", "-")).isEqualTo("a-b");
+        assertThat("a:b".replaceAll("\\:", "\\-")).isEqualTo("a-b");
+
+        var str = "Duplicate entry 'foo' for key 'bar'";
+        String result = str.replaceAll("'", "");
+        assertThat(result).isEqualTo("Duplicate entry foo for key bar");
     }
 
+    /**
+     * 처음으로 검색된 패턴만 치환한다.
+     */
     @Test
     void testReplaceFirst() {
         String str = "/qwe/test/submit/sender";
-        assertEquals("/test/submit/sender", str.replaceFirst("/qwe", ""));
+        assertThat(str.replaceFirst("/qwe", "")).isEqualTo("/test/submit/sender");
     }
 
     @Test
     void splitDomain() {
-        assertEquals(1, "localhost".split("\\.").length);
-        assertEquals(3, "master.benecafe.com".split("\\.").length);
-        assertEquals(2, "daum.net".split("\\.").length);
+        assertThat("localhost".split("\\.").length).isEqualTo(1);
+        assertThat("master.benecafe.com".split("\\.").length).isEqualTo(3);
+        assertThat("daum.net".split("\\.").length).isEqualTo(2);
     }
 
     @Test
     void testSubstring() {
         String str = "a1234567890b234567890c234567890d23";
-        assertEquals("a", str.substring(0, 1));
-        assertEquals("a12345", str.substring(0, 6));
-        assertEquals("456", str.substring(4, 7));
-        assertEquals(34, str.length());
-        assertEquals("a1234567890b234567890c23456789", str.substring(0, 30));
-        assertEquals(30, str.substring(0, 30).length());
-        assertEquals("1", "8804127".substring(4, 5));
-        assertEquals("2", "8804127".substring(5, 6));
-        assertEquals("7", "8804127".substring(6, 7));
+        assertThat(str.substring(0, 1)).isEqualTo("a");
+        assertThat(str.substring(0, 6)).isEqualTo("a12345");
+        assertThat(str.substring(4, 7)).isEqualTo("456");
+        assertThat(str.length()).isEqualTo(34);
+        assertThat(str.substring(0, 30)).isEqualTo("a1234567890b234567890c23456789");
+        assertThat(str.substring(0, 30).length()).isEqualTo(30);
+        assertThat("8804127".substring(4, 5)).isEqualTo("1");
+        assertThat("8804127".substring(5, 6)).isEqualTo("2");
+        assertThat("8804127".substring(6, 7)).isEqualTo("7");
 
-        assertEquals("a1234", str.substring(0, str.indexOf('5')));
+        assertThat(str.substring(0, str.indexOf('5'))).isEqualTo("a1234");
     }
 
     @Test
     void testIndexOf() {
         String a = "INFO  log4jdbc.log4j2 - 5. ResultSet.close() returned void";
-        assertEquals(0, a.indexOf('I'));
-        assertEquals(1, a.indexOf("NFO"));
-        assertEquals(27, a.indexOf("ResultSet.")); // 첫 번째 "ResultSet."
-        assertEquals(14, a.indexOf('.')); // 첫 번째 "."
-        assertEquals(25, a.indexOf('.', 15)); // 인덱스 15 이후부터 찾음
+        assertThat(a.indexOf('N')).isEqualTo(1);
+        assertThat(a.indexOf("NFO")).isEqualTo(1);
+        assertThat(a.indexOf("ResultSet.")).isEqualTo(27); // 첫 번째 "ResultSet."
+        assertThat(a.indexOf('.')).isEqualTo(14); // 첫 번째 "."
+        assertThat(a.indexOf('.', 15)).isEqualTo(25); // 인덱스 15 이후부터 찾음
 
-        assertEquals(36, a.lastIndexOf('.')); // 마지막 "."
-        assertEquals(25, a.lastIndexOf('.', 35)); // 인덱스 35 이전부터 찾음
+        assertThat(a.lastIndexOf('.')).isEqualTo(36); // 마지막 "."
+        assertThat(a.lastIndexOf('.', 35)).isEqualTo(25); // 인덱스 35 이전부터 찾음
     }
 
     @Test
     void testLastIndexOf() {
-        String str = "/abcd";
-        assertEquals(0, str.lastIndexOf('/'));
-        assertEquals("abcd", str.substring(str.lastIndexOf('/') + 1));
+        String str = "/ab/cd";
+        assertThat(str.lastIndexOf('/')).isEqualTo(3);
+        assertThat(str.substring(str.lastIndexOf('/') + 1)).isEqualTo("cd");
     }
 
     @Test
     void testSplit() {
         String splitMe = "abcdefghijklmn";
-        assertEquals(splitMe, splitMe.split("\\|")[0]);
+        assertThat(splitMe.split("\\|")[0]).isEqualTo(splitMe);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> {
+        assertThatThrownBy(() -> {
             String arr = splitMe.split("\\|")[1];
-        });
+        }).isInstanceOf(IndexOutOfBoundsException.class);
 
         String splitMe2 = "abcdefghijklmn";
-        assertEquals(14, splitMe2.length());
-        assertEquals(splitMe2.substring(1, 5), splitMe2.subSequence(1, 5));
-        assertEquals(splitMe2, splitMe2); // 맨 왼쪽은 0, 맨 오른쪽은 length
+        assertThat(splitMe2.length()).isEqualTo(14);
+        assertThat(splitMe2.subSequence(1, 5)).isEqualTo(splitMe2.substring(1, 5));
 
         String splitMe3 = "a\nb\nc\nd";
-        assertEquals(4, splitMe3.split("\\n").length);
+        assertThat(splitMe3.split("\\n").length).isEqualTo(4);
 
         String splitMe4 = "";
         String[] splited = splitMe4.split("\\|");
-        assertEquals("", splited[0]);
+        assertThat(splited[0]).isEqualTo("");
     }
 
     @Test
@@ -283,15 +302,15 @@ class StringTest {
 //		for (String ele : strArray) {
 //			log.debug(ele);
 //		}
-        assertArrayEquals(strArray, splitByLength(str, 1333));
+        assertThat(splitByLength(str, 1333)).isEqualTo(strArray);
     }
 
     @Test
     void testSplitByLength() {
-        assertArrayEquals(new String[]{"abc", "def"}, splitByLength("abcdef", 3));
-        assertArrayEquals(new String[]{"abc", "def", "ef"}, splitByLength("abcdefef", 3));
-        assertArrayEquals(new String[]{"abcd", "ef12", "34"}, splitByLength("abcdef1234", 4));
-        assertArrayEquals(new String[]{"abcde", "f1234", "5"}, splitByLength("abcdef12345", 5));
+        assertThat(splitByLength("abcdef", 3)).isEqualTo(new String[]{"abc", "def"});
+        assertThat(splitByLength("abcdefef", 3)).isEqualTo(new String[]{"abc", "def", "ef"});
+        assertThat(splitByLength("abcdef1234", 4)).isEqualTo(new String[]{"abcd", "ef12", "34"});
+        assertThat(splitByLength("abcdef12345", 5)).isEqualTo(new String[]{"abcde", "f1234", "5"});
     }
 
     static String[] splitByLength1333(String str) {
@@ -329,31 +348,32 @@ class StringTest {
     @Test
     void testJoin() {
         List<String> texts = Arrays.asList("a", "b", "c");
-        assertEquals("a, b, c", String.join(", ", texts));
+        assertThat(String.join(", ", texts)).isEqualTo("a, b, c");
     }
 
     @Test
     void testIsEmpty() {
-        assertTrue("".isEmpty());
-        assertFalse(" ".isEmpty());
-        assertFalse("  ".isEmpty());
-        assertFalse("qwer".isEmpty());
-        assertThrows(NullPointerException.class, () -> {
+        assertThat("".isEmpty()).isTrue();
+        assertThat(" ".isEmpty()).isFalse();
+        assertThat("  ".isEmpty()).isFalse();
+        assertThat("qwer".isEmpty()).isFalse();
+
+        assertThatThrownBy(() -> {
             String str = null;
             str.isEmpty();
-        });
+        }).isInstanceOf(NullPointerException.class);
     }
 
     @Test
     void testIsBlank() {
-        assertTrue("".isBlank());
-        assertTrue(" ".isBlank());
-        assertTrue("  ".isBlank());
-        assertFalse("qwer".isBlank());
-        assertThrows(NullPointerException.class, () -> {
+        assertThat("".isBlank()).isTrue();
+        assertThat(" ".isBlank()).isTrue();
+        assertThat("  ".isBlank()).isTrue();
+        assertThat("qwer".isBlank()).isFalse();
+        assertThatThrownBy(() -> {
             String str = null;
             str.isBlank();
-        });
+        }).isInstanceOf(NullPointerException.class);
     }
 
     // java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '11' for key 'beacon.uuid'

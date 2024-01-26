@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * String과 함께하는 정규식 뿅뿅 파티!
@@ -17,14 +17,14 @@ class RegexWithStringTest {
 
     @Test
     void shoulBeEquals() {
-        assertEquals("AA1062329819", removeTail("AA1062329819_1"));
-        assertEquals("AA1062329819", removeTail("AA1062329819_199A"));
+        assertThat(removeTail("AA1062329819_1")).isEqualTo("AA1062329819");
+        assertThat(removeTail("AA1062329819_199A")).isEqualTo("AA1062329819");
 
-        assertEquals("1", extractTail("AA1062329819_1"));
-        assertEquals("199A", extractTail("AA1062329819_199A"));
+        assertThat(extractTail("AA1062329819_1")).isEqualTo("1");
+        assertThat(extractTail("AA1062329819_199A")).isEqualTo("199A");
 
-        assertEquals("1", extractTailUsingApacheCommons("AA1062329819_1"));
-        assertEquals("12A3", extractTailUsingApacheCommons("AA1062329819_12A3"));
+        assertThat(extractTailUsingApacheCommons("AA1062329819_1")).isEqualTo("1");
+        assertThat(extractTailUsingApacheCommons("AA1062329819_12A3")).isEqualTo("12A3");
     }
 
     public static String removeTail(String str) {
