@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
  * @author fixalot
  * @since 2017-07-27
  */
-public class OverridingTest {
+class OverridingTest {
     @Test
     void override() {
 

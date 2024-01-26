@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
  */
 @Slf4j
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class ThreadLocalTest {
+class ThreadLocalTest {
 
     /**
      * <p>ThreadLocal은 쓰레드마다 독립적이다.</p>

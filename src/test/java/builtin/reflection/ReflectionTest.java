@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class ReflectionTest {
+class ReflectionTest {
     /**
      * 같은 타입의 인스턴스 두 개를 비교해서 값이 다른 필드만 고르기
      */

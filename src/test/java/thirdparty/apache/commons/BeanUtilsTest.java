@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
  * @since 2017-07-27
  */
 @Slf4j
-public class BeanUtilsTest {
+class BeanUtilsTest {
 
     /**
      * 인스턴스의 프로퍼티 복사. 복사하려는 타입이 private이면 작동하지 않음

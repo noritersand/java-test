@@ -27,7 +27,7 @@ import java.io.IOException;
  * @since 2017-05-25
  */
 @Slf4j
-public class XmlModifyTest {
+class XmlModifyTest {
 
     //	@Test // 독타입 때문에 xml 파일에 경고떠서 테스트 케이스에서 제외
     public void modifyXml() throws TransformerException, ParserConfigurationException, SAXException, IOException {

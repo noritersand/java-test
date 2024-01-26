@@ -11,7 +11,7 @@ import java.util.List;
  * @since 2017-07-27
  */
 @Slf4j
-public class GenericMethodTest {
+class GenericMethodTest {
 
     @Test
     void shouldSuccess() {

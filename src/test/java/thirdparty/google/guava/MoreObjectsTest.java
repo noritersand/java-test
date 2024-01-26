@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * @since 2017-07-27
  */
 @Slf4j
-public class MoreObjectsTest {
+class MoreObjectsTest {
 
     @Test
     void useToStringHelper() {

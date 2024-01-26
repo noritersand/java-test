@@ -16,7 +16,7 @@ import java.io.File;
  * @since 2017-07-27
  */
 @Slf4j
-public class DocumentBuilderTest {
+class DocumentBuilderTest {
 
     @Test
     void readXml() throws Exception {

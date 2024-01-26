@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2018-09-28
  */
 @Slf4j
-public class StringBufferTest {
+class StringBufferTest {
 
     /**
      * 한글을 3바이트로 처리하는 UTF-8의 바이트배열을 4바이트씩 잘라서 String으로 만들면 한글이 망가지는데,

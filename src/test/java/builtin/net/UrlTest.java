@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  * @since 2017-08-21
  */
 @Slf4j
-public class UrlTest {
+class UrlTest {
 
     @Test
     void initialize() throws MalformedURLException {

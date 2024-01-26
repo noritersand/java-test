@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class HashMapTest {
+class HashMapTest {
 
     /**
      * 해시맵은 엔트리(내부의 구성 요소)가 같으면 동등하다고 판단함.
@@ -38,6 +38,13 @@ public class HashMapTest {
 
         // AbstractMap.equals()는 엔트리의 키:값 구성이 같은지를 비교한다. 따라서 둘은 동등하다.
         assertTrue(x.equals(y));
+    }
+
+    @Test
+    void testOf() {
+        Map<String, Integer> map = Map.of("a", 1, "c", 2);
+        assertEquals(1, map.get("a"));
+        assertEquals(2, map.get("c"));
     }
 
     @Test

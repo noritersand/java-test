@@ -3,7 +3,7 @@ package thirdparty.com.fasterxml.jackson;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ElementObject {
+class ElementObject {
     private String ccc;
 
     public String getCcc() {

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class BigDecimalTest {
+class BigDecimalTest {
 
     @Test
     void instantiate() {

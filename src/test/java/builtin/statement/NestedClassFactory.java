@@ -1,6 +1,6 @@
 package builtin.statement;
 
-public class NestedClassFactory {
+class NestedClassFactory {
     /**
      * 인스턴스 생성 방지용 생성자 선언. 중첩 클래스와는 관계 없음.
      */
@@ -10,7 +10,7 @@ public class NestedClassFactory {
     /**
      * 중첩 클래스 #1
      */
-    public class NestedClass {
+    class NestedClass {
     }
 
     /**

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @since 2017-07-27
  */
 @Slf4j
-public class OperatorTest {
+class OperatorTest {
 
     /**
      * 산술 연산자(arithmetic operator) 테스트

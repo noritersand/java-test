@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2017-05-25
  */
 @Slf4j
-public class XmlReadTest {
+class XmlReadTest {
 
     @Test
     void readXml() throws Exception {

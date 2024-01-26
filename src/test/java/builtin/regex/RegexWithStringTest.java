@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2020-03-02
  */
 @Slf4j
-public class RegexWithStringTest {
+class RegexWithStringTest {
 
     @Test
     void shoulBeEquals() {

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2019-02-26
  */
 @Slf4j
-public class MatcherTest {
+class MatcherTest {
 
     /**
      * 주어진 문자열의 리터럴 대체 문자열(??? regex 패턴 문자열인가...)을 반환한다.

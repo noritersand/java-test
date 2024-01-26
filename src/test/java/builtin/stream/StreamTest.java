@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * @since 2018-07-16
  */
 @Slf4j
-public class StreamTest {
+class StreamTest {
 
     /**
      * Stream.forEach() 테스트<br>

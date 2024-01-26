@@ -2,7 +2,6 @@ package builtin.statement;
 
 import testbed.exception.serverfault.InappropriateArgumentException;
 import lombok.extern.slf4j.Slf4j;
-import misc.ExceptionTest;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -15,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * try-catch-finally 테스트
  *
  * @author fixalot
- * @see ExceptionTest
+ * @see misc.ExceptionTest
  * @since 2018-02-01
  */
 @Slf4j
-public class TryCatchFinallyTest {
+class TryCatchFinallyTest {
 
     /**
      * 새로 나온 try-with-resources statement<br>

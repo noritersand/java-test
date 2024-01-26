@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * @since 2019-01-11
  */
 @Slf4j
-public class DateTest {
+class DateTest {
     public static final ZoneId ZONE_ID_ASIA_SEOUL = ZoneId.of("Asia/Seoul");
     public static final ZoneId ZONE_ID_UTC = ZoneId.of("UTC");
 

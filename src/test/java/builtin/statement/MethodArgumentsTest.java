@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2018-04-03
  */
 @Slf4j
-public class MethodArgumentsTest {
+class MethodArgumentsTest {
 
     /**
      * 일반적인 사용 방법

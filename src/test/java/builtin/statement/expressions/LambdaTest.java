@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class LambdaTest {
+class LambdaTest {
 
     @Test
     void basicUsage() {

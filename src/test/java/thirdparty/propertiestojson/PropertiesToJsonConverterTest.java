@@ -13,7 +13,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
-public class PropertiesToJsonConverterTest {
+class PropertiesToJsonConverterTest {
 
     @SuppressWarnings("unchecked")
     @Test

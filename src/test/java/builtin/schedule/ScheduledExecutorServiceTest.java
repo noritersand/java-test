@@ -14,7 +14,7 @@ import java.util.concurrent.*;
  * @since 2023-08-09
  */
 @Slf4j
-public class ScheduledExecutorServiceTest {
+class ScheduledExecutorServiceTest {
 
     /**
      * <p>{@link java.util.Timer}처럼 main() 메서드에선 JVM이 먼저 종료되지 않음</p>
@@ -41,7 +41,7 @@ public class ScheduledExecutorServiceTest {
      * {@link ScheduledExecutorService#scheduleAtFixedRate(Runnable, long, long, TimeUnit)}는 이전 작업이 시작된 시간부터 period만큼 기다린 후 다음 작업을 실행한다.
      */
     @Test
-    public void testScheduleAtFixedRate() throws ExecutionException, InterruptedException {
+    void testScheduleAtFixedRate() throws ExecutionException, InterruptedException {
         CompletableFuture<Void> completableFuture = new CompletableFuture<>();
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
@@ -68,7 +68,7 @@ public class ScheduledExecutorServiceTest {
      * {@link ScheduledExecutorService#scheduleWithFixedDelay(Runnable, long, long, TimeUnit)}는 이전 작업이 종료된 시간부터 period만큼 기다린 후 다음 작업을 실행한다.
      */
     @Test
-    public void testScheduleWithFixedDelay() throws ExecutionException, InterruptedException {
+    void testScheduleWithFixedDelay() throws ExecutionException, InterruptedException {
         CompletableFuture<Void> completableFuture = new CompletableFuture<>();
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);

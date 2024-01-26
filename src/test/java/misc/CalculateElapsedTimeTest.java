@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @since 2017-07-27
  */
 @Slf4j
-public class CalculateElapsedTimeTest {
+class CalculateElapsedTimeTest {
 
     @Test
     void calculate() {

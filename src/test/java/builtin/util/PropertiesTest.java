@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @since 2017-07-27
  */
 @Slf4j
-public class PropertiesTest {
+class PropertiesTest {
 
     @Test
     void testStore() throws IOException {

@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 2017-07-27
  */
 @Slf4j
-public class ThreadGroupTest {
+class ThreadGroupTest {
 
     /**
      * TOOD 어떻게 쓰는건지 몰겄다.

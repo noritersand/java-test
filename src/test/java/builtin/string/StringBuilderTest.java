@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.*;
 /**
  * {@link StringBuilder} 테스트 슈트
  */
-public class StringBuilderTest {
+class StringBuilderTest {
 
     @Test
     void basicUsage() {

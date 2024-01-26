@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * @since 2017-07-27
  */
 @Slf4j
-public class MethodNameTest {
+class MethodNameTest {
 
     private static final int CLIENT_CODE_STACK_INDEX;
 

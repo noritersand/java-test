@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * @since 2018-10-31
  */
 @Slf4j
-public class StringFormatterTest {
+class StringFormatterTest {
 
     /**
      * %와 알파뱃의 조합으로

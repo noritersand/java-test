@@ -10,7 +10,7 @@ import java.io.IOException;
  * @since 2017-07-27
  */
 @Slf4j
-public class ProcessBuilderTest {
+class ProcessBuilderTest {
 
     @Test
     void executeFile() throws IOException {

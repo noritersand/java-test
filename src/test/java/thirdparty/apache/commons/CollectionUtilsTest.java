@@ -1,6 +1,5 @@
 package thirdparty.apache.commons;
 
-import builtin.map.HashMapTest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
@@ -19,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2020-03-13
  */
 @Slf4j
-public class CollectionUtilsTest {
+class CollectionUtilsTest {
 
     /**
      * {@link CollectionUtils#union(java.util.Collection, java.util.Collection)} 테스트<br>

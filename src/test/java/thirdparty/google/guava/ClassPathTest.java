@@ -12,7 +12,7 @@ import java.io.IOException;
  * @since 2017-07-27
  */
 @Slf4j
-public class ClassPathTest {
+class ClassPathTest {
 
     //	@Test // 로그가 너무 길어져서 생략
     public void getAllClasses() throws IOException {

@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SwitchYieldTest {
+class SwitchYieldTest {
 
         /**
      * <p>Java 13에 추가된 Yield</p>
      * <p>그리고 다중 case 레이블 + 화살표 블록(얘넨 언제 추가된건지 몲)</p>
      */
     @Test
-    public void testYield() {
+    void testYield() {
         var randomNames = new String [] {"Jayden", "Bernard", "Zino", "Mason", "Elvin"}[(int) (Math.random() * 5)];
 
         String name = switch(randomNames) {

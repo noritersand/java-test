@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @since 2017-09-08
  */
 @Slf4j
-public class ClassCastExceptionTest {
+class CastExceptionTest {
 
     @Test
     void case1() {

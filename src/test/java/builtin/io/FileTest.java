@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class FileTest {
+class FileTest {
 
     /*
      * src/main 혹은 src/test는 이클립스에서 직접 VM을 실행할 때에만 사용해야하는 경로다. 이 경로들은 메이븐 개발 환경에서만 존재하는 폴더 구조이고 war나 jar로 빌드되면 존재하지 않는 경로이기 때문.

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @since 2019-02-25
  */
 @Slf4j
-public class NestedFactoryTest {
+class NestedFactoryTest {
 
     @Test
     void test() {

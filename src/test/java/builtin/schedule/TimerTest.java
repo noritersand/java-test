@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
  * @since 2023-08-09
  */
 @Slf4j
-public class TimerTest {
+class TimerTest {
 
     /**
      * <p>main() 메서드에선 JVM이 먼저 죽어버리는 현상이 없음. 대신 {@link System#exit(int)}로 JVM을 직접 종료해야 함</p>
@@ -40,7 +40,7 @@ public class TimerTest {
     }
 
     @Test
-    public void testWithCountDownLatch() throws InterruptedException {
+    void testWithCountDownLatch() throws InterruptedException {
         Timer timer = new Timer();
         CountDownLatch latch = new CountDownLatch(1);
 
@@ -57,7 +57,7 @@ public class TimerTest {
     }
 
     @Test
-    public void testWithCompletableFuture() throws InterruptedException, ExecutionException {
+    void testWithCompletableFuture() throws InterruptedException, ExecutionException {
         Timer timer = new Timer();
         CompletableFuture<Void> completableFuture = new CompletableFuture<>();
 
@@ -74,7 +74,7 @@ public class TimerTest {
     }
 
     @Test
-    public void testFixedRate() throws InterruptedException, ExecutionException {
+    void testFixedRate() throws InterruptedException, ExecutionException {
         Timer timer = new Timer();
         CompletableFuture<Void> completableFuture = new CompletableFuture<>();
 

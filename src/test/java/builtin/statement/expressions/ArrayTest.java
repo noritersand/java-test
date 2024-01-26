@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 2017-07-27
  */
 @Slf4j
-public class ArrayTest {
+class ArrayTest {
 
     /**
      * 자바 Array는 indexOf()가 없음. contains()도 없다. Arrays에도 없으니 찾지 말자.

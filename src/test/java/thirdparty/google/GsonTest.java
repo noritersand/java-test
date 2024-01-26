@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2017-07-27
  */
 @Slf4j
-public class GsonTest {
+class GsonTest {
 
     @Test
     void getDataFromFile() throws IOException {

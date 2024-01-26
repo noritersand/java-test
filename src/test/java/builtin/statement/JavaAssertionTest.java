@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * @author fixalot
  * @since 2017-07-27
  */
-public class JavaAssertionTest {
+class JavaAssertionTest {
     public static void main(String[] args) {
         int i = -1;
         assert 0 < i;

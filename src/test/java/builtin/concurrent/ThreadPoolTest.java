@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2019-12-19
  */
 @Slf4j
-public class ThreadPoolTest {
+class ThreadPoolTest {
 
     private final int instanceLength = 10;
 

@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  * @since 2017-12-01
  */
 @Slf4j
-public class GsonBuilderTest {
+class GsonBuilderTest {
 
     @Test
     void testFromJsonForPlainObject() {

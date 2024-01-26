@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
  * @since 2017-07-27
  */
 @Slf4j
-public class GenericClassTest {
+class GenericClassTest {
 
     @Test
     void testNormalGeneric() {
@@ -26,7 +26,7 @@ public class GenericClassTest {
 
     @Test
     @SuppressWarnings("unused")
-    public void testRestrictedGeneric() {
+    void testRestrictedGeneric() {
         RestrictedGeneric<BigDecimal> gen = new RestrictedGeneric<>(); // correct
         RestrictedGeneric<LittleDecimal> gen2 = new RestrictedGeneric<>(); // correct
     }

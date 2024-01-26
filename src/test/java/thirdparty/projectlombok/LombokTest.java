@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 @Slf4j
-public class LombokTest {
+class LombokTest {
 
     @Test
     void testEqualsAndHashCode() {

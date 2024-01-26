@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2017-05-30
  */
 @Slf4j
-public class GreatestCommonDivisorTest {
+class GreatestCommonDivisorTest {
 
     @Test
     void shouldEqual() {

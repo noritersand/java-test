@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2019-07-19
  */
 @Slf4j
-public class TypeSafeConfigTest {
+class TypeSafeConfigTest {
 
     @Test
     void testConvertToHierarchicalJsonString() throws IOException {

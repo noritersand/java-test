@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
  * @since 2018-12-11
  */
 @Slf4j
-public class RuntimeTest {
+class RuntimeTest {
 
     /**
      * JAR를 실행하고 입력을 대기하는 테스트 케이스.

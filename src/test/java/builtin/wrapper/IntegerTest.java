@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class IntegerTest {
+class IntegerTest {
 
     /**
      * -128 ~ 127 사이의 값은 상수로 사용되기 때문에 동등 비교(==) 가능. 나머지 범위는 .equals()를 사용해야 함

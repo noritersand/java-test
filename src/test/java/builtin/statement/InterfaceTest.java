@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2021-01-06
  */
 @Slf4j
-public class InterfaceTest {
+class InterfaceTest {
 
     @Test
     void test() {

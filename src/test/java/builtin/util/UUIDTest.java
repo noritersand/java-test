@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * {@link java.util.UUID} 테스트 슈트
  */
 @Slf4j
-public class UUIDTest {
+class UUIDTest {
 
     @Test
     void testRandomUUID() {

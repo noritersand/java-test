@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class NestedTest {
+class NestedTest {
 
     @Test
     void testNonStaticOuter() {
@@ -46,7 +46,7 @@ public class NestedTest {
 class NonStaticOuter {
     private final String text = "outer";
 
-    public class Inner {
+    class Inner {
         private final String text = "inner";
 
         public String executeInnerMethod() {

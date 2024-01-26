@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
-public class ConstructorTest {
+class ConstructorTest {
 
     @Test
     void testInitialize() {

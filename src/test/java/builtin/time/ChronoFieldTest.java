@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
  * <p>ChronoField 테스트 슈트</p>
  * <p>ChronoField는 날짜를 조작하는 데 사용되는 표준 필드 집합이다.</p>
  */
-public class ChronoFieldTest {
+class ChronoFieldTest {
 
     /**
      * <p>ChronoField.ALIGNED_WEEK_OF_MONTH 테스트</p>

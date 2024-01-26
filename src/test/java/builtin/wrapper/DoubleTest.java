@@ -7,7 +7,7 @@ import java.math.RoundingMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DoubleTest {
+class DoubleTest {
 
     @Test
     void handleDecimalPlaces() {

@@ -19,10 +19,10 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2023-08-28
  */
 @Slf4j
-public class RecordDataClassTest {
+class RecordDataClassTest {
 
     @Test
-    public void basicUsage() {
+    void basicUsage() {
         // 필드 초기화 생성자를 명시하지 않아도(lombok이 없어도) 자동 생성됨.
         RecordData rd = new RecordData("abc", 123.45);
 

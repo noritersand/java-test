@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class JavaTimeTest {
+class JavaTimeTest {
     private static final String ID_ASIA_SEOUL = "Asia/Seoul";
     private static final String ID_UTC = "UTC";
 
@@ -57,7 +57,7 @@ public class JavaTimeTest {
     void LocalDateTimeType() {
         LocalDateTime now1 = LocalDateTime.now().minusHours(9);
         LocalDateTime now2 = LocalDateTime.now(ZoneId.of("UTC")); // <-- doc comment 참고
-        assertThat(now2).isNotEqualTo(now1);
+        assertThat(now2).isEqualTo(now1);
 
         LocalDateTime now = LocalDateTime.now();
         now = now.withYear(2019).withMonth(1).withDayOfMonth(31);

@@ -9,7 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Slf4j
-public class SimpleDateFormatTest {
+class SimpleDateFormatTest {
 
     @Test
     void test() throws ParseException {

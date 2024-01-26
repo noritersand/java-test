@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class CastingTest {
+class CastingTest {
 
     /**
      * 다른 타입으로 변환하기

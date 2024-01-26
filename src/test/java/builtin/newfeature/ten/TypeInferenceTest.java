@@ -9,13 +9,13 @@ import static org.assertj.core.api.Assertions.*;
  * Java 10의 신기능 타입 추론(type inference) var 기능 테스트
  */
 @Slf4j
-public class TypeInferenceTest {
+class TypeInferenceTest {
 
     /**
      * 컴파일러는 var 변수 우측변에 초기화되는 값으로 타입을 추론한다.
      */
     @Test
-    public void basicUsage() {
+    void basicUsage() {
         var str = "abc";
         assertThat(str).isInstanceOf(String.class);
 
@@ -33,7 +33,7 @@ public class TypeInferenceTest {
      * 잘못된 사용방법
      */
     @Test
-    public void incorrectUsage() {
+    void incorrectUsage() {
         // 타입 추론은 컴파일 타임에 이뤄지기 때문에 null로 초기화할 수 없다. (타입 추론이 안되니까)
 //        var a = null; // COMPILE ERROR: Cannot infer type: variable initializer is 'null'
 

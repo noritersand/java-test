@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * java.util.Optional 테스트 슈ㅌ
  */
 @Slf4j
-public class OptionalTest {
+class OptionalTest {
 
     @Test
     void testEmpty() {

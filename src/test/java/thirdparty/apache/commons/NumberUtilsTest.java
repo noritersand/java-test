@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2019-03-21
  */
 @Slf4j
-public class NumberUtilsTest {
+class NumberUtilsTest {
 
     @Test
     void testIsNumber() {

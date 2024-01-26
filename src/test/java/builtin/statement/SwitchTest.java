@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class SwitchTest {
+class SwitchTest {
 
     /**
      * switch 안의 로컬 변수는 마치 자바스크립트의 끌어올림처럼 작동함.
@@ -40,7 +40,7 @@ public class SwitchTest {
      * @author fixalot
      */
     @Test
-    public void howAboutActualArgumentIsNull() {
+    void howAboutActualArgumentIsNull() {
         String imNull = null;
         assertThatThrownBy(() -> {
             switch (imNull) {
@@ -69,9 +69,9 @@ public class SwitchTest {
         }
     }
 
-    public static final int myS = getData();
+    static final int myS = getData();
 
-    public static final int getData() {
+    static final int getData() {
         return 1;
     }
 }

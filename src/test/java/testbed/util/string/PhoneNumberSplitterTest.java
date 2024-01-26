@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
-public class PhoneNumberSplitterTest {
+class PhoneNumberSplitterTest {
 
     @Test
     void testSplit() {

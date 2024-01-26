@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 @Slf4j
-public class TryWithResourcesTest {
+class TryWithResourcesTest {
 
     @Test
     void test() {

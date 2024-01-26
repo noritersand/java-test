@@ -1,24 +1,22 @@
 package misc;
 
-import builtin.statement.TryCatchFinallyTest;
-import testbed.exception.serverfault.ServerFaultException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import testbed.exception.serverfault.ServerFaultException;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * 예외 테스트
  *
  * @author fixalot
- * @see TryCatchFinallyTest
+ * @see builtin.statement.TryCatchFinallyTest
  * @since 2017-07-27
  */
 @Slf4j
-public class ExceptionTest {
+class ExceptionTest {
 
     @Test
     void logging() {

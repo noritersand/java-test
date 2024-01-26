@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2023-03-25
  */
 @Slf4j
-public class ListTest {
+class ListTest {
 
     /**
      * <p>of() 테스트. 비슷한 Collections.EMPTY_LIST가 있는데 미묘하게 다르다.

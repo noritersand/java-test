@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class StringTest {
+class StringTest {
 
     @Test
     void testFormat() {
@@ -29,11 +29,11 @@ public class StringTest {
     @Test
     void testCustomFormatter() {
         class Formatter {
-            public String floatFormat(double number) {
+            String floatFormat(double number) {
                 return String.format("%.2f", number); // dot(.)과 바로 뒤에오는 숫자는 정밀도를 의미한다.
             }
 
-            public String binaryFormat(double number) {
+            String binaryFormat(double number) {
                 return String.format("%.0f", number);
             }
         }
@@ -294,11 +294,11 @@ public class StringTest {
         assertArrayEquals(new String[]{"abcde", "f1234", "5"}, splitByLength("abcdef12345", 5));
     }
 
-    public static String[] splitByLength1333(String str) {
+    static String[] splitByLength1333(String str) {
         return splitByLength(str, 1333);
     }
 
-    public static String[] splitByLength(String str, int splitLength) {
+    static String[] splitByLength(String str, int splitLength) {
         if (null == str) {
             return null;
         }

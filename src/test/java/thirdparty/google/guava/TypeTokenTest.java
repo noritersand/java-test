@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2017-07-27
  */
 @Slf4j
-public class TypeTokenTest {
+class TypeTokenTest {
 
     @Test
     void useTypeToken() {

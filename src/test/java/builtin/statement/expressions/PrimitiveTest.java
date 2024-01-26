@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * @since 2017-07-27
  */
 @Slf4j
-public class PrimitiveTest {
+class PrimitiveTest {
 
     @Test
     @SuppressWarnings("unused")

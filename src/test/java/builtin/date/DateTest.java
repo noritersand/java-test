@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2017-07-27
  */
 @Slf4j
-public class DateTest {
+class DateTest {
 
     @Test
     void shouldBeEquals() {

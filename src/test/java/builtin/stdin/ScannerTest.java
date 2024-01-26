@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @since 2017-09-25
  */
 @Slf4j
-public class ScannerTest {
+class ScannerTest {
 
     private static final String FULL_TEXT = "abcdefg hijklmn	opqrstu|vwxyz\n12345,67890\n가나다라마바사^아자차카타파하";
 

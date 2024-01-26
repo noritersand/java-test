@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class EnumTest {
+class EnumTest {
 
     public static void main(String[] args) {
         System.out.println(Color.RED); // RED

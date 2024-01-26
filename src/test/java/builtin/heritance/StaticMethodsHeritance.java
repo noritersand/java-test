@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StaticMethodsHeritance {
+/**
+ * 스태틱 메소드 상속 테스트
+ */
+class StaticMethodsHeritance {
     @Test
     void shouldBeEquals() {
         Parent ins1 = new Child();

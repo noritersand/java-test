@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * @since 2017-07-27
  */
 @Slf4j
-public class LogbackTest {
+class LogbackTest {
 
     public static void main(String[] args) {
         log.debug("running java application");

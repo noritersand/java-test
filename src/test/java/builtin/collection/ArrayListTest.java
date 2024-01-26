@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 2017-07-27
  */
 @Slf4j
-public class ArrayListTest {
+class ArrayListTest {
 
     @Test
     void testAdd() {

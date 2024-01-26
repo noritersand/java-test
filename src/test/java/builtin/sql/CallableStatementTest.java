@@ -11,7 +11,7 @@ import java.sql.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class CallableStatementTest {
+class CallableStatementTest {
 
     /**
      * usage

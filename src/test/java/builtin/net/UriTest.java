@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  * @since 2017-07-27
  */
 @Slf4j
-public class UriTest {
+class UriTest {
 
     @Test
     void initialize() {

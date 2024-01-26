@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2017-07-27
  */
-public class DefaultKeywordTest {
+class DefaultKeywordTest {
     @Test
     void test1() {
         C c = new C();

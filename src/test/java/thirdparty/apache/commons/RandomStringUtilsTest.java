@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2022-08-31
  */
 @Slf4j
-public class RandomStringUtilsTest {
+class RandomStringUtilsTest {
 
     @Test
     void basicUsage() {

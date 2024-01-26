@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class StringUtilsTest {
+class StringUtilsTest {
 
     @Test
     void testDefault() {

@@ -11,7 +11,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 @Slf4j
-public class HttpURLConnectionTest {
+class HttpURLConnectionTest {
 
     /**
      * 로컬 서버 안띄워놓으면 접속 안되서 막음.

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
-public class AbstractClassTest {
+class AbstractClassTest {
 
     @Test
     void shouldBeCompileError() {

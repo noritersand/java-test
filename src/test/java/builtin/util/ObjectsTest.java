@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * java.util.Objects 테스트 슈ㅌ
  */
 @Slf4j
-public class ObjectsTest {
+class ObjectsTest {
 
     @Test
     void test() {

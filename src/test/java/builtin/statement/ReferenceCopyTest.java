@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  * @author fixalot
  * @since 2017-07-27
  */
-public class ReferenceCopyTest {
+class ReferenceCopyTest {
     @Test
     void avoidReassigningParameters() {
         Vo vo = new Vo();

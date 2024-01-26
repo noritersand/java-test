@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  * @since 2018-08-22
  */
 @Slf4j
-public class PrintStreamTest {
+class PrintStreamTest {
 
     @Test
     void testCharset() throws UnsupportedEncodingException {

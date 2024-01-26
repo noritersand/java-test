@@ -3,7 +3,7 @@ package misc;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class HotDeployTest {
+class HotDeployTest {
 
     public static void main(String[] args) {
         RunMe runMe = new RunMe();
@@ -14,7 +14,7 @@ public class HotDeployTest {
 @Slf4j
 class RunMe {
 
-    public void doSomething() {
+    void doSomething() {
         while (true) {
             log.info("Hello World!");
             try {

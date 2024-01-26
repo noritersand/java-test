@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * BASE64 encoding/decoding tests.
  */
 @Slf4j
-public class Base64Test {
+class Base64Test {
 
     @Test
     void testEncode() {

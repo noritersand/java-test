@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @since 2017-07-27
  */
 @Slf4j
-public class HandleXMLTest {
+class HandleXMLTest {
 
     //	@Test
     void merge() throws SAXException, IOException, ParserConfigurationException {

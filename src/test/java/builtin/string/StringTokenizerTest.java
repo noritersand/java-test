@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2017-12-20
  */
 @Slf4j
-public class StringTokenizerTest {
+class StringTokenizerTest {
 
     @Test
     void test() {

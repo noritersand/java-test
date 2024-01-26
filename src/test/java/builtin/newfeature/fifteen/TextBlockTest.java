@@ -12,10 +12,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 2023-08-28
  */
 @Slf4j
-public class TextBlockTest {
+class TextBlockTest {
 
     @Test
-    public void basicUsage() {
+    void basicUsage() {
         String str = """
                 Hello every-wan!
                 This is Waldo!
@@ -35,21 +35,9 @@ public class TextBlockTest {
     }
 
     @Test
-    public void withFormatter() {
-        String json = """
-                [
-                    {
-                        "name": "%s",
-                        "age": "%d"
-                    },
-                    {
-                        "name": "%s",
-                        "age": "%d"
-                    }
-                ]
-                """;
+    void withFormatter() {
 
-        String json2 = """
+        String json = """
                 [
                     {
                         "name": "%s",

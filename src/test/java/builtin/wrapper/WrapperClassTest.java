@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class WrapperClassTest {
+class WrapperClassTest {
 
     @Test
     void copy() {

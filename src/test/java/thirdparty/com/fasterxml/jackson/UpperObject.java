@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UpperObject {
+class UpperObject {
     private String aaa;
     private List<ElementObject> bbb;
 

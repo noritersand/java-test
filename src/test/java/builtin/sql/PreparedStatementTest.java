@@ -13,7 +13,7 @@ import java.util.Map;
  * @since 2017-07-27
  */
 @Slf4j
-public class PreparedStatementTest {
+class PreparedStatementTest {
 
     /**
      * usage

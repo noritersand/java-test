@@ -3,7 +3,7 @@ package misc;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CopilotTest {
+class CopilotTest {
 
     /**
      * <b>단축키:

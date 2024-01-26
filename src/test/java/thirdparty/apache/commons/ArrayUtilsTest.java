@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
  * @since 2017-07-27
  */
 @Slf4j
-public class ArrayUtilsTest {
+class ArrayUtilsTest {
 
     @Test
     void testSubarray() {

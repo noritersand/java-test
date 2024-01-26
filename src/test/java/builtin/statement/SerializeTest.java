@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * 내부 클래스를 시리얼라이즈 하려면 외부 클래스도 시리얼라이즈 가능해야함
  */
 @Slf4j
-public class SerializeTest implements Serializable {
+class SerializeTest implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Test

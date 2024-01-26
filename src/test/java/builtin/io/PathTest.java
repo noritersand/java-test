@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class PathTest {
+class PathTest {
     public static final String SLASH = "/";
     public static final String BACKSLASH = "\\";
 

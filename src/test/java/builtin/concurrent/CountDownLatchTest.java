@@ -12,7 +12,7 @@ import java.util.concurrent.CountDownLatch;
  * @since 2018-01-24
  */
 @Slf4j
-public class CountDownLatchTest {
+class CountDownLatchTest {
 
     /**
      * 쓰레드 동기화에 사용되는 클래스라는데 도통 어떻게 쓰는건지...

@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.*;
  * @since 2023-05-01
  */
 @Slf4j
-public class CollectorTest {
+class CollectorTest {
 
     /**
      * Collectors.joining() 테스트

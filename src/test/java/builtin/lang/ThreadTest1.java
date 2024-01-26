@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * @since 2017-07-05
  */
 @Slf4j
-public class ThreadTest1 {
+class ThreadTest1 {
 
     public static void main(String[] args) {
         Thread thread = new Thread() {

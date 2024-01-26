@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @since 2019-06-18
  */
 @Slf4j
-public class PassByValueTest {
+class PassByValueTest {
 
     @Test
     void test() {

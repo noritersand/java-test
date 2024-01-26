@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @since 2020-04-03
  */
 @Slf4j
-public class BreakTest {
+class BreakTest {
 
     private static final boolean T = true;
     private static final boolean F = false;

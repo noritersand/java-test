@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2018-01-23
  */
 @Slf4j
-public class RandomTest {
+class RandomTest {
 
     @Test
     void testNextInt() {

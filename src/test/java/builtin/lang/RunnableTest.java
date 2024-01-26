@@ -9,10 +9,10 @@ import lombok.extern.slf4j.Slf4j;
  * @since 2020-03-18
  */
 @Slf4j
-public class RunnableTest {
+class RunnableTest {
 
 //	@Test
-//	public void test() {
+//	void test() {
 //		Thread thr = new Thread(new Mythread());
 //		Runnable thr = new Mythread();
 //		thr.start();

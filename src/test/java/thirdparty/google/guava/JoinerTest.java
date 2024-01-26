@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2017-09-11
  */
 @Slf4j
-public class JoinerTest {
+class JoinerTest {
 
     @Test
     void listJoin() {

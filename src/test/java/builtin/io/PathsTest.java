@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2023-03-17
  */
 @Slf4j
-public class PathsTest {
+class PathsTest {
 
     @Test
     void initialize() throws IOException {

@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
  * java.util.Collections 테스트 슈트
  */
 @Slf4j
-public class CollectionsTest {
+class CollectionsTest {
 
     @Test
     void getEmptyList() {

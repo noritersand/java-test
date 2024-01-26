@@ -11,7 +11,7 @@ import java.util.List;
  * @since 2017-07-27
  */
 @Slf4j
-public class UncheckedTest {
+class UncheckedTest {
 
     @Test
     void thisCodeShouldUnchecked() {

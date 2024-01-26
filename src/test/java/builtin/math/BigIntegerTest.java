@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2019-12-16
  */
 @Slf4j
-public class BigIntegerTest {
+class BigIntegerTest {
 
     @Test
     void instantiate() {

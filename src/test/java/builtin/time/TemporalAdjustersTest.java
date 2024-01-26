@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author fixalot
  * @since 2022-12-13
  */
-public class TemporalAdjustersTest {
+class TemporalAdjustersTest {
 
     /**
      * <p>다음 주 월요일 구하기</p>

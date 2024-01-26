@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  * @since 2017-07-27
  */
 @Slf4j
-public class FileReaderTest {
+class FileReaderTest {
 
     @Test
     void compareEachLine() throws IOException {

@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2019-01-23
  */
 @Slf4j
-public class JacksonTest {
+class JacksonTest {
 
     private final ObjectMapper mapper = new ObjectMapper();
 

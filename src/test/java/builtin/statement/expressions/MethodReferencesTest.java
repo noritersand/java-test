@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * @since 2020-12-26
  */
 @Slf4j
-public class MethodReferencesTest {
+class MethodReferencesTest {
 
     @Test
     void testMethodReference2() {

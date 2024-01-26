@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2017-07-27
  */
 @Slf4j
-public class UrlEncoderTest {
+class UrlEncoderTest {
 
     @Test
     void testEncode() throws UnsupportedEncodingException {

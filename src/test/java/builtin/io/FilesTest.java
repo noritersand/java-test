@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 2017-07-27
  */
 @Slf4j
-public class FilesTest {
+class FilesTest {
 
     @Test
     void testProbeContentType() throws IOException {

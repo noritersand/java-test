@@ -4,7 +4,7 @@ package misc;
  * @author fixalot
  * @since 2017-07-27
  */
-public class AtomicTest {
+class AtomicTest {
     private int a;
 
     public int incrementAndGet() {

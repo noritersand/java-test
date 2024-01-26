@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2018-10-31
  */
 @Slf4j
-public class FactorialTest {
+class FactorialTest {
 
     @Test
     void test() {

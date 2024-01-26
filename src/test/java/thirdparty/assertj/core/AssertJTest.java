@@ -2,6 +2,7 @@ package thirdparty.assertj.core;
 
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Condition;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -11,10 +12,11 @@ import static org.assertj.core.api.Assertions.*;
  * <p>AssertJ는 JUnit에 의존하기 때문에 JUnit을 완전히 대체한다고는 할 수 없다.</p>
  */
 @Slf4j
-public class AssertJTest {
+class AssertJTest {
 
+//    @DisplayName("usage")
     @Test
-    public void usage() {
+    void usage() {
         String txt = "Hello" + "World!";
         assertThat(txt).isEqualTo("HelloWorld!");
         assertThat(txt).startsWithIgnoringCase("hello");

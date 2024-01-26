@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 2018-01-23
  */
 @Slf4j
-public class MathTest {
+class MathTest {
 
     @Test
     void test() {

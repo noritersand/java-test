@@ -16,7 +16,7 @@ import java.util.Map;
  * @since 2020-03-18
  */
 @Slf4j
-public class ConnectionTest {
+class ConnectionTest {
 
     public static void main(String[] args) {
         final String sql = "SELECT ? AS DOODOO FROM DUAL";
