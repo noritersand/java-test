@@ -86,17 +86,17 @@ class RandomTest {
 
         for (int i = 0; i < 10; ++i) {
             Random random = new Random();
-            log.debug("random.nextInt(): {}", random.nextInt());;
+            log.debug("random.nextInt(): {}", random.nextInt());
         }
 
         for (int i = 0; i < 10; ++i) {
             Random random = new Random();
-            log.debug("random.nextInt(10): {}", random.nextInt(999999));;
+            log.debug("random.nextInt(10): {}", random.nextInt(999999));
         }
 
         for (int i = 0; i < 10; ++i) {
             SecureRandom secureRandom = new SecureRandom();
-            log.debug("secureRandom.nextInt(10): {}", secureRandom.nextInt(999999));;
+            log.debug("secureRandom.nextInt(10): {}", secureRandom.nextInt(999999));
         }
 
         for (int i = 0; i < 10; ++i) {

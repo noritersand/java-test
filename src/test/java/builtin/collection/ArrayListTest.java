@@ -308,4 +308,15 @@ class ArrayListTest {
             this.name = name;
         }
     }
+
+    @Test
+    void copyByConstructor() {
+        List<String> original = new ArrayList<>();
+        original.add("Java");
+        original.add("Python");
+
+        ArrayList<String> copy = new ArrayList<>(original);
+
+        assertThat(copy).isEqualTo(original);
+    }
 }

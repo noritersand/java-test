@@ -3,7 +3,9 @@ package builtin.statement.expressions;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * 배열 테스트 슈트
@@ -14,18 +16,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 class ArrayTest {
 
+    @Test
+    void testToString() {
+        String[] arr = {"a", "b", "c"};
+        assertThat(Arrays.toString(arr)).isEqualTo("[a, b, c]");
+
+        String[] arr2 = {""};
+        assertThat(Arrays.toString(arr2)).isEqualTo("[]");
+
+        String[] arr3 = {};
+        assertThat(Arrays.toString(arr3)).isEqualTo("[]");
+        assertThatThrownBy(() -> {
+           String a = arr3[0];
+        }).isInstanceOf(ArrayIndexOutOfBoundsException.class);
+    }
+
     /**
      * 자바 Array는 indexOf()가 없음. contains()도 없다. Arrays에도 없으니 찾지 말자.
      */
     @Test
     void testIndexOfLike() {
         String[] arr = {"a", "b", "c"};
-//        arr.indexOf("a");
-//        arr.contains("a");
-        assertThat(indexOf(arr, "b")).isEqualTo(1);
+        assertThat(indexOfLike(arr, "b")).isEqualTo(1);
     }
 
-    private int indexOf(String[] arr, String target) {
+    private int indexOfLike(String[] arr, String target) {
         for (int i = 0; i < arr.length; i++) {
             // comparing element to the target element
             if (target.equals(arr[i])) {

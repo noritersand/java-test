@@ -164,7 +164,7 @@ class StringTest {
     }
 
     /**
-     * <p>String.replace()는 자바스크립트의 string.replace()와 달리 첫 번째 인자로 정규식을 받지 않는다. 문자열만 받으며, 문자열과 일치하는 모든 문자열을 치환한다.</p>
+     * <p>자바 string.replace()는 자바스크립트의 String.prototype.replace()와 달리 첫 번째 인자로 정규식을 받지 않는다. 문자열만 받으며, 문자열과 일치하는 모든 문자열을 치환한다.</p>
      * <p>처음 발견한 하나만 치환하게 하고 싶으면 {@link String#replaceFirst(String, String)}를 사용할 것</p>
      */
     @Test
@@ -175,7 +175,7 @@ class StringTest {
     }
 
     /**
-     * String.replaceAll()은 첫 번째 인자로 정규식을 받으며, g 플래그를 사용한 것과 동일하게 작동한다.
+     * string.replaceAll()은 첫 번째 인자로 정규식을 받으며, g 플래그를 사용한 것과 동일하게 작동한다.
      */
     @Test
     void testReplaceAll() {
@@ -189,7 +189,7 @@ class StringTest {
     }
 
     /**
-     * 처음으로 검색된 패턴만 치환한다.
+     * string.replaceFirst()도 첫 번째 인자로 정규식을 받는다. 처음으로 검색된 패턴만 치환한다.
      */
     @Test
     void testReplaceFirst() {

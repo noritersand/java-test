@@ -3,6 +3,7 @@ package builtin.collection;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -45,5 +46,19 @@ class ListTest {
 
     private Iterable<? extends String> npeSafe(List<String> texts) {
         return texts == null ? List.of() : texts;
+    }
+
+    /**
+     * <p>List.copyOf(), Set.copyOf(), Map.copyOf()는 내부에서 불변 구현체를 생성해 반환한다.</p>
+     * <p>Java 10에서 불변성을 구현하기 위해 만들어졌다</p>
+     */
+    @Test
+    void testCopyOf() {
+        List<String> original = new ArrayList<>();
+        original.add("Java");
+        original.add("Python");
+
+        List<String> copy = List.copyOf(original);
+        assertThat(copy).isEqualTo(original);
     }
 }

@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -161,5 +162,21 @@ class CollectionsTest {
 
     private Iterable<? extends String> npeSafe(List<String> texts) {
         return texts == null ? Collections.emptyList() : texts;
+    }
+
+    /**
+     * <p>List.copyOf()와 다르게 변경 가능한 복제본을 반환한다.</p>
+     * <p>근데 이렇게 불편하게 써서야... 그냥 생성자 함수로 하는 게 낫겠는데?</p>
+     */
+    @Test
+    void testCopy() {
+        List<String> original = new ArrayList<>();
+        original.add("Java");
+        original.add("Python");
+
+        List<String> copy = Arrays.asList(new String[original.size()]);
+
+        Collections.copy(copy, original);
+        assertThat(copy).isEqualTo(original);
     }
 }
