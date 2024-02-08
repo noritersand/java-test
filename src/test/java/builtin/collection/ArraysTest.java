@@ -45,4 +45,18 @@ class ArraysTest {
         Arrays.sort(ns, 2, ns.length); // 세 번째 요소부터 마지막 요소만 내림차순 정렬
         assertThat(ns).isEqualTo(new int[]{10, 3, 1, 2, 5, 6, 8});
     }
+
+    /**
+     * <p>Arrays.copyOf()는 배열을 복사할 때 사용한다.</p>
+     * <p>길이를 항상 명시해야 게 꼭 subarray() 같다.</p>
+     */
+    @Test
+    void testCopyOf() {
+        int[] ns = {10, 3, 5, 1, 6, 8, 2};
+        int[] ns2 = Arrays.copyOf(ns, 3);
+        assertThat(ns2).isEqualTo(new int[]{10, 3, 5});
+
+        int[] ns3 = Arrays.copyOfRange(ns, 2, 5);
+        assertThat(ns3).isEqualTo(new int[]{5, 1, 6});
+    }
 }
