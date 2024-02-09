@@ -2,10 +2,10 @@ package thirdparty.assertj.core;
 
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Condition;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * <p>AssertJ 테스트 프레임웤의 기본적인 사용 방법을 작성함.</p>
@@ -30,6 +30,8 @@ class AssertJTest {
             int nan = 1 / 0;
         }).isInstanceOf(ArithmeticException.class).hasMessage("/ by zero");
 
-
+        Integer n1 = 12345;
+        Integer n2 = 12345;
+        assertThat(n1).isEqualTo(n2).isNotSameAs(n2); // n1과 n2는 동등하지만(equals()로 비교) 같은 객체는 아님(==로 비교)
     }
 }

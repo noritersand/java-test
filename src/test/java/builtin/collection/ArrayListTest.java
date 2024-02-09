@@ -307,7 +307,7 @@ class ArrayListTest {
         original.add("Java");
         original.add("Python");
 
-        // ## 생성자로 복사하기
+        // ## #1 생성자로 복사하기
         ArrayList<String> copy = new ArrayList<>(original);
         assertThat(copy).isEqualTo(original);
 
@@ -322,7 +322,7 @@ class ArrayListTest {
             new ArrayList<String>(null);
         }).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
 
-        // ## addAll()로 복사하기
+        // ## #2 addAll()로 복사하기
         ArrayList<String> copy2 = new ArrayList<>();
         copy2.addAll(original);
         assertThat(copy2).isEqualTo(original);

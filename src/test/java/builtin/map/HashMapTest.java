@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * {@link HashMap} 테스트
@@ -31,20 +32,27 @@ class HashMapTest {
         y.put("a", "b");
 
         // 인스턴스는 다르지만
-        assertNotSame(x, y);
+        assertThat(x).isNotSameAs(y);
 
         // AbstractMap.hashCode()는 엔트리의 hashCode()를 이어 붙인 값이다. 따라서 같다고 판단한다.
-        assertTrue(x.hashCode() == y.hashCode());
+        assertThat(x.hashCode() == y.hashCode()).isTrue();
 
         // AbstractMap.equals()는 엔트리의 키:값 구성이 같은지를 비교한다. 따라서 둘은 동등하다.
-        assertTrue(x.equals(y));
+        assertThat(x.equals(y)).isTrue();
     }
 
+    /**
+     * 변경 불가능한 맵(unmodifiable map) 객체를 반환하는 Map.of() 메서드 테스트
+     */
     @Test
     void testOf() {
         Map<String, Integer> map = Map.of("a", 1, "c", 2);
-        assertEquals(1, map.get("a"));
-        assertEquals(2, map.get("c"));
+        assertThat(map.get("a")).isEqualTo(1);
+        assertThat(map.get("c")).isEqualTo(2);
+
+        assertThatThrownBy(() -> {
+            map.put("b", 5);
+        }).isInstanceOf(UnsupportedOperationException.class).hasMessage(null);
     }
 
     @Test
@@ -65,18 +73,18 @@ class HashMapTest {
     @Test
     void shouldBeNull() {
         HashMap<String, String> map = new HashMap<>();
-        assertNull(map.get("야"));
+        assertThat(map.get("야")).isNull();
     }
 
     @Test
     void checkNPE() {
         Map<String, Object> map = new HashMap<>();
         String empty = (String) map.get("empty");
-        assertNull(empty);
+        assertThat(empty).isNull();
 
         map.put("NOT_NULL", null);
         Object notNull = map.get("NOT_NULL");
-        assertNull(notNull);
+        assertThat(notNull).isNull();
     }
 
     /**
@@ -94,7 +102,7 @@ class HashMapTest {
 
         Set<String> keySet = map.keySet();
         for (String key : keySet) {
-            assertNotNull(map.get(key));
+            assertThat(map.get(key)).isNotNull();
         }
     }
 
@@ -106,5 +114,37 @@ class HashMapTest {
         items.forEach((k, v) -> {
             log.debug("Item : {} Count : {}", k, v);
         });
+    }
+
+    @Test
+    void copyMapToAnotherMap() {
+        Map<String, Integer> original = new HashMap<>();
+        original.put("A", 10);
+        original.put("B", 20);
+
+        // ## #1 생성자로 복사하기
+        HashMap<String, Integer> copy = new HashMap<>(original);
+        assertThat(copy).isEqualTo(original).isNotSameAs(original);
+
+        // ## #2 Map.copyOf()로 복사하기
+        Map<String, Integer> copy2 = Map.copyOf(original);
+        assertThat(copy2).isEqualTo(original).isNotSameAs(original);
+
+        // ⚠️ Map.copyOf()는 변경 불가능 Map.of()와 동일하게 변경 불가능한 맵(unmodifiable map)을 반환한다.
+        assertThatThrownBy(() -> {
+            copy2.put("C", 30);
+        }).isInstanceOf(UnsupportedOperationException.class).hasMessage(null);
+
+        // ## #3 putAll()로 복사하기
+        HashMap<String, Integer> copy3 = new HashMap<>();
+        copy3.putAll(original);
+        assertThat(copy3).isEqualTo(original).isNotSameAs(original);
+
+        // ## #4 Stream으로 복사하기
+        Map<String, Integer> copy4 = original.entrySet()
+                .stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        assertThat(copy4).isEqualTo(original).isNotSameAs(original);
+
     }
 }
