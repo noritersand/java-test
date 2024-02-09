@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * {@link ArrayList} 테스트
@@ -21,20 +22,7 @@ class ArrayListTest {
     void testAdd() {
         List<Object> list = new ArrayList<>();
         list.add(null);
-    }
-
-    @Test
-    void incorrectUsage() {
-        ArrayList<ListTestModel> origins = new ArrayList<>();
-        origins.add(new ListTestModel("123"));
-        origins.add(new ListTestModel("456"));
-        origins.add(new ListTestModel("789"));
-
-        // 이건 클론이 아니라 그냥 복사. 같은 인스턴스를 사용한다.
-        ArrayList<ListTestModel> newbies = new ArrayList<>(origins);
-
-        assertThat(newbies.get(0)).isEqualTo(origins.get(0));
-        assertThat(newbies.get(0)).isEqualTo(origins.get(0));
+        assertThat(list).hasSize(1);
     }
 
     @Test
@@ -133,11 +121,11 @@ class ArrayListTest {
         }
         assertThat(list.toString()).isEqualTo("[a, b]");
     }
-
 //	@Test
 //	public void removeElementWithStream() {
 //		ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
 //		list.stream().set
+
 //	}
 
     /**
@@ -185,8 +173,11 @@ class ArrayListTest {
     @Test
     void fromArray() {
         Integer[] values = {1, 3, 7};
-        List<Integer> list = new ArrayList<Integer>(Arrays.asList(values));
-        assertThat(list.toString()).isEqualTo("[1, 3, 7]");
+        List<Integer> list = new ArrayList<>(Arrays.asList(values));
+        assertThat(list).isEqualTo(Arrays.asList(1, 3, 7));
+
+        ArrayList<String> list2 = new ArrayList<>(Arrays.asList("a", "b", "c"));
+        assertThat(list2).isEqualTo(Arrays.asList("a", "b", "c"));
     }
 
     @Test
@@ -291,9 +282,9 @@ class ArrayListTest {
         list.add(map);
         return list;
     }
-
     @SuppressWarnings("unused")
     private class ListTestModel {
+
         private String name;
 
         public String getName() {
@@ -303,20 +294,42 @@ class ArrayListTest {
         public void setName(String name) {
             this.name = name;
         }
-
         public ListTestModel(String name) {
             this.name = name;
         }
+
     }
 
     @Test
-    void copyByConstructor() {
+    void copyListToAnotherList() {
+        // 원본
         List<String> original = new ArrayList<>();
         original.add("Java");
         original.add("Python");
 
+        // ## 생성자로 복사하기
         ArrayList<String> copy = new ArrayList<>(original);
-
         assertThat(copy).isEqualTo(original);
+
+        // ⚠️ 하지만, 복제가 아니라 얕은 복사라서, 내부의 객체는 같은 인스턴스를 바라본다.
+        ArrayList<ListTestModel> origins = new ArrayList<>();
+        origins.add(new ListTestModel("123"));
+        ArrayList<ListTestModel> imNotClone = new ArrayList<>(origins);
+        assertThat(imNotClone.get(0)).isEqualTo(origins.get(0));
+
+        // ⚠️ 그리고 null로는 초기화할 수 없음
+        assertThatThrownBy(() -> {
+            new ArrayList<String>(null);
+        }).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
+
+        // ## addAll()로 복사하기
+        ArrayList<String> copy2 = new ArrayList<>();
+        copy2.addAll(original);
+        assertThat(copy2).isEqualTo(original);
+
+        // ⚠️ 이것도 null은 예외 발생함
+        assertThatThrownBy(() -> {
+            copy2.addAll(null);
+        }).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
     }
 }

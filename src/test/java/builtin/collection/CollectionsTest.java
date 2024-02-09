@@ -18,14 +18,26 @@ import static org.assertj.core.api.Assertions.*;
 @Slf4j
 class CollectionsTest {
 
+    /**
+     *
+     * java.util.List에 비슷한 메서드인 of()가 있는데 이쪽은 unmodifiable list를 반환한다.
+     */
     @Test
     void getEmptyList() {
-        List emptyList = Collections.EMPTY_LIST; // new EmptyList<>();
-        assertThat(emptyList.size()).isEqualTo(0);
+        List<String> emptyList = Collections.EMPTY_LIST; // new EmptyList<>();
+        assertThat(emptyList).isEmpty();
+        // ⚠️ Collections.EMPTY_LIST가 반환하는 리스트는 불변(immutable) 객체다.
+        assertThatThrownBy(() -> {
+            emptyList.add("a");
+        }).isInstanceOf(UnsupportedOperationException.class);
 
         // 위와 같음
-        List emptyList2 = Collections.emptyList(); // new EmptyList<>();
-        assertThat(emptyList2.size()).isEqualTo(0);
+        List<String> emptyList2 = Collections.emptyList(); // new EmptyList<>();
+        assertThat(emptyList2).isEmpty();
+        // ⚠️️ Collections.emptyList()가 반환하는 리스트도 불변 객체다.
+        assertThatThrownBy(() -> {
+            emptyList2.add("b");
+        }).isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
@@ -165,7 +177,7 @@ class CollectionsTest {
     }
 
     /**
-     * <p>List.copyOf()와 다르게 변경 가능한 복제본을 반환한다.</p>
+     * <p>List.copyOf()와 다르게 변형 가능한 복제본을 반환한다.</p>
      * <p>근데 이렇게 불편하게 써서야... 그냥 생성자 함수로 하는 게 낫겠는데?</p>
      */
     @Test
@@ -174,9 +186,13 @@ class CollectionsTest {
         original.add("Java");
         original.add("Python");
 
-        List<String> copy = Arrays.asList(new String[original.size()]);
+        List<String> copy = new ArrayList<>(Arrays.asList(new String[original.size()]));
 
         Collections.copy(copy, original);
         assertThat(copy).isEqualTo(original);
+
+        // 비슷한 메서드인 List.copyOf()는 변형 불가능한 복제본을 반환하지만, 이 메서드는 가능함
+        copy.add("something");
+        assertThat(copy).isNotEqualTo(original).hasSize(3);
     }
 }

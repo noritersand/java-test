@@ -33,6 +33,11 @@ class ArraysTest {
         List<Integer> list = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
         List<Integer> list2 = Arrays.asList(6, 3, 1, 56, 99, 2, 41, 27, 54, 3);
         assertThat(list2).isEqualTo(list);
+
+        // ⚠️ Arrays.asList()로 만든 리스트는 고정 크기이다. 추가/삭제 불가능
+        assertThatThrownBy(() -> {
+            list.add(123);
+        }).isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test

@@ -24,16 +24,18 @@ class ListTest {
     @Test
     void getEmptyList() {
         List<Object> of = List.of();
-        assertThat(of.size()).isEqualTo(0);
+        assertThat(of).isEmpty();
+
+        // ⚠️ of()는 변경 불가능한 리스트(unmodifiable list)를 반환한다.
+        assertThatThrownBy(() -> {
+            of.add("a");
+        }).isInstanceOf(UnsupportedOperationException.class);
     }
 
-    /**
-     *
-     */
     @Test
     void testOf() {
         List<String> alphabet = List.of("a", "b", "c");
-        assertThat(alphabet.size()).isEqualTo(3);
+        assertThat(alphabet).hasSize(3);
     }
 
     @Test
@@ -49,8 +51,8 @@ class ListTest {
     }
 
     /**
-     * <p>List.copyOf(), Set.copyOf(), Map.copyOf()는 내부에서 불변 구현체를 생성해 반환한다.</p>
-     * <p>Java 10에서 불변성을 구현하기 위해 만들어졌다</p>
+     * <p>List.copyOf(), Set.copyOf(), Map.copyOf()는 내부에서 변경 불가능한 리스트(unmodifiable list)를 생성해 반환한다.</p>
+     * <p>Java 10에서 만들어졌음</p>
      */
     @Test
     void testCopyOf() {
@@ -60,5 +62,9 @@ class ListTest {
 
         List<String> copy = List.copyOf(original);
         assertThat(copy).isEqualTo(original);
+
+        assertThatThrownBy(() -> {
+            copy.add("nothing"); // 변형 불가
+        }).isInstanceOf(UnsupportedOperationException.class).hasMessage(null);
     }
 }
