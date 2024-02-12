@@ -167,7 +167,8 @@ class ArrayListTest {
         list.add(123);
         list.add(234);
         list.add(345);
-        assertThat(list.toArray(new Integer[list.size()])).isEqualTo(new Integer[]{123, 234, 345});
+        assertThat(list.toArray(new Integer[]{}))
+                .isEqualTo(new Integer[]{123, 234, 345});
     }
 
     @Test
@@ -309,7 +310,7 @@ class ArrayListTest {
 
         // ## #1 생성자로 복사하기
         ArrayList<String> copy = new ArrayList<>(original);
-        assertThat(copy).isEqualTo(original);
+        assertThat(copy).isEqualTo(original).isNotSameAs(original);
 
         // ⚠️ null로는 초기화할 수 없음
         assertThatThrownBy(() ->
@@ -317,15 +318,23 @@ class ArrayListTest {
         ).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
 
         // ⚠️ 복제가 아니라 얕은 복사라서, 내부의 객체는 같은 인스턴스를 바라본다.
-        ArrayList<ListTestModel> origins = new ArrayList<>();
-        origins.add(new ListTestModel("123"));
-        ArrayList<ListTestModel> imNotClone = new ArrayList<>(origins);
-        assertThat(imNotClone.get(0)).isEqualTo(origins.get(0));
+        ArrayList<ListTestModel> origins1 = new ArrayList<>();
+        origins1.add(new ListTestModel("123"));
+        ArrayList<ListTestModel> imNotClone = new ArrayList<>(origins1);
+        assertThat(imNotClone.get(0)).isSameAs(origins1.get(0));
+
+        // ArrayList 내부의 배열 객체는 어떻게 다뤄질까?
+        ArrayList<Integer> intArr = new ArrayList<>(Arrays.asList(1, 2, 3));
+        ArrayList<Integer> origins2 = new ArrayList<>(intArr);
+        ArrayList<Integer> imNotClone2 = new ArrayList<>(origins2);
+        assertThat(origins2).isEqualTo(intArr).isNotSameAs(intArr); // intArr을 복사해서 값은 동등하지만 (당연하지만) 서로 다른 인스턴스다.
+        assertThat(origins2.toArray(new Integer[]{})).isNotSameAs(intArr.toArray(new Integer[]{})); // toArray()는 내부에서 새 배열을 반환하기 때문에 서로 일치하지 않는다.
+        assertThat(imNotClone2.toArray(new Integer[]{})).isNotSameAs(origins2.toArray(new Integer[]{})); // toArray()는 내부에서 새 배열을 반환하기 때문에 서로 일치하지 않는다.
 
         // ## #2 addAll()로 복사하기
         ArrayList<String> copy2 = new ArrayList<>();
         copy2.addAll(original);
-        assertThat(copy2).isEqualTo(original);
+        assertThat(copy2).isEqualTo(original).isNotSameAs(original);
 
         // ⚠️ 이것도 null은 예외 발생함
         assertThatThrownBy(() ->

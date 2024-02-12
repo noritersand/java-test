@@ -7,29 +7,29 @@ import org.junit.jupiter.api.Test;
  * @since 2017-07-27
  */
 class OverridingTest {
+
     @Test
     void override() {
 
     }
-}
+    private static class Parent {
+        public void m01() {
 
-class Parent {
-    public void m01() {
+        }
 
+        public static void m02() {
+
+        }
+    }
+    private static class Child extends Parent {
+        @Override
+        public void m01() {
+
+        }
+
+        public static void m02() {
+
+        }
     }
 
-    public static void m02() {
-
-    }
-}
-
-class Child extends Parent {
-    @Override
-    public void m01() {
-
-    }
-
-    public static void m02() {
-
-    }
 }

@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 
 @Slf4j
-public enum TryEverything {
+public enum TestEverything {
 	;
 
     public static void main(String[] arg) {

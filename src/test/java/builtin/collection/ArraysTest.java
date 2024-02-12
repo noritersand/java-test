@@ -58,14 +58,21 @@ class ArraysTest {
     @Test
     void testCopyOf() {
         int[] original = {10, 3, 5, 1, 6, 8, 2};
+
+        // ## #1 복사할 길이를 지정하여 복사
         int[] copy1 = Arrays.copyOf(original, 3);
-        assertThat(copy1).isEqualTo(new int[]{10, 3, 5});
+        assertThat(copy1).isEqualTo(new int[]{10, 3, 5}).isNotSameAs(original);
 
-        // 재할당 해도 별 문제 없음
+        // Arrays.copyOf()로 복사한 배열은 재할당이 가능하다. (List.copyOf(), Set.copyOf(), Map.copyOf()들은 안됨)
         copy1[0] = 128;
-        assertThat(copy1).isEqualTo(new int[]{128, 3, 5});
+        assertThat(copy1).isEqualTo(new int[]{128, 3, 5}).isNotSameAs(original);
 
+        // 전체 길이 그대로 복사해도 서로 다른 인스턴스다.
+        int[] arrayNotSame = Arrays.copyOf(original, original.length);
+        assertThat(arrayNotSame).isEqualTo(original).isNotSameAs(original);
+
+        // ## #2 시작 범위와 범위를 지정하여 복사
         int[] copy2 = Arrays.copyOfRange(original, 2, 5);
-        assertThat(copy2).isEqualTo(new int[]{5, 1, 6});
+        assertThat(copy2).isEqualTo(new int[]{5, 1, 6}).isNotSameAs(original);
     }
 }

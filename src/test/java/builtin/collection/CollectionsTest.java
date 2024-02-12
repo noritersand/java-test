@@ -24,6 +24,7 @@ class CollectionsTest {
      */
     @Test
     void getEmptyList() {
+        // EMPTY_LIST 대신 emptyList()를 쓸 것
         List<String> emptyList = Collections.EMPTY_LIST; // new EmptyList<>();
         assertThat(emptyList).isEmpty();
         // ⚠️ Collections.EMPTY_LIST가 반환하는 리스트는 불변(immutable) 객체다.
@@ -189,7 +190,7 @@ class CollectionsTest {
         List<String> copy = new ArrayList<>(Arrays.asList(new String[original.size()]));
 
         Collections.copy(copy, original);
-        assertThat(copy).isEqualTo(original);
+        assertThat(copy).isEqualTo(original).isNotSameAs(original);
 
         // 비슷한 메서드인 List.copyOf()는 변형 불가능한 복제본을 반환하지만, 이 메서드는 가능함
         copy.add("something");

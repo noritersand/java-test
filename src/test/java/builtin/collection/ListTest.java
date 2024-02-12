@@ -61,7 +61,7 @@ class ListTest {
         original.add("Python");
 
         List<String> copy = List.copyOf(original);
-        assertThat(copy).isEqualTo(original);
+        assertThat(copy).isEqualTo(original).isNotSameAs(original);
 
         assertThatThrownBy(() -> {
             copy.add("nothing"); // 변형 불가

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * JDK BigInteger 테스트
@@ -19,41 +19,49 @@ class BigIntegerTest {
 
     @Test
     void instantiate() {
-        assertEquals(BigInteger.valueOf(123), new BigInteger("123"));
-//		assertEquals(BigInteger.valueOf(123), new BigInteger("123.456")); // java.lang.NumberFormatException: For input string: "123.456"
+        BigInteger actual1 = new BigInteger("123");
+        BigInteger actual2 = BigInteger.valueOf(123);
+        assertThat(actual2).isEqualTo(actual1).isNotSameAs(actual1);
+
+        assertThatThrownBy(() -> {
+            new BigInteger("123.456");
+        }).isInstanceOf(NumberFormatException.class).hasMessage("For input string: \"123.456\"");
     }
 
     @Test
-    void testMaxValue() {
-        assertEquals(456,
-                new BigInteger("123").max(new BigInteger("456")).intValue());
+    void testMax() {
+        BigInteger oneTwoThree = new BigInteger("123");
+        BigInteger fourFiveSix = new BigInteger("456");
+        assertThat(oneTwoThree.max(fourFiveSix))
+                .isEqualTo(fourFiveSix)
+                .isSameAs(fourFiveSix);
     }
 
     @Test
     void fromBigDecimal() {
         // BigInteger로 변환시 소수점 이하는 버린다.
-        assertEquals(BigInteger.TWO, new BigDecimal("2.123").toBigInteger());
-        assertEquals(BigInteger.TWO, new BigDecimal("2.723").toBigInteger());
+        assertThat(new BigDecimal("2.123").toBigInteger()).isEqualTo(BigInteger.TWO);
+        assertThat(new BigDecimal("2.723").toBigInteger()).isEqualTo(BigInteger.TWO);
     }
 
     @Test
     void arithmeticOperation() {
         BigInteger ten = BigInteger.TEN;
         BigInteger two = BigInteger.TWO;
-        assertEquals(BigInteger.valueOf(12), ten.add(two));
-        assertEquals(BigInteger.valueOf(8), ten.subtract(two));
-        assertEquals(BigInteger.valueOf(20), ten.multiply(two));
-        assertEquals(BigInteger.valueOf(5), ten.divide(two));
+        assertThat(ten.add(two)).isEqualTo(BigInteger.valueOf(12));
+        assertThat(ten.subtract(two)).isEqualTo(BigInteger.valueOf(8));
+        assertThat(ten.multiply(two)).isEqualTo(BigInteger.valueOf(20));
+        assertThat(ten.divide(two)).isEqualTo(BigInteger.valueOf(5));
     }
 
     @Test
     void logicalOperation() {
         BigInteger zero = BigInteger.ZERO;
         BigInteger one = BigInteger.ONE;
-        assertEquals("-1", zero.not().toString());
-        assertEquals(BigInteger.ZERO, zero.and(one));
-        assertEquals(BigInteger.ZERO, zero.andNot(one));
-        assertEquals(BigInteger.ONE, zero.or(one));
-        assertEquals(BigInteger.ONE, zero.xor(one));
+        assertThat(zero.not().toString()).isEqualTo("-1");
+        assertThat(zero.and(one)).isEqualTo(BigInteger.ZERO);
+        assertThat(zero.andNot(one)).isEqualTo(BigInteger.ZERO);
+        assertThat(zero.or(one)).isEqualTo(BigInteger.ONE);
+        assertThat(zero.xor(one)).isEqualTo(BigInteger.ONE);
     }
 }

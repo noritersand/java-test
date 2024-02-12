@@ -17,6 +17,13 @@ import static org.assertj.core.api.Assertions.*;
 class ArrayTest {
 
     @Test
+    void assignmentTest() {
+        String[] arr1 = {"a", "b", "c"};
+        String[] arr2 = arr1;
+        assertThat(arr2).isEqualTo(arr1).isSameAs(arr1); // 배열도 객체 타입이라 같은 인스턴스다.
+    }
+
+    @Test
     void testToString() {
         String[] arr = {"a", "b", "c"};
         assertThat(Arrays.toString(arr)).isEqualTo("[a, b, c]");
