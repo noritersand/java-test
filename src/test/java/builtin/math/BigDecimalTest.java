@@ -8,6 +8,7 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author noritersand
@@ -40,11 +41,14 @@ class BigDecimalTest {
      */
     @Test
     void testEquals() {
-        assertTrue(new BigDecimal("0").equals(BigDecimal.ZERO));
-        assertFalse(new BigDecimal("0.0").equals(BigDecimal.ZERO)); // 0.0과 0은 같지 않음.
-        assertTrue(new BigDecimal("1").equals(BigDecimal.ONE));
-        assertFalse(new BigDecimal("1.0").equals(BigDecimal.ONE)); // 1.1과 1은 같지 않음.
-        assertTrue(new BigDecimal("123.1").equals(new BigDecimal("123.1")));
+        assertThat(new BigDecimal("0")).isEqualTo(BigDecimal.ZERO);
+        assertThat(new BigDecimal("0.0")).isNotEqualTo(BigDecimal.ZERO); // 0.0과 0은 같지 않음.
+
+        assertThat(new BigDecimal("1")).isEqualTo(BigDecimal.ONE);
+        assertThat(new BigDecimal("1.0")).isNotEqualTo(BigDecimal.ONE); // 1.1과 1은 같지 않음.
+
+        assertThat(new BigDecimal("123.1")).isEqualTo(new BigDecimal("123.1"));
+        assertThat(new BigDecimal("123.1")).isNotSameAs(new BigDecimal("123.1")); // 값은 같아도 다른 인스턴스
     }
 
     /**

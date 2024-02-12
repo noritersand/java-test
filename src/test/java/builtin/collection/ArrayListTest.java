@@ -311,16 +311,16 @@ class ArrayListTest {
         ArrayList<String> copy = new ArrayList<>(original);
         assertThat(copy).isEqualTo(original);
 
-        // ⚠️ 하지만, 복제가 아니라 얕은 복사라서, 내부의 객체는 같은 인스턴스를 바라본다.
+        // ⚠️ null로는 초기화할 수 없음
+        assertThatThrownBy(() ->
+            new ArrayList<String>(null)
+        ).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
+
+        // ⚠️ 복제가 아니라 얕은 복사라서, 내부의 객체는 같은 인스턴스를 바라본다.
         ArrayList<ListTestModel> origins = new ArrayList<>();
         origins.add(new ListTestModel("123"));
         ArrayList<ListTestModel> imNotClone = new ArrayList<>(origins);
         assertThat(imNotClone.get(0)).isEqualTo(origins.get(0));
-
-        // ⚠️ 그리고 null로는 초기화할 수 없음
-        assertThatThrownBy(() ->
-            new ArrayList<String>(null)
-        ).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
 
         // ## #2 addAll()로 복사하기
         ArrayList<String> copy2 = new ArrayList<>();

@@ -3,6 +3,7 @@ package builtin.map;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -131,6 +132,13 @@ class HashMapTest {
             new HashMap<>(null)
         ).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Map.size()\" because \"m\" is null");
 
+        // ⚠️ 얕은 복사니까 주의
+        HashMap<String, BigDecimal> shallowOrigin = new HashMap<>();
+        BigDecimal bigDecimal = new BigDecimal(65536);
+        shallowOrigin.put("first", bigDecimal);
+        HashMap<String, BigDecimal> shallowCopy = new HashMap<>(shallowOrigin);
+        assertThat(shallowCopy).containsEntry("first", bigDecimal);
+
         // ## #2 Map.copyOf()로 복사하기
         Map<String, Integer> copy2 = Map.copyOf(original);
         assertThat(copy2).isEqualTo(original).isNotSameAs(original);
@@ -150,6 +158,7 @@ class HashMapTest {
                 .stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         assertThat(copy4).isEqualTo(original).isNotSameAs(original);
+
 
     }
 }
