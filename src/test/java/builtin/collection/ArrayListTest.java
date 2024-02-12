@@ -318,9 +318,9 @@ class ArrayListTest {
         assertThat(imNotClone.get(0)).isEqualTo(origins.get(0));
 
         // ⚠️ 그리고 null로는 초기화할 수 없음
-        assertThatThrownBy(() -> {
-            new ArrayList<String>(null);
-        }).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
+        assertThatThrownBy(() ->
+            new ArrayList<String>(null)
+        ).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
 
         // ## #2 addAll()로 복사하기
         ArrayList<String> copy2 = new ArrayList<>();
@@ -328,8 +328,8 @@ class ArrayListTest {
         assertThat(copy2).isEqualTo(original);
 
         // ⚠️ 이것도 null은 예외 발생함
-        assertThatThrownBy(() -> {
-            copy2.addAll(null);
-        }).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
+        assertThatThrownBy(() ->
+            copy2.addAll(null)
+        ).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Collection.toArray()\" because \"c\" is null");
     }
 }

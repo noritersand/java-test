@@ -57,11 +57,15 @@ class ArraysTest {
      */
     @Test
     void testCopyOf() {
-        int[] ns = {10, 3, 5, 1, 6, 8, 2};
-        int[] ns2 = Arrays.copyOf(ns, 3);
-        assertThat(ns2).isEqualTo(new int[]{10, 3, 5});
+        int[] original = {10, 3, 5, 1, 6, 8, 2};
+        int[] copy1 = Arrays.copyOf(original, 3);
+        assertThat(copy1).isEqualTo(new int[]{10, 3, 5});
 
-        int[] ns3 = Arrays.copyOfRange(ns, 2, 5);
-        assertThat(ns3).isEqualTo(new int[]{5, 1, 6});
+        // 재할당 해도 별 문제 없음
+        copy1[0] = 128;
+        assertThat(copy1).isEqualTo(new int[]{128, 3, 5});
+
+        int[] copy2 = Arrays.copyOfRange(original, 2, 5);
+        assertThat(copy2).isEqualTo(new int[]{5, 1, 6});
     }
 }

@@ -126,14 +126,19 @@ class HashMapTest {
         HashMap<String, Integer> copy = new HashMap<>(original);
         assertThat(copy).isEqualTo(original).isNotSameAs(original);
 
+        // ⚠️ 생성자로 복사할 때 null을 넣으면 NPE 발생함
+        assertThatThrownBy(() ->
+            new HashMap<>(null)
+        ).isInstanceOf(NullPointerException.class).hasMessage("Cannot invoke \"java.util.Map.size()\" because \"m\" is null");
+
         // ## #2 Map.copyOf()로 복사하기
         Map<String, Integer> copy2 = Map.copyOf(original);
         assertThat(copy2).isEqualTo(original).isNotSameAs(original);
 
         // ⚠️ Map.copyOf()는 변경 불가능 Map.of()와 동일하게 변경 불가능한 맵(unmodifiable map)을 반환한다.
-        assertThatThrownBy(() -> {
-            copy2.put("C", 30);
-        }).isInstanceOf(UnsupportedOperationException.class).hasMessage(null);
+        assertThatThrownBy(() ->
+            copy2.put("C", 30)
+        ).isInstanceOf(UnsupportedOperationException.class).hasMessage(null);
 
         // ## #3 putAll()로 복사하기
         HashMap<String, Integer> copy3 = new HashMap<>();
