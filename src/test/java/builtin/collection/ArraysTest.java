@@ -59,7 +59,7 @@ class ArraysTest {
     void testCopyOf() {
         int[] original = {10, 3, 5, 1, 6, 8, 2};
 
-        // ## #1 복사할 길이를 지정하여 복사
+        // #1 복사할 길이를 지정하여 복사
         int[] copy1 = Arrays.copyOf(original, 3);
         assertThat(copy1).isEqualTo(new int[]{10, 3, 5}).isNotSameAs(original);
 
@@ -71,7 +71,7 @@ class ArraysTest {
         int[] arrayNotSame = Arrays.copyOf(original, original.length);
         assertThat(arrayNotSame).isEqualTo(original).isNotSameAs(original);
 
-        // ## #2 시작 범위와 범위를 지정하여 복사
+        // #2 시작 범위와 범위를 지정하여 복사
         int[] copy2 = Arrays.copyOfRange(original, 2, 5);
         assertThat(copy2).isEqualTo(new int[]{5, 1, 6}).isNotSameAs(original);
     }

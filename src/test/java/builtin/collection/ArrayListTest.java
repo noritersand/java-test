@@ -308,7 +308,7 @@ class ArrayListTest {
         original.add("Java");
         original.add("Python");
 
-        // ## #1 생성자로 복사하기
+        // #1 생성자로 복사하기
         ArrayList<String> copy = new ArrayList<>(original);
         assertThat(copy).isEqualTo(original).isNotSameAs(original);
 
@@ -331,7 +331,7 @@ class ArrayListTest {
         assertThat(origins2.toArray(new Integer[]{})).isNotSameAs(intArr.toArray(new Integer[]{})); // toArray()는 내부에서 새 배열을 반환하기 때문에 서로 일치하지 않는다.
         assertThat(imNotClone2.toArray(new Integer[]{})).isNotSameAs(origins2.toArray(new Integer[]{})); // toArray()는 내부에서 새 배열을 반환하기 때문에 서로 일치하지 않는다.
 
-        // ## #2 addAll()로 복사하기
+        // #2 addAll()로 복사하기
         ArrayList<String> copy2 = new ArrayList<>();
         copy2.addAll(original);
         assertThat(copy2).isEqualTo(original).isNotSameAs(original);

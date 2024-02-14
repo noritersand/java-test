@@ -123,7 +123,7 @@ class HashMapTest {
         original.put("A", 10);
         original.put("B", 20);
 
-        // ## #1 생성자로 복사하기
+        // #1 생성자로 복사하기
         HashMap<String, Integer> copy = new HashMap<>(original);
         assertThat(copy).isEqualTo(original).isNotSameAs(original);
 
@@ -139,7 +139,7 @@ class HashMapTest {
         HashMap<String, BigDecimal> shallowCopy = new HashMap<>(shallowOrigin);
         assertThat(shallowCopy).containsEntry("first", bigDecimal);
 
-        // ## #2 Map.copyOf()로 복사하기
+        // #2 Map.copyOf()로 복사하기
         Map<String, Integer> copy2 = Map.copyOf(original);
         assertThat(copy2).isEqualTo(original).isNotSameAs(original);
 
@@ -148,12 +148,12 @@ class HashMapTest {
             copy2.put("C", 30)
         ).isInstanceOf(UnsupportedOperationException.class).hasMessage(null);
 
-        // ## #3 putAll()로 복사하기
+        // #3 putAll()로 복사하기
         HashMap<String, Integer> copy3 = new HashMap<>();
         copy3.putAll(original);
         assertThat(copy3).isEqualTo(original).isNotSameAs(original);
 
-        // ## #4 Stream으로 복사하기
+        // #4 Stream으로 복사하기
         Map<String, Integer> copy4 = original.entrySet()
                 .stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));

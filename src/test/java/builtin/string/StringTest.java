@@ -388,4 +388,25 @@ class StringTest {
         assertThat(value).isEqualTo("11");
         assertThat(column).isEqualTo("beacon.uuid");
     }
+
+    /**
+     * 케릭터셋(인코딩, encoding) 변경하기
+     */
+    @Test
+    void convertCharacterSet() {
+        final String text = "12 ab 가나";
+        log.debug("text: {}", text);
+
+        byte[] bytes1 = text.getBytes(StandardCharsets.UTF_8);
+        byte[] bytes2 = text.getBytes(Charset.forName("EUC-KR"));
+
+        // 사실 이건 엉터리 소스다.
+        String converted = new String(bytes1, Charset.forName("EUC-KR"));
+        assertThat(converted).isNotEqualTo(text);
+        log.debug("converted: {}", converted); // 12 ab 媛���
+
+        assertThat(bytes2).isNotEqualTo(bytes1);
+        log.debug("bytes1: {}", bytes1); // [49, 50, 32, 97, 98, 32, -22, -80, -128, -21, -126, -104]
+        log.debug("bytes2: {}", bytes2); // [49, 50, 32, 97, 98, 32, -80, -95, -77, -86]
+    }
 }
