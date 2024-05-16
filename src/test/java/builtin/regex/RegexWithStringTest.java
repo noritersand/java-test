@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -27,15 +30,24 @@ class RegexWithStringTest {
         assertThat(extractTailUsingApacheCommons("AA1062329819_12A3")).isEqualTo("12A3");
     }
 
-    public static String removeTail(String str) {
+    static String removeTail(String str) {
         return str.replaceAll("_\\w+", "");
     }
 
-    public static String extractTail(String str) {
+    static String extractTail(String str) {
         return str.replaceAll("\\w+_", "");
     }
 
-    public static String extractTailUsingApacheCommons(String str) {
+    static String extractTailUsingApacheCommons(String str) {
         return StringUtils.substringAfter(str, "_");
     }
+
+    @Test
+    void test1() {
+        String pn = "010-1234-1234";
+        String regex = "(\\d{3}-\\d{4}-)(\\d{4})";
+        String maskedNumber = pn.replaceAll(regex, "***-****-$2");
+        assertThat(maskedNumber).isEqualTo("***-****-1234");
+    }
+
 }
