@@ -303,6 +303,13 @@ class JavaTimeTest {
     }
 
     @Test
+    void testPlusYears() {
+        LocalDate begin = LocalDate.parse("2024-06-25");
+        LocalDate end = begin.plusYears(1);
+        assertThat(end).isEqualTo(LocalDate.parse("2025-06-25"));
+    }
+
+    @Test
     void testMinusDays() {
         LocalDate ins = LocalDate.parse("2022-10-30");
         LocalDate yesterday = ins.minusDays(1);
