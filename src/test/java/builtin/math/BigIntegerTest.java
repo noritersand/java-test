@@ -45,6 +45,14 @@ class BigIntegerTest {
     }
 
     @Test
+    void toBigDecimal() {
+        BigInteger one = new BigInteger("1");
+        BigInteger ten = new BigInteger("10");
+        assertThat(new BigDecimal(one)).isEqualTo(BigDecimal.ONE);
+        assertThat(new BigDecimal(ten)).isEqualTo(BigDecimal.TEN);
+    }
+
+    @Test
     void arithmeticOperation() {
         BigInteger ten = BigInteger.TEN;
         BigInteger two = BigInteger.TWO;
