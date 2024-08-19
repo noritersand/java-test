@@ -46,6 +46,9 @@ class JavaTimeTest {
         assertThat(ins.toString()).isEqualTo("2021-01-01");
         assertThat(LocalDate.of(2017, Month.DECEMBER, 31).toString()).isEqualTo("2017-12-31");
         assertThat(LocalDateTime.of(2017, Month.APRIL, 10, 23, 49).toString()).isEqualTo("2017-04-10T23:49");
+
+        LocalDate ld = LocalDate.ofInstant(Instant.ofEpochMilli(1724057691992L), ZoneId.of("Asia/Seoul"));
+        assertThat(ld.toString()).isEqualTo("2024-08-19");
     }
 
     /**
@@ -57,17 +60,24 @@ class JavaTimeTest {
     void LocalDateTimeType() {
         LocalDateTime now1 = LocalDateTime.now().minusHours(9);
         LocalDateTime now2 = LocalDateTime.now(ZoneId.of("UTC")); // <-- doc comment 참고
-        assertThat(now2).isEqualTo(now1);
+        assertThat(now2.isEqual(now1)).isTrue();
 
-        LocalDateTime now = LocalDateTime.now();
-        now = now.withYear(2019).withMonth(1).withDayOfMonth(31);
-        now = now.withHour(0).withMinute(0).withSecond(0).withNano(0);
-        assertThat(now).isEqualTo(LocalDateTime.parse("2019-01-31T00:00:00.000"));
+        LocalDateTime ldt1 = LocalDateTime.now();
+        ldt1 = ldt1.withYear(2019).withMonth(1).withDayOfMonth(31);
+        ldt1 = ldt1.withHour(0).withMinute(0).withSecond(0).withNano(0);
+        assertThat(ldt1).isEqualTo(LocalDateTime.parse("2019-01-31T00:00:00.000"));
 
         LocalTime localTime = LocalTime.parse("15:26:45", DateTimeFormatter.ISO_LOCAL_TIME);
         LocalDate localDate = LocalDate.parse("2021-01-01", DateTimeFormatter.ISO_LOCAL_DATE);
         LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);
         assertThat(localDateTime.toString()).isEqualTo("2021-01-01T15:26:45");
+
+        LocalDateTime ldt2 = LocalDateTime.ofEpochSecond(1724057691L, 0, ZoneOffset.of("+09:20"));
+        assertThat(ldt2.toString()).isEqualTo("2024-08-19T18:14:51");
+
+        LocalDateTime ldt3 = LocalDateTime.ofInstant(Instant.ofEpochMilli(1724057691992L),
+                ZoneId.of("Asia/Seoul"));
+        assertThat(ldt3.toString()).isEqualTo("2024-08-19T18:14:51.992");
     }
 
     @Test
