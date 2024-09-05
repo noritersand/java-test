@@ -376,6 +376,12 @@ class StringTest {
         }).isInstanceOf(NullPointerException.class);
     }
 
+    @Test
+    void testStartWith() {
+        String target = "/at/adm/member/member";
+        assertThat(target.startsWith("/at/adm")).isTrue();
+    }
+
     // java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '11' for key 'beacon.uuid'
     @Test
     void extractColumnFromSqlException() {
