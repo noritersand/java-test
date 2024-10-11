@@ -18,9 +18,12 @@ class ObjectTest {
     void testHashCode() {
         Object obj1 = new Object();
         Object obj2 = new Object();
+        Object obj3 = obj1;
         log.debug("{}", obj1.hashCode());
         log.debug("{}", obj2.hashCode());
+        assertThat(obj1.equals(obj2)).isFalse();
         assertThat(obj2.hashCode()).isNotEqualTo(obj1.hashCode());
+        assertThat(obj1 == obj3).isTrue();
     }
 
     @Test

@@ -69,6 +69,9 @@ class ArrayTest {
     void join() {
         String[] arr = {"a", "b", "c"};
         assertThat(String.join(",", arr)).isEqualTo("a,b,c");
+
+        String[] arr2 = {"a", "b", "c", "", ""};
+        assertThat(String.join(",", arr2)).isEqualTo("a,b,c,,");
     }
 
     @Test

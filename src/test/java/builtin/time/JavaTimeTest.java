@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.Timestamp;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAdjusters;
 import java.util.*;
@@ -411,6 +412,12 @@ class JavaTimeTest {
         String input12 = "2022-01-02";
         LocalDate date12 = LocalDate.parse(input12, DateTimeFormatter.ISO_LOCAL_DATE);
         assertThat(date12).isEqualTo(LocalDate.of(2022, Month.JANUARY, 2));
+
+        // 이상한 값이면?
+        String input13 = "qwerasdf";
+        assertThatThrownBy(() -> {
+            LocalDate.parse(input13, DateTimeFormatter.ISO_LOCAL_DATE);
+        }).isInstanceOf(DateTimeParseException.class);
     }
 
     @Test
