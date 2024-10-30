@@ -164,17 +164,16 @@ class PathTest {
      */
     @Test
     void testResolve2() throws IOException {
-        Path dir1 = new File("c:/dev/repo").toPath();
-        Path dir3 = Path.of(dir1.toString());
+        Path dir = Path.of("c:/dev/repo");
 
         // 상위 경로로 이동하기
-        dir3 = dir3.resolve("..");
-        assertThat(dir3.toString()).isEqualTo("c:\\dev\\repo\\..");
-        assertThat(dir3.toAbsolutePath().toString()).isEqualTo("c:\\dev\\repo\\..");
-        assertThat(dir3.toUri().toString()).isEqualTo("file:///c:/dev/repo/../");
-        assertThat(dir3.toFile().toString()).isEqualTo("c:\\dev\\repo\\..");
+        dir = dir.resolve("..");
+        assertThat(dir.toString()).isEqualTo("c:\\dev\\repo\\..");
+        assertThat(dir.toAbsolutePath().toString()).isEqualTo("c:\\dev\\repo\\..");
+        assertThat(dir.toUri().toString()).isEqualTo("file:///c:/dev/repo/../");
+        assertThat(dir.toFile().toString()).isEqualTo("c:\\dev\\repo\\..");
 
-        File file1 = dir3.toFile(); // 상대 경로
+        File file1 = dir.toFile(); // 상대 경로
         File file2 = new File("c:\\dev"); // 절대 경로
 
         // 둘 다 디렉터리가 맞지만
@@ -187,9 +186,28 @@ class PathTest {
         assertThat(file1.getAbsolutePath()).isNotEqualTo(file2.getAbsolutePath());
         assertThat(file1.getAbsoluteFile()).isNotEqualTo(file2.getAbsoluteFile());
 
-        // 캐노니컬한 경로만 같다
+        // 캐노니컬 경로는 같다
         assertThat(file1.getCanonicalFile()).isEqualTo(file2.getCanonicalFile());
         assertThat(file1.getCanonicalPath()).isEqualTo(file2.getCanonicalPath());
+
+        // normalize()를 하면 같아진다
+        assertThat(file1.toPath().normalize().toFile()).isEqualTo(file2);
+
+        // realPath()를 쓰는 게 좋다고 함
+        assertThat(file1.toPath().toRealPath()).isEqualTo(file2.toPath());
+
+        // normalize()는 보안 문제도 있다고 하니 realPath()를 쓸 것
+        Path dir1 = new File("c:/dev/repo").toPath();
+        Path dir2 = dir1.resolve("..");
+        Path dir3 = dir2.resolve("repo/java-test");
+        Path dir4 = dir3.resolve("..");
+        assertThat(dir4.toString()).isEqualTo("c:\\dev\\repo\\..\\repo\\java-test\\..");
+        assertThat(dir4.normalize()).isEqualTo(dir1);
+        assertThat(dir4.toRealPath()).isEqualTo(dir1);
+
+        // 애초에 상위 디렉토리는 resolve() 말고 getParent() 쓰라고 함
+        Path dir5 = dir1.getParent();
+        assertThat(dir5).isEqualTo(Path.of("c:\\dev"));
     }
 
     /**
