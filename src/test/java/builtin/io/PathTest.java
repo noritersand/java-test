@@ -9,8 +9,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 /**
  * <p>{@link Path} 클래스 테스트
  *
@@ -29,13 +29,13 @@ class PathTest {
     void testOf() {
         Path path = Path.of("/a/b/c");
         Path path2 = Path.of("/a", "b", "c");
-        assertEquals(path, path2);
+        assertThat(path2).isEqualTo(path);
 
         Path path3 = Path.of("a/b/c");
         Path path4 = Path.of("a", "b", "c");
-        assertEquals(path3, path4);
+        assertThat(path4).isEqualTo(path3);
 
-        assertEquals(new File("/a/b/c"), path.toFile());
+        assertThat(path.toFile()).isEqualTo(new File("/a/b/c"));
 
         assertThatThrownBy(() -> {
             Path.of("somewhere", null);
@@ -52,10 +52,10 @@ class PathTest {
     @Test
     void testToString() {
         Path path = Path.of("/a/b/c");
-        assertEquals("\\a\\b\\c", path.toString());
+        assertThat(path.toString()).isEqualTo("\\a\\b\\c");
 
         // 만약 /로 바꾸고 싶다면 replace를 하거나
-        assertEquals("/a/b/c", path.toString().replace(BACKSLASH, SLASH));
+        assertThat(path.toString().replace(BACKSLASH, SLASH)).isEqualTo("/a/b/c");
 
         // 아니면 iterator를 이용하는 방법이 있다.
         StringBuilder sb = new StringBuilder().append(SLASH);
@@ -66,7 +66,7 @@ class PathTest {
                 sb.append(SLASH);
             }
         }
-        assertEquals("/a/b/c", sb.toString());
+        assertThat(sb.toString()).isEqualTo("/a/b/c");
     }
 
     /**
@@ -76,10 +76,10 @@ class PathTest {
     @Test
     void testAbsolutePath() {
         Path path = Path.of("/a/b/c");
-        assertEquals(Path.of("C:\\a\\b\\c"), path.toAbsolutePath());
+        assertThat(path.toAbsolutePath().toString()).isEqualTo("C:\\a\\b\\c");
 
         Path path2 = Path.of("a/b/c");
-//        assertEquals("C:\\dev\\intellij-workspace\\java-testbed\\a\\b\\c", path2.toAbsolutePath().toString()); // 로컬 저장소 경로에 따라 달라질 수 있어서 코멘트 처리함
+        assertThat(path2.toAbsolutePath().toString()).isEqualTo("C:\\dev\\intellij-workspace\\java-test\\a\\b\\c");
     }
 
     /**
@@ -88,38 +88,32 @@ class PathTest {
     @Test
     void testToUri() {
         Path path = Path.of("/a/b/c");
-        assertEquals("file:///C:/a/b/c", path.toUri().toString());
-        assertEquals("/C:/a/b/c", path.toUri().getPath().toString());
+        assertThat(path.toUri().toString()).isEqualTo("file:///C:/a/b/c");
+        assertThat(path.toUri().getPath()).isEqualTo("/C:/a/b/c");
 
-        // 이렇게 하면 file:///C:/dev/intellij-workspace/java-testbed/a/b/c 이런 식으로 상대 경로가 나와서 코멘트 처리 함
-//        Path path2 = Path.of("a/b/c");
-//        assertEquals("file:///C:/a/b/c", path2.toUri().toString());
-//        assertEquals("/C:/a/b/c", path2.toUri().getPath().toString());
+        Path path2 = Path.of("a/b/c");
+        assertThat(path2.toUri().toString()).isEqualTo("file:///C:/dev/intellij-workspace/java-test/a/b/c");
+        assertThat(path2.toUri().getPath()).isEqualTo("/C:/dev/intellij-workspace/java-test/a/b/c");
 
         Path path3 = Paths.get("C:\\Users\\User\\Documents\\file.txt");
-        assertEquals("/C:/Users/User/Documents/file.txt", path3.toUri().getPath());
+        assertThat(path3.toUri().toString()).isEqualTo("file:///C:/Users/User/Documents/file.txt");
     }
 
     /**
+     * source부터 target까지의 상대 경로를 구한다.
      * 어떠한 경로 두 개가 있을 때 서로의 상대 경로를 구하는 메서드
      */
     @Test
     void testRelativize() {
         Path path1 = new File("c:/dev/git").toPath();
         Path path2 = new File("c:/sso").toPath();
-        assertEquals(Path.of("../../sso"), path1.relativize(path2)); // dev에서 sso로 가려면 'cd ..\..\sso'
-        assertEquals(Path.of("../dev/git"), path2.relativize(path1)); // sso에서 dev로 가려면 'cd ..\dev\git'
-        assertEquals("", path1.relativize(path1).toString()); // dev에서 dev로 가려면 'cd .'
-    }
+        assertThat(path1.relativize(path2).toString()).isEqualTo("..\\..\\sso"); // dev에서 sso로 가려면 'cd ..\..\sso'
+        assertThat(path2.relativize(path1).toString()).isEqualTo("..\\dev\\git");// sso에서 dev로 가려면 'cd ..\dev\git'
+        assertThat(path1.relativize(path1).toString()).isEqualTo("");// dev에서 dev로 가려면 'cd .'
 
-    /**
-     * source부터 target까지의 상대 경로를 구한다.
-     */
-    @Test
-    void testRelativize2() {
         Path source = new File("webapp/upload/temp/").toPath();
         Path target = new File("webapp/upload/temp/201612/28201838255.png").toPath();
-        assertEquals(Path.of("201612/28201838255.png"), source.relativize(target)); // dev에서 sso로 가려면 'cd ..\..\sso'
+        assertThat(source.relativize(target).toString()).isEqualTo("201612\\28201838255.png"); // dev에서 sso로 가려면 'cd ..\..\sso'
     }
 
     /**
@@ -132,31 +126,70 @@ class PathTest {
     @Test
     void testResolve() throws IOException {
         // 원본
-        Path directory = new File("c:/dev/repo").toPath();
-        Path directory2 = Path.of(directory.toString());
-        Path directory3 = Path.of(directory.toString());
-        Path directory4 = Path.of(directory.toString());
+        Path dir1 = new File("c:/dev/repo").toPath();
+        Path dir2 = Path.of(dir1.toString());
+        Path dir3 = Path.of(dir1.toString());
+        Path dir4 = Path.of(dir1.toString());
+        Path dir5 = Path.of(dir1.toString());
 
         // 파일명으로 붙이기
-        directory = directory.resolve("a.txt");
-        assertEquals(Path.of("C:/dev/repo/a.txt"), directory);
+        dir1 = dir1.resolve("a.txt");
+        assertThat(dir1.toString()).isEqualTo("c:\\dev\\repo\\a.txt");
 
         // 여러개 이어붙이기
         String[] addtionalDirectories = new String[]{"a", "b", "c"};
         for (String addtionalDirectory : addtionalDirectories) {
-            directory2 = directory2.resolve(addtionalDirectory);
+            dir2 = dir2.resolve(addtionalDirectory);
         }
-        assertEquals(Path.of("C:/dev/repo/a/b/c"), directory2);
+        assertThat(dir2.toString()).isEqualTo("c:\\dev\\repo\\a\\b\\c");
 
         // 상위 경로로 이동하기
-        directory3 = directory3.resolve("../parent");
-        assertEquals(Path.of("C:/dev/repo/../parent"), directory3);
+        dir3 = dir3.resolve("..");
+        assertThat(dir3.toString()).isEqualTo("c:\\dev\\repo\\..");
+
+        // 상위로 갔다가 다시 하위로 이동하기
+        dir4 = dir4.resolve("../parent");
+        assertThat(dir4.toString()).isEqualTo("c:\\dev\\repo\\..\\parent");
+
         // 만약 정규화된 경로를 얻고 싶다면 Path.normalize()를 사용함
-        assertEquals(Path.of("C:/dev/parent"), directory3.normalize());
+        assertThat(dir4.normalize().toString()).isEqualTo("c:\\dev\\parent");
 
         // 상위 경로로 이동하기: 특이 케이스
-        directory4 = directory4.resolve("/super");
-        assertEquals(Path.of("C:/super"), directory4);
+        dir5 = dir5.resolve("/super");
+        assertThat(dir5.toString()).isEqualTo("c:\\super");
+    }
+
+    /**
+     * resolve() 메서드로 얻는 상대 경로 객체는 절대 경로 객체와 다른 것처럼 취급된다.
+     */
+    @Test
+    void testResolve2() throws IOException {
+        Path dir1 = new File("c:/dev/repo").toPath();
+        Path dir3 = Path.of(dir1.toString());
+
+        // 상위 경로로 이동하기
+        dir3 = dir3.resolve("..");
+        assertThat(dir3.toString()).isEqualTo("c:\\dev\\repo\\..");
+        assertThat(dir3.toAbsolutePath().toString()).isEqualTo("c:\\dev\\repo\\..");
+        assertThat(dir3.toUri().toString()).isEqualTo("file:///c:/dev/repo/../");
+        assertThat(dir3.toFile().toString()).isEqualTo("c:\\dev\\repo\\..");
+
+        File file1 = dir3.toFile(); // 상대 경로
+        File file2 = new File("c:\\dev"); // 절대 경로
+
+        // 둘 다 디렉터리가 맞지만
+        assertThat(file1.isDirectory()).isTrue();
+        assertThat(file2.isDirectory()).isTrue();
+
+        // 이름이며 객체며 다 다르다
+        assertThat(file1).isNotEqualTo(file2);
+        assertThat(file1.getName()).isNotEqualTo(file2.getName());
+        assertThat(file1.getAbsolutePath()).isNotEqualTo(file2.getAbsolutePath());
+        assertThat(file1.getAbsoluteFile()).isNotEqualTo(file2.getAbsoluteFile());
+
+        // 캐노니컬한 경로만 같다
+        assertThat(file1.getCanonicalFile()).isEqualTo(file2.getCanonicalFile());
+        assertThat(file1.getCanonicalPath()).isEqualTo(file2.getCanonicalPath());
     }
 
     /**
@@ -165,8 +198,8 @@ class PathTest {
     @Test
     void testSubpath() {
         Path path = Path.of("/a/b/c/e/f/g.jpg");
-        assertEquals(Path.of("a/b/c"), path.subpath(0, 3));
-        assertEquals(Path.of("e/f/g.jpg"), path.subpath(3, 6));
+        assertThat(path.subpath(0, 3).toString()).isEqualTo("a\\b\\c");
+        assertThat(path.subpath(3, 6).toString()).isEqualTo("e\\f\\g.jpg");
     }
 
     /**
@@ -175,6 +208,6 @@ class PathTest {
     @Test
     void testNormalize() {
         Path path = Path.of("./../../a/b/c.jpg");
-        assertEquals(Path.of("../../a/b/c.jpg"), path.normalize());
+        assertThat(path.normalize().toString()).isEqualTo("..\\..\\a\\b\\c.jpg");
     }
 }
