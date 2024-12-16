@@ -396,6 +396,16 @@ class JavaTimeTest {
         assertThat(dateTime.format(formatter)).isEqualTo("2011-12-03 10:15:30");
     }
 
+    @Test
+    void parseLocaleStringToJavaTime() {
+        final String input = "2000년 05월 29일";
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일", Locale.KOREAN);
+        LocalDate date = LocalDate.parse(input, inputFormatter);
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        final String output = date.format(outputFormatter);
+        assertThat(output).isEqualTo("20000529");
+    }
+
     /**
      * 문자열을 JavaTime 타입으로 변환
      *
