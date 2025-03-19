@@ -15,7 +15,7 @@ public enum RandomGenerator {
      * 난수 생성
      *
      * @param lengthOfRandomValue 원하는 난수의 길이
-     * @return
+     * @return 난수 문자열
      */
     public static String generateFixedLengthRandomDecimal(int lengthOfRandomValue) {
         SecureRandom random = new SecureRandom();

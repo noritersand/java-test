@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 2020-03-02
  */
 @Slf4j
-class RegexWithStringTest {
+class RegexInStringClassTest {
 
     @Test
     void shoulBeEquals() {
