@@ -28,4 +28,13 @@ public class LocalDateTest {
         LocalDate ld = LocalDate.ofInstant(Instant.ofEpochMilli(1724057691992L), ZoneId.of("Asia/Seoul"));
         assertThat(ld.toString()).isEqualTo("2024-08-19");
     }
+
+    @Test
+    void withFormatter() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate someDay = LocalDate.parse("20210101", formatter);
+        assertThat(someDay.getYear()).isEqualTo(2021);
+        assertThat(someDay.getMonthValue()).isEqualTo(1);
+        assertThat(someDay.getDayOfMonth()).isEqualTo(1);
+    }
 }
