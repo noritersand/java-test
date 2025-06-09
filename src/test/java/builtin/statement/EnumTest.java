@@ -5,7 +5,7 @@ import constant.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * <h2>enum 타입 테스트 슈트</h2>
@@ -61,28 +61,26 @@ class EnumTest {
      */
     @Test
     void overrideToStringTest() {
-        // 응 안됨
-        assertNotEquals("10", InvokeMe.TEN);
-        assertEquals(InvokeMe.TEN, InvokeMe.TEN);
+        // 안됨
+        assertThat("10").isNotEqualTo(InvokeMe.TEN);
+        assertThat(InvokeMe.TEN).isEqualTo(InvokeMe.TEN);
     }
 
     @Test
     void useEqualityOperator() {
         Color red = Color.RED;
-        assertSame(Color.RED, red);
+        assertThat(red).isSameAs(Color.RED);
+        assertThat(red == Color.RED).isTrue();
     }
 
     @Test
     void useSwitch() {
         String div = "back_office";
-        switch (SystemType.valueOf(div.toUpperCase())) {
-            case BACK_OFFICE:
-                log.debug("백");
-                break;
-            case FRONT_OFFICE:
-                log.debug("프론트");
-                break;
-        }
+        String result = switch (SystemType.valueOf(div.toUpperCase())) {
+            case BACK_OFFICE -> "백";
+            case FRONT_OFFICE -> "프론트";
+        };
+        assertThat(result).isEqualTo("백");
     }
 
     @Test
@@ -90,19 +88,20 @@ class EnumTest {
         Class<Color> clazz = Color.class;
         String source = "red";
         Enum<Color> color = Enum.valueOf(clazz, source.trim().toUpperCase());
-        assertEquals(Color.RED, color);
+        assertThat(color).isEqualTo(Color.RED);
     }
 
     @Test
     void testCustomValueOf() {
         Fruit target = Fruit.valueOf(12);
-        assertEquals(Fruit.COCONUT, target);
-
+        assertThat(target).isEqualTo(Fruit.COCONUT);
     }
 
     @Test
     void testValueOfSafe() {
-        assertNull(SystemType.valueOfSafe("NOT_BACK_OFFICE"));
+        assertThat(SystemType.valueOfSafe("NOT_BACK_OFFICE")).isNull();
+        assertThat(SystemType.valueOfSafe("BACK_OFFICE")).isEqualTo(SystemType.BACK_OFFICE);
+        assertThat(SystemType.valueOfSafe("FRONT_OFFICE")).isEqualTo(SystemType.FRONT_OFFICE);
     }
 
     /**
@@ -113,14 +112,14 @@ class EnumTest {
     @Test
     void testGetDeclaringClass() {
         // 평범한 enum은 getClass()나 getDeclaringClass()나 별 차이 없지만
-        assertEquals(SystemType.BACK_OFFICE.getClass(), SystemType.BACK_OFFICE.getDeclaringClass());
-        assertEquals(SystemType.FRONT_OFFICE.getDeclaringClass(), SystemType.BACK_OFFICE.getDeclaringClass());
+        assertThat(SystemType.BACK_OFFICE.getDeclaringClass()).isEqualTo(SystemType.BACK_OFFICE.getClass());
+        assertThat(SystemType.BACK_OFFICE.getDeclaringClass()).isEqualTo(SystemType.FRONT_OFFICE.getDeclaringClass());
 
         // 클래스 본문이 있는 enum은 getClass()가 내부의 서브클래스를 반환함.
-        assertNotEquals(ImSpecial.class, ImSpecial.A.getClass());
-        assertNotEquals(ImSpecial.class, ImSpecial.B.getClass());
-        assertEquals(ImSpecial.class, ImSpecial.A.getDeclaringClass());
-        assertEquals(ImSpecial.class, ImSpecial.B.getDeclaringClass());
+        assertThat(ImSpecial.A.getClass()).isNotEqualTo(ImSpecial.class);
+        assertThat(ImSpecial.B.getClass()).isNotEqualTo(ImSpecial.class);
+        assertThat(ImSpecial.A.getDeclaringClass()).isEqualTo(ImSpecial.class);
+        assertThat(ImSpecial.B.getDeclaringClass()).isEqualTo(ImSpecial.class);
     }
 
     /**
@@ -134,7 +133,7 @@ class EnumTest {
         ImSpecial.B.destroySelf();
 
         String result = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "myName");
-        assertEquals("MY_NAME", result);
+        assertThat(result).isEqualTo("MY_NAME");
     }
 
     /**
@@ -142,35 +141,33 @@ class EnumTest {
      */
     @Test
     void testOrdinal() {
-        assertEquals(0, Fruit.APPLE.ordinal());
-        assertEquals(1, Fruit.BANANA.ordinal());
-        assertEquals(2, Fruit.COCONUT.ordinal());
+        assertThat(Fruit.APPLE.ordinal()).isEqualTo(0);
+        assertThat(Fruit.BANANA.ordinal()).isEqualTo(1);
+        assertThat(Fruit.COCONUT.ordinal()).isEqualTo(2);
     }
 
     @Test
     void heritanceTest() {
         SubEnum dummy = SubEnum.DUMMY;
-        assertEquals(1, dummy.ONE);
-        assertEquals(1, SuperEnum.ONE);
-        assertEquals(1, SuperEnum.ONE);
-        assertEquals("1234", SuperEnum.doSomething());
-        //		dummy.doSomething();
-//		SubEnum.doSomething();
+        assertThat(dummy.ONE).isEqualTo(1);
+        assertThat(SuperEnum.ONE).isEqualTo(1);
+        assertThat(SuperEnum.ONE).isEqualTo(1);
+        assertThat(SuperEnum.doSomething()).isEqualTo("1234");
 
-        assertEquals("5678", SubEnum.DUMMY.overrideMe());
+        assertThat(SubEnum.DUMMY.overrideMe()).isEqualTo("5678");
 
         // TODO SuperEnum, SubEnum 만지다 말았음.
     }
 
     @Test
     void testCrudModeClass() {
-        assertEquals(CrudMode.READ, CrudMode.of("R"));
-        assertNull(CrudMode.of("READ"));
-        assertNull(CrudMode.of("X"));
+        assertThat(CrudMode.of("R")).isEqualTo(CrudMode.READ);
+        assertThat(CrudMode.of("READ")).isNull();
+        assertThat(CrudMode.of("X")).isNull();
 
-        assertEquals(CrudMode.READ, CrudMode.valueOfSafe("READ"));
-        assertNull(CrudMode.valueOfSafe("R"));
-        assertNull(CrudMode.valueOfSafe("X"));
+        assertThat(CrudMode.valueOfSafe("READ")).isEqualTo(CrudMode.READ);
+        assertThat(CrudMode.valueOfSafe("R")).isNull();
+        assertThat(CrudMode.valueOfSafe("X")).isNull();
     }
 
     private enum CrudMode {

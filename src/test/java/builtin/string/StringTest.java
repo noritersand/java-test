@@ -172,6 +172,7 @@ class StringTest {
         var str = "a'b'c'd'e'f'g";
         String result = str.replace("'", "");
         assertThat(result).isEqualTo("abcdefg");
+        assertThat("a b c d e f g".replace(" ", "")).isEqualTo("abcdefg");
     }
 
     /**
