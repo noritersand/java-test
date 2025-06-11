@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * LocalDate 클래스 테스트
@@ -36,5 +38,9 @@ public class LocalDateTest {
         assertThat(someDay.getYear()).isEqualTo(2021);
         assertThat(someDay.getMonthValue()).isEqualTo(1);
         assertThat(someDay.getDayOfMonth()).isEqualTo(1);
+
+        assertThatThrownBy(() -> {
+            LocalDate someDay2 = LocalDate.parse("20220202");
+        }).isInstanceOf(DateTimeParseException.class).hasMessage("Text '20220202' could not be parsed at index 0");
     }
 }
