@@ -3,7 +3,8 @@ package builtin.newfeature.fourteen;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * <p>Java 14에 추가된 새 유형의 클래스</p>
@@ -14,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
  * <pre>
  * public record ClassName() {}
  * </pre>
- * 
+ *
  * @author fixalot
  * @since 2023-08-28
  */
@@ -35,7 +36,30 @@ class RecordDataClassTest {
         // record class의 getter는 'get'이 빠진 형태
         assertThat(rd.text()).isEqualTo("abc");
         assertThat(rd.decimal()).isEqualTo(123.45);
+
+        RecordData.num2 = 123;
+
+        assertThatThrownBy(() -> {
+            new RecordData(null, 0.1);
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage("text must not be null or blank");
     }
 
+    @Test
+    void testPerson() {
+        Person person = new Person("Alice", 30);
+        log.debug(person.name()); // Alice
+        log.debug("{}", person); // Person[name=Alice, age=30]
+
+        // record class는 값이 같으면 equals()가 true를 반환함
+        Person samePerson = new Person("Alice", 30);
+        log.debug("{}", person.equals(samePerson));
+        ; // true
+
+        // record의 모든 필드는 final이라서 초기화 후에 재할당 불가
+//        person.name = "Bob"; // ❌ COMPILE ERROR: Cannot assign a value to final variable 'name'
+    }
+
+    record Person(String name, int age) {
+    }
 }
 
