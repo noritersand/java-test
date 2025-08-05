@@ -271,5 +271,13 @@
 			<artifactId>tika-core</artifactId>
 			<version>3.2.0</version>
 		</dependency>
+
+        <!-- NPE 방지 도구 -->
+        <!-- https://mvnrepository.com/artifact/org.jspecify/jspecify -->
+        <dependency>
+            <groupId>org.jspecify</groupId>
+            <artifactId>jspecify</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 	</dependencies>
 </project>
