@@ -13,7 +13,8 @@ class NullMarkedUnmarkedTest {
 
     /**
      * <p><code>@NullMarked</code> 어노테이션은 이 모듈/패키지/클래스/메서드/생성자함수 내 모든 요소는 기본적으로 null이 아님을 의미한다(<code>@NonNull</code>이 기본 적용).
-     * 그리고 <code>@Nullable</code> 어노테이션으로 <code>null</code>을 허용할 부분만 지정한다.
+     *
+     * <p>그리고 <code>@Nullable</code> 어노테이션으로 <code>null</code>을 허용할 부분만 지정한다.
      */
     @Test
     void testNullMarked() {
@@ -36,6 +37,10 @@ class NullMarkedUnmarkedTest {
 
     /**
      * <p><code>@NullUnmarked</code> 어노테이션은 <code>null</code> 관련 어노테이션을 적용하지 않는다는 뜻이다.
+     *
+     * <p>사실상 아무 어노테이션 없이 선언한 것과 같다.
+     *
+     * <p>상위 패키지나 모듈, 클래스 등에서 <code>@NullMarked</code>가 붙어있을 때 하위의 특정 범위에서 "여긴 null 관련 어노테이션 적용 안할거야"르 하고 싶을 때 쓴다.
      */
     @Test
     void testNullUnmarked() {
@@ -48,7 +53,23 @@ class NullMarkedUnmarkedTest {
 
         String v3 = NullUnmarkedModel.notAllowNull(null);
 
-        String v4 = NullMarkedModel.butReturnNull();
+        String v4 = NullUnmarkedModel.butReturnNull();
+        assertThat(v4).isEqualTo(null);
+    }
+
+    /**
+     * 아무 어노테이션이 없을 때
+     */
+    @Test
+    void testNoAnnotated() {
+        String v1 = NoAnnotatedModel.emptyToNull("");
+        assertThat(v1).isNull();
+
+        String v2 = NoAnnotatedModel.nullToEmpty(null);
+
+        String v3 = NoAnnotatedModel.notAllowNull(null);
+
+        String v4 = NoAnnotatedModel.butReturnNull();
         assertThat(v4).isEqualTo(null);
     }
 }
