@@ -32,7 +32,7 @@ public class LocalDateTest {
     }
 
     @Test
-    void withFormatter() {
+    void fromStringWithFormatter() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         LocalDate someDay = LocalDate.parse("20210101", formatter);
         assertThat(someDay.getYear()).isEqualTo(2021);
