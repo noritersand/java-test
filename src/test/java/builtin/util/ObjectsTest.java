@@ -19,6 +19,13 @@ class ObjectsTest {
 
     }
 
+    @Test
+    void testToString() {
+        assertThat(Objects.toString(null)).isEqualTo("null");
+        assertThat(Objects.toString("abc")).isEqualTo("abc");
+        assertThat(Objects.toString(123)).isEqualTo("123");
+    }
+
     /**
      * requireNonNull()과 파생 메서드 테스트
      */
