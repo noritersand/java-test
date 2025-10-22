@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +32,8 @@ public class DateTimeFormatterTest {
         assertThat(someTime.format(DateTimeFormatter.ofPattern("q"))).isEqualTo("4"); // quarter of year
         assertThat(someTime.format(DateTimeFormatter.ofPattern("w"))).isEqualTo("42"); // week of week based year
         assertThat(someTime.format(DateTimeFormatter.ofPattern("W"))).isEqualTo("3"); // week of month
-        assertThat(someTime.format(DateTimeFormatter.ofPattern("E"))).isEqualTo("수"); // day of week
+        assertThat(someTime.format(DateTimeFormatter.ofPattern("E", Locale.KOREA))).isEqualTo("수"); // day of week
+        assertThat(someTime.format(DateTimeFormatter.ofPattern("E", Locale.KOREAN))).isEqualTo("수"); // day of week
         assertThat(someTime.format(DateTimeFormatter.ofPattern("e"))).isEqualTo("4"); // localized day of week
         assertThat(someTime.format(DateTimeFormatter.ofPattern("c"))).isEqualTo("4"); // localized day of week
         assertThat(someTime.format(DateTimeFormatter.ofPattern("F"))).isEqualTo("3"); // day of week in month
@@ -47,6 +49,9 @@ public class DateTimeFormatterTest {
         assertThat(someTime.format(DateTimeFormatter.ofPattern("N"))).isEqualTo("40953000000000"); // nano of day
         assertThat(someTime.format(DateTimeFormatter.ofPattern("B"))).isEqualTo("오전"); // period of day
         assertThat(someTime.format(DateTimeFormatter.ofPattern("a"))).isEqualTo("오전"); // am/pm of day
+
+        // 요일 정보는 언어 설정이 필요함. 생략하면 서버의 로케일을 따름
+
 
         // 여기서부터는 오프셋(UTC와의 시간 차이) 정보가 필요하여 OffsetDateTime으로 변환
         OffsetDateTime offsetTime = OffsetDateTime.of(someTime.toLocalDate(), someTime.toLocalTime(), ZoneOffset.ofHours(9));
