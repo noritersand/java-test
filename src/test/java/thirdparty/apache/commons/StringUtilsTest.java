@@ -14,6 +14,13 @@ import static org.assertj.core.api.Assertions.*;
 class StringUtilsTest {
 
     @Test
+    void testIsBlank() {
+        assertThat(StringUtils.isBlank(null)).isTrue();
+        assertThat(StringUtils.isBlank("")).isTrue();
+        assertThat(StringUtils.isBlank(" ")).isTrue();
+    }
+
+    @Test
     void testDefault() {
         // null일 때만 defaultString으로 대체
         assertThat(StringUtils.defaultString(null, "0")).isEqualTo("0");
