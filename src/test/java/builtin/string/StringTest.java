@@ -164,7 +164,8 @@ class StringTest {
     }
 
     /**
-     * <p>자바 string.replace()는 자바스크립트의 String.prototype.replace()와 달리 첫 번째 인자로 정규식을 받지 않는다. 문자열만 받으며, 문자열과 일치하는 모든 문자열을 치환한다.</p>
+     * <p>자바 <code>string.replace()</code>는 자바스크립트의 String.prototype.replace()와 달리 첫 번째 인자로 정규식을 받지 않는다.
+     * <p>첫 번째 인자는 plain text로 취급되며, 해당 문자와 '평범하게' 일치하는 모든 문자열을 치환한다.
      * <p>처음 발견한 하나만 치환하게 하고 싶으면 {@link String#replaceFirst(String, String)}를 사용할 것</p>
      */
     @Test
@@ -173,16 +174,18 @@ class StringTest {
         String result = str.replace("'", "");
         assertThat(result).isEqualTo("abcdefg");
         assertThat("a b c d e f g".replace(" ", "")).isEqualTo("abcdefg");
+        assertThat("123\\".replace("\\", "")).isEqualTo("123");
     }
 
     /**
-     * string.replaceAll()은 첫 번째 인자로 정규식을 받으며, g 플래그를 사용한 것과 동일하게 작동한다.
+     * <code>string.replaceAll()</code>은 첫 번째 인자로 정규식을 받으며, g 플래그를 사용한 것과 동일하게 작동한다.
      */
     @Test
     void testReplaceAll() {
         assertThat("경기도".replaceAll("도", "")).isEqualTo("경기");
         assertThat("a:b".replaceAll(":", "-")).isEqualTo("a-b");
         assertThat("a:b".replaceAll("\\:", "\\-")).isEqualTo("a-b");
+        assertThat("123\\".replaceAll("\\\\", "")).isEqualTo("123");
 
         var str = "Duplicate entry 'foo' for key 'bar'";
         String result = str.replaceAll("'", "");
@@ -190,7 +193,7 @@ class StringTest {
     }
 
     /**
-     * string.replaceFirst()도 첫 번째 인자로 정규식을 받는다. 처음으로 검색된 패턴만 치환한다.
+     * <code>string.replaceFirst()</code>도 첫 번째 인자로 정규식을 받는다. 처음으로 검색된 패턴만 치환한다.
      */
     @Test
     void testReplaceFirst() {
