@@ -57,6 +57,39 @@ class JavaTimeTest {
     }
 
     /**
+     * 범위 비교하기(포함)
+     */
+    @Test
+    void testRange() {
+        LocalDate today = LocalDate.parse("2026-03-15");
+
+        LocalDate start = LocalDate.parse("2026-01-01");
+        LocalDate end = LocalDate.parse("2026-12-31");
+        // today > start && today < end
+        assertThat(today.isAfter(start) && today.isBefore(end)).isTrue();
+
+        start = LocalDate.parse("2026-01-01");
+        end = LocalDate.parse("2026-12-31");
+        // start < today && today < end
+        assertThat(start.isBefore(today) && today.isBefore(end)).isTrue();
+
+        start = LocalDate.parse("2026-01-01");
+        end = LocalDate.parse("2026-12-31");
+        // start < today && end > today
+        assertThat(start.isBefore(today) && end.isAfter(today)).isTrue();
+
+        start = LocalDate.parse("2026-03-15");
+        end = LocalDate.parse("2026-03-15");
+        // start <= today && today <= end
+        assertThat((start.isBefore(today) || start.isEqual(today)) && (today.isBefore(end) || today.isEqual(end))).isTrue();
+
+        start = LocalDate.parse("2026-01-01");
+        end = LocalDate.parse("2026-03-01");
+        // start <= today && today <= end
+        assertThat((start.isBefore(today) || start.isEqual(today)) && (today.isBefore(end) || today.isEqual(end))).isFalse();
+    }
+
+    /**
      * java.time 인스턴스의 객체 복제
      */
     @Test
