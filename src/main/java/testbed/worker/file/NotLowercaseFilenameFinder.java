@@ -1,4 +1,4 @@
-package testbed.forblog;
+package testbed.worker.file;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,8 +20,8 @@ public enum NotLowercaseFilenameFinder {
 
     public static void main(String[] args) {
         String[] targetLocations = {
-                "C:/dev/git/noritersand.github.io/_drafts",
-                "C:/dev/git/noritersand.github.io/_posts"
+                "C:/dev/repo/acorn-storage/_drafts",
+                "C:/dev/repo/acorn-storage/_posts"
         };
 
         try {
