@@ -1,4 +1,4 @@
-package testbed.work.file;
+package testbed.worker.file;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;

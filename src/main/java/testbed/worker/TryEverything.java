@@ -1,4 +1,4 @@
-package testbed.work;
+package testbed.worker;
 
 import lombok.extern.slf4j.Slf4j;
 

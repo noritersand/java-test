@@ -1,4 +1,4 @@
-package testbed.work.database;
+package testbed.worker.database;
 
 import lombok.extern.slf4j.Slf4j;
 
