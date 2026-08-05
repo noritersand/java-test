@@ -21,6 +21,7 @@ public enum NotLowercaseFilenameFinder {
     public static void main(String[] args) {
         String[] targetLocations = {
                 "C:/dev/repo/noritersand/acorn-storage/_drafts",
+                "C:/dev/repo/noritersand/acorn-storage/_hidden",
                 "C:/dev/repo/noritersand/acorn-storage/_posts"
         };
 
